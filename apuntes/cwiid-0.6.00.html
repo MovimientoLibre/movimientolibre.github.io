@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pasos para instalar en Gentoo Linux el CWiid (versión 0.6.00) que es una colección de herramientas programadas en C para usar el wiimote.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, Wii, Wiimote, CWiid">
+  <title>Instalación de CWiid 0.6.00: Wiimote en GNU/Linux - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Instalación de CWiid 0.6.00: Wiimote en GNU/Linux</h1>
+          <div class="encabezado-descripcion" itemprop="description">Pasos para instalar en Gentoo Linux el CWiid (versión 0.6.00) que es una colección de herramientas programadas en C para usar el wiimote.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2010-10-26T20:00">26/10/2010 20:00
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <iframe width="420" height="315" src="//www.youtube.com/embed/gg8spZvyEE8" frameborder="0" allowfullscreen></iframe>
+
+<p><em>Wii Remote</em> (Control Remoto <em>Wii</em> en Latinoamérica, Mando de <em>Wii</em> en España o <em>Wiimote</em> en el <em>mundo gamer</em>) es el control principal de la <em>Wii</em> de Nintendo. Este dispositivo tiene estas cualidades:</p>
+
+<ul>
+<li>Botones A, B, +, home, -, 1 y 2.</li>
+<li>Sensores de aceleración y posición en el espacio 3D.</li>
+<li>Sensor que detecta a donde está apuntando, por medio de un visor infrarrojo y <em>leds</em> sobre la pantalla.</li>
+<li>Leds que indican la carga de la batería y el número del control.</li>
+<li>Bocina integrada.</li>
+<li>Puede vibrar.</li>
+<li>Comunicación inalámbrica via <em>bluetooth</em>.</li>
+</ul>
+
+<p>Aparte del magnífico papel que este dispositivo tiene con los video juegos, podemos darle un gran número de usos con GNU/Linux. Entre los cuales están:</p>
+
+<ul>
+<li>Controlar tus presentaciones de forma inalámbrica (en esta guía No. 10).</li>
+<li>Usarlo como sustituto del <em>mouse</em> apuntando directamente a la proyección (No. 12).</li>
+<li>Jugar <a href="http://supertux.lethargik.org/">SuperTux</a> usándolo como <em>joystick</em> inalámbrico.</li>
+<li>Hacer de cualquier pantalla un <a href="http://wiki.wiimoteproject.com/Wiimote_HOWTO">touchscreen</a></li>
+<li><a href="http://abstrakraft.org/cwiid/wiki/ProgramsUsingCWiid">Etcétera</a></li>
+</ul>
+
+<p>A continuación describiré los pasos para instalar en <a href="http://www.gentoo.org/">Gentoo Linux</a> el <a href="http://abstrakraft.org/cwiid/">CWiid</a> (versión 0.6.00) que es una colección de herramientas programadas en C para usar el <em>wiimote</em>.</p>
+
+<p><strong>Nota:</strong> Los comandos que vea con <strong>$</strong> son ejecutados desde su cuenta de usuario. Mientras que los comandos que inicien con <strong>#</strong> deben ejecutarse como <em>root</em> o con <strong>sudo</strong>.</p>
+
+<h3>1) Configure su kernel</h3>
+
+<p>Ya que el <em>wiimote</em> se comunica vía <em>bluetooth</em> es indispensable que su computadora tenga ese dispositivo y que opere correctamente.</p>
+
+<p>Para configurar el soporte de <em>bluetooth</em> en su kernel, active las siguientes opciones en la configuración del mismo. Consulte documentación sobre cómo compilar su kernel si es necesario.</p>
+
+<pre><code>[*] Networking support  ---&gt;
+    &lt;M&gt; Bluetooth subsystem support  ---&gt;
+        &lt;M&gt; L2CAP protocol support
+        &lt;M&gt;   SCO links support
+        &lt;M&gt;   RFCOMM protocol support
+        [*]     RFCOMM TTY support
+        &lt;M&gt;   BNEP protocol support
+        [*]     Multicast filter support
+        [*]     Protocol filter support
+        &lt;M&gt;   HIDP protocol support
+              Bluetooth device drivers  ---&gt;  # ESCOJA EL CONTROLADOR O MARQUE TODOS
+              &lt;M&gt; HCI USB driver              # ESTE ES EL CONTROLADOR DE MI EQUIPO
+</code></pre>
+
+<p>Para usar el <em>wiimote</em> es necesario habilitar el módulo <strong>uinput</strong> en el kernel con:</p>
+
+<pre><code>Device Drivers  ---&gt;
+    Input device support  ---&gt;
+        [*] Miscellaneous devices  ---&gt;
+          &lt;M&gt; User level driver support
+</code></pre>
+
+<p>Guarde los cambios, compile e instale el kernel y reinicie su equipo.</p>
+
+<h3>2) Revise que haya comunicación por <em>bluetooth</em></h3>
+
+<p>En el paso anterior compilamos como módulos (M) las opciones del kernel. Revise si su distribución los cargó al encender el equipo con:</p>
+
+<pre><code>$ lsmod
+</code></pre>
+
+<p>Si no, cárguelos manualmente. Ejecute <strong>modprobe</strong> (como root) con el módulo que corresponda a su controlador <em>bluetooth</em>, en mi caso es:</p>
+
+<pre><code># modprobe -v btusb
+</code></pre>
+
+<p>Como primera prueba, ejecute el comando <strong>hciconfig</strong> (como root), deberá mostrarle información como la siguiente:</p>
+
+<pre><code># hciconfig
+hci0:   Type: USB
+    BD Address: 00:00:00:00:00:00 ACL MTU: 310:10 SCO MTU: 64:8
+    UP RUNNING PSCAN
+    RX bytes:1152 acl:0 sco:0 events:55 errors:0
+    TX bytes:2878 acl:0 sco:0 commands:55 errors:0
+</code></pre>
+
+<p>Donde <strong>BD Address: 00:00:00:00:00:00</strong> es la <em>mac address</em> del <em>bluetooth</em> de su computadora.</p>
+
+<p>Luego, presione 1 y 2 al mismo tiempo en el <em>wiimote</em>. Los <em>leds</em> parpadeando son señal de que está en <em>modo de asociación</em>. Inmediatamente, en la terminal ejecute:</p>
+
+<pre><code># hcitool scan
+Scanning ...
+    00:00:00:00:00:00       Nintendo RVL-CNT-01
+</code></pre>
+
+<p>Donde <strong>00:00:00:00:00:00</strong> es la <em>mac address</em> del <em>bluetooth</em> del <em>wiimote</em>.</p>
+
+<h3>3) Configure que su cuenta de usuario pueda usar <em>uinput</em></h3>
+
+<p>Cargue el módulo <strong>uinput</strong> si no lo ha hecho.</p>
+
+<pre><code>$ sudo modprobe -v uinput
+</code></pre>
+
+<p>Por defecto <em>/dev/input/uinput</em> tiene permisos de root:</p>
+
+<pre><code>$ ls -l /dev/input/uinput
+crw-r----- 1 root root 10, 223 sep 24 22:47 /dev/input/uinput
+</code></pre>
+
+<p>Para que nuestra cuenta de usuario tenga permisos de lectura y escritura en <strong>uinput</strong> vamos a crear una nueva regla <strong>udev</strong>. Como <em>root</em> vamos a crear un nuevo archivo con el editor de textos más simple de GNU/Linux, el <strong>nano</strong>:</p>
+
+<pre><code># nano /etc/udev/rules.d/50-wminput.rules
+</code></pre>
+
+<p>Escribimos el contenido siguiente donde señalamos que a la carga de <strong>uinput</strong> se den permisos al grupo <strong>uucp</strong>:</p>
+
+<pre><code>#
+# 50-wminput.rules
+#
+# WiiMote requiere que se tenga permisos en uinput
+KERNEL=="uinput", MODE="0660", GROUP="uucp"
+</code></pre>
+
+<p>Para usar esta configuración sin reiniciar el equipo, retiramos módulo <strong>uinput</strong>, recargamos <strong>udev</strong>, cargamos de nuevo <strong>uinput</strong> y revisamos:</p>
+
+<pre><code># modprobe -r uinput
+# udevadm control --reload-rules
+# modprobe -v uinput
+# ls -l /dev/input/uinput
+crw-rw---- 1 root uucp 10, 223 sep 24 22:55 /dev/input/uinput
+</code></pre>
+
+<p>Por último agregue su usuario al grupo <strong>uucp</strong></p>
+
+<pre><code># gpasswd -a &lt;USUARIO&gt; uucp
+</code></pre>
+
+<p>Cierre su sesión como usuario y entre de nuevo para hacer efectivo este cambio.</p>
+
+<h3>4) Descargue el código fuente de CWiid</h3>
+
+<p>Ingrese al sitio oficial de <a href="http://abstrakraft.org/cwiid/">CWiid</a></p>
+
+<p>En la página inicial donde está el tema "Download", busque "Download the most recent version of CWiid." y de clic al vínculo. Al escribir esta guía la versión <strong>0.6.00</strong> de <strong>CWiid</strong> es la versión estable y su URL es <a href="http://abstrakraft.org/cwiid/downloads/cwiid-0.6.00.tgz">http://abstrakraft.org/cwiid/downloads/cwiid-0.6.00.tgz</a></p>
+
+<h3>5) Desempaque el archivo comprimido</h3>
+
+<p>Ya sea por medio de su administrador de archivos, dando clic con el botón derecho y eligiendo desempacar en el menú contextual o en la terminal con el comando:</p>
+
+<pre><code>$ tar xvf cwiid-0.6.00.tgz
+</code></pre>
+
+<p>Luego, cámbiese al directorio resultante de haberlo desempacado.</p>
+
+<pre><code>$ cd cwiid-0.6.00
+</code></pre>
+
+<p>No deje de leer el archivo <strong>README</strong>.</p>
+
+<h3>6) Modifique el archivo bluetooth.c</h3>
+
+<p><a href="http://www.gentoo.org/">Gentoo Linux</a> está usando <a href="http://packages.gentoo.org/package/net-wireless/bluez">net-wireless/bluez</a> que es la nueva versión de los programas y demonios para <em>bluetooth</em>.</p>
+
+<p><strong>CWiid</strong> en su versión 0.6.00 sigue necesitando a la versión anterior, lo cual lo hace incompatible con la nueva y marca error al compilar. Afortunadamente sólo hay que modificar una línea del código fuente para que funcione con <strong>bluez</strong>. Así que con <strong>vim</strong> o su editor favorito, edite el archivo:</p>
+
+<pre><code>$ vim libcwiid/bluetooth.c
+</code></pre>
+
+<p>Y en la línea 125, cambie "hci_remote_name" a "hci_read_remote_name" (sin comillas, por supuesto).</p>
+
+<pre><code>...
+/* timeout (10000) in milliseconds */
+if (hci_read_remote_name(sock, &amp;dev_list[i].bdaddr, BT_NAME_LEN,
+  (*bdinfo)[bdinfo_count].name, 10000)) {
+    cwiid_err(NULL, "Bluetooth name read error");
+    err = 1;
+    goto CODA;
+}
+...
+</code></pre>
+
+<h3>7) Configure y compile</h3>
+
+<p>De la forma tradicional:</p>
+
+<pre><code>$ ./configure
+$ make
+</code></pre>
+
+<p>Revise que no haya mensajes de error en estos pasos.</p>
+
+<h3>8) Instale</h3>
+
+<p>La instalación por defecto se hará en /usr/local así que como <em>root</em> ejecute:</p>
+
+<pre><code># make install
+</code></pre>
+
+<h3>9) Uso de wmgui</h3>
+
+<p>El programa <strong>wmgui</strong> sirve para probar todas las características del <em>wiimote</em>. Le recomiendo que estrene su <em>wiimote</em> en GNU/Linux ejecutando <strong>wmgui</strong>:</p>
+
+<pre><code>$ wmgui
+</code></pre>
+
+<p><a href="cwiid-0.6.00/wmgui.png"><img class="img-responsive" src="cwiid-0.6.00/wmgui-small.png"></a></p>
+
+<ul>
+<li>Para asociar el <em>wiimote</em> elija menú <strong>File</strong> > <strong>Connect</strong>, presione 1 y 2 en el <em>wiimote</em> y de clic en <strong>Aceptar</strong>.</li>
+<li>Pruebe los botones del <em>wiimote</em>.</li>
+<li>Para terminar la sociación con el <em>wiimote</em> elija <strong>File</strong> > <strong>Disconnect</strong>.</li>
+</ul>
+
+<h3>10) Uso de wminput</h3>
+
+<p>El programa <strong>wminput</strong> es capaz de detectar cuando se presionan los botones y los datos del apuntador del <em>wiimote</em> para interpretarlos en nuestro sistema operativo.</p>
+
+<p>No deje de leer el manual con <strong>man wminput</strong>. Por otro lado, ejecute <strong>wminput -h</strong> para mostrar un texto de ayuda. En síntesis tiene estas opciones:</p>
+
+<pre><code>-h             Mostrar ayuda.
+-c &lt;ARCHIVO&gt;   Cargar un archivo específico de configuración.
+-q             Sólo mostrar errores en la terminal.
+-r &lt;SEGUNDOS&gt;  Automáticamente reconectar al Wiimote si este se desconectara.
+-w             Esperar infinitamente a que se conecte un Wiimote
+-d             Combina -q, -r y -w.
+</code></pre>
+
+<p>Encontrará archivos básicos de configuración en /usr/local/etc/cwiid/wminput/</p>
+
+<p>La documentación recomienda mantener la configuración personal en el directorio oculto <strong>.CWiid</strong> en su <strong>home</strong>; aunque estos archivos pueden estar en cualquier parte. Así que creamos ese directorio con:</p>
+
+<pre><code>$ mkdir ~/.CWiid/
+</code></pre>
+
+<p>El primer ejemplo de configuración es para controlar las presentaciones en <strong>PDF</strong> con <a href="http://okular.kde.org/">Okular</a>. ¿Porqué <em>Okular</em>? Bueno, porque la gran variedad de programas para <a href="http://www.kde.org/">KDE</a> te permiten personalizar los atajos de teclado fácilmente. Para empezar creamos el archivo:</p>
+
+<pre><code>$ nano ~/.CWiid/okular.conf
+</code></pre>
+
+<p>Con este contenido:</p>
+
+<pre><code>#
+# ~/.CWiid/okular.conf
+#
+# Configuración para usarse en Okular
+#
+
+# Wiimote         Tecla           Acción en Okular
+
+Wiimote.A       = KEY_PAGEDOWN  # Pagina siguiente
+Wiimote.B       = KEY_PAGEUP    # Pagina anterior
+
+Wiimote.Up      = KEY_UP        # Flecha arriba
+Wiimote.Down    = KEY_DOWN      # Flecha abajo
+Wiimote.Left    = KEY_LEFT      # Flecha izquierda
+Wiimote.Right   = KEY_RIGHT     # Flecha derecha
+
+Wiimote.Home    = KEY_HOME      # Primer diapositiva
+Wiimote.Minus   = KEY_F4        # Reducir
+Wiimote.Plus    = KEY_F2        # Ampliar
+</code></pre>
+
+<p>Luego configure los atajos de teclado de <strong>Okular</strong>: ejecútelo, ingrese en <strong>Preferencias</strong> > <strong>Configurar los accesos rápidos</strong> y haga los cambios que menciono en los comentarios del archivo anterior.</p>
+
+<p><a href="cwiid-0.6.00/okular-accesos-rapidos.png"><img class="img-responsive" src="cwiid-0.6.00/okular-accesos-rapidos-small.png"></a></p>
+
+<p><strong>IMPORTANTE:</strong> Si la instación de CWiid fue en /usr/local debemos exportar la variable de entorno PYTHONPATH antes de ejecutar wminput en nuestra terminal. De lo contrario aparecerá el error <strong>ImportError: No module named cwiid</strong>.</p>
+
+<pre><code>$ export PYTHONPATH="/usr/local/lib/python2.6/site-packages"
+</code></pre>
+
+<p>Ahora ejecute:</p>
+
+<pre><code>$ wminput -w -c ~/.CWiid/okular.conf
+</code></pre>
+
+<p>Presione 1 y 2 en el <em>wiimote</em>, cámbiate a <strong>Okular</strong> y <em>¡a controlar tu presentación sin estar frente a la laptop!</em>.</p>
+
+<h3>11) Entorno de escritorio KDE 4</h3>
+
+<p>Qué mejor demostración del poder de GNU/Linux que con los efectos 3D de <strong>KDE 4</strong>. De esta forma puedo tener en un escritorio mi presentación y en otro mi explorador de archivos para ir abriendo videos, por ejemplo. Mi archivo de configuración de <strong>wminput</strong> para ese fin es el siguiente:</p>
+
+<pre><code>#
+# ~/.CWiid/kde4.conf
+#
+# Configuración para usar KDE 4
+#
+
+Wiimote.A      = KEY_ENTER     # Enter, abrir un archivo en Dolphin
+Wiimote.B      = KEY_LEFTMETA  # Tecla Win, mantenga presionado
+
+Wiimote.Up     = KEY_UP        # Flecha arriba
+Wiimote.Down   = KEY_DOWN      # Flecha abajo
+Wiimote.Left   = KEY_LEFT      # Flecha izquierda
+Wiimote.Right  = KEY_RIGHT     # Flecha derecha
+
+Wiimote.Home   = KEY_HOME      # Okular, primer diapositiva
+Wiimote.Minus  = KEY_PAGEUP    # Okular, anterior
+Wiimote.Plus   = KEY_PAGEDOWN  # Okular, siguiente
+
+Wiimote.1      = KEY_F         # KMPlayer, video a pantalla completa
+Wiimote.2      = KEY_END       # KMPlayer, terminar y cerrar
+</code></pre>
+
+<p>Aquí necesitamos adecuar los atajos de teclado del entorno gráfico. Para ello ejecutamos <strong>Preferencias del Sistema</strong>, buscamos <strong>Teclado y ratón</strong> y dentro hallarás <strong>Accesos rápidos de teclado globales</strong>.</p>
+
+<p>Luego en <strong>Componente de KDE</strong> elija <strong>KWin</strong> y cambie:</p>
+
+<ul>
+<li>Cambiar al escritorio de la derecha: Meta+Derecha</li>
+<li>Cambiar al escritorio de la izquierda: Meta+Izquierda</li>
+<li>Desktop Cube: Meta+Arriba</li>
+<li>Toggle Present Windows (All desktops): Meta+Abajo</li>
+</ul>
+
+<p><a href="cwiid-0.6.00/kde4-accesos-rapidos-de-teclado-globales.png"><img class="img-responsive" src="cwiid-0.6.00/kde4-accesos-rapidos-de-teclado-globales-small.png"></a></p>
+
+<p>También haga los cambios propios en <strong>Okular</strong> y <strong>KMPlayer</strong> (para ver videos).</p>
+
+<p>Mantenga en un escritorio el <strong>Dolphin</strong> abierto con sus videos preferidos, en otro escritorio su presentación en <strong>Okular</strong>. Ejecute:</p>
+
+<pre><code>$ wminput -w -c ~/.CWiid/kde4.conf
+</code></pre>
+
+<p>Como observará, se convierte la <em>combinación de botones</em> en la <em>combinación de teclas</em> para rotar el cubo del escritorio: mantenga presionado <strong>B</strong> mientra oprime <strong>Derecha</strong> o <strong>Izquierda</strong> en el <em>wiimote</em>.</p>
+
+<h3>12) Stellarium</h3>
+
+<p>El <a href="http://stellarium.org">Stellarium</a> es un magnífico planetario para nuestra computadora; destaca por su realismo y facilidad de uso.</p>
+
+<p>Con el fin de tener una gran experiencia de <strong>Stellarium</strong> por medio de <strong>CWiid</strong> vamos a aprovechar la capacidad de detectar a dónde esta apuntando el <em>wiimote</em>. Para ello necesitaremos tener dos luces infrarrojas (IR) en la base de la pantalla, que pueden ser por medio de un <em>wii sensor bar</em> fabricado por terceros, un par de pequeñas velas, o bien, si tienes las herramientas básicas de soldadura para circuitos y visitas la tienda de electrónica de tu localidad, podrás hacer fácilmente un par de dispositivos con leds IR como los que muestro a continuación:</p>
+
+<p><a href="cwiid-0.6.00/homemade-wii-sensor-bar-1.jpg"><img class="img-responsive" src="cwiid-0.6.00/homemade-wii-sensor-bar-1-small.jpg"></a>
+<a href="cwiid-0.6.00/homemade-wii-sensor-bar-2.jpg"><img class="img-responsive" src="cwiid-0.6.00/homemade-wii-sensor-bar-2-small.jpg"></a>
+<a href="cwiid-0.6.00/homemade-wii-sensor-bar-3.jpg"><img class="img-responsive" src="cwiid-0.6.00/homemade-wii-sensor-bar-3-small.jpg"></a></p>
+
+<p>Su servidor <em>hackeó</em> cuatro controles remotos que no usaba para convertirlos en dos dispositivos de luz IR. Observe el video <a href="http://www.youtube.com/watch?v=Ryy7oPMZ2gU">How to Make a Wireless Wii Sensor Bar</a> para ver otro trabajo similar.</p>
+
+<p>Para probar el "apuntador" escriba la siguiente configuración en ~/.CWiid/apuntador.conf:</p>
+
+<pre><code>#
+# ~/.CWiid/apuntador.conf
+#
+# Usar la capacidad de saber a donde apunta el wiimote
+# para reemplazar al mouse. Necesita los leds IR.
+#
+
+include buttons          # Cargamos la configuracion buttons
+
+Plugin.ir_ptr.X = ABS_X  # Puntero eje X
+Plugin.ir_ptr.Y = ABS_Y  # Puntero eje Y
+</code></pre>
+
+<p>El apuntador del <em>wiimote</em> se habilita con las líneas <strong>Plugin.ir_ptr</strong>.</p>
+
+<p>Regresando al <strong>Stellarium</strong>, necesitamos saber los atajos de teclado propios de ese programa. Los encontrará en la página <a href="http://stellarium.org/wiki/index.php/Keyboard_actions">Keyboard actions</a> del <em>wiki</em> de <strong>Stellarium</strong>. Con esa información, creamos un archivo de configuración para <strong>wminput</strong> como el siguiente:</p>
+
+<pre><code>#
+# ~/.CWiid/stellarium.conf
+#
+# Configuración para usar Stellarium con apuntador IR
+#
+
+Wiimote.A       = BTN_LEFT      # Clic con el boton derecho
+Wiimote.B       = KEY_SPACE     # Espacio, centrar en el objeto seleccionado
+
+Plugin.ir_ptr.X = ABS_X         # Apuntador IR eje X
+Plugin.ir_ptr.Y = ABS_Y         # Apuntador IR eje Y
+
+Wiimote.Up      = KEY_R         # R, Arte de las constelaciones
+Wiimote.Down    = KEY_C         # C, Lineas de las constelaciones
+Wiimote.Left    = KEY_V         # V, Nombres de las constelaciones
+Wiimote.Right   = KEY_E         # E, Rejilla ecuatorial
+
+Wiimote.Minus   = KEY_PAGEDOWN  # AvPag, Alejarse
+Wiimote.Home    = KEY_8         # 8, Poner tiempo a ahora
+Wiimote.Plus    = KEY_PAGEUP    # RePag, Acercarse
+
+Wiimote.1       = KEY_L         # L, Incrementar el salto de tiempo
+Wiimote.2       = KEY_J         # J, Decrementar el salto de tiempo
+</code></pre>
+
+<p>Los pasos a seguir son encender las fuentes de luz IR, cargar <em>wminput</em> con la configuración ~/.CWiid/stellarium.conf y ejecutar <strong>Stellarium</strong>.</p>
+
+<h3>13) Un bash script que nos facilite todo</h3>
+
+<p>Le recomiendo automatizar el arranque con este <strong>Bash Script</strong> que se encargará de cargar los módulos del kernel, definir la variable de entorno <strong>PYTHONPATH</strong> y lanzar <strong>wminput</strong> con la configuración.</p>
+
+<pre><code>#!/bin/bash
+
+# Yo soy
+SOY="[wiimote]"
+
+# Constantes que definen los tipos de errores
+EXITO=0
+E_NOARGS=65
+E_DUPLICADO=98
+E_FATAL=99
+
+# Mensaje para mostrar por falta de argumentos
+function ayuda() {
+echo
+echo "Objetivos:"
+echo " Conectar wiimote para presentaciones o para usarlo como ratón."
+echo
+echo "Sintaxis:"
+echo " wiimote.sh &lt;CONFIGURACION&gt;"
+echo
+echo "Configuraciones:"
+echo " - apuntador  &gt; Como mouse con los leds IR en la pantalla."
+echo " - kde4       &gt; Efectos de escritorio de KDE4."
+echo " - okular     &gt; Botones para controlar la presentación."
+echo " - stellarium &gt; Bóveda celeste. Necesita los leds IR."
+echo
+}
+
+# Mostrar ayuda si se solicita
+if [ "$1" = "-h" -o "$1" = "--help" ]; then
+ayuda
+exit $EXITO
+fi
+
+#
+# Parámetro
+#
+if [ -z "$1" ]; then
+echo "$SOY FALTA la configuración."
+ayuda
+exit $E_NOARGS
+fi
+case "$1" in
+"apuntador")
+ CONF_ARCH="$HOME/.CWiid/apuntador.conf"
+ ;;
+"kde4")
+ CONF_ARCH="$HOME/.CWiid/kde4.conf"
+ ;;
+"okular")
+ CONF_ARCH="$HOME/.CWiid/okular.conf"
+ ;;
+"stellarium")
+ CONF_ARCH="$HOME/.CWiid/stellarium.conf"
+ ;;
+*)
+ echo "$SOY ERROR: La configuración $1 es incorrecta."
+ ayuda
+ exit $E_NOARGS
+ ;;
+esac
+if [ ! -e "$CONF_ARCH" ]; then
+echo "$SOY ERROR: No se encuentra el archivo de configuración $CONF_ARCH"
+exit $E_FATAL
+fi
+
+#
+# Proceso
+#
+
+# Declaramos la ruta para la carga de librerias de phyton
+# De lo contrario aparece el error ImportError: No module named cwiid
+export PYTHONPATH="/usr/local/lib/python2.6/site-packages"
+
+# Si no esta cargado el modulo uinput, lo cargamos
+test -e /dev/input/uinput || sudo modprobe -v uinput
+
+# Si no se ha iniciado el bluetooth, cargamos el modulo para el Bluetooth
+sudo /etc/init.d/bluetooth status | grep stopped &amp;&amp; sudo modprobe -v btusb
+
+# Una pausa de cuatro segundos
+sleep 4
+
+# Ejecutamos wminput
+wminput -w -c "$CONF_ARCH"
+
+# Mensaje final
+echo "$SOY Script terminado."
+exit $EXITO
+</code></pre>
+
+<p>Guárdelo con el nombre de <strong>wiimote.sh</strong> y ejecútelo con la configuración como parámetro, por ejemplo:</p>
+
+<pre><code>$ ./wiimote.sh stellarium
+</code></pre>
+
+<h3>14) Referencias</h3>
+
+<ul>
+<li><a href="http://abstrakraft.org/cwiid/">CWiid</a></li>
+<li><a href="https://help.ubuntu.com/community/CWiiD">Ubuntu Documentation, CWiid</a></li>
+<li><a href="http://ubuntu-virginia.ubuntuforums.org/showthread.php?t=535659">Ubuntu Forums, HOWTO: Using a Wii remote as a mouse with CWiiD</a></li>
+<li><a href="http://www.youtube.com/watch?v=Ryy7oPMZ2gU">How to Make a Wireless Wii Sensor Bar</a></li>
+<li><a href="http://wiki.wiimoteproject.com/">Wiimote Wiki</a></li>
+</ul>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

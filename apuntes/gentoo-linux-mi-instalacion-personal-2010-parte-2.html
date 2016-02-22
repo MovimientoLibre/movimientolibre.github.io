@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, Instalacion">
+  <title>Gentoo Linux en una netbook (2010, parte 2) - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Gentoo Linux en una netbook (2010, parte 2)</h1>
+          <div class="encabezado-descripcion" itemprop="description">Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2010-11-26T10:30">26/11/2010 10:30
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p><a href="gentoo-linux-mi-instalacion-personal-2010/wallpaper-gentoo-morpheus.jpg"><img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-2010/wallpaper-gentoo-morpheus-small.jpg"></a></p>
+
+<p>En este fondo de pantalla aparece <em>Morpheus</em>, personaje de las películas <a href="http://www.imdb.com/title/tt0133093/">The Matrix</a> y muestra un <em>diálogo alterado</em> de cuando <em>Morpheus</em> le explica a <em>Neo</em> qué es la <em>Matrix</em>. Claro que el resultado es una divertida exageración. He aquí lo que dice en español:</p>
+
+<blockquote>
+  <p>Morpheus: Las formas actuales de instalar un S.O. en computadoras son un sistema Neo. Ese es nuestro enemigo. Pero cuando instalas, mira a tu alrededor. ¿Qué es lo que ves? Distros Linux que se basan en software binario y a la gente que intenta usuarlos. Las mentes débiles de las personas que tratamos de salvar. Pero hasta que lo logremos, esas personas seguirán siendo parte del sistema y las vuelve nuestro enemigo. Tú debes de entender, que la mayoría de la gente no está lista para cambiar la forma en que usa sus computadoras. Y muchos de ellos están tan dentro y son tan dependientes del sistema que pelearán por protegerlo.</p>
+</blockquote>
+
+<p>Este fondo de pantalla fue elaborado por <em>likewhoa</em>. Puedes descargar éste y otros más en <a href="http://gentooligans.com/GentooTenWallpapers2009.tar.bz2">http://gentooligans.com/GentooTenWallpapers2009.tar.bz2</a>.</p>
+
+<p>Le invito a continuar leyendo esta <strong>segunda parte</strong> de la <strong>Guía de Instalación de Gentoo Linux para una netbook</strong>. No deje de leer la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-1.html">primera parte</a>.</p>
+
+<h3>Use el profile desktop</h3>
+
+<p>Cambie el <em>profile</em> a <em>desktop</em>:</p>
+
+<pre><code># eselect profile list
+# eselect profile set default/linux/x86/10.0/desktop
+# eselect profile show
+# env-update
+# source /etc/profile
+# export PS1="(prescott) $PS1"
+</code></pre>
+
+<p>Modifique la variable <strong>USE</strong> en /etc/make.conf con los parámetros que definen las dependencias y uso del equipo. Estos son los que he elegido:</p>
+
+<pre><code># Redes
+USE="${USE} bluetooth cups ppd samba wifi"
+
+# Desarrollo. He desactivado java, más adelante lo activare
+USE="${USE} apache2 -java mysql php postgres ruby vhosts"
+
+# PHP
+USE="${USE} ctype imap json pdo refection spl xml xmlrpc xsl"
+
+# Graficos
+USE="${USE} fontconfig gd graphviz gs imagemagick"
+
+# Entorno XFCE
+USE="${USE} -gnome -qt4"
+USE="${USE} thunar xcomposite xscreensaver"
+XFCE_PLUGINS="brightness menu trash"
+
+# Sonido
+USE="${USE} amr amrnb amrwb cddb cdparanoia faac faad flac -gstreamer"
+USE="${USE} lame mtp speex theora"
+
+# Video
+USE="${USE} a52 css dv dvb fbcon ffmpeg live matroska mplayer rtsp"
+USE="${USE} shout v4l v4l2 vcd win32codecs x264 xvid xvmc"
+
+# Otros
+# gnutls es para cups y lo pide firefox
+# kpathsea es para LaTeX
+# nsplugin es para que vlc y java instalen plugins para firefox
+USE="${USE} gnutls joystick kqemu kpathsea nsplugin"
+</code></pre>
+
+<p>También aproveche el editar el contenido de /etc/make.conf para agregar los parámetros de <em>X.org</em></p>
+
+<pre><code>#
+# X.org
+#
+INPUT_DEVICES="keyboard mouse synaptics joystick evdev"
+VIDEO_CARDS="fbdev intel"
+</code></pre>
+
+<h3>Instale el software básico</h3>
+
+<p>Los siguientes programas son indispensables:</p>
+
+<pre><code># emerge gentoolkit reiserfsprogs dhcpcd dosfstools screen logrotate iptables pwgen
+</code></pre>
+
+<p>Instale <a href="http://www.alsa-project.org/">ALSA</a></p>
+
+<pre><code># emerge pciutils alsa-utils
+</code></pre>
+
+<p>Y configúrelo:</p>
+
+<pre><code># nano -w /etc/modprobe.d/alsa.conf
+</code></pre>
+
+<p>Este es el contenido de /etc/modprobe.d/alsa.conf para mi <em>netbook</em>:</p>
+
+<pre><code># ALSA portion
+alias char-major-116 snd
+
+# OSS/Free portion
+alias char-major-14 soundcore
+
+# Intel High Definition Audio
+alias snd-card-0 snd-hda-intel
+alias sound-slot-0 snd-card-0
+
+# OSS/Free portion - card #1
+alias sound-service-0-0 snd-mixer-oss
+alias sound-service-0-1 snd-seq-oss
+alias sound-service-0-3 snd-pcm-oss
+alias sound-service-0-8 snd-seq-oss
+alias sound-service-0-12 snd-pcm-oss
+
+# More aliases
+alias /dev/mixer snd-mixer-oss
+alias /dev/dsp snd-pcm-oss
+alias /dev/midi snd-seq-oss
+
+# Set this to the correct number of cards.
+options snd cards_limit=1
+
+# Autoload model
+options snd-hda-intel index=0 model=auto
+</code></pre>
+
+<p>Instale <a href="http://www.x.org/">X.org</a></p>
+
+<pre><code># emerge xorg-x11
+# emerge freefonts terminus-font ttf-bitstream-vera corefonts artwiz-latin1 dejavu
+</code></pre>
+
+<p>Instale el gestor de ventanas <a href="http://www.fluxbox.org/">Fluxbox</a>, el monitor de sistema <a href="http://conky.sourceforge.net/">Conky</a> y la terminal <em>XTerm</em>.</p>
+
+<pre><code># emerge fluxbox conky xterm
+</code></pre>
+
+<p>Instale servicios para <em>log, cron, acpi</em> y <em>ntp</em>.</p>
+
+<pre><code># emerge syslog-ng vixie-cron acpid ntp
+</code></pre>
+
+<p>Estos servicios y otros más deben iniciarce al encender el equipo.</p>
+
+<pre><code># rc-update add alsasound boot
+# rc-update add consolekit default
+# rc-update add dbus default
+# rc-update add hald default
+# rc-update add syslog-ng default
+# rc-update add vixie-cron default
+# rc-update add acpid default
+</code></pre>
+
+<p>Instale bases de datos, el servidor web <a href="http://httpd.apache.org/">Apache</a> y <a href="http://php.net/">PHP</a>.</p>
+
+<pre><code># emerge postgresql-server
+# emerge mysql
+# emerge apache php
+</code></pre>
+
+<p>Instale <a href="http://www.samba.org/">SAMBA</a> y <a href="http://www.gtk.org/">GTK+</a>:</p>
+
+<pre><code># emerge samba cups gtk+
+</code></pre>
+
+<p>Ya instalado el GTK+ podemos instalar más programas útiles que dependen de éste.</p>
+
+<pre><code># emerge sudo fusesmb geeqie xscreensaver
+</code></pre>
+
+<p>Para hacer consultas en el portage, el <a href="http://eix.berlios.de/">eix</a> es más rápido que <em>emerge -s <texto></em>.</p>
+
+<pre><code># emerge eix
+# emerge eix-update
+</code></pre>
+
+<p>Si tiene un procesador <strong>Intel</strong> le conviene instalar <strong>powertop</strong>, un programa que identifica los procesos que más energía consumen. De forma similar, son útiles <strong>cpufrequtils</strong> y <strong>acpitool</strong>.</p>
+
+<pre><code># emerge powertop cpufrequtils acpitool
+</code></pre>
+
+<p>Instale <a href="http://www.ruby-lang.org/">Ruby</a>:</p>
+
+<pre><code># emerge ruby eruby rubygems redcloth
+</code></pre>
+
+<h3>Revisión de dependencias y actualizaciones</h3>
+
+<p>En /etc/portage/package.use puede confugurar las opciones de la variable <em>USE</em> de forma directa para cada paquete.</p>
+
+<pre><code># nano /etc/portage/package.use
+</code></pre>
+
+<p>Yo tengo este contenido en /etc/portage/package.use:</p>
+
+<pre><code># Sin GTK+
+sys-devel/gcc -gtk
+
+# Sin gd
+sys-libs/glibc -gd
+
+# Udev
+sys-fs/udev extras
+
+# LaTeX
+app-text/texlive extra pstricks
+
+# Tight VNC
+net-misc/tightvnc server
+
+# OpenOffice.org templates
+app-office/openoffice templates
+
+# Compiz-Fusion
+x11-wm/compiz-fusion emerald
+</code></pre>
+
+<p>Revisamos que no falten dependencias y que se actualizen los paquetes que tengan nuevas <em>USE</em>:</p>
+
+<pre><code># emerge -puND world
+# emerge -uND world
+# python-updater
+# perl-cleaner --all
+</code></pre>
+
+<h3>Establecer cuentas y contraseñas</h3>
+
+<p>Establezca la contraseña de root</p>
+
+<pre><code># passwd
+</code></pre>
+
+<p>De de alta a un usuario. Sustituya USUARIO por su nombre de usuario.</p>
+
+<pre><code># useradd -g users -G tty,wheel,audio,cdrom,video,portage,cron,usb,lp,plugdev -m &lt;USUARIO&gt;
+# passwd USUARIO
+</code></pre>
+
+<h3>Fin de la segunda parte</h3>
+
+<p>En la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-3.html">tercera y última entrega</a> instalaremos el entorno gráfico y detallaremos el proceso de <em>empacamiento</em> e instalación.</p>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

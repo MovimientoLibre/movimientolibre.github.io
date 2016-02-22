@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detallado manual sobre cómo instalar Gentoo Linux en la computadora VIA pc2500 con la modalidad de que tome el sistema operativo desde otro equipo.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, VIA, PC2500, MiniITX">
+  <title>Instalación de Gentoo Linux para el Via pc2500 con carga por red (LAN boot) - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Instalación de Gentoo Linux para el Via pc2500 con carga por red (LAN boot)</h1>
+          <div class="encabezado-descripcion" itemprop="description">Detallado manual sobre cómo instalar Gentoo Linux en la computadora VIA pc2500 con la modalidad de que tome el sistema operativo desde otro equipo.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2007-10-24T23:00">24/10/2007 23:00
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p>Después de un arduo trabajo de investigación, he terminado de elaborar un detallado manual sobre cómo instalar <a href="http://www.gentoo.org">Gentoo Linux</a> en la computadora <a href="http://www.via.com.tw/en/initiatives/empowered/pc2500_platform/">VIA pc2500</a> con la modalidad de que tome el sistema operativo desde otro equipo. Esto nos permite que sea una computadora sin disco duro.</p>
+
+<p><img src="via-pc2500-gentoo-lan-boot/via-pc2500-logo-platform.png" alt="Via pc2500 Platform" /></p>
+
+<h3>¿Para qué serviría esto? he aquí algunas buenas ideas:</h3>
+
+<ul>
+<li>Armar un salón de clases con 10 o 20 equipos. Podrá crear un S.O. a la medida de sus necesidades; o también crear distintos S.O. para enseñar distintos paquetes, por ejemplo, un S.O. con Gnome y otro con KDE.</li>
+<li>Crear un conjunto de equipos que realizen una misma tarea o que trabajen en conjunto como una supercomputadora.</li>
+<li>Como un centro de entretenimiento; si tiene una red local en su hogar, podrá reproducir los archivos multimedia que se encuentren en otra computadora.</li>
+</ul>
+
+<h3>En este manual se estudian varios conceptos interesantes sobre GNU/Linux, algunos de los cuales son:</h3>
+
+<ul>
+<li>La carga de un GNU/Linux desde otro equipo por red local.</li>
+<li>La instalación de un nuevo Gentoo Linux, alojado en un Servidor, para otro equipo distinto.</li>
+<li>Compartición de directorios por NFS.</li>
+<li>Uso de discos virtuales en RAM, o sea, <em>ramdisks</em>.</li>
+</ul>
+
+<p>El manual fue elaborado en <a href="http://es.wikipedia.org/wiki/LaTeX">LaTeX</a> el cual me permite entregarlo en tres formas:</p>
+
+<h3>Descargar</h3>
+
+<ul>
+<li><a href="via-pc2500-gentoo-lan-boot/via-pc2500-gentoo-lan-boot.pdf">Manual en PDF</a></li>
+<li><a href="via-pc2500-gentoo-lan-boot/index.html">Manual en HTML</a></li>
+<li><a href="via-pc2500-gentoo-lan-boot/via-pc2500-lan-boot.tar.gz">Fuentes LaTeX</a></li>
+</ul>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

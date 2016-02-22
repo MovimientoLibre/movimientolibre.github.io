@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Freemed, Php, Mysql, Apache, Instalación, Médicos, Citas">
+  <title>Instalación de FreeMED en Debian Etch - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Instalación de FreeMED en Debian Etch</h1>
+          <div class="encabezado-descripcion" itemprop="description">La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2008-01-16T19:10">16/01/2008 19:10
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p><strong>ACTUALIZACION</strong> Freemed ya es compatible con PHP5 y MySQL5, <a href="http://www.freemedsoftware.org/node/187">Más información aquí</a>.</p>
+
+<p>No cabe duda que el mundo del software libre es vasto y que podemos encontrar respuesta a problemas particulares. Todos nos hemos preguntado alguna vez: ¿tendrá alguien más mi problema? ¿ya habrá una solución en software libre?.</p>
+
+<p>Les explicaré a continuación la instalación del <a href="http://freemed.org/">FreeMED</a>, una aplicación web basada en <strong>PHP</strong>, <strong>MySQL</strong> y <strong>Apache</strong> que sirve (en principio) para administrar las citas de los pacientes con sus médicos. He aquí unas imágenes del mismo:</p>
+
+<p><a href="freemed-instalacion/screenshot-1-small.png"><img class="img-responsive" src="freemed-instalacion/screenshot-1.png"></a>
+<a href="freemed-instalacion/screenshot-2-small.png"><img class="img-responsive" src="freemed-instalacion/screenshot-2.png"></a>
+<a href="freemed-instalacion/screenshot-3-small.png"><img class="img-responsive" src="freemed-instalacion/screenshot-3.png"></a>
+<a href="freemed-instalacion/screenshot-4-small.png"><img class="img-responsive" src="freemed-instalacion/screenshot-4.png"></a>
+<a href="freemed-instalacion/screenshot-5-small.png"><img class="img-responsive" src="freemed-instalacion/screenshot-5.png"></a></p>
+
+<p>El proyecto se ve maduro, tiene un código genial y es usado en varios países. Pero tiene en este momento dos desventajas: el sistema está programado en <strong>PHP 4</strong> (incompatible con el más nuevo PHP 5) y necesita invariablemente el <strong>MySQL 4</strong> (falla con MySQL 5). Tiene traducción al español, aunque se le notan varios errores en ello.</p>
+
+<p>Mi gusto personal es que los servidores tengan instalada la distribución <a href="http://www.gentoo.org/">Gentoo</a>. Pero los líderes de Gentoo han removido al PHP 4 de sus repositorios, por la sencilla razón de que <em>PHP 4 está <em>sentenciado a muerte</em></em>: en un futuro muy próximo se le dejará de dar mantenimiento. Lamentablemente tenemos al día de hoy un enorme número de buenos sistemas en PHP 4 que necesitan ser migrados al PHP 5 si es que quieren <em>mantenerse vivos</em> en los años venideros. Uno de tantos es el FreeMED. Ni modo, la mejor opción para este sistema es <a href="http://www.debian.org/">Debian</a> no es Gentoo.</p>
+
+<p>El otro problema es que <strong>necesita MySQL 4</strong>, por que los comandos SQL que usa fallarán al tratar de insertar fechas en MySQL 5. No aparece MySQL 4 en Debian Lenny, así que tendremos que usar <strong>Debian Etch</strong>.</p>
+
+<p>Vamos a partir de que tenga instalado Debien Etch en su equipo, a partir de un disco de instalación por red (CD de network install), ya que no es obligado tener interfaz gráfica en el servidor...</p>
+
+<h3>Instalaciones</h3>
+
+<p>Instale Apache 2, MySQL, PHP 4, TeTeX y Subversion:</p>
+
+<pre><code># aptitude update
+# aptitude install apache2 libapache2-mod-php4 php4-cgi mysql-server-4.1 php4-mysql imagemagick tetex-bin tetex-extra subversion
+</code></pre>
+
+<h3>Cree el usuario y la base de datos para el FreeMED en MySQL</h3>
+
+<p>Si necesita establecer la contraseña del usuario root en MySQL:</p>
+
+<pre><code># mysqladmin -u root password ROOTPASSWD
+</code></pre>
+
+<p>Ingrese a MySQL como root:</p>
+
+<pre><code># mysql -u root -p
+Enter password:******
+</code></pre>
+
+<p>Otorgue (y en consecencia se creará el usuario) a freemed los privilegios totales en esa base de datos:</p>
+
+<pre><code>&gt; GRANT ALL ON freemed.* TO freemed@localhost IDENTIFIED BY 'FREEMEDPASSWD';
+</code></pre>
+
+<p>Salga de MySQL con:</p>
+
+<pre><code>&gt; EXIT
+</code></pre>
+
+<h3>Baje el FreeMED</h3>
+
+<p>Debe instalarse FreeMED en /usr/share/freemed. Tenga paciencia con el comando <em>svn</em>, ya que puede tardar varios minutos en mostrar actividad.</p>
+
+<pre><code># mkdir /usr/share/freemed
+# cd /usr/share
+# svn co http://svn.freemedsoftware.org/freemed/branches/0.8.x freemed
+</code></pre>
+
+<p>Cambie los permisos de todos los archivos del FreeMED al usuario del Apache:</p>
+
+<pre><code># chown -Rf www-data:www-data freemed
+</code></pre>
+
+<h3>Configure el Apache</h3>
+
+<p>Edite la directiva DirectoryIndex de Apache para que tome por defecto primero a index.php y luego a los demás:</p>
+
+<pre><code># nano -w /etc/apache2/mods-available/dir.conf
+</code></pre>
+
+<p>Contenido:</p>
+
+<pre><code>&lt;IfModule mod_dir.c&gt;
+    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>Necesitamos declararle al Apache dónde se encuentra el sistema FreeMED, así que modificaremos su configuración:</p>
+
+<pre><code># nano -w /etc/apache2/sites-available/default
+</code></pre>
+
+<p>A continuación muestro parte del contenido en <em>default</em> para que usted haga las modificaciones necesarias, cuidando que no se afecten otros sitios o aplicaciones web que estén también en su servidor:</p>
+
+<pre><code>NameVirtualHost *
+&lt;VirtualHost *&gt;
+    # Puede hacer que cualquier petición a / sea redirigida a /freemed/
+    &lt;Directory /var/www/&gt;
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+        # La siguiente instrucción hace lo comentado previamente:
+        RedirectMatch ^/$ /freemed/
+    &lt;/Directory&gt;
+    # Aplicación web FreeMED
+    Alias /freemed/ /usr/share/freemed/
+    &lt;Directory /usr/share/freemed/&gt;
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Reinicie el Apache para que se apliquen los cambios que hemos hecho</p>
+
+<pre><code># /etc/init.d/apache2 restart
+</code></pre>
+
+<h3>Configure FreeMed</h3>
+
+<pre><code># nano -w /usr/share/freemed/lib/settings.php
+</code></pre>
+
+<p>Modifique los siguientes comandos:</p>
+
+<pre><code>define ('DB_HOST', "localhost");          // database (SQL) host location
+define ('DB_NAME', "freemed");            // database name
+define ('DB_USER', "freemed");            // SQL server username
+define ('DB_PASSWORD', "FREEMEDPASSWD");  // SQL server password
+define ('HOST', 'freemed');               // host name for this system
+define ('BASE_URL', '/freemed');          // offset (i.e. http://here/package)
+</code></pre>
+
+<p>Si el servidor no tiene instalada la interfaz gráfica, y por lo tanto, no tiene instalado un navegador de internet, necesitará autorizar que el script de instalación sea ejecutado desde otra estación de trabajo modificando la siguiente línea, use la IP del equipo donde entrará por primera vez a FreeMED:</p>
+
+<pre><code>define ('INIT_ADDR',"192.168.1.66");  // this is the only IP address that can run the init wizard...
+</code></pre>
+
+<h3>Hostname</h3>
+
+<p>Como uso un modem 2Wire de Infinitum que es un ruteador y un ligero DNS, necesito que se pueda accesar a la aplicación web escribiendo http://freemed desde cualquier estación de trabajo. Modifique el archivo de configuración del dhclient3:</p>
+
+<pre><code># nano -w /etc/dhcp3/dhclient.conf
+</code></pre>
+
+<p>Y modifique esta línea:</p>
+
+<pre><code>send host-name "freemed"
+</code></pre>
+
+<p>Y reinicie el servidor. Entre a la página <em>home</em> del módem 2Wire para confirmar que el <em>hostname</em> del servidor sea freemed.</p>
+
+<h3>Script de instalación</h3>
+
+<p>Visite la página del sistema por el navegador, http://freemed/. Si todo va bien, el sistema se dará cuenta que es ejecutado por primera vez.</p>
+
+<p><a href="freemed-instalacion/1-primer-ingreso.png"><img class="img-responsive" src="freemed-instalacion/1-primer-ingreso-small.png"></a></p>
+
+<p>Escriba el nombre de la base de datos (que llamamos igual <em>freemed</em>) y la contraseña que haya declarado para el usuario <em>freemed</em>. También debe escribir en dos ocasiones la contraseña del administrador del sistema. Procure tomar nota y evite confundirse. Tenga en mente que el sistema operativo, los servicios y los sistemas pueden tener sus propios usuarios y contraseñas.</p>
+
+<p><a href="freemed-instalacion/2-escribir-bd-y-contrasenas.png"><img class="img-responsive" src="freemed-instalacion/2-escribir-bd-y-contrasenas-small.png"></a>
+<a href="freemed-instalacion/3-script-instalacion-terminado.png"><img class="img-responsive" src="freemed-instalacion/3-script-instalacion-terminado-small.png"></a></p>
+
+<p>Así se crearán y poblarán las tablas de la base de datos. La instalación estará terminada.</p>
+
+<p>En la pantalla de ingreso, use como nombre de usuario <em>admin</em> y escriba la contraseña del administrador:</p>
+
+<p><a href="freemed-instalacion/4-pantalla-ingreso.png"><img class="img-responsive" src="freemed-instalacion/4-pantalla-ingreso-small.png"></a></p>
+
+<p>Estaré aprendiendiendo el uso de este sistema. Esperen comentarios futuros.</p>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

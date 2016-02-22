@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Apache">
+  <title>Crear certificados autofirmados para Apache 2 - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Crear certificados autofirmados para Apache 2</h1>
+          <div class="encabezado-descripcion" itemprop="description">En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2014-02-22T17:30">22/02/2014 17:30
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p>Involucrarse en el <strong>cifrado de la información</strong> que viaja a través de internet es como adentrarse a un mundo <em>bizarro</em> que es más complicado que el nuestro. Pero cada día se vuelve más importante e indispensable para cada servicio <em>web</em> que fabriquemos.</p>
+
+<p>Podemos listar muchas razones para justificar que <strong>todos</strong> los sistemas y sitios web deberían <strong>cifrar sus datos al viajar del servidor al cliente y viceversa</strong>. Pero sólo basta una: el fin de dificultar las acciones de <em>espionaje masivo</em> al que todos estamos expuestos.</p>
+
+<p>En este <strong>apunte</strong> escribo los pasos para <strong>crear certificados autofirmados</strong> para que el servidor web <strong>Apache</strong> opere cifrando las comunicaciones con <strong>SSL</strong>. Dicho de otra forma, es usar el <strong>HTTPS</strong> en lugar del <strong>HTTP</strong>.</p>
+
+<h4>Advertencia</h4>
+
+<p>Cabe aclarar que las grandes entidades, sean empresas o gobiernos, quienes tienen grandes cantidades de usuarios vía internet <strong>deberían adquirir certificados firmados por entidades más altas</strong>. Éstos certificados ya están instalados en los navegadores de internet más populares. Para verlos en <strong>Mozilla Firefox</strong> vaya a <em>Preferencias</em>, en <em>Avanzado</em>, en <em>Ver Certificados</em> y a <em>Autoridades</em>.</p>
+
+<p>Adquirir un certificado de un proveedor de prestigio es costoso. Una alternativa es optar por generar un certificado gratuito de <a href="http://www.cacert.org/">CAcert</a>.</p>
+
+<p>En cambio, los certificados autofirmados convienen cuando no podemos desembolsar el costo de un certificado comercial, los usuarios son pocos y confían en nosotros. La desventaja es que la primera vez que ingresen al sitio, su navegador de internet pondrá una <strong>advertencia de seguridad</strong>; a la cual debemos de indicar que el sitio <strong>sí es de confianza</strong> y guardarla para que no nos pregunte en el futuro.</p>
+
+<h4>Procedimiento para crear certificados autofirmados</h4>
+
+<p>Primero, como un usuario común vamos a abrir una terminal en <strong>GNU/Linux</strong> y crear un directorio donde vamos a trabajar con los certificados.</p>
+
+<pre><code>$ mkdir apache-self-signed-cert
+$ cd apache-self-signed-cert
+</code></pre>
+
+<p>Ejecute el siguiente comando <strong>openssl</strong> reemplazando el texto <em>SERVIDORSISTEMA</em> por algo que identifique el servidor y/o nombre del sistema o sitio:</p>
+
+<pre><code>$ openssl req -x509 -nodes -days 1460 -newkey rsa:2048 \
+  -keyout SERVIDORSISTEMA.key \
+  -out SERVIDORSISTEMA.crt
+</code></pre>
+
+<p>Este programa le preguntará datos importantes que ayudarán a identificar el certificado. En particular en <em>common name</em> use el nombre de domino completo del servidor.</p>
+
+<pre><code>Country Name (2 letter code) [AU]: **
+State or Province Name (full name) [Some-State]: ******
+Locality Name (eg, city) []: ******
+Organization Name (eg, company) [Internet Widgits Pty Ltd]: ******
+Organizational Unit Name (eg, section) []: ******
+Common Name (e.g. server FQDN or YOUR name) []: sistema.servidor.com
+Email Address []: webmaster@servidor.com
+</code></pre>
+
+<p>Copie los archivos creados al directorio donde <strong>Apache</strong> espere encontrarlos. Lea la documentación de su distribución de <strong>GNU/Linux</strong> porque puede ser distinta a la que muestro a continuación que es para <a href="http://gentoo.org/">Gentoo Linux</a>:</p>
+
+<pre><code>$ sudo cp * /etc/ssl/apache2/
+</code></pre>
+
+<p>Cambie los permisos de estos archivos como lo indican estos comandos:</p>
+
+<pre><code>$ sudo chmod 444 /etc/ssl/apache2/SERVIDORSISTEMA.crt
+$ sudo chmod 400 /etc/ssl/apache2/SERVIDORSISTEMA.key
+</code></pre>
+
+<p>Configure el sitio o sistema web en <strong>Apache</strong> para que haga uso del cifrado <strong>SSL</strong> creando un archivo <strong>conf</strong>. En <a href="http://gentoo.org/">Gentoo Linux</a> se usa el directorio <code>/etc/apache2/vhosts.d</code>. Consulte la documentación de su <em>distro</em> para hacerlo de la forma correcta.</p>
+
+<pre><code>$ sudo nano /etc/apache2/vhosts.d/0443_https.conf
+</code></pre>
+
+<p>A continuación sigue una muestra del contenido de <code>0443_https.conf</code> que deberá de ajustar a sus necesidades:</p>
+
+<pre><code># Escuchar el puerto 443
+Listen 443
+
+# Desde cualquier IP por el puerto 80
+NameVirtualHost *:443
+
+# Raiz
+&lt;VirtualHost *:443&gt;
+
+    # Nombre de este servidor web
+    ServerName sistema.servidor.com
+
+    # Habilitar SSL
+    SSLEngine on
+    SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+    SSLCertificateFile /etc/ssl/apache2/SERVIDORSISTEMA.crt
+    SSLCertificateKeyFile /etc/ssl/apache2/SERVIDORSISTEMA.key
+
+    # Raíz del sitio o sistema web
+    DocumentRoot /var/www/htdocs
+    &lt;Directory /var/www/htdocs&gt;
+        Options -Indexes -FollowSymLinks
+        AllowOverride all
+        Order allow,deny
+        Allow from all
+    &lt;/Directory&gt;
+
+    # Bitácoras
+    ErrorLog /var/log/apache2/ssl_error_log
+    &lt;IfModule log_config_module&gt;
+        TransferLog /var/log/apache2/ssl_access_log
+    &lt;/IfModule&gt;
+
+    # OptRenegotiate
+    &lt;FilesMatch "\.(cgi|shtml|phtml|php)$"&gt;
+        SSLOptions +StdEnvVars
+    &lt;/FilesMatch&gt;
+    &lt;Directory "/var/www/localhost/cgi-bin"&gt;
+        SSLOptions +StdEnvVars
+    &lt;/Directory&gt;
+
+    # ssl-accurate-shutdown
+    &lt;IfModule setenvif_module&gt;
+        BrowserMatch ".*MSIE.*" \
+        nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+    &lt;/IfModule&gt;
+
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>La instalación de <strong>Apache</strong> en <a href="http://gentoo.org/">Gentoo Linux</a> deja por defecto el <strong>SSL</strong> deshabilitado. Así que hay que cambiar el archivo de configuración de arranque:</p>
+
+<pre><code>$ sudo nano /etc/conf.d/apache2
+</code></pre>
+
+<p>Ubique la línea que define el valor <code>APACHE2_OPTS</code> y agregue <code>-D SSL</code>. Por ejemplo, para declarar el uso de <strong>PHP 5</strong> y de <strong>SSL</strong> la línea debe ser:</p>
+
+<pre><code>APACHE2_OPTS="-D SSL -D PHP5"
+</code></pre>
+
+<p>Guarde los cambios realizados en el archivo. Luego, arranque o reinicie el <em>daemon</em> de <strong>Apache</strong> para aplicarlos.</p>
+
+<pre><code>$ sudo /etc/init.d/apache2 restart
+</code></pre>
+
+<p>Verifique que el puerto 443 esté abierto y ejecute su navegador de internet consultando la URL <code>https://localhost</code> para comprobar que funcione. No deje de revisar su <strong>muro de fuego</strong> para tener abierto el puerto 443 si necesita acceder desde otros equipos por red.</p>
+
+<h4>Referencias</h4>
+
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/LAMP">Arch Linux LAMP</a></li>
+<li><a href="http://httpd.apache.org/docs/2.2/ssl/">Apache Documentation 2.2 SSL/TLS Encryption</a></li>
+<li><a href="https://www.cacert.org/">CAcert</a></li>
+</ul>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

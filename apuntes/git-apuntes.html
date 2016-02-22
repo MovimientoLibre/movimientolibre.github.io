@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT es un software de Control de Revisiones. Esto significa que es capaz de recordar los estados previos en que se hayan guardado los muchos archivos de un sistema.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="GIT, Apuntes">
+  <title>Apuntes de Git - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Apuntes de Git</h1>
+          <div class="encabezado-descripcion" itemprop="description">GIT es un software de Control de Revisiones. Esto significa que es capaz de recordar los estados previos en que se hayan guardado los muchos archivos de un sistema.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2014-01-21T19:20">21/01/2014 19:20
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <ul>
+<li>GIT es un software de Control de Revisiones. Esto significa que es capaz de recordar los estados previos en que se hayan guardado los muchos archivos de un sistema.</li>
+<li>GIT también se puede comunicar con computadoras y servidores remotos, para lograr así la descarga, sincronización y actualización en un solo comando.</li>
+<li>GIT es Software Libre con licencia GPL versión 2. Usado por los desarrolladores del kernel Linux y diseñado por Linus Torvalds.</li>
+</ul>
+
+<h4>Para averiguar la versión instalada</h4>
+
+<p>Para averiguar la versión instalada.</p>
+
+<pre><code>$ git version
+git version 1.8.3.2
+</code></pre>
+
+<p>Ejecute GIT sin parámetros para mostrar una ayuda simple.</p>
+
+<pre><code>$ git
+</code></pre>
+
+<h4>Configuraciones globales</h4>
+
+<p>Debe configurar sus datos personales. Con estos datos se firmarán sus cambios y aportaciones al código.</p>
+
+<pre><code>$ git config --global user.name "Tu Nombre Completo"
+$ git config --global user.email tunombre@servidor.com
+</code></pre>
+
+<p>Algo muy útil son colores en los textos del comando Git.
+Habilite el uso de color en la terminal con:</p>
+
+<pre><code>$ git config --global color.ui auto
+</code></pre>
+
+<p>También es recomendable crear un par de llaves OpenSSH para asegurar la transmisión de datos entre el servidor y su equipo.</p>
+
+<pre><code>$ ssh-keygen
+$ scp .ssh/id_rsa.pub usuario@servidor.com:/home/usuario/millavepublica.pub
+</code></pre>
+
+<h4>Descarga de un repositorio en GiHub</h4>
+
+<p>GitHub es el repositorio más grande y popular de software que usa GIT. Obtener un clon de un software desde ahí es sencillo. Por ejemplo, para descargar <a href="http://getbootstrap.com/">Twitter Bootstrap</a>:</p>
+
+<pre><code>$ mkdir -p ~/Descargas/GIT
+$ cd ~/Descargas/GIT
+$ git clone git@github.com:twbs/bootstrap.git
+$ cd bootstrap
+</code></pre>
+
+<p>Haga una cuenta gratuita o de pago en GitHub para subir su llave pública OpenSSH.</p>
+
+<h4>Iniciar un repositorio</h4>
+
+<p>Cabe resaltar la flexibilidad de Git en que puede iniciar un nuevo repositorio en su propio equipo o en el servidor local; y en cualquier directorio de su disco duro interno o unidad de almacenamiento extena. Para iniciar un repositorio cámbiese al directorio base del mismo y ejecute <em>git init</em>.</p>
+
+<pre><code>$ cd ~/Documentos/Prueba
+$ git init
+</code></pre>
+
+<p>Se creará un directorio oculto con nombre <strong>.git</strong>. Como dato importante, de aquí en delante, todos los comandos Git de este repositorio debe ejecutarlos en este directorio. También puede ejecutar este comendo indicando el nombre del directorio a crear:</p>
+
+<pre><code>$ git init Proyecto
+</code></pre>
+
+<p>Se creará un directorio de nombre <em>Proyecto</em>. Verifique cambiándose a ese directorio y solicitando el <em>estatus</em> del repositorio:</p>
+
+<pre><code>$ cd Proyecto
+$ git status
+</code></pre>
+
+<h4>Directorios y archivos a ignorar</h4>
+
+<p>No todos los archivos que ponga en su copia local tienen que estar necesariamente también en el repositorio. Es conveniente que archivos temporales, por ejemplo los creador por <strong>LaTeX</strong> (aux, log, toc), sean excluidos. Edite el archivo <em>exclude</em>:</p>
+
+<pre><code>$ nano -w .git/info/exclude
+</code></pre>
+
+<p>Y en cada línea agregue los nombres de archivos y directorios que NO serán incluidos en el repositorio; puede usar comodines como el asterisco. Por ejemplo:</p>
+
+<pre><code>.*
+*~
+*.aux
+*.log
+*.toc
+*.geany
+</code></pre>
+
+<h4>Agregar archivos al repositorio local</h4>
+
+<p>Para agregar archivos y directorios, nuevos y modificados al repositorio, debe de estar en el directorio base y ejecutar <strong>git add</strong>:</p>
+
+<pre><code>$ cd ~/Documentos/Prueba
+$ git add .
+</code></pre>
+
+<p>Para mostrar un listado con los cambios en el repositorio que están en espera de aplicarse ejecute <strong>git status</strong>:</p>
+
+<pre><code>$ git status
+</code></pre>
+
+<p>Éstos están pendientes de ser integrados o <em>comiteados</em>.</p>
+
+<h4>Remover archivos o directorios antes de integrar</h4>
+
+<p>Si al ver el status nota que un archivo o directorio NO debiera incluirse, ejecute el comando <strong>git rm</strong>.</p>
+
+<pre><code>$ git rm directorio/archivoquenodebeincluirse.txt
+</code></pre>
+
+<p>Y revise de nuevo.</p>
+
+<pre><code>$ git status
+</code></pre>
+
+<p>De otra forma, para agregar archivos y tomar en cuenta de una vez los eliminados use:</p>
+
+<pre><code>$ git add . --all
+</code></pre>
+
+<h4>Integrar los cambios</h4>
+
+<p>Después de agregar, modificar o eliminar archivos proceda a integrar. Para integrar hay que hacer un <strong>git commit</strong>. Este comando puede incluir un comentario:</p>
+
+<pre><code>$ git commit -m "He terminado la rama de Informática."
+</code></pre>
+
+<p>Después de éste, ejecute otro status para observar que ya no hay nada más nuevo.</p>
+
+<pre><code>$ git status
+</code></pre>
+
+<p>Cada integración agrega un registro en una bitácora de cambios. La bitacora puede verse con <strong>git log</strong>.</p>
+
+<pre><code>$ git log
+</code></pre>
+
+<h4>Descargue las novedades del servidor</h4>
+
+<p>Para actualizar su copia local con las novedades en el servidor, ya sea por que otra persona haya subido aportaciones o porque usted haya hecho cambios en otro equipo, <em>jale</em> una actualización del servidor con <strong>git pull</strong>. En caso de no haber cambios, mostrará un mensaje de que está al día.</p>
+
+<pre><code>$ git pull
+</code></pre>
+
+<p>Lea los comentarios de sus compañeros con <strong>git log</strong>:</p>
+
+<pre><code>$ git log
+</code></pre>
+
+<h4>Despues de aportar debe respaldar localmente</h4>
+
+<p>Debe respaldar cada buen avance que lleve, ya sea al final del día o antes si lo amerita. Agregue sus archivos nuevos y modificados. Luego revise.</p>
+
+<pre><code>$ git add .
+$ git status
+</code></pre>
+
+<p>Si Usted lo aprueba, integre...</p>
+
+<pre><code>$ git commit -m "Avance en el módulo Direcciones."
+</code></pre>
+
+<h4>Derivaciones</h4>
+
+<p>Una derivación o <em>branch</em> es una rama en el desarrollo de un sistema que permite establecer una distinta en el desarrollo. Ésto le permite trabajar con una nueva cualidad sin dañar al sistema que ya funcione bien. De inicio todo repositorio tiene el <em>branch master</em>. Para listar las derivaciones ejecute <strong>git branch</strong> solamente:</p>
+
+<pre><code>$ git branch
+* master
+</code></pre>
+
+<p>Para agregar una nueva derivación use la orden <em>branch</em> seguida del nombre de la nueva derivación, por ejemplo para crear el <em>branch desarrollo</em>:</p>
+
+<pre><code>$ git branch desarrollo
+</code></pre>
+
+<p>Luego cámbiese a la derivación en uso con la orden <em>checkout</em></p>
+
+<pre><code>$ git checkout desarrollo
+</code></pre>
+
+<p>Verifique listando las derivaciones. El marcado con asterisco es el <em>branch</em> en uso.</p>
+
+<pre><code>$ git branch
+  master
+* desarrollo
+</code></pre>
+
+<h4>Trabaje en su derivación</h4>
+
+<p>Trabaje en su <em>branch</em>. Los cambios que haga se quedan en éste. Para integrar use los comandos <strong>git add</strong> y <strong>git commit</strong> ya mencionados.</p>
+
+<pre><code>$ git status
+$ git add .
+$ git status
+$ git commit -m "He hecho un par de mejoras."
+</code></pre>
+
+<p>Puede conmutar a otro <em>branch</em>, siempre y cuando no tenga archivos pendientes por agregar y <em>comitear</em>. Por ejemplo, para cambiar a <em>master</em>:</p>
+
+<pre><code>$ git checkout master
+</code></pre>
+
+<p>Si observa el contenido del directorio en un administrador de archivos notará como aparecen archivos agregados y desaparecen los que han sido eliminados o no existentes en el otro <em>branch</em>. Para cambiar de nuevo a <em>desarrollo</em>:</p>
+
+<pre><code>$ git checkout desarrollo
+</code></pre>
+
+<h4>Fusionar derivaciones</h4>
+
+<p>Conforme va haciendo <em>commits</em> en un <em>brach</em> éste se dice que va adelantado al <em>master</em>. Para mostrar un listado de los <em>branchs</em> y el último comentario de cada <em>commit</em> ejecute:</p>
+
+<pre><code>$ git branch -v
+</code></pre>
+
+<p>Cuando el <em>branch desarrollo</em> quede listo y necesite que <em>master</em> reciba todas las novedades de éste, debe usar la orden <strong>git merge</strong>.</p>
+
+<pre><code>$ git checkout master
+$ git merge desarrollo
+</code></pre>
+
+<p>Ahora <em>master</em> se ha <em>corrido</em> a donde apunta <em>desarrollo</em> y son iguales. Verifique con:</p>
+
+<pre><code>$ git branch -v
+</code></pre>
+
+<h4>Eliminar derivaciones</h4>
+
+<p>En caso de que quiera descartar un <em>branch</em> o derivación.</p>
+
+<pre><code>$ git branch -d desarrollo
+</code></pre>
+
+<p>Este comando funciona siempre y cuando no tenga archivos pendientes de integrar.</p>
+
+<h4>Repositorios remotos</h4>
+
+<p>Las más recientes versiones de Git solicitan que defina la forma local de subir los archivos. Así que en su equipo y usuario ejecute sólo una vez:</p>
+
+<pre><code>$ git --config push.default simple
+</code></pre>
+
+<p>Git recuerda el origen de cada repositorio cuyo origen sea un servidor remoto. Ejecute este comando para averiguar cuál es:</p>
+
+<pre><code>$ git remote -v
+</code></pre>
+
+<p>He notado que Git va impedir que suba cambios al <em>branch master</em> de su servidor, a excepción de <strong>GitHub</strong>. Por lo que debe estar en una derivación distinta a <em>master</em> antes de subir.</p>
+
+<h4>Subir una nueva derivación al servidor</h4>
+
+<p>Teniendo permiso de lectura y escritura en el servidor, puede subir un nuevo branch al servidor con la orden push.</p>
+
+<pre><code>$ git push origin nombredelbranch
+</code></pre>
+
+<p>Si esa derivación no existe en el servidor, será creada.</p>
+
+<h4>Bajar una derivación desde el servidor</h4>
+
+<p>Al clonar sólo se bajará el <em>branch master</em>. Si desea bajar una derivación del repositorio remoto, por ejemplo <em>desarrollo</em>, ejecute:</p>
+
+<pre><code>$ git fetch origin desarrollo
+</code></pre>
+
+<p>Luego, cámbiese a ese <em>branch</em> que ha bajado y descargue.</p>
+
+<pre><code>$ git checkout desarrollo
+$ git pull origin desarollo
+</code></pre>
+
+<p>Además, el comando <strong>git fetch</strong> bajará la información de todos las derivaciones remotas.</p>
+
+<pre><code>$ git fetch
+</code></pre>
+
+<p>Tendrá que ejecutar el <em>checkout</em> para que se listen con un <strong>git branch</strong>.</p>
+
+<pre><code>$ git branch -v
+</code></pre>
+
+<h4>Subir actualizaciones de la derivación local al servidor</h4>
+
+<p>Si ha hecho nuevos programas o cambios en los mismos, suba su actualización al servidor con el siguiente comando. Claro que localmente debe estar en ese branch.</p>
+
+<pre><code>$ git push
+</code></pre>
+
+<p>Puede ser específico a un <em>brach</em> por ejemplo para <em>desarrollo</em>:</p>
+
+<pre><code>$ git push origin desarrollo
+</code></pre>
+
+<h4>Actualizar el repositorio local</h4>
+
+<p>Para bajar las actualizaciones de una derivación (sólo el branch en uso) desde el servidor, use la orden pull.</p>
+
+<pre><code>$ git checkout desarrollo
+$ git pull origin desarrollo
+</code></pre>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

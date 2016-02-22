@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Quienes usamos GNU/Linux nos vemos en la necesidad de hacer la configuración de los botones multimedia forma manual.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, Multimedia, Botones">
+  <title>Cómo configurar los botones multimedia en KDE - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Cómo configurar los botones multimedia en KDE</h1>
+          <div class="encabezado-descripcion" itemprop="description">Quienes usamos GNU/Linux nos vemos en la necesidad de hacer la configuración de los botones multimedia forma manual.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2007-12-20T00:25">20/12/2007 00:25
+        </div>
+        </div>
+        <meta itemprop="image" alt="Cómo configurar los botones multimedia en KDE" src="kde-amarok-botones-multimedia/imagen.jpg">
+              <div itemprop="articleBody">
+        <p>Este manual está actualizado. Para la computadora portátil <strong>Dell Inspiron 9300</strong> con <strong>Debian Lenny</strong>, <a href="http://www.kde.org">KDE</a> como entorno de escritorio y <a href="http://amarok.kde.org">Amarok</a> como reproductor de audio.</p>
+
+<p>Gran parte de las computadoras de escritorio y portátiles modernos tienen botones <em>multimedia</em>, si este equipo viene con Windows instalado de fábrica, estos botones ya estarán configurados. Quienes usamos GNU/Linux nos vemos en la necesidad de hacer esta configuración de forma manual.</p>
+
+<p><a href="kde-amarok-botones-multimedia/botones.jpg"><img class="img-responsive" src="kde-amarok-botones-multimedia/botones-small.jpg"></a></p>
+
+<h3>Configuración de las X's</h3>
+
+<p>El primer paso es revisar que tengamos bien configuradas las X's. Muestro a continuación el segmento del archivo de configuración /etc/X11/xorg.conf para un teclado en español y latinoamericano. Para modificar el archivo xorg.conf se necesita ser root.</p>
+
+<pre><code>Section "InputDevice"
+    Identifier      "Generic Keyboard"
+    Driver          "kbd"
+    Option          "CoreKeyboard"
+    Option          "XkbRules"      "xorg"
+    Option          "XkbModel"      "pc105"
+    Option          "XkbLayout"     "latam"
+EndSection
+</code></pre>
+
+<p>Las X's correctamente configuradas <em>deberán entregar un código</em> cuando sea presionado un botón multimedia.</p>
+
+<h3>Descubriendo los <em>scancodes</em></h3>
+
+<p>Vamos a ejecutar el programa <em>xev</em>, que es una utilería de las X's. Inicie su sesión como un usuario normal en KDE, abra una terminal y ejecute el comando:</p>
+
+<pre><code>$ xev
+</code></pre>
+
+<p>Este programa muestra una pequeña ventana blanca y en la terminal se pueden ver los textos de salida. Mientras corra, estará atento a cualquier tecla o movimiento del ratón, mandando información del evento a la terminal.</p>
+
+<p>Coloque el puntero sobre la ventana blanca del <em>xev</em>, vaya presionando uno por uno los botones multimedia y tomando nota de los <em>keycodes</em>.</p>
+
+<p><a href="kde-amarok-botones-multimedia/xev.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/xev-small.png"></a></p>
+
+<p>Como ejemplo, cuando presiono el botón de <em>Play/Pausa</em> me aparece dos bloques de datos, de cuando presiono el botón y cuando lo libero:</p>
+
+<pre><code>KeyPress event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 4421581, (88,247), root:(351,455),
+    state 0x0, keycode 162 (keysym 0x0, NoSymbol), same_screen YES,
+    XLookupString gives 0 bytes:
+    XmbLookupString gives 0 bytes:
+    XFilterEvent returns: False
+
+KeyRelease event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 4421760, (88,247), root:(351,455),
+    state 0x0, keycode 162 (keysym 0x0, NoSymbol), same_screen YES,
+    XLookupString gives 0 bytes:
+    XFilterEvent returns: False
+</code></pre>
+
+<p>Observe el tercer renglón de cada bloque, el botón de <em>Play/Pausa</em> tiene el <em>keycode 162</em>, pero no hay un <em>caracter</em> asociado al mismo por que muestra <em>NoSymbol</em>.</p>
+
+<p>Cuando el botón nos da su <em>keycode</em> pero no tiene un <em>caracter</em> asociado, debemos configurar el <em>keycode</em> al <em>caracter</em> que creamos conveniente. Esto es justo lo que haremos en la siguiente sección.</p>
+
+<h3>Estableciendo los caracteres para los <em>keycode</em> no definidos.</h3>
+
+<p>Vamos a crear un archivo de configuración en su directorio <em>home</em> con el nombre <em>.xmodmaprc</em> (nombre recomendado por el manual del <em>xmodmap</em>) con las claves y su equivalencia para las X's. He aquí la muestra:</p>
+
+<pre><code>keycode 160 = XF86AudioMute
+keycode 174 = XF86AudioLowerVolume
+keycode 176 = XF86AudioRaiseVolume
+keycode 162 = XF86AudioPlay
+keycode 144 = XF86AudioPrev
+keycode 153 = XF86AudioNext
+keycode 164 = XF86AudioStop
+</code></pre>
+
+<p>Procedemos a probar si esta configuración es correcta. Para cargar esta configuración y revisarla con <em>xev</em> ejecute en una terminal:</p>
+
+<pre><code>$ xmodmap ~/.xmodmaprc
+$ xev
+</code></pre>
+
+<p><a href="kde-amarok-botones-multimedia/xev-2.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/xev-2-small.png"></a></p>
+
+<p>Al presionar de nuevo el botón de <em>Play/Pausa</em> vemos que el <em>caracter</em> está correctamente asignado:</p>
+
+<pre><code>KeyPress event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 5096736, (131,124), root:(666,262),
+    state 0x0, keycode 162 (keysym 0x1008ff14, XF86AudioPlay), same_screen YES,
+    XLookupString gives 0 bytes:
+    XmbLookupString gives 0 bytes:
+    XFilterEvent returns: False
+
+KeyRelease event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 5096946, (131,124), root:(666,262),
+    state 0x0, keycode 162 (keysym 0x1008ff14, XF86AudioPlay), same_screen YES,
+    XLookupString gives 0 bytes:
+    XFilterEvent returns: False
+</code></pre>
+
+<h3>Haciendo que la configuración se cargue al iniciar la sesión.</h3>
+
+<p>En este punto tenemos las asiganciones <em>keycode</em> a <em>caracter</em>, pero debemos cargarlas manualmente cada vez que encendemos el equipo.</p>
+
+<p>Para no ser invasivos al sistema operativo, vamos a crear un <em>Bash script</em> que ejecute el comando <em>xmodmap</em> y cargue la configuración cada vez que iniciamos la sesión de usuario. KDE tiene un directorio <em>Autostart</em> para cada usuario.</p>
+
+<p>Para crear este <em>Bash script</em> abra una terminal y escriba:</p>
+
+<pre><code>$ cd ~/.kde/Autostart/
+$ nano -w botones-multimedia.sh
+</code></pre>
+
+<p>El script <em>botones-multimedia.sh</em> simplemente va ejecutar el programa <em>xmodmap</em> con un parámetro, el archivo de configuración que hemos creado:</p>
+
+<pre><code>#!/bin/bash
+xmodmap ~/.xmodmaprc
+</code></pre>
+
+<p>Guarde los cambios y salga del editor. Haga este script ejecutable con el comando <em>chmod</em>:</p>
+
+<pre><code>$ chmod a+x botones-multimedia.sh
+$ exit
+</code></pre>
+
+<p>Cierre su sesión del KDE y vuelva a entrar. Abra una nueva terminal y ejecute <em>xev</em> de nuevo para presionar cada botón multimedia y revisar que todos ellos tengan su caracter correcto.</p>
+
+<h3>Descubriendo los comandos DCOP para Amarok</h3>
+
+<p>La Dell Inspiron 9300 tiene los botones Play/Pausa, Anterior (previous), Siguiente (next) y Stop (detener). Los cuales vamos a configurar para que controlen al Amarok.</p>
+
+<p>Necesitamos conocer los comandos DCOP que nos permitan controlar la reproducción de audio en Amarok. Para ello, abra una terminal y ejecute el siguiente comando:</p>
+
+<pre><code>$ dcop amarok player
+</code></pre>
+
+<p>Nos entregará una larga lista de operadores. Tome nota de los que quiera controlar con los botones multimedia. En mi equipo he elegido los siguientes:</p>
+
+<pre><code>void next()
+void playPause()
+void prev()
+void stop()
+</code></pre>
+
+<p>Ejecute Amarok y pruebe cada comando DCOP (observe que van sin paréntesis):</p>
+
+<pre><code>$ dcop amarok player next
+$ dcop amarok player playPause
+$ dcop amarok player prev
+$ dcop amarok player stop
+</code></pre>
+
+<p>Tome nota de los comandos DCOP para Amarok que quiera configurar para sus botones multimedia.</p>
+
+<h3>Descubriendo los comandos DCOP para kMix</h3>
+
+<p>Ahora viene una situación muy particular de mi computadora portátil Dell Inspiron 9300: necesito ajustar dos controles de volumen, por que un volumen es el de las bocinas delanteras y el otro de las traseras y bajos.</p>
+
+<p><a href="kde-amarok-botones-multimedia/kmix-volumenes-bajos.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/kmix-volumenes-bajos-small.png"></a>
+<a href="kde-amarok-botones-multimedia/kmix-volumenes-altos.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/kmix-volumenes-altos-small.png"></a></p>
+
+<p>Primero descubro los operadores DCOP de la aplicación Kmix ejecutando el siguiente comando:</p>
+
+<pre><code>$ dcop kmix Mixer0
+</code></pre>
+
+<p>De entre todos elijo los tres siguientes. Como verán, son los que me incrementarán, decrementarán y silenciarán los volúmenes.</p>
+
+<pre><code>void increaseVolume(int deviceidx)
+void decreaseVolume(int deviceidx)
+void toggleMute(int deviceidx)
+</code></pre>
+
+<p>Cada uno necesita como parámetro un número entero que se refiere al <em>control</em> a alterar. En mi caso, las bocinas principales son 0 y las de los bajos son 1.</p>
+
+<p>Entonces, para incrementar el volumen ejecuto:</p>
+
+<pre><code>$ dcop kmix Mixer0 increaseVolume 0; dcop kmix Mixer0 increaseVolume 1
+</code></pre>
+
+<p>Para decrementar el volumen:</p>
+
+<pre><code>$ dcop kmix Mixer0 decreaseVolume 0; dcop kmix Mixer0 decreaseVolume 1
+</code></pre>
+
+<p>Y para silenciar/des-silenciar:</p>
+
+<pre><code>$ dcop kmix Mixer0 toggleMute 0; dcop kmix Mixer0 toggleMute 1
+</code></pre>
+
+<h3>Creando las acciones para Amarok.</h3>
+
+<p>Ejecute <em>Centro de control</em>, vaya al apartado <em>Regional y Accesibilidad</em>, luego a <em>Introducir acciones</em>.</p>
+
+<p>Con el fin de mantener organizadas las nuevas acciones, le recomiendo que cree un nuevo grupo. Presione el botón <em>Nuevo grupo</em> y como nombre del mismo escriba <em>Botones multimedia</em>.</p>
+
+<p><a href="kde-amarok-botones-multimedia/acciones-nuevo-grupo.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/acciones-nuevo-grupo-small.png"></a></p>
+
+<p>Para agregar una nueva acción presione <em>Nueva acción</em>, luego escriba el nombre que prefiera. Establezca que el tipo de acción es <em>Acceso rápido de teclado -> LLamada a DCOP (simple)</em>.</p>
+
+<p><a href="kde-amarok-botones-multimedia/acciones-nueva-accion.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/acciones-nueva-accion-small.png"></a></p>
+
+<p>Vaya al apartado <em>Acceso rápido de teclado</em>, de clic en el botón para definir la tecla y presione el botón multimedia que corresponda a la acción que esté creando.</p>
+
+<p><a href="kde-amarok-botones-multimedia/acciones-acceso-rapido.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/acciones-acceso-rapido-small.png"></a></p>
+
+<p>Vaya al apartado <em>Preferencias de llamada a DCOP</em> y llene los campos correspondientes para comunicarse con la aplicación amarok.</p>
+
+<p><a href="kde-amarok-botones-multimedia/acciones-preferencias-dcop.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/acciones-preferencias-dcop-small.png"></a></p>
+
+<p>Repita este proceso por cada botón multimedia que requiera su acción.</p>
+
+<h3>Creando las acciones para Kmix.</h3>
+
+<p>En el mismo grupo vamos a agregar las tres acciones para incrementar, decrementar y silenciar los volúmenes.</p>
+
+<p>Presione <em>Nueva acción</em>. Como la órden ejecuta dos comandos, vamos a definir <em>Tipo de la acción</em> como <em>Acceso rápido de teclado -> Orden/URL (simple)</em>:</p>
+
+<p><a href="kde-amarok-botones-multimedia/accion-doble-1.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/accion-doble-1-small.png"></a></p>
+
+<p>Vaya al apartado <em>Acceso rápido de teclado</em>, de clic en el botón para definir la tecla y presione el botón multimedia que corresponda a la acción que esté creando.</p>
+
+<p><a href="kde-amarok-botones-multimedia/accion-doble-2.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/accion-doble-2-small.png"></a></p>
+
+<p>Y en <em>Preferencias de orden/URL</em>, escriba los dos comandos, separados por ";"</p>
+
+<p><a href="kde-amarok-botones-multimedia/accion-doble-3.png"><img class="img-responsive" src="kde-amarok-botones-multimedia/accion-doble-3-small.png"></a></p>
+
+<h3>Pruebe sus botones multimedia.</h3>
+
+<p>Notará que toda esta configuración es a nivel del usuario, por lo que si hay varias cuentas definidas en un equipo, será necesario copiar los archivos <em>.xmodmap</em> <em>botones-multimedia.sh</em> a cada directorio <em>home</em> y también declarar las acciones.</p>
+
+<p>Vale la pena dedicarle algunos minutos a relizar este procedimiento. A la larga se ahorrará muchos movimientos y clicks de ratón usando en su lugar los botones multimedia. ¡Disfrute de la comodidad de controlar su música!</p>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

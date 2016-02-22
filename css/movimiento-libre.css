@@ -1,0 +1,133 @@
+/**
+ * Movimiento Libre
+ *
+ * Copyright (C) 2016 Guillermo Valdés Lozano
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *   morado #23153E #33254E #493B64 #61537C #827798
+ *   azul   #12283B #22374A #374C5F #4E6375 #708190
+ *   vino   #4A1332 #5C2645 #76415F #915D7B #B288A0
+ */
+
+/*
+ * Global
+ */
+body {
+    font-family:'Droid Sans',sans-serif;
+    font-weight:400;
+    background-color:#12283B;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    font-family:'Droid Sans',sans-serif;
+    font-weight:700;
+    line-height:1.2;
+}
+a         { color:#3570A3; text-decoration:none; font-weight:700; }
+a:link,
+a:visited { color:#3570A3; text-decoration:none; }
+a:hover,
+a:active  { color:#0088FF; text-decoration:underline; }
+
+/*
+ * Page wrapper
+ */
+#page-wrapper  {
+    padding:0;
+}
+
+/*
+ * Navegación
+ */
+.navbar-default {
+    background-color:#12283B;
+    border-color:#827798;
+}
+.navbar-header { color:white; }
+.navbar-default,
+.navbar-default a,
+.navbar-default a:link,
+.navbar-default a:visited,
+.navbar-default a:hover,
+.navbar-default a:active               { color:white; }
+.navbar-brand,
+.navbar-brand a,
+.navbar-brand a:link,
+.navbar-brand a:visited,
+.navbar-brand a:hover,
+.navbar-brand a:active                 { color:white; }
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand a,
+.navbar-default .navbar-brand a:link,
+.navbar-default .navbar-brand a:visited,
+.navbar-default .navbar-brand a:hover,
+.navbar-default .navbar-brand a:active { color:white; }
+.navbar-static-top                     { background-color:#12283B; }
+#side-menu a,
+#side-menu a:link,
+#side-menu a:visited { color:#9FB7CC; background-color:#22374A; font-weight:400; }
+#side-menu a:hover,
+#side-menu a:active  { color:white; background-color:#4E6375; }
+.sidebar ul li       { border-bottom-color:#12283B; }
+
+/*
+ * Cuerpo
+ */
+.autor {
+    background-color:#B4C0CD;
+}
+
+/*
+ * Mapa inferior
+ */
+.mapa-inferior            { background-color:#708190; }
+.mapa-inferior a,
+.mapa-inferior a:link,
+.mapa-inferior a:visited  { color:#9FB7CC; }
+.mapa-inferior a:hover,
+.mapa-inferior a:active   { color:#FFFFFF; }
+
+/*
+ * Página inicial
+ */
+#organizacion {
+    background-color:#003060;
+    background-image:url('../imagenes/encabezado.jpg');
+    background-repeat: no-repeat;
+    background-position: right top;
+    min-height:190px;
+}
+#organizacion .encabezado {
+    color:white;
+    border-bottom:none;
+}
+#organizacion .encabezado-descripcion {
+    color:white;
+}
+#destacado {
+    padding:16px;
+    background-color:#B4C0CD;
+}
+#redes            { background-color:#708190; }
+#redes a,
+#redes a:link,
+#redes a:visited  { color:#9FB7CC; }
+#redes a:hover,
+#redes a:active   { color:#FFFFFF; }
+

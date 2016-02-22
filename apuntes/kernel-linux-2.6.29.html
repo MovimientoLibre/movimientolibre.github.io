@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="El Kernel Linux versión 2.6.29 fue liberado por Linus Torvalds en marzo de 2009. Entre muchas novedades, otorga un soporte inicial del nuevo sistema de archivos Btrfs.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, Kernel, Btrfs">
+  <title>Kernel Linux 2.6.29 para Dell Inspiron 9300 con Gentoo Linux - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Kernel Linux 2.6.29 para Dell Inspiron 9300 con Gentoo Linux</h1>
+          <div class="encabezado-descripcion" itemprop="description">El Kernel Linux versión 2.6.29 fue liberado por Linus Torvalds en marzo de 2009. Entre muchas novedades, otorga un soporte inicial del nuevo sistema de archivos Btrfs.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2009-06-17T21:45">17/06/2009 21:45
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p><a href="kernel-2.6.29/tuz-transparente.png"><img class="img-responsive" src="kernel-2.6.29/tuz-transparente_small.png"></a></p>
+
+<p>El <a href="http://www.linux.org/">Kernel Linux</a> versión 2.6.29 fue liberado por <a href="http://es.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> en marzo de 2009. Entre muchas novedades, otorga un <em>soporte inicial</em> del nuevo sistema de archivos <a href="http://es.wikipedia.org/wiki/Btrfs">Btrfs</a>. Cuando el <em>Btrfs</em> sea considerado como <em>estable</em> se espera que sustituya por completo al <a href="http://es.wikipedia.org/wiki/Ext3">Ext</a>.</p>
+
+<p><a href="http://es.wikipedia.org/wiki/Tux">Tux</a>, la mascota de Linux, se ha tomado tres meses sábaticos. La mascota de la versión 2.6.29 es <a href="http://en.wikipedia.org/wiki/Tux#Tuz">Tuz</a>. <em>Tuz</em> es un <a href="http://es.wikipedia.org/wiki/Sarcophilus_harrisii">Demonio de Tazmania</a> con un antifaz en forma de pico.</p>
+
+<p>La razón de esta nueva imagen es promover las labores de conservación de esta especie. Su población ha disminuido significativamente por un <a href="http://es.wikipedia.org/wiki/Sarcophilus_harrisii#Tumor_facial_de_los_demonios">tumor facial</a>, enfermedad mortal para estos animales. Más información en <a href="http://tassiedevil.com.au/">Save The Tasmanian Devil</a>.</p>
+
+<p>Regresando al software libre, hace un par de semanas esta versión del Linux (en concreto <em>gentoo-sources-2.6.29-r5</em>) fue marcada como <em>estable</em> en el <em>portage</em> de <a href="http://www.gentoo.org/">Gentoo Linux</a>. A continuación describo la configuración y compilación de este kernel para la portátil Dell Inspiron 9300...</p>
+
+<h3>Descarga</h3>
+
+<p>Como es habitual para <em>Gentoo Linux</em>, actualizamos primero el <em>portage</em>.</p>
+
+<pre><code># emerge --sync
+</code></pre>
+
+<p>Ejecutamos <em>emerge</em> con el parámetro "p" que nos dirá la versión que pretendería instalar de <em>gentoo-sources</em>.</p>
+
+<pre><code># emerge -pu gentoo-sources
+</code></pre>
+
+<p>Si estamos de acuerdo, instalamos el código fuente del kernel.</p>
+
+<pre><code># emerge -u gentoo-sources
+</code></pre>
+
+<p>Encontraremos el código fuente en el directorio /usr/src</p>
+
+<pre><code># ls -l /usr/src/
+lrwxrwxrwx  1 root root   22 jun 11 20:19 linux -&gt; linux-2.6.29-gentoo-r5
+drwxr-xr-x 22 root root 4096 jun 11 20:19 linux-2.6.29-gentoo-r5
+</code></pre>
+
+<p>Haga el enlace "linux" al "linux-2.6.29-gentoo-r5" manualmente si no lo tiene.</p>
+
+<p>Nos cambiamos al directorio de las nuevas fuentes del kernel.</p>
+
+<pre><code># cd /usr/src/linux
+</code></pre>
+
+<p>Esta es una representación gráfica del tamaño de los archivos contenidos en <em>/usr/src/linux-2.6.29-gentoo-r5</em></p>
+
+<p><a href="kernel-2.6.29/usr-src-linux.png"><img class="img-responsive" src="kernel-2.6.29/usr-src-linux-small.jpg"></a></p>
+
+<h3><em>Hackear</em> el controlador ipw2200</h3>
+
+<p>Por defecto, la tarjeta inalámbrica Intel ipw2200 me permite usar <em>11 canales</em>. Es posible cambiar este parámetro a <em>14 canales</em>.</p>
+
+<p>Con este cambio y con un <em>punto de acceso</em> en el canal 14 podrá establecer una comunicación fuera del rango de los equipos nacionales. En pocas palabras, una capa más de seguridad. Por ejemplo, un <em>LinkSys WRT54G</em> con <em>DD-WRT</em> me permite usar el canal 14:</p>
+
+<p><a href="kernel-2.6.29/linksys-wrt54g-dd-wrt-channel-14.png"><img class="img-responsive" src="kernel-2.6.29/linksys-wrt54g-dd-wrt-channel-14-small.jpg"></a></p>
+
+<p>Hay dos formas de cambiar este parámetro a <em>14</em>: alterando el EEPROM de la tarjeta inalábrica o cambiando el código fuente del controlador de la tarjeta antes de compilar el kernel. Le mostraré la segunda opción.</p>
+
+<p>Por medio del editor <em>vim</em> cargue el código fuente del controlador.</p>
+
+<pre><code># vim drivers/net/wireless/ipw2x00/ipw2200.c
+</code></pre>
+
+<p>Busque el texto <em>EEPROM_COUNTRY_CODE</em>. Para ello teclee "/", la cadena a buscar <em>EEPROM_COUNTRY_CODE</em> y presione <em>ENTER</em>.</p>
+
+<pre><code>/EEPROM_COUNTRY_CODE
+</code></pre>
+
+<p>Lo anterior nos llevará a la línea del código del controlador que toma el valor de la locación geográfica fijada en la fábrica.</p>
+
+<p>Observe el siguiente fragmento donde la línea con "-" es la original y la línea con "+" es la cambiada. Presione "i" para editar el texto y efectúe el cambio a "ZZR".</p>
+
+<pre><code> for (j = 0; j &lt; ARRAY_SIZE(ipw_geos); j++) {
+-    if (!memcmp(&amp;priv-&gt;eeprom[EEPROM_COUNTRY_CODE],
++        if (!memcmp("ZZR",
+             ipw_geos[j].name, 3))
+     break;
+ }
+</code></pre>
+
+<p>Para terminar de editar, presione <em>ESC</em> para salir del modo de edición. Luego, para guardar y salir teclee dos puntos, "w", "q" y <em>ENTER</em>.</p>
+
+<p>La región "ZZR" nos permite los 14 canales en redes 802.11bg. En el archivo <em>README</em> del controlador se encuentra la siguiente tabla sobre las regiones y canales que utilizan:</p>
+
+<pre><code>                                          Supported channels
+Code    Geography                       802.11bg        802.11a
+
+---     Restricted                      11               0
+ZZF     Custom US/Canada                11               8
+ZZD     Rest of World                   13               0
+ZZA     Custom USA &amp; Europe &amp; High      11              13
+ZZB     Custom NA &amp; Europe              11              13
+ZZC     Custom Japan                    11               4
+ZZM     Custom                          11               0
+ZZE     Europe                          13              19
+ZZJ     Custom Japan                    14               4
+ZZR     Rest of World                   14               0
+ZZH     High Band                       13               4
+ZZG     Custom Europe                   13               4
+ZZK     Europe                          13              24
+ZZL     Europe                          11              13
+</code></pre>
+
+<h3>Configurar el kernel</h3>
+
+<p>Para configurar el kernel Linux usando la interfaz <em>ncurses</em> y estando en el directorio del kernel mismo ejecute el siguiente comando.</p>
+
+<pre><code># make menuconfig
+</code></pre>
+
+<p>A partir de aquí estamos trabajando en la configuración, habilitando y deshabilitando opciones.</p>
+
+<p>La portátil <em>Dell Inspiron 9300</em> tiene un procesador <em>Intel Pentium-M</em>, así que deshabilito el soporte multi-procesador y selecciono "Pentium M" como la <em>familia</em> del procesador. Note también que he habilitado como módulo a "Dell laptop support" que me permite monitorear la temperatura y controlar la velocidad de los ventiladores.</p>
+
+<pre><code>Processor type and features
+[ ] Symmetric multi-processing support
+    Processor family (Pentium M)
+&lt;M&gt; Dell laptop support
+</code></pre>
+
+<p>Habilito las características de ahorro de energía y de variación de la frecuencia del procesador.</p>
+
+<pre><code>Power management and ACPI options
+CPU Frequency scaling
+[*] CPU Frequency scaling
+[*]   Enable CPUfreq debugging
+&lt;*&gt;   CPU frequency translation statistics
+[*]     CPU frequency translation statistics details
+       Default CPUFreq governor (ondemand)
+-*-   'performance' governor
+&lt;*&gt;   'powersave' governor
+&lt;*&gt;   'userspace' governor for userspace frequency scaling
+-*-   'ondemand' cpufreq policy governor
+&lt;*&gt;   'conservative' cpufreq governor
+      *** CPUFreq processor drivers ***
+&lt;*&gt;   ACPI Processor P-States driver
+</code></pre>
+
+<p>Esta portátil tiene una ranura <em>PCMCIA</em> con la cual conecto una segunda tarjeta inalámbrica con chip <em>Atheros</em>.</p>
+
+<pre><code>Bus options (PCI etc.)
+&lt;M&gt; PCCard (PCMCIA/CardBus) support
+&lt;M&gt;   16-bit PCMCIA support
+[*]     Load CIS updates from userspace (EXPERIMENTAL)
+[*]     PCMCIA control ioctl (obsolete)
+-*-   32-bit CardBus support
+*** PC-card bridges ***
+&lt;M&gt;   CardBus yenta-compatible bridge support
+</code></pre>
+
+<p>Deshabilito el soporte para <em>IPv6</em> ya que en la práctica no he tenido necesidad de usarlo. Habilito las opciones para <em>IP Tables</em> que me permiten configurar un <em>muro de fuego</em>.</p>
+
+<pre><code>Networking support ---&gt;
+&lt; &gt;   The IPv6 protocol
+[*] Network packet filtering framework (Netfilter) ---&gt;
+[ ]   Advanced netfilter configuration
+Core Netfilter Configuration ---&gt;
+-*- Netfilter LOG over NFNETLINK interface
+&lt;*&gt; Netfilter connection tracking support
+[*]   Connection tracking security mark support
+&lt;*&gt;   FTP protocol support
+&lt;*&gt;   IRC protocol support
+&lt;*&gt;   SIP protocol support
+&lt;*&gt;   Connection tracking netlink interface
+-*- Netfilter Xtables support (required for ip_tables)
+&lt;*&gt;   "CONNSECMARK" target support
+&lt;*&gt;   "MARK" target support
+&lt;*&gt;   "NFLOG" target support
+&lt;*&gt;   "SECMARK" target support
+&lt;*&gt;   "TCPMSS" target support
+&lt;*&gt;   "conntrack" connection tracking match support
+&lt;*&gt;   "mark" match support
+&lt;*&gt;   "state" match support
+IP: Netfilter Configuration ---&gt;
+&lt;*&gt; IPv4 connection tracking support (required for NAT)
+[*]   proc/sysctl compatibility with old connection tracking
+&lt;*&gt; IP tables support (required for filtering/masq/NAT)
+&lt;*&gt;   Packet filtering
+&lt;*&gt;     REJECT target support
+&lt;*&gt;   LOG target support
+&lt;*&gt;   ULOG target support
+&lt;*&gt;   Full NAT
+&lt;*&gt;     MASQUERADE target support
+&lt;*&gt;   Packet mangling
+</code></pre>
+
+<p>Tengo una llave <em>bluetooth</em> que conecto por USB.</p>
+
+<pre><code>Networking support ---&gt;
+--- Bluetooth subsystem support
+&lt;M&gt;   L2CAP protocol support
+&lt;M&gt;   SCO links support
+&lt;M&gt;   RFCOMM protocol support
+[*]     RFCOMM TTY support
+&lt;M&gt;   BNEP protocol support
+[*]     Multicast filter support
+[*]     Protocol filter support
+&lt;M&gt;   HIDP protocol support
+      Bluetooth device drivers  ---&gt;
+      &lt;M&gt; HCI USB driver
+</code></pre>
+
+<p>Tanto el disco duro como el lector de DVD funcionan bajo <em>SATA</em>. Opciones que habilito.</p>
+
+<pre><code>Device Drivers ---&gt;
+&lt;*&gt; Serial ATA (prod) and Parallel ATA (experimental) drivers  ---&gt;
+[*]   ATA ACPI Support
+[*]   SATA Port Multiplier support
+&lt;*&gt;   AHCI SATA support
+[*]   ATA SFF support
+&lt;*&gt;     Intel ESB, ICH, PIIX3, PIIX4 PATA/SATA support
+</code></pre>
+
+<p>Habilito mis dispositivos de red: la alámbrica (Broadcom 440x/47xx), la inalámbrica (Intel PRO/Wireless 2200BG) y la inalámbrica PCMCIA (Atheros 5xxx).</p>
+
+<pre><code>Device Drivers ---&gt;
+[*] Network device support  ---&gt;
+[*]   Ethernet (10 or 100Mbit)  ---&gt;
+&lt;*&gt;   Broadcom 440x/47xx ethernet support
+    Wireless LAN  ---&gt;
+[*] Wireless LAN (IEEE 802.11)
+&lt;M&gt;   Atheros 5xxx wireless cards support
+&lt;M&gt;   Intel PRO/Wireless 2200BG and 2915ABG Network Connection
+[*]     Enable promiscuous mode
+-*-       Enable radiotap format 802.11 raw packet support
+[*]       Enable creation of a RF radiotap promiscuous interface
+[*]     Enable QoS support
+</code></pre>
+
+<p>Dentro de "Input device support" se encuentra "User level driver support" un módulo que me permite usar el [Wiimote](http://es.wikipedia.org/wiki/Wiimote con la computadora).</p>
+
+<pre><code>Device Drivers ---&gt;
+Input device support  ---&gt;
+-*- Generic input layer (needed for keyboard, mouse, ...)
+-*-   Support for memoryless force-feedback devices
+&lt;*&gt;   Polled input device skeleton
+-*-   Mouse interface
+&lt;M&gt;   Joystick interface
+&lt;*&gt;   Event interface
+-*-   Keyboards  ---&gt;
+[*]   Mice  ---&gt;
+[*]   Joysticks/Gamepads  ---&gt;
+[ ]   Tablets  ---&gt;
+[ ]   Touchscreens  ---&gt;
+[*]   Miscellaneous devices  ---&gt;
+      &lt;M&gt;   User level driver support
+</code></pre>
+
+<p>Habilito el soporte <em>I2C</em> para el chip <em>Intel 82801</em> presente en la Dell Inspiron 9300.</p>
+
+<pre><code>Device Drivers ---&gt;
+-*- I2C support  ---&gt;
+&lt;*&gt;   I2C device interface
+[*]   Autoselect pertinent helper modules
+      I2C Hardware Bus support  ---&gt;
+      &lt;*&gt; Intel 82801 (ICH)
+</code></pre>
+
+<p>Mi portátil tiene una tarjeta de video <em>ATI Radeon Mobility X300 (M22)</em> la cual <em>no</em> es de alto desempeño gráfico. Me ha satisfecho el controlador libre, mismo que se configura en el kernel.</p>
+
+<pre><code>Device Drivers ---&gt;
+Graphics support  ---&gt;
+&lt;*&gt; /dev/agpgart (AGP Support)  ---&gt;
+&lt;*&gt;   ATI chipset support
+&lt;*&gt; Direct Rendering Manager (XFree86 4.1.0 and higher DRI support)
+&lt;*&gt;   ATI Radeon
+[*] Backlight &amp; LCD device support  ---&gt;
+&lt;*&gt;   Lowlevel Backlight controls
+&lt;*&gt;     Generic (aka Sharp Corgi) Backlight Driver
+</code></pre>
+
+<p>El dispositivo de sonido de esta portátil es <em>Intel AC97</em>.</p>
+
+<pre><code>Device Drivers ---&gt;
+&lt;*&gt; Sound card support  ---&gt;
+&lt;M&gt;   Advanced Linux Sound Architecture  ---&gt;
+&lt;M&gt;   Sequencer support
+&lt;M&gt;     Sequencer dummy client
+&lt;M&gt;   OSS Mixer API
+&lt;M&gt;   OSS PCM (digital audio) API
+[*]     OSS PCM (digital audio) API - Include plugin system
+[*]   OSS Sequencer API
+[*]   Dynamic device file minor numbers
+[*]   Support old ALSA API
+[*]   Verbose procfs contents
+[*]   Generic sound devices  ---&gt;
+      [*]   AC97 Power-Saving Mode
+      (0)     Default time-out for AC97 power-save mode
+[*]   PCI sound devices  ---&gt;
+      &lt;M&gt;   Intel/SiS/nVidia/AMD/ALi AC97 Controller
+</code></pre>
+
+<p>Es indispensable el soporte <em>USB</em>. Una opción que recomiendo activar es "USB selective suspend/resume and wakeup" que permite al equipo portátil ahorrar energía en lo que a dispositivos USB se refiere.</p>
+
+<pre><code>Device Drivers ---&gt;
+[*] USB support  ---&gt;
+&lt;*&gt;   Support for Host-side USB
+[*]     USB verbose debug messages
+[*]     USB announce new devices
+[*]     USB device filesystem
+[*]     USB selective suspend/resume and wakeup
+&lt;*&gt;     USB Monitor
+&lt;*&gt;     EHCI HCD (USB 2.0) support
+&lt;*&gt;     OHCI HCD support
+&lt;*&gt;     UHCI HCD (most Intel and VIA) support
+&lt;M&gt;   USB Modem (CDC ACM) support
+&lt;*&gt;   USB Printer support
+&lt;*&gt;   USB Mass Storage support
+[*]   The shared table of common (or usual) storage devices
+</code></pre>
+
+<p>Habilito el controlador del lector de tarjetas <em>SD</em>.</p>
+
+<pre><code>Device Drivers ---&gt;
+&lt;M&gt; MMC/SD/SDIO card support  ---&gt;
+&lt;M&gt;   MMC block device driver
+[*]     Use bounce buffer for simple hosts
+&lt;M&gt;   Secure Digital Host Controller Interface support
+&lt;M&gt;     SDHCI support on PCI bus
+&lt;M&gt;       Ricoh MMC Controller Disabler  (EXPERIMENTAL)
+</code></pre>
+
+<p>Luego de haber habilitado los dispositivos de red, regreso a habilitar las opciones de "Wireless" en "Networking support".</p>
+
+<pre><code>[*] Networking support  ---&gt;
+[*]   Wireless  ---&gt;
+{M}   Improved wireless configuration API
+[ ]     cfg80211 regulatory debugging
+[*]     nl80211 new netlink interface support
+[*]   Old wireless static regulatory definitions
+-*-   Wireless extensions
+[*]     Wireless extensions sysfs files
+{M}   Common routines for IEEE802.11 drivers
+[ ]   lib80211 debugging messages
+&lt;M&gt;   Generic IEEE 802.11 Networking Stack (mac80211)
+[*]     Enable mac80211 mesh networking (pre-802.11s) support
+-*-     Enable LED triggers
+[ ]     Export mac80211 internals in DebugFS
+</code></pre>
+
+<p>La sección "File systems" es sumamente importante. Sencillamente, si se intenta cargar un GNU/Linux desde una partición con un sistema de archivos no soportado, nos ocasionaría un <em>kernel panic</em>. Note que aquí aparece el nuevo sistema de archivos <em>Btrfs</em>.</p>
+
+<pre><code>File systems  ---&gt;
+&lt;*&gt; Second extended fs support
+&lt;*&gt; Ext3 journalling file system support
+&lt;*&gt; Reiserfs support
+&lt; &gt; Btrfs filesystem (EXPERIMENTAL) Unstable disk format
+[*] Dnotify support
+[*] Inotify file change notification support
+[*]   Inotify support for userspace
+[*] Quota support
+[*]   Report quota messages through netlink interface
+&lt;*&gt; Quota format v2 support
+&lt;*&gt; Kernel automounter version 4 support (also supports v3)
+    CD-ROM/DVD Filesystems  ---&gt;
+    &lt;*&gt; ISO 9660 CDROM file system support
+    [*]   Microsoft Joliet CDROM extensions
+    [*]   Transparent decompression extension
+    DOS/FAT/NT Filesystems  ---&gt;
+    &lt;*&gt; MSDOS fs support
+    &lt;*&gt; VFAT (Windows-95) fs support
+    Pseudo filesystems  ---&gt;
+    -*- /proc file system support
+    [*]   /proc/kcore support
+    [*]   /proc/vmcore support (EXPERIMENTAL)
+    [*] Virtual memory file system support (former shm fs)
+    [*]   Tmpfs POSIX Access Control Lists
+    [*] HugeTLB file system support
+[*] Network File Systems  ---&gt;
+    &lt;*&gt;   CIFS support (advanced network filesystem, SMBFS successor)
+    Partition Types  ---&gt;
+    [ ] Advanced partition selection
+-*- Native language support  ---&gt;
+    (utf8) Default NLS Option
+    &lt;*&gt;   Codepage 437 (United States, Canada)
+    &lt;*&gt;   ASCII (United States)
+    &lt;*&gt;   NLS ISO 8859-1  (Latin 1; Western European Languages)
+    &lt;*&gt;   NLS UTF-8
+</code></pre>
+
+<p>Es necesario habilitar las siguientes opciones para usar redes <em>WiFi</em> cifradas como <em>WEP</em> y <em>WPA</em>.</p>
+
+<pre><code>-*- Cryptographic API  ---&gt;
+      *** Crypto core or helper ***
+-*-   Cryptographic algorithm manager
+&lt;*&gt;   Authenc support
+      *** Block modes ***
+&lt;*&gt;   CBC support
+{*}   ECB support
+      *** Hash modes ***
+&lt;*&gt;   HMAC support
+-*-   MD5 digest algorithm
+{M}   Michael MIC keyed digest algorithm
+&lt;*&gt;   SHA1 digest algorithm
+      *** Ciphers ***
+-*-   AES cipher algorithms
+&lt;*&gt;   AES cipher algorithms (i586)
+{*}   ARC4 cipher algorithm
+&lt;*&gt;   DES and Triple DES EDE cipher algorithms
+      *** Random Number Generation ***
+[ ]   Hardware crypto devices  ---&gt;
+</code></pre>
+
+<p>Para terminar, vaya a la pantalla inicial de la configuración y elija <em>Exit</em>.</p>
+
+<p>Le preguntará <em>Do you wish to save your new kernel configuration?</em> a lo que debemos responder <em>YES</em> de lo contrario perderemos todos los cambios hechos.</p>
+
+<h3>Compilar</h3>
+
+<p>De vuelta en la terminal, ejecutamos <em>make</em> para compilar.</p>
+
+<pre><code># make
+</code></pre>
+
+<h3>Instalar</h3>
+
+<p>El siguiente paso en instalar los <em>módulos</em>. Si hubiera una instalación de esta misma verisón del kernel hay que eliminar los módulos anteriores antes de instalar los nuevos.</p>
+
+<pre><code># rm -rf /lib/modules/2.6.29-gentoo-r5
+# make modules_install
+</code></pre>
+
+<p>Como tengo una partición para el arranque, la monto y elimino los archivos de alguna instalación anterior de esta misma versión del kernel.</p>
+
+<pre><code># mount /boot
+# rm /boot/config
+# rm /boot/config-2.6.29-gentoo-r5
+# rm /boot/System.map
+# rm /boot/System.map-2.6.29-gentoo-r5
+# rm /boot/vmlinuz
+# rm /boot/vmlinuz-2.6.29-gentoo-r5
+</code></pre>
+
+<p>Ejecuto <em>make install</em> para que me copie <em>vmlinuz</em>, <em>System.map</em> y <em>config</em> a /boot</p>
+
+<pre><code># make install
+</code></pre>
+
+<p>Edito la configuración del gestor de arranque <em>Grub</em> para tener la opción de este nuevo kernel.</p>
+
+<pre><code># nano /boot/grub/grub.conf
+</code></pre>
+
+<p>Mi archivo <em>grub.conf</em> es así...</p>
+
+<pre><code>#
+# /boot/grub/grub.conf
+#
+
+default 0
+timeout 3
+splashimage=(hd0,0)/boot/grub/splash.xpm.gz
+
+title Gentoo Linux - KDE 3.5.9 - 2.6.29-r5 NUEVO
+root (hd0,0)
+kernel /vmlinuz-2.6.29-gentoo-r5 root=/dev/sda7 resume=/dev/sda5
+</code></pre>
+
+<p>Puede necesitar cargar algunos módulos cada vez que arranque el equipo. Eso se configura en el archivo /etc/modules.autoload.d/kernel-2.6</p>
+
+<pre><code># nano /etc/modules.autoload.d/kernel-2.6
+</code></pre>
+
+<p>En /etc/modules.autoload.d/kernel-2.6 tengo:</p>
+
+<pre><code># Dell Inspiron, monitor temperatura y ventiladores
+i8k
+
+# Tarjeta PCMCIA
+yenta_socket
+
+# Lector de tarjetas SD
+mmc_core
+ricoh_mmc
+
+# Red inalámbrica Intel IPW2200
+ipw2200
+
+# WiiMote
+uinput
+</code></pre>
+
+<p>La configuración de la tarjeta de sonido reside en el archivo /etc/modprobe.d/alsa</p>
+
+<pre><code># nano /etc/modprobe.d/alsa
+</code></pre>
+
+<p>Y lo tengo con este contenido apropiado para la <em>Intel AC97</em>...</p>
+
+<pre><code>#
+# /etc/modprobe.d/alsa
+#
+
+# ALSA portion
+alias char-major-116 snd
+# OSS/Free portion
+alias char-major-14 soundcore
+
+#
+# Intel AC97
+#
+# ALSA portion
+alias snd-card-0 snd-intel8x0
+# OSS/Free portion
+alias sound-slot-0 snd-card-0
+
+# OSS/Free portion - card #1
+alias sound-service-0-0 snd-mixer-oss
+alias sound-service-0-1 snd-seq-oss
+alias sound-service-0-3 snd-pcm-oss
+alias sound-service-0-8 snd-seq-oss
+alias sound-service-0-12 snd-pcm-oss
+
+alias /dev/mixer snd-mixer-oss
+alias /dev/dsp snd-pcm-oss
+alias /dev/midi snd-seq-oss
+
+# Set this to the correct number of cards.
+options snd cards_limit=1
+</code></pre>
+
+<p>Después de modificar estos archivos refresque los módulos a cargar con <em>update-modules</em>.</p>
+
+<pre><code># update-modules
+</code></pre>
+
+<p>Reinicie el equipo y pruebe su kernel 2.6.29.</p>
+
+<h3>Revisión del controlador ipw2200 <em>hackeado</em></h3>
+
+<p>Para revisar la carga del controlador de la tarjeta inalámbrica ipw2200 ejecute...</p>
+
+<pre><code>$ dmesg | grep ipw
+</code></pre>
+
+<p>Si aparece "Detected geography ZZR (14 802.11bg channels, 0 802.11a channels)" tendrá su controlador <em>hackeado</em>.</p>
+
+<pre><code>$ dmesg | grep ipw
+[    4.641026] ipw2200: Intel(R) PRO/Wireless 2200/2915 Network Driver, 1.2.2kmprq
+[    4.641029] ipw2200: Copyright(c) 2003-2006 Intel Corporation
+[    4.641090] ipw2200 0000:03:03.0: PCI INT A -&gt; GSI 17 (level, low) -&gt; IRQ 17
+[    4.663652] ipw2200: Detected Intel PRO/Wireless 2200BG Network Connection
+[    4.663693] eth1 (ipw2200): not using net_device_ops yet
+[    4.663697] ipw2200 0000:03:03.0: firmware: requesting ipw2200-bss.fw
+[    5.121085] ipw2200: Detected geography ZZR (14 802.11bg channels, 0 802.11a channels)
+</code></pre>
+
+<p>Otra forma de comprobar esto es ejecutando <em>iwlist <em>dispositivo</em> channel</em>:</p>
+
+<pre><code># iwlist eth1 channel
+eth1      14 channels in total; available frequencies :
+    Channel 01 : 2.412 GHz
+    Channel 02 : 2.417 GHz
+    Channel 03 : 2.422 GHz
+    Channel 04 : 2.427 GHz
+    Channel 05 : 2.432 GHz
+    Channel 06 : 2.437 GHz
+    Channel 07 : 2.442 GHz
+    Channel 08 : 2.447 GHz
+    Channel 09 : 2.452 GHz
+    Channel 10 : 2.457 GHz
+    Channel 11 : 2.462 GHz
+    Channel 12 : 2.467 GHz
+    Channel 13 : 2.472 GHz
+    Channel 14 : 2.484 GHz
+    Current Frequency=2.412 GHz (Channel 1)
+</code></pre>
+
+<p>Le deseo un desempeño exitoso en su nuevo kernel.</p>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

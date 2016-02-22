@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Turpial es un proyecto que busca ser un cliente alternativo para Twitter. Está escrito en Python, tiene como meta ser una aplicación con bajo consumo de recursos y que se integre al escritorio del usuario pero sin renunciar a ninguna funcionalidad.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, Turpial, Python, Twitter">
+  <title>Instalación de Turpial (cliente de Twitter) en Gentoo Linux - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Instalación de Turpial (cliente de Twitter) en Gentoo Linux</h1>
+          <div class="encabezado-descripcion" itemprop="description">Turpial es un proyecto que busca ser un cliente alternativo para Twitter. Está escrito en Python, tiene como meta ser una aplicación con bajo consumo de recursos y que se integre al escritorio del usuario pero sin renunciar a ninguna funcionalidad.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2010-10-18T14:00">18/10/2010 14:00
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p><a href="http://turpial.org.ve/"><img class="img-responsive" src="twitter-turpial/turpial-logo.png"></a></p>
+
+<p><a href="http://turpial.org.ve/">Turpial</a> es un proyecto que busca ser un cliente alternativo para Twitter. Está escrito en <em>Python</em>, tiene como meta ser una aplicación con bajo consumo de recursos y que se integre al escritorio del usuario pero sin renunciar a ninguna funcionalidad. Es software libre de origen venezolano, liberado bajo la licencia GPL 3.</p>
+
+<h3>1) Descargue</h3>
+
+<p>La última versión al escribir este artículo es la 1.3.4 y lo encontrará en:</p>
+
+<pre><code>http://code.google.com/p/turpial/
+</code></pre>
+
+<h3>2) Desempaque</h3>
+
+<p>Como está hecho en Python no se requiere compilación o instalación (es opcional). Desempaque con:</p>
+
+<pre><code>$ tar xvf turpial-1.3.4.tar.gz
+</code></pre>
+
+<h3>3) Instale las dependencias</h3>
+
+<p>Según el archivo <em>README.rst</em> se necesitan los siguientes paquetes:</p>
+
+<pre><code>python &gt;= 2.5
+python-simplejson &gt;= 1.9.2
+python-gtk2 &gt;= 2.12
+python-notify &gt;= 0.1.1
+python-pygame &gt;= 1.7
+python-pybabel &gt;= 0.9.1
+python-gtkspell &gt;= 2.25.3
+python-webkit
+python-setuptools
+</code></pre>
+
+<p>Si usa Ubuntu o Debian lea el mismo archivo <em>README.rst</em> donde se detalla la instalación de los paquetes anteriores.</p>
+
+<p>Para Gentoo Linux podemos asegurar que Python está instalado por defecto. Así que, como root, revisamos cuáles paquetes nos faltan con:</p>
+
+<pre><code># emerge -pv simplejson pygtk notify-python pygame Babel gtkspell-python pywebkitgtk setuptools
+</code></pre>
+
+<p>Tras la revisión, en mi caso particular veo que:</p>
+
+<ul>
+<li>Ya tengo instalado <em>pygtk</em> y <em>setuptools</em>.</li>
+<li>Como uso el entorno de escritorio KDE, desactivo el soporte <em>gstreamer</em> solicitado por <em>webkit-gtk</em> (otra dependencia más) agregando <em>-gstreamer</em> a la variable <em>USE</em> en <em>/etc/make.conf</em>. Si usted prefiere Gnome o usa GStreamer, no lo desactive.</li>
+</ul>
+
+<p>Reviso de nuevo...</p>
+
+<pre><code># emerge -pv simplejson notify-python pygame Babel gtkspell-python pywebkitgtk
+</code></pre>
+
+<p>Ahora sí, a instalar los paquetes faltantes...</p>
+
+<pre><code># emerge simplejson notify-python pygame Babel gtkspell-python pywebkitgtk
+</code></pre>
+
+<h3>4) Ejecute Turpial</h3>
+
+<p>Cámbiese al directorio donde desempacó Turpial, en mi caso es /mnt/archivos/software/turpial/turpial-1.3.4</p>
+
+<pre><code>$ cd /mnt/archivos/software/turpial/turpial-1.3.4
+</code></pre>
+
+<p>Agregue el directorio actual (donde se encuentra turpial-1.3.4) a la variable de entorno <em>PYTHONPATH</em>. La variable de entorno <em>$PWD</em> lo tiene:</p>
+
+<pre><code>$ export PYTHONPATH=$PWD
+</code></pre>
+
+<p>Ejecute con el parámetro <em>-i gtk</em> para usar la interfaz GTK+</p>
+
+<pre><code>$ python turpial/main.py -i gtk
+</code></pre>
+
+<p>La primer ejecución involucra la autentificación con Twitter.</p>
+
+<p><img src="twitter-turpial/turpial-inicio-sesion.png" alt="Turpial inicio sesion" /></p>
+
+<p><img src="twitter-turpial/turpial-ventana.jpg" alt="Turpial ventana" /></p>
+
+<p>Para lanzar Turpial fácilmente, elabore un Bash Script con los pasos anteriores:</p>
+
+<pre><code>#!/bin/sh
+cd /mnt/archivos/software/turpial/turpial-1.3.4
+export PYTHONPATH=$PWD
+python turpial/main.py -i gtk
+</code></pre>
+
+<h3>5) Opcionalmente puede instalarlo de forma permanente</h3>
+
+<p>Para integrarlo en su GNU/Linux:</p>
+
+<pre><code># python setup.py install
+</code></pre>
+
+<p>Un dato curioso de Turpial es que su nombre es el del ave nacional de venezuela. ¿Será por ello que el programa emite cantos de ave cuando llegan nuevos <em>twetts</em>?.</p>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

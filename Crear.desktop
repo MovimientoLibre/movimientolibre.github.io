@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Crear
+Comment=Movimiento Libre sitio web
+Exec=xterm -hold -e 'bin/Crear.php; echo "Ya puede cerrar esta terminal."'
+Icon=flare
+Path=/home/guivaloz/Documentos/MovimientoLibre/GitHub/movimientolibre.github.io/
+Terminal=false
+StartupNotify=false

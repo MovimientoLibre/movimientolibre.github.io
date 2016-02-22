@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, Respaldos, Rsync">
+  <title>Respaldos con rsync - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Respaldos con rsync</h1>
+          <div class="encabezado-descripcion" itemprop="description">Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2011-12-29T20:50">29/12/2011 20:50
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer <em>respaldos periódicos</em>. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>
+
+<p>Existen muchas formas en las cuales podríamos perder nuestros archivos, que van desde el robo de nuestra <em>laptop</em> hasta el borrado accidental. <em>La verdad es que la gran mayoría de nosotros no piensa en respaldar sus documentos hasta que la fatal desgracia nos enseña que debimos haberlo hecho.</em> Y que cuando es por descompostura, pérdida o robo; nos dolerá más la pérdida de los archivos que el valor del equipo mismo.</p>
+
+<p>Como solución simple sugiero instalar un segundo disco duro en un equipo de escritorio, donde los los usuarios depositen el respaldo de sus <em>laptops</em> vía <em>wireless</em> desde sus equipos portátiles. <em>No confío que sea seguro compartir un disco duro externo entre varias personas, ya que se les puede caer o perder.</em></p>
+
+<p>Así pues instalé un segundo disco duro en el equipo de escritorio, el cual dedicaré enteramente a respaldos. Y como <em>tú y yo</em> usamos GNU/Linux, éste aparece como /dev/sdb.</p>
+
+<pre><code># fdisk -l /dev/sdb
+
+Disk /dev/sdb: 250.1 GB, 250059350016 bytes
+81 heads, 63 sectors/track, 95707 cylinders, 488397168 sectores en total
+Units = sectores of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Identificador del disco: 0x7da5580f
+
+Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
+/dev/sdb1            2048   488397167   244197560   83  Linux
+</code></pre>
+
+<p>Su única partición la <em>formateé</em> bajo el confiable sistema de archivos Ext4.</p>
+
+<pre><code># mkfs.ext4 -L respaldos /dev/sdb1
+</code></pre>
+
+<p>Para luego montarlo manualmente en /mnt/respaldos</p>
+
+<pre><code># mount /dev/sdb1 /mnt/respaldos
+</code></pre>
+
+<p>Claro que me conviene que esta partición se monte cada vez que enciendo el equipo, así que agrego la siguiente línea a la configuración de /etc/fstab para ello.</p>
+
+<pre><code>/dev/sdb1   /mnt/respaldos    ext4    defaults    0 1
+</code></pre>
+
+<p>Ya <em>particionado</em> y <em>formateado</em> el disco, procedo a crear directorios para cada usuario que deba respaldar. Con anterioridad ya había creado los usuarios. Sustituya <em>usuario1</em>, <em>usuario2</em> y <em>usuario3</em> con los nombres de los usuarios que vayan a hacer respaldos.</p>
+
+<pre><code># mkdir /mnt/respaldos/usuario1
+# mkdir /mnt/respaldos/usuario2
+# mkdir /mnt/respaldos/usuario3
+# chown usuario1:users /mnt/respaldos/usuario1
+# chown usuario2:users /mnt/respaldos/usuario2
+# chown usuario3:users /mnt/respaldos/usuario3
+</code></pre>
+
+<p>El equipo mantiene en ejecución el <em>daemon</em> <em>SSH</em>. Por medio de éste se pueden transferir los archivos de forma cifrada protegiéndonos de que algún intruso pueda atraparlos fácilmente.</p>
+
+<p>En este punto, la computadora de escritorio está lista para recibir los respaldos. Punto aparte, tengo habilitado un servidor DNS que me resuelve el nombre <em>escritorio.casa.lan</em> por su respectiva dirección IP. Si no lo tiene, puede usar la dirección IP en los comandos que siguen.</p>
+
+<p>Para realizar un <em>respaldo manual</em> del directorio <em>Documentos</em> ejecuto este comando en la <em>laptop</em> bajo la sesión del usuario (si es necesario, sustituya <em>escritorio.casa.lan</em> por la dirección IP del equipo y <em>usuario1</em> por su nombre de usuario):</p>
+
+<pre><code>$ rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/
+</code></pre>
+
+<p>Como iniciativa propia, no deseo respaldar videos o música, prefiero darle prioridad a lo que tengo en <em>Documentos</em>, Usted seguramente me entenderá.</p>
+
+<p>En las siguientes ejecuciones, el comando <em>rsync</em> copiará sólo los archivos nuevos o los que hayan cambiado.</p>
+
+<p>Sólo un detalle más: como el anterior comando es largo, prefiero ejecutarlo fácilmente con un <em>atajo</em>. Para ello edito el archivo <em>.bashrc</em> que tengo en la raíz de mi <em>home</em>:</p>
+
+<pre><code>$ nano -w ~/.bashrc
+</code></pre>
+
+<p>Y agrego esta línea que habilita el <em>atajo</em>:</p>
+
+<pre><code>alias respaldar="rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/"
+</code></pre>
+
+<p>Cierre la terminal, abra una nueva, y ejecute el <em>atajo</em> (que equivale al comando largo).</p>
+
+<pre><code>$ respaldar
+</code></pre>
+
+<p>Así pues, procuro ejecutar <em>respaldar</em> frecuentemente para mantener una copia de mis documentos en el otro equipo. Puede automatizar esta labor si agrega el comando al <em>cron</em> y establece una hora del día a la cual se ejecute sin intervención del usuario. Esto se lo dejo de tarea.</p>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>

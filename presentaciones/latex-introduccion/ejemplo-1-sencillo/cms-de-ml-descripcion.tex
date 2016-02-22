@@ -1,0 +1,58 @@
+%
+% Ejemplo sencillo: Un artículo con portada
+%
+
+\documentclass[letterpaper]{article}  % Articulo en papel tamaño carta, agregue titlepage para separar la portada
+
+\usepackage[spanish]{babel}           % Idioma español
+\usepackage[utf-8]{inputenc}          % Estos archivos de texto son UTF-8
+
+\title{CMS de Movimiento Libre 1.2}   % Título
+\author{Guillermo Valdez}             % Autor
+\date{2007-08-12}                     % Fecha
+
+\begin{document}  % Inicia el documento
+
+\maketitle        % La portada
+
+\section{A cerca de este CMS}
+
+En esta nueva entrega del \textbf{CMS de Movimiento Libre} he enriquecido un poco más a este programa. Le recuerdo que el sitio web movimientolibre.com es mantenido con este programa y que es software libre bajo la licencia GPL.\par
+
+El objetivo de este CMS es elaborar el contenido de un sitio web a partir de archivos simples, dándoles una buena presentación y organización. No depende de ninguna base de datos. Es un buen ejercicio para aprender el lenguaje \textbf{Ruby}.\par
+
+\section{Lo nuevo de esta versión}
+
+\begin{description}
+	\item[La clase Plantilla tiene más cualidades]
+		Recibe información general del sitio para preparar la estructura constante de todas las páginas del sitio.
+		Puede albergar más de un archivo CSS, esto es para disponer de un archivo CSS para la pantalla y otro para la impresión.
+	\item[Mejoras en el menú de la izquierda]
+		Las opciones del menú cambian de color, controlado por el archivo CSS.
+		La anterior opción se dehabilita cuando son gráficos los que hacen el vínculo.
+	\item[Configuración en un solo archivo]
+		El script ejecutable alberga la mayoría de las configuraciones del sitio.
+\end{description}
+
+\section{Requerimientos}
+
+\begin{itemize}
+	\item GNU/Linux.
+	\item Ruby 1.8 o mejor.
+	\item La gema RedCloth.
+\end{itemize}
+
+\section{Forma de usarlo}
+
+\begin{itemize}
+	\item Desempaque el archivo .tar.gz
+	\item Edite la configuración en el script movimientolibre.rb
+	\item Ejecute ./movimientolibre.rb y vea el resultado en su navegador.
+	\item Modifique el contenido, vea los ejemplos de los directorios articulos, contacto, licencias y manuales. Lo más fácil es duplicar un archivo de contenido y editarlo.
+	\item Elabore los menús modificando el contenido del directorio menus.
+	\item Modifique el diseño del sitio web alterando el archivo CSS.
+	\item Ejecute ./movimientolibre.rb después de cambiar los archivos .rb
+\end{itemize}
+
+\end{document}   % Fin del documento
+

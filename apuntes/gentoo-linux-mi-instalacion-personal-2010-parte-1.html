@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.">
+  <meta name="author" content="guivaloz">
+  <meta name="keywords" content="Gentoo Linux, Instalacion">
+  <title>Gentoo Linux en una netbook (2010, parte 1) - Movimiento Libre</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg==" crossorigin="anonymous">
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="../rss.xml" rel="alternate" type="application/rss+xml" title="Movimiento Libre">
+  <link href="../css/morris.css" rel="stylesheet">
+  <link href="../css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link href="../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../css/plataforma-de-conocimiento.css" rel="stylesheet">
+  <link href="../css/movimiento-libre.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+    </div>
+  <div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+      <ul class="nav" id="side-menu">
+        <li class="sidebar-search">
+          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
+            <input type="hidden" value="" name="cx">
+            <input type="hidden" value="FORID:11" name="cof">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </li>
+        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
+        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
+        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
+        <li><a href="../categorias/index.html"><span class="navegacion-icono"><i class="fa fa-tags"></i></span> Categorías</a></li>
+        <li><a href="../autores/index.html"><span class="navegacion-icono"><i class="fa fa-user"></i></span> Autores</a></li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  <div id="page-wrapper">
+    <div class="cuerpo">
+      <article><div itemscope itemtype="http://schema.org/BlogPosting">
+              <div class="encabezado">
+          <h1 itemprop="name">Gentoo Linux en una netbook (2010, parte 1)</h1>
+          <div class="encabezado-descripcion" itemprop="description">Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.</div>
+                <div class="encabezado-autor-fecha">
+          Por <span itemprop="author">guivaloz</span>
+          - <meta itemprop="datePublished" content="2010-11-20T10:40">20/11/2010 10:40
+        </div>
+        </div>
+      
+              <div itemprop="articleBody">
+        <p><img src="gentoo-linux-mi-instalacion-personal-2010/cow-push.jpg" alt="Gentoo Cow" /></p>
+
+<p>Después de varios meses de tener una instalación completa de <a href="http://www.kde.org/">KDE</a> en mi <em>netbook</em> comenzé a pensar de que el poderoso y grande ambiente gráfico le restaba potencial a mi equipo. Era frecuente que el administrador de archivos Dolphin demorara algunos segundos en cargar. También la carga y velocidad de respuesta de la suite de información personal (PIM), en particular de <a href="http://pim.kde.org/">KMail</a>, era lenta.</p>
+
+<p>El concepto de una <em>netbook</em> involucra un procesador versátil y modesto. El <a href="http://es.wikipedia.org/wiki/Intel_Atom">Intel Atom</a> fue diseñado con ese fin, hereda mucha tecnología de la familia Pentium y consume poca energía para prolongar la duración de la carga en un equipo portátil. Pero <strong>no</strong> se trata de un procesador de alto rendimiento. Recordemos que fue <em>Windows XP</em> y no <em>Windows Vista</em> el que apareció preinstalado en las <em>netbooks</em> a la venta, por obvias razones.</p>
+
+<p>Antes de buscar la reinstalación, me pregunté... ¿de verdad necesito vistosos elementos en mi escritorio?, ¿vale la pena que <a href="http://www.kde.org/workspaces/plasmadesktop/">Plasma</a> me consuma desde el 5% al 50% de mi procesador y en consecuencia más carga de mi batería?. Fue entonces que decidí arriesgarme, y tomar un entorno más simple, más rápido, que me consumiera menos recursos.</p>
+
+<p>Siguiendo los pasos de esta guía, lograremos tener un sistema <a href="http://www.gentoo.org/">Gentoo Linux</a> con tres opciones gráficas de trabajo:</p>
+
+<ul>
+<li><a href="http://www.fluxbox.org/">Fluxbox</a> es un gestor de ventanas muy ligero.</li>
+<li><a href="http://www.xfce.org/">XFCE4</a> es un entorno gráfico ligero con una buena cantidad de comodidades.</li>
+<li><a href="http://www.compiz.org/">Compiz</a> es un gestor de ventanas modular con efectos espectaculares.</li>
+</ul>
+
+<p>Aclaro que lo que sigue es solo una guía; los pasos que su servidor ha ejecutado. Usted tiene la libertad de tomar el rumbo que guste. No deje de consultar la <a href="http://www.gentoo.org/doc/en/handbook/">Documentación Oficial de Instalación</a> de Gentoo.</p>
+
+<p>A continuación, documento paso a paso la instalación de Gentoo Linux en una <em>netbook</em> con procesador <strong>Intel Atom N280</strong>. Le informo que los comandos con # son ejecutados con el super-usuario <strong>root</strong>, que de hecho, son la mayoría.</p>
+
+<p><a href="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-640x480.jpg"><img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-320x240.jpg"></a></p>
+
+<h3>Instalación asistida</h3>
+
+<p>No dudo que una <em>netbook</em> pueda compilar todos los paquetes que necesito instalar para mi escritorio con Gentoo Linux; pero tardaría mucho, mucho tiempo. Es por ello que le paso esa labor a un equipo más poderoso; que lo haga en menos tiempo.</p>
+
+<p>Ante esto... si los equipos son distintos... ¿funcionará lo que compile uno en el otro?. Para ello hay que revisar las similitudes y diferencias entre los procesadores de ambos equipos. Revise en <a href="http://en.gentoo-wiki.com/">Gentoo Wiki</a> el documento <a href="http://en.gentoo-wiki.com/wiki/Safe_Cflags">Safe CFlags</a> el cual muestra los parámetros recomendados de compilación para cada procesador.</p>
+
+<p>Afortunadamente, en el momento de escribir esta guía, tanto el <a href="http://en.gentoo-wiki.com/wiki/Safe_Cflags/Intel#Intel_Core_Solo.2FDuo.2C_Pentium_Dual-Core_T20xx.2FT21xx">Intel DualCore</a> como el <a href="http://en.gentoo-wiki.com/wiki/Safe_Cflags/Intel#Atom_230.2C_Atom_330.2C_Atom_N-Series">Atom 230, 330 N-Series</a> tienen los mismos parámetros de compilación:</p>
+
+<pre><code>CHOST="i686-pc-linux-gnu"
+CFLAGS="-march=prescott -O2 -fomit-frame-pointer -pipe"
+CXXFLAGS="${CFLAGS}"
+</code></pre>
+
+<p>También es posible hacer compilación asistida si el procesador del equipo <em>poderoso</em> tiene la misma arquitectura y/o es más <em>nuevo</em> que el de los equipos de destino. Cuestión de probarlo. Por ejemplo, las compilaciones hechas con parámetros para el <a href="http://en.gentoo-wiki.com/wiki/Safe_Cflags/Via#Esther_C5J_.28Via_C7.29">VIA C7</a> en el <em>Intel DualCore</em> me han funcionado:</p>
+
+<pre><code>CHOST="i686-pc-linux-gnu"
+CFLAGS="-march=i686 -mmmx -msse -msse2 -msse3 -O2 -pipe -fomit-frame-pointer"
+CXXFLAGS="${CFLAGS}"
+</code></pre>
+
+<p>Para hacer una instalación asistida elija una ubicación en el disco duro del equipo <em>poderoso</em> con suficiente espacio; lo necesario para contener el sistema completo y los archivos que descargue. Para dar una cifra, sugiero unos 8 GB libres. En mi equipo <em>poderoso</em> uso /mnt/archivos/instalaciones para ese fin. Voy a crear ahí un directorio con el nombre <em>prescott</em>:</p>
+
+<pre><code># cd /mnt/archivos/instalaciones
+# mkdir prescott
+</code></pre>
+
+<h3>Use el stage más reciente</h3>
+
+<p>Mi sitio predilecto para descargar el <em>stage</em> es en el <a href="http://osuosl.org/">Oregon State University - Open Source Lab</a> en éste URL: <a href="http://gentoo.osuosl.org/releases/">http://gentoo.osuosl.org/releases/</a>. Note que parece un nuevo <em>stage</em> frecuentemente. <strong>Le recomiendo que siempre use el stage más nuevo</strong>. Cuando escribí esta guía, bajé el <em>stage</em> <strong>x86</strong> del 9 de noviembre de 2010:</p>
+
+<pre><code># cd /mnt/archivos/software/gentoo
+# wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2
+# wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2.CONTENTS
+# wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2.DIGESTS
+# wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2.DIGESTS.asc
+</code></pre>
+
+<p>Compruebe la integridad de los archivos descargados con...</p>
+
+<pre><code># md5sum -c stage3-i686-20101109.tar.bz2.DIGESTS
+</code></pre>
+
+<p>Desempaque.</p>
+
+<pre><code># cd /mnt/archivos/instalaciones/prescott
+# tar xvf /mnt/archivos/software/gentoo/stage3-i686-20101109.tar.bz2
+</code></pre>
+
+<p>Monte <em>dev</em> y <em>proc</em>.</p>
+
+<pre><code># mount -t proc none /mnt/archivos/instalaciones/prescott/proc
+# mount -o bind /dev /mnt/archivos/instalaciones/prescott/dev
+</code></pre>
+
+<p>Copie la configuración de resolución de nombres. Esto es necesario para cuando el Gentoo esté <em>enjaulado</em> por <em>chroot</em>, así sabrá cual es el <em>DNS</em> de su red.</p>
+
+<pre><code># cp /etc/resolv.conf /mnt/archivos/instalaciones/prescott/etc/
+</code></pre>
+
+<p>Ingrese a al <em>stage</em> con <em>chroot</em>.</p>
+
+<pre><code># chroot /mnt/archivos/instalaciones/prescott /bin/bash
+# env-update
+# source /etc/profile
+# export PS1="(prescott) $PS1"
+</code></pre>
+
+<h3>Configure</h3>
+
+<p>Edite /etc/make.conf</p>
+
+<pre><code># nano -w /etc/make.conf
+</code></pre>
+
+<p>Para el cual sugiero el siguiente contenido...</p>
+
+<pre><code>#
+# /etc/make.conf
+#
+# Para Intel Prescott (Dual Core, Atom) de 32 bits
+#
+
+# WARNING: Changing your CHOST is not something that should be done lightly.
+# Please consult http://www.gentoo.org/doc/en/change-chost.xml before changing.
+CHOST="i686-pc-linux-gnu"
+
+#
+# Netbook con Intel Atom N280 @ 1.66 GHz
+#
+CFLAGS="-march=prescott -O2 -fomit-frame-pointer -pipe"
+CXXFLAGS="${CFLAGS}"
+
+# Puede hacer tres compilaciones en paralelo
+MAKEOPTS="-j3"
+
+# Espaniol como lengua
+LINGUAS="es es_MX"
+
+# Aceptar todas las licencias
+ACCEPT_LICENSE="*"
+
+#
+# Use Flags
+#
+
+# Intel Dual Core, Atom
+USE="acpi laptop mmx mmxext sse sse2 ssse3 threads"
+
+#
+# Servidor Portage
+#
+SERVIDOR_PORTAGE=otroequipo.tured.lan
+PORTDIR=/usr/portage
+DISTDIR=${PORTDIR}/distfiles
+SYNC=rsync://${SERVIDOR_PORTAGE}/gentoo-portage
+FETCHCOMMAND="rsync rsync://${SERVIDOR_PORTAGE}/gentoo-distfiles/\\${FILE} ${DISTDIR}"
+</code></pre>
+
+<p>Observe el final de /etc/make.conf donde configuro que las descargas se hagan desde <em>otroequipo.tured.lan</em>. Sustituya éste por el nombre de un equipo o por la dirección IP del equipo que comparta su <em>portage</em> con el <em>daemon rsyncd</em>. En cambio, si no usa un equipo para compartir el <em>portage</em> entonces omita las cinco últimas líneas para que las descargas se hagan desde internet.</p>
+
+<p>Configure /etc/locale.gen</p>
+
+<pre><code># nano -w /etc/locale.gen
+</code></pre>
+
+<p>Con este contenido...</p>
+
+<pre><code># EEUU
+en_US ISO-8859-1
+en_US.UTF-8 UTF-8
+
+# Espania
+es_ES ISO-8859-1
+es_ES.UTF-8 UTF-8
+es_ES@euro ISO-8859-15
+
+# Mexico
+es_MX ISO-8859-1
+es_MX.UTF-8 UTF-8
+</code></pre>
+
+<p>Luego ejecute...</p>
+
+<pre><code># locale-gen
+</code></pre>
+
+<p>Descargue el <em>portage</em>.</p>
+
+<pre><code># mkdir /usr/portage
+# emerge --sync
+</code></pre>
+
+<p>Vamos a crear un nuevo archivo llamado <em>02locales</em>:</p>
+
+<pre><code># nano -w /etc/env.d/02locales
+</code></pre>
+
+<p>El archivo /etc/env.d/02locales contiene los parámetros de nuestro idioma y región:</p>
+
+<pre><code>#
+# /etc/env.d/02locales
+#
+LANG="es_MX.UTF-8"
+LANGUAGE="es_MX.UTF-8"
+LC_ALL="es_MX.UTF-8"
+</code></pre>
+
+<p>Configure la zona horaria con:</p>
+
+<pre><code># nano -w /etc/conf.d/clock
+</code></pre>
+
+<p>Esta configuración hace que se ajuste la hora al iniciar o terminar el <a href="http://es.wikipedia.org/wiki/Horario_de_verano">Horario de verano</a> conocido en el idioma inglés como <em>Daylight Saving Time</em> (DST).</p>
+
+<pre><code>TIMEZONE="Mexico/General"
+</code></pre>
+
+<p>Configure el mapa de caracteres de la terminal con:</p>
+
+<pre><code># nano -w /etc/conf.d/consolefont
+</code></pre>
+
+<p>Para tener un mayor soporte de caracteres uso:</p>
+
+<pre><code>CONSOLEFONT="lat9v-16"
+</code></pre>
+
+<p>Configure el mapa del teclado con:</p>
+
+<pre><code># nano -w /etc/conf.d/keymaps
+</code></pre>
+
+<p>La gran mayoría de los teclados de computadoras de México funcionan con:</p>
+
+<pre><code>KEYMAP="la-latin1"
+</code></pre>
+
+<p>Pero hay también un gran número de teclados españoles, se distinguen por tener la tecla "Ç", para esos hay que usar:</p>
+
+<pre><code>KEYMAP="es"
+</code></pre>
+
+<p>Configure el nombre del equipo con:</p>
+
+<pre><code># nano -w /etc/conf.d/hostname
+</code></pre>
+
+<p>Recargue (de nuevo) las variables del entorno para asegurarnos que se apliquen los cambios hechos hasta el momento.</p>
+
+<pre><code># env-update
+# source /etc/profile
+# export PS1="(prescott) $PS1"
+</code></pre>
+
+<h3>¿Quiere recompilar todo?</h3>
+
+<p>Es su decisión tener todos los paquetes del <em>stage</em> compilados a sus parámetros en <em>make.conf</em>. Si así lo desea; ejecute <em>emerge -e world</em>. Pero le advierto que toma bastante tiempo. Si no quiere hacerlo, no hay problema, simplemente cada paquete nuevo que instale o actualice será compilado con los parámetros de <em>make.conf</em>.</p>
+
+<pre><code># emerge -pe world
+# emerge -e world
+</code></pre>
+
+<h3>Kernel Linux</h3>
+
+<p>Instale <em>ccache</em>.</p>
+
+<pre><code># emerge ccache
+# ccache -M 2G
+# export PATH="/usr/lib/ccache/bin:${PATH}"
+</code></pre>
+
+<p>Descargue el <em>kernel</em>.</p>
+
+<pre><code># emerge gentoo-sources
+# cd /usr/src/linux
+</code></pre>
+
+<p>Si ya he compilado la misma versión con anterioridad, copie el archivo <em>.config</em> al directorio /usr/src/linux</p>
+
+<pre><code># make menuconfig
+# make
+# make modules_install
+</code></pre>
+
+<p>Como se trata de una compilación asistida, no voy a decirle que ejecute <em>make install</em> para instalar el kernel; eso lo haré cuando haya copiado la instalación al equipo final. Lo verá en la siguiente parte de esta guía.</p>
+
+<h3>Configure la tabla de particiones</h3>
+
+<p>Edite /etc/fstab</p>
+
+<pre><code># nano -w /etc/fstab
+</code></pre>
+
+<p>Este es un ejemplo de /etc/fstab</p>
+
+<pre><code># &lt;fs&gt;      &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;          &lt;dump/pass&gt;
+/dev/sda1   /boot           ext2      noauto,noatime  1 2
+/dev/sda2   /home           ext4      defaults        0 1
+/dev/sda3   /mnt/respaldos  ext4      noauto          0 0
+/dev/sda5   none            swap      sw              0 0
+/dev/sda6   /mnt/anterior   ext4      noauto          0 0
+/dev/sda7   /mnt/ubuntu     ext4      noauto          0 0
+/dev/sda8   /               ext4      noatime         0 1
+/dev/sda9   /usr/portage    reiserfs  defaults        0 1
+/dev/sda10  /tmp            reiserfs  noatime         0 1
+/dev/sda11  /mnt/archivos   ext4      defaults        0 1
+</code></pre>
+
+<h3>Fin de la primera parte</h3>
+
+<p>Termina aquí la primera parte con una instalación de Gentoo Linux configurada y con un <em>kernel</em> preparado. En la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">segunda parte</a>, cambiaremos el <em>profile</em> a <em>desktop</em> e iremos instalando las aplicaciones favoritas de su servidor.</p>
+
+<p><a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">Vaya a la Segunda parte.</a></p>
+
+        </div>
+      </div></article>
+    </div>
+    <div class="mapa-inferior">
+      <div class="row">
+        <div class="col-md-8">
+            <a href="../index.html"><img class="img-responsive" src="../imagenes/logotipo.png" alt="Movimiento Libre"></a>
+        </div>
+        <div class="col-md-4">
+          <div class="pull-right redes-sociales">
+            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
+            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
+            <a class="fa fa-rss-square" href="../rss.xml"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script src="../js/raphael-min.js"></script>
+<script src="../js/morris.min.js"></script>
+<script src="../js/plugins/metisMenu/metisMenu.min.js"></script>
+<script src="../js/sb-admin-2.js"></script>
+<script>
+
+</script>
+</body>
+</html>
