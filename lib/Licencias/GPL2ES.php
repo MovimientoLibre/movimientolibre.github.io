@@ -1,6 +1,6 @@
 <?php
 /**
- * Movimiento Libre - CLASE
+ * Movimiento Libre - GPL2ES
  *
  * Copyright (C) 2015 Guillermo Valdés Lozano
  *
@@ -23,29 +23,29 @@
 namespace Licencias;
 
 /**
- * Clase CLASE
+ * Clase GPL2ES
  */
-class CLASE extends \Base\PublicacionSchemaBlogPosting {
+class GPL2ES extends \Base\PublicacionSchemaBlogPosting {
 
     /**
      * Constructor
      */
     public function __construct() {
         // Título, autor y fecha
-        $this->nombre                     = 'Título';
+        $this->nombre                     = 'Licencia Pública General GNU v2';
      // $this->autor                      = 'guivaloz';
-        $this->fecha                      = '2016-00-00T00:00';
+     // $this->fecha                      = '2016-00-00T00:00';
         // El nombre del archivo a crear
-        $this->archivo                    = 'titulo';
+        $this->archivo                    = 'gpl-2-es';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion                = 'Descrición.';
-        $this->claves                     = 'Clave 1, Clave 2, Clave 3';
+        $this->descripcion                = 'Licencia de Software Libre por Free Software Fundation.';
+        $this->claves                     = 'GNU, GPL, Software, Libre';
         // Ruta al archivo markdown con el contenido
-        $this->contenido_archivo_markdown = 'lib/DIRECTORIO/CLASE.md';
+        $this->contenido_archivo_markdown = 'lib/Licencias/GPL2ES.md';
         // Para el Organizador
-        $this->categorias                 = array('Categoría 1', 'Categoría 2');
+        $this->categorias                 = array('Licencias');
     } // constructor
 
-} // Clase CLASE
+} // Clase GPL2ES
 
 ?>

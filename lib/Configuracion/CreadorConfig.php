@@ -33,6 +33,8 @@ class CreadorConfig {
     public $imprentas = array(
         '\\Apuntes\\Imprenta',
         '\\Articulos\\Imprenta',
+        '\\Contacto\\Imprenta',
+        '\\Licencias\\Imprenta',
         '\\Presentaciones\\Imprenta');
 
 } // Clase CreadorConfig

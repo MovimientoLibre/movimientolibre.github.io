@@ -165,7 +165,12 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $this->contenido[] = '  <section id="redes">';
         $this->contenido[] = '    <div class="row">';
         $this->contenido[] = '      <div class="col-md-8">';
-        $this->contenido[] = '        <a href="index.html"><img class="img-responsive" src="imagenes/logotipo.png" alt="Movimiento Libre"></a>';
+        $this->contenido[] = '        <a href="index.html">Inicio</a> |';
+        $this->contenido[] = '        <a href="apuntes/index.html">Apuntes</a> | ';
+        $this->contenido[] = '        <a href="articulos/index.html">Artículos</a> | ';
+        $this->contenido[] = '        <a href="licencias/index.html">Licencias</a> | ';
+        $this->contenido[] = '        <a href="presentaciones/index.html">Presentaciones</a> |';
+        $this->contenido[] = '        <a href="contacto/index.html">Contacto</a>';
         $this->contenido[] = '      </div>';
         $this->contenido[] = '      <div class="col-md-4">';
         $this->contenido[] = '        <div class="pull-right redes-sociales">';

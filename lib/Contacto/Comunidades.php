@@ -1,6 +1,6 @@
 <?php
 /**
- * Movimiento Libre - CLASE
+ * Movimiento Libre - Comunidades
  *
  * Copyright (C) 2015 Guillermo Valdés Lozano
  *
@@ -20,44 +20,32 @@
  * @package MovimientoLibre
  */
 
-namespace DIRECTORIO; // Apuntes Articulos Presentaciones
+namespace Contacto;
 
 /**
- * Clase CLASE
+ * Clase Comunidades
  */
-class CLASE extends \Base\Publicacion {
+class Comunidades extends \Base\PublicacionSchemaBlogPosting {
 
     /**
      * Constructor
      */
     public function __construct() {
         // Título, autor y fecha
-        $this->nombre          = 'Título';
-     // $this->autor           = 'Autor';
-        $this->fecha           = '';
-        // El nombre del archivo a crear (obligatorio) y rutas relativas a las imágenes
-        $this->archivo         = 'titulo';
-     // $this->imagen          = 'titulo/imagen.jpg';
-     // $this->imagen_previa   = 'titulo/imagen-previa.jpg';
+        $this->nombre                     = 'Comunidades';
+     // $this->autor                      = 'guivaloz';
+     // $this->fecha                      = '2016-00-00T00:00';
+        // El nombre del archivo a crear
+        $this->archivo                    = 'comunidades';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = '';
-        $this->claves          = '';
-        // El contenido es estructurado en un esquema
-        $schema                = new \Base\SchemaBlogPosting();
-        $schema->name          = $this->nombre;
-        $schema->description   = $this->descripcion;
-        $schema->datePublished = $this->fecha;
-        $schema->image         = $this->imagen;
-        $schema->image_show    = $this->poner_imagen_en_contenido;
-        $schema->author        = $this->autor;
-        // El contenido es una instancia de SchemaBlogPosting
-        $this->contenido       = $schema;
-        // Se define una ruta a una archivo markdown para que cuando se ejecute el método HTML se cargue
-        $this->contenido_archivo_markdown = 'lib/DIRECTORIO/CLASE.md';
+        $this->descripcion                = 'Comunidades de interés.';
+        $this->claves                     = 'Grupos, Comunidades';
+        // Ruta al archivo markdown con el contenido
+        $this->contenido_archivo_markdown = 'lib/Contacto/Comunidades.md';
         // Para el Organizador
-        $this->categorias      = array();
+        $this->categorias                 = array('Contacto');
     } // constructor
 
-} // Clase CLASE
+} // Clase Comunidades
 
 ?>

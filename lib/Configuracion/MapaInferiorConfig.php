@@ -44,9 +44,19 @@ class MapaInferiorConfig {
         $a[] = '      <div class="row">';
         $a[] = '        <div class="col-md-8">';
         if ($this->en_raiz) {
-            $a[] = sprintf('            <a href="index.html"><img class="img-responsive" src="%s" alt="%s"></a>', $this->logotipo, $this->sitio_titulo);
+            $a[] = '            <a href="index.html">Inicio</a> |';
+            $a[] = '            <a href="apuntes/index.html">Apuntes</a> | ';
+            $a[] = '            <a href="articulos/index.html">Artículos</a> | ';
+            $a[] = '            <a href="licencias/index.html">Licencias</a> | ';
+            $a[] = '            <a href="presentaciones/index.html">Presentaciones</a> |';
+            $a[] = '            <a href="contacto/index.html">Contacto</a>';
         } else {
-            $a[] = sprintf('            <a href="../index.html"><img class="img-responsive" src="../%s" alt="%s"></a>', $this->logotipo, $this->sitio_titulo);
+            $a[] = '            <a href="../index.html">Inicio</a> |';
+            $a[] = '            <a href="../apuntes/index.html">Apuntes</a> |';
+            $a[] = '            <a href="../articulos/index.html">Artículos</a> |';
+            $a[] = '            <a href="../licencias/index.html">Licencias</a> |';
+            $a[] = '            <a href="../presentaciones/index.html">Presentaciones</a> |';
+            $a[] = '            <a href="../contacto/index.html">Contacto</a>';
         }
         $a[] = '        </div>'; // col-md-8
         $a[] = '        <div class="col-md-4">';

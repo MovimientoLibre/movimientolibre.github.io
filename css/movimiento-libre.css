@@ -96,12 +96,12 @@ a:active  { color:#0088FF; text-decoration:underline; }
 /*
  * Mapa inferior
  */
-.mapa-inferior            { background-color:#708190; }
-.mapa-inferior a,
-.mapa-inferior a:link,
-.mapa-inferior a:visited  { color:#9FB7CC; }
-.mapa-inferior a:hover,
-.mapa-inferior a:active   { color:#FFFFFF; }
+.mapa-inferior            { background-color:#BEC5CB; }
+.redes-sociales a,
+.redes-sociales a:link,
+.redes-sociales a:visited { color:#12283B; text-decoration:none; }
+.redes-sociales a:hover,
+.redes-sociales a:active  { color:#4E6375; text-decoration:none; }
 
 /*
  * Página inicial
@@ -124,10 +124,5 @@ a:active  { color:#0088FF; text-decoration:underline; }
     padding:16px;
     background-color:#B4C0CD;
 }
-#redes            { background-color:#708190; }
-#redes a,
-#redes a:link,
-#redes a:visited  { color:#9FB7CC; }
-#redes a:hover,
-#redes a:active   { color:#FFFFFF; }
+#redes { background-color:#BEC5CB; }
 
