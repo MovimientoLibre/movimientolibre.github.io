@@ -92,6 +92,11 @@ a:active  { color:#0088FF; text-decoration:underline; }
 .autor {
     background-color:#B4C0CD;
 }
+.diapositiva-sombra {
+    margin:12px 8px;
+    padding:0;
+    box-shadow:4px 4px 2px #888888;
+}
 
 /*
  * Mapa inferior
