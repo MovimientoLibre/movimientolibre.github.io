@@ -73,7 +73,7 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $this->claves                   = 'GNU, Linux, Software Libre, Desarrollo, Mexico';
         $this->imagen_previa_ruta       = 'imagenes/imagen-previa.jpg';
         $this->contenido_en_renglon     = false;
-        $this->google_site_verification = '';
+        $this->google_site_verification = '<meta name="google-site-verification" content="6Sv8bUyMDhYasgqbuGaw_YwlANs60Bobp_lOSn1x4I8">';
     } // constructor
 
     /**
