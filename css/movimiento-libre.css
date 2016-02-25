@@ -138,43 +138,114 @@ a:active  { color:#0088FF; text-decoration:underline; }
  * Responsivo
  */
 @media only screen and (max-width: 1190px) {
+    body {
+        font-size:14px;
+        line-height:1.2;
+    }
     #destacado .contenido-imagen-previa {
         width:112px;
         height:112px;
         margin:6px;
     }
+    #ultimas-publicaciones .media-object {
+        width:112px;
+        height:112px;
+    }
 }
 @media only screen and (max-width: 990px) {
+    h1, .h1 { font-size:24px; }
+    h2, .h2 { font-size:20px; }
+    h3, .h3 { font-size:16px; }
+    h4, .h4 { font-size:14px; }
+    h5, .h5 { font-size:12px; }
+    h6, .h6 { font-size:10px; }
+    body {
+        font-size:13px;
+        line-height:1.2;
+    }
+    .encabezado-descripcion {
+        font-size:11px;
+    }
+    .encabezado-autor-fecha {
+        font-size:10px;
+    }
     .destacado-servicio {
-        min-height:140px;
+        min-height:110px;
     }
     #destacado .contenido-imagen-previa {
         width:96px;
         height:96px;
-        margin:4px;
+        margin:0 4px;
         float:left;
+    }
+    #ultimas-publicaciones .media-object {
+        width:96px;
+        height:96px;
     }
 }
 @media only screen and (max-width: 770px) {
+    h1, .h1 { font-size:22px; }
+    h2, .h2 { font-size:18px; }
+    h3, .h3 { font-size:16px; }
+    h4, .h4 { font-size:14px; }
+    h5, .h5 { font-size:12px; }
+    h6, .h6 { font-size:10px; }
+    body {
+        font-size:12px;
+        line-height:1.1;
+    }
+    .encabezado-descripcion {
+        font-size:10px;
+    }
+    .encabezado-autor-fecha {
+        font-size:9px;
+    }
     .destacado-servicio {
-        min-height:120px;
+        min-height:90px;
     }
     #destacado .contenido-imagen-previa {
         width:80px;
         height:80px;
-        margin:4px;
+        margin:0 4px;
         float:left;
+    }
+    #ultimas-publicaciones .media-object {
+        width:80px;
+        height:80px;
     }
 }
 @media only screen and (max-width: 300px) {
+    h1, .h1 { font-size:18px; }
+    h2, .h2 { font-size:16px; }
+    h3, .h3 { font-size:14px; }
+    h4, .h4 { font-size:12px; }
+    h5, .h5 { font-size:11px; }
+    h6, .h6 { font-size:9px; }
+    body {
+        font-size:11px;
+        line-height:1.0;
+    }
+    .encabezado-descripcion {
+        font-size:9px;
+    }
+    .encabezado-autor-fecha {
+        font-size:9px;
+    }
     .destacado-servicio {
-        min-height:100px;
+        min-height:70px;
     }
     #destacado .contenido-imagen-previa {
         width:64px;
         height:64px;
-        margin:2px;
+        margin:0 2px;
         float:left;
+    }
+    #ultimas-publicaciones .breve {
+        padding:4px;
+    }
+    #ultimas-publicaciones .media-object {
+        width:64px;
+        height:64px;
     }
 }
 
