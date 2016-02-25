@@ -129,5 +129,52 @@ a:active  { color:#0088FF; text-decoration:underline; }
     padding:16px;
     background-color:#B4C0CD;
 }
+#destacado .contenido-imagen-previa {
+    margin:8px;
+}
 #redes { background-color:#BEC5CB; }
+
+/*
+ * Responsivo
+ */
+@media only screen and (max-width: 1190px) {
+    #destacado .contenido-imagen-previa {
+        width:112px;
+        height:112px;
+        margin:6px;
+    }
+}
+@media only screen and (max-width: 990px) {
+    .destacado-servicio {
+        min-height:140px;
+    }
+    #destacado .contenido-imagen-previa {
+        width:96px;
+        height:96px;
+        margin:4px;
+        float:left;
+    }
+}
+@media only screen and (max-width: 770px) {
+    .destacado-servicio {
+        min-height:120px;
+    }
+    #destacado .contenido-imagen-previa {
+        width:80px;
+        height:80px;
+        margin:4px;
+        float:left;
+    }
+}
+@media only screen and (max-width: 300px) {
+    .destacado-servicio {
+        min-height:100px;
+    }
+    #destacado .contenido-imagen-previa {
+        width:64px;
+        height:64px;
+        margin:2px;
+        float:left;
+    }
+}
 

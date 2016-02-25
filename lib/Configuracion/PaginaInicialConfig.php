@@ -86,7 +86,6 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $organizacion->description    = 'Colección de ideas.';
         $organizacion->is_article     = false;
         $organizacion->big_heading    = true;
-        $organizacion->headline_style = 'organizacion';
         // Acumular
         $this->contenido[] = '  <section id="organizacion">';
         $this->contenido[] = $organizacion->html();
@@ -98,23 +97,26 @@ class PaginaInicialConfig extends \Base\Plantilla {
      */
     protected function destacado() {
         // Apuntes
-        $apuntes              = new \Base\SchemaProduct();
-        $apuntes->name        = 'Apuntes';
-        $apuntes->description = 'Para compartir y no perder diversos apuntes.';
-        $apuntes->image       = 'imagenes/128/text-editor.png';
-        $apuntes->url         = 'apuntes/index.html';
+        $apuntes                 = new \Base\SchemaProduct();
+        $apuntes->class_property = 'destacado-servicio';
+        $apuntes->name           = 'Apuntes';
+        $apuntes->description    = 'Para compartir y no perder diversos apuntes.';
+        $apuntes->image          = 'imagenes/128/text-editor.png';
+        $apuntes->url            = 'apuntes/index.html';
         // Artículos
-        $articulos              = new \Base\SchemaProduct();
-        $articulos->name        = 'Artículos';
-        $articulos->description = 'Documentos un poco más elaborados.';
-        $articulos->image       = 'imagenes/128/dictionary.png';
-        $articulos->url         = 'articulos/index.html';
+        $articulos                 = new \Base\SchemaProduct();
+        $articulos->class_property = 'destacado-servicio';
+        $articulos->name           = 'Artículos';
+        $articulos->description    = 'Documentos un poco más elaborados.';
+        $articulos->image          = 'imagenes/128/dictionary.png';
+        $articulos->url            = 'articulos/index.html';
         // Presentaciones
-        $presentaciones              = new \Base\SchemaProduct();
-        $presentaciones->name        = 'Presentaciones';
-        $presentaciones->description = 'Material visual así como sus archivos fuentes.';
-        $presentaciones->image       = 'imagenes/128/calligrastage.png';
-        $presentaciones->url         = 'presentaciones/index.html';
+        $presentaciones                 = new \Base\SchemaProduct();
+        $presentaciones->class_property = 'destacado-servicio';
+        $presentaciones->name           = 'Presentaciones';
+        $presentaciones->description    = 'Material visual así como sus archivos fuentes.';
+        $presentaciones->image          = 'imagenes/128/calligrastage.png';
+        $presentaciones->url            = 'presentaciones/index.html';
         // Acumular sección destacado
         $this->contenido[]  = '  <section id="destacado">';
         $this->contenido[]  = '    <div class="row">';

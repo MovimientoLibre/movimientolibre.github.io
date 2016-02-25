@@ -31,13 +31,15 @@ namespace Base;
 class SchemaProduct extends SchemaThing {
 
     // public $onTypeProperty;      // Text. Use when this item is part of another one.
-    // public $identation  = 3;     // Integer. Level of identation (beautiful code).
-    // public $is_article  = true;  // Boolean. Use true for enclose with <article>
-    // public $big_heading = false; // Boolean. Use true to use a big heading for the web page.
+    // public $identation;          // Integer. Level of identation (beautiful code).
+    // public $id_property;         // Text. id property for article/div tag. Use to aply a unique CSS style.
+    // public $class_property;      // Text. class property for div tag. Use to aply a general CSS style.
+    // public $is_article;          // Boolean. Use true for enclose with <article>
+    // public $big_heading;         // Boolean. Use true to use a big heading for the web page.
     // public $extra;               // Text. Additional HTML to put inside.
     // public $description;         // Text. A short description of the item.
     // public $image;               // URL or ImageObject. An image of the item.
-    // public $image_show  = false; // Boolean. Use true to put an img tag. Use false to put a meta tag.
+    // public $image_show;          // Boolean. Use true to put an img tag. Use false to put a meta tag.
     // public $name;                // Text. The name of the item.
     // public $url;                 // URL of the item.
     // public $url_label;           // Label for the URL of the item.
@@ -81,24 +83,10 @@ class SchemaProduct extends SchemaThing {
      * @return string Código HTML
      */
     public function html() {
-        // Definir los espacios antes de cada renglón
-        $spaces = str_repeat('  ', $this->identation);
         // Acumularemos la entrega en este arreglo
         $a = array();
         // Acumular
-        if ($this->onTypeProperty != '') {
-            if ($this->is_article) {
-                $a[] = "  <article><div itemprop=\"{$this->onTypeProperty}\" itemscope itemtype=\"http://schema.org/Product\">";
-            } else {
-                $a[] = "  <div itemprop=\"{$this->onTypeProperty}\" itemscope itemtype=\"http://schema.org/Product\">";
-            }
-        } else {
-            if ($this->is_article) {
-                $a[] = $spaces.'<article><div itemscope itemtype="http://schema.org/Product">';
-            } else {
-                $a[] = $spaces.'<div itemscope itemtype="http://schema.org/Product">';
-            }
-        }
+        $a[] = $this->itemscope_start('itemscope itemtype="http://schema.org/Product"');
         if ($this->big_heading) {
             $a[] = $this->big_heading_html();
             $a[] = $this->logo_html();
@@ -112,17 +100,18 @@ class SchemaProduct extends SchemaThing {
             $this->address->identation     = $this->identation + 1;
             $a[] = $this->manufacturer->html();
         }
-        $a[] = $this->relase_date_html();
-        $a[] = $this->url_html();
-        if ($this->is_article) {
-            $a[] = '</div></article>';
-        } else {
-            $a[] = '</div>';
+        if ($trel = $this->relase_date_html()) {
+            $a[] = $trel;
         }
+        if ($turl = $this->url_html()) {
+            $a[] = $turl;
+        }
+        $a[] = $this->itemscope_end();
         if ($this->extra != '') {
             $a[] = "<aside>{$this->extra}</aside>";
         }
         // Entregar
+        $spaces = str_repeat('  ', $this->identation);
         return implode("\n$spaces", $a);
     } // html
 
