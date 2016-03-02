@@ -36,12 +36,12 @@ h6, .h6 {
     font-weight:bold;
     line-height:1.2;
 }
-h1, .h1 { font-size:32px; margin-top:12px; margin-bottom:6px; }
-h2, .h2 { font-size:24px; margin-top:8px;  margin-bottom:4px; }
-h3, .h3 { font-size:18px; margin-top:6px;  margin-bottom:2px; }
-h4, .h4 { font-size:14px; margin-top:4px;  margin-bottom:2px; }
-h5, .h5 { font-size:12px; margin-top:2px;  margin-bottom:2px; }
-h6, .h6 { font-size:10px; margin-top:2px;  margin-bottom:2px; }
+h1, .h1 { font-size:32px; margin-top:20px; margin-bottom:16px; }
+h2, .h2 { font-size:24px; margin-top:16px; margin-bottom:12px; }
+h3, .h3 { font-size:20px; margin-top:12px; margin-bottom:8px; }
+h4, .h4 { font-size:14px; margin-top:8px;  margin-bottom:4px; }
+h5, .h5 { font-size:12px; margin-top:4px;  margin-bottom:2px; }
+h6, .h6 { font-size:10px; margin-top:4px;  margin-bottom:2px; }
 
 /*
  * Page wrapper
@@ -62,17 +62,14 @@ h6, .h6 { font-size:10px; margin-top:2px;  margin-bottom:2px; }
 .encabezado {
     margin-bottom:12px;
     padding:0;
-    border-bottom:1px solid #888;
 }
 .encabezado-descripcion {
     margin:4px 0;
-    font-size:12px;
-    color:#444;
+    font-size:14px;
 }
 .encabezado-autor-fecha {
     margin:4px 0;
     font-size:11px;
-    color:#888;
 }
 .breve {
     padding:8px 0;
