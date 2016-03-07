@@ -29,8 +29,9 @@ namespace Base;
  */
 class Recolector {
 
-    const LIB_DIR            = 'lib';   // Directorio que contiene los namespaces de donde se recolectarán las clases
-    protected $publicaciones = array(); // Arreglo con instancias de Publicacion
+    const LIB_DIR            = 'lib';        // Directorio que contiene los namespaces de donde se recolectarán las clases
+    protected $publicaciones = array();      // Arreglo con instancias de Publicacion
+    protected $ordenar_por   = 'fecha_desc'; // Puede ser 'fecha_desc' o 'dir_nombre_asc'
 
     /**
      * Obtener clases en directorio
@@ -94,8 +95,17 @@ class Recolector {
                     $publicacion->definir_directorio($imprenta->directorio);
                     $publicacion->definir_nombre_menu($imprenta->nombre_menu);
                 }
-                // La clave del arreglo asociativo es el tiempo_creado-clase, donde clase es Directorio/Archivo
-                $clave              = sprintf('%s-%s', $publicacion->tiempo_creado(), $clase);
+                // Orden
+                switch ($this->ordenar_por) {
+                    case 'dir_nombre_asc':
+                        // La clave para ordenar es clase que es Directorio/Nombre
+                        $clave = Funciones::caracteres_para_web(sprintf('%s-%s', $publicacion->directorio, $publicacion->nombre));
+                        break;
+                    case 'fecha_desc':
+                    default:
+                        // La clave para ordenar es el tiempo_creado-clase, donde clase es Directorio/Archivo
+                        $clave = sprintf('%s-%s', $publicacion->tiempo_creado(), $clase);
+                }
                 $instancias[$clave] = $publicacion;
             }
         }

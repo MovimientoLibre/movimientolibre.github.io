@@ -36,7 +36,7 @@ class Lengueta {
     public $necesita_activador = false;   // Booleano, es visto por el metodo javascript en Lenguetas
     protected $digerido_di     = array(); // Si contenido es o son objetos, acumularemos los identificadores
     protected $digerido_html   = array(); // Si contenido es o son objetos, acumularemos el HTML
-    protected $digerido_js     = array(); // Si contenido es o son objetos, acumularemos el javascript
+    protected $digerido_javascript     = array(); // Si contenido es o son objetos, acumularemos el javascript
     protected $he_digerido     = false;   // Bandera
 
     /**
@@ -47,16 +47,18 @@ class Lengueta {
      * @param mixed  Contenido, opcional
      * @param string Javascript, opcional
      */
-    public function __construct($in_clave, $in_etiqueta, $in_contenido='', $in_javascript='') {
+    public function __construct($clave, $etiqueta, $contenido='', $javascript='') {
         // Parámetros
-        $this->clave     = $in_clave;
-        $this->etiqueta  = $in_etiqueta;
-        $this->contenido = $in_contenido;
-        $this->js        = $in_js;
+        $this->clave      = $clave;
+        $this->etiqueta   = $etiqueta;
+        $this->contenido  = $contenido;
+        $this->javascript = $javascript;
     } // constructor
 
     /**
      * Digerir
+     *
+     * Como el contenido puede ser uno o más instancias, éstas son ejecutadas para obtener su HTML y Javascript
      */
     protected function digerir() {
         // Si ya ha digerido, no hace nada
@@ -66,16 +68,16 @@ class Lengueta {
         // Si es arreglo de instancias o es una instancia
         if (is_array($this->contenido) && (count($this->contenido) > 0)) {
             foreach ($this->contenido as $instancia) {
-                $this->digerido_html[] = $instancia->html();
-                $this->digerido_js[]   = $instancia->javascript();
+                $this->digerido_html[]       = $instancia->html();
+                $this->digerido_javascript[] = $instancia->javascript();
                 if ($instancia->identificador != '') {
                     $this->digerido_di[]      = $instancia->identificador;
                     $this->necesita_activador = true;
                 }
             }
         } elseif (is_object($this->contenido)) {
-            $this->digerido_html[] = $this->contenido->html();
-            $this->digerido_js[]   = $this->contenido->javascript();
+            $this->digerido_html[]       = $this->contenido->html();
+            $this->digerido_javascript[] = $this->contenido->javascript();
             if ($this->contenido->identificador != '') {
                 $this->digerido_di[]      = $this->contenido->identificador;
                 $this->necesita_activador = true;
@@ -149,7 +151,7 @@ class Lengueta {
         // Acumularemos el javascript en este arreglo
         $a = array();
         // Si hay javascript
-        foreach ($this->digerido_js as $js) {
+        foreach ($this->digerido_javascript as $js) {
             if ($js !== false) {
                 $a[] = $js;
             }

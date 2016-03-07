@@ -31,6 +31,7 @@ class RecolectorAutores extends Recolector {
 
     // const LIB_DIR;
     // protected $publicaciones;
+    // protected $ordenar_por;
     protected $publicaciones_todas; // Cada vez que se filtra, la propiedad publicaciones se afecta, así que guardamos todas aquí
 
     /**
