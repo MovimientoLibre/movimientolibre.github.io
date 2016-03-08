@@ -33,7 +33,7 @@ class GFDLES extends \Base\PublicacionSchemaBlogPosting {
     public function __construct() {
         // Título, autor y fecha
         $this->nombre                     = 'Licencia de Documentación Libre de GNU v1.2';
-     // $this->autor                      = 'guivaloz';
+        $this->autor                      = 'Movimiento Libre';
      // $this->fecha                      = '2016-00-00T00:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'gfdl-es';

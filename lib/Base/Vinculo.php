@@ -40,6 +40,7 @@ class Vinculo {
     public $en_otro = true;        // Verdadero para un URL a OTRO directorio distinto
     public $boton_etiqueta;        // Etiqueta para usar como texto en un botón en VinculosTarjetas
     public $imagen_id;             // Nombre del ID presente en el CSS para que la imagen cambie al pasar el ratón
+    public $imprenta_titulo;       // Título de la Imprenta
 
     /**
      * Constructor
@@ -73,12 +74,13 @@ class Vinculo {
         // Validar publicación
         $p->validar();
         // Definir parámetros desde la publicación
-        $this->nombre      = $p->nombre;
-        $this->directorio  = $p->directorio;
-        $this->descripcion = $p->descripcion;
-        $this->autor       = $p->autor;
-        $this->fecha       = $p->fecha_con_formato_humano();
-        $this->imagen_id   = $p->imagen_id;
+        $this->nombre          = $p->nombre;
+        $this->directorio      = $p->directorio;
+        $this->descripcion     = $p->descripcion;
+        $this->autor           = $p->autor;
+        $this->fecha           = $p->fecha_con_formato_humano();
+        $this->imagen_id       = $p->imagen_id;
+        $this->imprenta_titulo = $p->imprenta_titulo;
         // La imagen puede ser la imagen_previa o el icono
         if (($p->imagen != '') && ($p->imagen_previa != '')) {
             $this->imagen        = $p->imagen;

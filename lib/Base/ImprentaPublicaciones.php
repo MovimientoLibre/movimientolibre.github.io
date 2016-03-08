@@ -34,8 +34,8 @@ class ImprentaPublicaciones extends Imprenta {
     public $encabezado_icono;         // Texto, icono Font Awesome
     public $claves;                   // Texto, palabras separadas por comas para meta tag
     public $nombre_menu;              // Texto, opción del menú activa
-    protected $titulo;                // Texto, título de la página
-    protected $descripcion;           // Texto, descripción para meta tag
+    public $titulo;                   // Texto, título de la página
+    public $descripcion;              // Texto, descripción para meta tag
     protected $archivo_ruta;          // Texto opcional, ruta al archivo HTML del concentrador
     protected $concentrador;          // Ruta a la clase. Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
     protected $recolector;            // Instancia de Recolector

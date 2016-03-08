@@ -35,6 +35,13 @@ class RecolectorAutores extends Recolector {
     protected $publicaciones_todas; // Cada vez que se filtra, la propiedad publicaciones se afecta, así que guardamos todas aquí
 
     /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->ordenar_por = \Configuracion\AutoresConfig::ORDENAR_POR;
+    } // Constructor
+
+    /**
      * Obtener autores
      *
      * @return array Arreglo con los autores encontrados

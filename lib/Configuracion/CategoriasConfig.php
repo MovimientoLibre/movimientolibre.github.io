@@ -29,6 +29,7 @@ class CategoriasConfig {
 
     const VINCULOS_INDICE        = '\Base\VinculosGalerias';   // Ruta a la clase para el índice de categorias, en categorias/index.html
     const VINCULOS_INDIVIDUAL    = '\Base\VinculosDetallados'; // Ruta a la clase para listar las publicaciones de cada categoría, a usarse en las páginas de las categorías
+    const ORDENAR_POR            = 'fecha_desc';               // Texto que usa el Recolector para ordenar las publicaciones, puede ser fecha_desc o dir_nombre_asc
     public $categorias           = array();                    // Arreglo asociativo con instancias de \Base\Categoria
     public $mostrar_no_definidos = true;                       // Verdadero pone todos los autores encontrados, falso solo los definidos aquí
     public $imagen_tamano        = 128;                        // Tamaño del icono a usuarse en \Base\PaginasCategoriasIndice

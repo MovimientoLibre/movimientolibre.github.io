@@ -94,6 +94,7 @@ class Recolector {
                     $publicacion->definir_claves($imprenta->claves);
                     $publicacion->definir_directorio($imprenta->directorio);
                     $publicacion->definir_nombre_menu($imprenta->nombre_menu);
+                    $publicacion->definir_imprenta_titulo($imprenta->titulo);
                 }
                 // Orden
                 switch ($this->ordenar_por) {

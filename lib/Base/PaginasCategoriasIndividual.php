@@ -67,8 +67,8 @@ class PaginasCategoriasIndividual extends Paginas {
         // Acumular encabezado
         $a[] = $this->encabezado_html();
         // Definir concentrador
-        $clase             = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
-        $concentrador      = new $clase();
+        $clase        = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
+        $concentrador = new $clase();
         // Bucle por todos los autores
         foreach ($this->recolector->obtener_publicaciones() as $publicacion) {
             // Definir vínculo

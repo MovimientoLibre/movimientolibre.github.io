@@ -38,8 +38,7 @@ class RecolectorCategorias extends Recolector {
      * Constructor
      */
     public function __construct() {
-        // El recolector ordenará las publicaciones por el directorio y la clase
-        $this->ordenar_por = 'dir_nombre_asc';
+        $this->ordenar_por = \Configuracion\CategoriasConfig::ORDENAR_POR;
     } // Constructor
 
     /**
