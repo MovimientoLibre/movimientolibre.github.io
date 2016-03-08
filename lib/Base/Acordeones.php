@@ -1,6 +1,6 @@
 <?php
 /**
- * Plataforma de Conocimiento - Lengüetas
+ * Plataforma de Conocimiento - Acordeones
  *
  * Copyright (C) 2016 Guillermo Valdés Lozano
  *
@@ -23,32 +23,32 @@
 namespace Base;
 
 /**
- * Clase Lenguetas
+ * Clase Acordeones
  *
- * Sirve para organizar contenido en Toggleable Tabs http://getbootstrap.com/javascript/#tabs
+ * Sirve para organizar contenido en Accordion http://getbootstrap.com/javascript/#collapse
  *
  * Ejemplo:
- *   $lenguetas = new \Base\Lenguetas('QGISInstalacionDesdeFuentes');
- *   $lenguetas->agregar('qgis1', 'Preámbulo', \Base\Funciones::cargar_archivo_markdown('lib/Apuntes/QGISInstalacionDesdeFuentes01.md'));
- *   $lenguetas->agregar('qgis2', 'Aplicabilidad y definiciones', \Base\Funciones::cargar_archivo_markdown('lib/Apuntes/QGISInstalacionDesdeFuentes02.md'));
- *   $lenguetas->agregar('qgis3', 'Copia literal', \Base\Funciones::cargar_archivo_markdown('lib/Apuntes/QGISInstalacionDesdeFuentes03.md'));
- *   $lenguetas->definir_activa();
- *   $this->contenido  = $lenguetas->html();
- *   $this->javascript = $lenguetas->javascript();
+ *   $acordeones = new \Base\Acordeones('QGISInstalacionDesdeFuentes');
+ *   $acordeones->agregar('qgis1', 'Preámbulo', \Base\Funciones::cargar_archivo_markdown('lib/Apuntes/QGISInstalacionDesdeFuentes01.md'));
+ *   $acordeones->agregar('qgis2', 'Aplicabilidad y definiciones', \Base\Funciones::cargar_archivo_markdown('lib/Apuntes/QGISInstalacionDesdeFuentes02.md'));
+ *   $acordeones->agregar('qgis3', 'Copia literal', \Base\Funciones::cargar_archivo_markdown('lib/Apuntes/QGISInstalacionDesdeFuentes03.md'));
+ *   $acordeones->definir_activa();
+ *   $this->contenido  = $acordeones->html();
+ *   $this->javascript = $acordeones->javascript();
  */
-class Lenguetas {
+class Acordeones {
 
-    public $identificador;             // Texto identificador de este grupo de Lengüetas
-    public $activa;                    // Texto, clave de la Lengüeta activa
-    protected $lenguetas    = array(); // Arreglo con instancias de Lengueta
+    public $identificador;             // Texto identificador de este grupo de Acordeones
+    public $activa;                    // Texto, clave del Acordeon activo
+    protected $acordeones   = array(); // Arreglo con instancias de Acordeon
     protected $clave_ultima;           // Última clave agregada, le sirve a agregar_javascript
 
     /**
      * Constructor
      *
-     * @param string Opcional, texto identificador único de estas Lengüetas, si no se da se elabora con caracteres aleatorios
+     * @param string Opcional, texto identificador único de este Acordeón, si no se da se elabora con caracteres aleatorios
      */
-    public function __construct() {
+    public function __construct($identificador='') {
         if ($identificador != '') {
             // Definir identificador con parámetro
             $this->identificador = $identificador;
@@ -60,12 +60,12 @@ class Lenguetas {
             for ($i=0; $i<8; $i++) {
                 $c[] = chr(rand($primera, $ultima));
             }
-            $this->identificador = "lenguetas-".implode('', $c);
+            $this->identificador = "acordeones-".implode('', $c);
         }
     } // constructor
 
     /**
-     * Agregar una pestaña
+     * Agregar un acordeón
      *
      * @param string Texto único que identifica al acordeón
      * @param string Etiqueta del acordeón
@@ -74,49 +74,49 @@ class Lenguetas {
      */
     public function agregar($clave, $etiqueta, $contenido='', $javascript='') {
         // Si hubo una lengueta antes, ya no es la activa
-        if (($this->activa != '') && is_object($this->lenguetas[$this->activa])) {
-            $this->lenguetas[$this->activa]->es_activa = false;
+        if (($this->activa != '') && is_object($this->acordeones[$this->activa])) {
+            $this->acordeones[$this->activa]->es_activa = false;
         }
         // Ahora es esta
         $this->activa = $clave;
         // Acumular
-        $this->lenguetas[$this->activa] = new Lengueta($clave, $etiqueta, $contenido, $javascript);
+        $this->acordeones[$this->activa] = new Acordeon($clave, $etiqueta, $contenido, $javascript);
         // Se pasa el identificador
-        $this->lenguetas[$this->activa]->padre_identificador = $this->identificador;
+        $this->acordeones[$this->activa]->padre_identificador = $this->identificador;
     } // agregar
 
     /**
      * Agregar Javascript
      *
-     * @param string Código javascript para la última lengüeta
+     * @param string Código javascript para el último acordeón
      */
     public function agregar_javascript($javascript) {
         if (($this->activa != '') && is_string($javascript) && ($javascript != '')) {
-            $this->lenguetas[$this->activa]->javascript = $javascript;
+            $this->acordeones[$this->activa]->javascript = $javascript;
         }
     } // agregar_javascript
 
     /**
      * Definir activa
      *
-     * @param string Clave de la lengüeta activa. Si es nulo, se establece como la primer lengüeta agregada.
+     * @param string Clave del acordeón activo. Si es nulo, se establece como el primer acordeón agregado.
      */
     public function definir_activa($clave=false) {
         // Si no se dio clave
         if ($clave === false) {
-            // Se toma la primer clave
-            $claves       = array_keys($this->lenguetas);
+            // Se toma la última que se haya agregado
+            $claves       = array_keys($this->acordeones);
             $this->activa = current($claves);
-        } elseif (is_string($clave) && array_key_exists($clave, $this->lenguetas)) {
+        } elseif (is_string($clave) && array_key_exists($clave, $this->acordeones)) {
             // Se cambia sólo si ha sido agregada
             $this->activa = $clave;
         }
         // Poner todas las lengüetas como inactivas
-        foreach ($this->lenguetas as $lengueta) {
-            $lengueta->es_activa = false;
+        foreach ($this->acordeones as $acordeon) {
+            $acordeon->es_activa = false;
         }
         // Poner la lengüeta activa
-        $this->lenguetas[$this->activa]->es_activa = true;
+        $this->acordeones[$this->activa]->es_activa = true;
     } // definir_activa
 
     /**
@@ -127,16 +127,10 @@ class Lenguetas {
     public function html() {
         // En este arreglo juntaremos el HTML
         $a = array();
-        // Acumular las pestañas
-        $a[] = sprintf('  <ul class="nav nav-tabs lenguetas" id="%s">', $this->identificador);
-        foreach ($this->lenguetas as $lengueta) {
-            $a[] = $lengueta->pestana_html();
-        }
-        $a[] = '  </ul>';
-        // Acumular los interiores
-        $a[] = '  <div class="tab-content">';
-        foreach ($this->lenguetas as $lengueta) {
-            $a[] = $lengueta->interior_html();
+        // Acumular
+        $a[] = sprintf('<div class="panel-group" id="%s" role="tablist" aria-multiselectable="true">', $this->identificador);
+        foreach ($this->acordeones as $acordeon) {
+            $a[] = $acordeon->panel_html();
         }
         $a[] = '  </div>';
         // Entregar
@@ -151,15 +145,15 @@ class Lenguetas {
     public function javascript() {
         // En este arreglo juntaremos el javascript
         $a = array();
-        // Bucle por las lenguetas
-        foreach ($this->lenguetas as $lengueta) {
-            $javascript = $lengueta->javascript();
+        // Bucle por los acordeones
+        foreach ($this->acordeones as $acordeon) {
+            $javascript = $acordeon->javascript();
             if ($javascript !== false) {
                 $a[] = $javascript;
             }
         }
-        // Con jquery se declara que es la primer lengüeta la que se muestra
-        $a[] = sprintf('$(document).ready(function(){ $(\'#%s a:first\').tab(\'show\') });', $this->identificador);
+        // Con jquery se declara que es el primer acordeón el que se muestra
+        // $a[] = sprintf('$(document).ready(function(){ $(\'#%s a:first\').tab(\'show\') });', $this->identificador);
         // Entregar
         if (count($a) > 0) {
             return implode("\n", $a);
@@ -168,6 +162,6 @@ class Lenguetas {
         }
     } // javascript
 
-} // Clase Lenguetas
+} // Clase Acordeones
 
 ?>

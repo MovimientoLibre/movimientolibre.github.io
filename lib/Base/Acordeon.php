@@ -1,6 +1,6 @@
 <?php
 /**
- * Plataforma de Conocimiento - Lengüeta
+ * Plataforma de Conocimiento - Acordeon
  *
  * Copyright (C) 2016 Guillermo Valdés Lozano
  *
@@ -23,9 +23,9 @@
 namespace Base;
 
 /**
- * Clase Lengueta
+ * Clase Acordeon
  */
-class Lengueta {
+class Acordeon {
 
     public $clave;                          // Texto único que identifica a la lengüeta
     public $padre_identificador;            // Texto único que identifica al grupo de lengüetas
@@ -33,7 +33,7 @@ class Lengueta {
     public $contenido;                      // Mixto, puede ser texto, un objeto o un arreglo de objetos
     public $javascript;                     // Texto, javascript
     public $es_activa              = true;  // Booleano, verdadero si es la pestaña activa
-    public $necesita_activador     = false; // Booleano, es visto por el metodo javascript en Acordiones, cuando el contenido es una instancia y tiene un identificador es verdadero
+    public $necesita_activador     = false; // Booleano, es visto por el metodo javascript en Acordeones, cuando el contenido es una instancia y tiene un identificador es verdadero
     protected $digerido_di;                 // Si contenido es o son objetos, acumularemos los identificadores
     protected $digerido_html;               // Si contenido es o son objetos, acumularemos el HTML
     protected $digerido_javascript;         // Si contenido es o son objetos, acumularemos el javascript
@@ -92,63 +92,52 @@ class Lengueta {
     } // digerir
 
     /**
-     * Pestaña HTML
+     * Panel HTML
      *
-     * @return string HTML
+     * @return string Código HTML
      */
-    public function pestana_html() {
+    public function panel_html() {
         // Digerir
         $this->digerir();
+        // Acumularemos el HTML en este arreglo
+        $a = array();
         // Pendiente validar si no hay clave
         // Pendiente validar si no hay etiqueta
-        // Si es la activa
+        // Definir variables
+        $heading  = "heading{$this->clave}";
+        $collapse = "collapse{$this->clave}";
+        // Acumular
+        $a[] = '  <div class="panel panel-default">';
+        $a[] = sprintf('    <div class="panel-heading" role="tab" id="%s">', $heading); // headingOne
+        $a[] = '      <h4 class="panel-title">';
         if ($this->es_activa) {
-            $li_tag = '<li class="active">';
+            $a[] = sprintf('        <a                   role="button" data-toggle="collapse" data-parent="#accordion" href="#%s" aria-expanded="true"  aria-controls="%s">', $collapse, $collapse);
         } else {
-            $li_tag = '<li>';
+            $a[] = sprintf('        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#%s" aria-expanded="false" aria-controls="%s">', $collapse, $collapse);
         }
-        // Si hay identificadores
-        if (count($this->digerido_di) > 0) {
-            $data_identifier = sprintf(' data-identifier="%s"', implode(',', $this->digerido_di));
-        } else {
-            $data_identifier = '';
-        }
-        // Entregar
-        return sprintf('    %s<a href="#%s" data-toggle="tab"%s>%s</a></li>', $li_tag, $this->clave, $data_identifier, $this->etiqueta);
-    } // pestana_html
-
-    /**
-     * Interior HTML
-     *
-     * @return string HTML
-     */
-    public function interior_html() {
-        // Digerir
-        $this->digerir();
-        // Inicializar las propiedades
-        $this->digerido_di         = array();
-        $this->digerido_html       = array();
-        $this->digerido_javascript = array();
-        // En este arreglo acumularemos la entrega
-        $a = array();
-        // Si es la activa
-        if ($this->es_activa) {
-            $a[] = sprintf('    <div class="tab-pane active" id="%s">', $this->clave);
-        } else {
-            $a[] = sprintf('    <div class="tab-pane" id="%s">', $this->clave);
-        }
-        // Si no hay contenido
-        if (count($this->digerido_html) > 0) {
-            $a[] = '      '.implode("\n      ", $this->digerido_html);
-        } elseif (is_string($this->contenido) && ($this->contenido != '')) {
-            $a[] = '      '.$this->contenido;
-        } else {
-            $a[] = '      <p><b>Aviso:</b> Esta lengüeta NO tiene contenido.</p>';
-        }
+        $a[] = '          '.$this->etiqueta;
+        $a[] = '        </a>';
+        $a[] = '      </h4>';
         $a[] = '    </div>';
+        if ($this->es_activa) {
+            $a[] = sprintf('    <div id="%s" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="%s">', $collapse, $heading);
+        } else {
+            $a[] = sprintf('    <div id="%s" class="panel-collapse collapse"    role="tabpanel" aria-labelledby="%s">', $collapse, $heading);
+        }
+        $a[] = '      <div class="panel-body">';
+        if (count($this->digerido_html) > 0) {
+            $a[] = '        '.implode("\n", $this->digerido_html);
+        } elseif (is_string($this->contenido) && ($this->contenido != '')) {
+            $a[] = '        '.$this->contenido;
+        } else {
+            $a[] = '        <p><b>Aviso:</b> Este acordión NO tiene contenido.</p>';
+        }
+        $a[] = '      </div>';
+        $a[] = '    </div>';
+        $a[] = '  </div>';
         // Entregar HTML
         return implode("\n", $a);
-    } // interior_html
+    } // panel_html
 
     /**
      * Javascript
@@ -183,11 +172,10 @@ class Lengueta {
                 return implode("\n", $a);
             }
         } else {
-            // NO hay javascript, entregar falso
             return false;
         }
     } // javascript
 
-} // Clase Lengueta
+} // Clase Acordeon
 
 ?>
