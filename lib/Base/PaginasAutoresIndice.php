@@ -114,9 +114,9 @@ class PaginasAutoresIndice extends Paginas {
                 // Si está definido en \Configuracion\AutoresConfig
                 if ($autor instanceof Autor) {
                     // Sí está definido
-                    $autor->en_raiz = $this->en_raiz;
-                    $autor->en_otro = $this->en_otro;
-                    $vinculo = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, ImprentaAutores::AUTORES_DIR, $this->autor_descripcion_html($autor));
+                    $autor->en_raiz          = $this->en_raiz;
+                    $autor->en_otro          = $this->en_otro;
+                    $vinculo                 = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, ImprentaAutores::AUTORES_DIR, $this->autor_descripcion_html($autor));
                     $vinculo->boton_etiqueta = "Todas sus publicaciones";
                     $this->concentrador->agregar($vinculo);
                 } elseif ($autores_config->mostrar_no_definidos) {

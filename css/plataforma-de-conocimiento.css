@@ -94,6 +94,8 @@ h6, .h6 { font-size:10px; margin-top:4px;  margin-bottom:2px; }
 .contenido-imagen-previa {
     padding:2px;
 }
+.compactos        { padding:8px; }
+.compactos-cuerpo { vertical-align:middle; }
 .detallados-descripcion {
     color:#222;
     font-size:0.9em;
@@ -162,6 +164,9 @@ h6, .h6 { font-size:10px; margin-top:4px;  margin-bottom:2px; }
 #ultimas-publicaciones .autor-fecha {
     color:#888;
     font-size:0.8em;
+}
+#categorias {
+    padding:8px 16px;
 }
 #redes {
     padding:8px 16px;

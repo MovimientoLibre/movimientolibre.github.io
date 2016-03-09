@@ -119,9 +119,17 @@ class Vinculo {
         } elseif (preg_match('/^(http|https|ftp|ftps):\/\//', $this->vinculo) === 1) {
             return $this->vinculo;
         } elseif ($this->en_raiz) {
-            return sprintf('%s/%s', $this->directorio, $this->vinculo);
+            if ($this->directorio != '') {
+                return sprintf('%s/%s', $this->directorio, $this->vinculo);
+            } else {
+                return $this->vinculo;
+            }
         } elseif ($this->en_otro) {
-            return sprintf('../%s/%s', $this->directorio, $this->vinculo);
+            if ($this->directorio != '') {
+                return sprintf('../%s/%s', $this->directorio, $this->vinculo);
+            } else {
+                return sprintf('../%s', $this->vinculo);
+            }
         } else {
             return $this->vinculo;
         }

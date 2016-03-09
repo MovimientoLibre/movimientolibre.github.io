@@ -153,12 +153,51 @@ class PaginaInicialConfig extends \Base\Plantilla {
             // Agregar
             $concentrador->agregar($vinculo);
         }
-        // Poner BrevesIndice
+        // Poner
         $this->contenido[] = '  <section id="ultimas-publicaciones">';
         $this->contenido[] = '    <h2>Últimas publicaciones</h2>';
         $this->contenido[] = $concentrador->html();
         $this->contenido[] = '  </section>';
     } // ultimas_publicaciones
+
+    /**
+     * Categorías
+     */
+    protected function categorias() {
+        // Cargar configuración de las categorías
+        $categorias_config = new CategoriasConfig();
+        // Iniciar concentrador
+        $concentrador = new \Base\VinculosCompactos();
+        // Inicializar el recolector
+        $recolector = new \Base\RecolectorCategorias();
+        $recolector->agregar_publicaciones_de_imprentas($this->imprentas);
+        // Bucle por todas las categorias
+        foreach ($recolector->obtener_categorias() as $nombre) {
+            // Obtener instancia de Categoria
+            $categoria = $categorias_config->obtener($nombre);
+            // Si está definido en \Configuracion\CategoriasConfig
+            if ($categoria instanceof \Base\Categoria) {
+                // Sí está definido
+                $categoria->en_raiz = true;
+                $categoria->en_otro = false;
+                $vinculo            = new \Base\Vinculo($categoria->nombre, $categoria->url(), $categoria->icono, '', $categoria->descripcion);
+                $vinculo->en_raiz   = true;
+                $vinculo->en_otro   = false;
+                $concentrador->agregar($vinculo);
+            } elseif ($categorias_config->mostrar_no_definidos) {
+                // No está definido
+                $vinculo          = new \Base\Vinculo($nombre, sprintf('%s.html', \Base\Funciones::caracteres_para_web($nombre)), 'unknown', \Base\ImprentaCategorias::CATEGORIAS_DIR);
+                $vinculo->en_raiz = true;
+                $vinculo->en_otro = false;
+                $concentrador->agregar($vinculo);
+            }
+        }
+        // Poner
+        $this->contenido[] = '  <section id="categorias">';
+        $this->contenido[] = '    <h2>Categorías</h2>';
+        $this->contenido[] = $concentrador->html();
+        $this->contenido[] = '  </section>';
+    } // categorias
 
     /**
      * Redes
@@ -196,6 +235,7 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $this->organizacion();
         $this->destacado();
         $this->ultimas_publicaciones();
+        $this->categorias();
         $this->redes();
         // Entregar resultado del método en el padre
         return parent::html();

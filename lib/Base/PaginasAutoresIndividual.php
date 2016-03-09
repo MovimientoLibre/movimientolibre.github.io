@@ -110,7 +110,7 @@ class PaginasAutoresIndividual extends Paginas {
             return;
         }
         // Definir concentrador
-        $clase        = \Configuracion\AutoresConfig::VINCULOS_INDIVIDUAL;
+        $clase              = \Configuracion\AutoresConfig::VINCULOS_INDIVIDUAL;
         $this->concentrador = new $clase();
         // Bucle por todos los autores
         foreach ($this->recolector->obtener_publicaciones() as $publicacion) {

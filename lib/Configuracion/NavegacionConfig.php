@@ -32,15 +32,11 @@ class NavegacionConfig {
     protected $opciones      = array(
         'Apuntes'        => 'apuntes/index.html',
         'Artículos'      => 'articulos/index.html',
-        'Presentaciones' => 'presentaciones/index.html',
-        'Categorías'     => 'categorias/index.html',
-        'Autores'        => 'autores/index.html');
+        'Presentaciones' => 'presentaciones/index.html');
     static public $iconos    = array(
         'Apuntes'        => 'fa fa-files-o',
         'Artículos'      => 'fa fa-server',
-        'Presentaciones' => 'fa fa-sun-o',
-        'Categorías'     => 'fa fa-tags',
-        'Autores'        => 'fa fa-user');
+        'Presentaciones' => 'fa fa-sun-o');
     protected $buscador_html = <<<FINAL
           <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
             <input type="hidden" value="" name="cx">

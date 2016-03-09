@@ -145,7 +145,8 @@ a:active  { color:#0088FF; text-decoration:underline; }
 #destacado .contenido-imagen-previa {
     margin:8px;
 }
-#redes { background-color:#BEC5CB; }
+#categorias { background-color:#BDD1E0; }
+#redes      { background-color:#BEC5CB; }
 
 /*
  * Responsivo
