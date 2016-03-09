@@ -104,9 +104,9 @@ class Autor {
         }
         // Entregar URL
         if ($this->en_raiz) {
-            return sprintf('%s/%s', ImprentaAutores::AUTORES_DIR, $pagina);
+            return sprintf('%s/%s', \Configuracion\AutoresConfig::DIRECTORIO, $pagina);
         } elseif ($this->en_otro) {
-            return sprintf('../%s/%s', ImprentaAutores::AUTORES_DIR, $pagina);
+            return sprintf('../%s/%s', \Configuracion\AutoresConfig::DIRECTORIO, $pagina);
         } else {
             return $pagina;
         }

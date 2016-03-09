@@ -75,12 +75,12 @@ class PaginasCategoriasIndice extends Paginas {
                 $categoria->en_raiz = $this->en_raiz;
                 $categoria->en_otro = $this->en_otro;
                 $etiqueta           = sprintf('%s (%d)', $categoria->nombre, $cantidad);
-                $vinculo            = new Vinculo($etiqueta, $categoria->url(), $categoria->icono, ImprentaCategorias::CATEGORIAS_DIR, $categoria->descripcion);
+                $vinculo            = new Vinculo($etiqueta, $categoria->url(), $categoria->icono, \Configuracion\CategoriasConfig::DIRECTORIO, $categoria->descripcion);
                 $this->concentrador->agregar($vinculo);
             } elseif ($categorias_config->mostrar_no_definidos) {
                 // No está definido
                 $etiqueta = sprintf('%s (%d)', $nombre, $cantidad);
-                $vinculo  = new Vinculo($etiqueta, sprintf('%s.html', Funciones::caracteres_para_web($nombre)), 'unknown', ImprentaCategorias::CATEGORIAS_DIR);
+                $vinculo  = new Vinculo($etiqueta, sprintf('%s.html', Funciones::caracteres_para_web($nombre)), 'unknown', \Configuracion\CategoriasConfig::DIRECTORIO);
                 $this->concentrador->agregar($vinculo);
             }
         }

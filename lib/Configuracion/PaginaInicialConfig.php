@@ -186,7 +186,7 @@ class PaginaInicialConfig extends \Base\Plantilla {
                 $concentrador->agregar($vinculo);
             } elseif ($categorias_config->mostrar_no_definidos) {
                 // No está definido
-                $vinculo          = new \Base\Vinculo($nombre, sprintf('%s.html', \Base\Funciones::caracteres_para_web($nombre)), 'unknown', \Base\ImprentaCategorias::CATEGORIAS_DIR);
+                $vinculo          = new \Base\Vinculo($nombre, sprintf('%s.html', \Base\Funciones::caracteres_para_web($nombre)), 'unknown', \Configuracion\CategoriasConfig::DIRECTORIO);
                 $vinculo->en_raiz = true;
                 $vinculo->en_otro = false;
                 $concentrador->agregar($vinculo);

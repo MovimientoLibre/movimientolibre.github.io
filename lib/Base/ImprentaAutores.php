@@ -27,8 +27,6 @@ namespace Base;
  */
 class ImprentaAutores extends Imprenta {
 
-    const AUTORES_DIR              = 'autores'; // Nombre del directorio que se creará en la raiz para depositar los archivos HTML
-    const NAVEGACION_OPCION_ACTIVA = 'Autores'; // Opción del menú en /Configuracion/NavegacionConfig
     protected $imprentas;                       // Arreglo con rutas a las clases de ImprentaPublicaciones
     protected $recolector;                      // Instancia de RecolectorAutores
     protected $contador            = 0;         // Entero, cantidad de archivos HTML de autores creados
@@ -55,8 +53,8 @@ class ImprentaAutores extends Imprenta {
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
         $plantilla->mapa_inferior             = new MapaInferior();
-        $plantilla->directorio                = self::AUTORES_DIR;
-        $plantilla->navegacion->opcion_activa = self::NAVEGACION_OPCION_ACTIVA;
+        $plantilla->directorio                = \Configuracion\AutoresConfig::DIRECTORIO;
+        $plantilla->navegacion->opcion_activa = \Configuracion\AutoresConfig::NAVEGACION_OPCION_ACTIVA;
         // Crear directorio
         $this->crear_directorio($plantilla->directorio);
         // Bucle por todas los autores
@@ -97,11 +95,11 @@ class ImprentaAutores extends Imprenta {
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
         $plantilla->mapa_inferior             = new MapaInferior();
-        $plantilla->directorio                = self::AUTORES_DIR;
-        $plantilla->navegacion->opcion_activa = self::NAVEGACION_OPCION_ACTIVA;
-        $plantilla->titulo                    = "Autores";
-        $plantilla->descripcion               = "Todas los autores";
-        $plantilla->claves                    = "Autores";
+        $plantilla->directorio                = \Configuracion\AutoresConfig::DIRECTORIO;
+        $plantilla->navegacion->opcion_activa = \Configuracion\AutoresConfig::NAVEGACION_OPCION_ACTIVA;
+        $plantilla->titulo                    = \Configuracion\AutoresConfig::INDICE_TITULO;
+        $plantilla->descripcion               = \Configuracion\AutoresConfig::INDICE_DESCRIPCION;
+        $plantilla->claves                    = \Configuracion\AutoresConfig::INDICE_CLAVES;
         $plantilla->archivo_ruta              = sprintf('%s/index.html', $plantilla->directorio);
         // Iniciar PaginasAutoresIndice
         $pagina                = new PaginasAutoresIndice($this->recolector);
@@ -123,7 +121,7 @@ class ImprentaAutores extends Imprenta {
         $this->imprimir_individuales();
         $this->imprimir_indice();
         // Mensaje
-        echo sprintf("  %d en %s\n", $this->contador, self::AUTORES_DIR);
+        echo sprintf("  %d en %s\n", $this->contador, \Configuracion\AutoresConfig::DIRECTORIO);
     } // imprimir
 
 } // Clase ImprentaAutores

@@ -27,8 +27,6 @@ namespace Base;
  */
 class ImprentaCategorias extends Imprenta {
 
-    const CATEGORIAS_DIR           = 'categorias'; // Nombre del directorio que se creará en la raiz para depositar los archivos HTML
-    const NAVEGACION_OPCION_ACTIVA = 'Categorías'; // Opción del menú en /Configuracion/NavegacionConfig
     protected $imprentas;                          // Arreglo con rutas a las clases de ImprentaPublicaciones
     protected $recolector;                         // Instancia de RecolectorCategorias
     protected $contador            = 0;            // Entero, cantidad de archivos HTML de categorías creados
@@ -53,8 +51,8 @@ class ImprentaCategorias extends Imprenta {
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
         $plantilla->mapa_inferior             = new MapaInferior();
-        $plantilla->directorio                = self::CATEGORIAS_DIR;
-        $plantilla->navegacion->opcion_activa = self::NAVEGACION_OPCION_ACTIVA;
+        $plantilla->directorio                = \Configuracion\CategoriasConfig::DIRECTORIO;
+        $plantilla->navegacion->opcion_activa = \Configuracion\CategoriasConfig::NAVEGACION_OPCION_ACTIVA;
         // Crear directorio
         $this->crear_directorio($plantilla->directorio);
         // Bucle por todas las categorías
@@ -96,11 +94,11 @@ class ImprentaCategorias extends Imprenta {
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
         $plantilla->mapa_inferior             = new MapaInferior();
-        $plantilla->directorio                = self::CATEGORIAS_DIR;
-        $plantilla->navegacion->opcion_activa = self::NAVEGACION_OPCION_ACTIVA;
-        $plantilla->titulo                    = "Categorías";
-        $plantilla->descripcion               = "Todas las categorías";
-        $plantilla->claves                    = "Categorias";
+        $plantilla->directorio                = \Configuracion\CategoriasConfig::DIRECTORIO;
+        $plantilla->navegacion->opcion_activa = \Configuracion\CategoriasConfig::NAVEGACION_OPCION_ACTIVA;
+        $plantilla->titulo                    = \Configuracion\CategoriasConfig::INDICE_TITULO;
+        $plantilla->descripcion               = \Configuracion\CategoriasConfig::INDICE_DESCRIPCION;
+        $plantilla->claves                    = \Configuracion\CategoriasConfig::INDICE_CLAVES;
         $plantilla->archivo_ruta              = sprintf('%s/index.html', $plantilla->directorio);
         // Iniciar PaginasCategoriasIndice
         $pagina                = new PaginasCategoriasIndice($this->recolector);
@@ -122,7 +120,7 @@ class ImprentaCategorias extends Imprenta {
         $this->imprimir_individuales();
         $this->imprimir_indice();
         // Mensaje
-        echo sprintf("  %d en %s\n", $this->contador, self::CATEGORIAS_DIR);
+        echo sprintf("  %d en %s\n", $this->contador, \Configuracion\CategoriasConfig::DIRECTORIO);
     } // imprimir
 
 } // Clase ImprentaCategorias

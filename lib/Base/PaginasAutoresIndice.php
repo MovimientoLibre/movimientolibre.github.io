@@ -116,7 +116,7 @@ class PaginasAutoresIndice extends Paginas {
                     // Sí está definido
                     $autor->en_raiz          = $this->en_raiz;
                     $autor->en_otro          = $this->en_otro;
-                    $vinculo                 = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, ImprentaAutores::AUTORES_DIR, $this->autor_descripcion_html($autor));
+                    $vinculo                 = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, \Configuracion\AutoresConfig::DIRECTORIO, $this->autor_descripcion_html($autor));
                     $vinculo->boton_etiqueta = "Todas sus publicaciones";
                     $this->concentrador->agregar($vinculo);
                 } elseif ($autores_config->mostrar_no_definidos) {
@@ -150,11 +150,11 @@ class PaginasAutoresIndice extends Paginas {
                 }
                 // Si tiene publicaciones
                 if ($cantidad > 0) {
-                    $vinculo = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, ImprentaAutores::AUTORES_DIR, $this->autor_descripcion_html($autor));
+                    $vinculo = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, \Configuracion\AutoresConfig::DIRECTORIO, $this->autor_descripcion_html($autor));
                     $vinculo->boton_etiqueta = "Todas sus publicaciones";
                 } else {
                     // No tiene publicaciones, sólo se ponen los datos del autor sin enlace a su página
-                    $vinculo = new Vinculo($autor->titulo_nombre_completo(), '', $autor->icono, ImprentaAutores::AUTORES_DIR, $this->autor_descripcion_html($autor));
+                    $vinculo = new Vinculo($autor->titulo_nombre_completo(), '', $autor->icono, \Configuracion\AutoresConfig::DIRECTORIO, $this->autor_descripcion_html($autor));
                 }
                 // Agregar vínculo al concentrador
                 $this->concentrador->agregar($vinculo);

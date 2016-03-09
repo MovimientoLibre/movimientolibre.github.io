@@ -57,9 +57,9 @@ class Categoria {
      */
     public function url() {
         if ($this->en_raiz) {
-            return sprintf('%s/%s.html', ImprentaCategorias::CATEGORIAS_DIR, Funciones::caracteres_para_web($this->nombre));
+            return sprintf('%s/%s.html', \Configuracion\CategoriasConfig::DIRECTORIO, Funciones::caracteres_para_web($this->nombre));
         } elseif ($this->en_otro) {
-            return sprintf('../%s/%s.html', ImprentaCategorias::CATEGORIAS_DIR, Funciones::caracteres_para_web($this->nombre));
+            return sprintf('../%s/%s.html', \Configuracion\CategoriasConfig::DIRECTORIO, Funciones::caracteres_para_web($this->nombre));
         } else {
             return sprintf('%s.html', Funciones::caracteres_para_web($this->nombre));
         }
