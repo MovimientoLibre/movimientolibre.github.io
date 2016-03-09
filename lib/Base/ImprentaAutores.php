@@ -44,11 +44,11 @@ class ImprentaAutores extends Imprenta {
     } // constructor
 
     /**
-     * Imprimir autores
+     * Imprimir individuales
      *
-     * Crea los archivos para cada autor usando la clase PaginasAutoresIndividual
+     * Crea los archivos para cada autor
      */
-    protected function imprimir_autores() {
+    protected function imprimir_individuales() {
         // Cargar la configuración de autores
         $autores_config = new \Configuracion\AutoresConfig();
         // Iniciar la plantilla
@@ -85,14 +85,14 @@ class ImprentaAutores extends Imprenta {
             $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
             $this->contador++;
         }
-    } // imprimir_autores
+    } // imprimir_individuales
 
     /**
      * Imprimir index
      *
-     * Crea el archivo /autores/index.html usando PaginasAutoresIndice
+     * Crea el archivo index.html
      */
-    protected function imprimir_index() {
+    protected function imprimir_indice() {
         // Iniciar la plantilla
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
@@ -112,7 +112,7 @@ class ImprentaAutores extends Imprenta {
         $plantilla->javascript = $pagina->javascript();
         // Crear archivo
         $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
-    } // imprimir_index
+    } // imprimir_indice
 
     /**
      * Imprimir
@@ -120,8 +120,8 @@ class ImprentaAutores extends Imprenta {
     public function imprimir() {
         echo "ImprentaAutores:       ";
         $this->recolector->agregar_publicaciones_de_imprentas($this->imprentas);
-        $this->imprimir_autores();
-        $this->imprimir_index();
+        $this->imprimir_individuales();
+        $this->imprimir_indice();
         // Mensaje
         echo sprintf("  %d en %s\n", $this->contador, self::AUTORES_DIR);
     } // imprimir

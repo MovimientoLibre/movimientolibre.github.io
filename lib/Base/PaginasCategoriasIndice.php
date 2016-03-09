@@ -34,7 +34,10 @@ class PaginasCategoriasIndice extends Paginas {
     // public $encabezado_icono;
     // public $en_raiz;
     // public $en_otro;
-    protected $recolector; // Instancia de RecolectorCategorias
+    // public $cantidad_maxima;
+    // protected $recolector;
+    // protected $concentrador;
+    // protected $he_concentrado;
 
     /**
      * Constructor
@@ -46,21 +49,19 @@ class PaginasCategoriasIndice extends Paginas {
     } // constructor
 
     /**
-     * HTML
-     *
-     * @return string Código HTML
+     * Concentrar
      */
-    public function html() {
-        // Acumularemos la entrega en este arreglo
-        $a = array();
-        // Acumular encabezado
-        $a[] = $this->encabezado_html();
+    protected function concentrar() {
+        // Si ya se ha concentrado, no se hace nada
+        if ($this->he_concentrado) {
+            return;
+        }
         // Cargar configuración de las categorías
-        $categorias_config           = new \Configuracion\CategoriasConfig();
+        $categorias_config = new \Configuracion\CategoriasConfig();
         // Iniciar concentrador
-        $clase                       = \Configuracion\CategoriasConfig::VINCULOS_INDICE;
-        $concentrador                = new $clase();
-        $concentrador->imagen_tamano = $categorias_config->imagen_tamano;
+        $clase                             = \Configuracion\CategoriasConfig::VINCULOS_INDICE;
+        $this->concentrador                = new $clase();
+        $this->concentrador->imagen_tamano = $categorias_config->imagen_tamano;
         // Bucle por todas las categorias
         foreach ($this->recolector->obtener_categorias() as $nombre) {
             // Obtener la cantidad de publicaciones de esta categoría
@@ -75,28 +76,17 @@ class PaginasCategoriasIndice extends Paginas {
                 $categoria->en_otro = $this->en_otro;
                 $etiqueta = sprintf('%s (%d)', $categoria->nombre, $cantidad);
                 $vinculo  = new Vinculo($etiqueta, $categoria->url(), $categoria->icono, ImprentaCategorias::CATEGORIAS_DIR, $categoria->descripcion);
-                $concentrador->agregar($vinculo);
+                $this->concentrador->agregar($vinculo);
             } elseif ($categorias_config->mostrar_no_definidos) {
                 // No está definido
                 $etiqueta = sprintf('%s (%d)', $nombre, $cantidad);
                 $vinculo  = new Vinculo($etiqueta, sprintf('%s.html', Funciones::caracteres_para_web($nombre)), 'unknown', ImprentaCategorias::CATEGORIAS_DIR);
-                $concentrador->agregar($vinculo);
+                $this->concentrador->agregar($vinculo);
             }
         }
-        // Acumular concentrador
-        $a[] = $concentrador->html();
-        // Entregar
-        return implode("\n", $a);
-    } // html
-
-    /**
-     * Javascript
-     *
-     * @return string Código Javascript
-     */
-    public function javascript() {
-        return '';
-    } // javascript
+        // Levantar la bandera
+        $this->he_concentrado = true;
+    } // concentrar
 
 } // Clase PaginasCategoriasIndice
 

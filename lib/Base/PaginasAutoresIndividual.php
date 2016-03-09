@@ -34,8 +34,11 @@ class PaginasAutoresIndividual extends Paginas {
     // public $encabezado_icono;
     // public $en_raiz;
     // public $en_otro;
-    protected $autor;      // Instancia de Autor
-    protected $recolector; // Instancia de RecolectorAutores
+    // public $cantidad_maxima;
+    // protected $recolector;
+    // protected $concentrador;
+    // protected $he_concentrado;
+    protected $autor;            // Instancia de Autor
 
     /**
      * Constructor
@@ -47,6 +50,9 @@ class PaginasAutoresIndividual extends Paginas {
         // Parámetros
         $this->autor      = $autor;
         $this->recolector = $recolector;
+        // Definir el título y la descripción
+        $this->titulo      = $this->autor->titulo_nombre_completo();
+        $this->descripcion = $this->autor->semblanza;
         // Los vínculos apuntan a páginas en otros directorios
         $this->en_otro        = true;
         $this->autor->en_raiz = $this->en_raiz;
@@ -96,23 +102,16 @@ class PaginasAutoresIndividual extends Paginas {
     } // autor_perfil_html
 
     /**
-     * HTML
-     *
-     * @return string Código HTML
+     * Concentrar
      */
-    public function html() {
-        // Definir el título y la descripción
-        $this->titulo      = $this->autor->titulo_nombre_completo();
-        $this->descripcion = $this->autor->semblanza;
-        // Acumularemos la entrega en este arreglo
-        $a = array();
-        // Acumular encabezado
-        $a[] = $this->encabezado_html();
-        // Acumular el perfil del autor
-        $a[] = $this->autor_perfil_html();
+    protected function concentrar() {
+        // Si ya se ha concentrado, no se hace nada
+        if ($this->he_concentrado) {
+            return;
+        }
         // Definir concentrador
         $clase        = \Configuracion\AutoresConfig::VINCULOS_INDIVIDUAL;
-        $concentrador = new $clase();
+        $this->concentrador = new $clase();
         // Bucle por todos los autores
         foreach ($this->recolector->obtener_publicaciones() as $publicacion) {
             // Definir vínculo
@@ -121,22 +120,27 @@ class PaginasAutoresIndividual extends Paginas {
             $vinculo->en_otro = $this->en_otro;
             $vinculo->definir_con_publicacion($publicacion);
              // Agregar vínculo
-            $concentrador->agregar($vinculo);
+            $this->concentrador->agregar($vinculo);
         }
-        // Acumular concentrador
-        $a[] = $concentrador->html();
-        // Entregar
-        return implode("\n", $a);
-    } // html
+        // Levantar la bandera
+        $this->he_concentrado = true;
+    } // concentrar
 
     /**
-     * Javascript
+     * HTML
      *
-     * @return string Código Javascript
+     * Entrega el código HTML generado por encabezado_html, autor_perfil_html y lo del concentrador
+     *
+     * @return string Código HTML
      */
-    public function javascript() {
-        return '';
-    } // javascript
+    public function html() {
+        // Si no ha concentrado
+        if ($this->he_concentrado == false) {
+            $this->concentrar();
+        }
+        // Entregar
+        return $this->encabezado_html()."\n".$this->autor_perfil_html()."\n".$this->concentrador->html();
+    } // html
 
 } // Clase PaginasAutoresIndividual
 

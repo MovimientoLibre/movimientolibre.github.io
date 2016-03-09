@@ -39,7 +39,7 @@ class Funciones {
         $buscados            = array('ñ', 'Ñ', 'ü', 'Ü', 'á', 'Á', 'é', 'É', 'í', 'Í', 'ó', 'Ó', 'ú', 'Ú');
         $cambios             = array('n', 'n', 'u', 'u', 'a', 'a', 'e', 'e', 'i', 'i', 'o', 'o', 'u', 'u');
         $sin_acentos         = str_replace($buscados, $cambios, $in_texto);
-        $especiales          = array(' ', '#', '&', '%', '$', '@', '(', ')', '.', ',');
+        $especiales          = array(' ', '#', '&', '%', '$', '@', '(', ')', '.', ',', '¿', '?', '"', '\'');
         $sin_especiales      = str_replace($especiales, '-', $sin_acentos);
         $sin_repetir_guiones = preg_replace('/\-+/', '-', $sin_especiales);
         return strtolower($sin_repetir_guiones);

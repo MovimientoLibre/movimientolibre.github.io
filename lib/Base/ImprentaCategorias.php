@@ -46,9 +46,9 @@ class ImprentaCategorias extends Imprenta {
     /**
      * Imprimir categorías
      *
-     * Crea los archivos para cada categoría usando la clase PaginasCategoriasIndividual
+     * Crea los archivos para cada categoría
      */
-    protected function imprimir_categorias() {
+    protected function imprimir_individuales() {
         // Iniciar la plantilla
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
@@ -84,14 +84,14 @@ class ImprentaCategorias extends Imprenta {
             $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
             $this->contador++;
         }
-    } // imprimir_categorias
+    } // imprimir_individuales
 
     /**
      * Imprimir index
      *
-     * Crea el archivo /categorias/index.html usando PaginasCategoriasIndice
+     * Crea el archivo index.html
      */
-    protected function imprimir_index() {
+    protected function imprimir_indice() {
         // Iniciar la plantilla
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
@@ -111,7 +111,7 @@ class ImprentaCategorias extends Imprenta {
         $plantilla->javascript = $pagina->javascript();
         // Crear archivo
         $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
-    } // imprimir_index
+    } // imprimir_indice
 
     /**
      * Imprimir
@@ -119,8 +119,8 @@ class ImprentaCategorias extends Imprenta {
     public function imprimir() {
         echo "ImprentaCategorias:    ";
         $this->recolector->agregar_publicaciones_de_imprentas($this->imprentas);
-        $this->imprimir_categorias();
-        $this->imprimir_index();
+        $this->imprimir_individuales();
+        $this->imprimir_indice();
         // Mensaje
         echo sprintf("  %d en %s\n", $this->contador, self::CATEGORIAS_DIR);
     } // imprimir

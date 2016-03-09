@@ -34,6 +34,10 @@ abstract class Paginas {
     public $encabezado_icono; // Texto, icono Font Awesome
     public $en_raiz = false;  // Si es verdadero los vínculos serán para un archivo en la raíz del sitio
     public $en_otro = false;  // Si es verdadero el archivo va a OTRO lugar como al directorio autores, categorias, etc.
+    public $cantidad_maxima;  // Entero, cantidad máxima de publicaciones a mostrar, si no está definido usa todas
+    protected $recolector;    // Instancia de Recolector
+    protected $concentrador;  // Instancia de Vinculos
+    protected $he_concentrado = false; // Bandera
 
     /**
      * Encabezado HTML
@@ -78,16 +82,12 @@ abstract class Paginas {
     } // encabezado_html
 
     /**
-     * HTML
-     *
-     * @return string Código HTML
+     * Concentrar
      */
-    public function html() {
-        // Acumularemos el código HTML en este arreglo
-        $a = array();
-        // Si hay título se acumula el encabezado
-        if ($this->titulo != '') {
-            $a[] = $this->encabezado_html();
+    protected function concentrar() {
+        // Si ya se ha concentrado, no se hace nada
+        if ($this->he_concentrado) {
+            return;
         }
         // Pasar parámetros al concentrador
         $this->concentrador->en_raiz = $this->en_raiz;
@@ -102,10 +102,24 @@ abstract class Paginas {
             // Agregar
             $this->concentrador->agregar($vinculo);
         }
-        // Acumular
-        $a[] = $this->concentrador->html();
+        // Levantar la bandera
+        $this->he_concentrado = true;
+    } // concentrar
+
+    /**
+     * HTML
+     *
+     * Entrega el código HTML generado por encabezado_html y lo del concentrador
+     *
+     * @return string Código HTML
+     */
+    public function html() {
+        // Si no ha concentrado
+        if ($this->he_concentrado == false) {
+            $this->concentrar();
+        }
         // Entregar
-        return implode("\n", $a);
+        return $this->encabezado_html()."\n".$this->concentrador->html();
     } // html
 
     /**
@@ -114,6 +128,11 @@ abstract class Paginas {
      * @return string Código Javascript
      */
     public function javascript() {
+        // Si no ha concentrado
+        if ($this->he_concentrado == false) {
+            $this->concentrar();
+        }
+        // Entregar
         return $this->concentrador->javascript();
     } // javascript
 

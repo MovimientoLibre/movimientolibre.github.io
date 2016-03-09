@@ -34,7 +34,10 @@ class PaginasAutoresIndice extends Paginas {
     // public $encabezado_icono;
     // public $en_raiz;
     // public $en_otro;
-    protected $recolector; // Instancia de RecolectorAutores
+    // public $cantidad_maxima;
+    // protected $recolector;
+    // protected $concentrador;
+    // protected $he_concentrado;
 
     /**
      * Constructor
@@ -86,21 +89,19 @@ class PaginasAutoresIndice extends Paginas {
     } // autor_descripcion_html
 
     /**
-     * HTML
-     *
-     * @return string Código HTML
+     * Concentrar
      */
-    public function html() {
-        // Acumularemos la entrega en este arreglo
-        $a = array();
-        // Acumular encabezado
-        $a[] = $this->encabezado_html();
+    protected function concentrar() {
+        // Si ya se ha concentrado, no se hace nada
+        if ($this->he_concentrado) {
+            return;
+        }
         // Cargar configuración de los autores
-        $autores_config              = new \Configuracion\AutoresConfig();
+        $autores_config = new \Configuracion\AutoresConfig();
         // Iniciar concentrador
-        $clase                       = \Configuracion\AutoresConfig::VINCULOS_INDICE;
-        $concentrador                = new $clase();
-        $concentrador->imagen_tamano = $autores_config->imagen_tamano;
+        $clase                             = \Configuracion\AutoresConfig::VINCULOS_INDICE;
+        $this->concentrador                = new $clase();
+        $this->concentrador->imagen_tamano = $autores_config->imagen_tamano;
         // Si se van a mostrar los autores NO definidos
         if ($autores_config->mostrar_no_definidos) {
             // Bucle por todos los autores encontrados
@@ -117,12 +118,12 @@ class PaginasAutoresIndice extends Paginas {
                     $autor->en_otro = $this->en_otro;
                     $vinculo = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, ImprentaAutores::AUTORES_DIR, $this->autor_descripcion_html($autor));
                     $vinculo->boton_etiqueta = "Todas sus publicaciones";
-                    $concentrador->agregar($vinculo);
+                    $this->concentrador->agregar($vinculo);
                 } elseif ($autores_config->mostrar_no_definidos) {
                     // No está definido
                     $pagina  = sprintf('%s.html', Funciones::caracteres_para_web($nombre));
                     $vinculo = new Vinculo($nombre, $pagina, 'unknown');
-                    $concentrador->agregar($vinculo);
+                    $this->concentrador->agregar($vinculo);
                 }
             }
         } else {
@@ -156,23 +157,12 @@ class PaginasAutoresIndice extends Paginas {
                     $vinculo = new Vinculo($autor->titulo_nombre_completo(), '', $autor->icono, ImprentaAutores::AUTORES_DIR, $this->autor_descripcion_html($autor));
                 }
                 // Agregar vínculo al concentrador
-                $concentrador->agregar($vinculo);
+                $this->concentrador->agregar($vinculo);
             }
         }
-        // Acumular concentrador
-        $a[] = $concentrador->html();
-        // Entregar
-        return implode("\n", $a);
-    } // html
-
-    /**
-     * Javascript
-     *
-     * @return string Código Javascript
-     */
-    public function javascript() {
-        return '';
-    } // javascript
+        // Levantar la bandera
+        $this->he_concentrado = true;
+    } // concentrar
 
 } // Clase PaginasAutoresIndice
 

@@ -34,9 +34,10 @@ class PaginasDetallados extends Paginas {
     // public $encabezado_icono;
     // public $en_raiz;
     // public $en_otro;
-    public $cantidad_maxima; // Entero, cantidad máxima de publicaciones a mostrar, si no está definido usa todas
-    protected $recolector;   // Instancia de Recolector ya con las publicaciones
-    protected $concentrador; // Instancia de VinculosDetallados
+    // public $cantidad_maxima;
+    // protected $recolector;
+    // protected $concentrador;
+    // protected $he_concentrado;
 
     /**
      * Constructor

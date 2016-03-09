@@ -34,8 +34,11 @@ class PaginasCategoriasIndividual extends Paginas {
     // public $encabezado_icono;
     // public $en_raiz;
     // public $en_otro;
-    protected $categoria;  // Instancia de Categoria
-    protected $recolector; // Instancia de RecolectorCategorias
+    // public $cantidad_maxima;
+    // protected $recolector;
+    // protected $concentrador;
+    // protected $he_concentrado;
+    protected $categoria;       // Instancia de Categoria
 
     /**
      * Constructor
@@ -47,6 +50,9 @@ class PaginasCategoriasIndividual extends Paginas {
         // Parámetros
         $this->categoria  = $categoria;
         $this->recolector = $recolector;
+        // Definir el título y la descripción
+        $this->titulo      = $this->categoria->nombre;
+        $this->descripcion = $this->categoria->descripcion;
         // Los vínculos apuntan a páginas en otros directorios
         $this->en_otro            = true;
         $this->categoria->en_raiz = $this->en_raiz;
@@ -54,21 +60,16 @@ class PaginasCategoriasIndividual extends Paginas {
     } // constructor
 
     /**
-     * HTML
-     *
-     * @return string Código HTML
+     * Concentrar
      */
-    public function html() {
-        // Definir el título y la descripción
-        $this->titulo      = $this->categoria->nombre;
-        $this->descripcion = $this->categoria->descripcion;
-        // Acumularemos la entrega en este arreglo
-        $a = array();
-        // Acumular encabezado
-        $a[] = $this->encabezado_html();
+    protected function concentrar() {
+        // Si ya se ha concentrado, no se hace nada
+        if ($this->he_concentrado) {
+            return;
+        }
         // Definir concentrador
-        $clase        = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
-        $concentrador = new $clase();
+        $clase              = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
+        $this->concentrador = new $clase();
         // Bucle por todos los autores
         foreach ($this->recolector->obtener_publicaciones() as $publicacion) {
             // Definir vínculo
@@ -77,22 +78,11 @@ class PaginasCategoriasIndividual extends Paginas {
             $vinculo->en_otro = $this->en_otro;
             $vinculo->definir_con_publicacion($publicacion);
              // Agregar vínculo
-            $concentrador->agregar($vinculo);
+            $this->concentrador->agregar($vinculo);
         }
-        // Acumular concentrador
-        $a[] = $concentrador->html();
-        // Entregar
-        return implode("\n", $a);
-    } // html
-
-    /**
-     * Javascript
-     *
-     * @return string Código Javascript
-     */
-    public function javascript() {
-        return '';
-    } // javascript
+        // Levantar la bandera
+        $this->he_concentrado = true;
+    } // concentrar
 
 } // Clase PaginasCategoriasIndividual
 
