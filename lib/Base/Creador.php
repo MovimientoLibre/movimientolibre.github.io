@@ -30,6 +30,11 @@ namespace Base;
 class Creador extends \Configuracion\CreadorConfig {
 
     // public $imprentas;
+    // public $imprentas_autores;
+    // public $imprentas_categorias;
+    // public $imprentas_pagina_inicial;
+    // public $imprentas_mapa_sitio;
+    // public $imprentas_redifusion;
 
     /**
      * Imprimir
@@ -42,23 +47,23 @@ class Creador extends \Configuracion\CreadorConfig {
             unset($imprenta_publicaciones);
         }
         // Imprimir categorías
-        $imprenta_categorias = new ImprentaCategorias($this->imprentas);
+        $imprenta_categorias = new ImprentaCategorias($this->imprentas_categorias);
         $imprenta_categorias->imprimir();
         unset($imprenta_categorias);
         // Imprimir autores
-        $imprenta_autores = new ImprentaAutores($this->imprentas);
+        $imprenta_autores = new ImprentaAutores($this->imprentas_autores);
         $imprenta_autores->imprimir();
         unset($imprenta_autores);
         // Imprimir página inicial (index.html)
-        $imprenta_pagina_inicial = new ImprentaPaginaInicial($this->imprentas);
+        $imprenta_pagina_inicial = new ImprentaPaginaInicial($this->imprentas_pagina_inicial);
         $imprenta_pagina_inicial->imprimir();
         unset($imprenta_pagina_inicial);
         // Imprimir mapa del sitio (sitemap.xml)
-        $imprenta_mapa_sitio = new ImprentaMapaSitio($this->imprentas);
+        $imprenta_mapa_sitio = new ImprentaMapaSitio($this->imprentas_mapa_sitio);
         $imprenta_mapa_sitio->imprimir();
         unset($imprenta_mapa_sitio);
         // Imprimir redifusión (RSS feed)
-        $imprenta_redifusion = new ImprentaRedifusion($this->imprentas);
+        $imprenta_redifusion = new ImprentaRedifusion($this->imprentas_redifusion);
         $imprenta_redifusion->imprimir();
         unset($imprenta_redifusion);
         // Imprimir página para los resultados del buscador
