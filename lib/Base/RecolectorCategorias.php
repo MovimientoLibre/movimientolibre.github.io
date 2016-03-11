@@ -124,6 +124,15 @@ class RecolectorCategorias extends Recolector {
         }
     } // filtrar_publicaciones_de_categoria
 
+    /**
+     * Quitar filtro
+     */
+    public function quitar_filtro() {
+        if (!is_null($this->publicaciones_todas)) {
+            $this->publicaciones = $this->publicaciones_todas;
+        }
+    } // quitar_filtro
+
 } // Clase RecolectorCategorias
 
 ?>

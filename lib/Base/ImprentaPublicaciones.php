@@ -114,9 +114,11 @@ class ImprentaPublicaciones extends Imprenta {
     } // imprimir_publicaciones
 
     /**
-     * Imprimir index.html
+     * Imprimir índice
+     *
+     * Crea el archivo index.html
      */
-    protected function imprimir_index() {
+    protected function imprimir_indice() {
         // Iniciar el Concentrador, note que la propiedad concentrador debe tener la ruta completa
         $concentrador = new $this->concentrador($this->recolector);
         // Iniciar la Plantilla
@@ -144,7 +146,7 @@ class ImprentaPublicaciones extends Imprenta {
         // Imprimir index.html
         $this->crear_directorio($plantilla->directorio);
         $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
-    } // imprimir_index
+    } // imprimir_indice
 
     /**
      * Imprimir
@@ -154,7 +156,7 @@ class ImprentaPublicaciones extends Imprenta {
         $this->validar();
         $this->recolector->agregar_publicaciones_en($this->publicaciones_directorio, $this);
         $this->imprimir_publicaciones();
-        $this->imprimir_index();
+        $this->imprimir_indice();
         echo sprintf("  %d en %s\n", $this->contador, $this->publicaciones_directorio);
     } // imprimir
 

@@ -27,9 +27,9 @@ namespace Base;
  */
 class ImprentaCategorias extends Imprenta {
 
-    protected $imprentas;                          // Arreglo con rutas a las clases de ImprentaPublicaciones
-    protected $recolector;                         // Instancia de RecolectorCategorias
-    protected $contador            = 0;            // Entero, cantidad de archivos HTML de categorías creados
+    protected $imprentas;      // Arreglo con rutas a las clases de ImprentaPublicaciones
+    protected $recolector;     // Instancia de RecolectorCategorias
+    protected $contador   = 0; // Entero, cantidad de archivos HTML de categorías creados
 
     /**
      * Constructor
@@ -85,7 +85,7 @@ class ImprentaCategorias extends Imprenta {
     } // imprimir_individuales
 
     /**
-     * Imprimir index
+     * Imprimir índice
      *
      * Crea el archivo index.html
      */

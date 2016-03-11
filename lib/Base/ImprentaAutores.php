@@ -27,9 +27,9 @@ namespace Base;
  */
 class ImprentaAutores extends Imprenta {
 
-    protected $imprentas;                       // Arreglo con rutas a las clases de ImprentaPublicaciones
-    protected $recolector;                      // Instancia de RecolectorAutores
-    protected $contador            = 0;         // Entero, cantidad de archivos HTML de autores creados
+    protected $imprentas;      // Arreglo con rutas a las clases de ImprentaPublicaciones
+    protected $recolector;     // Instancia de RecolectorAutores
+    protected $contador   = 0; // Entero, cantidad de archivos HTML de autores creados
 
     /**
      * Constructor

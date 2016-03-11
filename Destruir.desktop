@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Destruir
+Comment=Eliminar todos los archivos HTML
+Exec=xterm -e bin/Destruir.sh
+Icon=user-trash
+Path=/home/guivaloz/Documentos/MovimientoLibre/GitHub/movimientolibre.github.io/
+Terminal=false
+StartupNotify=false
