@@ -55,22 +55,24 @@ class ImprentaAutores extends Imprenta {
         $plantilla->mapa_inferior             = new MapaInferior();
         $plantilla->directorio                = \Configuracion\AutoresConfig::DIRECTORIO;
         $plantilla->navegacion->opcion_activa = \Configuracion\AutoresConfig::NAVEGACION_OPCION_ACTIVA;
-        // Crear directorio
-        $this->crear_directorio($plantilla->directorio);
         // Bucle por todas los autores
         foreach ($this->recolector->obtener_autores() as $autor_texto) {
-            // Filtrar por este autor
-            $this->recolector->filtrar_publicaciones_de_autor($autor_texto);
-            // Definir la ruta del archivo HTML para este autor
+            // Obtener instancia de Autor
             $autor = $autores_config->obtener($autor_texto);
+            // Si está definido en \Configuracion\AutoresConfig
             if ($autor === false) {
                 $autor = new Autor('', '', $autor_texto);
             }
-            $autor->en_raiz = true;
+            // Definir ruta del archivo a crear, las banderas en falso hacen que el URL sea autor.html
+            $autor->en_raiz = false;
             $autor->en_otro = false;
-            $ruta           = $autor->url();
-            // Iniciar PaginasAutoresIndividual
-            $pagina                  = new PaginasAutoresIndividual($autor, $this->recolector);
+            $ruta           = sprintf('%s/%s', $plantilla->directorio, $autor->url());
+            // Filtrar por este autor
+            $this->recolector->filtrar_publicaciones_de_autor($autor_texto);
+            // Iniciar página
+            $pagina          = new PaginasAutoresIndividual($autor, $this->recolector);
+            $pagina->en_raiz = false;
+            $pagina->en_otro = true;
             // Pasar a la plantilla estos valores
             $plantilla->titulo       = $pagina->titulo;
             $plantilla->descripcion  = $pagina->descripcion;
@@ -101,11 +103,11 @@ class ImprentaAutores extends Imprenta {
         $plantilla->descripcion               = \Configuracion\AutoresConfig::INDICE_DESCRIPCION;
         $plantilla->claves                    = \Configuracion\AutoresConfig::INDICE_CLAVES;
         $plantilla->archivo_ruta              = sprintf('%s/index.html', $plantilla->directorio);
-        // Iniciar PaginasAutoresIndice
+        // Iniciar página
         $pagina                = new PaginasAutoresIndice($this->recolector);
         $pagina->titulo        = $plantilla->titulo;
         $pagina->descripcion   = $plantilla->descripcion;
-        // Definir contenido
+        // Pasar a la plantilla el HTML y Javascript
         $plantilla->contenido  = $pagina->html();
         $plantilla->javascript = $pagina->javascript();
         // Crear archivo
@@ -118,10 +120,10 @@ class ImprentaAutores extends Imprenta {
     public function imprimir() {
         echo "ImprentaAutores:       ";
         $this->recolector->agregar_publicaciones_de_imprentas($this->imprentas);
+        $this->crear_directorio(\Configuracion\AutoresConfig::DIRECTORIO);
         $this->imprimir_individuales();
         $this->imprimir_indice();
-        // Mensaje
-        echo sprintf("  %d en %s\n", $this->contador, \Configuracion\AutoresConfig::DIRECTORIO);
+        echo sprintf(" %d en %s\n", $this->contador, \Configuracion\AutoresConfig::DIRECTORIO);
     } // imprimir
 
 } // Clase ImprentaAutores

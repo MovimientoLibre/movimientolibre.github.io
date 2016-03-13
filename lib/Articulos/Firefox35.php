@@ -43,7 +43,7 @@ class Firefox35 extends \Base\PublicacionSchemaBlogPosting {
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/Firefox35.md';
         // Para el Organizador
-        $this->categorias      = array('Firefox', 'KDE');
+        $this->categorias      = array('Firefox');
     } // constructor
 
 } // Clase Firefox35

@@ -104,7 +104,6 @@ class ImprentaPublicaciones extends Imprenta {
             // Al incorporar la publicación a la plantilla puede entregar falso cuando no se define el archivo de salida o no tener contenido
             if ($plantilla->incorporar_publicacion($publicacion) == true) {
                 // Escribir el archivo HTML
-                $this->crear_directorio($plantilla->directorio);
                 $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
                 $c++;
             }
@@ -143,8 +142,7 @@ class ImprentaPublicaciones extends Imprenta {
         // Pasar a la plantilla el HTML y Javascript del concentrador
         $plantilla->contenido    = $concentrador->html();
         $plantilla->javascript[] = $concentrador->javascript();
-        // Imprimir index.html
-        $this->crear_directorio($plantilla->directorio);
+        // Crear archivo
         $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
     } // imprimir_indice
 
@@ -155,9 +153,10 @@ class ImprentaPublicaciones extends Imprenta {
         echo "ImprentaPublicaciones: ";
         $this->validar();
         $this->recolector->agregar_publicaciones_en($this->publicaciones_directorio, $this);
+        $this->crear_directorio($this->directorio);
         $this->imprimir_publicaciones();
         $this->imprimir_indice();
-        echo sprintf("  %d en %s\n", $this->contador, $this->publicaciones_directorio);
+        echo sprintf(" %d en %s\n", $this->contador, $this->directorio);
     } // imprimir
 
 } // Clase ImprentaPublicaciones

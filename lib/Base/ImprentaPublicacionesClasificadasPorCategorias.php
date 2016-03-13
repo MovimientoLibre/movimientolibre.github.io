@@ -27,19 +27,19 @@ namespace Base;
  */
 class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicaciones {
 
-    // public $directorio;               // Texto, nombre del directorio en raíz donde se guardará el archivo HTML
-    // public $publicaciones_directorio; // Texto, nombre del directorio dentro de lib que contiene los archivos con las publicaciones
-    // public $encabezado;               // Código HTML para usarse como encabezado
-    // public $encabezado_color;         // Texto, color de fondo del encabezado #nnnnnn
-    // public $encabezado_icono;         // Texto, icono Font Awesome
-    // public $claves;                   // Texto, palabras separadas por comas para meta tag
-    // public $nombre_menu;              // Texto, opción del menú activa
-    // public $titulo;                   // Texto, título de la página
-    // public $descripcion;              // Texto, descripción para meta tag
-    // protected $archivo_ruta;          // Texto opcional, ruta al archivo HTML del concentrador
-    // protected $concentrador;          // Ruta a la clase. Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
-    // protected $recolector;            // Instancia de Recolector
-    // protected $contador = 0;          // Entero, cantidad de publicaciones producidas
+    // public $directorio;
+    // public $publicaciones_directorio;
+    // public $encabezado;
+    // public $encabezado_color;
+    // public $encabezado_icono;
+    // public $claves;
+    // public $nombre_menu;
+    // public $titulo;
+    // public $descripcion;
+    // protected $archivo_ruta;
+    // protected $concentrador;
+    // protected $recolector;
+    // protected $contador;
 
     /**
      * Constructor
@@ -49,85 +49,47 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
     } // constructor
 
     /**
-     * Encabezado HTML
-     *
-     * @param  string Título
-     * @param  string Descripción
-     * @return string Código HTML
-     */
-    protected function encabezado_html($titulo, $descripcion) {
-        // Acumularemos la entrega en este arreglo
-        $a = array();
-        // Acumular
-        if ($this->encabezado_color != '') {
-            $a[] = sprintf('      <div class="encabezado" style="background-color:%s;">', $this->encabezado_color);
-        } else {
-            $a[] = '      <div class="encabezado">';
-        }
-        if ($this->encabezado_icono != '') {
-            $enca = sprintf('<i class="%s encabezado-icono"></i> %s', $this->encabezado_icono, $titulo);
-        } else {
-            $enca = $titulo;
-        }
-        $a[] = "        <span><h1>$enca</h1></span>";
-        if ($descripcion != '') {
-            $a[] = sprintf('        <div class="encabezado-descripcion">%s</div>', $descripcion);
-        }
-        $a[] = '      </div>';
-        // Entregar
-        return implode("\n", $a);
-    } // encabezado_html
-
-    /**
      * Imprimir categorias
      *
-     * Crea archivos categoria-nombre.html
+     * Crea archivos para cada categoria como categoria-nombre.html
      */
     protected function imprimir_categorias() {
-        // Iniciar la Plantilla
-        $plantilla                = new Plantilla();
-        $plantilla->navegacion    = new Navegacion();
-        $plantilla->mapa_inferior = new MapaInferior();
-        // Pasar a la plantilla estos valores
-        $plantilla->claves                    = $this->claves;
-        $plantilla->directorio                = $this->directorio;
-        $plantilla->navegacion->opcion_activa = $this->nombre_menu;
         // Cargar configuración de las categorías
         $categorias_config = new \Configuracion\CategoriasConfig();
+        // Iniciar la Plantilla
+        $plantilla                            = new Plantilla();
+        $plantilla->navegacion                = new Navegacion();
+        $plantilla->mapa_inferior             = new MapaInferior();
+        $plantilla->directorio                = $this->directorio;
+        $plantilla->navegacion->opcion_activa = $this->nombre_menu;
         // Bucle por todas las categorias
-        foreach ($this->recolector->obtener_categorias() as $nombre) {
+        foreach ($this->recolector->obtener_categorias() as $categoria_texto) {
             // Obtener instancia de Categoria
-            $categoria = $categorias_config->obtener($nombre);
+            $categoria = $categorias_config->obtener($categoria_texto);
             // Si está definido en \Configuracion\CategoriasConfig
-            if ($categoria instanceof \Base\Categoria) {
-                // Pasar a la plantilla estos valores
-                $plantilla->titulo       = $categoria->nombre;
-                $plantilla->descripcion  = $categoria->descripcion;
-                $plantilla->archivo_ruta = sprintf('%s/categoria-%s.html', $this->directorio, \Base\Funciones::caracteres_para_web($categoria->nombre));
-            } elseif ($categorias_config->mostrar_no_definidos) {
-                // Pasar a la plantilla estos valores
-                $plantilla->titulo       = $nombre;
-                $plantilla->descripcion  = "Categoría $nombre";
-                $plantilla->archivo_ruta = sprintf('%s/categoria-%s.html', $this->directorio, \Base\Funciones::caracteres_para_web($nombre));
+            if ($categoria === false) {
+                $categoria              = new Categoria($categoria_texto);
+                $categoria->descripcion = "Categoría $categoria_texto en {$this->titulo}";
             }
-            // Filtrar
-            $this->recolector->filtrar_publicaciones_de_categoria($nombre);
-            // Iniciar concentrador
-            $concentrador = new \Base\VinculosDetallados();
-            // Bucle por las publicaciones con esa categoría
-            foreach ($this->recolector->obtener_publicaciones() as $publicacion) {
-                $vinculo = new Vinculo();
-                $vinculo->definir_con_publicacion($publicacion);
-                $concentrador->agregar($vinculo);
-            }
-            // Pasar el HTML y Javascript a la plantilla
-            $plantilla->contenido  = array(
-                $this->encabezado_html($plantilla->titulo, $plantilla->descripcion),
-                $concentrador->html());
-            $plantilla->javascript = $concentrador->javascript();
-            // Imprimir
-            $this->crear_directorio($plantilla->directorio);
+            // Definir ruta del archivo a crear
+            $ruta = sprintf('%s/categoria-%s.html', $plantilla->directorio, \Base\Funciones::caracteres_para_web($categoria->nombre));
+            // Filtrar por esta categoría
+            $this->recolector->filtrar_publicaciones_de_categoria($categoria_texto);
+            // Iniciar página
+            $pagina          = new PaginasCategoriasIndividual($categoria, $this->recolector);
+            $pagina->en_raiz = false;
+            $pagina->en_otro = true;
+            // Pasar a la plantilla los valores que cambian en cada página
+            $plantilla->titulo       = $categoria->nombre;
+            $plantilla->descripcion  = $categoria->descripcion;
+            $plantilla->claves       = "{$this->claves}, {$categoria->nombre}";
+            $plantilla->archivo_ruta = $ruta;
+            // Pasar a la plantilla el HTML y Javascript
+            $plantilla->contenido    = $pagina->html();
+            $plantilla->javascript   = $pagina->javascript();
+            // Crear archivo
             $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
+            $this->contador++;
         }
     } // imprimir_categorias
 
@@ -137,43 +99,24 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
      * Crea el archivo index.html
      */
     protected function imprimir_indice() {
-        // Iniciar concentrador
-        $concentrador = new \Base\VinculosCompactos();
-        // Cargar configuración de las categorías
-        $categorias_config = new \Configuracion\CategoriasConfig();
-        // Bucle por todas las categorias
-        foreach ($this->recolector->obtener_categorias() as $nombre) {
-            // Obtener instancia de Categoria
-            $categoria = $categorias_config->obtener($nombre);
-            // Si está definido en \Configuracion\CategoriasConfig
-            if ($categoria instanceof \Base\Categoria) {
-                $url     = sprintf('categoria-%s.html', \Base\Funciones::caracteres_para_web($categoria->nombre));
-                $vinculo = new \Base\Vinculo($categoria->nombre, $url, $categoria->icono, $this->directorio);
-                $concentrador->agregar($vinculo);
-            } elseif ($categorias_config->mostrar_no_definidos) {
-                $url     = sprintf('categoria-%s.html', \Base\Funciones::caracteres_para_web($nombre));
-                $vinculo = new \Base\Vinculo($nombre, $url, 'unknown', $this->directorio);
-                $concentrador->agregar($vinculo);
-            }
-        }
         // Iniciar la Plantilla
-        $plantilla                = new Plantilla();
-        $plantilla->navegacion    = new Navegacion();
-        $plantilla->mapa_inferior = new MapaInferior();
-        // Pasar a la plantilla estos valores
+        $plantilla                            = new Plantilla();
+        $plantilla->navegacion                = new Navegacion();
+        $plantilla->mapa_inferior             = new MapaInferior();
+        $plantilla->directorio                = $this->directorio;
+        $plantilla->navegacion->opcion_activa = $this->nombre_menu;
         $plantilla->titulo                    = $this->titulo;
         $plantilla->descripcion               = $this->descripcion;
         $plantilla->claves                    = $this->claves;
-        $plantilla->directorio                = $this->directorio;
         $plantilla->archivo_ruta              = $this->archivo_ruta;
-        $plantilla->navegacion->opcion_activa = $this->nombre_menu;
-        // Pasar el HTML y Javascript a la plantilla
-        $plantilla->contenido  = array(
-            $this->encabezado_html($this->titulo, $this->descripcion),
-            $concentrador->html());
-        $plantilla->javascript = $concentrador->javascript();
-        // Imprimir index.html
-        $this->crear_directorio($plantilla->directorio);
+        // Iniciar página
+        $pagina                = new PaginasPublicacionesClasificadasPorCategorias($this->recolector);
+        $pagina->titulo        = $plantilla->titulo;
+        $pagina->descripcion   = $plantilla->descripcion;
+        // Pasar a la plantilla el HTML y Javascript
+        $plantilla->contenido  = $pagina->html();
+        $plantilla->javascript = $pagina->javascript();
+        // Crear archivo
         $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
     } // imprimir_indice
 
@@ -184,10 +127,11 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
         echo "ImprentaPublicacionesClasificadosPorCategorias: ";
         $this->validar();
         $this->recolector->agregar_publicaciones_en($this->publicaciones_directorio, $this);
+        $this->crear_directorio($this->directorio);
         $this->imprimir_publicaciones();
         $this->imprimir_indice();
         $this->imprimir_categorias();
-        echo sprintf(" %d en %s\n", $this->contador, $this->publicaciones_directorio);
+        echo sprintf(" %d en %s\n", $this->contador, $this->directorio);
     } // imprimir
 
 } // Clase ImprentaPublicacionesClasificadasPorCategorias

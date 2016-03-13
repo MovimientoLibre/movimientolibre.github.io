@@ -38,7 +38,7 @@ class PaginasCategoriasIndividual extends Paginas {
     // protected $recolector;
     // protected $concentrador;
     // protected $he_concentrado;
-    protected $categoria;       // Instancia de Categoria
+    protected $categoria;        // Instancia de Categoria
 
     /**
      * Constructor
@@ -53,8 +53,7 @@ class PaginasCategoriasIndividual extends Paginas {
         // Definir el título y la descripción
         $this->titulo      = $this->categoria->nombre;
         $this->descripcion = $this->categoria->descripcion;
-        // Los vínculos apuntan a páginas en otros directorios
-        $this->en_otro            = true;
+        // Pasar a categoría
         $this->categoria->en_raiz = $this->en_raiz;
         $this->categoria->en_otro = $this->en_otro;
     } // constructor
@@ -67,7 +66,7 @@ class PaginasCategoriasIndividual extends Paginas {
         if ($this->he_concentrado) {
             return;
         }
-        // Definir concentrador
+        // Iniciar concentrador
         $clase              = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
         $this->concentrador = new $clase();
         // Bucle por todos los autores

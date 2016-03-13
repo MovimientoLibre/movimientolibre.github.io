@@ -53,8 +53,7 @@ class PaginasAutoresIndividual extends Paginas {
         // Definir el título y la descripción
         $this->titulo      = $this->autor->titulo_nombre_completo();
         $this->descripcion = $this->autor->semblanza;
-        // Los vínculos apuntan a páginas en otros directorios
-        $this->en_otro        = true;
+        // Pasar a autor
         $this->autor->en_raiz = $this->en_raiz;
         $this->autor->en_otro = $this->en_otro;
     } // constructor
@@ -109,7 +108,7 @@ class PaginasAutoresIndividual extends Paginas {
         if ($this->he_concentrado) {
             return;
         }
-        // Definir concentrador
+        // Iniciar concentrador
         $clase              = \Configuracion\AutoresConfig::VINCULOS_INDIVIDUAL;
         $this->concentrador = new $clase();
         // Bucle por todos los autores
