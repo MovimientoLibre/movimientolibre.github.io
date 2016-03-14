@@ -36,14 +36,14 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
     // public $en_otro;
     // public $cantidad_maxima;
     // protected $recolector;
-    // protected $concentrador;
+    // protected $vinculos;
     // protected $he_concentrado;
-    public $ultimas_encabezado      = 'Últimas publicaciones';
-    public $ultimas_concentrador    = '\\Base\\VinculosDetallados';
-    public $ultimas_cantidad        = 4;
-    public $categorias_encabezado   = 'Categorías';
-    public $categorias_concentrador = '\\Base\\VinculosCompactos';
-    protected $concentrador_ultimas;
+    public $ultimas_encabezado    = 'Últimas publicaciones';
+    public $ultimas_vinculos      = '\\Base\\VinculosDetallados';
+    public $ultimas_cantidad      = 4;
+    public $categorias_encabezado = 'Categorías';
+    public $categorias_vinculos   = '\\Base\\VinculosCompactos';
+    protected $vinculos_ultimas; // Instancia de la clase indicada por ultimas_vinculos
 
     /**
      * Constructor
@@ -64,8 +64,8 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
         }
         // Cargar configuración de las categorías
         $categorias_config = new \Configuracion\CategoriasConfig();
-        // Iniciar concentrador categorías
-        $this->concentrador = new $this->categorias_concentrador();
+        // Iniciar vínculos
+        $this->vinculos = new $this->categorias_vinculos();
         // Bucle por todas las categorias
         foreach ($this->recolector->obtener_categorias() as $nombre) {
             // Obtener instancia de Categoria
@@ -76,17 +76,17 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
                 $vinculo          = new \Base\Vinculo($categoria->nombre, $url, $categoria->icono, $this->directorio);
                 $vinculo->en_raiz = false;
                 $vinculo->en_otro = false;
-                $this->concentrador->agregar($vinculo);
+                $this->vinculos->agregar($vinculo);
             } elseif ($categorias_config->mostrar_no_definidos) {
                 $url              = sprintf('categoria-%s.html', \Base\Funciones::caracteres_para_web($nombre));
                 $vinculo          = new \Base\Vinculo($nombre, $url, 'unknown', $this->directorio);
                 $vinculo->en_raiz = false;
                 $vinculo->en_otro = false;
-                $this->concentrador->agregar($vinculo);
+                $this->vinculos->agregar($vinculo);
             }
         }
-        // Iniciar concentrador últimas publicaciones
-        $this->concentrador_ultimas = new $this->ultimas_concentrador();
+        // Iniciar vínculos últimas publicaciones
+        $this->vinculos_ultimas = new $this->ultimas_vinculos();
         // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
         $this->recolector->ordenar_por_tiempo_desc();
         // Bucle por las publicaciones, tiene la cantidad límite
@@ -95,7 +95,7 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
             $vinculo->en_raiz = false;
             $vinculo->en_otro = false;
             $vinculo->definir_con_publicacion($publicacion);
-            $this->concentrador_ultimas->agregar($vinculo);
+            $this->vinculos_ultimas->agregar($vinculo);
         }
         // Levantar la bandera
         $this->he_concentrado = true;
@@ -118,9 +118,9 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
         // Acumular
         $a[] = $this->encabezado_html();
         $a[] = "<h2>{$this->ultimas_encabezado}</h2>";
-        $a[] = $this->concentrador_ultimas->html();
+        $a[] = $this->vinculos_ultimas->html();
         $a[] = "<h2>{$this->categorias_encabezado}</h2>";
-        $a[] = $this->concentrador->html();
+        $a[] = $this->vinculos->html();
         // Entregar
         return implode("\n", $a);
     } // html

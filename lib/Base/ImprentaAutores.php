@@ -104,9 +104,11 @@ class ImprentaAutores extends Imprenta {
         $plantilla->claves                    = \Configuracion\AutoresConfig::INDICE_CLAVES;
         $plantilla->archivo_ruta              = sprintf('%s/index.html', $plantilla->directorio);
         // Iniciar la página
-        $pagina                = new PaginasAutoresIndice($this->recolector);
-        $pagina->titulo        = $plantilla->titulo;
-        $pagina->descripcion   = $plantilla->descripcion;
+        $pagina              = new PaginasAutoresIndice($this->recolector);
+        $pagina->titulo      = $plantilla->titulo;
+        $pagina->descripcion = $plantilla->descripcion;
+        $pagina->en_raiz     = false;
+        $pagina->en_otro     = true;
         // Pasar a la plantilla el HTML y Javascript de la página
         $plantilla->contenido  = $pagina->html();
         $plantilla->javascript = $pagina->javascript();

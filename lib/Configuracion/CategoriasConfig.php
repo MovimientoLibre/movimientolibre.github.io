@@ -27,8 +27,8 @@ namespace Configuracion;
  */
 class CategoriasConfig {
 
-    const VINCULOS_INDICE          = '\Base\VinculosGalerias';   // Ruta a la clase para el índice de categorias, en categorias/index.html
-    const VINCULOS_INDIVIDUAL      = '\Base\VinculosDetallados'; // Ruta a la clase para listar las publicaciones de cada categoría, a usarse en las páginas de las categorías
+    const VINCULOS_INDICE          = '\\Base\\VinculosGalerias';   // Ruta a la clase para el índice de categorias, en categorias/index.html
+    const VINCULOS_INDIVIDUAL      = '\\Base\\VinculosDetallados'; // Ruta a la clase para listar las publicaciones de cada categoría, a usarse en las páginas de las categorías
     const ORDENAR_POR              = 'fecha_desc';               // Texto que usa el Recolector para ordenar las publicaciones, puede ser fecha_desc o dir_nombre_asc
     const DIRECTORIO               = 'categorias';               // Nombre del directorio que se creará en la raiz para depositar los archivos HTML
     const NAVEGACION_OPCION_ACTIVA = '';                         // Opción del menú activa cuando esté en el índice, debe ser un valor en /Configuracion/NavegacionConfig

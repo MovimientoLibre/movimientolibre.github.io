@@ -36,7 +36,7 @@ class PaginasGalerias extends Paginas {
     // public $en_otro;
     // public $cantidad_maxima;
     // protected $recolector;
-    // protected $concentrador;
+    // protected $vinculos;
     // protected $he_concentrado;
 
     /**
@@ -45,8 +45,8 @@ class PaginasGalerias extends Paginas {
      * @param mixed Instancia de Recolector ya con las publicaciones
      */
     public function __construct(Recolector $recolector) {
-        $this->recolector   = $recolector;
-        $this->concentrador = new VinculosGalerias();
+        $this->recolector = $recolector;
+        $this->vinculos   = new VinculosGalerias();
     } // constructor
 
 } // Clase PaginasGalerias

@@ -43,7 +43,7 @@ class NuevaImagen2009 extends \Base\PublicacionSchemaBlogPosting {
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/NuevaImagen2009.md';
         // Para el Organizador
-        $this->categorias      = array('Desarrollo');
+        $this->categorias      = array('Software Libre');
     } // constructor
 
 } // Clase NuevaImagen2009

@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - Imprenta
  *
- * Copyright (C) 2015 Guillermo Valdés Lozano
+ * Copyright (C) 2016 Guillermo Valdés Lozano
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -40,8 +40,8 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         $this->encabezado_color         = '#FFFFFF';
         // Opción de Navegación a poner activa
         $this->nombre_menu              = 'Opción';
-        // Ruta a la clase para hacer el index.html
-        $this->concentrador             = '\\Base\\PaginasDetallados'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
+        // Ruta a la clase para hacer la página con el índice
+        $this->indices_paginas          = '\\Base\\PaginasDetallados'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
         $this->directorio               = 'titulo';
         // Ejecutar constructor en el padre

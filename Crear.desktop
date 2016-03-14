@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=Crear
-Comment=Movimiento Libre sitio web
-Exec=xterm -hold -e 'bin/Crear.php; echo "Ya puede cerrar esta terminal."'
+Comment=Crear los archivos HTML
+Exec=xterm -hold -e '~/Documentos/MovimientoLibre/GitHub/movimientolibre.github.io/bin/Crear.php; echo "Script terminado. Ya puede cerrar esta terminal."'
 Icon=media-record
-Path=/home/guivaloz/Documentos/MovimientoLibre/GitHub/movimientolibre.github.io/
+Path=
 Terminal=false
 StartupNotify=false

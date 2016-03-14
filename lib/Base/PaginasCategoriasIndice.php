@@ -36,7 +36,7 @@ class PaginasCategoriasIndice extends Paginas {
     // public $en_otro;
     // public $cantidad_maxima;
     // protected $recolector;
-    // protected $concentrador;
+    // protected $vinculos;
     // protected $he_concentrado;
 
     /**
@@ -58,10 +58,10 @@ class PaginasCategoriasIndice extends Paginas {
         }
         // Cargar configuración de las categorías
         $categorias_config = new \Configuracion\CategoriasConfig();
-        // Iniciar concentrador
-        $clase                             = \Configuracion\CategoriasConfig::VINCULOS_INDICE;
-        $this->concentrador                = new $clase();
-        $this->concentrador->imagen_tamano = $categorias_config->imagen_tamano;
+        // Iniciar vínculos
+        $clase                         = \Configuracion\CategoriasConfig::VINCULOS_INDICE;
+        $this->vinculos                = new $clase();
+        $this->vinculos->imagen_tamano = $categorias_config->imagen_tamano;
         // Bucle por todas las categorias
         foreach ($this->recolector->obtener_categorias() as $nombre) {
             // Obtener la cantidad de publicaciones de esta categoría
@@ -76,12 +76,12 @@ class PaginasCategoriasIndice extends Paginas {
                 $categoria->en_otro = $this->en_otro;
                 $etiqueta           = sprintf('%s (%d)', $categoria->nombre, $cantidad);
                 $vinculo            = new Vinculo($etiqueta, $categoria->url(), $categoria->icono, \Configuracion\CategoriasConfig::DIRECTORIO, $categoria->descripcion);
-                $this->concentrador->agregar($vinculo);
+                $this->vinculos->agregar($vinculo);
             } elseif ($categorias_config->mostrar_no_definidos) {
                 // No está definido
                 $etiqueta = sprintf('%s (%d)', $nombre, $cantidad);
                 $vinculo  = new Vinculo($etiqueta, sprintf('%s.html', Funciones::caracteres_para_web($nombre)), 'unknown', \Configuracion\CategoriasConfig::DIRECTORIO);
-                $this->concentrador->agregar($vinculo);
+                $this->vinculos->agregar($vinculo);
             }
         }
         // Levantar la bandera

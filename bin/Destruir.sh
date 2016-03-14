@@ -1,4 +1,12 @@
 #!/bin/bash
-cd /home/guivaloz/Documentos/MovimientoLibre/GitHub/movimientolibre.github.io
-rm apuntes/*.html articulos/*.html autores/*.html categorias/*.html contacto/*.html licencias/*.html presentaciones/*.html *.html *.xml
+cd ~/Documentos/MovimientoLibre/GitHub/movimientolibre.github.io
+rm apuntes/*.html
+rm articulos/*.html
+rm autores/*.html
+rm categorias/*.html
+rm contacto/*.html
+rm licencias/*.html
+rm presentaciones/*.html
+rm *.html
+rm *.xml
 echo "¡Destruido!"

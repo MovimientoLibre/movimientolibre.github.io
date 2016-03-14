@@ -37,14 +37,14 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
     // public $titulo;
     // public $descripcion;
     // protected $archivo_ruta;
-    // protected $concentrador;
+    // protected $indices_paginas;
     // protected $recolector;
     // protected $contador;
-    protected $ultimas_encabezado      = 'Últimas publicaciones';
-    protected $ultimas_concentrador    = '\\Base\\VinculosDetallados';
-    protected $ultimas_cantidad        = 4;
-    protected $categorias_encabezado   = 'Categorías';
-    protected $categorias_concentrador = '\\Base\\VinculosCompactos';
+    protected $ultimas_encabezado    = 'Últimas publicaciones';
+    protected $ultimas_vinculos      = '\\Base\\VinculosDetallados';
+    protected $ultimas_cantidad      = 4;
+    protected $categorias_encabezado = 'Categorías';
+    protected $categorias_vinculos   = '\\Base\\VinculosCompactos';
 
     /**
      * Constructor
@@ -81,9 +81,11 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
             // Filtrar por esta categoría
             $this->recolector->filtrar_publicaciones_de_categoria($categoria_texto);
             // Iniciar página
-            $pagina          = new PaginasCategoriasIndividual($categoria, $this->recolector);
-            $pagina->en_raiz = false;
-            $pagina->en_otro = true;
+            $pagina              = new $this->indices_paginas($this->recolector);
+            $pagina->titulo      = "{$this->titulo} en {$categoria->nombre}";
+            $pagina->descripcion = $categoria->descripcion;
+            $pagina->en_raiz     = false;
+            $pagina->en_otro     = false;
             // Pasar a la plantilla los valores que cambian en cada página
             $plantilla->titulo       = $categoria->nombre;
             $plantilla->descripcion  = $categoria->descripcion;
@@ -119,10 +121,12 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
         $pagina->titulo                  = $this->titulo;
         $pagina->descripcion             = $this->descripcion;
         $pagina->ultimas_encabezado      = $this->ultimas_encabezado;
-        $pagina->ultimas_concentrador    = $this->ultimas_concentrador;
+        $pagina->ultimas_vinculos        = $this->ultimas_vinculos;
         $pagina->ultimas_cantidad        = $this->ultimas_cantidad;
         $pagina->categorias_encabezado   = $this->categorias_encabezado;
-        $pagina->categorias_concentrador = $this->categorias_concentrador;
+        $pagina->categorias_vinculos     = $this->categorias_vinculos;
+        $pagina->en_raiz                 = false;
+        $pagina->en_otro                 = false;
         // Pasar a la plantilla el HTML y Javascript
         $plantilla->contenido  = $pagina->html();
         $plantilla->javascript = $pagina->javascript();

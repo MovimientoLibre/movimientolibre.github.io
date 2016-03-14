@@ -27,16 +27,16 @@ namespace Base;
  */
 abstract class Paginas {
 
-    public $titulo;           // Texto, título de la página
-    public $descripcion;      // Texto, descripción para meta tag
-    public $encabezado;       // Código HTML para usarse como encabezado
-    public $encabezado_color; // Texto, color de fondo del encabezado #nnnnnn
-    public $encabezado_icono; // Texto, icono Font Awesome
-    public $en_raiz = false;  // Si es verdadero los vínculos serán para un archivo en la raíz del sitio
-    public $en_otro = false;  // Si es verdadero el archivo va a OTRO lugar como al directorio autores, categorias, etc.
-    public $cantidad_maxima;  // Entero, cantidad máxima de publicaciones a mostrar, si no está definido usa todas
-    protected $recolector;    // Instancia de Recolector
-    protected $concentrador;  // Instancia de Vinculos
+    public $titulo;                    // Texto, título de la página
+    public $descripcion;               // Texto, descripción para meta tag
+    public $encabezado;                // Código HTML para usarse como encabezado
+    public $encabezado_color;          // Texto, color de fondo del encabezado #nnnnnn
+    public $encabezado_icono;          // Texto, icono Font Awesome
+    public $en_raiz           = false; // Si es verdadero los vínculos serán para un archivo en la raíz del sitio
+    public $en_otro           = false; // Si es verdadero el archivo va a OTRO lugar como al directorio autores, categorias, etc.
+    public $cantidad_maxima;           // Entero, cantidad máxima de publicaciones a mostrar, si no está definido usa todas
+    protected $recolector;             // Instancia de Recolector
+    protected $vinculos;               // Instancia de Vinculos
     protected $he_concentrado = false; // Bandera
 
     /**
@@ -89,9 +89,9 @@ abstract class Paginas {
         if ($this->he_concentrado) {
             return;
         }
-        // Pasar parámetros al concentrador
-        $this->concentrador->en_raiz = $this->en_raiz;
-        $this->concentrador->en_otro = $this->en_otro;
+        // Pasar parámetros a vínculos
+        $this->vinculos->en_raiz = $this->en_raiz;
+        $this->vinculos->en_otro = $this->en_otro;
         // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
         $this->recolector->ordenar_por_tiempo_desc();
         // Bucle por las publicaciones, tiene la cantidad límite
@@ -102,7 +102,7 @@ abstract class Paginas {
             $vinculo->en_otro = $this->en_otro;
             $vinculo->definir_con_publicacion($publicacion);
             // Agregar
-            $this->concentrador->agregar($vinculo);
+            $this->vinculos->agregar($vinculo);
         }
         // Levantar la bandera
         $this->he_concentrado = true;
@@ -111,7 +111,7 @@ abstract class Paginas {
     /**
      * HTML
      *
-     * Entrega el código HTML generado por encabezado_html y lo del concentrador
+     * Entrega el código HTML generado por encabezado_html y vínculos
      *
      * @return string Código HTML
      */
@@ -121,7 +121,7 @@ abstract class Paginas {
             $this->concentrar();
         }
         // Entregar
-        return $this->encabezado_html()."\n".$this->concentrador->html();
+        return $this->encabezado_html()."\n".$this->vinculos->html();
     } // html
 
     /**
@@ -135,7 +135,7 @@ abstract class Paginas {
             $this->concentrar();
         }
         // Entregar
-        return $this->concentrador->javascript();
+        return $this->vinculos->javascript();
     } // javascript
 
 } // Clase Abstracta Paginas

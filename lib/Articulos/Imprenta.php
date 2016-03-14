@@ -41,15 +41,15 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
         // Opción de Navegación a poner activa
         $this->nombre_menu              = 'Artículos';
         // Ruta a la clase para hacer el index.html
-        $this->concentrador             = '\\Base\\PaginasDetallados'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
+        $this->indices_paginas          = '\\Base\\PaginasDetallados'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
         $this->directorio               = 'articulos';
         // Pasar a la página índice estos parámetros
         $this->ultimas_encabezado       = 'Últimos artículos';
-        $this->ultimas_concentrador     = '\\Base\\VinculosDetallados';
-        $this->ultimas_cantidad         = 8;
+        $this->ultimas_vinculos         = '\\Base\\VinculosDetallados';
+        $this->ultimas_cantidad         = 4;
         $this->categorias_encabezado    = 'Todos los artículos clasificados por categorías';
-        $this->categorias_concentrador  = '\\Base\\VinculosCompactos';
+        $this->categorias_vinculos      = '\\Base\\VinculosCompactos';
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor

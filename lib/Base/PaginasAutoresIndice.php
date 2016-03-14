@@ -36,7 +36,7 @@ class PaginasAutoresIndice extends Paginas {
     // public $en_otro;
     // public $cantidad_maxima;
     // protected $recolector;
-    // protected $concentrador;
+    // protected $vinculos;
     // protected $he_concentrado;
 
     /**
@@ -98,10 +98,10 @@ class PaginasAutoresIndice extends Paginas {
         }
         // Cargar configuración de los autores
         $autores_config = new \Configuracion\AutoresConfig();
-        // Iniciar concentrador
-        $clase                             = \Configuracion\AutoresConfig::VINCULOS_INDICE;
-        $this->concentrador                = new $clase();
-        $this->concentrador->imagen_tamano = $autores_config->imagen_tamano;
+        // Iniciar vínculos
+        $clase                         = \Configuracion\AutoresConfig::VINCULOS_INDICE;
+        $this->vinculos                = new $clase();
+        $this->vinculos->imagen_tamano = $autores_config->imagen_tamano;
         // Si se van a mostrar los autores NO definidos
         if ($autores_config->mostrar_no_definidos) {
             // Bucle por todos los autores encontrados
@@ -118,12 +118,12 @@ class PaginasAutoresIndice extends Paginas {
                     $autor->en_otro          = $this->en_otro;
                     $vinculo                 = new Vinculo($autor->titulo_nombre_completo(), $autor->url(), $autor->icono, \Configuracion\AutoresConfig::DIRECTORIO, $this->autor_descripcion_html($autor));
                     $vinculo->boton_etiqueta = "Todas sus publicaciones";
-                    $this->concentrador->agregar($vinculo);
+                    $this->vinculos->agregar($vinculo);
                 } elseif ($autores_config->mostrar_no_definidos) {
                     // No está definido
                     $pagina  = sprintf('%s.html', Funciones::caracteres_para_web($nombre));
                     $vinculo = new Vinculo($nombre, $pagina, 'unknown');
-                    $this->concentrador->agregar($vinculo);
+                    $this->vinculos->agregar($vinculo);
                 }
             }
         } else {
@@ -156,8 +156,8 @@ class PaginasAutoresIndice extends Paginas {
                     // No tiene publicaciones, sólo se ponen los datos del autor sin enlace a su página
                     $vinculo = new Vinculo($autor->titulo_nombre_completo(), '', $autor->icono, \Configuracion\AutoresConfig::DIRECTORIO, $this->autor_descripcion_html($autor));
                 }
-                // Agregar vínculo al concentrador
-                $this->concentrador->agregar($vinculo);
+                // Agregar vínculo
+                $this->vinculos->agregar($vinculo);
             }
         }
         // Levantar la bandera

@@ -36,7 +36,7 @@ class PaginasTarjetas extends Paginas {
     // public $en_otro;
     // public $cantidad_maxima;
     // protected $recolector;
-    // protected $concentrador;
+    // protected $vinculos;
     // protected $he_concentrado;
 
     /**
@@ -45,8 +45,8 @@ class PaginasTarjetas extends Paginas {
      * @param mixed Instancia de Recolector
      */
     public function __construct(Recolector $recolector) {
-        $this->recolector   = $recolector;
-        $this->concentrador = new VinculosTarjetas();
+        $this->recolector = $recolector;
+        $this->vinculos   = new VinculosTarjetas();
     } // constructor
 
 } // Clase PaginasTarjetas

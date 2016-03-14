@@ -36,7 +36,7 @@ class PaginasDetallados extends Paginas {
     // public $en_otro;
     // public $cantidad_maxima;
     // protected $recolector;
-    // protected $concentrador;
+    // protected $vinculos;
     // protected $he_concentrado;
 
     /**
@@ -45,8 +45,8 @@ class PaginasDetallados extends Paginas {
      * @param mixed Instancia de Recolector ya con las publicaciones
      */
     public function __construct(Recolector $recolector) {
-        $this->recolector   = $recolector;
-        $this->concentrador = new VinculosDetallados();
+        $this->recolector = $recolector;
+        $this->vinculos   = new VinculosDetallados();
     } // constructor
 
 } // Clase PaginasDetallados

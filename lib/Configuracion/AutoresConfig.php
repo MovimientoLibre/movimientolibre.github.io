@@ -27,8 +27,8 @@ namespace Configuracion;
  */
 class AutoresConfig {
 
-    const VINCULOS_INDICE          = '\Base\VinculosTarjetas';           // Ruta a la clase para el índice de autores, en autores/index.html
-    const VINCULOS_INDIVIDUAL      = '\Base\VinculosAcordeonesListados'; // Ruta a la clase para listar las publicaciones de cada autor, a usarse en las páginas de los autores
+    const VINCULOS_INDICE          = '\\Base\\VinculosTarjetas';           // Ruta a la clase para el índice de autores, en autores/index.html
+    const VINCULOS_INDIVIDUAL      = '\\Base\\VinculosAcordeonesListados'; // Ruta a la clase para listar las publicaciones de cada autor, a usarse en las páginas de los autores
     const ORDENAR_POR              = 'dir_nombre_asc';                   // Texto que usa el Recolector para ordenar las publicaciones, puede ser fecha_desc o dir_nombre_asc
     const DIRECTORIO               = 'autores';                          // Nombre del directorio que se creará en la raiz para depositar los archivos HTML
     const NAVEGACION_OPCION_ACTIVA = '';                                 // Opción del menú activa cuando esté en el índice, debe ser un valor en /Configuracion/NavegacionConfig

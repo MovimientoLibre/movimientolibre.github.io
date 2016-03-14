@@ -41,7 +41,7 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         // Opción de Navegación a poner activa
         $this->nombre_menu              = 'Licencias';
         // Ruta a la clase para hacer el index.html
-        $this->concentrador             = '\\Base\\PaginasListado'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
+        $this->indices_paginas          = '\\Base\\PaginasListado'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
         $this->directorio               = 'licencias';
         // Ejecutar constructor en el padre
