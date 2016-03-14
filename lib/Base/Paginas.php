@@ -92,6 +92,8 @@ abstract class Paginas {
         // Pasar parámetros al concentrador
         $this->concentrador->en_raiz = $this->en_raiz;
         $this->concentrador->en_otro = $this->en_otro;
+        // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
+        $this->recolector->ordenar_por_tiempo_desc();
         // Bucle por las publicaciones, tiene la cantidad límite
         foreach ($this->recolector->obtener_publicaciones($this->cantidad_maxima) as $publicacion) {
             // Definir vínculo

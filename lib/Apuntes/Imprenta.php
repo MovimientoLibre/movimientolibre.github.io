@@ -25,7 +25,7 @@ namespace Apuntes;
 /**
  * Clase Imprenta
  */
-class Imprenta extends \Base\ImprentaPublicaciones {
+class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
 
     /**
      * Constructor
@@ -44,6 +44,12 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         $this->concentrador             = '\\Base\\PaginasDetallados'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
         $this->directorio               = 'apuntes';
+        // Pasar a la página índice estos parámetros
+        $this->ultimas_encabezado       = 'Últimos apuntes';
+        $this->ultimas_concentrador     = '\\Base\\VinculosDetallados';
+        $this->ultimas_cantidad         = 8;
+        $this->categorias_encabezado    = 'Todos los apuntes clasificados por categorías';
+        $this->categorias_concentrador  = '\\Base\\VinculosCompactos';
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor

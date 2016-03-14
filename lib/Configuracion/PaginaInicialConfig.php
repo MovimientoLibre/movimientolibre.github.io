@@ -84,6 +84,7 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $organizacion                 = new \Base\SchemaOrganization();
         $organizacion->name           = 'Movimiento Libre';
         $organizacion->description    = 'Colección de ideas.';
+        $organizacion->image          = 'imagenes/movimientolibre.png';
         $organizacion->is_article     = false;
         $organizacion->big_heading    = true;
         // Acumular
@@ -143,8 +144,10 @@ class PaginaInicialConfig extends \Base\Plantilla {
         // Iniciar Recolector
         $recolector = new \Base\Recolector();
         $recolector->agregar_publicaciones_de_imprentas($this->imprentas);
+        // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
+        $recolector->ordenar_por_tiempo_desc();
         // Bucle por las publicaciones, tiene la cantidad límite
-        foreach ($recolector->obtener_publicaciones(5) as $publicacion) {
+        foreach ($recolector->obtener_publicaciones(4) as $publicacion) {
             // Iniciar vínculo
             $vinculo          = new \Base\Vinculo();
             $vinculo->en_raiz = true;
@@ -211,7 +214,7 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $this->contenido[] = '        <a href="articulos/index.html">Artículos</a> | ';
         $this->contenido[] = '        <a href="licencias/index.html">Licencias</a> | ';
         $this->contenido[] = '        <a href="presentaciones/index.html">Presentaciones</a> |';
-        $this->contenido[] = '        <a href="contacto/index.html">Contacto</a>';
+        $this->contenido[] = '        <a href="contacto/contacto.html">Contacto</a>';
         $this->contenido[] = '      </div>';
         $this->contenido[] = '      <div class="col-md-4">';
         $this->contenido[] = '        <div class="pull-right redes-sociales">';

@@ -38,6 +38,12 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
     // protected $recolector;
     // protected $concentrador;
     // protected $he_concentrado;
+    public $ultimas_encabezado      = 'Últimas publicaciones';
+    public $ultimas_concentrador    = '\\Base\\VinculosDetallados';
+    public $ultimas_cantidad        = 4;
+    public $categorias_encabezado   = 'Categorías';
+    public $categorias_concentrador = '\\Base\\VinculosCompactos';
+    protected $concentrador_ultimas;
 
     /**
      * Constructor
@@ -58,8 +64,8 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
         }
         // Cargar configuración de las categorías
         $categorias_config = new \Configuracion\CategoriasConfig();
-        // Iniciar concentrador
-        $this->concentrador = new \Base\VinculosCompactos();
+        // Iniciar concentrador categorías
+        $this->concentrador = new $this->categorias_concentrador();
         // Bucle por todas las categorias
         foreach ($this->recolector->obtener_categorias() as $nombre) {
             // Obtener instancia de Categoria
@@ -79,9 +85,45 @@ class PaginasPublicacionesClasificadasPorCategorias extends Paginas {
                 $this->concentrador->agregar($vinculo);
             }
         }
+        // Iniciar concentrador últimas publicaciones
+        $this->concentrador_ultimas = new $this->ultimas_concentrador();
+        // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
+        $this->recolector->ordenar_por_tiempo_desc();
+        // Bucle por las publicaciones, tiene la cantidad límite
+        foreach ($this->recolector->obtener_publicaciones($this->ultimas_cantidad) as $publicacion) {
+            $vinculo          = new \Base\Vinculo();
+            $vinculo->en_raiz = false;
+            $vinculo->en_otro = false;
+            $vinculo->definir_con_publicacion($publicacion);
+            $this->concentrador_ultimas->agregar($vinculo);
+        }
         // Levantar la bandera
         $this->he_concentrado = true;
     } // concentrar
+
+    /**
+     * HTML
+     *
+     * Entrega el código HTML, que es el encabezado, las últimas publicaciones y las categorías
+     *
+     * @return string Código HTML
+     */
+    public function html() {
+        // Si no ha concentrado
+        if ($this->he_concentrado == false) {
+            $this->concentrar();
+        }
+        // En este arreglo acumularemos la salida
+        $a = array();
+        // Acumular
+        $a[] = $this->encabezado_html();
+        $a[] = "<h2>{$this->ultimas_encabezado}</h2>";
+        $a[] = $this->concentrador_ultimas->html();
+        $a[] = "<h2>{$this->categorias_encabezado}</h2>";
+        $a[] = $this->concentrador->html();
+        // Entregar
+        return implode("\n", $a);
+    } // html
 
 } // Clase PaginasPublicacionesClasificadasPorCategorias
 

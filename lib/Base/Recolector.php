@@ -31,7 +31,6 @@ class Recolector {
 
     const LIB_DIR            = 'lib';        // Directorio que contiene los namespaces de donde se recolectarán las clases
     protected $publicaciones = array();      // Arreglo con instancias de Publicacion
-    protected $ordenar_por   = 'fecha_desc'; // Puede ser 'fecha_desc' o 'dir_nombre_asc'
 
     /**
      * Obtener clases en directorio
@@ -68,6 +67,32 @@ class Recolector {
     } // obtener_clases_en
 
     /**
+     * Ordenar por directorio y nombre de forma ascendente
+     */
+    public function ordenar_por_directorio_nombre_asc() {
+        $temporal = array();
+        foreach ($this->publicaciones as $publicacion) {
+            $clave = Funciones::caracteres_para_web(sprintf('%s-%s', $publicacion->directorio, $publicacion->nombre));
+            $temporal[$clave] = $publicacion;
+        }
+        ksort($temporal);
+        $this->publicaciones = $temporal;
+    } // ordenar_por_directorio_nombre_asc
+
+    /**
+     * Ordenar por tiempo de forma descendente (más nuevo a más antiguo)
+     */
+    public function ordenar_por_tiempo_desc() {
+        $temporal = array();
+        foreach ($this->publicaciones as $publicacion) {
+            $clave = Funciones::caracteres_para_web(sprintf('%s-%s', $publicacion->tiempo_creado(), $publicacion->nombre));
+            $temporal[$clave] = $publicacion;
+        }
+        ksort($temporal);
+        $this->publicaciones = $temporal;
+    } // ordenar_por_tiempo_desc
+
+    /**
      * Agregar publicaciones en
      *
      * @param string Nombre del directorio en LIB_DIR de donde se recolectarán las publicaciones
@@ -75,7 +100,7 @@ class Recolector {
      */
     public function agregar_publicaciones_en($lib_dir, $imprenta=null) {
         // Acumularemos las instancias en este arreglo
-        $instancias = array();
+    //  $instancias = array();
         // Bucle con las clases recolectadas
         foreach ($this->obtener_clases_en($lib_dir) as $clase) {
             // Cargar
@@ -96,8 +121,10 @@ class Recolector {
                     $publicacion->definir_nombre_menu($imprenta->nombre_menu);
                     $publicacion->definir_imprenta_titulo($imprenta->titulo);
                 }
+                // Acumular
+                $this->publicaciones[] = $publicacion;
                 // Orden
-                switch ($this->ordenar_por) {
+            /*  switch ($this->ordenar_por) {
                     case 'dir_nombre_asc':
                         // La clave para ordenar es clase que es Directorio/Nombre
                         $clave = Funciones::caracteres_para_web(sprintf('%s-%s', $publicacion->directorio, $publicacion->nombre));
@@ -107,15 +134,15 @@ class Recolector {
                         // La clave para ordenar es el tiempo_creado-clase, donde clase es Directorio/Archivo
                         $clave = sprintf('%s-%s', $publicacion->tiempo_creado(), $clase);
                 }
-                $instancias[$clave] = $publicacion;
+                $instancias[$clave] = $publicacion; */
             }
         }
-        if (count($instancias) > 0) {
+    /*  if (count($instancias) > 0) {
             // Acumular
             $this->publicaciones = array_merge($this->publicaciones, $instancias);
             // Al ordenar de forma ascendente por la clave, queda del más nuevo al más viejo
             ksort($this->publicaciones);
-        }
+        } */
     } // agregar_publicaciones_en
 
     /**

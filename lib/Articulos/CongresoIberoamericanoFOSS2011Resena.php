@@ -36,7 +36,7 @@ class CongresoIberoamericanoFOSS2011Resena extends \Base\PublicacionSchemaBlogPo
      // $this->autor           = 'Autor';
         $this->fecha           = '2011-06-14T10:17';
         // El nombre del archivo a crear
-        $this->archivo         = 'congreso-iberoamericano-foss-2011';
+        $this->archivo         = 'congreso-iberoamericano-foss-2011-resena';
         // La descripción y claves dan información a los buscadores y redes sociales
         $this->descripcion     = 'Los días 1 y 2 de junio de 2011 fue el Segundo Congreso Internacional de Software Libre organizado por la Universidad Autónoma de Zacatecas. A modo de reseña les muestro fotografías y fragmentos de las ponencias.';
         $this->claves          = 'Congreso, Software Libre, Zacatecas, UAZ';

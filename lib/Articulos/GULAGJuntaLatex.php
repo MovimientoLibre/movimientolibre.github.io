@@ -36,7 +36,7 @@ class GULAGJuntaLatex extends \Base\PublicacionSchemaBlogPosting {
      // $this->autor           = 'Autor';
         $this->fecha           = '2007-11-09T08:50';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'titulo';
+        $this->archivo         = 'gulag-junta-latex';
         // La descripción y claves dan información a los buscadores y redes sociales
         $this->descripcion     = 'El próximo sábado 10 de Noviembre apartir de las 18:00 horas en el auditorio de la Universidad Autónoma de la Laguna, el Grupo de usuarios de GNU/Linux de La Laguna, estaremos celebrando nuestra catorceava reunión, con el tema LaTeX.';
         $this->claves          = 'GULAG, Conferencias, LaTeX';

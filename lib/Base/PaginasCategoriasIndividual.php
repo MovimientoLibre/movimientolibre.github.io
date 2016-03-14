@@ -69,7 +69,9 @@ class PaginasCategoriasIndividual extends Paginas {
         // Iniciar concentrador
         $clase              = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
         $this->concentrador = new $clase();
-        // Bucle por todos los autores
+        // Ordenar publicaciones por directorio y nombre alfabéticamente
+        $this->recolector->ordenar_por_directorio_nombre_asc();
+        // Bucle por todas las publicaciones
         foreach ($this->recolector->obtener_publicaciones() as $publicacion) {
             // Definir vínculo
             $vinculo          = new \Base\Vinculo();

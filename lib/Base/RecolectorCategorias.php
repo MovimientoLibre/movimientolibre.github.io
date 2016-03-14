@@ -31,15 +31,7 @@ class RecolectorCategorias extends Recolector {
 
     // const LIB_DIR;
     // protected $publicaciones;
-    // protected $ordenar_por;
     protected $publicaciones_todas; // Cada vez que se filtra, la propiedad publicaciones se afecta, así que guardamos todas aquí
-
-    /**
-     * Constructor
-     */
-    public function __construct() {
-        $this->ordenar_por = \Configuracion\CategoriasConfig::ORDENAR_POR;
-    } // Constructor
 
     /**
      * Obtener categorias

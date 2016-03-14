@@ -118,13 +118,18 @@ class ImprentaPublicaciones extends Imprenta {
      * Crea el archivo index.html
      */
     protected function imprimir_indice() {
-        // Iniciar el Concentrador, note que la propiedad concentrador debe tener la ruta completa
-        $concentrador = new $this->concentrador($this->recolector);
-        // Iniciar la Plantilla
-        $plantilla                = new Plantilla();
-        $plantilla->navegacion    = new Navegacion();
-        $plantilla->mapa_inferior = new MapaInferior();
-        // Pasar al concentrador estos valores
+        // Iniciar la plantilla
+        $plantilla                            = new Plantilla();
+        $plantilla->navegacion                = new Navegacion();
+        $plantilla->mapa_inferior             = new MapaInferior();
+        $plantilla->directorio                = $this->directorio;
+        $plantilla->navegacion->opcion_activa = $this->nombre_menu;
+        $plantilla->titulo                    = $this->titulo;
+        $plantilla->descripcion               = $this->descripcion;
+        $plantilla->claves                    = $this->claves;
+        $plantilla->archivo_ruta              = $this->archivo_ruta;
+        // Iniciar el concentrador
+        $concentrador                   = new $this->concentrador($this->recolector);
         $concentrador->titulo           = $this->titulo;
         $concentrador->descripcion      = $this->descripcion;
         $concentrador->encabezado       = $this->encabezado;
@@ -132,13 +137,6 @@ class ImprentaPublicaciones extends Imprenta {
         $concentrador->encabezado_icono = $this->encabezado_icono;
         $concentrador->en_raiz          = false;
         $concentrador->en_otro          = false;
-        // Pasar a la plantilla estos valores
-        $plantilla->titulo                    = $this->titulo;
-        $plantilla->descripcion               = $this->descripcion;
-        $plantilla->claves                    = $this->claves;
-        $plantilla->directorio                = $this->directorio;
-        $plantilla->archivo_ruta              = $this->archivo_ruta;
-        $plantilla->navegacion->opcion_activa = $this->nombre_menu;
         // Pasar a la plantilla el HTML y Javascript del concentrador
         $plantilla->contenido    = $concentrador->html();
         $plantilla->javascript[] = $concentrador->javascript();

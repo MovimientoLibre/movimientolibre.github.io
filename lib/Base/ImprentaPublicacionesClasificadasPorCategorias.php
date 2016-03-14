@@ -40,6 +40,11 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
     // protected $concentrador;
     // protected $recolector;
     // protected $contador;
+    protected $ultimas_encabezado      = 'Últimas publicaciones';
+    protected $ultimas_concentrador    = '\\Base\\VinculosDetallados';
+    protected $ultimas_cantidad        = 4;
+    protected $categorias_encabezado   = 'Categorías';
+    protected $categorias_concentrador = '\\Base\\VinculosCompactos';
 
     /**
      * Constructor
@@ -99,7 +104,7 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
      * Crea el archivo index.html
      */
     protected function imprimir_indice() {
-        // Iniciar la Plantilla
+        // Iniciar la plantilla
         $plantilla                            = new Plantilla();
         $plantilla->navegacion                = new Navegacion();
         $plantilla->mapa_inferior             = new MapaInferior();
@@ -109,10 +114,15 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
         $plantilla->descripcion               = $this->descripcion;
         $plantilla->claves                    = $this->claves;
         $plantilla->archivo_ruta              = $this->archivo_ruta;
-        // Iniciar página
-        $pagina                = new PaginasPublicacionesClasificadasPorCategorias($this->recolector);
-        $pagina->titulo        = $plantilla->titulo;
-        $pagina->descripcion   = $plantilla->descripcion;
+        // Iniciar la página
+        $pagina                          = new PaginasPublicacionesClasificadasPorCategorias($this->recolector);
+        $pagina->titulo                  = $this->titulo;
+        $pagina->descripcion             = $this->descripcion;
+        $pagina->ultimas_encabezado      = $this->ultimas_encabezado;
+        $pagina->ultimas_concentrador    = $this->ultimas_concentrador;
+        $pagina->ultimas_cantidad        = $this->ultimas_cantidad;
+        $pagina->categorias_encabezado   = $this->categorias_encabezado;
+        $pagina->categorias_concentrador = $this->categorias_concentrador;
         // Pasar a la plantilla el HTML y Javascript
         $plantilla->contenido  = $pagina->html();
         $plantilla->javascript = $pagina->javascript();

@@ -104,11 +104,11 @@ class ImprentaCategorias extends Imprenta {
         $plantilla->descripcion               = \Configuracion\CategoriasConfig::INDICE_DESCRIPCION;
         $plantilla->claves                    = \Configuracion\CategoriasConfig::INDICE_CLAVES;
         $plantilla->archivo_ruta              = sprintf('%s/index.html', $plantilla->directorio);
-        // Iniciar página
+        // Iniciar la página
         $pagina                = new PaginasCategoriasIndice($this->recolector);
         $pagina->titulo        = $plantilla->titulo;
         $pagina->descripcion   = $plantilla->descripcion;
-        // Pasar a la plantilla el HTML y Javascript
+        // Pasar a la plantilla el HTML y Javascript de la página
         $plantilla->contenido  = $pagina->html();
         $plantilla->javascript = $pagina->javascript();
         // Crear archivo

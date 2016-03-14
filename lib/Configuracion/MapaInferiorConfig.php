@@ -49,14 +49,14 @@ class MapaInferiorConfig {
             $a[] = '            <a href="articulos/index.html">Artículos</a> | ';
             $a[] = '            <a href="licencias/index.html">Licencias</a> | ';
             $a[] = '            <a href="presentaciones/index.html">Presentaciones</a> |';
-            $a[] = '            <a href="contacto/index.html">Contacto</a>';
+            $a[] = '            <a href="contacto/contacto.html">Contacto</a>';
         } else {
             $a[] = '            <a href="../index.html">Inicio</a> |';
             $a[] = '            <a href="../apuntes/index.html">Apuntes</a> |';
             $a[] = '            <a href="../articulos/index.html">Artículos</a> |';
             $a[] = '            <a href="../licencias/index.html">Licencias</a> |';
             $a[] = '            <a href="../presentaciones/index.html">Presentaciones</a> |';
-            $a[] = '            <a href="../contacto/index.html">Contacto</a>';
+            $a[] = '            <a href="../contacto/contacto.html">Contacto</a>';
         }
         $a[] = '        </div>'; // col-md-8
         $a[] = '        <div class="col-md-4">';
