@@ -219,8 +219,9 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $this->contenido[] = '      <div class="col-md-4">';
         $this->contenido[] = '        <div class="pull-right redes-sociales">';
         $this->contenido[] = '          <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>';
-        $this->contenido[] = '          <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>';
         $this->contenido[] = '          <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>';
+        $this->contenido[] = '          <a class="fa fa-linkedin-square" href="https://www.linkedin.com/in/guivaloz" target="_blank"></a>';
+        $this->contenido[] = '          <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>';
         $this->contenido[] = '          <a class="fa fa-rss-square" href="rss.xml"></a>';
         $this->contenido[] = '        </div>';
         $this->contenido[] = '      </div>';
