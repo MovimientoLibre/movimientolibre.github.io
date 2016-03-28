@@ -13,7 +13,7 @@ Después de varios minutos, usando un desarmador y _mis uñas_ pude retirar la t
 
 <img class="img-responsive" src="asus-reparacion-memo-pad-7-me170c/asus-memo-pad-7-me170c-02-1024.jpg" alt="Memo Pad 7">
 
-La batería, efectivamente estaba desconectada. Grave error de diseño. Porque el espacio interior es mayor que el tamaño de la pila; basta la caída perfecta para que se desconecte y uno no lo notaría.
+La batería, efectivamente estaba desconectada. **Grave error de diseño.** Porque el espacio interior es mayor que el tamaño de la pila; basta la caída perfecta para que se desconecte y uno no lo notaría.
 
 <img class="img-responsive" src="asus-reparacion-memo-pad-7-me170c/asus-memo-pad-7-me170c-03-1024.jpg" alt="Memo Pad 7">
 
@@ -21,7 +21,7 @@ Insisto que es **error de diseño** porque el fabricante trata de sujetar la bat
 
 <img class="img-responsive" src="asus-reparacion-memo-pad-7-me170c/asus-memo-pad-7-me170c-04-1024.jpg" alt="Memo Pad 7">
 
-Para arreglarlo, sencillamente hay que conectar de nuevo la batería y ayudar a que se mantenga más tiempo en su lgar con cintas de aislar, como pueden ver en la última imagen.
+Para arreglarlo, sencillamente hay que conectar de nuevo la batería y ayudar a que se mantenga más tiempo en su lugar con cintas de aislar, como pueden ver en la última imagen.
 
 <img class="img-responsive" src="asus-reparacion-memo-pad-7-me170c/asus-memo-pad-7-me170c-05-800.jpg" alt="Memo Pad 7">
 
