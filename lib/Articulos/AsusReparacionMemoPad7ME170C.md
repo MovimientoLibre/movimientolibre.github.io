@@ -1,5 +1,5 @@
 
-Hace días mi tablet **ASUS Memo Pad 7 me180c** dejó de funcionar súbitamente después de una caída de no más de medio metro. Simplemente resbaló destrás de un buró pequeño con todo y funda protectora; traté de encenderla, pero la pantalla siguió en negro. Al conectar el cargador sólo mostraba un breve flash blanco.
+Hace días mi tablet **ASUS Memo Pad 7 me180c** dejó de funcionar súbitamente después de una caída de no más de medio metro. Simplemente resbaló detrás de un buró pequeño con todo y funda protectora; traté de encenderla, pero la pantalla siguió en negro. Al conectar el cargador sólo mostraba un breve flash blanco.
 
 No tenía idea de lo que le hubiese pasado. Ya que físicamente su exterior estaba bien; así que dediqué tiempo a buscar información sobre cómo repararla.
 

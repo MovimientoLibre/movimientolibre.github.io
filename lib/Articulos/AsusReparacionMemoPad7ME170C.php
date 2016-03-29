@@ -32,13 +32,13 @@ class AsusReparacionMemoPad7ME170C extends \Base\PublicacionSchemaBlogPosting {
      */
     public function __construct() {
         // Título, autor y fecha
-        $this->nombre                     = 'Asus Reparacion Memo Pad 7 ME170C';
+        $this->nombre                     = 'Asus Reparación Memo Pad 7 ME170C';
      // $this->autor                      = '';
         $this->fecha                      = '2016-03-28T10:49';
         // El nombre del archivo a crear
         $this->archivo                    = 'asus-reparacion-memo-pad-7-me170c';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion                = 'Hace días mi tablet ASUS Memo Pad 7 me180c dejó de funcionar súbitamente después de una caída de no más de medio metro. Simplemente resbaló destrás de un buró pequeño con todo y funda protectora.';
+        $this->descripcion                = 'Hace días mi tablet ASUS Memo Pad 7 me180c dejó de funcionar súbitamente después de una caída de no más de medio metro. Simplemente resbaló detrás de un buró pequeño con todo y funda protectora.';
         $this->claves                     = 'ASUS, Tablet, Memo Pad 7, Reparacion, Caida';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/AsusReparacionMemoPad7ME170C.md';
