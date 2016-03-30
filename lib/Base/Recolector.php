@@ -25,7 +25,7 @@ namespace Base;
 /**
  * Clase Recolector
  *
- * Su función es recolectar las Publicaciones y ordenarlas cronológicamente de la más nueva a la más antigua
+ * Su función es recolectar las Publicaciones
  */
 class Recolector {
 
@@ -93,14 +93,41 @@ class Recolector {
     } // ordenar_por_tiempo_desc
 
     /**
+     * Obtener cantidad de publicaciones
+     *
+     * Entrega un número entero con la cantidad de publicaciones recolectadas
+     *
+     * @return integer Cantidad de publicaciones
+     */
+    public function obtener_cantidad_de_publicaciones() {
+        return count($this->publicaciones);
+    } // obtener_cantidad_de_publicaciones
+
+    /**
+     * Obtener publicaciones
+     *
+     * Obtener las instancias de las publicaciones recolectadas
+     *
+     * @param  integer Opcional, entero cantidad límite
+     * @return array   Arreglo con instancias de publicaciones
+     */
+    public function obtener_publicaciones($limite=null) {
+        if (is_int($limite) && ($limite > 0)) {
+            return array_slice($this->publicaciones, 0, $limite, true);
+        } else {
+            return $this->publicaciones;
+        }
+    } // obtener_publicaciones
+
+    /**
      * Agregar publicaciones en
+     *
+     * Agregar las publicaciones que se encuentran en un directorio
      *
      * @param string Nombre del directorio en LIB_DIR de donde se recolectarán las publicaciones
      * @param mixed  Opcional, instancia de Imprenta para pasar variables
      */
     public function agregar_publicaciones_en($lib_dir, $imprenta=null) {
-        // Acumularemos las instancias en este arreglo
-    //  $instancias = array();
         // Bucle con las clases recolectadas
         foreach ($this->obtener_clases_en($lib_dir) as $clase) {
             // Cargar
@@ -123,32 +150,17 @@ class Recolector {
                 }
                 // Acumular
                 $this->publicaciones[] = $publicacion;
-                // Orden
-            /*  switch ($this->ordenar_por) {
-                    case 'dir_nombre_asc':
-                        // La clave para ordenar es clase que es Directorio/Nombre
-                        $clave = Funciones::caracteres_para_web(sprintf('%s-%s', $publicacion->directorio, $publicacion->nombre));
-                        break;
-                    case 'fecha_desc':
-                    default:
-                        // La clave para ordenar es el tiempo_creado-clase, donde clase es Directorio/Archivo
-                        $clave = sprintf('%s-%s', $publicacion->tiempo_creado(), $clase);
-                }
-                $instancias[$clave] = $publicacion; */
             }
         }
-    /*  if (count($instancias) > 0) {
-            // Acumular
-            $this->publicaciones = array_merge($this->publicaciones, $instancias);
-            // Al ordenar de forma ascendente por la clave, queda del más nuevo al más viejo
-            ksort($this->publicaciones);
-        } */
     } // agregar_publicaciones_en
 
     /**
      * Agregar publicaciones de imprentas
      *
-     * @param mixed Texto (ruta a ImprentaPublicaciones), Arreglo de textos (rutas a ImprentaPublicaciones)
+     * Agregar las publicaciones que una o más imprentas tienen en su información
+     *
+     * @param  mixed   Texto (ruta a ImprentaPublicaciones), Arreglo de textos (rutas a ImprentaPublicaciones)
+     * @return boolean Verdadero encuentra publicaciones, falso si no hay
      */
     public function agregar_publicaciones_de_imprentas($entrada) {
         // Definir rutas siempre como un arreglo
@@ -157,7 +169,7 @@ class Recolector {
         } elseif (is_array($entrada) && (count($entrada) > 0)) {
             $rutas = $entrada;
         } else {
-            throw new \Exception("Error en Recolector: Al agregar publicaciones de imprentas, no se dio un texto o un arreglo.");
+            return false;
         }
         // Bucle por las rutas
         foreach ($rutas as $clase) {
@@ -168,30 +180,9 @@ class Recolector {
                 $this->agregar_publicaciones_en($imprenta_publicaciones->publicaciones_directorio, $imprenta_publicaciones);
             }
         }
+        // Entregar verdadero si se encontraron publicaciones
+        return ($this->obtener_cantidad_de_publicaciones() > 0);
     } // agregar_publicaciones_de_imprentas
-
-    /**
-     * Obtener publicaciones
-     *
-     * @param  integer Opcional, entero cantidad límite
-     * @return array   Arreglo con instancias de publicaciones
-     */
-    public function obtener_publicaciones($limite=null) {
-        if (is_int($limite) && ($limite > 0)) {
-            return array_slice($this->publicaciones, 0, $limite, true);
-        } else {
-            return $this->publicaciones;
-        }
-    } // obtener_publicaciones
-
-    /**
-     * Obtener cantidad de publicaciones
-     *
-     * @return integer Cantidad de publicaciones
-     */
-    public function obtener_cantidad_de_publicaciones() {
-        return count($this->publicaciones);
-    } // obtener_cantidad_de_publicaciones
 
 } // Clase Recolector
 

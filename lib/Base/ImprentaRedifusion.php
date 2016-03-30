@@ -42,7 +42,7 @@ class ImprentaRedifusion extends Imprenta {
      * Imprimir
      */
     public function imprimir() {
-        echo "ImprentaRedifusion:    ";
+        echo "ImprentaRedifusion: ";
         // Iniciar Redifusion y Recolector
         $redifusion = new Redifusion();
         $recolector = new Recolector();
@@ -60,7 +60,7 @@ class ImprentaRedifusion extends Imprenta {
         // Crear archivo rss.xml
         $this->crear_archivo($redifusion->archivo, $redifusion->xml());
         // Mensaje
-        echo "  redifusión en {$redifusion->archivo}\n";
+        echo " {$redifusion->archivo}\n";
     } // imprimir
 
 } // Clase ImprentaRedifusion

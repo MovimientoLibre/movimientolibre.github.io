@@ -41,7 +41,7 @@ class ImprentaPaginaBuscadorResultados extends Imprenta {
         // Imprimir buscador-resultados.html
         $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
         // Mensaje
-        echo "  página buscador resultados en {$plantilla->archivo_ruta}\n";
+        echo " {$plantilla->archivo_ruta}\n";
     } // Imprimir
 
 } // Clase ImprentaPaginaBuscadorResultados

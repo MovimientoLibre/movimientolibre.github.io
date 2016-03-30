@@ -42,7 +42,7 @@ class ImprentaMapaSitio extends Imprenta {
      * Imprimir
      */
     public function imprimir() {
-        echo "ImprentaMapaSitio:     ";
+        echo "ImprentaMapaSitio: ";
         // Iniciar MapaSitio y Recolector
         $mapa_sitio = new MapaSitio();
         $recolector = new Recolector();
@@ -62,7 +62,7 @@ class ImprentaMapaSitio extends Imprenta {
         // Crear archivo sitemap.xml
         $this->crear_archivo($mapa_sitio->archivo, $mapa_sitio->xml());
         // Mensaje
-        echo "  mapa del sitio en {$mapa_sitio->archivo}\n";
+        echo " {$mapa_sitio->archivo}\n";
     } // imprimir
 
 } // Clase ImprentaMapaSitio

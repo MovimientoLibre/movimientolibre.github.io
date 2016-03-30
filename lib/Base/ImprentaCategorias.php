@@ -121,12 +121,15 @@ class ImprentaCategorias extends Imprenta {
      * Imprimir
      */
     public function imprimir() {
-        echo "ImprentaCategorias:    ";
-        $this->recolector->agregar_publicaciones_de_imprentas($this->imprentas);
-        $this->crear_directorio(\Configuracion\CategoriasConfig::DIRECTORIO);
-        $this->imprimir_individuales();
-        $this->imprimir_indice();
-        echo sprintf(" %d en %s\n", $this->contador, \Configuracion\CategoriasConfig::DIRECTORIO);
+        echo "ImprentaCategorias: ";
+        if ($this->recolector->agregar_publicaciones_de_imprentas($this->imprentas)) {
+            $this->crear_directorio(\Configuracion\CategoriasConfig::DIRECTORIO);
+            $this->imprimir_individuales();
+            $this->imprimir_indice();
+            echo sprintf(" %d en %s\n", $this->contador, \Configuracion\CategoriasConfig::DIRECTORIO);
+        } else {
+            echo " nulo\n";
+        }
     } // imprimir
 
 } // Clase ImprentaCategorias

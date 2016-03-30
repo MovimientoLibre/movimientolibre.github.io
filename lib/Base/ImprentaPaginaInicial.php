@@ -53,7 +53,7 @@ class ImprentaPaginaInicial extends Imprenta {
         // Imprimir index.html
         $this->crear_archivo($plantilla->archivo_ruta, $plantilla->html());
         // Mensaje
-        echo "  página inicial en {$plantilla->archivo_ruta}\n";
+        echo " {$plantilla->archivo_ruta}\n";
     } // imprimir
 
 } // Clase ImprentaPaginaInicial

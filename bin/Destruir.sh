@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ~/Documentos/MovimientoLibre/GitHub/movimientolibre.github.io
+cd "$HOME/Documentos/GitHub/MovimientoLibre/movimientolibre.github.io"
 rm apuntes/*.html
 rm articulos/*.html
 rm autores/*.html

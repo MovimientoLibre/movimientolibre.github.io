@@ -120,12 +120,15 @@ class ImprentaAutores extends Imprenta {
      * Imprimir
      */
     public function imprimir() {
-        echo "ImprentaAutores:       ";
-        $this->recolector->agregar_publicaciones_de_imprentas($this->imprentas);
-        $this->crear_directorio(\Configuracion\AutoresConfig::DIRECTORIO);
-        $this->imprimir_individuales();
-        $this->imprimir_indice();
-        echo sprintf(" %d en %s\n", $this->contador, \Configuracion\AutoresConfig::DIRECTORIO);
+        echo "ImprentaAutores: ";
+        if ($this->recolector->agregar_publicaciones_de_imprentas($this->imprentas)) {
+            $this->crear_directorio(\Configuracion\AutoresConfig::DIRECTORIO);
+            $this->imprimir_individuales();
+            $this->imprimir_indice();
+            echo sprintf(" %d en %s\n", $this->contador, \Configuracion\AutoresConfig::DIRECTORIO);
+        } else {
+            echo "nulo\n";
+        }
     } // imprimir
 
 } // Clase ImprentaAutores
