@@ -29,8 +29,23 @@ namespace Base;
  */
 class Recolector {
 
-    const LIB_DIR            = 'lib';        // Directorio que contiene los namespaces de donde se recolectarán las clases
-    protected $publicaciones = array();      // Arreglo con instancias de Publicacion
+    const LIB_DIR            = 'lib';             // Directorio que contiene los namespaces de donde se recolectarán las clases
+    protected $publicaciones = array();           // Arreglo con instancias de Publicacion
+    protected $estados       = array('publicar'); // Arreglo con los estados de las publicaciones a recolectar
+
+    /**
+     * Definir modo para crear archivos
+     */
+    public function definir_modo_crear_archivos() {
+        $this->estados = array('publicar', 'revisar');
+    } // definir_modo_crear_archivos
+
+    /**
+     * Definir modo para leer archivos públicos
+     */
+    public function definir_modo_leer_archivos_publicos() {
+        $this->estados = array('publicar');
+    } // definir_modo_leer_archivos_publicos
 
     /**
      * Obtener clases en directorio
@@ -134,22 +149,21 @@ class Recolector {
             $publicacion = new $clase();
             // Si es instancia de Publicacion, se acumula
             if ($publicacion instanceof Publicacion) {
-                // Si el estado es diferente de publicar, se salta
-                if (strtolower($publicacion->estado) != 'publicar') {
-                    continue;
+                // Si el estado está en estados (vea los métodos definir modo)
+                if (in_array(strtolower($publicacion->estado), $this->estados)) {
+                    // Si viene una instancia de Imprenta
+                    if ($imprenta instanceof ImprentaPublicaciones) {
+                        $publicacion->definir_encabezado($imprenta->encabezado);
+                        $publicacion->definir_encabezado_color($imprenta->encabezado_color);
+                        $publicacion->definir_encabezado_icono($imprenta->encabezado_icono);
+                        $publicacion->definir_claves($imprenta->claves);
+                        $publicacion->definir_directorio($imprenta->directorio);
+                        $publicacion->definir_nombre_menu($imprenta->nombre_menu);
+                        $publicacion->definir_imprenta_titulo($imprenta->titulo);
+                    }
+                    // Acumular
+                    $this->publicaciones[] = $publicacion;
                 }
-                // Si viene una instancia de Imprenta
-                if ($imprenta instanceof ImprentaPublicaciones) {
-                    $publicacion->definir_encabezado($imprenta->encabezado);
-                    $publicacion->definir_encabezado_color($imprenta->encabezado_color);
-                    $publicacion->definir_encabezado_icono($imprenta->encabezado_icono);
-                    $publicacion->definir_claves($imprenta->claves);
-                    $publicacion->definir_directorio($imprenta->directorio);
-                    $publicacion->definir_nombre_menu($imprenta->nombre_menu);
-                    $publicacion->definir_imprenta_titulo($imprenta->titulo);
-                }
-                // Acumular
-                $this->publicaciones[] = $publicacion;
             }
         }
     } // agregar_publicaciones_en

@@ -150,6 +150,7 @@ class ImprentaPublicaciones extends Imprenta {
     public function imprimir() {
         echo "ImprentaPublicaciones: ";
         $this->validar();
+        $this->recolector->definir_modo_crear_archivos();
         $this->recolector->agregar_publicaciones_en($this->publicaciones_directorio, $this);
         $this->crear_directorio($this->directorio);
         $this->imprimir_publicaciones();
