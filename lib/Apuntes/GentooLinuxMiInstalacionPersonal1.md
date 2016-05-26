@@ -24,7 +24,7 @@ También aprovecho que ya tengo particionado el disco duro e instalado Gentoo Li
 ### Sobre este manual
 
 * Este manual describe los pasos para instalar Gentoo Linux hasta llegar a tener un entorno de escritorio KDE con los paquetes preferidos del autor. Me inclino por el desarrollo de aplicaciones web, por lo que instalaré Apache, PostgreSQL y PHP.
-* No describo ampliamente las cualidades de los paquetes. Me he enfocado en hacer una guía _paso a paso_, comando a comando que les mostrará cómo es Gentoo Linux. Si tiene dudas sobre algún paquete, no dude en consultar al [Gentoo Wiki](http://www.gentoo-wiki.org/) y a _Don_ [Google](http://www.google.com/).
+* No describo ampliamente las cualidades de los paquetes. Me he enfocado en hacer una guía _paso a paso_, comando a comando que les mostrará cómo es Gentoo Linux. Si tiene dudas sobre algún paquete, no dude en consultar al [Gentoo Wiki](https://wiki.gentoo.org/) y a _Don_ [Google](http://www.google.com/).
 * En Gentoo Linux es posible tener varias instalaciones de esta distribución en el mismo equipo. Lo cual aprovecho usando la instalación anterior y haciendo todo desde una consola. No es necesario insertar el CD de instalación.
 * El _portage_ /usr/portage/ así como las fuentes descargadas (almacenadas en /usr/portage/distfiles/) las tengo en una partición dedicada. Lo cual me permite compartirlo con las varias instalaciones en el mismo equipo.
 * Los comandos que deben ser ingresados como _root_ tienen un "#" al principio, en cambio, los ingresados en una cuenta de usuario tienen "$" al inicio. Tenga la precaución de no confundir el contenido de los archivos de configuración, porque suelen usar "#" para los comentarios.
@@ -101,7 +101,7 @@ Antes de comenzar a instalar es muy recomendable actualizar el _portage_ para qu
 
 Edito los principales archivos de la configuración de Gentoo Linux.
 
-*make.conf* contiene las opciones de compilación de acuerdo a las características del equipo. Yo prefiero conservar las compilaciones de los paquetes que instalo. Esto me perite _compartirlas_ con otras instalaciones de Gentoo Linux en el mismo equipo y en otros equipos *idénticos*, siempre y cuando la configuración en *make.conf* sea igual. Para saber más de esto vea [TIP Providing binary packages](http://gentoo-wiki.com/TIP_Providing_binary_packages).
+*make.conf* contiene las opciones de compilación de acuerdo a las características del equipo. Yo prefiero conservar las compilaciones de los paquetes que instalo. Esto me perite _compartirlas_ con otras instalaciones de Gentoo Linux en el mismo equipo y en otros equipos *idénticos*, siempre y cuando la configuración en *make.conf* sea igual.
 
     # nano -w /mnt/gentoo/etc/make.conf
 

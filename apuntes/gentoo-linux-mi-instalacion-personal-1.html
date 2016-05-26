@@ -108,7 +108,7 @@
 
 <ul>
 <li>Este manual describe los pasos para instalar Gentoo Linux hasta llegar a tener un entorno de escritorio KDE con los paquetes preferidos del autor. Me inclino por el desarrollo de aplicaciones web, por lo que instalaré Apache, PostgreSQL y PHP.</li>
-<li>No describo ampliamente las cualidades de los paquetes. Me he enfocado en hacer una guía <em>paso a paso</em>, comando a comando que les mostrará cómo es Gentoo Linux. Si tiene dudas sobre algún paquete, no dude en consultar al <a href="http://www.gentoo-wiki.org/">Gentoo Wiki</a> y a <em>Don</em> <a href="http://www.google.com/">Google</a>.</li>
+<li>No describo ampliamente las cualidades de los paquetes. Me he enfocado en hacer una guía <em>paso a paso</em>, comando a comando que les mostrará cómo es Gentoo Linux. Si tiene dudas sobre algún paquete, no dude en consultar al <a href="https://wiki.gentoo.org/">Gentoo Wiki</a> y a <em>Don</em> <a href="http://www.google.com/">Google</a>.</li>
 <li>En Gentoo Linux es posible tener varias instalaciones de esta distribución en el mismo equipo. Lo cual aprovecho usando la instalación anterior y haciendo todo desde una consola. No es necesario insertar el CD de instalación.</li>
 <li>El <em>portage</em> /usr/portage/ así como las fuentes descargadas (almacenadas en /usr/portage/distfiles/) las tengo en una partición dedicada. Lo cual me permite compartirlo con las varias instalaciones en el mismo equipo.</li>
 <li>Los comandos que deben ser ingresados como <em>root</em> tienen un "#" al principio, en cambio, los ingresados en una cuenta de usuario tienen "$" al inicio. Tenga la precaución de no confundir el contenido de los archivos de configuración, porque suelen usar "#" para los comentarios.</li>
@@ -194,7 +194,7 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 
 <p>Edito los principales archivos de la configuración de Gentoo Linux.</p>
 
-<p><em>make.conf</em> contiene las opciones de compilación de acuerdo a las características del equipo. Yo prefiero conservar las compilaciones de los paquetes que instalo. Esto me perite <em>compartirlas</em> con otras instalaciones de Gentoo Linux en el mismo equipo y en otros equipos <em>idénticos</em>, siempre y cuando la configuración en <em>make.conf</em> sea igual. Para saber más de esto vea <a href="http://gentoo-wiki.com/TIP_Providing_binary_packages">TIP Providing binary packages</a>.</p>
+<p><em>make.conf</em> contiene las opciones de compilación de acuerdo a las características del equipo. Yo prefiero conservar las compilaciones de los paquetes que instalo. Esto me perite <em>compartirlas</em> con otras instalaciones de Gentoo Linux en el mismo equipo y en otros equipos <em>idénticos</em>, siempre y cuando la configuración en <em>make.conf</em> sea igual.</p>
 
 <pre><code># nano -w /mnt/gentoo/etc/make.conf
 

@@ -23,15 +23,15 @@ A continuación, documento paso a paso la instalación de Gentoo Linux en una _n
 
 No dudo que una _netbook_ pueda compilar todos los paquetes que necesito instalar para mi escritorio con Gentoo Linux; pero tardaría mucho, mucho tiempo. Es por ello que le paso esa labor a un equipo más poderoso; que lo haga en menos tiempo.
 
-Ante esto... si los equipos son distintos... ¿funcionará lo que compile uno en el otro?. Para ello hay que revisar las similitudes y diferencias entre los procesadores de ambos equipos. Revise en [Gentoo Wiki](http://en.gentoo-wiki.com/) el documento [Safe CFlags](http://en.gentoo-wiki.com/wiki/Safe_Cflags) el cual muestra los parámetros recomendados de compilación para cada procesador.
+Ante esto... si los equipos son distintos... ¿funcionará lo que compile uno en el otro?. Para ello hay que revisar las similitudes y diferencias entre los procesadores de ambos equipos. Revise en [Gentoo Wiki](https://wiki.gentoo.org/) el documento [Safe CFlags](https://wiki.gentoo.org/wiki/Safe_Cflags) el cual muestra los parámetros recomendados de compilación para cada procesador.
 
-Afortunadamente, en el momento de escribir esta guía, tanto el [Intel DualCore](http://en.gentoo-wiki.com/wiki/Safe_Cflags/Intel#Intel_Core_Solo.2FDuo.2C_Pentium_Dual-Core_T20xx.2FT21xx) como el [Atom 230, 330 N-Series](http://en.gentoo-wiki.com/wiki/Safe_Cflags/Intel#Atom_230.2C_Atom_330.2C_Atom_N-Series) tienen los mismos parámetros de compilación:
+Afortunadamente, en el momento de escribir esta guía, tanto el **Intel DualCore** como el **Atom 230, 330 N-Series** tienen los mismos parámetros de compilación:
 
     CHOST="i686-pc-linux-gnu"
     CFLAGS="-march=prescott -O2 -fomit-frame-pointer -pipe"
     CXXFLAGS="${CFLAGS}"
 
-También es posible hacer compilación asistida si el procesador del equipo _poderoso_ tiene la misma arquitectura y/o es más _nuevo_ que el de los equipos de destino. Cuestión de probarlo. Por ejemplo, las compilaciones hechas con parámetros para el [VIA C7](http://en.gentoo-wiki.com/wiki/Safe_Cflags/Via#Esther_C5J_.28Via_C7.29) en el _Intel DualCore_ me han funcionado:
+También es posible hacer compilación asistida si el procesador del equipo _poderoso_ tiene la misma arquitectura y/o es más _nuevo_ que el de los equipos de destino. Cuestión de probarlo. Por ejemplo, las compilaciones hechas con parámetros para el **VIA C7** en el _Intel DualCore_ me han funcionado:
 
     CHOST="i686-pc-linux-gnu"
     CFLAGS="-march=i686 -mmmx -msse -msse2 -msse3 -O2 -pipe -fomit-frame-pointer"

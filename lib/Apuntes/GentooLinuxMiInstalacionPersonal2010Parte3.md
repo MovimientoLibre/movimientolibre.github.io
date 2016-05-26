@@ -19,7 +19,7 @@ Como introducción les escribo un breve **FAQ** (preguntas y respuestas frecuent
 
 Fuera del sitio oficial, te recomiendo:
 
-* [Gentoo Wiki](http://en.gentoo-wiki.com/wiki/Main_Page).
+* [Gentoo Wiki](https://wiki.gentoo.org/).
 * [Funtoo](http://www.funtoo.org/) es un _fork_ dirigido por Danel Robbins, el iniciador de Gentoo Linux.
 
 A continuación la última entrega de la **Guía de instalación de Gentoo Linux para una notebook 2010**. No deje de leer la [primera](gentoo-linux-mi-instalacion-personal-2010-parte-1.html) y [segunda](gentoo-linux-mi-instalacion-personal-2010-parte-2.html) partes.
