@@ -44,6 +44,7 @@ class Plantilla extends \Configuracion\PlantillaConfig {
     // protected $cabecera_google_fonts_css;
     // protected $scripts_jquery_css;
     // protected $scripts_bootstrap_js;
+    // protected $scripts_google_charts_js;
     public $titulo;                         // Título de la página
     public $descripcion;                    // Descripción del sitio o la página
     public $claves;                         // Claves que ayuden a los buscadores
@@ -236,6 +237,9 @@ class Plantilla extends \Configuracion\PlantillaConfig {
         }
         if ($this->scripts_bootstrap_js != '') {
             $a[] = $this->scripts_bootstrap_js;
+        }
+        if ($this->scripts_google_charts_js != '') {
+            $a[] = $this->scripts_google_charts_js;
         }
         if ($this->en_raiz) {
             if ($this->scripts_jquery_css == '') {

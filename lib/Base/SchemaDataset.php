@@ -72,7 +72,7 @@ class SchemaDataset extends SchemaCreativeWork {
      *
      * @return string Código HTML
      */
-    protected function distribution_html {
+    protected function distribution_html() {
         if ($this->distribution != '') {
             return "  <div class=\"distribucion\" itemprop=\"distribution\">{$this->distribution}</div>";
         } else {

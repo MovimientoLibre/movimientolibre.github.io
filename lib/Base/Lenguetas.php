@@ -48,7 +48,7 @@ class Lenguetas {
      *
      * @param string Opcional, texto identificador único de estas Lengüetas, si no se da se elabora con caracteres aleatorios
      */
-    public function __construct() {
+    public function __construct($identificador) {
         if ($identificador != '') {
             // Definir identificador con parámetro
             $this->identificador = $identificador;
@@ -134,7 +134,7 @@ class Lenguetas {
         }
         $a[] = '  </ul>';
         // Acumular los interiores
-        $a[] = '  <div class="tab-content">';
+        $a[] = '  <div class="tab-content lengueta-contenido">';
         foreach ($this->lenguetas as $lengueta) {
             $a[] = $lengueta->interior_html();
         }

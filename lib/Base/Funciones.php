@@ -1,6 +1,6 @@
 <?php
 /**
- * Plataforma de Conocimiento - Creador
+ * Plataforma de Conocimiento - Funciones
  *
  * Copyright (C) 2016 Guillermo Valdés Lozano
  *
@@ -28,22 +28,82 @@ namespace Base;
 class Funciones {
 
     /**
+     * Caracteres al azar
+     *
+     * @param  integer Cantidad de caracteres, por defecto 8
+     * @return string  Caracteres al azar
+     */
+    public static function caracteres_azar($in_cantidad=8) {
+        $primera = ord('a');
+        $ultima  = ord('z');
+        $c = array();
+        for ($i=0; $i<$in_cantidad; $i++) {
+            $c[] = chr(rand($primera, $ultima));
+        }
+        return implode('', $c);
+    } // caracteres_azar
+
+    /**
      * Caracteres para web
      *
-     * Convierte el texto a minúsculas, quita acentos y cambia espacios por guiones
-     *
-     * @param  string Texto a convertir
-     * @return string Convertido
+     * @param  string  Nombre a convertir, puede tener a-zA-Z0-9áÁéÉíÍóÓúÚüÜñÑ() .,_-
+     * @param  boolean Por defecto es falso, si es verdadero se omiten 'y', 'a', 'el', etc.
+     * @return string  Texto convertido a caracteres para web
      */
-    public static function caracteres_para_web($in_texto) {
-        $buscados            = array('ñ', 'Ñ', 'ü', 'Ü', 'á', 'Á', 'é', 'É', 'í', 'Í', 'ó', 'Ó', 'ú', 'Ú');
-        $cambios             = array('n', 'n', 'u', 'u', 'a', 'a', 'e', 'e', 'i', 'i', 'o', 'o', 'u', 'u');
-        $sin_acentos         = str_replace($buscados, $cambios, $in_texto);
-        $especiales          = array(' ', '#', '&', '%', '$', '@', '(', ')', '.', ',', '¿', '?', '"', '\'');
-        $sin_especiales      = str_replace($especiales, '-', $sin_acentos);
-        $sin_repetir_guiones = preg_replace('/\-+/', '-', $sin_especiales);
-        return strtolower($sin_repetir_guiones);
+    public static function caracteres_para_web($in_nombre, $in_omitir_bandera=false) {
+        // Omitir estas palabras
+        $palabras_omitir = array('y', 'a', 'el', 'la', 'los', 'las', 'de', 'del');
+        // Cambiar caracteres
+        $buscados        = array('ñ', 'Ñ', 'ü', 'Ü', 'á', 'Á', 'é', 'É', 'í', 'Í', 'ó', 'Ó', 'ú', 'Ú');
+        $cambios         = array('n', 'n', 'u', 'u', 'a', 'a', 'e', 'e', 'i', 'i', 'o', 'o', 'u', 'u');
+        $sin_acentos     = str_replace($buscados, $cambios, $in_nombre);
+        $especiales      = array(' ', '(', ')', '.', ',', '_');
+        $minusculas      = strtolower(str_replace($especiales, '-', $sin_acentos));
+        // Revisar cada palabra
+        $palabras = array();
+        foreach (explode('-', $minusculas) as $p) {
+            if ($p !== '') {
+                if ($in_omitir_bandera && in_array($p, $palabras_omitir)) {
+                    continue;
+                } else {
+                    $palabras[] = $p;
+                }
+            }
+        }
+        // Entregar
+        return implode('-', $palabras); // Pone guiones medios entre las palabras
     } // caracteres_para_web
+
+    /**
+     * Caracteres para clase
+     *
+     * @param  string  Nombre a convertir, puede tener a-zA-Z0-9áÁéÉíÍóÓúÚüÜñÑ() .,_-
+     * @param  boolean Por defecto es falso, si es verdadero se omiten 'y', 'a', 'el', etc.
+     * @return string  Texto convertido a caracteres para web
+     */
+    public static function caracteres_para_clase($in_texto, $in_omitir_bandera=false) {
+        // Omitir estas palabras
+        $palabras_omitir = array('y', 'a', 'el', 'la', 'los', 'las', 'de', 'del');
+        // Cambiar caracteres
+        $buscados        = array('ñ', 'Ñ', 'ü', 'Ü', 'á', 'Á', 'é', 'É', 'í', 'Í', 'ó', 'Ó', 'ú', 'Ú');
+        $cambios         = array('n', 'n', 'u', 'u', 'a', 'a', 'e', 'e', 'i', 'i', 'o', 'o', 'u', 'u');
+        $sin_acentos     = str_replace($buscados, $cambios, $in_texto);
+        $especiales      = array('(', ')', '.', ',', '_', '-');
+        $minusculas      = strtolower(str_replace($especiales, ' ', $sin_acentos));
+        // Poner en mayusculas la primer letra de cada palabra
+        $palabras_camel_case = array();
+        foreach (explode(' ', $minusculas) as $p) {
+            if ($p !== '') {
+                if ($in_omitir_bandera && in_array($p, $palabras_omitir)) {
+                    continue;
+                } else {
+                    $palabras_camel_case[] = ucfirst($p);
+                }
+            }
+        }
+        // Entregar
+        return implode('', $palabras_camel_case);
+    } // caracteres_para_clase
 
     /**
      * Cargar archivo markdown
