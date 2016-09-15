@@ -35,6 +35,8 @@ class CreadorConfig {
     public $imprentas_pagina_inicial; // Arreglo con las rutas a Imprentas que serán insumo para la página inicial
     public $imprentas_mapa_sitio;     // Arreglo con las rutas a Imprentas que se usarán para el mapa del sitio sitemap.xml
     public $imprentas_redifusion;     // Arreglo con las rutas a Imprentas que se usarán para la redifusión rss.xml
+    public $imprentas_json;           // Arreglo con las rutas a Imprentas para crear archivos JSON
+    public $imprentas_csv;            // Arreglo con las rutas a Imprentas para crear archivos CSV
 
     /**
      * Constructor

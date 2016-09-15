@@ -28,6 +28,23 @@ namespace Base;
 abstract class Imprenta {
 
     /**
+     * Eliminar archivo
+     *
+     * @param  string  Ruta al archivo a eliminar
+     * @return boolean Verdadero si se ha eliminado
+     */
+    protected function eliminar_archivo($ruta) {
+        // Validar parámetro
+        if (trim($ruta) == '') {
+            throw new ImprentaExceptionValidacion("Error en Imprenta, eliminar_archivo: Parámetro vacio.");
+        }
+        // Si existe el archivo, lo borra
+        if (file_exists($ruta)) {
+            return unlink($ruta);
+        }
+    } // eliminar_archivo
+
+    /**
      * Eliminar un directorio y todos sus archivos
      *
      * Manda una 'r' a la terminal al eliminar
@@ -77,7 +94,7 @@ abstract class Imprenta {
     /**
      * Crear archivo
      *
-     * Manda una 'a' a la terminal al crear
+     * Manda una '.' a la terminal al crear
      *
      * @param string Ruta al archivo a crear
      * @param mixed  Texto o arreglo con el contenido

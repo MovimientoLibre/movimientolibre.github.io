@@ -25,7 +25,7 @@ namespace Contacto;
 /**
  * Clase Blogs
  */
-class Blogs extends \Base\PublicacionSchemaBlogPosting {
+class Blogs extends \Base\PublicacionSchemaArticle {
 
     /**
      * Constructor

@@ -27,7 +27,7 @@ namespace Base;
  */
 class ImprentaPublicaciones extends Imprenta {
 
-    public $directorio;               // Texto, nombre del directorio en raíz donde se guardará el archivo HTML
+    public $directorio;               // Texto, nombre del directorio en raíz donde se guardará los archivos
     public $publicaciones_directorio; // Texto, nombre del directorio dentro de lib que contiene los archivos con las publicaciones
     public $encabezado;               // Código HTML para usarse como encabezado
     public $encabezado_color;         // Texto, color de fondo del encabezado #nnnnnn
@@ -36,7 +36,7 @@ class ImprentaPublicaciones extends Imprenta {
     public $nombre_menu;              // Texto, opción del menú activa
     public $titulo;                   // Texto, título de la página
     public $descripcion;              // Texto, descripción para meta tag
-    protected $archivo_ruta;          // Texto opcional, ruta al archivo index.html
+    protected $archivo_ruta;          // Texto opcional, ruta al archivo index
     protected $indices_paginas;       // Ruta a la clase. Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
     protected $recolector;            // Instancia de Recolector
     protected $contador = 0;          // Entero, cantidad de publicaciones producidas
@@ -94,7 +94,7 @@ class ImprentaPublicaciones extends Imprenta {
         if ($this->recolector->obtener_cantidad_de_publicaciones() == 0) {
             throw new \Exception("Error en ImprentaPublicaciones: No hay publicaciones para crear.");
         }
-        // Inciar la Plantilla
+        // Iniciar la Plantilla
         $plantilla                = new Plantilla();
         $plantilla->navegacion    = new Navegacion();
         $plantilla->mapa_inferior = new MapaInferior();

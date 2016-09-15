@@ -25,7 +25,7 @@ namespace Licencias;
 /**
  * Clase GFDLES
  */
-class GFDLES extends \Base\PublicacionSchemaBlogPosting {
+class GFDLES extends \Base\PublicacionSchemaArticle {
 
     /**
      * Constructor

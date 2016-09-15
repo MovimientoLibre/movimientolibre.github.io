@@ -85,30 +85,29 @@ abstract class Paginas {
      * Concentrar
      */
     protected function concentrar() {
-        // Si ya se ha concentrado, no se hace nada
-        if ($this->he_concentrado) {
-            return;
-        }
-        // Pasar parámetros a vínculos
-        $this->vinculos->en_raiz = $this->en_raiz;
-        $this->vinculos->en_otro = $this->en_otro;
-        // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
-        $this->recolector->ordenar_por_tiempo_desc();
-        // Bucle por las publicaciones, tiene la cantidad límite
-        foreach ($this->recolector->obtener_publicaciones($this->cantidad_maxima) as $publicacion) {
-            // Sólo las publicaciones con estado publicar
-            if (strtolower($publicacion->estado) == 'publicar') {
-                // Definir vínculo
-                $vinculo          = new \Base\Vinculo();
-                $vinculo->en_raiz = $this->en_raiz;
-                $vinculo->en_otro = $this->en_otro;
-                $vinculo->definir_con_publicacion($publicacion);
-                // Agregar
-                $this->vinculos->agregar($vinculo);
+        // Trabajar sólo si NO ha concentrado
+        if (!$this->he_concentrado) {
+            // Pasar parámetros a vínculos
+            $this->vinculos->en_raiz = $this->en_raiz;
+            $this->vinculos->en_otro = $this->en_otro;
+            // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
+            $this->recolector->ordenar_por_tiempo_desc();
+            // Bucle por las publicaciones, tiene la cantidad límite
+            foreach ($this->recolector->obtener_publicaciones($this->cantidad_maxima) as $publicacion) {
+                // Sólo las publicaciones con estado publicar
+                if (strtolower($publicacion->estado) == 'publicar') {
+                    // Definir vínculo
+                    $vinculo          = new \Base\Vinculo();
+                    $vinculo->en_raiz = $this->en_raiz;
+                    $vinculo->en_otro = $this->en_otro;
+                    $vinculo->definir_con_publicacion($publicacion);
+                    // Agregar
+                    $this->vinculos->agregar($vinculo);
+                }
             }
+            // Levantar la bandera
+            $this->he_concentrado = true;
         }
-        // Levantar la bandera
-        $this->he_concentrado = true;
     } // concentrar
 
     /**
@@ -119,10 +118,8 @@ abstract class Paginas {
      * @return string Código HTML
      */
     public function html() {
-        // Si no ha concentrado
-        if ($this->he_concentrado == false) {
-            $this->concentrar();
-        }
+        // Concentrar
+        $this->concentrar();
         // Entregar
         return $this->encabezado_html()."\n".$this->vinculos->html();
     } // html
@@ -133,10 +130,8 @@ abstract class Paginas {
      * @return string Código Javascript
      */
     public function javascript() {
-        // Si no ha concentrado
-        if ($this->he_concentrado == false) {
-            $this->concentrar();
-        }
+        // Concentrar
+        $this->concentrar();
         // Entregar
         return $this->vinculos->javascript();
     } // javascript

@@ -25,7 +25,7 @@ namespace Licencias;
 /**
  * Clase GPL2
  */
-class GPL2 extends \Base\PublicacionSchemaBlogPosting {
+class GPL2 extends \Base\PublicacionSchemaArticle {
 
     /**
      * Constructor
