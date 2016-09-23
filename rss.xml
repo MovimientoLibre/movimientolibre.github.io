@@ -5,11 +5,45 @@
     <link>http://www.movimientolibre.com</link>
     <description>Últimas publicaciones de Movimiento Libre.</description>
     <language>es-MX</language>
-    <pubDate>Thu, 15 Sep 2016 10:38:50 -0500</pubDate>
+    <pubDate>Fri, 23 Sep 2016 11:33:04 -0500</pubDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Plataforma de Conocimiento v1.0</generator>
     <webMaster>guivaloz@movimientolibre.com (Guillermo Valdes Lozano)</webMaster>
     <atom:link href="http://www.movimientolibre.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GULAG Congreso 2016 - Invitación al taller GenesisPHP</title>
+      <link>http://www.movimientolibre.com/articulos/gulag-congreso-2016-genesisphp-invitacion.html</link>
+      <guid isPermaLink="false">articulos-gulag-congreso-2016-genesisphp-invitacion</guid>
+      <pubDate>Fri, 23 Sep 2016 11:15:00 -0500</pubDate>
+      <author>guivaloz</author>
+      <description><![CDATA[<p>Atención <em>PHPeros</em> Laguneros.</p>
+
+<p>Les invito al taller <strong>Programas que hacen programas: GénesisPHP</strong> que tratará sobre el sistema que su servidor ha desarrollado para hacer sistemas. No sé si les vaya a ser útil o no; pero puedo asegurarles que el taller tratará conceptos avanzados de nuestro lenguaje predilecto el <strong>PHP.</strong></p>
+
+<p>Para llegar a los conceptos propios de desarrollo de sistemas con <strong>GenesisPHP</strong> les solicitamos que sus laptops traigan instalado previamente <strong>GNU/Linux, Apache2, PHP5 y PostgreSQL8 o 9,</strong> sea como sistema operativo base o en virtualización. Así como el cliente <strong>GIT</strong> para bajar el software libre desde <a href="https://github.com/">GitHub</a>.</p>
+
+<p>El terreno por descubrir en el desarrollo de aplicaciones es enorme, por lo que su apoyo en preparación de sus equipos nos brindará más tiempo para explorar y experimentar tanto con PHP como con GenesisPHP.</p>
+
+<p>Para saber más y para <strong>descargar GenesisPHP</strong> visite <a href="https://github.com/guivaloz/GenesisPHP">https://github.com/guivaloz/GenesisPHP</a></p>
+
+<h3>Sede, fecha y lugar</h3>
+
+<ul>
+<li><strong>Tecnológico de Monterrey, Campus Laguna.</strong></li>
+<li>Sábado <strong>24 de septiembre 2016 a las 9 A.M.</strong></li>
+<li>Las conferencias se realizaran en la SALA #1 planta baja edificio CCI.</li>
+<li>Salón #106 planta baja Edificio ETLAC (profesional).</li>
+</ul>
+
+<p>Muchas gracias.</p>
+
+<p><strong>Última hora:</strong> Me informan que la cantidad de asistentes al taller a llegado a su límite. Aun así, pueden comunicarse a <a href="http://www.movimientolibre.com/articulos/&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#x6f;&#115;&#118;&#97;&#x6c;&#x64;&#x6f;&#64;&#99;&#114;&#x79;&#x70;&#x74;&#111;&#108;a&#x62;&#x2e;&#x6e;&#101;&#116;﻿">osvaldo@cryptolab.net﻿</a> para solicitar que el mismo taller se repita en una fecha futura.</p>
+
+<p><img class="img-responsive" src="http://www.movimientolibre.com/articulos/gulag-congreso-2016-genesisphp-invitacion/gulag-congreso-2016-poster-800x1035.jpg" alt="GULAG Congreso 2016"></p>
+
+<p><img class="img-responsive" src="http://www.movimientolibre.com/articulos/gulag-congreso-2016-genesisphp-invitacion/gulag-congreso-2016-como-me-registro.jpg" alt="GULAG Congreso 2016 cómo me registro"></p>
+]]></description>
+    </item>
     <item>
       <title>Asus Reparación Memo Pad 7 ME70C</title>
       <link>http://www.movimientolibre.com/articulos/asus-reparacion-memo-pad-7-me70c.html</link>
@@ -300,28 +334,6 @@
 <li><a href="https://www.madewithcode.com/">Google Made With Code</a></li>
 <li><a href="https://www.youtube.com/watch?v=XP3cyRRAfX0">Verizon Commercial 2014, Inspire Her Mind</a></li>
 </ul>
-]]></description>
-    </item>
-    <item>
-      <title>XFCE4 deshabilitar agente GPG y habilitar agente SSH</title>
-      <link>http://www.movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh.html</link>
-      <guid isPermaLink="false">apuntes-xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh</guid>
-      <pubDate>Thu, 07 Aug 2014 09:15:00 -0500</pubDate>
-      <author>guivaloz</author>
-      <description><![CDATA[<h4>Problema</h4>
-
-<p>En una instalación nueva de <a href="http://www.xfce.org/">XFCE</a> noté que por defecto ejecutaba el agente <a href="https://gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html">GPG</a>. Al tratar de eliminar llaves SSH hubo dificultades con el programa <code>ssh-add</code> ya que su agente no estaba en ejecución.</p>
-
-<h4>Solución</h4>
-
-<p>Para que XFCE4 lanze el agente SSH en lugar del de GPG ejecute:</p>
-
-<pre><code>$ xfconf-query -c xfce4-session -p /startup/ssh-agent/type -n -t string -s ssh-agent
-</code></pre>
-
-<h4>Verifique</h4>
-
-<p><img src="http://www.movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/xfce-editor-de-configuracion-ssh-agent.png" alt="XFCE4 Deshabilitar agente GPG habilitar agente SSH" /></p>
 ]]></description>
     </item>
   </channel>
