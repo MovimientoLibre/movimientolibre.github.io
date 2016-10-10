@@ -461,13 +461,16 @@ class Publicacion extends \Configuracion\PublicacionConfig {
         // Validar
         $this->validar();
         // Hay cinco posibles formas de elaborar el HTML
-        // 1) Propiedad contenido es una instancia de SchemaArticle o desendiente de ésta
-        if (is_object($this->contenido) && ($this->contenido instanceof SchemaArticle)) {
-            // Si está definido la carga de un archivo
-            if ($this->contenido_archivo_markdown != '') {
-                $this->contenido->articleBody = $this->cargar_archivo_markdown_extra($this->contenido_archivo_markdown);
-            } elseif ($this->contenido_archivo_html != '') {
-                $this->contenido->articleBody = $this->cargar_archivo($this->contenido_archivo_html);
+        // 1) Propiedad contenido es una instancia de SchemaThing o desendiente de ésta
+        if (is_object($this->contenido) && ($this->contenido instanceof SchemaThing)) {
+            // SchemaArticle tiene articleBody
+            if (is_object($this->contenido) && ($this->contenido instanceof SchemaArticle)) {
+                // Si está definido la carga de un archivo
+                if ($this->contenido_archivo_markdown != '') {
+                    $this->contenido->articleBody = $this->cargar_archivo_markdown_extra($this->contenido_archivo_markdown);
+                } elseif ($this->contenido_archivo_html != '') {
+                    $this->contenido->articleBody = $this->cargar_archivo($this->contenido_archivo_html);
+                }
             }
             // Si existe un archivo HTML para cargar como el extra de SchemaThing
             $extra_archivo_html = sprintf('%s/%s/%s.html', $this->include_extra_directorio, $this->directorio, $this->archivo);
