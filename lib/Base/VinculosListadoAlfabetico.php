@@ -52,12 +52,17 @@ class VinculosListadoAlfabetico extends Vinculos {
                     $a[]      = "      <h3 id=\"$letra\" class=\"listado-alfabetico-titulo\">$letra</h3>";
                     $a[]      = "      <ul class=\"listado-alfabetico\">";
                 }
+                // La primer letra podría estar acentuada o con tilde
+                $primera   = mb_substr($vinculo->nombre, 0, 1, 'UTF-8');
+                $buscados  = array('Á', 'É', 'Í', 'Ó', 'Ú', 'á', 'é', 'í', 'ó', 'ú');
+                $cambios   = array('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u');
+                $especimen = strtoupper(str_replace($buscados, $cambios, $primera));
                 // Si es diferente la primera letra
-                if (strtoupper(substr($vinculo->nombre, 0, 1)) != $letra) {
+                if ($especimen != $letra) {
                     $a[]      = implode("\n", $b);
                     $a[]      = "        <li class=\"pull-right listado-alfabetico-arriba\"><a href=\"#indice\"><i class=\"fa fa-arrow-circle-up\" aria-hidden=\"true\"></i></a></li>";
                     $a[]      = "      </ul>";
-                    $letra    = strtoupper(substr($vinculo->nombre, 0, 1));
+                    $letra    = $especimen;
                     $letras[] = $letra;
                     $a[]      = "      <h3 id=\"$letra\" class=\"listado-alfabetico-titulo\">$letra</h3>";
                     $a[]      = "      <ul class=\"listado-alfabetico\">";

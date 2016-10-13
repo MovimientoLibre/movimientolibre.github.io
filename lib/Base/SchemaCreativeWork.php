@@ -57,33 +57,15 @@ class SchemaCreativeWork extends SchemaThing {
      */
     protected function headline_html() {
         if ($this->headline != '') {
-            if (array_key_exists($this->headline, \Configuracion\NavegacionConfig::$iconos)) {
-                $icono = sprintf('<i class="%s encabezado-icono"></i>', \Configuracion\NavegacionConfig::$iconos[$this->headline]);
-            } else {
-                $icono = '';
-            }
             if ($this->name == '') {
                 $this->name = $this->headline;
-                if ($icono == '') {
-                    return sprintf('  <h1 itemprop="name">%s</h1>', $this->headline);
-                } else {
-                    return sprintf('  <h1>%s <span itemprop="name">%s</span></h1>', $icono, $this->headline);
-                }
+                return sprintf('  <h1 itemprop="name">%s</h1>', $this->headline);
             } elseif ($this->name != $this->headline) {
-                if ($icono == '') {
-                    return sprintf("  <h1 itemprop=\"headline\">%s</h1>\n    <h4 itemprop=\"name\">%s</h4>", $this->headline, $this->name);
-                } else {
-                    return sprintf("  <h1>%s <span itemprop=\"headline\">%s</span></h1>\n    <h4 itemprop=\"name\">%s</h4>", $icono, $this->headline, $this->name);
-                }
+                return sprintf("  <h1 itemprop=\"headline\">%s</h1>\n    <h4 itemprop=\"name\">%s</h4>", $this->headline, $this->name);
             }
         } elseif ($this->name != '') {
             $this->headline = $this->name;
-            if (array_key_exists($this->name, \Configuracion\NavegacionConfig::$iconos)) {
-                $icono = sprintf('<i class="%s encabezado-icono"></i>', \Configuracion\NavegacionConfig::$iconos[$this->name]);
-                return sprintf('  <h1>%s <span itemprop="name">%s</span></h1>', $icono, $this->name);
-            } else {
-                return sprintf('  <h1 itemprop="name">%s</h1>', $this->name);
-            }
+            return sprintf('  <h1 itemprop="name">%s</h1>', $this->name);
         } else {
             return '';
         }

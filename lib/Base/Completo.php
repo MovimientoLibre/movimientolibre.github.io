@@ -80,19 +80,13 @@ class Completo {
                 $a[] = "    <h1 style=\"display:none;\">{$this->publicacion->nombre}</h1>";
             }
         } elseif ($this->publicacion->nombre != '') {
-            // Hay título. Si hay icono definido en Navegación
-            if (array_key_exists($this->publicacion->nombre_menu, \Configuracion\NavegacionConfig::$iconos)) {
-                $encabezado = sprintf('<i class="%s encabezado-icono"></i> %s', \Configuracion\NavegacionConfig::$iconos[$this->publicacion->nombre_menu], $this->publicacion->nombre);
-            } else {
-                $encabezado = $this->publicacion->nombre;
-            }
-            // Acumular
+            // Acumular encabezado
             if ($this->publicacion->encabezado_color != '') {
                 $a[] = "    <div class=\"encabezado\" style=\"background-color:{$this->publicacion->encabezado_color};\">";
             } else {
                 $a[] = '    <div class="encabezado">';
             }
-            $a[] = "      <span><h1>$encabezado</h1></span>";
+            $a[] = "      <span><h1>{$this->publicacion->nombre}</h1></span>";
             $a[] = '    </div>';
         }
         if ($autor_fecha != '') {
