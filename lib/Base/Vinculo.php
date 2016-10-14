@@ -58,7 +58,7 @@ class Vinculo {
         $this->imagen      = $imagen;
         $this->directorio  = $directorio;
         $this->descripcion = $descripcion;
-        $this->autor       = $autor;
+        $this->autor       = $autor; // Nota: el autor puede ser texto o arreglo
         $this->fecha       = $fecha;
     } // constructor
 
@@ -77,7 +77,7 @@ class Vinculo {
         $this->nombre          = $p->nombre;
         $this->directorio      = $p->directorio;
         $this->descripcion     = $p->descripcion;
-        $this->autor           = $p->autor;
+        $this->autor           = $p->autor; // Nota: el autor puede ser texto o arreglo
         $this->fecha           = $p->fecha_con_formato_humano();
         $this->imagen_id       = $p->imagen_id;
         $this->imprenta_titulo = $p->imprenta_titulo;

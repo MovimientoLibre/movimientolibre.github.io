@@ -55,7 +55,7 @@ class Creador extends \Configuracion\CreadorConfig {
             }
         }
         // Imprimir categorías
-        if (isset($this->imprentas)) {
+        if (isset($this->imprentas_categorias)) {
             $imprenta = new ImprentaCategorias($this->imprentas_categorias);
             $imprenta->imprimir();
             unset($imprenta);

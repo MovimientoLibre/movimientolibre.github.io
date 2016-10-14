@@ -67,12 +67,22 @@ class VinculosDetallados extends Vinculos {
             if ($vinculo->descripcion != '') {
                 $a[] = sprintf('          <p class="detallados-descripcion">%s</p>', $vinculo->descripcion);
             }
-            if (($vinculo->autor != '') && ($vinculo->fecha != '')) {
-                $a[] = sprintf('          <p class="detallados-autor-fecha">Por %s, %s</p>', $vinculo->autor, $vinculo->fecha);
-            } elseif ($vinculo->autor != '') {
-                $a[] = sprintf('          <p class="detallados-autor-fecha">Por %s</p>', $vinculo->autor);
-            } elseif ($vinculo->fecha != '') {
-                $a[] = sprintf('          <p class="detallados-autor-fecha">%s</p>', $vinculo->fecha);
+            if (is_array($vinculo->autor)) {
+                if ((count($vinculo->autor) > 0) && ($vinculo->fecha != '')) {
+                    $a[] = sprintf('          <p class="detallados-autor-fecha">Por %s, %s</p>', implode(', ', $vinculo->autor), $vinculo->fecha);
+                } elseif (count($vinculo->autor) > 0) {
+                    $a[] = sprintf('          <p class="detallados-autor-fecha">Por %s</p>', implode(', ', $vinculo->autor));
+                } elseif ($vinculo->fecha != '') {
+                    $a[] = sprintf('          <p class="detallados-autor-fecha">%s</p>', $vinculo->fecha);
+                }
+            } elseif (is_string($vinculo->autor)) {
+                if (($vinculo->autor != '') && ($vinculo->fecha != '')) {
+                    $a[] = sprintf('          <p class="detallados-autor-fecha">Por %s, %s</p>', $vinculo->autor, $vinculo->fecha);
+                } elseif ($vinculo->autor != '') {
+                    $a[] = sprintf('          <p class="detallados-autor-fecha">Por %s</p>', $vinculo->autor);
+                } elseif ($vinculo->fecha != '') {
+                    $a[] = sprintf('          <p class="detallados-autor-fecha">%s</p>', $vinculo->fecha);
+                }
             }
             $a[] = '        </div>'; // media-body
             $a[] = '      </div>'; // media breve

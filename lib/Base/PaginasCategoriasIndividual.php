@@ -69,8 +69,15 @@ class PaginasCategoriasIndividual extends Paginas {
         // Iniciar vínculos
         $clase          = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
         $this->vinculos = new $clase();
-        // Ordenar publicaciones por tiempo, de la más nueva a la más antigua
-        $this->recolector->ordenar_por_tiempo_desc();
+        // Ordenar
+        switch (\Configuracion\CategoriasConfig::ORDENAR_POR) {
+            case 'dir_nombre_asc':
+                $this->recolector->ordenar_por_directorio_nombre_asc();
+                break;
+            case 'fecha_desc':
+            default:
+                $this->recolector->ordenar_por_tiempo_desc();
+        }
         // Bucle por todas las publicaciones
         foreach ($this->recolector->obtener_publicaciones() as $publicacion) {
             // Definir vínculo

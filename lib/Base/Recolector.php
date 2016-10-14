@@ -126,7 +126,7 @@ class Recolector {
      * @param  integer Opcional, entero cantidad límite
      * @return array   Arreglo con instancias de publicaciones
      */
-    public function obtener_publicaciones($limite=null) {
+    public function obtener_publicaciones($limite = NULL) {
         if (is_int($limite) && ($limite > 0)) {
             return array_slice($this->publicaciones, 0, $limite, true);
         } else {
@@ -142,7 +142,7 @@ class Recolector {
      * @param string Nombre del directorio en LIB_DIR de donde se recolectarán las publicaciones
      * @param mixed  Opcional, instancia de Imprenta para pasar variables
      */
-    public function agregar_publicaciones_en($lib_dir, $imprenta=null) {
+    public function agregar_publicaciones_en($lib_dir, $imprenta = NULL) {
         // Bucle con las clases recolectadas
         foreach ($this->obtener_clases_en($lib_dir) as $clase) {
             // Cargar

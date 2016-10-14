@@ -234,14 +234,14 @@ class Plantilla extends \Configuracion\PlantillaConfig {
         // Acumularemos la entrega en este arreglo
         $a = array();
         // Acumular
-        if ($this->_css != '') {
-            $a[] = $this->_css;
+        if ($this->scripts_jquery_js != '') {
+            $a[] = $this->scripts_jquery_js;
         }
         if ($this->scripts_bootstrap_js != '') {
             $a[] = $this->scripts_bootstrap_js;
         }
         if ($this->en_raiz) {
-            if ($this->_js == '') {
+            if ($this->scripts_jquery_js == '') {
                 $a[] = '<script src="js/jquery.min.js"></script>';
             }
             if ($this->scripts_bootstrap_js == '') {
@@ -253,7 +253,7 @@ class Plantilla extends \Configuracion\PlantillaConfig {
             $a[] = '<script src="js/plugins/metisMenu/metisMenu.min.js"></script>';
             $a[] = '<script src="js/sb-admin-2.js"></script>';
         } else {
-            if ($this->_js == '') {
+            if ($this->scripts_jquery_js == '') {
                 $a[] = '<script src="../js/jquery.min.js"></script>';
             }
             if ($this->scripts_bootstrap_js == '') {
