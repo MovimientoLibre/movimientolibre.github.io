@@ -44,9 +44,13 @@ class Creador extends \Configuracion\CreadorConfig {
     public function imprimir() {
         // Imprimir publicaciones
         if (isset($this->imprentas)) {
+            $total_publicaciones = 0;
             foreach ($this->imprentas as $objeto) {
                 $imprenta = new $objeto();
                 $imprenta->imprimir();
+                if (isset($imprenta->contador) && ($imprenta->contador > 0)) {
+                    $total_publicaciones += $imprenta->contador;
+                }
                 unset($imprenta);
             }
         }
@@ -86,20 +90,33 @@ class Creador extends \Configuracion\CreadorConfig {
         unset($imprenta);
         // Imprimir archivos JSON
         if (isset($this->imprentas_json)) {
+            $total_json = 0;
             foreach ($this->imprentas_json as $imprenta) {
-                $imprenta_json = new $imprenta();
-                $imprenta_json->imprimir();
-                unset($imprenta_json);
+                $imprenta = new $imprenta();
+                $imprenta->imprimir();
+                if (isset($imprenta->contador) && ($imprenta->contador > 0)) {
+                    $total_json += $imprenta->contador;
+                }
+                unset($imprenta);
             }
         }
         // Imprimir archivos CSV
         if (isset($this->imprentas_csv)) {
+            $total_csv = 0;
             foreach ($this->imprentas_csv as $imprenta) {
-                $imprenta_csv = new $imprenta();
-                $imprenta_csv->imprimir();
-                unset($imprenta_csv);
+                $imprenta = new $imprenta();
+                $imprenta->imprimir();
+                if (isset($imprenta->contador) && ($imprenta->contador > 0)) {
+                    $total_csv += $imprenta->contador;
+                }
+                unset($imprenta);
             }
         }
+        // Mostrar totales
+        echo "Totales de archivos creados...\n";
+        echo "  Publicaciones: $total_publicaciones\n";
+        echo "  JSON:          $total_json\n";
+        echo "  CSV:           $total_csv\n";
     } // imprimir
 
 } // Clase Creador

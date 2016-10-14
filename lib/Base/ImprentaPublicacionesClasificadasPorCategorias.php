@@ -39,7 +39,7 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
     // protected $archivo_ruta;
     // protected $indices_paginas;
     // protected $recolector;
-    // protected $contador;
+    // public $contador;
     protected $ultimas_encabezado    = 'Últimas publicaciones';
     protected $ultimas_vinculos      = '\\Base\\VinculosDetallados';
     protected $ultimas_cantidad      = 4;

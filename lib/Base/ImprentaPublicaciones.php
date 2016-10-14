@@ -39,7 +39,7 @@ class ImprentaPublicaciones extends Imprenta {
     protected $archivo_ruta;          // Texto opcional, ruta al archivo index
     protected $indices_paginas;       // Ruta a la clase. Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
     protected $recolector;            // Instancia de Recolector
-    protected $contador = 0;          // Entero, cantidad de publicaciones producidas
+    public    $contador = 0;          // Entero, cantidad de publicaciones producidas
 
     /**
      * Constructor
