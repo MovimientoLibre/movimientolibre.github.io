@@ -55,14 +55,14 @@ class VinculosDetallados extends Vinculos {
                     $a[] = sprintf('        <a class="pull-left" href="%s"><img class="media-object" src="%s"></a>', $vinculo->url(), $imagen_url);
                 }
                 $a[] = '        <div class="media-body">';
-                $a[] = sprintf('          <h3 class="media-heading"><a href="%s">%s</a></h3>', $vinculo->url(), $vinculo->nombre);
+                $a[] = sprintf('          <h3 class="media-heading detallados-encabezado"><a href="%s">%s</a></h3>', $vinculo->url(), $vinculo->nombre);
             } else {
                 // NO tiene URL
                 if ($imagen_url != '') {
                     $a[] = sprintf('        <img class="media-object pull-left" src="%s">', $imagen_url);
                 }
                 $a[] = '        <div class="media-body">';
-                $a[] = sprintf('          <h3 class="media-heading">%s</h3>', $vinculo->nombre);
+                $a[] = sprintf('          <h3 class="media-heading detallados-encabezado">%s</h3>', $vinculo->nombre);
             }
             if ($vinculo->descripcion != '') {
                 $a[] = sprintf('          <p class="detallados-descripcion">%s</p>', $vinculo->descripcion);
