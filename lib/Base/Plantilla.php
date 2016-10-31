@@ -171,6 +171,15 @@ class Plantilla extends \Configuracion\PlantillaConfig {
             if ($this->favicon != '') {
                 $a[] = "  <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"{$this->favicon}\">";
             }
+            if (is_array($this->favicons) && (count($this->favicons > 0))) {
+                foreach ($this->favicons as $fi) {
+                    if (($fi['ruta'] != '') && ($fi['rel'] != '') && ($fi['size'] != '')) {
+                        $a[] = sprintf('  <link rel="%s" href="%s" sizes="%s">', $fi['rel'], $fi['ruta'], $fi['size']);
+                    } elseif (($fi['ruta'] != '') && ($fi['rel'] != '')) {
+                        $a[] = sprintf('  <link rel="%s" href="%s">', $fi['rel'], $fi['ruta']);
+                    }
+                }
+            }
             if ($this->rss != '') {
                 $a[] = "  <link rel=\"alternate\" type=\"application/rss+xml\" href=\"{$this->rss}\" title=\"{$this->sitio_titulo}\">";
             }
@@ -191,6 +200,15 @@ class Plantilla extends \Configuracion\PlantillaConfig {
         } else {
             if ($this->favicon != '') {
                 $a[] = "  <link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"../{$this->favicon}\">";
+            }
+            if (is_array($this->favicons) && (count($this->favicons > 0))) {
+                foreach ($this->favicons as $fi) {
+                    if (($fi['ruta'] != '') && ($fi['rel'] != '') && ($fi['size'] != '')) {
+                        $a[] = sprintf('  <link rel="%s" href="../%s" sizes="%s">', $fi['rel'], $fi['ruta'], $fi['size']);
+                    } elseif (($fi['ruta'] != '') && ($fi['rel'] != '')) {
+                        $a[] = sprintf('  <link rel="%s" href="../%s">', $fi['rel'], $fi['ruta']);
+                    }
+                }
             }
             if ($this->rss != '') {
                 $a[] = "  <link rel=\"alternate\" type=\"application/rss+xml\" href=\"../{$this->rss}\" title=\"{$this->sitio_titulo}\">";
