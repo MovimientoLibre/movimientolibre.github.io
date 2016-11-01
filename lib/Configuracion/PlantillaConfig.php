@@ -32,44 +32,19 @@ class PlantillaConfig {
     public $rss              = 'rss.xml';
     public $favicon          = 'favicon.ico';
     public $propio_css       = 'css/movimiento-libre.css';
-    public $en_raiz          = false;       // Si es verdadero los vínculos serán para un archivo en la raíz del sitio
-    public $para_compartir   = false;       // Si es verdadero pondrá los metas para tarjetas en Twitter/Facebook
-    public $autor            = 'guivaloz';  // Autor por defecto
-    public $mensaje_oculto   = <<<FINAL
-<!-- ===========================================================================================
-
-        Movimiento Libre
-
-        Este sitio web es elaborado con la Plataforma de Conocimiento.
-        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
-          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
-        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
-          Twitter Bootstrap    http://getbootstrap.com
-          StartBootStrap       http://startbootstrap.com
-          Morris.js            https://morrisjs.github.io/morris.js/
-          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
-        Descargue, aprenda y colabore con este Software Libre:
-          GitHub               https://github.com/guivaloz
-
-     =========================================================================================== -->
-FINAL;
+    public $en_raiz          = FALSE;                            // Si es verdadero los vínculos serán para un archivo en la raíz del sitio
+    public $para_compartir   = FALSE;                            // Si es verdadero pondrá los metas para tarjetas en Twitter/Facebook
+    public $autor            = 'guivaloz';                       // Autor por defecto
+    public $mensaje_oculto;
     public $pie;
-    protected $google_analytics = <<<FINAL
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-74263253-1', 'auto');
-  ga('send', 'pageview');
-</script>
-FINAL;
+    protected $google_analytics;
     protected $google_site_verification;
     protected $cabecera_bootstrap_css;
     protected $cabecera_font_awesome_css;
-    protected $cabecera_google_fonts_css;
+    protected $cabecera_externos_css;
     protected $scripts_jquery_css;
     protected $scripts_bootstrap_js;
+    protected $scripts_externos_js;
     public $favicons = array(
         array('ruta' => 'imagenes/apple-touch-icon.png',         'rel' => 'apple-touch-icon', 'size' => ''),
         array('ruta' => 'imagenes/apple-touch-icon-76x76.png',   'rel' => 'apple-touch-icon', 'size' => '76x76'),
@@ -88,18 +63,49 @@ FINAL;
      * JQuery desde Google apis segun https://developers.google.com/speed/libraries/
      */
     public function __construct() {
-        // Si cambia a false entonces NO dependará de Internet
-        if (true) {
+        // Si cambia a FALSE entonces NO dependará de Internet
+        if (TRUE) {
             // jQuery según https://developers.google.com/speed/libraries/#jquery
             $this->scripts_jquery_css        = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>';
             // Twitter Bootstrap según https://www.bootstrapcdn.com/
-            $this->cabecera_bootstrap_css    = '<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">';
+            $this->cabecera_bootstrap_css    = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">';
             $this->scripts_bootstrap_js      = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
             // Font Awesome según https://www.bootstrapcdn.com/
-            $this->cabecera_font_awesome_css = '<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">';
-            // Google Fonts Droid Sans
-            $this->cabecera_google_fonts_css = '<link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">';
+            $this->cabecera_font_awesome_css = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">';
         }
+        // CSS Externos
+        // - Google Fonts
+        $this->cabecera_externos_css = array('<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">');
+        // Mensaje oculto
+        $this->mensaje_oculto = <<<FINAL
+<!-- ===========================================================================================
+
+        Movimiento Libre
+
+        Este sitio web es elaborado con la Plataforma de Conocimiento.
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          Twitter Bootstrap    http://getbootstrap.com
+          StartBootStrap       http://startbootstrap.com
+          Morris.js            https://morrisjs.github.io/morris.js/
+          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+        Descargue, aprenda y colabore con este Software Libre:
+          GitHub               https://github.com/guivaloz
+
+     =========================================================================================== -->
+FINAL;
+        // Google Analytics
+        $this->google_analytics = <<<FINAL
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-74263253-1', 'auto');
+  ga('send', 'pageview');
+</script>
+FINAL;
     } // constructor
 
 } // Clase PlantillaConfig
