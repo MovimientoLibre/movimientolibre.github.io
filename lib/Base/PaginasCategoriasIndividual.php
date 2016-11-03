@@ -67,8 +67,9 @@ class PaginasCategoriasIndividual extends Paginas {
             return;
         }
         // Iniciar vínculos
-        $clase          = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
-        $this->vinculos = new $clase();
+        $clase                         = \Configuracion\CategoriasConfig::VINCULOS_INDIVIDUAL;
+        $this->vinculos                = new $clase();
+        $this->vinculos->identificador = 'categorias-individual';
         // Ordenar
         switch (\Configuracion\CategoriasConfig::ORDENAR_POR) {
             case 'dir_nombre_asc':

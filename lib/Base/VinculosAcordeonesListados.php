@@ -27,6 +27,7 @@ namespace Base;
  */
 class VinculosAcordeonesListados extends Vinculos {
 
+    // public $identificador;
     // protected $vinculos;
     public $imagen_tamano = 0;
     protected $acordeones;
@@ -42,8 +43,9 @@ class VinculosAcordeonesListados extends Vinculos {
             return '<!-- Sin vínculos -->';
         }
         // Iniciar los acordeones
-        $this->acordeones = new Acordeones();
-        $activa           = '';
+        $this->acordeones = new Acordeones($this->identificador);
+        // Iniciar la variable donde mantendremos el acordeon en turno
+        $activa = '';
         // Bucle por los vinculos
         foreach ($this->vinculos as $vinculo) {
             if ($activa == '') {

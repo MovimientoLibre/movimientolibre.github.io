@@ -86,18 +86,15 @@ a:active  { color:#0088FF; text-decoration:underline; }
 /*
  * Cuerpo
  */
-.autor {
-    background-color:#B4C0CD;
-}
-.encabezado {
-    border-bottom:1px solid #CCC;
-}
-.encabezado-descripcion {
-    color:#666;
-}
-.encabezado-autor-fecha {
-    color:#888;
-}
+.autor                  { background-color:#B4C0CD; }
+.encabezado             { border-bottom:1px solid #CCC; }
+.encabezado-descripcion { color:#666; }
+.encabezado-autor-fecha { color:#888; }
+.detallados-encabezado,
+.titulo                 { font-size:1.4em; line-height:1.2; }
+.detallados-descripcion,
+.descripcion            { font-size:1.2em; line-height:1.2; }
+.detallados-autor-fecha { font-size:1.0em; line-height:1.0; }
 
 /*
  * En las presentaciones uso la clase diapositiva para que tengan sobra las vistas previas

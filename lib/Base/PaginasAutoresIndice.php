@@ -101,6 +101,7 @@ class PaginasAutoresIndice extends Paginas {
         // Iniciar vínculos
         $clase                         = \Configuracion\AutoresConfig::VINCULOS_INDICE;
         $this->vinculos                = new $clase();
+        $this->vinculos->identificador = 'autores-indice';
         $this->vinculos->imagen_tamano = $autores_config->imagen_tamano;
         // Si se van a mostrar los autores NO definidos
         if ($autores_config->mostrar_no_definidos) {

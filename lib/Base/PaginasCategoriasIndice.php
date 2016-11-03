@@ -61,6 +61,7 @@ class PaginasCategoriasIndice extends Paginas {
         // Iniciar vínculos
         $clase                         = \Configuracion\CategoriasConfig::VINCULOS_INDICE;
         $this->vinculos                = new $clase();
+        $this->vinculos->identificador = 'categorias-indice';
         $this->vinculos->imagen_tamano = $categorias_config->imagen_tamano;
         // Bucle por todas las categorias
         foreach ($this->recolector->obtener_categorias() as $nombre) {

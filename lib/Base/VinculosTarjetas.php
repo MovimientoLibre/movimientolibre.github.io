@@ -27,6 +27,7 @@ namespace Base;
  */
 class VinculosTarjetas extends Vinculos {
 
+    // public $identificador;
     // protected $vinculos;
     public $imagen_tamano = 256;
 

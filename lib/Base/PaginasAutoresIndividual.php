@@ -109,8 +109,9 @@ class PaginasAutoresIndividual extends Paginas {
             return;
         }
         // Iniciar vínculos
-        $clase          = \Configuracion\AutoresConfig::VINCULOS_INDIVIDUAL;
-        $this->vinculos = new $clase();
+        $clase                         = \Configuracion\AutoresConfig::VINCULOS_INDIVIDUAL;
+        $this->vinculos                = new $clase();
+        $this->vinculos->identificador = 'autores-individual';
         // Ordenar
         switch (\Configuracion\AutoresConfig::ORDENAR_POR) {
             case 'dir_nombre_asc':

@@ -27,6 +27,7 @@ namespace Base;
  */
 class VinculosListado extends Vinculos {
 
+    // public $identificador;
     // protected $vinculos;
     public $imagen_tamano = 0;
 

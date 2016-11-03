@@ -27,6 +27,7 @@ namespace Base;
  */
 class VinculosGalerias extends Vinculos {
 
+    // public $identificador;
     // protected $vinculos;
     public $imagen_tamano = 128;
 

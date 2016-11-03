@@ -27,7 +27,8 @@ namespace Base;
  */
 abstract class Vinculos {
 
-    protected $vinculos = array(); // Arreglo con instancias de Vinculo
+    public $identificador = 'vinculos-acordeones'; // Texto identificador para el grupo de Acordeones
+    protected $vinculos   = array();               // Arreglo con instancias de Vinculo
 
     /**
      * Agregar

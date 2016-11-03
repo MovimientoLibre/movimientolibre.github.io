@@ -63,13 +63,13 @@ class PlantillaConfig {
      * JQuery desde Google apis segun https://developers.google.com/speed/libraries/
      */
     public function __construct() {
-        // Si cambia a FALSE entonces NO dependará de Internet
+        // Al usar FLASE las siguientes propiedades apuntarán a archivos locales, así el sitio podrá funcionar en una intranet
         if (TRUE) {
             // jQuery según https://developers.google.com/speed/libraries/#jquery
-            $this->scripts_jquery_css        = '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>';
+            $this->scripts_jquery_js         = '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>';
             // Twitter Bootstrap según https://www.bootstrapcdn.com/
             $this->cabecera_bootstrap_css    = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">';
-            $this->scripts_bootstrap_js      = '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
+            $this->scripts_bootstrap_js      = '<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
             // Font Awesome según https://www.bootstrapcdn.com/
             $this->cabecera_font_awesome_css = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">';
         }
@@ -78,22 +78,22 @@ class PlantillaConfig {
         $this->cabecera_externos_css = array('<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">');
         // Mensaje oculto
         $this->mensaje_oculto = <<<FINAL
-<!-- ===========================================================================================
+<!-- ==========================================================================================
 
-        Movimiento Libre
+     Movimiento Libre
 
-        Este sitio web es elaborado con la Plataforma de Conocimiento.
-        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
-          Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
-        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
-          Twitter Bootstrap    http://getbootstrap.com
-          StartBootStrap       http://startbootstrap.com
-          Morris.js            https://morrisjs.github.io/morris.js/
-          Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
-        Descargue, aprenda y colabore con este Software Libre:
-          GitHub               https://github.com/guivaloz
+     Este sitio web es elaborado con la Plataforma de Conocimiento.
+       El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
+       Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+     Agradecemos y compartimos las tecnologías abiertas sobre las que se basa:
+       Twitter Bootstrap    http://getbootstrap.com
+       StartBootStrap       http://startbootstrap.com
+       Morris.js            https://morrisjs.github.io/morris.js/
+       Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
+     El hospedaje es cortesía de GitHub. Descargue, aprenda y colabore con este Software Libre:
+       GitHub               https://github.com/MovimientoLibre
 
-     =========================================================================================== -->
+     ========================================================================================== -->
 FINAL;
         // Google Analytics
         $this->google_analytics = <<<FINAL
