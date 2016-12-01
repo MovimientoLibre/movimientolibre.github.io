@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - Imprenta Publicaciones Clasificadas por Categorías
  *
- * Copyright (C) 2016 Guillermo Valdés Lozano
+ * Copyright (C) 2016 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
