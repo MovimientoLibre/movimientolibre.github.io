@@ -31,24 +31,25 @@ namespace Base;
 class SchemaGeoCoordinates extends SchemaThing {
 
     // En Schema
-    // public $onTypeProperty; // Text. Use when this item is part of another one.
-    // public $identation;     // Integer. Level of identation (beautiful code).
-    // public $id_property;    // Text. id property for article/div tag. Use to aply a unique CSS style.
-    // public $class_property; // Text. class property for div tag. Use to aply a general CSS style.
-    // public $is_article;     // Boolean. Use true for enclose with <article>
+    // public $onTypeProperty;  // Text. Use when this item is part of another one.
+    // public $identation;      // Integer. Level of identation (beautiful code).
+    // public $id_property;     // Text. id property for article/div tag. Use to aply a unique CSS style.
+    // public $class_property;  // Text. class property for div tag. Use to aply a general CSS style.
+    // public $is_article;      // Boolean. Use true for enclose with <article>
     // En SchemaThing
-    // public $big_heading;    // Boolean. Use true to use a big heading for the web page.
-    // public $headline_style; // Text. Style or Hex Color for big heading.
-    // public $extra;          // Text. Additional HTML to put inside.
-    // public $description;    // Text. A short description of the item.
-    // public $image;          // URL or ImageObject. An image of the item.
-    // public $image_show;     // Boolean. Use true to put an img tag. Use false to put a meta tag.
-    // public $name;           // Text. The name of the item.
-    // public $url;            // URL of the item.
-    // public $url_label;      // Label for the URL of the item.
+    // public $big_heading;     // Boolean. Use true to use a big heading for the web page.
+    // public $headline_style;  // Text. Style or Hex Color for big heading.
+    // public $content;         // Text. HTML content to put INSIDE.
+    // public $extra;           // Text. Additional HTML to put ASIDE.
+    // public $description;     // Text. A short description of the item.
+    // public $image;           // URL or ImageObject. An image of the item.
+    // public $image_show;      // Boolean. Use true to put an img tag. Use false to put a meta tag.
+    // public $name;            // Text. The name of the item.
+    // public $url;             // URL of the item.
+    // public $url_label;       // Label for the URL of the item.
     // En SchemaGeoCoordinates
-    public $latitude;          // Number or Text. The latitude of a location. For example 37.42242
-    public $longitude;         // Number or Text. The longitude of a location. For example -122.08585
+    public $latitude;           // Number or Text. The latitude of a location. For example 37.42242
+    public $longitude;          // Number or Text. The longitude of a location. For example -122.08585
 
     /**
      * Latitude HTML
@@ -92,6 +93,7 @@ class SchemaGeoCoordinates extends SchemaThing {
         $a[] = $this->latitude_html();
         $a[] = $this->longitude_html();
         $a[] = $this->url_html();
+        $a[] = $this->content_html();
         $a[] = $this->itemscope_end();
         $a[] = $this->extra_html();
         // Entregar

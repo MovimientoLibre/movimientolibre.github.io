@@ -31,21 +31,22 @@ namespace Base;
 class SchemaThing extends Schema {
 
     // En Schema
-    // public $onTypeProperty; // Text. Use when this item is part of another one.
-    // public $identation;     // Integer. Level of identation (beautiful code).
-    // public $id_property;    // Text. id property for article/div tag. Use to aply a unique CSS style.
-    // public $class_property; // Text. class property for div tag. Use to aply a general CSS style.
-    // public $is_article;     // Boolean. Use true for enclose with <article>
+    // public $onTypeProperty;  // Text. Use when this item is part of another one.
+    // public $identation;      // Integer. Level of identation (beautiful code).
+    // public $id_property;     // Text. id property for article/div tag. Use to aply a unique CSS style.
+    // public $class_property;  // Text. class property for div tag. Use to aply a general CSS style.
+    // public $is_article;      // Boolean. Use true for enclose with <article>
     // En SchemaThing
-    public $big_heading;       // Boolean. Use true to use a big heading for the web page.
-    public $headline_style;    // Text. Style or Hex Color for big heading.
-    public $extra;             // Text. Additional HTML to put inside.
-    public $description;       // Text. A short description of the item.
-    public $image;             // URL or ImageObject. An image of the item.
-    public $image_show;        // Boolean. Use true to put an img tag. Use false to put a meta tag.
-    public $name;              // Text. The name of the item.
-    public $url;               // URL of the item.
-    public $url_label;         // Label for the URL of the item.
+    public $big_heading;        // Boolean. Use true to use a big heading for the web page.
+    public $headline_style;     // Text. Style or Hex Color for big heading.
+    public $content;            // Text. HTML content to put INSIDE.
+    public $extra;              // Text. Additional HTML to put ASIDE.
+    public $description;        // Text. A short description of the item.
+    public $image;              // URL or ImageObject. An image of the item.
+    public $image_show;         // Boolean. Use true to put an img tag. Use false to put a meta tag.
+    public $name;               // Text. The name of the item.
+    public $url;                // URL of the item.
+    public $url_label;          // Label for the URL of the item.
 
     /**
      * Constructor
@@ -200,20 +201,36 @@ class SchemaThing extends Schema {
     } // url_html
 
     /**
+     * Content HTML
+     *
+     * Pone contenido dentro
+     */
+    protected function content_html() {
+        if ($this->content != '') {
+            $a      = array();
+            $a[]    = '<!-- Contenido: Inicia  -->';
+            $a[]    = $this->content;
+            $a[]    = '<!-- Contenido: Termina -->';
+            return implode("\n  ", $a);
+        } else {
+            return '';
+        }
+    } // content_html
+
+    /**
      * Extra
      *
      * Pone contenido entre tags aside
      */
     protected function extra_html() {
         if ($this->extra != '') {
-        //  $spaces = str_repeat('  ', $this->identation + 2);
             $a      = array();
             $a[]    = '<aside>';
             $a[]    = '<!-- Extra: Inicia  -->';
             $a[]    = $this->extra;
             $a[]    = '<!-- Extra: Termina -->';
             $a[]    = '</aside>';
-            return '  '.implode("\n  ", $a);
+            return implode("\n  ", $a);
         } else {
             return '';
         }
@@ -237,6 +254,7 @@ class SchemaThing extends Schema {
         }
         $a[] = $this->image_html();
         $a[] = $this->url_html();
+        $a[] = $this->content_html();
         $a[] = $this->itemscope_end();
         $a[] = $this->extra_html();
         // Entregar

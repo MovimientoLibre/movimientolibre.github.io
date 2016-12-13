@@ -31,29 +31,30 @@ namespace Base;
 class SchemaCreativeWork extends SchemaThing {
 
     // En Schema
-    // public $onTypeProperty; // Text. Use when this item is part of another one.
-    // public $identation;     // Integer. Level of identation (beautiful code).
-    // public $id_property;    // Text. id property for article/div tag. Use to aply a unique CSS style.
-    // public $class_property; // Text. class property for div tag. Use to aply a general CSS style.
-    // public $is_article;     // Boolean. Use true for enclose with <article>
+    // public $onTypeProperty;  // Text. Use when this item is part of another one.
+    // public $identation;      // Integer. Level of identation (beautiful code).
+    // public $id_property;     // Text. id property for article/div tag. Use to aply a unique CSS style.
+    // public $class_property;  // Text. class property for div tag. Use to aply a general CSS style.
+    // public $is_article;      // Boolean. Use true for enclose with <article>
     // En SchemaThing
-    // public $big_heading;    // Boolean. Use true to use a big heading for the web page.
-    // public $headline_style; // Text. Style or Hex Color for big heading.
-    // public $extra;          // Text. Additional HTML to put inside.
-    // public $description;    // Text. A short description of the item.
-    // public $image;          // URL or ImageObject. An image of the item.
-    // public $image_show;     // Boolean. Use true to put an img tag. Use false to put a meta tag.
-    // public $name;           // Text. The name of the item.
-    // public $url;            // URL of the item.
-    // public $url_label;      // Label for the URL of the item.
+    // public $big_heading;     // Boolean. Use true to use a big heading for the web page.
+    // public $headline_style;  // Text. Style or Hex Color for big heading.
+    // public $content;         // Text. HTML content to put INSIDE.
+    // public $extra;           // Text. Additional HTML to put ASIDE.
+    // public $description;     // Text. A short description of the item.
+    // public $image;           // URL or ImageObject. An image of the item.
+    // public $image_show;      // Boolean. Use true to put an img tag. Use false to put a meta tag.
+    // public $name;            // Text. The name of the item.
+    // public $url;             // URL of the item.
+    // public $url_label;       // Label for the URL of the item.
     // En SchemaCreativeWork
-    public $author;            // Organization or Person. The author of this content.
-    public $contentLocation;   // Place. The location of the content.
-    public $datePublished;     // Date. Date of first broadcast/publication. In ISO 8601, example 2007-04-05T14:30
-    public $headline;          // Text. Headline of the article.
-    public $headline_style;    // Text. CSS style for encabezado.
-    public $headline_icon;     // Text. Font Awsome icon for encabezado.
-    public $producer;          // Organization or Person. The person or organization who produced the work.
+    public $author;             // Organization or Person. The author of this content.
+    public $contentLocation;    // Place. The location of the content.
+    public $datePublished;      // Date. Date of first broadcast/publication. In ISO 8601, example 2007-04-05T14:30
+    public $headline;           // Text. Headline of the article.
+    public $headline_style;     // Text. CSS style for encabezado.
+    public $headline_icon;      // Text. Font Awsome icon for encabezado.
+    public $producer;           // Organization or Person. The person or organization who produced the work.
 
     /**
      * HTML
@@ -73,6 +74,7 @@ class SchemaCreativeWork extends SchemaThing {
             $this->contentLocation->is_article     = FALSE;
             $a[]                                   = $this->contentLocation->html();
         }
+        $a[] = $this->content_html();
         $a[] = $this->itemscope_end();
         $a[] = $this->extra_html();
         // Entregar

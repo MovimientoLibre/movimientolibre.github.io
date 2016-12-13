@@ -36,7 +36,8 @@ class SchemaDataCatalog extends SchemaCreativeWork {
     // En SchemaThing
     // public $big_heading;     // Boolean. Use true to use a big heading for the web page.
     // public $headline_style;  // Text. Style or Hex Color for big heading.
-    // public $extra;           // Text. Additional HTML to put inside.
+    // public $content;         // Text. HTML content to put INSIDE.
+    // public $extra;           // Text. Additional HTML to put ASIDE.
     // public $description;     // Text. A short description of the item.
     // public $image;           // URL or ImageObject. An image of the item.
     // public $image_show;      // Boolean. Use true to put an img tag. Use false to put a meta tag.
@@ -83,6 +84,7 @@ class SchemaDataCatalog extends SchemaCreativeWork {
             $this->dataset->is_article     = FALSE;
             $a[]                           = $this->dataset->html();
         }
+        $a[] = $this->content_html();
         $a[] = $this->itemscope_end();
         $a[] = $this->extra_html();
         // Entregar

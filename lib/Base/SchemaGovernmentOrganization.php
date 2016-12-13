@@ -31,26 +31,27 @@ namespace Base;
 class SchemaGovernmentOrganization extends SchemaOrganization {
 
     // En Schema
-    // public $onTypeProperty; // Text. Use when this item is part of another one.
-    // public $identation;     // Integer. Level of identation (beautiful code).
-    // public $id_property;    // Text. id property for article/div tag. Use to aply a unique CSS style.
-    // public $class_property; // Text. class property for div tag. Use to aply a general CSS style.
-    // public $is_article;     // Boolean. Use true for enclose with <article>
+    // public $onTypeProperty;  // Text. Use when this item is part of another one.
+    // public $identation;      // Integer. Level of identation (beautiful code).
+    // public $id_property;     // Text. id property for article/div tag. Use to aply a unique CSS style.
+    // public $class_property;  // Text. class property for div tag. Use to aply a general CSS style.
+    // public $is_article;      // Boolean. Use true for enclose with <article>
     // En SchemaThing
-    // public $big_heading;    // Boolean. Use true to use a big heading for the web page.
-    // public $headline_style; // Text. Style or Hex Color for big heading.
-    // public $extra;          // Text. Additional HTML to put inside.
-    // public $description;    // Text. A short description of the item.
-    // public $image;          // URL or ImageObject. An image of the item.
-    // public $image_show;     // Boolean. Use true to put an img tag. Use false to put a meta tag.
-    // public $name;           // Text. The name of the item.
-    // public $url;            // URL of the item.
-    // public $url_label;      // Label for the URL of the item.
+    // public $big_heading;     // Boolean. Use true to use a big heading for the web page.
+    // public $headline_style;  // Text. Style or Hex Color for big heading.
+    // public $content;         // Text. HTML content to put INSIDE.
+    // public $extra;           // Text. Additional HTML to put ASIDE.
+    // public $description;     // Text. A short description of the item.
+    // public $image;           // URL or ImageObject. An image of the item.
+    // public $image_show;      // Boolean. Use true to put an img tag. Use false to put a meta tag.
+    // public $name;            // Text. The name of the item.
+    // public $url;             // URL of the item.
+    // public $url_label;       // Label for the URL of the item.
     // En SchemaOrganization
-    // public $address;        // PostalAddress. Physical address of the item.
-    // public $email;          // Text. Email address.
-    // public $location;       // PostalAddress or Place. The location of the event, organization or action.
-    // public $telephone;      // Text. The telephone number.
+    // public $address;         // PostalAddress. Physical address of the item.
+    // public $email;           // Text. Email address.
+    // public $location;        // PostalAddress or Place. The location of the event, organization or action.
+    // public $telephone;       // Text. The telephone number.
 
     /**
      * HTML
@@ -84,6 +85,7 @@ class SchemaGovernmentOrganization extends SchemaOrganization {
             $this->location->is_article     = FALSE;
             $a[]                            = $this->location->html();
         }
+        $a[] = $this->content_html();
         $a[] = $this->itemscope_end();
         $a[] = $this->extra_html();
         // Entregar

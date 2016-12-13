@@ -25,25 +25,34 @@ namespace Contacto;
 /**
  * Clase Contacto
  */
-class Contacto extends \Base\PublicacionSchemaArticle {
+class Contacto extends \Base\Publicacion {
 
     /**
      * Constructor
      */
     public function __construct() {
         // Título, autor y fecha
-        $this->nombre                     = 'Contacto';
-        $this->autor                      = 'Movimiento Libre';
-     // $this->fecha                      = '2016-00-00T00:00';
+        $this->nombre          = 'Contacto';
+        $this->autor           = 'guivaloz';
+     // $this->fecha           = '2016-00-00T00:00';
         // El nombre del archivo a crear
-        $this->archivo                    = 'contacto';
+        $this->archivo         = 'contacto';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion                = 'Datos de contacto del responsable de este sitio web.';
-        $this->claves                     = 'Datos, Contacto, Movimiento Libre';
-        // Ruta al archivo markdown con el contenido
-        $this->contenido_archivo_markdown = 'lib/Contacto/Contacto.md';
+        $this->descripcion     = 'Datos de contacto del responsable de este sitio web.';
+        $this->claves          = 'Datos, Contacto, Movimiento Libre';
         // Para el Organizador
-        $this->categorias                 = array('Contacto');
+        $this->categorias      = array('Contacto');
+        // Instancia para datos de contacto
+        $contacto              = new \Base\SchemaContactPoint();
+        $contacto->name        = 'Guillermo Valdés Lozano';
+        $contacto->description = 'Desarrollador de Software. Científico de Datos. Dominio de GNU/Linux y PHP. Estudia Java, Python y R. Capacitador de Software Libre. Trabaja en IMPLAN Torreón.';
+        $contacto->image       = '../imagenes/guivaloz.jpg';
+        $contacto->image_show  = TRUE;
+        $contacto->email       = 'guivaloz@movimientolibre.com';
+        $contacto->content     = \Base\Funciones::cargar_archivo_markdown('lib/Contacto/Contacto.md');
+        $contacto->big_heading = TRUE;
+        // El contenido es un Schema
+        $this->contenido       = $contacto;
     } // constructor
 
 } // Clase Contacto
