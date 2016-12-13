@@ -27,26 +27,31 @@ namespace Base;
  */
 class SchemaPostalAddress extends SchemaContactPoint {
 
-    // public $onTypeProperty;      // Text. Use when this item is part of another one.
-    // public $identation;          // Integer. Level of identation (beautiful code).
-    // public $id_property;         // Text. id property for article/div tag. Use to aply a unique CSS style.
-    // public $class_property;      // Text. class property for div tag. Use to aply a general CSS style.
-    // public $is_article;          // Boolean. Use true for enclose with <article>
-    // public $big_heading;         // Boolean. Use true to use a big heading for the web page.
-    // public $extra;               // Text. Additional HTML to put inside.
-    // public $description;         // Text. A short description of the item.
-    // public $image;               // URL or ImageObject. An image of the item.
-    // public $image_show;          // Boolean. Use true to put an img tag. Use false to put a meta tag.
-    // public $name;                // Text. The name of the item.
-    // public $url;                 // URL of the item.
-    // public $url_label;           // Label for the URL of the item.
-    // public $email;               // Text. Email address.
-    // public $telephone;           // Text. The telephone number.
-    public $addressCountry;         // Text. The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
-    public $addressLocality;        // Text. The locality. For example, Mountain View.
-    public $addressRegion;          // Text. The region. For example, CA.
-    public $streetAddress;          // Text. The postal code. For example, 94043.
-    public $postalCode;             // Text. The street address. For example, 1600 Amphitheatre Pkwy.
+    // En Schema
+    // public $onTypeProperty; // Text. Use when this item is part of another one.
+    // public $identation;     // Integer. Level of identation (beautiful code).
+    // public $id_property;    // Text. id property for article/div tag. Use to aply a unique CSS style.
+    // public $class_property; // Text. class property for div tag. Use to aply a general CSS style.
+    // public $is_article;     // Boolean. Use true for enclose with <article>
+    // En SchemaThing
+    // public $big_heading;    // Boolean. Use true to use a big heading for the web page.
+    // public $headline_style; // Text. Style or Hex Color for big heading.
+    // public $extra;          // Text. Additional HTML to put inside.
+    // public $description;    // Text. A short description of the item.
+    // public $image;          // URL or ImageObject. An image of the item.
+    // public $image_show;     // Boolean. Use true to put an img tag. Use false to put a meta tag.
+    // public $name;           // Text. The name of the item.
+    // public $url;            // URL of the item.
+    // public $url_label;      // Label for the URL of the item.
+    // En SchemaContactPoint
+    // public $email;          // Text. Email address.
+    // public $telephone;      // Text. The telephone number.
+    // En SchemaPostalAddress
+    public $addressCountry;    // Text. The country. For example, USA. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
+    public $addressLocality;   // Text. The locality. For example, Mountain View.
+    public $addressRegion;     // Text. The region. For example, CA.
+    public $streetAddress;     // Text. The postal code. For example, 94043.
+    public $postalCode;        // Text. The street address. For example, 1600 Amphitheatre Pkwy.
 
     /**
      * Address HTML
@@ -57,7 +62,7 @@ class SchemaPostalAddress extends SchemaContactPoint {
         // Calle
         $a = array();
         if ($this->streetAddress != '') {
-            $a[] = "  <span itemprop=\"streetAddress\">{$this->streetAddress}</span>";
+            $a[] = "<span itemprop=\"streetAddress\">{$this->streetAddress}</span>";
         }
         // Localidad, Region, C.P.
         $b = array();
@@ -75,23 +80,23 @@ class SchemaPostalAddress extends SchemaContactPoint {
             $b[] = "C.P. <span itemprop=\"postalCode\">{$this->postalCode}</span>.";
         }
         if (count($b) > 0) {
-            $a[] = '  '.implode(' ', $b);
+            $a[] = implode(' ', $b);
         }
         // Pais
         if ($this->addressCountry != '') {
             if (($this->addressCountry === 'MX') || ($this->addressCountry === 'México')) {
-                $a[] = "  <meta itemprop=\"addressCountry\" content=\"MX\">México.";
+                $a[] = "<meta itemprop=\"addressCountry\" content=\"MX\">México.";
             } else {
-                $a[] = "  <span itemprop=\"addressCountry\">{$this->addressCountry}</span>.";
+                $a[] = "<span itemprop=\"addressCountry\">{$this->addressCountry}</span>.";
             }
         }
         // Juntar todo
         if (count($a) > 0) {
             // Definir los espacios antes de cada renglón
-            $spaces = str_repeat('  ', $this->identation + 1);
+            $spaces = str_repeat('  ', $this->identation + 2);
             // Acumular
             $c   = array();
-            $c[] = '  <div class="direccion">';
+            $c[] = '<div class="direccion">';
             if (count($a) > 2) {
                 $c[] = implode("<br>\n$spaces", $a);
             } else {
@@ -99,7 +104,7 @@ class SchemaPostalAddress extends SchemaContactPoint {
             }
             $c[] = '</div>';
             // Entregar
-            return implode("\n$spaces", $c);
+            return '  '.implode("\n$spaces", $c);
         } else {
             return '';
         }
@@ -111,7 +116,7 @@ class SchemaPostalAddress extends SchemaContactPoint {
      * @return string Código HTML
      */
     public function html() {
-        // Acumularemos la entrega en este arreglo
+        // Iniciar acumulador
         $a = array();
         // Acumular
         $a[] = $this->itemscope_start('itemscope itemtype="http://schema.org/PostalAddress"');
@@ -127,12 +132,9 @@ class SchemaPostalAddress extends SchemaContactPoint {
         $a[] = $this->email_html();
         $a[] = $this->url_html();
         $a[] = $this->itemscope_end();
-        if ($this->extra != '') {
-            $a[] = "<aside>{$this->extra}</aside>";
-        }
+        $a[] = $this->extra_html();
         // Entregar
-        $spaces = str_repeat('  ', $this->identation);
-        return implode("\n$spaces", $a);
+        return $this->clean_html($a);
     } // html
 
 } // Clase SchemaPostalAddress
