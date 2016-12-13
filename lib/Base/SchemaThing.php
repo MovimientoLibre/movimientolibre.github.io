@@ -206,14 +206,14 @@ class SchemaThing extends Schema {
      */
     protected function extra_html() {
         if ($this->extra != '') {
-            $spaces = str_repeat('  ', $this->identation + 2);
+        //  $spaces = str_repeat('  ', $this->identation + 2);
             $a      = array();
             $a[]    = '<aside>';
             $a[]    = '<!-- Extra: Inicia  -->';
             $a[]    = $this->extra;
             $a[]    = '<!-- Extra: Termina -->';
             $a[]    = '</aside>';
-            return '  '.implode("\n$spaces", $a);
+            return '  '.implode("\n  ", $a);
         } else {
             return '';
         }
@@ -242,15 +242,6 @@ class SchemaThing extends Schema {
         // Entregar
         return $this->clean_html($a);
     } // html
-
-    /**
-     * Javascript
-     *
-     * @return String Texto vacío porque no hay Javascript
-     */
-    public function javascript() {
-        return '';
-    } // javascript
 
 } // Clase SchemaThing
 

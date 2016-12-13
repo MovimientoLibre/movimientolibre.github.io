@@ -93,18 +93,18 @@ class SchemaPostalAddress extends SchemaContactPoint {
         // Juntar todo
         if (count($a) > 0) {
             // Definir los espacios antes de cada renglón
-            $spaces = str_repeat('  ', $this->identation + 2);
+        //  $spaces = str_repeat('  ', $this->identation + 2);
             // Acumular
             $c   = array();
             $c[] = '<div class="direccion">';
             if (count($a) > 2) {
-                $c[] = implode("<br>\n$spaces", $a);
+                $c[] = implode("<br>\n  ", $a);
             } else {
                 $c[] = implode(' ', $a);
             }
             $c[] = '</div>';
             // Entregar
-            return '  '.implode("\n$spaces", $c);
+            return '  '.implode("\n  ", $c);
         } else {
             return '';
         }
