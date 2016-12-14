@@ -35,7 +35,9 @@ class SchemaMediaObject extends SchemaCreativeWork {
     // public $is_article;      // Boolean. Use true for enclose with <article>
     // En SchemaThing
     // public $big_heading;     // Boolean. Use true to use a big heading for the web page.
-    // public $headline_style;  // Text. Style or Hex Color for big heading.
+    // public $headline;        // Text. Headline of the article.
+    // public $headline_style;  // Text. CSS style or Hex color.
+    // public $headline_icon;   // Text. Font Awsome icon.
     // public $content;         // Text. HTML content to put INSIDE.
     // public $extra;           // Text. Additional HTML to put ASIDE.
     // public $description;     // Text. A short description of the item.
@@ -48,9 +50,6 @@ class SchemaMediaObject extends SchemaCreativeWork {
     // public $author;          // Organization or Person. The author of this content.
     // public $contentLocation; // Place. The location of the content.
     // public $datePublished;   // Date. Date of first broadcast/publication. In ISO 8601, example 2007-04-05T14:30
-    // public $headline;        // Text. Headline of the article.
-    // public $headline_style;  // Text. CSS style for encabezado.
-    // public $headline_icon;   // Text. Font Awsome icon for encabezado.
     // public $producer;        // Organization or Person. The person or organization who produced the work.
     // En SchemaMediaObject
     public $contentSize;        // Text. File size in (mega/kilo) bytes.
