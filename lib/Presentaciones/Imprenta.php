@@ -44,6 +44,8 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         $this->indices_paginas          = '\\Base\\PaginasTarjetas'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
         $this->directorio               = 'presentaciones';
+        // Nivel es el orden de la rama para las páginas por categorías
+        $this->nivel                    = 1000;
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor
