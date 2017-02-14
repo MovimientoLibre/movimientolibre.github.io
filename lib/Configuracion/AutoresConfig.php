@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - Autores Config
  *
- * Copyright (C) 2016 Guillermo Valdés Lozano
+ * Copyright (C) 2017 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ class AutoresConfig {
     const INDICE_DESCRIPCION       = 'Todos los autores de este sitio';    // Descripción para la página índice
     const INDICE_CLAVES            = 'Autores, Escritores, Personas';      // Claves para la página índice
     public $autores                = array();                              // Arreglo asociativo con instancias de \Base\Autor
-    public $mostrar_no_definidos   = false;                                // Verdadero pone todos los autores encontrados, falso SOLO los del arreglo autores
+    public $mostrar_no_definidos   = FALSE;                                // Verdadero pone todos los autores encontrados, falso SOLO los del arreglo autores
     public $imagen_tamano          = 128;                                  // Tamaño del icono a usuarse en \Base\PaginasAutoresIndice
 
     /**

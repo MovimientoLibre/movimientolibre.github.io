@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - Categorias Config
  *
- * Copyright (C) 2016 Guillermo Valdés Lozano
+ * Copyright (C) 2017 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ class CategoriasConfig {
     const INDICE_DESCRIPCION       = 'Las publicaciones clasificadas por categorías'; // Descripción para la página índice
     const INDICE_CLAVES            = 'Categorias';                                    // Claves para la página índice
     public $categorias             = array();                                         // Arreglo asociativo con instancias de \Base\Categoria
-    public $mostrar_no_definidos   = true;                                            // Verdadero pone todos los autores encontrados, falso solo los definidos aquí
+    public $mostrar_no_definidos   = TRUE;                                            // Verdadero pone todos los autores encontrados, falso solo los definidos aquí
     public $imagen_tamano          = 128;                                             // Tamaño del icono a usuarse en \Base\PaginasCategoriasIndice
 
     /**

@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - Redifusion Config
  *
- * Copyright (C) 2016 Guillermo Valdés Lozano
+ * Copyright (C) 2017 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ class RedifusionConfig {
     public $sitio_url         = 'http://www.movimientolibre.com'; // Sin diagonal al final
     public $sitio_descripcion = 'Últimas publicaciones de Movimiento Libre.';
     public $lenguaje          = 'es-MX';
-    public $generator         = 'Plataforma de Conocimiento v1.0';
+    public $generator         = 'Plataforma de Conocimiento v3.0';
     public $webmaster_email   = 'guivaloz@movimientolibre.com (Guillermo Valdes Lozano)';
     public $elementos_max     = 8;
     public $archivo           = 'rss.xml';

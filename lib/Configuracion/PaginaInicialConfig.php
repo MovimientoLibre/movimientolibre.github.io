@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - Pagina Inicial Config
  *
- * Copyright (C) 2016 Guillermo Valdés Lozano
+ * Copyright (C) 2017 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ class PaginaInicialConfig extends \Base\Plantilla {
         $this->descripcion              = 'Sitio web de Guillermo Valdés Lozano.';
         $this->claves                   = 'GNU, Linux, Software Libre, Desarrollo, Mexico';
         $this->imagen_previa_ruta       = 'imagenes/imagen-previa.jpg';
-        $this->contenido_en_renglon     = false;
+        $this->contenido_en_renglon     = FALSE;
         $this->google_site_verification = '<meta name="google-site-verification" content="6Sv8bUyMDhYasgqbuGaw_YwlANs60Bobp_lOSn1x4I8">';
     } // constructor
 
@@ -81,12 +81,12 @@ class PaginaInicialConfig extends \Base\Plantilla {
      */
     protected function organizacion() {
         // Encabezado
-        $organizacion                 = new \Base\SchemaOrganization();
-        $organizacion->name           = 'Movimiento Libre';
-        $organizacion->description    = 'Colección de ideas.';
-        $organizacion->image          = 'imagenes/movimientolibre.png';
-        $organizacion->is_article     = false;
-        $organizacion->big_heading    = true;
+        $organizacion              = new \Base\SchemaOrganization();
+        $organizacion->name        = 'Movimiento Libre';
+        $organizacion->description = 'Colección de ideas.';
+        $organizacion->image       = 'imagenes/movimientolibre.png';
+        $organizacion->is_article  = FALSE;
+        $organizacion->big_heading = TRUE;
         // Acumular
         $this->contenido[] = '  <section id="organizacion">';
         $this->contenido[] = $organizacion->html();
