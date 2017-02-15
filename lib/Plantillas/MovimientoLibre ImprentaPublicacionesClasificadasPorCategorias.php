@@ -46,10 +46,12 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
         $this->directorio               = 'titulo';
         // Pasar a la página índice estos parámetros
         $this->ultimas_encabezado       = 'Últimas publicaciones';
-        $this->ultimas_vinculos         = '\\Base\\VinculosDetallados';
+        $this->ultimas_concentrador     = '\\Base\\VinculosDetallados';
         $this->ultimas_cantidad         = 8;
         $this->categorias_encabezado    = 'Categorías';
-        $this->categorias_vinculos      = '\\Base\\VinculosCompactos';
+        $this->categorias_concentrador  = '\\Base\\VinculosCompactos';
+        // Nivel es el orden de la rama para los índices por autores y categorías, debe ser un entero grande
+        $this->nivel                    = 00000;
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor

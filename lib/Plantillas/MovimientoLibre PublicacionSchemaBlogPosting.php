@@ -33,10 +33,10 @@ class CLASE extends \Base\PublicacionSchemaBlogPosting {
     public function __construct() {
         // Título, autor y fecha
         $this->nombre                     = 'Título';
-     // $this->autor                      = '';
-        $this->fecha                      = '2016-00-00T00:00';
+        $this->autor                      = 'guivaloz'; // Puede ser un arreglo de textos
+        $this->fecha                      = '2017-00-00T00:00';
         // El nombre del archivo a crear
-        $this->archivo                    = 'titulo';
+        $this->archivo                    = 'archivo'; // En minúsculas, sin espacios, use guiones, letras y números
         // La descripción y claves dan información a los buscadores y redes sociales
         $this->descripcion                = 'Descripción.';
         $this->claves                     = 'Clave1, Clave2, Clave3';
