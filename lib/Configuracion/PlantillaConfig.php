@@ -27,25 +27,19 @@ namespace Configuracion;
  */
 class PlantillaConfig {
 
-    public $sitio_titulo     = 'Movimiento Libre';
-    public $sitio_url        = 'http://www.movimientolibre.com'; // Sin diagonal al final
-    public $rss              = 'rss.xml';
-    public $favicon          = 'favicon.ico';
-    public $propio_css       = 'css/movimiento-libre.css';
-    public $en_raiz          = FALSE;                            // Si es verdadero los vínculos serán para un archivo en la raíz del sitio
-    public $para_compartir   = FALSE;                            // Si es verdadero pondrá los metas para tarjetas en Twitter/Facebook
-    public $autor            = 'guivaloz';                       // Autor por defecto
+    public $sitio_titulo   = 'Movimiento Libre';               // Título del sitio
+    public $sitio_url      = 'http://www.movimientolibre.com'; // Sin diagonal al final
+    public $rss            = 'rss.xml';                        // Archivo con la sindicalización (RSS Feed)
+    public $favicon        = 'favicon.ico';                    // Archivo ICO
+    public $propio_css     = 'dist/css/movimiento-libre.css';  // CSS propio de este sitio web
+    public $en_raiz        = FALSE;                            // Si es verdadero los vínculos serán para un archivo en la raíz del sitio
+    public $para_compartir = FALSE;                            // Si es verdadero pondrá los metas para tarjetas en Twitter/Facebook
+    public $autor          = 'guivaloz';                       // Autor por defecto
     public $mensaje_oculto;
     public $pie;
     protected $google_analytics;
     protected $google_site_verification;
-    protected $cabecera_bootstrap_css;
-    protected $cabecera_font_awesome_css;
-    protected $cabecera_externos_css;
-    protected $scripts_jquery_css;
-    protected $scripts_bootstrap_js;
-    protected $scripts_externos_js;
-    public $favicons = array(
+    protected $favicons = array(
         array('ruta' => 'imagenes/apple-touch-icon.png',         'rel' => 'apple-touch-icon', 'size' => ''),
         array('ruta' => 'imagenes/apple-touch-icon-76x76.png',   'rel' => 'apple-touch-icon', 'size' => '76x76'),
         array('ruta' => 'imagenes/apple-touch-icon-120x120.png', 'rel' => 'apple-touch-icon', 'size' => '120x120'),
@@ -54,6 +48,8 @@ class PlantillaConfig {
         array('ruta' => 'imagenes/icon-hires.png',               'rel' => 'icon',             'size' => '192x192'),
         array('ruta' => 'imagenes/icon-normal.png',              'rel' => 'icon',             'size' => '128x128'),
     );
+    protected $vinculos_css;
+    protected $vinculos_js;
 
     /**
      * Constructor
@@ -63,19 +59,26 @@ class PlantillaConfig {
      * JQuery desde Google apis segun https://developers.google.com/speed/libraries/
      */
     public function __construct() {
-        // Al usar FLASE las siguientes propiedades apuntarán a archivos locales, así el sitio podrá funcionar en una intranet
-        if (TRUE) {
-            // jQuery según https://developers.google.com/speed/libraries/#jquery
-            $this->scripts_jquery_js         = '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>';
-            // Twitter Bootstrap según https://www.bootstrapcdn.com/
-            $this->cabecera_bootstrap_css    = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">';
-            $this->scripts_bootstrap_js      = '<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>';
-            // Font Awesome según https://www.bootstrapcdn.com/
-            $this->cabecera_font_awesome_css = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">';
-        }
-        // CSS Externos
-        // - Google Fonts
-        $this->cabecera_externos_css = array('<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">');
+        // Vínculos CSS a archivos locales o URLs remotas
+        $this->vinculos_css   = array();
+        $this->vinculos_css[] = 'vendor/bootstrap/css/bootstrap.min.css';                     // 1. Bootstap
+        $this->vinculos_css[] = 'vendor/metisMenu/metisMenu.min.css';                         // 2. Metis Menu
+        $this->vinculos_css[] = 'dist/css/sb-admin-2.min.css';                                // 3. SBadmin2
+        $this->vinculos_css[] = 'vendor/font-awesome/css/font-awesome.min.css';               // 4. Fontawesome
+        $this->vinculos_css[] = 'vendor/datatables-plugins/dataTables.bootstrap.css';         // 5. DataTables
+        $this->vinculos_css[] = 'https://fonts.googleapis.com/css?family=Droid+Sans:400,700'; // 6. Google Fonts
+        $this->vinculos_css[] = 'dist/css/plataforma-de-conocimiento.css';                    // 9. Plataforma del conocimiento
+        // Vínculos Javascript a archivos locales o URLs remotas
+        $this->vinculos_js    = array();
+        $this->vinculos_js[]  = 'vendor/jquery/jquery.min.js';                                // 1.  jQuery
+        $this->vinculos_js[]  = 'vendor/bootstrap/js/bootstrap.min.js';                       // 2.  Bootstrap
+        $this->vinculos_js[]  = 'vendor/metisMenu/metisMenu.min.js';                          // 3.  Metis menu
+        $this->vinculos_js[]  = 'dist/js/sb-admin-2.min.js';                                  // 4.  SBadmin2
+        $this->vinculos_js[]  = 'vendor/datatables/js/jquery.dataTables.min.js';              // 5.1 DataTables
+        $this->vinculos_js[]  = 'vendor/datatables-plugins/dataTables.bootstrap.min.js';      // 5.2 DataTables
+        $this->vinculos_js[]  = 'vendor/datatables-responsive/dataTables.responsive.js';      // 5.3 DataTables
+        $this->vinculos_js[]  = 'vendor/raphael/raphael.min.js';                              // 6.1 MorrisJS
+        $this->vinculos_js[]  = 'vendor/morrisjs/morris.min.js';                              // 6.2 MorrisJS
         // Mensaje oculto
         $this->mensaje_oculto = <<<FINAL
 <!-- ==========================================================================================
