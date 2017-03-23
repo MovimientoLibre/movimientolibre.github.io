@@ -24,6 +24,7 @@
 body {
     font-family:'Droid Sans',sans-serif;
     font-weight:400;
+    line-height:1.4;
     background-color:#12283B;
 }
 h1, .h1,
@@ -34,7 +35,7 @@ h5, .h5,
 h6, .h6 {
     font-family:'Droid Sans',sans-serif;
     font-weight:700;
-    line-height:1.2;
+    line-height:1.4;
 }
 a         { color:#1161A8; text-decoration:none; font-weight:700; }
 a:link,
@@ -91,18 +92,25 @@ a:active  { color:#0088FF; text-decoration:underline; }
 .encabezado-descripcion { color:#666; }
 .encabezado-autor-fecha { color:#888; }
 .detallados-encabezado,
-.titulo                 { font-size:1.4em; line-height:1.2; }
+.titulo                 { font-size:1.4em; line-height:1.4; }
 .detallados-descripcion,
-.descripcion            { font-size:1.2em; line-height:1.2; }
-.detallados-autor-fecha { font-size:1.0em; line-height:1.0; }
+.descripcion            { font-size:1.2em; line-height:1.4; }
+.detallados-autor-fecha { font-size:1.0em; line-height:1.2; }
 
 /*
- * En las presentaciones uso la clase diapositiva para que tengan sobra las vistas previas
+ * En las presentaciones uso la clase diapositiva para que tengan sombra las vistas previas
  */
 .diapositiva-sombra {
     margin:12px 8px;
     padding:0;
     box-shadow:4px 4px 2px #888888;
+}
+
+/*
+ * Vinculos Tarjetas
+ */
+.tarjetas-thumbnail {
+    min-height:448px;
 }
 
 /*
@@ -148,7 +156,7 @@ a:active  { color:#0088FF; text-decoration:underline; }
 @media only screen and (max-width: 1190px) {
     body {
         font-size:14px;
-        line-height:1.2;
+        line-height:1.4;
     }
     #destacado .contenido-imagen-previa {
         width:112px;

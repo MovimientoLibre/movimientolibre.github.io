@@ -1,6 +1,4 @@
 
-![Celular Tablet Computadora](nuevas-tecnologias-estandares-web/imagen.png)
-
 **La Web** se desarrolló entre marzo de 1989 y diciembre de 1990 por el inglés [Tim Berners-Lee](https://es.wikipedia.org/wiki/Tim_Berners-Lee) con la ayuda del belga [Robert Cailliau](https://es.wikipedia.org/wiki/Robert_Cailliau) mientras trabajaban en el [CERN](https://es.wikipedia.org/wiki/CERN) en Ginebra, Suiza, y publicado en 1992. Desde entonces, Berners-Lee ha jugado un papel activo **guiando el desarrollo de estándares Web** y por una **Web semántica.**
 
 En sus primeros años, la mayoría de las personas no veían las páginas web como algo práctico, porque los primeros sitios de búsqueda basaban su modelo de negocio en ofertar las mejores posiciones en los resultados. En aquellos años, encontrar algo útil tomaba mucho tiempo. Sólo **a partir de 1999**, [con la llegada del buscador de Google](http://es.wikipedia.org/wiki/Motor_de_b%C3%BAsqueda#Historia), se lograron **que las búsquedas fueran más rápidas y sus resultados más efectivos.**

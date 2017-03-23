@@ -1,6 +1,4 @@
 
-<a href="gulag-primer-aniversario/dsc03897.jpg"><img class="img-responsive" src="gulag-primer-aniversario/dsc03897-small.jpg"></a>
-
 Ponencias muy interesantes, gran camaradería y una buenísima discada es parte de lo mucho que se vivió en el evento con motivo del primer aniversario del [GULAG](http://www.gulag.org.mx), realizado el sábado 18 de agosto en el [Instituto Tecnológico de La Laguna](http://www.itlalaguna.edu.mx/).
 
 Entre [Hugo Francisco Gonzalez Robledo](http://www.honeynet.org.mx/web/pages/Miembros) y [Miguel José Hernández y López](http://www.honeynet.org.mx/web/pages/Miembros) se tomaron un par de temas relativos a la seguridad en internet, sobre [Nepenthes](http://es.wikipedia.org/wiki/Nepenthes) y [Honeynets](http://en.wikipedia.org/wiki/Honeynet_project) respectivamente. Ambos nos demostraron que internet es un lugar hostil y las técnicas que se utilizan tanto para atrapar programas malignos como para estudiar las técnicas de los atacantes. [Paola Villareal](http://creativecommons.org.mx) nos brindó un ideal humano sobre cómo aplicar la filosofía del Software Libre a nuestra vida personal; sin duda a todos nos hizo reflexionar un momento sobre cómo podríamos mejorar nuestra forma de ser para aportar a la comunidad algo más que sólo cuestiones de la informática.

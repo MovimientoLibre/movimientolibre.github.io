@@ -1,6 +1,4 @@
 
-<a href="gentoo-linux-mi-instalacion-personal-2010/gentoo-abducted-1600x1200.jpg"><img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-2010/gentoo-abducted-small.jpg"></a>
-
 Imagen: [Gentoo abducted](http://commons.wikimedia.org/wiki/File:Gentoo-abducted-1024x768.png) con *Larry The Cow*, la mascota de [Gentoo Linux](http://www.gentoo.org/), elaborado por Matteo 'Peach' Pescarin.
 
 Como introducción les escribo un breve *FAQ* (preguntas y respuestas frecuentes) sobre Gentoo Linux.

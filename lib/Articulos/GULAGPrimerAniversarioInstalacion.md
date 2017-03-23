@@ -1,6 +1,4 @@
 
-![GULAG primer aniversario instalacion](gulag-primer-aniversario-instalacion/foto2.jpg)
-
 Un gran trabajo de equipo fue la instalación del GNU/Linux en las computadoras que se usaron en el taller que se impartió con motivo del primer aniversario del [GULAG](http://www.gulag.org.mx), tarea en la que nos enfrentamos a un gran número de retos.
 
 ![Foto 1](gulag-primer-aniversario-instalacion/foto1.jpg) ![Foto 3](gulag-primer-aniversario-instalacion/foto3.jpg) ![Foto 4](gulag-primer-aniversario-instalacion/foto4.jpg)

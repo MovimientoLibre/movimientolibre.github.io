@@ -1,6 +1,4 @@
 
-<a href="gentoo-linux-mi-instalacion-personal-2/gnu_forest.jpg"><img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-2/gnu_forest-small.jpg"></a>
-
 Algo de lo mucho que me maravilla del [Software Libre](http://es.wikipedia.org/wiki/Portal:Software_libre) es la gran cantidad y variedad de aplicaciones que existen en éste, las hay para todas las necesidades y gustos. Ante tal diversidad, en algunas ocasiones nos podemos sentir desorientados, en el sentido de decidir cuáles aplicaciones nos conviene instalar.
 
 Podemos imaginarnos que el Software Libre es un gran bosque, donde nosotros como exploradores nos aventuramos en él, descubrimos lugares facinantes y compartimos nuestras experiencias.

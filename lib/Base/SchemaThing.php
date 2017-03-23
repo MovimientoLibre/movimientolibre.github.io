@@ -175,12 +175,8 @@ class SchemaThing extends Schema {
      * @return string Código HTML
      */
     protected function image_html() {
-        if ($this->image != '') {
-            if ($this->image_show) {
-                return "  <span class=\"contenido-imagen-previa\"><img class=\"img-responsive\" itemprop=\"image\" alt=\"{$this->name}\" src=\"{$this->image}\"></span>";
-            } else {
-                return "  <meta itemprop=\"image\" alt=\"{$this->name}\" src=\"{$this->image}\">";
-            }
+        if (($this->image != '') && $this->image_show) {
+            return "  <span class=\"contenido-imagen-previa\"><img class=\"img-responsive\" itemprop=\"image\" alt=\"{$this->name}\" src=\"{$this->image}\"></span>";
         } else {
             return '';
         }

@@ -1,6 +1,4 @@
 
-<img class="img-responsive" src="congreso-iberoamericano-foss-2011/floss2.png">
-
 El [Segundo Congreso Internacional de Software Libre](http://www.estudiosdeldesarrollo.net/floss2) se llevará a cabo los días 1 y 2 de junio del 2011, en la ciudad de Zacatecas, México. El marco del evento será el Auditorio de la [Unidad Académica en Estudios del Desarrollo](http://www.estudiosdeldesarrollo.net/) de la [Universidad Autónoma de Zacatecas](http://www.uaz.edu.mx/).
 
 ### Software Libre y la U.A.Z.

@@ -1,6 +1,4 @@
 
-<a href="http://es-mx.www.mozilla.com/es-MX/"><img class="img-responsive" src="firefox-3.5/logotipo-firefox-3.5.png"></a>
-
 [Mozilla Firefox 3.5](http://es-mx.www.mozilla.com/es-MX/) ya está disponible para su descarga y nos brinda muchas novedades. Entre las que destaca:
 
 * Ya hay versión en **Español-Mexicano**. No sólo los menús y las ventanas del programa están en nuestro idioma y región. También preferirá el lenguaje **es-MX** al ingresar a sitios multilingües.

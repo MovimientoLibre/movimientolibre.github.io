@@ -44,6 +44,8 @@ class RubyBasicoTaller extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/Presentaciones/RubyBasicoTaller.md';
         // Para el Organizador
         $this->categorias                 = array('Ruby');
+        // Banderas
+        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase RubyBasicoTaller

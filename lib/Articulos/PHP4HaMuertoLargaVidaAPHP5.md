@@ -1,6 +1,4 @@
 
-<a href="http://gophp5.org/"><img class="img-responsive" src="php4-a-muerto-larga-vida-a-php5/gophp5_logo.png"></a>
-
 [PHP](http://es.wikipedia.org/wiki/Php) es un lenguaje de programación interpretado que nació con la intención de elaborar páginas web dinámicas. Gracias a que es software libre y de que puede operar en la mayoría de los sistemas operativos (GNU/Linux, MacOS, Windows, sólo por mencionarlos) es hoy en día el lenguaje de programación _libre_ más usado en aplicaciones web.
 
 PHP4 tiene siete años de haber sido liberado y PHP5 lleva tres. La principal diferencia entre ambas versiones está en la mejor implementación de la [programación orientada a objetos](http://es.wikipedia.org/wiki/OOP). Si estudiáramos dos sistemas que hicieran exactamente lo mismo, donde uno estuviese programado en PHP4 y el otro en PHP5, los códigos (o sea los programas) serían muy distintos uno del otro.

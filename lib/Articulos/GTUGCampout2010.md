@@ -1,6 +1,4 @@
 
-<a href="gtug-campout-2010/gtug-campout-poster.jpg"><img class="img-responsive" src="gtug-campout-2010/gtug-campout-poster-small.png"></a>
-
 **GTUG Campout** es un evento de fin de semana largo en donde los participantes tienen la oportunidad de diseñar, desarrollar y demostrar una aplicación completa, elaborada durante los tres días. El inicio de trabajos sera en [NIIT Laguna](http://www.niit-laguna.com/) el **viernes 13 de agosto**, en donde los equipos y las ideas se juntan. Los equipos tendrán el resto del fin de semana para construir sus aplicaciones antes de presentar su trabajo al público en domingo por la tarde.
 
 ### No es un típico _Hackathon_

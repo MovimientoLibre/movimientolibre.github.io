@@ -1,6 +1,4 @@
 
-<a href="http://www.spreadfirefox.com/node&id=0&t=282"><img class="img-responsive" src="http://www.spreadfirefox.com/files/images/affiliates_banners/468x60_dday_es.png" alt="Download Day"></a>
-
 Hoy es el día en que puedes ser parte de un récord mundial Guinnes, a la vez que descargas una de las aplicaciones libres más tracendentes de nuestro tiempo: [Mozilla Firefox](http://www.mozilla.com/).
 
 No podría imaginarme la navegación en internet sin este generoso aliado. Su historia (desde el punto de vista de la informática) es amplia, con logros y tropiezos. Recuerdo con nostalgia al [Netscape Navigator](http://es.wikipedia.org/wiki/Netscape_Navigator) quien fuese el navegador número uno, el cual cayó ante la fuerte y ventajosa entrada del [Internet Explorer](http://es.wikipedia.org/wiki/Internet_Explorer). Ante la inminente caída, [Netscape Communications](http://es.wikipedia.org/wiki/Netscape_Communications) tomó la acertada decisión de liberar el código de su navegador y así crear la [Fundación Mozilla](http://es.wikipedia.org/wiki/Fundación_Mozilla) quien dirige el proyecto al día de hoy. Nadie negará que IE ha sido influenciado en más de una ocasión por FireFox.

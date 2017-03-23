@@ -1,5 +1,4 @@
 
-![BIOS update with GRUB](bios-update-with-grub/phoenix-bios-chip-small.jpg)
 
 El [BIOS](http://es.wikipedia.org/wiki/BIOS) es el software que se ejecuta al encender una computadora. Es un software muy básico, que suele estar instalado en un _chip_ en la tarjeta madre.
 
@@ -17,9 +16,12 @@ Considere que este manual es meramente informativo y que debe de leer los pasos 
 
 ### Procedimiento
 
+![BIOS update with GRUB](bios-update-with-grub/phoenix-bios-chip-small.jpg)
+
 Busque en el sitio web del fabricante de su computadora el software para hacer la actualización del BIOS. En mi caso, tengo una Toshiba NB200, así que obtengo el software del [sitio web de soporte de Toshiba](http://www.csd.toshiba.com/).
 
 ![Toshiba download](bios-update-with-grub/toshiba-download.jpg)
+
 ![ll20v210.exe](bios-update-with-grub/ll20v190-exe-small.jpg)
 
 ¿Y qué cree?... Sí... El archivo de actualización **ll20v210.exe** es un programa para _Windows_.
@@ -100,4 +102,3 @@ Conecte el cargador de su _netboot_ o _laptop_ y reinicie su computadora. Cuando
 
 * [Wikipedia - BIOS](http://es.wikipedia.org/wiki/BIOS)
 * [Think Wiki - BIOS Update](http://www.thinkwiki.org/wiki/BIOS_Upgrade)
-

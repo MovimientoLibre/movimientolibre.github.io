@@ -3,9 +3,7 @@ Damos nuestro agradecimiento a los asistentes, a los ponentes, al ITESM Campus L
 
 ### Fotos
 
-
 ### Foto final
-
 
 ### Conferencias viernes 10 de septiembre de 2010
 

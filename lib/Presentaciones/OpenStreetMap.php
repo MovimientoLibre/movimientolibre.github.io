@@ -44,6 +44,8 @@ class OpenStreetMap extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/Presentaciones/OpenStreetMap.md';
         // Para el Organizador
         $this->categorias                 = array('OpenStreetMap');
+        // Banderas
+        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase OpenStreetMap

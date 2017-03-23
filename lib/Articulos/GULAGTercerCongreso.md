@@ -1,6 +1,4 @@
 
-<a href="gulag-tercer-congreso/poster-congreso-gulag-2009-800x1036.jpg"><img class="img-responsive" src="gulag-tercer-congreso/poster-congreso-gulag-2009-small.jpg"></a>
-
 Con motivo del tercer aniversario del [GULAG](http://www.gulag.org.mx/) y con el fin de traer a nuestra región distinguidos ponentes del Software Libre les invitamos al [Tercer Congreso Nacional de Software Libre](http://congreso.gulag.org.mx/). Un día donde los grandes _gurús_ nos compartirán sus experiencias, donde se impartirán talleres para poner en práctica programas libres y donde ejercermos nuestra libertad de compartir conocimientos y software.
 
 ### Conferencias

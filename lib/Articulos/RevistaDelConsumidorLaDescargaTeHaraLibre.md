@@ -1,6 +1,4 @@
 
-<img class="img-responsive" src="revista-del-consumidor-la-descarga-te-hara-libre/portada-software-gratis.jpg">
-
 Una muy grata sorpresa es encontrar un artículo dedicado al _software gratuito_ en una revista de circulación nacional. Es en la [Revista del Consumidor](http://revistadelconsumidor.gob.mx/) de Mayo de 2009. En la portada aparece como "Software Gratis que sí te ayuda a ahorrar (y no te convierte en pirata)".
 
 Escrito por Sara Velázquez, habla a cerca de las desventajas de usar _software pirata_ y que la solución, en estos tiempos de crisis, es recurrir al software gratuito. Ella menciona: "Por lo regular, lo que es gratis suena a que es malo, o que será de menor calidad, pero no siempre es así. Por ejemplo, este artículo fue escrito utilizando OpenOffice 3.0, un paquete gratuito para oficina que no le pide nada al popular Office 2007."

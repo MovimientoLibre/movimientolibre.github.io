@@ -100,7 +100,7 @@
 <li>GIT es Software Libre con licencia GPL versión 2. Usado por los desarrolladores del kernel Linux y diseñado por Linus Torvalds.</li>
 </ul>
 
-<h4>Para averiguar la versión instalada</h4>
+<h3>Para averiguar la versión instalada</h3>
 
 <p>Para averiguar la versión instalada.</p>
 
@@ -113,7 +113,7 @@ git version 1.8.3.2
 <pre><code>$ git
 </code></pre>
 
-<h4>Configuraciones globales</h4>
+<h3>Configuraciones globales</h3>
 
 <p>Debe configurar sus datos personales. Con estos datos se firmarán sus cambios y aportaciones al código.</p>
 
@@ -133,7 +133,7 @@ Habilite el uso de color en la terminal con:</p>
 $ scp .ssh/id_rsa.pub usuario@servidor.com:/home/usuario/millavepublica.pub
 </code></pre>
 
-<h4>Descarga de un repositorio en GiHub</h4>
+<h3>Descarga de un repositorio en GiHub</h3>
 
 <p>GitHub es el repositorio más grande y popular de software que usa GIT. Obtener un clon de un software desde ahí es sencillo. Por ejemplo, para descargar <a href="http://getbootstrap.com/">Twitter Bootstrap</a>:</p>
 
@@ -145,7 +145,7 @@ $ cd bootstrap
 
 <p>Haga una cuenta gratuita o de pago en GitHub para subir su llave pública OpenSSH.</p>
 
-<h4>Iniciar un repositorio</h4>
+<h3>Iniciar un repositorio</h3>
 
 <p>Cabe resaltar la flexibilidad de Git en que puede iniciar un nuevo repositorio en su propio equipo o en el servidor local; y en cualquier directorio de su disco duro interno o unidad de almacenamiento extena. Para iniciar un repositorio cámbiese al directorio base del mismo y ejecute <em>git init</em>.</p>
 
@@ -164,7 +164,7 @@ $ git init
 $ git status
 </code></pre>
 
-<h4>Directorios y archivos a ignorar</h4>
+<h3>Directorios y archivos a ignorar</h3>
 
 <p>No todos los archivos que ponga en su copia local tienen que estar necesariamente también en el repositorio. Es conveniente que archivos temporales, por ejemplo los creador por <strong>LaTeX</strong> (aux, log, toc), sean excluidos. Edite el archivo <em>exclude</em>:</p>
 
@@ -181,7 +181,7 @@ $ git status
 *.geany
 </code></pre>
 
-<h4>Agregar archivos al repositorio local</h4>
+<h3>Agregar archivos al repositorio local</h3>
 
 <p>Para agregar archivos y directorios, nuevos y modificados al repositorio, debe de estar en el directorio base y ejecutar <strong>git add</strong>:</p>
 
@@ -196,7 +196,7 @@ $ git add .
 
 <p>Éstos están pendientes de ser integrados o <em>comiteados</em>.</p>
 
-<h4>Remover archivos o directorios antes de integrar</h4>
+<h3>Remover archivos o directorios antes de integrar</h3>
 
 <p>Si al ver el status nota que un archivo o directorio NO debiera incluirse, ejecute el comando <strong>git rm</strong>.</p>
 
@@ -213,7 +213,7 @@ $ git add .
 <pre><code>$ git add . --all
 </code></pre>
 
-<h4>Integrar los cambios</h4>
+<h3>Integrar los cambios</h3>
 
 <p>Después de agregar, modificar o eliminar archivos proceda a integrar. Para integrar hay que hacer un <strong>git commit</strong>. Este comando puede incluir un comentario:</p>
 
@@ -230,7 +230,7 @@ $ git add .
 <pre><code>$ git log
 </code></pre>
 
-<h4>Descargue las novedades del servidor</h4>
+<h3>Descargue las novedades del servidor</h3>
 
 <p>Para actualizar su copia local con las novedades en el servidor, ya sea por que otra persona haya subido aportaciones o porque usted haya hecho cambios en otro equipo, <em>jale</em> una actualización del servidor con <strong>git pull</strong>. En caso de no haber cambios, mostrará un mensaje de que está al día.</p>
 
@@ -242,7 +242,7 @@ $ git add .
 <pre><code>$ git log
 </code></pre>
 
-<h4>Despues de aportar debe respaldar localmente</h4>
+<h3>Despues de aportar debe respaldar localmente</h3>
 
 <p>Debe respaldar cada buen avance que lleve, ya sea al final del día o antes si lo amerita. Agregue sus archivos nuevos y modificados. Luego revise.</p>
 
@@ -255,7 +255,7 @@ $ git status
 <pre><code>$ git commit -m "Avance en el módulo Direcciones."
 </code></pre>
 
-<h4>Derivaciones</h4>
+<h3>Derivaciones</h3>
 
 <p>Una derivación o <em>branch</em> es una rama en el desarrollo de un sistema que permite establecer una distinta en el desarrollo. Ésto le permite trabajar con una nueva cualidad sin dañar al sistema que ya funcione bien. De inicio todo repositorio tiene el <em>branch master</em>. Para listar las derivaciones ejecute <strong>git branch</strong> solamente:</p>
 
@@ -280,7 +280,7 @@ $ git status
 * desarrollo
 </code></pre>
 
-<h4>Trabaje en su derivación</h4>
+<h3>Trabaje en su derivación</h3>
 
 <p>Trabaje en su <em>branch</em>. Los cambios que haga se quedan en éste. Para integrar use los comandos <strong>git add</strong> y <strong>git commit</strong> ya mencionados.</p>
 
@@ -300,7 +300,7 @@ $ git commit -m "He hecho un par de mejoras."
 <pre><code>$ git checkout desarrollo
 </code></pre>
 
-<h4>Fusionar derivaciones</h4>
+<h3>Fusionar derivaciones</h3>
 
 <p>Conforme va haciendo <em>commits</em> en un <em>brach</em> éste se dice que va adelantado al <em>master</em>. Para mostrar un listado de los <em>branchs</em> y el último comentario de cada <em>commit</em> ejecute:</p>
 
@@ -318,7 +318,7 @@ $ git merge desarrollo
 <pre><code>$ git branch -v
 </code></pre>
 
-<h4>Eliminar derivaciones</h4>
+<h3>Eliminar derivaciones</h3>
 
 <p>En caso de que quiera descartar un <em>branch</em> o derivación.</p>
 
@@ -327,7 +327,7 @@ $ git merge desarrollo
 
 <p>Este comando funciona siempre y cuando no tenga archivos pendientes de integrar.</p>
 
-<h4>Repositorios remotos</h4>
+<h3>Repositorios remotos</h3>
 
 <p>Las más recientes versiones de Git solicitan que defina la forma local de subir los archivos. Así que en su equipo y usuario ejecute sólo una vez:</p>
 
@@ -341,7 +341,7 @@ $ git merge desarrollo
 
 <p>He notado que Git va impedir que suba cambios al <em>branch master</em> de su servidor, a excepción de <strong>GitHub</strong>. Por lo que debe estar en una derivación distinta a <em>master</em> antes de subir.</p>
 
-<h4>Subir una nueva derivación al servidor</h4>
+<h3>Subir una nueva derivación al servidor</h3>
 
 <p>Teniendo permiso de lectura y escritura en el servidor, puede subir un nuevo branch al servidor con la orden push.</p>
 
@@ -350,7 +350,7 @@ $ git merge desarrollo
 
 <p>Si esa derivación no existe en el servidor, será creada.</p>
 
-<h4>Bajar una derivación desde el servidor</h4>
+<h3>Bajar una derivación desde el servidor</h3>
 
 <p>Al clonar sólo se bajará el <em>branch master</em>. Si desea bajar una derivación del repositorio remoto, por ejemplo <em>desarrollo</em>, ejecute:</p>
 
@@ -373,7 +373,7 @@ $ git pull origin desarollo
 <pre><code>$ git branch -v
 </code></pre>
 
-<h4>Subir actualizaciones de la derivación local al servidor</h4>
+<h3>Subir actualizaciones de la derivación local al servidor</h3>
 
 <p>Si ha hecho nuevos programas o cambios en los mismos, suba su actualización al servidor con el siguiente comando. Claro que localmente debe estar en ese branch.</p>
 
@@ -385,7 +385,7 @@ $ git pull origin desarollo
 <pre><code>$ git push origin desarrollo
 </code></pre>
 
-<h4>Actualizar el repositorio local</h4>
+<h3>Actualizar el repositorio local</h3>
 
 <p>Para bajar las actualizaciones de una derivación (sólo el branch en uso) desde el servidor, use la orden pull.</p>
 

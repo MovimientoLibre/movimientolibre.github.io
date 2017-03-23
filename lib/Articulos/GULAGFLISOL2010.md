@@ -1,6 +1,4 @@
 
-<a href="gulag-flisol-2010/poster-flisol-2010-1-025.jpg"><img class="img-responsive" src="gulag-flisol-2010/poster-flisol-2010-1-025-small.jpg"></a>
-
 El sábado 24 de abril en la [Universidad Autónoma de Coahuila](http://www.uadec.mx/) (UAC) se llevará a cabo el [Festival Latinoamericano de Instalación de Software Libre 2010](http://www.flisol.net/) (FLISOL) organizado por cuarto año consecutivo por el [Grupo de Usuarios de GNU/Linux de La Laguna](http://www.gulag.org.mx/) (GULAG).
 
 ### ¿Qué es el FLISOL?

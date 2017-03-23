@@ -44,6 +44,8 @@ class LatexIntroduccion extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/Presentaciones/LatexIntroduccion.md';
         // Para el Organizador
         $this->categorias                 = array('LaTeX');
+        // Banderas
+        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase LatexIntroduccion

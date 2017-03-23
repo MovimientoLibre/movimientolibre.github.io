@@ -1,6 +1,4 @@
 
-<a href="http://softwarefreedomday.org/"><img class="img-responsive" src="gulag-segundo-aniversario/SFD_2008_Spanish.png"></a>
-
 Les invitamos cordialmente al **Segundo Aniversario del Grupo de Usuarios de GNU/Linux de la Laguna** que celebramos justo el Día del Software Libre [Software Freedom Day](http://softwarefreedomday.org/). Donde distinguidos protagonistas del Software Libre en México nos compartirán sus conocimientos y experiencias.
 
 <a href="gulag-segundo-aniversario/poster-2do-aniversario.jpg"><img class="img-responsive" src="gulag-segundo-aniversario/poster-2do-aniversario-small.jpg"></a>

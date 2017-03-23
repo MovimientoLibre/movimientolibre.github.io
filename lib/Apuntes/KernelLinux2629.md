@@ -1,6 +1,4 @@
 
-<a href="kernel-2.6.29/tuz-transparente.png"><img class="img-responsive" src="kernel-2.6.29/tuz-transparente_small.png"></a>
-
 El [Kernel Linux](http://www.linux.org/) versión 2.6.29 fue liberado por [Linus Torvalds](http://es.wikipedia.org/wiki/Linus_Torvalds) en marzo de 2009. Entre muchas novedades, otorga un _soporte inicial_ del nuevo sistema de archivos [Btrfs](http://es.wikipedia.org/wiki/Btrfs). Cuando el *Btrfs* sea considerado como _estable_ se espera que sustituya por completo al [Ext](http://es.wikipedia.org/wiki/Ext3).
 
 [Tux](http://es.wikipedia.org/wiki/Tux), la mascota de Linux, se ha tomado tres meses sábaticos. La mascota de la versión 2.6.29 es [Tuz](http://en.wikipedia.org/wiki/Tux#Tuz). _Tuz_ es un [Demonio de Tazmania](http://es.wikipedia.org/wiki/Sarcophilus_harrisii) con un antifaz en forma de pico.

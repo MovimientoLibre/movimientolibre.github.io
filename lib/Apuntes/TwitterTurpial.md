@@ -1,6 +1,4 @@
 
-<a href="http://turpial.org.ve/"><img class="img-responsive" src="twitter-turpial/turpial-logo.png"></a>
-
 [Turpial](http://turpial.org.ve/) es un proyecto que busca ser un cliente alternativo para Twitter. Está escrito en *Python*, tiene como meta ser una aplicación con bajo consumo de recursos y que se integre al escritorio del usuario pero sin renunciar a ninguna funcionalidad. Es software libre de origen venezolano, liberado bajo la licencia GPL 3.
 
 ### 1) Descargue

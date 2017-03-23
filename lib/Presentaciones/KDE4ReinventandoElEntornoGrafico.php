@@ -44,6 +44,8 @@ class KDE4ReinventandoElEntornoGrafico extends \Base\PublicacionSchemaBlogPostin
         $this->contenido_archivo_markdown = 'lib/Presentaciones/KDE4ReinventandoElEntornoGrafico.md';
         // Para el Organizador
         $this->categorias                 = array('GNU Linux', 'KDE');
+        // Banderas
+        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase KDE4ReinventandoElEntornoGrafico

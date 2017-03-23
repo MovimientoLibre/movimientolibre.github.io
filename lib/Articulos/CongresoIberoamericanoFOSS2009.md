@@ -1,6 +1,4 @@
 
-<a href="congreso-iberoamericano-foss-2009/2009-11-29-1_zacatecas.jpg"><img class="img-responsive" src="congreso-iberoamericano-foss-2009/2009-11-29-1_zacatecas_small.jpg"></a> <a href="congreso-iberoamericano-foss-2009/2009-11-29-2_previo.jpg"><img class="img-responsive" src="congreso-iberoamericano-foss-2009/2009-11-29-2_previo-small.jpg"></a> <a href="congreso-iberoamericano-foss-2009/2009-11-30-1_rms.jpg"><img class="img-responsive" src="congreso-iberoamericano-foss-2009/2009-11-30-1_rms_small.jpg"></a>
-
 Los días 30 de noviembre y 1 de diciembre de 2009 se efectuó el [Primer Congreso Iberoamericano de Software Libre](http://www.estudiosdeldesarrollo.net/foss/). Cinco miembros del [GULAG](http://www.gulag.org.mx/) estuvimos presentes en lo que fué el evento más importante del Software Libre del año.
 
 Es muy difícil sintetizar en pocas palabras todo lo que vivimos en esos dos días: los temas de las conferencias fueron mayoritariamente de corte social y político, los distinguidos ponentes nos dejaron impresionados con sus años de experiencia en la implantación de Software Libre en sus países, la hospitalidad fue inigualable, etc.

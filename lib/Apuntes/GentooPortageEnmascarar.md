@@ -1,6 +1,4 @@
 
-<a href="gentoo-portage-enmascarar/gentoo-portage-enmascarar.png"><img class="img-responsive" src="gentoo-portage-enmascarar/gentoo-portage-enmascarar-small.png"></a>
-
 Para evitar que una determinada verisón de un paquete de software se instale en Gentoo Linux podemos _enmascararlo_.
 
 Por ejemplo, necesito quedareme con PostgreSQL versión 9.2, aunque la versión 9.3 ya está marcada como estable. La razón es que las extensiones PostGIS estables son para la versión 9.3 de PostgreSQL.

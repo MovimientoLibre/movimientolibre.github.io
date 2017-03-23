@@ -1,6 +1,4 @@
 
-<img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-1/dell-inspiron-9300-gentoo.jpg">
-
 Hace algunos días actualicé el [Portage](http://es.wikipedia.org/wiki/Portage) de la instalación de [Gentoo Linux](http://www.gentoo.org/) que tengo en mi portátil, una Dell Inspiron 9300. Observé que la versión estable del KDE había cambiado a la 3.5.8 y sentí un _enfermizo cosquilleo_... NO me daban ganas de actualizar... sino de iniciar una NUEVA instalación en este equipo.
 
 De forma habitual, después de actualizar el _portage_ podemos solicitar un listado de los paquetes que se pueden actualizar (valga la redundancia). Gentoo Linux se distingue por bajar el código fuente, desempacarlo, compilarlo e instalarlo; lo cual consume más tiempo que las otras formas de actualización de las demás distribuciones.

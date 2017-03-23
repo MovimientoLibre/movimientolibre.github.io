@@ -3,7 +3,7 @@
 * GIT también se puede comunicar con computadoras y servidores remotos, para lograr así la descarga, sincronización y actualización en un solo comando.
 * GIT es Software Libre con licencia GPL versión 2. Usado por los desarrolladores del kernel Linux y diseñado por Linus Torvalds.
 
-#### Para averiguar la versión instalada
+### Para averiguar la versión instalada
 
 Para averiguar la versión instalada.
 
@@ -14,7 +14,7 @@ Ejecute GIT sin parámetros para mostrar una ayuda simple.
 
     $ git
 
-#### Configuraciones globales
+### Configuraciones globales
 
 Debe configurar sus datos personales. Con estos datos se firmarán sus cambios y aportaciones al código.
 
@@ -31,7 +31,7 @@ También es recomendable crear un par de llaves OpenSSH para asegurar la transmi
     $ ssh-keygen
     $ scp .ssh/id_rsa.pub usuario@servidor.com:/home/usuario/millavepublica.pub
 
-#### Descarga de un repositorio en GiHub
+### Descarga de un repositorio en GiHub
 
 GitHub es el repositorio más grande y popular de software que usa GIT. Obtener un clon de un software desde ahí es sencillo. Por ejemplo, para descargar [Twitter Bootstrap](http://getbootstrap.com/):
 
@@ -42,7 +42,7 @@ GitHub es el repositorio más grande y popular de software que usa GIT. Obtener 
 
 Haga una cuenta gratuita o de pago en GitHub para subir su llave pública OpenSSH.
 
-#### Iniciar un repositorio
+### Iniciar un repositorio
 
 Cabe resaltar la flexibilidad de Git en que puede iniciar un nuevo repositorio en su propio equipo o en el servidor local; y en cualquier directorio de su disco duro interno o unidad de almacenamiento extena. Para iniciar un repositorio cámbiese al directorio base del mismo y ejecute _git init_.
 
@@ -58,7 +58,7 @@ Se creará un directorio de nombre _Proyecto_. Verifique cambiándose a ese dire
     $ cd Proyecto
     $ git status
 
-#### Directorios y archivos a ignorar
+### Directorios y archivos a ignorar
 
 No todos los archivos que ponga en su copia local tienen que estar necesariamente también en el repositorio. Es conveniente que archivos temporales, por ejemplo los creador por **LaTeX** (aux, log, toc), sean excluidos. Edite el archivo _exclude_:
 
@@ -73,7 +73,7 @@ Y en cada línea agregue los nombres de archivos y directorios que NO serán inc
     *.toc
     *.geany
 
-#### Agregar archivos al repositorio local
+### Agregar archivos al repositorio local
 
 Para agregar archivos y directorios, nuevos y modificados al repositorio, debe de estar en el directorio base y ejecutar **git add**:
 
@@ -86,7 +86,7 @@ Para mostrar un listado con los cambios en el repositorio que están en espera d
 
 Éstos están pendientes de ser integrados o _comiteados_.
 
-#### Remover archivos o directorios antes de integrar
+### Remover archivos o directorios antes de integrar
 
 Si al ver el status nota que un archivo o directorio NO debiera incluirse, ejecute el comando **git rm**.
 
@@ -100,7 +100,7 @@ De otra forma, para agregar archivos y tomar en cuenta de una vez los eliminados
 
     $ git add . --all
 
-#### Integrar los cambios
+### Integrar los cambios
 
 Después de agregar, modificar o eliminar archivos proceda a integrar. Para integrar hay que hacer un **git commit**. Este comando puede incluir un comentario:
 
@@ -114,7 +114,7 @@ Cada integración agrega un registro en una bitácora de cambios. La bitacora pu
 
     $ git log
 
-#### Descargue las novedades del servidor
+### Descargue las novedades del servidor
 
 Para actualizar su copia local con las novedades en el servidor, ya sea por que otra persona haya subido aportaciones o porque usted haya hecho cambios en otro equipo, _jale_ una actualización del servidor con **git pull**. En caso de no haber cambios, mostrará un mensaje de que está al día.
 
@@ -124,7 +124,7 @@ Lea los comentarios de sus compañeros con **git log**:
 
     $ git log
 
-#### Despues de aportar debe respaldar localmente
+### Despues de aportar debe respaldar localmente
 
 Debe respaldar cada buen avance que lleve, ya sea al final del día o antes si lo amerita. Agregue sus archivos nuevos y modificados. Luego revise.
 
@@ -135,7 +135,7 @@ Si Usted lo aprueba, integre...
 
     $ git commit -m "Avance en el módulo Direcciones."
 
-#### Derivaciones
+### Derivaciones
 
 Una derivación o _branch_ es una rama en el desarrollo de un sistema que permite establecer una distinta en el desarrollo. Ésto le permite trabajar con una nueva cualidad sin dañar al sistema que ya funcione bien. De inicio todo repositorio tiene el _branch master_. Para listar las derivaciones ejecute **git branch** solamente:
 
@@ -156,7 +156,7 @@ Verifique listando las derivaciones. El marcado con asterisco es el _branch_ en 
       master
     * desarrollo
 
-#### Trabaje en su derivación
+### Trabaje en su derivación
 
 Trabaje en su _branch_. Los cambios que haga se quedan en éste. Para integrar use los comandos **git add** y **git commit** ya mencionados.
 
@@ -173,7 +173,7 @@ Si observa el contenido del directorio en un administrador de archivos notará c
 
     $ git checkout desarrollo
 
-#### Fusionar derivaciones
+### Fusionar derivaciones
 
 Conforme va haciendo _commits_ en un _brach_ éste se dice que va adelantado al _master_. Para mostrar un listado de los _branchs_ y el último comentario de cada _commit_ ejecute:
 
@@ -188,7 +188,7 @@ Ahora _master_ se ha _corrido_ a donde apunta _desarrollo_ y son iguales. Verifi
 
     $ git branch -v
 
-#### Eliminar derivaciones
+### Eliminar derivaciones
 
 En caso de que quiera descartar un _branch_ o derivación.
 
@@ -196,7 +196,7 @@ En caso de que quiera descartar un _branch_ o derivación.
 
 Este comando funciona siempre y cuando no tenga archivos pendientes de integrar.
 
-#### Repositorios remotos
+### Repositorios remotos
 
 Las más recientes versiones de Git solicitan que defina la forma local de subir los archivos. Así que en su equipo y usuario ejecute sólo una vez:
 
@@ -208,7 +208,7 @@ Git recuerda el origen de cada repositorio cuyo origen sea un servidor remoto. E
 
 He notado que Git va impedir que suba cambios al _branch master_ de su servidor, a excepción de **GitHub**. Por lo que debe estar en una derivación distinta a _master_ antes de subir.
 
-#### Subir una nueva derivación al servidor
+### Subir una nueva derivación al servidor
 
 Teniendo permiso de lectura y escritura en el servidor, puede subir un nuevo branch al servidor con la orden push.
 
@@ -216,7 +216,7 @@ Teniendo permiso de lectura y escritura en el servidor, puede subir un nuevo bra
 
 Si esa derivación no existe en el servidor, será creada.
 
-#### Bajar una derivación desde el servidor
+### Bajar una derivación desde el servidor
 
 Al clonar sólo se bajará el _branch master_. Si desea bajar una derivación del repositorio remoto, por ejemplo _desarrollo_, ejecute:
 
@@ -235,7 +235,7 @@ Tendrá que ejecutar el _checkout_ para que se listen con un **git branch**.
 
     $ git branch -v
 
-#### Subir actualizaciones de la derivación local al servidor
+### Subir actualizaciones de la derivación local al servidor
 
 Si ha hecho nuevos programas o cambios en los mismos, suba su actualización al servidor con el siguiente comando. Claro que localmente debe estar en ese branch.
 
@@ -245,7 +245,7 @@ Puede ser específico a un _brach_ por ejemplo para _desarrollo_:
 
     $ git push origin desarrollo
 
-#### Actualizar el repositorio local
+### Actualizar el repositorio local
 
 Para bajar las actualizaciones de una derivación (sólo el branch en uso) desde el servidor, use la orden pull.
 

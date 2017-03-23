@@ -1,6 +1,4 @@
 
-<img class="img-responsive" src="navidad-a-la-led-que-caro/luces-small.jpg">
-
 **"¡Papá! ¡ya falta poco para Navidad!"** dice mi hija **"¿Cuándo vamos a poner el _arbolito_? ¿cuándo vamos a comprar _cosas_ para Navidad?"** Esas palabras vinendo de la niña _más dulce_ del mundo se contraponen a la labor (que veo venir, e inevitablemente llegará) de bajar todas las empolvadas cajas con las _cosas_ navideñas de los años pasados. Propuse un trato, esa noche bajaríamos las cajas y mañana armarían (Mamá y Tú) el _pinito_.
 
 Al día siguiente... **"Debemos comprar focos para el pino."** ¿Eh?.. ¿Qué le pasó a los focos del año pasado? XD... Vino la explicación: **"El año pasado se puso _medio pino_, ahora vamos a poner el _pino completo_, NECESITAMOS más foquitos"**. Este _pino artificial_ tiene un tubo central con dos segmentos, así que puede ponerse sólo uno, logrando que la altura sea de la mitad. Pero este año el pino va a ser completo. **"Bueno, vamos mañana al _super_"**.

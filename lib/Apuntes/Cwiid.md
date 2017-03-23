@@ -1,6 +1,4 @@
 
-<iframe width="420" height="315" src="//www.youtube.com/embed/gg8spZvyEE8" frameborder="0" allowfullscreen></iframe>
-
 _Wii Remote_ (Control Remoto _Wii_ en Latinoamérica, Mando de _Wii_ en España o _Wiimote_ en el _mundo gamer_) es el control principal de la _Wii_ de Nintendo. Este dispositivo tiene estas cualidades:
 
 * Botones A, B, +, home, -, 1 y 2.
@@ -22,6 +20,10 @@ Aparte del magnífico papel que este dispositivo tiene con los video juegos, pod
 A continuación describiré los pasos para instalar en [Gentoo Linux](http://www.gentoo.org/) el [CWiid](http://abstrakraft.org/cwiid/) (versión 0.6.00) que es una colección de herramientas programadas en C para usar el _wiimote_.
 
 **Nota:** Los comandos que vea con **$** son ejecutados desde su cuenta de usuario. Mientras que los comandos que inicien con **#** deben ejecutarse como _root_ o con **sudo**.
+
+### Video
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/gg8spZvyEE8" frameborder="0" allowfullscreen></iframe>
 
 ### 1) Configure su kernel
 

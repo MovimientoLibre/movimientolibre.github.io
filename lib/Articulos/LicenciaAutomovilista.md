@@ -1,6 +1,4 @@
 
-<a href="licencia-automovilista/00-licencia-de-automovilista.jpg"><img class="img-responsive" src="licencia-automovilista/00-licencia-de-automovilista-small.jpg"></a>
-
 El mes pasado dediqué una mañana a cumplir con las obligaciones ciudadanas de pagar predial, tenencia y refrendos. Aproveché la vuelta para que mi esposa renovara su licencia de manejo, sin saber la cantidad de trámites y traslados que debía hacer.
 
 En este mes llegó mi turno, tenía que renovar mi **licencia de manejo** y pasar por los mismos trámites que había tenido mi esposa. Decidí documentar minuciosamente todo el proceso. Lo que a continuación expongo es un ejemplo de la desconsideración que tienen algunas autoridades con el tiempo y recursos de nosotros los ciudadanos.

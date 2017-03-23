@@ -44,6 +44,8 @@ class CienciaDeDatosIntroduccion extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/Presentaciones/CienciaDeDatosIntroduccion.md';
         // Para el Organizador
         $this->categorias                 = array('Ciencia de Datos');
+        // Banderas
+        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase CienciaDeDatosIntroduccion

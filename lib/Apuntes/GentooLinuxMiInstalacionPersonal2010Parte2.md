@@ -1,6 +1,4 @@
 
-<a href="gentoo-linux-mi-instalacion-personal-2010/wallpaper-gentoo-morpheus.jpg"><img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-2010/wallpaper-gentoo-morpheus-small.jpg"></a>
-
 En este fondo de pantalla aparece _Morpheus_, personaje de las películas [The Matrix](http://www.imdb.com/title/tt0133093/) y muestra un _diálogo alterado_ de cuando _Morpheus_ le explica a _Neo_ qué es la _Matrix_. Claro que el resultado es una divertida exageración. He aquí lo que dice en español:
 
 > Morpheus: Las formas actuales de instalar un S.O. en computadoras son un sistema Neo. Ese es nuestro enemigo. Pero cuando instalas, mira a tu alrededor. ¿Qué es lo que ves? Distros Linux que se basan en software binario y a la gente que intenta usuarlos. Las mentes débiles de las personas que tratamos de salvar. Pero hasta que lo logremos, esas personas seguirán siendo parte del sistema y las vuelve nuestro enemigo. Tú debes de entender, que la mayoría de la gente no está lista para cambiar la forma en que usa sus computadoras. Y muchos de ellos están tan dentro y son tan dependientes del sistema que pelearán por protegerlo.

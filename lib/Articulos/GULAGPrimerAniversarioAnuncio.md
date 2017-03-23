@@ -1,6 +1,4 @@
 
-<img class="img-responsive" src="gulag-primer-aniversario/gulag-aniversario-banner.png">
-
 El [Grupo de Usuarios de GNU/Linux de La Laguna](http://www.gulag.org.mx), invita a las conferencias y taller que con motivo de la celebración del **Primer Aniversario del Grupo** se impartirán en el [Instituto Tecnológico de La Laguna](http://www.itlalaguna.edu.mx/), el día sábado **18 de agosto** a partir de las 9:00 de la mañana con el siguiente programa:
 
 9:00 a 10:15  | Capturando bichos con [Nepenthes](http://es.wikipedia.org/wiki/Nepenthes) y colectando malcode con [Arania](http://www.honeynet.org.mx/web/pages/Arania) | [Hugo Francisco Gonzalez Robledo](http://www.honeynet.org.mx/web/pages/Miembros)                                |

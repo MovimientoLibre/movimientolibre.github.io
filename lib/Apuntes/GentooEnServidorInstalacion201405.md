@@ -1,6 +1,4 @@
 
-<a href="gentoo-en-servidor-instalacion-2014-05/gentoo-virtualizado-en-kvm.png"><img class="img-responsive" src="gentoo-en-servidor-instalacion-2014-05/gentoo-virtualizado-en-kvm-small.jpg"></a>
-
 Cuando hacemos una instalación de [Gentoo Linux](http://www.gentoo.org) en una PC o laptop buscamos tener entorno gráfico y muchos programas; como reproductores multimedia, navegadores de internet, herramientas de desarrollo y hasta una suite de oficina. En cambio, **para un servidor, nos enfocamos en instalar el sistema operativo base y los servicios que vaya otorgar a la red local o al internet.**
 
 En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su **desempeño** y **seguridad** sean de lo mejor.

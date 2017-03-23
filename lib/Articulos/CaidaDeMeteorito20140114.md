@@ -1,5 +1,4 @@
 
-![Diagrama avistamiento del bólido 14 enero 2014](caida-de-meteorito-2014-01-14/diagrama-avistamiento-bolido-2014-01-14.jpg)
 
 Les informo que mi esposa Rosy y su servidor veníamos conduciendo la mañana de hoy por el Periférico (en Gómez Palacio, Durango, México) y antes de subir el paso a desnivel que está frente a _Soriana Hamburgo_ vimos un **bólido** surcar el cielo.
 
@@ -11,7 +10,9 @@ Rosy me ha dado dos notas regionales sobre el fenómeno, además de otra por par
 
 **¡Fue maravilloso! ¡El más grande y fantástico que haya visto!** Lástima que iba manejando y no lo esperábamos (para tratar de tomar video), como suele ocurrir.
 
-#### Algunos datos que les puedo dar
+![Diagrama avistamiento del bólido 14 enero 2014](caida-de-meteorito-2014-01-14/diagrama-avistamiento-bolido-2014-01-14.jpg)
+
+### Algunos datos que les puedo dar
 
 * Fue cerca de las 7:10 a.m. de hoy 14 de enero de 2014.
 * La trayectoria fue Sur a Norte.
@@ -25,6 +26,6 @@ Rosy me ha dado dos notas regionales sobre el fenómeno, además de otra por par
 
 Espero que estos datos sirvan para que en conjunto pueda triangularse su altitud y posible lugar de caída, si es que algo haya llegado al suelo.
 
-#### Actualización
+### Actualización
 
 He cambiado el título de _Caida de Meteorito_ a _Avistamiento de un bólido_ porque no se debe llamar **meteorito** cuando no se tiene una muestra física que se trate de una roca que vino del espacio. Mientras tanto, por el fenómeno visual, lo correcto es llamarle **bólido**.

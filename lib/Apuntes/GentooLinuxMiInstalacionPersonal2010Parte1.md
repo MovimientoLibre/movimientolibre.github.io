@@ -1,6 +1,4 @@
 
-![Gentoo Cow](gentoo-linux-mi-instalacion-personal-2010/cow-push.jpg)
-
 Después de varios meses de tener una instalación completa de [KDE](http://www.kde.org/) en mi _netbook_ comenzé a pensar de que el poderoso y grande ambiente gráfico le restaba potencial a mi equipo. Era frecuente que el administrador de archivos Dolphin demorara algunos segundos en cargar. También la carga y velocidad de respuesta de la suite de información personal (PIM), en particular de [KMail](http://pim.kde.org/), era lenta.
 
 El concepto de una _netbook_ involucra un procesador versátil y modesto. El [Intel Atom](http://es.wikipedia.org/wiki/Intel_Atom) fue diseñado con ese fin, hereda mucha tecnología de la familia Pentium y consume poca energía para prolongar la duración de la carga en un equipo portátil. Pero **no** se trata de un procesador de alto rendimiento. Recordemos que fue _Windows XP_ y no _Windows Vista_ el que apareció preinstalado en las _netbooks_ a la venta, por obvias razones.

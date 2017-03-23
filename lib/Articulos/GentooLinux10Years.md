@@ -1,6 +1,4 @@
 
-<img class="img-responsive" src="gentoo-linux-10-years/banner.jpg">
-
 El 5 de octubre de 2009 se celebró el décimo aniversario de la distribución [Gentoo Linux](http://www.gentoo.org/) con la liberación de un _LiveDVD_ conmemorativo. Hace [diez años](http://www.gentoo.org/news/20090722-anniversary.xml), el proyecto _Enoch_ fue renombrado como _Gentoo_ y el nombre de dominio **gentoo.org** fue registrado.
 
 Advertencia, no vayan a caer en confusión. Lo que se ha publicado es un _LiveDVD_ (que funciona también desde una memoria USB). **No trae instalador**. Si quieren instalar el _LiveDVD_ en el disco duro deben usar la guía de instalación a partir de un _stage3_, es decir, desde la línea de comandos, todo al estilo tradicional de Gentoo.

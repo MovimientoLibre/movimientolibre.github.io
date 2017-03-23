@@ -1,6 +1,4 @@
 
-<a href="cbtis4-35-aniversario-software-libre/cbtis4-1.jpg"><img class="img-responsive" src="cbtis4-35-aniversario-software-libre/cbtis4-1-small.jpg"></a> <a href="cbtis4-35-aniversario-software-libre/cbtis4-2.jpg"><img class="img-responsive" src="cbtis4-35-aniversario-software-libre/cbtis4-2-small.jpg"></a> <a href="cbtis4-35-aniversario-software-libre/cbtis4-3.jpg"><img class="img-responsive" src="cbtis4-35-aniversario-software-libre/cbtis4-3-small.jpg"></a>
-
 El 28 de octubre del presente, tuve el honor de participar en los eventos que con motivo del **XXXVII Aniversario** del [Centro de Bachillerato Tecnológico Industrial y de Servicios No. 4 (CBTiS 4)](http://www.cbtis4.edu.mx/) con la ponencia [Software Libre](../presentaciones/software-libre.html).
 
 Al finalizar, proyectamos el mensaje de Richard Stallman, a cerca de [por qué debe usarse software libre en las instituciones educativas](http://www.youtube.com/watch?v=cnJ-rGBX9Es)
