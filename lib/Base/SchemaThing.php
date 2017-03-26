@@ -119,11 +119,11 @@ class SchemaThing extends Schema {
             $a[] = "<div class=\"encabezado\">";
         }
         if ($this->headline != '') {
-            if ($this->name == '') {
-                $this->name = $this->headline;
-                $a[] = sprintf('  <h1 itemprop="name">%s</h1>', $this->headline);
-            } elseif ($this->name != $this->headline) {
+            if (($this->name != '') && ($this->name != $this->headline)) {
                 $a[] = sprintf('  <h1 itemprop="headline">%s</h1><h4 itemprop="name">%s</h4>', $this->headline, $this->name);
+            } else {
+                $this->name = $this->headline;
+                $a[] = sprintf('  <h1 itemprop="headline">%s</h1>', $this->headline);
             }
         } elseif ($this->name != '') {
             $this->headline = $this->name;

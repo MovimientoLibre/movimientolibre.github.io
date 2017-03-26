@@ -83,6 +83,11 @@ class SchemaBlogPosting extends SchemaArticle {
             $a[]                                   = $this->contentLocation->html();
         }
         $a[] = $this->content_html();
+        if (is_object($this->publisher) && ($this->publisher instanceof SchemaOrganization)) {
+            $this->publisher->onTypeProperty = 'publisher';
+            $this->publisher->identation     = $this->identation + 1;
+            $a[]                             = $this->publisher->html();
+        }
         $a[] = $this->itemscope_end();
         $a[] = $this->extra_html();
         // Entregar

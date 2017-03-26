@@ -40,6 +40,20 @@ class PublicacionConfig {
     public $estado                    = 'publicar';                       // El estado ordena a Imprenta e Índice si debe 'publicar', 'revisar' o 'ignorar'
     public $poner_imagen_en_contenido = TRUE;                             // Si es verdadero pondrá la imagen en el contenido
     public $include_extra_directorio;                                     // Ruta donde habrá archivos HTML para cargar como el extra de SchemaThing, por ejemplo include/extra
+    public $publisher;                                                    // Instancia de SchemaOrganization
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        // Definir publisher para las publicaciones que hereden SchemaBlogPosting
+        $this->publisher              = new \Base\SchemaOrganization();
+        $this->publisher->name        = 'Movimiento Libre';
+        $this->publisher->description = 'Colección de ideas.';
+        $this->publisher->image       = 'imagenes/movimientolibre.png';
+        $this->publisher->is_article  = FALSE;
+        $this->publisher->big_heading = FALSE;
+    } // constructor
 
 } // Clase PublicacionConfig
 
