@@ -31,9 +31,10 @@ class BiosUpdateWithGrub extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Actualización del BIOS con GRUB';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2010-12-28T14:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'bios-update-with-grub';

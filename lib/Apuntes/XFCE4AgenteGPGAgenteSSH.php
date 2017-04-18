@@ -31,9 +31,10 @@ class XFCE4AgenteGPGAgenteSSH extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'XFCE4 deshabilitar agente GPG y habilitar agente SSH';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-08-07T09:15';
         // El nombre del archivo a crear
         $this->archivo                    = 'xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh';

@@ -31,9 +31,10 @@ class MozillaFirefoxDejarPreguntarPluginFaltante extends \Base\PublicacionSchema
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Mozilla Firefox | Dejar de preguntar por plugin Adobe Flash';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-02-03T19:30';
         // El nombre del archivo a crear
         $this->archivo                    = 'mozilla-firefox-dejar-preguntar-plugin-faltante';

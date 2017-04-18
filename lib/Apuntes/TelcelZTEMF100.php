@@ -31,9 +31,10 @@ class TelcelZTEMF100 extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Internet 3G con Telcel ZTE MF100';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2011-01-20T12:50';
         // El nombre del archivo a crear
         $this->archivo                    = 'telcel-zte-mf100';

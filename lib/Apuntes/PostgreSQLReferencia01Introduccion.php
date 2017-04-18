@@ -31,9 +31,10 @@ class PostgreSQLReferencia01Introduccion extends \Base\PublicacionSchemaBlogPost
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'PostgreSQL referencia rápida - 1) Introducción';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-06-10T00:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'psql-referencia-01-introduccion';

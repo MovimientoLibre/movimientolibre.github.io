@@ -31,9 +31,10 @@ class RsyncRespaldos extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Respaldos con rsync';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2011-12-29T20:50';
         // El nombre del archivo a crear
         $this->archivo                    = 'rsync-respaldos';

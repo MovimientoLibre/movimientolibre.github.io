@@ -31,9 +31,10 @@ class GitApuntes extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Apuntes de Git';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-01-21T19:20';
         // El nombre del archivo a crear
         $this->archivo                    = 'git-apuntes';

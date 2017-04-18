@@ -31,9 +31,10 @@ class KernelLinux2629 extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Kernel Linux 2.6.29 para Dell Inspiron 9300 con Gentoo Linux';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2009-06-17T21:45';
         // El nombre del archivo a crear
         $this->archivo                    = 'kernel-linux-2.6.29';

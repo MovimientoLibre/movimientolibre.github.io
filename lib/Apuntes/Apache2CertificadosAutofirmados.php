@@ -31,9 +31,10 @@ class Apache2CertificadosAutofirmados extends \Base\PublicacionSchemaBlogPosting
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Crear certificados autofirmados para Apache 2';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-02-22T17:30';
         // El nombre del archivo a crear
         $this->archivo                    = 'apache2-certificados-autofirmados';

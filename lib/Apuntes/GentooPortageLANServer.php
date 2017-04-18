@@ -31,11 +31,10 @@ class GentooPortageLANServer extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Ejecutar constructor en el padre
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
         parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Gentoo Linux - Servidor local de portage';
-        $this->autor                      = 'guivaloz';
         $this->fecha                      = '2017-03-23T07:42';
         // El nombre del archivo a crear
         $this->archivo                    = 'gentoo-portage-lan-server';

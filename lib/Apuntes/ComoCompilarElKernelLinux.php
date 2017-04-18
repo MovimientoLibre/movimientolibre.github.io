@@ -31,9 +31,10 @@ class ComoCompilarElKernelLinux extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Cómo compilar el kernel Linux';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-07-11T00:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'como-compilar-el-kernel-linux';

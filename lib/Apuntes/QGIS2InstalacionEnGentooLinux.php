@@ -31,9 +31,10 @@ class QGIS2InstalacionEnGentooLinux extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Instalación de QGIS 2 en Gentoo Linux';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-02-28T11:40';
         // El nombre del archivo a crear
         $this->archivo                    = 'qgis2-instalacion-en-gentoo-linux';

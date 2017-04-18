@@ -31,9 +31,10 @@ class FreemedInstalacion extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Instalación de FreeMED en Debian Etch';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2008-01-16T19:10';
         // El nombre del archivo a crear
         $this->archivo                    = 'freemed-instalacion';

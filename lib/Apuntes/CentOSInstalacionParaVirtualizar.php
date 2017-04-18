@@ -31,9 +31,10 @@ class CentOSInstalacionParaVirtualizar extends \Base\PublicacionSchemaBlogPostin
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Instalación de CentOS para virtualizar';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-01-30T10:20';
         // El nombre del archivo a crear
         $this->archivo                    = 'centos-instalacion-para-virtualizar';

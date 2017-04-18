@@ -31,9 +31,10 @@ class Markdown extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Markdown: la forma fácil de escribir para web';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-02-09T23:30';
         // El nombre del archivo a crear
         $this->archivo                    = 'markdown';

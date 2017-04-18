@@ -31,9 +31,10 @@ class PostgreSQLReferencia02Instalacion extends \Base\PublicacionSchemaBlogPosti
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'PostgreSQL referencia rápida - 2) Instalación';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-06-12T00:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'psql-referencia-02-instalacion';

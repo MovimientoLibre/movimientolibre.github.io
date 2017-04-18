@@ -31,9 +31,10 @@ class GentooEnAsusROGInstalacion201405 extends \Base\PublicacionSchemaBlogPostin
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Apuntes de Instalación de Gentoo Linux en Laptop';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2014-05-16T08:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'gentoo-en-asus-rog-instalacion-2014-05';

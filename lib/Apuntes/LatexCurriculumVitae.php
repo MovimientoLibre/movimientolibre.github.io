@@ -31,9 +31,10 @@ class LatexCurriculumVitae extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Curriculum Vitae hecho con LaTeX';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-12-15T22:40';
         // El nombre del archivo a crear
         $this->archivo                    = 'latex-curriculum-vitae';

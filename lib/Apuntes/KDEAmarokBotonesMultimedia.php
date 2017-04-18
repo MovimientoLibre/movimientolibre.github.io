@@ -31,9 +31,10 @@ class KDEAmarokBotonesMultimedia extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Cómo configurar los botones multimedia en KDE';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-12-20T00:25';
         // El nombre del archivo a crear
         $this->archivo                    = 'kde-amarok-botones-multimedia';

@@ -31,9 +31,10 @@ class GentooLinuxMiInstalacionPersonal2010Parte3 extends \Base\PublicacionSchema
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre, porque en PublicacionConfig se define el publisher
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Gentoo Linux en una netbook (2010, parte 3)';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2010-12-02T22:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'gentoo-linux-mi-instalacion-personal-2010-parte-3';
