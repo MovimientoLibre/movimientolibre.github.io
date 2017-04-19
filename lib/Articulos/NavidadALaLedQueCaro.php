@@ -31,9 +31,10 @@ class NavidadALaLedQueCaro extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Navidad a la LED... ¡que caro!';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-12-05 10:55';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'navidad-a-la-led-que-caro';

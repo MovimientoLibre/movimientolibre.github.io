@@ -31,9 +31,10 @@ class AudioYVideoEnGNULinux extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Audio y Video en GNU/Linux';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2008-10-26T20:45';
         // El nombre del archivo a crear
         $this->archivo                    = 'audio-y-video-en-gnu-linux';

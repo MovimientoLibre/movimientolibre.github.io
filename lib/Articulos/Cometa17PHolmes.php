@@ -31,9 +31,10 @@ class Cometa17PHolmes extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Cometa 17P Holmes';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-10-31T10:20';
         // El nombre del archivo a crear
         $this->archivo         = 'cometa-17p-holmes';

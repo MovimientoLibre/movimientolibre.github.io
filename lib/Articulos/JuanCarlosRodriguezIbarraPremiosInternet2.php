@@ -31,9 +31,10 @@ class JuanCarlosRodriguezIbarraPremiosInternet2 extends \Base\PublicacionSchemaB
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Juan Carlos Rodríguez Ibarra, Premios Internet II';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2010-06-27T00:50';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'juan-carlos-rodriguez-ibarra-premios-internet-2';

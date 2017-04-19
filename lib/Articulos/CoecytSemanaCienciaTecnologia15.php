@@ -31,9 +31,10 @@ class CoecytSemanaCienciaTecnologia15 extends \Base\PublicacionSchemaBlogPosting
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Software Libre en la XV Semana de Ciencia y Tecnología';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2008-10-26T08:30';
         // El nombre del archivo a crear
         $this->archivo         = 'coecyt-semana-ciencia-tecnologia-15';

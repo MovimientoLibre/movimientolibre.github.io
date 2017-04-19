@@ -31,9 +31,10 @@ class SoftwareLibre extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Software Libre';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-11-28T11:50';
         // El nombre del archivo a crear
         $this->archivo                    = 'software-libre';

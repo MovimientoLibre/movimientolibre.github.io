@@ -25,16 +25,17 @@ namespace Licencias;
 /**
  * Clase GPL2
  */
-class GPL2 extends \Base\PublicacionSchemaArticle {
+class GPL2 extends \Base\Publicacion {
 
     /**
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y autor
         $this->nombre                     = 'GNU General Public Licence v2';
         $this->autor                      = 'Movimiento Libre';
-     // $this->fecha                      = '2016-00-00T00:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'gpl-2';
         // La descripción y claves dan información a los buscadores y redes sociales

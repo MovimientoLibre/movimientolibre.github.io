@@ -31,9 +31,10 @@ class LicenciaAutomovilista extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Renovar la licencia de automovilista en Lerdo, Durango';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2008-02-18T10:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'licencia-automovilista';

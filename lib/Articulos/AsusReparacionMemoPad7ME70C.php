@@ -31,9 +31,10 @@ class AsusReparacionMemoPad7ME70C extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Asus Reparación Memo Pad 7 ME70C';
-     // $this->autor                      = '';
         $this->fecha                      = '2016-04-01T16:10';
         // El nombre del archivo a crear
         $this->archivo                    = 'asus-reparacion-memo-pad-7-me70c';

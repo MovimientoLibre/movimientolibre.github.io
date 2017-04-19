@@ -31,9 +31,10 @@ class DistribucionesGNULinux extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Distribuciones GNU/Linux, entornos y programas libres';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2010-10-19T23:55';
         // El nombre del archivo a crear
         $this->archivo                    = 'distribuciones-gnulinux';

@@ -31,9 +31,10 @@ class GULAGCongreso2016GenesisPHPInvitacion extends \Base\PublicacionSchemaBlogP
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'GULAG Congreso 2016 - Invitación al taller GenesisPHP';
-     // $this->autor                      = '';
         $this->fecha                      = '2016-09-23T11:15';
         // El nombre del archivo a crear
         $this->archivo                    = 'gulag-congreso-2016-genesisphp-invitacion';

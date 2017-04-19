@@ -31,9 +31,10 @@ class CaidaDeMeteorito20140114 extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Avistamiento de un bólido';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2014-01-14T15:55';
         // El nombre del archivo a crear
         $this->archivo         = 'caida-de-meteorito-2014-01-14';

@@ -31,9 +31,10 @@ class ConsejosInformaticaEcologica extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Consejos para una Informática Ecológica';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2008-05-17T15:30';
         // El nombre del archivo a crear
         $this->archivo                    = 'consejos-informatica-ecologica';

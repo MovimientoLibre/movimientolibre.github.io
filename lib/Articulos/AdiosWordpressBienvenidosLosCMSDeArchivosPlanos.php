@@ -31,9 +31,10 @@ class AdiosWordpressBienvenidosLosCMSDeArchivosPlanos extends \Base\PublicacionS
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Adiós Wordpress, 2014 será el año de los CMS de archivos planos';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2014-02-28T10:30';
         // El nombre del archivo a crear
         $this->archivo         = 'adios-wordpress-bienvenidos-los-cms-de-archivos-planos';

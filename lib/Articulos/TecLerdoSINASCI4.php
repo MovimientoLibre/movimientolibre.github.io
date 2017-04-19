@@ -31,9 +31,10 @@ class TecLerdoSINASCI4 extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = '"Demostración de Programas Multimedia" en el SINASCI 2008';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2008-10-26T21:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'tec-lerdo-sinasci-4';

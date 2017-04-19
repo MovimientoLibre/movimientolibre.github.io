@@ -31,9 +31,10 @@ class InkscapeTaller extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Taller de Inkscape';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-08-16T22:45';
         // El nombre del archivo a crear
         $this->archivo                    = 'inkscape-taller';

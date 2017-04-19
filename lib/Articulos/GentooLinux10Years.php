@@ -31,9 +31,10 @@ class GentooLinux10Years extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Gentoo Linux... ¡10 años compilando!';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2009-10-06T22:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'gentoo-linux-10-years';

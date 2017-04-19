@@ -31,9 +31,10 @@ class GTUGCampout2010 extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'GTUG Campout Laguna 2010';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2010-08-05T20:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'gtug-campout-2010';

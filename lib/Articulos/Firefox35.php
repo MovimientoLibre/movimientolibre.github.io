@@ -31,9 +31,10 @@ class Firefox35 extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Firefox 3.5';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2009-07-02T00:39';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'firefox-3.5';

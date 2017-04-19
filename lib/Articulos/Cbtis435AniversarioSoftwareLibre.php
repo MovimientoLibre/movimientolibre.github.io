@@ -31,9 +31,10 @@ class Cbtis435AniversarioSoftwareLibre extends \Base\PublicacionSchemaBlogPostin
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Software Libre en el 35 Aniversario del CBTiS 4';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2008-10-28T23:00';
         // El nombre del archivo a crear
         $this->archivo         = 'cbtis4-35-aniversario-software-libre';

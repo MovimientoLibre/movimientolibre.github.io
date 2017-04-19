@@ -31,9 +31,10 @@ class CalculadorasCientificasChinas extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Calculadoras Científicas Chinas';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-07-28T23:50';
         // El nombre del archivo a crear
         $this->archivo         = 'calculadoras-cientificas-chinas';

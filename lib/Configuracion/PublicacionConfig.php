@@ -47,12 +47,13 @@ class PublicacionConfig {
      */
     public function __construct() {
         // Definir publisher para las publicaciones que hereden SchemaBlogPosting
-        $this->publisher              = new \Base\SchemaOrganization();
-        $this->publisher->name        = 'Movimiento Libre';
-        $this->publisher->description = 'Colección de ideas.';
-        $this->publisher->image       = 'imagenes/movimientolibre.png';
-        $this->publisher->is_article  = FALSE;
-        $this->publisher->big_heading = FALSE;
+        $this->publisher                 = new \Base\SchemaOrganization();
+        $this->publisher->name           = 'Movimiento Libre';
+        $this->publisher->description    = 'Colección de ideas por Guillermo Valdés Lozano (guivaloz).';
+        $this->publisher->image          = 'imagenes/movimientolibre.png';
+        $this->publisher->is_article     = FALSE;
+        $this->publisher->big_heading    = FALSE;
+        $this->publisher->class_property = 'publicador'; // Estilo CSS que está definido en /dist/css/movimientolibre.css
     } // constructor
 
 } // Clase PublicacionConfig

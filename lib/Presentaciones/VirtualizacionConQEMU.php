@@ -31,9 +31,10 @@ class VirtualizacionConQEMU extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Virtualización con QEmu';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2009-11-28T23:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'virtualizacion-con-qemu';

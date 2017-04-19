@@ -31,9 +31,10 @@ class UALConferenciaSoftwareLibre extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = '"Software Libre" en la Universidad Autónoma de La Laguna - Congreso UAL 2008';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-12-10T13:10';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'ual-conferencia-software-libre';

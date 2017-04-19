@@ -31,9 +31,10 @@ class VIAPC2500GDesempaque extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Desempaque de la Via pc2500g';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-10-30T13:10';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'via-pc2500g-desempaque';

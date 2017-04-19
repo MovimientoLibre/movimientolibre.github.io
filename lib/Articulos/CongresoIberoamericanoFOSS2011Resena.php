@@ -31,9 +31,10 @@ class CongresoIberoamericanoFOSS2011Resena extends \Base\PublicacionSchemaBlogPo
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'FOSS 2.0 - Reseña';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2011-06-14T10:17';
         // El nombre del archivo a crear
         $this->archivo         = 'congreso-iberoamericano-foss-2011-resena';

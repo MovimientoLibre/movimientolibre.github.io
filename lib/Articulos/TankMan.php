@@ -31,9 +31,10 @@ class TankMan extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Tank Man';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2009-06-04T12:55';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'tank-man';

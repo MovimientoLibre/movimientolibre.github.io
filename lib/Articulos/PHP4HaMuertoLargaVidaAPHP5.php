@@ -31,9 +31,10 @@ class PHP4HaMuertoLargaVidaAPHP5 extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'PHP4 ha muerto, larga vida a PHP5';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2008-02-02T11:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'php4-ha-muerto-larga-vida-a-php5';

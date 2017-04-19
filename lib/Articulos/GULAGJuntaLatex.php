@@ -31,9 +31,10 @@ class GULAGJuntaLatex extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Junta de el Gulag, tema "LaTeX"';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-11-09T08:50';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'gulag-junta-latex';

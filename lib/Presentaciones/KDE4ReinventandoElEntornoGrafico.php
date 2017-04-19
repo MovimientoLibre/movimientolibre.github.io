@@ -31,9 +31,10 @@ class KDE4ReinventandoElEntornoGrafico extends \Base\PublicacionSchemaBlogPostin
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'KDE 4 Reinventando el entorno gráfico';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2009-04-21T12:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'kde-4-reinventando-el-entorno-grafico';

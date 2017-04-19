@@ -31,9 +31,10 @@ class GULAGSegundoAniversario extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Segundo Aniversario del Gulag / Software Freedom Day';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2008-09-18T13:30';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'gulag-segundo-aniversario';

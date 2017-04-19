@@ -31,9 +31,10 @@ class RubyBasicoTaller extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Taller de Ruby Básico';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2009-11-22T23:55';
         // El nombre del archivo a crear
         $this->archivo                    = 'ruby-basico-taller';

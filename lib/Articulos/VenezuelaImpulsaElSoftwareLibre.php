@@ -31,9 +31,10 @@ class VenezuelaImpulsaElSoftwareLibre extends \Base\PublicacionSchemaBlogPosting
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Venezuela impulsa el software libre';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2008-01-01T21:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'venezuela-impulsa-el-software-libre';

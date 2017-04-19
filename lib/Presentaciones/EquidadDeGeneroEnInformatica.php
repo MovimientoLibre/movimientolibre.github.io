@@ -31,9 +31,10 @@ class EquidadDeGeneroEnInformatica extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Equidad de Género en Informática';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2015-03-09T11:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'equidad-genero-informatica';

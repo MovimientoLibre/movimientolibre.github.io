@@ -31,9 +31,10 @@ class GULAGJuntaMultimediaHacks extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Junta de la Gulag "Multimedia Hacks"';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-06-10T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'gulag-junta-multimedia-hacks';

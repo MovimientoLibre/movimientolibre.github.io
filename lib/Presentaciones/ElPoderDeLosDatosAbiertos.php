@@ -31,9 +31,10 @@ class ElPoderDeLosDatosAbiertos extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'El Poder de los Datos Abiertos';
-     // $this->autor                      = 'guivaloz';
         $this->fecha                      = '2016-02-24T13:08';
         // El nombre del archivo a crear
         $this->archivo                    = 'el-poder-de-los-datos-abiertos';

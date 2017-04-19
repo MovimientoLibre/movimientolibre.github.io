@@ -31,9 +31,10 @@ class CongresoIberoamericanoFOSS2011 extends \Base\PublicacionSchemaBlogPosting 
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Segundo Congreso Internacional de Software Libre';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2011-05-27T11:20';
         // El nombre del archivo a crear
         $this->archivo         = 'congreso-iberoamericano-foss-2011';

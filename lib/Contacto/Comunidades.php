@@ -25,16 +25,16 @@ namespace Contacto;
 /**
  * Clase Comunidades
  */
-class Comunidades extends \Base\PublicacionSchemaArticle {
+class Comunidades extends \Base\Publicacion {
 
     /**
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título
         $this->nombre                     = 'Comunidades';
-        $this->autor                      = 'Movimiento Libre';
-     // $this->fecha                      = '2016-00-00T00:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'comunidades';
         // La descripción y claves dan información a los buscadores y redes sociales

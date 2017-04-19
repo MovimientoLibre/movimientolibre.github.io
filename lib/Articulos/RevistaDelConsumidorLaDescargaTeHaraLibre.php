@@ -31,9 +31,10 @@ class RevistaDelConsumidorLaDescargaTeHaraLibre extends \Base\PublicacionSchemaB
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Revista del Consumidor - La descarga te hará libre';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2009-05-09T14:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'revista-del-consumidor-la-descarga-te-hara-libre';

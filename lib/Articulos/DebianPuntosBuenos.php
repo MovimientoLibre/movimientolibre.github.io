@@ -31,9 +31,10 @@ class DebianPuntosBuenos extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'Puntos buenos para Debian';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2007-06-17T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'debian-puntos-buenos';

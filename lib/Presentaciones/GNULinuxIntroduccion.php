@@ -31,9 +31,10 @@ class GNULinuxIntroduccion extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Introducción a GNU/Linux';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2007-04-01T14:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'gnulinux-introduccion';

@@ -31,9 +31,10 @@ class CienciaDeDatosIntroduccion extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Introducción a la Ciencia de Datos';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2015-09-27T23:30';
         // El nombre del archivo a crear
         $this->archivo                    = 'ciencia-de-datos-introduccion';

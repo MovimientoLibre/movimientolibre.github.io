@@ -31,9 +31,10 @@ class InnovaTIC1erAniversario extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre          = 'InnovaTIC 1er Aniversario';
-     // $this->autor           = 'Autor';
         $this->fecha           = '2009-03-03T13:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
         $this->archivo         = 'innovatic-1er-aniversario';

@@ -31,9 +31,10 @@ class EdubuntuEnLaEducacion extends \Base\PublicacionSchemaBlogPosting {
      * Constructor
      */
     public function __construct() {
-        // Título, autor y fecha
+        // Ejecutar constructor en el padre
+        parent::__construct();
+        // Título y fecha
         $this->nombre                     = 'Edubuntu en la educación';
-     // $this->autor                      = 'Autor';
         $this->fecha                      = '2009-10-28T01:00';
         // El nombre del archivo a crear
         $this->archivo                    = 'edubuntu-en-la-educacion';
