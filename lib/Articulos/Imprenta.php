@@ -37,11 +37,10 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
         $this->titulo                   = 'Artículos';
         $this->descripcion              = 'Artículos de Movimiento Libre sobre temáticas diversas.';
         $this->claves                   = 'Articulos';
-        $this->encabezado_color         = '#FFFFFF';
         // Opción de Navegación a poner activa
         $this->nombre_menu              = 'Artículos';
-        // Ruta a la clase para hacer el index.html
-        $this->indices_paginas          = '\\Base\\PaginasDetallados'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
+        // Clase para hacer el index.html
+        $this->indices_paginas          = '\\Base\\PaginasDetallados';
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
         $this->directorio               = 'articulos';
         // Pasar a la página índice estos parámetros

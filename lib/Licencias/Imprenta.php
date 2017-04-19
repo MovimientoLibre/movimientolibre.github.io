@@ -37,11 +37,10 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         $this->titulo                   = 'Licencias';
         $this->descripcion              = 'Algunas licencias de software libre y abierto.';
         $this->claves                   = 'Licencias, Software, Libre, Abierto';
-        $this->encabezado_color         = '#FFFFFF';
         // Opción de Navegación a poner activa
         $this->nombre_menu              = 'Licencias';
-        // Ruta a la clase para hacer el index.html
-        $this->indices_paginas          = '\\Base\\PaginasListado'; // Puede ser \Base\PaginasDetallados, \Base\PaginasGalerias, \Base\PaginasListado o \Base\PaginasTarjetas
+        // Clase para hacer el index.html
+        $this->indices_paginas          = '\\Base\\PaginasListado';
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
         $this->directorio               = 'licencias';
         // Ejecutar constructor en el padre

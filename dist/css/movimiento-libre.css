@@ -186,6 +186,9 @@ a:active  { color:#0088FF; text-decoration:underline; }
     .encabezado-autor-fecha {
         font-size:10px;
     }
+    .contenido-imagen-previa {
+        float:none;
+    }
     .destacado-servicio {
         min-height:110px;
     }
@@ -217,6 +220,9 @@ a:active  { color:#0088FF; text-decoration:underline; }
     .encabezado-autor-fecha {
         font-size:9px;
     }
+    .contenido-imagen-previa {
+        float:none;
+    }
     .destacado-servicio {
         min-height:90px;
     }
@@ -247,6 +253,9 @@ a:active  { color:#0088FF; text-decoration:underline; }
     }
     .encabezado-autor-fecha {
         font-size:9px;
+    }
+    .contenido-imagen-previa {
+        float:none;
     }
     .destacado-servicio {
         min-height:70px;
