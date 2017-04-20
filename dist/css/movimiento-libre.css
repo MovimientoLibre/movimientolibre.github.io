@@ -26,7 +26,7 @@ body {
     font-weight:400;
     font-size:15px;
     line-height:1.6;
-    background-color:#12283B;
+    background-color:#65707B;
 }
 h1, .h1,
 h2, .h2,
@@ -55,35 +55,34 @@ a:active  { color:#0088FF; text-decoration:underline; }
  * Navegación
  */
 .navbar-default {
-    background-color:#12283B;
+    background-color:#65707B;
     border-color:#827798;
 }
 .navbar-header { color:white; }
-.navbar-default,
-.navbar-default a,
-.navbar-default a:link,
-.navbar-default a:visited,
-.navbar-default a:hover,
-.navbar-default a:active               { color:white; }
 .navbar-brand,
 .navbar-brand a,
 .navbar-brand a:link,
-.navbar-brand a:visited,
+.navbar-brand a:visited                { color:#C8C8C8; }
 .navbar-brand a:hover,
 .navbar-brand a:active                 { color:white; }
+.navbar-default,
+.navbar-default a,
+.navbar-default a:link,
+.navbar-default a:visited              { color:#C8C8C8; }
+.navbar-default a:hover,
+.navbar-default a:active               { color:white; }
 .navbar-default .navbar-brand,
-.navbar-default .navbar-brand a,
-.navbar-default .navbar-brand a:link,
-.navbar-default .navbar-brand a:visited,
-.navbar-default .navbar-brand a:hover,
-.navbar-default .navbar-brand a:active { color:white; }
-.navbar-static-top                     { background-color:#12283B; }
+.navbar-default .navbar-brand:link,
+.navbar-default .navbar-brand:visited  { color:#C8C8C8; }
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:active   { color:white; }
+.navbar-static-top                     { background-color:#65707B; }
 #side-menu a,
 #side-menu a:link,
-#side-menu a:visited { color:#9FB7CC; background-color:#22374A; font-weight:400; }
+#side-menu a:visited { color:#C8C8C8; background-color:#65707B; font-weight:400; }
 #side-menu a:hover,
-#side-menu a:active  { color:white; background-color:#4E6375; }
-.sidebar ul li       { border-bottom-color:#12283B; }
+#side-menu a:active  { color:white; background-color:#8B959E; }
+.sidebar ul li       { border-bottom-color:#65707B; }
 
 /*
  * Cuerpo
@@ -125,7 +124,7 @@ a:active  { color:#0088FF; text-decoration:underline; }
 .mapa-inferior            { background-color:#BEC5CB; }
 .redes-sociales a,
 .redes-sociales a:link,
-.redes-sociales a:visited { color:#12283B; text-decoration:none; }
+.redes-sociales a:visited { color:#65707B; text-decoration:none; }
 .redes-sociales a:hover,
 .redes-sociales a:active  { color:#4E6375; text-decoration:none; }
 
