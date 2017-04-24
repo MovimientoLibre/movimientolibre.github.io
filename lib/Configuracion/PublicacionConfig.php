@@ -53,7 +53,7 @@ class PublicacionConfig {
         $this->publisher->image          = 'imagenes/movimientolibre.png';
         $this->publisher->is_article     = FALSE;
         $this->publisher->big_heading    = FALSE;
-        $this->publisher->class_property = 'publicador'; // Estilo CSS que está definido en /dist/css/movimientolibre.css
+        $this->publisher->class_property = 'publicador'; // Estilo CSS
     } // constructor
 
 } // Clase PublicacionConfig

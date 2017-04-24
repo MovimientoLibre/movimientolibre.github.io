@@ -61,40 +61,48 @@ class PlantillaConfig {
     public function __construct() {
         // Vínculos CSS a archivos locales o URLs remotas
         $this->vinculos_css   = array();
-        $this->vinculos_css[] = 'vendor/bootstrap/css/bootstrap.min.css';                     // 1. Bootstap
-        $this->vinculos_css[] = 'vendor/metisMenu/metisMenu.min.css';                         // 2. Metis Menu
-        $this->vinculos_css[] = 'dist/css/sb-admin-2.min.css';                                // 3. SBadmin2
-        $this->vinculos_css[] = 'vendor/font-awesome/css/font-awesome.min.css';               // 4. Fontawesome
-        $this->vinculos_css[] = 'vendor/datatables-plugins/dataTables.bootstrap.css';         // 5. DataTables
-        $this->vinculos_css[] = 'https://fonts.googleapis.com/css?family=Droid+Sans:400,700'; // 6. Google Fonts
-        $this->vinculos_css[] = 'dist/css/plataforma-de-conocimiento.css';                    // 9. Plataforma del conocimiento
+        $this->vinculos_css[] = 'vendor/bootstrap/css/bootstrap.min.css';                     // Bootstap
+        $this->vinculos_css[] = 'vendor/metisMenu/metisMenu.min.css';                         // Metis Menu
+    //~ $this->vinculos_css[] = 'vendor/datatables-plugins/dataTables.bootstrap.css';         // DataTables
+        $this->vinculos_css[] = 'vendor/font-awesome/css/font-awesome.min.css';               // Fontawesome
+        $this->vinculos_css[] = 'dist/css/sb-admin-2.min.css';                                // SBadmin2
+        $this->vinculos_css[] = 'dist/css/plataforma-de-conocimiento.css';                    // Plataforma del conocimiento
+        $this->vinculos_css[] = 'https://fonts.googleapis.com/css?family=Droid+Sans:400,700'; // Google Fonts: Droid Sans
         // Vínculos Javascript a archivos locales o URLs remotas
         $this->vinculos_js    = array();
-        $this->vinculos_js[]  = 'vendor/jquery/jquery.min.js';                                // 1.  jQuery
-        $this->vinculos_js[]  = 'vendor/bootstrap/js/bootstrap.min.js';                       // 2.  Bootstrap
-        $this->vinculos_js[]  = 'vendor/metisMenu/metisMenu.min.js';                          // 3.  Metis menu
-        $this->vinculos_js[]  = 'dist/js/sb-admin-2.min.js';                                  // 4.  SBadmin2
-        $this->vinculos_js[]  = 'vendor/datatables/js/jquery.dataTables.min.js';              // 5.1 DataTables
-        $this->vinculos_js[]  = 'vendor/datatables-plugins/dataTables.bootstrap.min.js';      // 5.2 DataTables
-        $this->vinculos_js[]  = 'vendor/datatables-responsive/dataTables.responsive.js';      // 5.3 DataTables
-        $this->vinculos_js[]  = 'vendor/raphael/raphael.min.js';                              // 6.1 MorrisJS
-        $this->vinculos_js[]  = 'vendor/morrisjs/morris.min.js';                              // 6.2 MorrisJS
+        $this->vinculos_js[]  = 'vendor/jquery/jquery.min.js';                                // jQuery
+        $this->vinculos_js[]  = 'vendor/bootstrap/js/bootstrap.min.js';                       // Bootstrap
+        $this->vinculos_js[]  = 'vendor/metisMenu/metisMenu.min.js';                          // Metis menu
+    //~ $this->vinculos_js[]  = 'vendor/datatables/js/jquery.dataTables.min.js';              // DataTables
+    //~ $this->vinculos_js[]  = 'vendor/datatables-plugins/dataTables.bootstrap.min.js';      // DataTables
+    //~ $this->vinculos_js[]  = 'vendor/datatables-responsive/dataTables.responsive.js';      // DataTables
+    //~ $this->vinculos_js[]  = 'vendor/raphael/raphael.min.js';                              // MorrisJS
+    //~ $this->vinculos_js[]  = 'vendor/morrisjs/morris.min.js';                              // MorrisJS
+        $this->vinculos_js[]  = 'dist/js/sb-admin-2.min.js';                                  // SBadmin2
         // Mensaje oculto
         $this->mensaje_oculto = <<<FINAL
 <!-- ==========================================================================================
 
      Movimiento Libre
 
-     Este sitio web es elaborado con la Plataforma de Conocimiento.
-       El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016.
-       Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
-     Agradecemos y compartimos las tecnologías abiertas sobre las que se basa:
-       Twitter Bootstrap    http://getbootstrap.com
-       StartBootStrap       http://startbootstrap.com
-       Morris.js            https://morrisjs.github.io/morris.js/
-       Evolvere iconos      http://github.com/franksouza183/EvolvereSuit
-     El hospedaje es cortesía de GitHub. Descargue, aprenda y colabore con este Software Libre:
-       GitHub               https://github.com/MovimientoLibre
+        3er. generación de la Plataforma del Conocimiento
+        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
+
+        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
+        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
+
+        Descargue, estudie y colabore bajando todo este sitio web:
+          GitHub             https://github.com/MovimientoLibre/movimientolibre.github.io
+
+        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
+          PHP                http://php.net
+          Twitter Bootstrap  http://getbootstrap.com
+          StartBootStrap     http://startbootstrap.com
+          Morris.js          https://morrisjs.github.io/morris.js/
+          Font Awesome       http://fontawesome.io
+          DataTables         https://www.datatables.net
+          GitHub             https://github.com
+          Evolvere iconos    http://github.com/franksouza183/EvolvereSuit
 
      ========================================================================================== -->
 FINAL;

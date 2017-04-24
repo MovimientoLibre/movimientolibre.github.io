@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - CLASE
  *
- * Copyright (C) 2016 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
+ * Copyright (C) 2017 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,9 +31,11 @@ class CLASE extends \Base\Publicacion {
      * Constructor
      */
     public function __construct() {
+        // Ejecutar constructor en el padre
+        parent::__construct();
         // Título, autor y fecha
         $this->nombre                    = 'Título';
-        $this->autor                     = 'guivaloz'; // Puede ser un arreglo de textos
+    //~ $this->autor                     = 'guivaloz'; // Puede ser un arreglo de textos
         $this->fecha                     = '2017-00-00T00:00';
         // El nombre del archivo a crear
         $this->archivo                   = 'archivo'; // En minúsculas, sin espacios, use guiones, letras y números
@@ -41,10 +43,10 @@ class CLASE extends \Base\Publicacion {
         $this->descripcion               = 'Descripción.';
         $this->claves                    = 'Clave1, Clave2, Clave3';
         // Banderas
-        $this->poner_imagen_en_contenido = TRUE; // Poner la imagen en la parte superior izquierda
-        $this->para_compartir            = TRUE; // Poner los botones para compartir en redes sociales
+    //~ $this->poner_imagen_en_contenido = TRUE; // Poner la imagen en la parte superior izquierda
+    //~ $this->para_compartir            = TRUE; // Poner los botones para compartir en redes sociales
         // El estado puede ser 'publicar', 'revisar' o 'ignorar'
-        $this->estado                    = 'publicar';
+    //~ $this->estado                    = 'publicar';
         // Para el Organizador
         $this->categorias                = array();
         $this->fuentes                   = array();
