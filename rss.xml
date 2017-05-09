@@ -5,11 +5,393 @@
     <link>http://www.movimientolibre.com</link>
     <description>Últimas publicaciones de Movimiento Libre.</description>
     <language>es-MX</language>
-    <pubDate>Mon, 24 Apr 2017 09:11:55 -0500</pubDate>
+    <pubDate>Tue, 09 May 2017 09:25:49 -0500</pubDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Plataforma de Conocimiento v3.0</generator>
     <webMaster>guivaloz@movimientolibre.com (Guillermo Valdes Lozano)</webMaster>
     <atom:link href="http://www.movimientolibre.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apuntes para la Instalación de Gentoo Linux en una laptop ASUS</title>
+      <link>http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05.html</link>
+      <guid isPermaLink="false">apuntes-gentoo-en-asus-rog-instalacion-2017-05</guid>
+      <pubDate>Tue, 09 May 2017 07:44:00 -0500</pubDate>
+      <author>guivaloz</author>
+      <description><![CDATA[<img src="http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/imagen.jpg"><br>
+
+<p>Esta guía parte de un equipo previamente particionado y con una instalación de Gentoo Linux. Aprovechamos que desde una terminal y con el usuario root se puede hacer una nueva instalación, mientras seguimos trabajando en la anterior.</p>
+
+<h3>Preparar la partición</h3>
+
+<p>Formatee la partición, cambie /dev/sdXX por la partición</p>
+
+<pre><code># mkfs.btrfs -f -L Gentoo201701 /dev/sdXX
+# mount /mnt/gentoo
+</code></pre>
+
+<h3>Descarge el stage</h3>
+
+<p>Y descomprima</p>
+
+<pre><code># cd /mnt/gentoo
+# tar xvjpf /mnt/blackbox/Compartidos/Software/Gentoo/stage3-amd64-20170105.tar.bz2
+</code></pre>
+
+<p>Monte</p>
+
+<pre><code># mount -t proc none /mnt/gentoo/proc
+# mount --rbind /dev /mnt/gentoo/dev
+# mount --rbind /sys /mnt/gentoo/sys
+# mkdir /mnt/gentoo/usr/portage
+# mount --rbind /usr/portage /mnt/gentoo/usr/portage
+</code></pre>
+
+<p>De una vez copie make.conf</p>
+
+<pre><code># cp /etc/locale.gen /mnt/gentoo/etc/locale.gen
+# cp /etc/portage/make.conf /mnt/gentoo/etc/portage/make.conf
+# cp /etc/env.d/02locales /mnt/gentoo/etc/env.d/02locales
+# nano /mnt/gentoo/etc/portage/make.conf
+</code></pre>
+
+<p>Copie los datos de los DNS</p>
+
+<pre><code># cp /etc/resolv.conf /mnt/gentoo/etc/
+</code></pre>
+
+<h3>Ingrese al nuevo Gentoo Linux</h3>
+
+<p>Haga el <em>chroot</em></p>
+
+<pre><code># chroot /mnt/gentoo /bin/bash
+# env-update
+# source /etc/profile
+# export PS1="(new) $PS1"
+</code></pre>
+
+<p>Configure locale-gen</p>
+
+<pre><code># locale-gen
+</code></pre>
+
+<p>Verifique y actualice portage</p>
+
+<pre><code># emerge -pu portage gcc
+</code></pre>
+
+<p>Instale el kernel</p>
+
+<pre><code># emerge gentoo-sources
+# cd /usr/src/linux
+# make -j4
+# make modules_install
+# make install
+</code></pre>
+
+<p>Establezca la zona horaria.</p>
+
+<pre><code># cd /etc
+# cp /usr/share/zoneinfo/Mexico/General localtime
+</code></pre>
+
+<p>Otras configuraciones</p>
+
+<pre><code># nano /etc/conf.d/keymaps
+# nano /etc/conf.d/hostname
+# nano /etc/hosts
+# nano /etc/fstab
+</code></pre>
+
+<h3>Con KDE Plasma como interfaz gráfica</h3>
+
+<p>Cambie el profile a Plasma</p>
+
+<pre><code># eselect profile show
+# eselect profile list
+# eselect profile set default/linux/amd64/13.0/desktop/plasma
+# eselect profile show
+</code></pre>
+
+<p>Instale...</p>
+
+<pre><code># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen pwgen
+</code></pre>
+
+<p>Instale daemons</p>
+
+<pre><code># emerge ntp syslog-ng vixie-cron
+# rc-update add syslog-ng default
+# rc-update add vixie-cron default
+# rc-update add ntpd default
+</code></pre>
+
+<p>Instale utilerías del sistema y de sonido</p>
+
+<pre><code># emerge pciutils alsa-utils
+# rc-update add alsasound boot
+</code></pre>
+
+<h3>A instalar software</h3>
+
+<p>Instale PostgreSQL</p>
+
+<pre><code># emerge postgresql
+</code></pre>
+
+<p>Instale Apache</p>
+
+<pre><code># emerge apache
+</code></pre>
+
+<p>Instale Ruby</p>
+
+<pre><code># emerge ruby nokogiri redcloth dev-ruby/mechanize
+</code></pre>
+
+<p>Instale utilerías de red y sistemas de archivos</p>
+
+<pre><code># emerge app-admin/sudo bind-tools traceroute bridge-utils sys-fs/fuse sys-fs/ntfs3g
+</code></pre>
+
+<p>Instale KDE plasma-desktop, éste pone el entorno básico (es decir, NO instala "todo el combo") para luego ir instalando las aplicaciones a nuestro criterio. Revise dependencias y USE flags..</p>
+
+<pre><code># emerge --ask plasma-desktop samba cups xorg-x11
+</code></pre>
+
+<p>Instale LibreOffice</p>
+
+<pre><code># emerge virtual/jdk
+# emerge libreoffice
+
+# emerge firefox
+# emerge gimp
+# emerge texlive
+# emerge audacity
+</code></pre>
+
+<p>Instale PHP</p>
+
+<pre><code># emerge php
+
+# emerge networkmanager
+</code></pre>
+
+<p>Luego KDE Core</p>
+
+<pre><code># emerge kdecore-meta
+</code></pre>
+
+<p>Actualice todo lo demás</p>
+
+<pre><code># emerge -uND world
+</code></pre>
+
+<p>Instale Geany</p>
+
+<pre><code># emerge geany geany-themes geany-plugins
+# emerge droid freefonts libertine terminus-font ttf-bitstream-vera corefonts
+</code></pre>
+
+<p>Y de consola...</p>
+
+<pre><code># emerge xterm media-sound/moc nmap whois macchanger aircrack-ng
+</code></pre>
+
+<p>En lugar de kdegraphics-meta</p>
+
+<pre><code># emerge spectacle kde-apps/kate okular gwenview
+</code></pre>
+
+<p>En lugar de kdemultimedia-meta</p>
+
+<pre><code># emerge kdenlive kmix mplayer
+</code></pre>
+
+<p>Instale el GDM ssdm</p>
+
+<pre><code># emerge sddm grub gparted
+# sddm --example-config &gt; /etc/sddm.conf
+# nano -w /etc/sddm.conf
+# rc-update add xdm default
+</code></pre>
+
+<p>Configure /etc/conf.d/xdm con DISPLAYMANAGER="sddm"</p>
+
+<pre><code># nano /etc/conf.d/modules
+# nano /etc/conf.d/xdm
+# nano /etc/ntp.conf
+</code></pre>
+
+<p>Configure...</p>
+
+<pre><code># nano /etc/plasma/startup/10-agent-startup.sh
+# nano /etc/plasma/shutdown/10-agent-shutdown.sh
+</code></pre>
+
+<p>Utilerías de KDE</p>
+
+<pre><code># emerge kcalc umbrello
+# emerge kile
+# emerge konqueror
+# emerge kde-plasma/kdeplasma-addons
+# emerge unarj arj lha lzop rar unrar kde-apps/ark
+</code></pre>
+
+<p>KDE para una laptop con bluetooth, powerdevil más systemsettings y otras del sistema</p>
+
+<pre><code># emerge -pv plasma-meta
+</code></pre>
+
+<p>Siga instalando...</p>
+
+<pre><code># emerge gparted
+# emerge gimp inkscape
+# emerge libvirt virt-manager
+# emerge gvim vim
+# emerge audacity
+# emerge k3b vorbis-tools
+</code></pre>
+
+<p>XFCE4</p>
+
+<pre><code># emerge xfce4-meta xfce4-notifyd gtk-engines
+</code></pre>
+
+<p>Instale componentes de XFCE</p>
+
+<pre><code># emerge xfce4-volumed xfce4-mixer xfce4-terminal xfce4-taskmanager xfce4-screenshooter
+# emerge xfce4-cpugraph-plugin xfce4-verve-plugin xfce4-mount-plugin xfce4-sensors-plugin xfce4-systemload-plugin
+</code></pre>
+
+<p>Soporte multimedia y de archivos empacados para Thunar</p>
+
+<pre><code># emerge tumbler
+# emerge thunar-volman thunar-archive-plugin thunar-media-tags-plugin
+</code></pre>
+
+<p>Instale iconos</p>
+
+<pre><code># emerge gtk-chtheme tango-icon-theme faenza-icon-theme tangerine-icon-theme
+</code></pre>
+
+<p>Configure arranque de servicios...</p>
+
+<pre><code># rc-update add dbus default
+# rc-update add udev default
+# rc-update add ntpd default
+# rc-update add cupsd default
+</code></pre>
+
+<p>Zona horaria</p>
+
+<pre><code># cp /usr/share/zoneinfo/Mexico/General /etc/localtime
+</code></pre>
+
+<p>Contraseña</p>
+
+<pre><code># passwd
+</code></pre>
+
+<p>Más utilerías</p>
+
+<pre><code># emerge tilda mousepad xfwm4-themes xfce4-whiskermenu-plugin alacarte xfce4-clipman-plugin
+# emerge pcmanfm gftp
+</code></pre>
+
+<p>Instale más software</p>
+
+<pre><code># emerge tor privoxy arm
+# emerge htop net-fs/sshfs
+# emerge dia
+</code></pre>
+
+<p>Kramdawn es inestable, libere dependencias</p>
+
+<pre><code># emerge kramdown
+</code></pre>
+
+<p>Librerías que uso en Python</p>
+
+<pre><code># emerge tabulate psycopg
+</code></pre>
+
+<p>Software necesario para compilar QGIS desde fuentes</p>
+
+<pre><code># emerge sci-geosciences/gpsbabel x11-libs/qwtpolar x11-libs/qscintilla dev-db/spatialite dev-python/PyQt4 sci-libs/libspatialindex dev-python/sip dev-python/jinja dev-python/httplib2 dev-python/pytz dev-python/qscintilla-python dev-libs/qjson sci-geosciences/gpsbabel dev-python/python-dateutil
+# emerge -uN sci-libs/gdal
+</code></pre>
+
+<p>Instale R 3.2.2 y R studio</p>
+
+<pre><code># emerge rstudio R
+</code></pre>
+
+<p>Y...</p>
+
+<pre><code># emerge ccache
+# emerge sys-process/at
+# emerge xarchiver
+# emerge app-admin/testdisk
+</code></pre>
+
+<h3>Configurar el gestor de arranque GRUB 2</h3>
+
+<p>Edite...</p>
+
+<pre><code># nano -w /etc/default/grub
+</code></pre>
+
+<p>Edite estas líneas, cambie la identificación de la partición swap...</p>
+
+<pre><code>GRUB_TIMEOUT=30
+GRUB_CMDLINE_LINUX="resume=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx kvm-intel.nested=1"
+GRUB_GFXMODE=1920x1080
+GRUB_GFXPAYLOAD_LINUX=keep
+</code></pre>
+
+<p>No deje de tener opciones manuales en...</p>
+
+<pre><code># nano -w /etc/grub.d/40_custom
+</code></pre>
+
+<p>Formatee la partición de 64 MB code EF00 /dev/sdb1</p>
+
+<pre><code># mkfs.vfat -n EFIBOOT /dev/sdb1
+</code></pre>
+
+<p>Copie la clave UUID de /dev/sdb1</p>
+
+<pre><code># blkid
+</code></pre>
+
+<p>Y cambie la clave UUID en...</p>
+
+<pre><code># nano -w /etc/fstab
+# nano -w /etc/grub.d/40_custom
+</code></pre>
+
+<p>Con ésto, puede montarla...</p>
+
+<pre><code># mount /boot/efi
+</code></pre>
+
+<p>Así montada, instale GRUB2...</p>
+
+<pre><code># grub-install --efi-directory=/boot/efi
+Instalando para plataforma x86_64-efi.
+Instalación terminada. No se notificó ningún error.
+</code></pre>
+
+<p>Y habilite la configuración...</p>
+
+<pre><code># grub-mkconfig -o /boot/grub/grub.cfg
+Generando un fichero de configuración de grub...
+Encontrada imagen de linux: /boot/vmlinuz-4.4.39-gentoo
+hecho
+</code></pre>
+
+<p>Fin.</p>
+]]></description>
+    </item>
     <item>
       <title>Gentoo Linux - Servidor local de portage</title>
       <link>http://www.movimientolibre.com/apuntes/gentoo-portage-lan-server.html</link>
@@ -298,33 +680,6 @@ auto-sync = yes
 <li><strong>Es descentralizada.</strong> En la red de redes hay servidores en todo el mundo; además, en órbita, es usada por los astronautas a bordo de la Estación Espacial Internacional.</li>
 <li><strong>Está construida con estándares abiertos y con la colaboración de todos.</strong></li>
 </ul>
-]]></description>
-    </item>
-    <item>
-      <title>Mensaje en The Talos Principle</title>
-      <link>http://www.movimientolibre.com/articulos/mensaje-en-the-talos-principle.html</link>
-      <guid isPermaLink="false">articulos-mensaje-en-the-talos-principle</guid>
-      <pubDate>Mon, 06 Apr 2015 22:05:00 -0500</pubDate>
-      <author>guivaloz</author>
-      <description><![CDATA[<img src="http://www.movimientolibre.com/articulos/mensaje-en-the-talos-principle/imagen.jpg"><br>
-
-<blockquote>
-  <p>De: %442() Li</p>
-  
-  <p>Para: 69.74.657@2.61.746.96</p>
-  
-  <p>Asunto: F 6E</p>
-  
-  <p>De la manera en que yo lo veo, el mundo no viene con un manual de instrucciones. Tienes que averiguarlo por ti mismo. Un poco de aquí, un poco allí, júntalo, trata de entenderlo. Estoy bastante seguro de que existe una verdad, pero eso no significa que todos los que dicen que la conocen en realidad lo hagan. Por otra parte, no tiene por qué ser malo. Vivimos en un mundo increíble y buscar la verdad puede ser una verdadera aventura. Además, es bueno para el cerebro.</p>
-  
-  <p>En fin, eran solo unas cuantas divagaciones de tu viejo. No dejes que te desanime. Eres joven, tienes un montón de tiempo para averiguarlo.</p>
-  
-  <p>Con cariño, Papá.</p>
-</blockquote>
-
-<p><a href="http://www.croteam.com/talosprinciple/" target="_blank"><img class="img-responsive" src="http://www.movimientolibre.com/articulos/mensaje-en-the-talos-principle/talos-cat.jpg"></a></p>
-
-<p>Esto aparece en una computadora dentro del video juego <a href="http://www.croteam.com/talosprinciple/">The Talos Principle</a>.</p>
 ]]></description>
     </item>
   </channel>

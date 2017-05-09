@@ -34,19 +34,19 @@ class OfertaDeTrabajo extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Oferta de trabajo';
-        $this->fecha           = '2014-01-13T09:00';
+        $this->nombre                     = 'Oferta de trabajo';
+        $this->fecha                      = '2014-01-13T09:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'oferta-de-trabajo';
+        $this->archivo                    = 'oferta-de-trabajo';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Para hacer de su conocimiento una oferta de trabajo y para que me ayuden a propagar mi llamado.';
-        $this->claves          = 'Oferta, Trabajo';
+        $this->descripcion                = 'Para hacer de su conocimiento una oferta de trabajo y para que me ayuden a propagar mi llamado.';
+        $this->claves                     = 'Oferta, Trabajo';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/OfertaDeTrabajo.md';
         // Para el Organizador
-        $this->categorias      = array('Vida Cotidiana');
-        // El estado puede ser 'publicar' (crear HTML y agregarlo a índices/galerías), 'revisar' (sólo crear HTML y accesar por URL) o 'ignorar'
-        $this->estado          = 'revisar';
+        $this->categorias                 = array('Vida Cotidiana');
+        // El estado puede ser 'publicar', 'revisar' o 'ignorar'
+        $this->estado                     = 'ignorar';
     } // constructor
 
 } // Clase OfertaDeTrabajo

@@ -141,6 +141,7 @@ class ImprentaPublicacionesClasificadasPorCategorias extends ImprentaPublicacion
     public function imprimir() {
         echo "ImprentaPublicacionesClasificadosPorCategorias: ";
         $this->validar();
+        $this->recolector->definir_modo_crear_archivos();
         $this->recolector->agregar_publicaciones_en($this->publicaciones_directorio, $this);
         $this->crear_directorio($this->directorio);
         $this->imprimir_publicaciones();

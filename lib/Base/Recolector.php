@@ -29,9 +29,9 @@ namespace Base;
  */
 class Recolector {
 
-    const LIB_DIR            = 'lib';             // Directorio que contiene los namespaces de donde se recolectarán las clases
-    protected $publicaciones = array();           // Arreglo con instancias de Publicacion
-    protected $estados       = array('publicar'); // Arreglo con los estados de las publicaciones a recolectar
+    const LIB_DIR            = 'lib';                        // Directorio que contiene los namespaces de donde se recolectarán las clases
+    protected $publicaciones = array();                      // Arreglo con instancias de Publicacion
+    protected $estados       = array('publicar', 'revisar'); // Arreglo con los estados de las publicaciones a recolectar
 
     /**
      * Definir modo para crear archivos
