@@ -29,7 +29,7 @@ class PublicacionConfig {
 
     public $sitio_url                 = 'http://www.movimientolibre.com'; // Sin diagonal al final
     public $fecha                     = '1980-01-01T08:00';               // La fecha en forma de YYYY-MM-DDTHH:MM, siendo así se ordena cronológicamente
-    public $autor                     = 'guivaloz';                       // El nombre o apodo a quien se le atribuye
+    public $autor;                                                        // El nombre o apodo a quien se le atribuye
     public $aparece_en_pagina_inicial;                                    // Verdadero si va aparecer en la página de inicio
     public $para_compartir            = FALSE;                            // Si es verdadero pondrá los botones para compartir en Twitter/Facebook
     public $imagen;                                                       // Ruta relativa a un archivo de imagen

@@ -129,6 +129,7 @@ class PublicacionSchemaArticle extends Publicacion {
         $schema->datePublished = $this->fecha;
         $schema->image         = $this->imagen;
         $schema->image_show    = $this->poner_imagen_en_contenido;
+        $schema->author        = $this->autor;
     //  $schema->articleBody   = ; // En el método html de Publicación será procesado
         if ($this->publisher instanceof SchemaOrganization) {
             $schema->publisher = $this->publisher;

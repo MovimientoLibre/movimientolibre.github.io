@@ -39,6 +39,7 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
         $this->claves                    = 'Articulos';
         // Parámetros que el Recolector definirá en las Publicaciones si éstas no los tienen
         $this->aparece_en_pagina_inicial = TRUE;
+        $this->autor                     = 'guivaloz';
         $this->imagen                    = '../imagenes/imagen.jpg';
         $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
         $this->nombre_menu               = 'Artículos';
