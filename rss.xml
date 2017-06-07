@@ -5,7 +5,7 @@
     <link>http://www.movimientolibre.com</link>
     <description>Últimas publicaciones de Movimiento Libre.</description>
     <language>es-MX</language>
-    <pubDate>Tue, 09 May 2017 12:22:47 -0500</pubDate>
+    <pubDate>Tue, 06 Jun 2017 19:43:35 -0500</pubDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Plataforma de Conocimiento v3.0</generator>
     <webMaster>guivaloz@movimientolibre.com (Guillermo Valdes Lozano)</webMaster>
@@ -16,9 +16,7 @@
       <guid isPermaLink="false">apuntes-gentoo-en-asus-rog-instalacion-2017-05</guid>
       <pubDate>Tue, 09 May 2017 07:44:00 -0500</pubDate>
       <author>guivaloz</author>
-      <description><![CDATA[<img src="http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/imagen.jpg"><br>
-
-<p>Esta guía parte de un equipo previamente particionado y con una instalación de Gentoo Linux. Aprovechamos que desde una terminal y con el usuario root se puede hacer una nueva instalación, mientras seguimos trabajando en la anterior.</p>
+      <description><![CDATA[<p>Esta guía parte de un equipo previamente particionado y con una instalación de Gentoo Linux. Aprovechamos que desde una terminal y con el usuario root se puede hacer una nueva instalación, mientras seguimos trabajando en la anterior.</p>
 
 <h3>Preparar la partición</h3>
 
@@ -398,9 +396,7 @@ hecho
       <guid isPermaLink="false">apuntes-gentoo-portage-lan-server</guid>
       <pubDate>Thu, 23 Mar 2017 07:42:00 -0600</pubDate>
       <author>guivaloz</author>
-      <description><![CDATA[<img src="http://www.movimientolibre.com/apuntes/gentoo-portage-lan-server/imagen.jpg"><br>
-
-<h3>En el servidor local</h3>
+      <description><![CDATA[<h3>En el servidor local</h3>
 
 <p>Edite /etc/rsync.conf:</p>
 

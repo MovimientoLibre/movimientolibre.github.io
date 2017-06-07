@@ -32,25 +32,28 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
      */
     public function __construct() {
         // Nombre del directorio dentro de /lib que contiene las clases con las publicaciones
-        $this->publicaciones_directorio = 'Articulos';
+        $this->publicaciones_directorio  = 'Articulos';
         // Los siguientes parámetros dan datos para el concentrador y las páginas que no los tienen
-        $this->titulo                   = 'Artículos';
-        $this->descripcion              = 'Artículos de Movimiento Libre sobre temáticas diversas.';
-        $this->claves                   = 'Articulos';
-        // Opción de Navegación a poner activa
-        $this->nombre_menu              = 'Artículos';
+        $this->titulo                    = 'Artículos';
+        $this->descripcion               = 'Artículos de Movimiento Libre sobre temáticas diversas.';
+        $this->claves                    = 'Articulos';
+        // Si la publicación NO define estos parámetros, imprenta se los copia
+        $this->nombre_menu               = 'Artículos';
+        $this->imagen                    = '../imagenes/imagen.jpg';
+        $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->poner_imagen_en_contenido = TRUE;
         // Clase para hacer el index.html
-        $this->indices_paginas          = '\\Base\\PaginasDetallados';
+        $this->indices_paginas           = '\\Base\\PaginasDetallados';
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
-        $this->directorio               = 'articulos';
+        $this->directorio                = 'articulos';
         // Pasar a la página índice estos parámetros
-        $this->ultimas_encabezado       = 'Últimos artículos';
-        $this->ultimas_vinculos         = '\\Base\\VinculosDetallados';
-        $this->ultimas_cantidad         = 4;
-        $this->categorias_encabezado    = 'Todos los artículos clasificados por categorías';
-        $this->categorias_vinculos      = '\\Base\\VinculosCompactos';
+        $this->ultimas_encabezado        = 'Últimos artículos';
+        $this->ultimas_vinculos          = '\\Base\\VinculosDetallados';
+        $this->ultimas_cantidad          = 4;
+        $this->categorias_encabezado     = 'Todos los artículos clasificados por categorías';
+        $this->categorias_vinculos       = '\\Base\\VinculosCompactos';
         // Nivel es el orden de la rama para las páginas por categorías
-        $this->nivel                    = 2000;
+        $this->nivel                     = 2000;
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor

@@ -32,25 +32,28 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
      */
     public function __construct() {
         // Nombre del directorio dentro de /lib que contiene las clases con las publicaciones
-        $this->publicaciones_directorio = 'Apuntes';
+        $this->publicaciones_directorio  = 'Apuntes';
         // Los siguientes parámetros dan datos para el concentrador y las páginas que no los tienen
-        $this->titulo                   = 'Apuntes';
-        $this->descripcion              = 'Apuntes sobre desarrollo y software libre.';
-        $this->claves                   = 'Apuntes, Desarrollo, Software Libre';
-        // Opción de Navegación a poner activa
-        $this->nombre_menu              = 'Apuntes';
+        $this->titulo                    = 'Apuntes';
+        $this->descripcion               = 'Apuntes sobre desarrollo y software libre.';
+        $this->claves                    = 'Apuntes, Desarrollo, Software Libre';
+        // Si la publicación NO define estos parámetros, imprenta se los copia
+        $this->nombre_menu               = 'Apuntes';
+        $this->imagen                    = '../imagenes/imagen.jpg';
+        $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
-        $this->indices_paginas          = '\\Base\\PaginasDetallados';
+        $this->indices_paginas           = '\\Base\\PaginasDetallados';
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
-        $this->directorio               = 'apuntes';
+        $this->directorio                = 'apuntes';
         // Pasar a la página índice estos parámetros
-        $this->ultimas_encabezado       = 'Últimos apuntes';
-        $this->ultimas_vinculos         = '\\Base\\VinculosDetallados';
-        $this->ultimas_cantidad         = 4;
-        $this->categorias_encabezado    = 'Todos los apuntes clasificados por categorías';
-        $this->categorias_vinculos      = '\\Base\\VinculosCompactos';
+        $this->ultimas_encabezado        = 'Últimos apuntes';
+        $this->ultimas_vinculos          = '\\Base\\VinculosDetallados';
+        $this->ultimas_cantidad          = 4;
+        $this->categorias_encabezado     = 'Todos los apuntes clasificados por categorías';
+        $this->categorias_vinculos       = '\\Base\\VinculosCompactos';
         // Nivel es el orden de la rama para las páginas por categorías
-        $this->nivel                    = 3000;
+        $this->nivel                     = 3000;
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor

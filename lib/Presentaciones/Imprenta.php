@@ -32,19 +32,22 @@ class Imprenta extends \Base\ImprentaPublicaciones {
      */
     public function __construct() {
         // Nombre del directorio dentro de /lib que contiene las clases con las publicaciones
-        $this->publicaciones_directorio = 'Presentaciones';
+        $this->publicaciones_directorio  = 'Presentaciones';
         // Los siguientes parámetros dan datos para el índice/galería que será creado
-        $this->titulo                   = 'Presentaciones';
-        $this->descripcion              = 'Presentaciones hechas por Guillermo Valdés Lozano.';
-        $this->claves                   = 'Presentaciones';
-        // Opción de Navegación a poner activa
-        $this->nombre_menu              = 'Presentaciones';
+        $this->titulo                    = 'Presentaciones';
+        $this->descripcion               = 'Presentaciones hechas por Guillermo Valdés Lozano.';
+        $this->claves                    = 'Presentaciones';
+        // Si la publicación NO define estos parámetros, imprenta se los copia
+        $this->nombre_menu               = 'Presentaciones';
+        $this->imagen                    = '../imagenes/imagen.jpg';
+        $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
-        $this->indices_paginas          = '\\Base\\PaginasTarjetas';
+        $this->indices_paginas           = '\\Base\\PaginasTarjetas';
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
-        $this->directorio               = 'presentaciones';
+        $this->directorio                = 'presentaciones';
         // Nivel es el orden de la rama para las páginas por categorías
-        $this->nivel                    = 1000;
+        $this->nivel                     = 1000;
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor

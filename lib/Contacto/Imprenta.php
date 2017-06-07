@@ -32,17 +32,20 @@ class Imprenta extends \Base\ImprentaPublicaciones {
      */
     public function __construct() {
         // Nombre del directorio dentro de /lib que contiene los archivos con las publicaciones
-        $this->publicaciones_directorio = 'Contacto';
+        $this->publicaciones_directorio  = 'Contacto';
         // Los siguientes parámetros dan datos para el concentrador y las páginas que no los tienen
-        $this->titulo                   = 'Contacto';
-        $this->descripcion              = 'Datos de contacto y vínculos de interés.';
-        $this->claves                   = 'Contacto';
-        // Opción de Navegación a poner activa
-        $this->nombre_menu              = 'Contacto';
+        $this->titulo                    = 'Contacto';
+        $this->descripcion               = 'Datos de contacto y vínculos de interés.';
+        $this->claves                    = 'Contacto';
+        // Si la publicación NO define estos parámetros, imprenta se los copia
+        $this->nombre_menu               = 'Contacto';
+        $this->imagen                    = '../imagenes/imagen.jpg';
+        $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
-        $this->indices_paginas          = '\\Base\\PaginasDetallados';
+        $this->indices_paginas           = '\\Base\\PaginasDetallados';
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
-        $this->directorio               = 'contacto';
+        $this->directorio                = 'contacto';
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor

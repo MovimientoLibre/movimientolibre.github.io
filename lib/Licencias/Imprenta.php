@@ -32,17 +32,20 @@ class Imprenta extends \Base\ImprentaPublicaciones {
      */
     public function __construct() {
         // Nombre del directorio dentro de /lib que contiene los archivos con las publicaciones
-        $this->publicaciones_directorio = 'Licencias';
+        $this->publicaciones_directorio  = 'Licencias';
         // Los siguientes parámetros dan datos para el concentrador y las páginas que no los tienen
-        $this->titulo                   = 'Licencias';
-        $this->descripcion              = 'Algunas licencias de software libre y abierto.';
-        $this->claves                   = 'Licencias, Software, Libre, Abierto';
-        // Opción de Navegación a poner activa
-        $this->nombre_menu              = 'Licencias';
+        $this->titulo                    = 'Licencias';
+        $this->descripcion               = 'Algunas licencias de software libre y abierto.';
+        $this->claves                    = 'Licencias, Software, Libre, Abierto';
+        // Si la publicación NO define estos parámetros, imprenta se los copia
+        $this->nombre_menu               = 'Licencias';
+        $this->imagen                    = '../imagenes/imagen.jpg';
+        $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
-        $this->indices_paginas          = '\\Base\\PaginasListado';
+        $this->indices_paginas           = '\\Base\\PaginasListado';
         // Directorio en la raíz que será creado para alojar el concentrador y las páginas
-        $this->directorio               = 'licencias';
+        $this->directorio                = 'licencias';
         // Ejecutar constructor en el padre
         parent::__construct();
     } // constructor
