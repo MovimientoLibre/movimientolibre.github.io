@@ -34,17 +34,17 @@ class TecLerdoSINASCI4 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = '"Demostración de Programas Multimedia" en el SINASCI 2008';
-        $this->fecha           = '2008-10-26T21:00';
+        $this->nombre                     = '"Demostración de Programas Multimedia" en el SINASCI 2008';
+        $this->fecha                      = '2008-10-26T21:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'tec-lerdo-sinasci-4';
+        $this->archivo                    = 'tec-lerdo-sinasci-4';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El Instituto Tecnológico Superior de Lerdo nos honró a César Espino (RIVE) y a su servidor con la invitación al VI Simposium Nacional de Sistemas Computacionales e Informática con la ponencia Demostración de programas de aplicación multimedia.';
-        $this->claves          = 'Software Libre, Multimedia, Tec de Lerdo';
+        $this->descripcion                = 'El Instituto Tecnológico Superior de Lerdo nos honró a César Espino (RIVE) y a su servidor con la invitación al VI Simposium Nacional de Sistemas Computacionales e Informática con la ponencia Demostración de programas de aplicación multimedia.';
+        $this->claves                     = 'Software Libre, Multimedia, Tec de Lerdo';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/TecLerdoSINASCI4.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase TecLerdoSINASCI4

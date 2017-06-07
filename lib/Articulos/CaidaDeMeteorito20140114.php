@@ -34,17 +34,17 @@ class CaidaDeMeteorito20140114 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Avistamiento de un bólido';
-        $this->fecha           = '2014-01-14T15:55';
+        $this->nombre                     = 'Avistamiento de un bólido';
+        $this->fecha                      = '2014-01-14T15:55';
         // El nombre del archivo a crear
-        $this->archivo         = 'caida-de-meteorito-2014-01-14';
+        $this->archivo                    = 'caida-de-meteorito-2014-01-14';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Veníamos conduciendo por el Periférico (en Gómez Palacio, Durango, México) y antes de subir el paso a desnivel que está frente a Soriana Hamburgo vimos un bólido surcar el cielo.';
-        $this->claves          = 'Astronomia, Bolido';
+        $this->descripcion                = 'Veníamos conduciendo por el Periférico (en Gómez Palacio, Durango, México) y antes de subir el paso a desnivel que está frente a Soriana Hamburgo vimos un bólido surcar el cielo.';
+        $this->claves                     = 'Astronomia, Bolido';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/CaidaDeMeteorito20140114.md';
         // Para el Organizador
-        $this->categorias      = array('Astronomía');
+        $this->categorias                 = array('Astronomía');
     } // constructor
 
 } // Clase CaidaDeMeteorito20140114

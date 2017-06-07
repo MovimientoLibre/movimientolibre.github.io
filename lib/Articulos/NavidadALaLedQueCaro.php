@@ -34,17 +34,17 @@ class NavidadALaLedQueCaro extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Navidad a la LED... ¡que caro!';
-        $this->fecha           = '2007-12-05 10:55';
+        $this->nombre                     = 'Navidad a la LED... ¡que caro!';
+        $this->fecha                      = '2007-12-05 10:55';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'navidad-a-la-led-que-caro';
+        $this->archivo                    = 'navidad-a-la-led-que-caro';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Cuando comenzaro a venderse las series de luces led para navidad fueron realmente caras.';
-        $this->claves          = 'Navidad, Leds';
+        $this->descripcion                = 'Cuando comenzaro a venderse las series de luces led para navidad fueron realmente caras.';
+        $this->claves                     = 'Navidad, Leds';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/NavidadALaLedQueCaro.md';
         // Para el Organizador
-        $this->categorias      = array('Vida Cotidiana');
+        $this->categorias                 = array('Vida Cotidiana');
     } // constructor
 
 } // Clase NavidadALaLedQueCaro

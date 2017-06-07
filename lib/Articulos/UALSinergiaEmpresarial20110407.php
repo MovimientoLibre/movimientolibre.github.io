@@ -34,17 +34,17 @@ class UALSinergiaEmpresarial20110407 extends \Base\PublicacionSchemaBlogPosting 
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Radio UAL - Sinergia Empresarial';
-        $this->fecha           = '2011-04-26T16:10';
+        $this->nombre                     = 'Radio UAL - Sinergia Empresarial';
+        $this->fecha                      = '2011-04-26T16:10';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'ual-sinergia-empresarial-2011-04-07';
+        $this->archivo                    = 'ual-sinergia-empresarial-2011-04-07';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 7 de abril del 2011 impartí el Taller Básico de Ruby ante un buen número de estudiantes, en el marco de la Semana Académica de la UAL.';
-        $this->claves          = 'Ruby, Semana Academica, UAL';
+        $this->descripcion                = 'El 7 de abril del 2011 impartí el Taller Básico de Ruby ante un buen número de estudiantes, en el marco de la Semana Académica de la UAL.';
+        $this->claves                     = 'Ruby, Semana Academica, UAL';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/UALSinergiaEmpresarial20110407.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase UALSinergiaEmpresarial20110407

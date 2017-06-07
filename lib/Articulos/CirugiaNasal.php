@@ -34,17 +34,17 @@ class CirugiaNasal extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Cirugía nasal';
-        $this->fecha           = '2007-09-29T14:00';
+        $this->nombre                     = 'Cirugía nasal';
+        $this->fecha                      = '2007-09-29T14:00';
         // El nombre del archivo a crear
-        $this->archivo         = 'cirugia-nasal';
+        $this->archivo                    = 'cirugia-nasal';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Es innumerable la cantidad de cosas que pasan por la mente en situaciones como éstas. Los miedos a las agujas, bisturí y hospitales se vuelven pesadillas que tratamos de minimizar rescatando la fe en el todo poderoso y con la confianza que tengamos en los médicos que nos hayan recomendado.';
-        $this->claves          = 'Cirugia, Nasal, Polipos, Sinusitis';
+        $this->descripcion                = 'Es innumerable la cantidad de cosas que pasan por la mente en situaciones como éstas. Los miedos a las agujas, bisturí y hospitales se vuelven pesadillas que tratamos de minimizar rescatando la fe en el todo poderoso y con la confianza que tengamos en los médicos que nos hayan recomendado.';
+        $this->claves                     = 'Cirugia, Nasal, Polipos, Sinusitis';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/CirugiaNasal.md';
         // Para el Organizador
-        $this->categorias      = array('Vida Cotidiana');
+        $this->categorias                 = array('Vida Cotidiana');
     } // constructor
 
 } // Clase CirugiaNasal

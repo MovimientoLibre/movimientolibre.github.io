@@ -37,10 +37,11 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         $this->titulo                    = 'Contacto';
         $this->descripcion               = 'Datos de contacto y vínculos de interés.';
         $this->claves                    = 'Contacto';
-        // Si la publicación NO define estos parámetros, imprenta se los copia
-        $this->nombre_menu               = 'Contacto';
+        // Parámetros que el Recolector definirá en las Publicaciones si éstas no los tienen
+        $this->aparece_en_pagina_inicial = FALSE;
         $this->imagen                    = '../imagenes/imagen.jpg';
         $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->nombre_menu               = 'Contacto';
         $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
         $this->indices_paginas           = '\\Base\\PaginasDetallados';

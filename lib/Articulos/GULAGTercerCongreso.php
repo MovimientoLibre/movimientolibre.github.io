@@ -34,17 +34,17 @@ class GULAGTercerCongreso extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Tercer Congreso Nacional de Software Libre';
-        $this->fecha           = '2009-09-04T10:30';
+        $this->nombre                     = 'Tercer Congreso Nacional de Software Libre';
+        $this->fecha                      = '2009-09-04T10:30';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-tercer-congreso';
+        $this->archivo                    = 'gulag-tercer-congreso';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Con motivo del tercer aniversario del GULAG y con el fin de traer a nuestra región distinguidos ponentes del Software Libre les invitamos al Tercer Congreso Nacional de Software Libre.';
-        $this->claves          = 'GULAG, Aniversario, Congreso';
+        $this->descripcion                = 'Con motivo del tercer aniversario del GULAG y con el fin de traer a nuestra región distinguidos ponentes del Software Libre les invitamos al Tercer Congreso Nacional de Software Libre.';
+        $this->claves                     = 'GULAG, Aniversario, Congreso';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGTercerCongreso.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGTercerCongreso

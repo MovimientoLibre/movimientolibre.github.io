@@ -34,17 +34,17 @@ class CongresoIberoamericanoFOSS2011 extends \Base\PublicacionSchemaBlogPosting 
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Segundo Congreso Internacional de Software Libre';
-        $this->fecha           = '2011-05-27T11:20';
+        $this->nombre                     = 'Segundo Congreso Internacional de Software Libre';
+        $this->fecha                      = '2011-05-27T11:20';
         // El nombre del archivo a crear
-        $this->archivo         = 'congreso-iberoamericano-foss-2011';
+        $this->archivo                    = 'congreso-iberoamericano-foss-2011';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El Segundo Congreso Internacional de Software Libre se llevó a cabo los días 1 y 2 de junio del 2011, en la ciudad de Zacatecas, México. El marco del evento fue el Auditorio de la Unidad Académica en Estudios del Desarrollo de la Universidad Autónoma de Zacatecas.';
-        $this->claves          = 'Congreso, Software Libre, Zacatecas, UAZ';
+        $this->descripcion                = 'El Segundo Congreso Internacional de Software Libre se llevó a cabo los días 1 y 2 de junio del 2011, en la ciudad de Zacatecas, México. El marco del evento fue el Auditorio de la Unidad Académica en Estudios del Desarrollo de la Universidad Autónoma de Zacatecas.';
+        $this->claves                     = 'Congreso, Software Libre, Zacatecas, UAZ';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/CongresoIberoamericanoFOSS2011.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase CongresoIberoamericanoFOSS2011

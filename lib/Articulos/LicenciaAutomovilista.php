@@ -34,17 +34,17 @@ class LicenciaAutomovilista extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Renovar la licencia de automovilista en Lerdo, Durango';
-        $this->fecha           = '2008-02-18T10:20';
+        $this->nombre                     = 'Renovar la licencia de automovilista en Lerdo, Durango';
+        $this->fecha                      = '2008-02-18T10:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'licencia-automovilista';
+        $this->archivo                    = 'licencia-automovilista';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Decidí documentar minuciosamente todo el proceso de renovación de la licencia de automovilista. Lo que a continuación expongo es un ejemplo de la desconsideración que tienen algunas autoridades con el tiempo y recursos de nosotros los ciudadanos.';
-        $this->claves          = 'Licencia Automivislista, Lerdo, Durango, Tramite';
+        $this->descripcion                = 'Decidí documentar minuciosamente todo el proceso de renovación de la licencia de automovilista. Lo que a continuación expongo es un ejemplo de la desconsideración que tienen algunas autoridades con el tiempo y recursos de nosotros los ciudadanos.';
+        $this->claves                     = 'Licencia Automivislista, Lerdo, Durango, Tramite';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/LicenciaAutomovilista.md';
         // Para el Organizador
-        $this->categorias      = array('Política');
+        $this->categorias                 = array('Política');
     } // constructor
 
 } // Clase LicenciaAutomovilista

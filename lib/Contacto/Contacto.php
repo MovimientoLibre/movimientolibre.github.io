@@ -34,25 +34,27 @@ class Contacto extends \Base\Publicacion {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título
-        $this->nombre          = 'Contacto';
+        $this->nombre                    = 'Contacto';
         // El nombre del archivo a crear
-        $this->archivo         = 'contacto';
+        $this->archivo                   = 'contacto';
+        // Rutas relativas a archivos de imágenes y levantar la bandera para que se muestre
+        $this->imagen                    = 'contacto/imagen.jpg';
+        $this->imagen_previa             = 'contacto/imagen-previa.jpg';
+        $this->poner_imagen_en_contenido = TRUE;
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Datos de contacto del responsable de este sitio web.';
-        $this->claves          = 'Datos, Contacto, Movimiento Libre';
-        // Para el Organizador
-        $this->categorias      = array('Contacto');
+        $this->descripcion               = 'Datos de contacto del responsable de este sitio web.';
+        $this->claves                    = 'Contacto, Movimiento Libre';
         // Instancia para datos de contacto
-        $contacto              = new \Base\SchemaContactPoint();
-        $contacto->name        = 'Guillermo Valdés Lozano';
-        $contacto->description = 'Desarrollador de Software. Científico de Datos. Dominio de GNU/Linux y PHP. Estudia Java, Python y R. Capacitador de Software Libre. Trabaja en IMPLAN Torreón.';
-        $contacto->image       = '../imagenes/guivaloz.jpg';
-        $contacto->image_show  = TRUE;
-        $contacto->email       = 'guivaloz@movimientolibre.com';
-        $contacto->content     = \Base\Funciones::cargar_archivo_markdown('lib/Contacto/Contacto.md');
-        $contacto->big_heading = TRUE;
+        $contacto                        = new \Base\SchemaContactPoint();
+        $contacto->name                  = 'Guillermo Valdés Lozano';
+        $contacto->description           = 'Desarrollador de Software. Científico de Datos. Dominio de GNU/Linux y PHP. Estudia Java, Python y R. Capacitador de Software Libre. Trabaja en IMPLAN Torreón.';
+        $contacto->image                 = $this->imagen;
+        $contacto->image_show            = TRUE;
+        $contacto->email                 = 'guivaloz@movimientolibre.com';
+        $contacto->content               = \Base\Funciones::cargar_archivo_markdown('lib/Contacto/Contacto.md');
+        $contacto->big_heading           = TRUE;
         // El contenido es un Schema
-        $this->contenido       = $contacto;
+        $this->contenido                 = $contacto;
     } // constructor
 
 } // Clase Contacto

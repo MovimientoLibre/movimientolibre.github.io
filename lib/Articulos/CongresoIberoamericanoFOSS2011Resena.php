@@ -34,17 +34,17 @@ class CongresoIberoamericanoFOSS2011Resena extends \Base\PublicacionSchemaBlogPo
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'FOSS 2.0 - Reseña';
-        $this->fecha           = '2011-06-14T10:17';
+        $this->nombre                     = 'FOSS 2.0 - Reseña';
+        $this->fecha                      = '2011-06-14T10:17';
         // El nombre del archivo a crear
-        $this->archivo         = 'congreso-iberoamericano-foss-2011-resena';
+        $this->archivo                    = 'congreso-iberoamericano-foss-2011-resena';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Los días 1 y 2 de junio de 2011 fue el Segundo Congreso Internacional de Software Libre organizado por la Universidad Autónoma de Zacatecas. A modo de reseña les muestro fotografías y fragmentos de las ponencias.';
-        $this->claves          = 'Congreso, Software Libre, Zacatecas, UAZ';
+        $this->descripcion                = 'Los días 1 y 2 de junio de 2011 fue el Segundo Congreso Internacional de Software Libre organizado por la Universidad Autónoma de Zacatecas. A modo de reseña les muestro fotografías y fragmentos de las ponencias.';
+        $this->claves                     = 'Congreso, Software Libre, Zacatecas, UAZ';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/CongresoIberoamericanoFOSS2011Resena.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase CongresoIberoamericanoFOSS2011Resena

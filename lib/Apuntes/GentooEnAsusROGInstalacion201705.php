@@ -35,7 +35,6 @@ class GentooEnAsusROGInstalacion201705 extends \Base\PublicacionSchemaBlogPostin
         parent::__construct();
         // Título, autor y fecha
         $this->nombre                     = 'Apuntes para la Instalación de Gentoo Linux en una laptop ASUS';
-    //~ $this->autor                      = '';
         $this->fecha                      = '2017-05-09T07:44';
         // El nombre del archivo a crear
         $this->archivo                    = 'gentoo-en-asus-rog-instalacion-2017-05';

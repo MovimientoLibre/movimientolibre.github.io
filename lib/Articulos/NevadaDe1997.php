@@ -34,18 +34,18 @@ class NevadaDe1997 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título, autor y fecha
-        $this->nombre          = 'Nevada de 1997';
+        $this->nombre                     = 'Nevada de 1997';
         $this->autor           = 'rosy';
-        $this->fecha           = '2007-12-12T18:30';
+        $this->fecha                      = '2007-12-12T18:30';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'nevada-de-1997';
+        $this->archivo                    = 'nevada-de-1997';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = '“¡Está nevando!”, dijo mi papá. Ese día la ciudad se paralizó, no hubo clases, muchos negocios no abrieron, había pocos camiones y muchos carros no arrancaron. ¡Oh, que emoción! ¡Es la segunda vez en mi vida que veo nevar! Inmediatamente corrí por mi cámara y todo el día la pasé en la calle tomando fotos a diestra y siniestra.';
-        $this->claves          = 'Nevada, 1997';
+        $this->descripcion                = '“¡Está nevando!”, dijo mi papá. Ese día la ciudad se paralizó, no hubo clases, muchos negocios no abrieron, había pocos camiones y muchos carros no arrancaron. ¡Oh, que emoción! ¡Es la segunda vez en mi vida que veo nevar! Inmediatamente corrí por mi cámara y todo el día la pasé en la calle tomando fotos a diestra y siniestra.';
+        $this->claves                     = 'Nevada, 1997';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/NevadaDe1997.md';
         // Para el Organizador
-        $this->categorias      = array('Vida Cotidiana');
+        $this->categorias                 = array('Vida Cotidiana');
     } // constructor
 
 } // Clase NevadaDe1997

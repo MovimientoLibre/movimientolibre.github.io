@@ -34,17 +34,17 @@ class DebianProbar extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Razones para dejar Gentoo y probar Debian';
-        $this->fecha           = '2007-06-01T00:00';
+        $this->nombre                     = 'Razones para dejar Gentoo y probar Debian';
+        $this->fecha                      = '2007-06-01T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'debian-probar';
+        $this->archivo                    = 'debian-probar';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'He sido un devoto usuario de la distribución Gentoo Linux por aproximadamente 4 años, pero ayer reparticioné el disco duro de mi portátil para tener arranque dual con Gentoo y Debian.';
-        $this->claves          = 'GNU Linux, Debian';
+        $this->descripcion                = 'He sido un devoto usuario de la distribución Gentoo Linux por aproximadamente 4 años, pero ayer reparticioné el disco duro de mi portátil para tener arranque dual con Gentoo y Debian.';
+        $this->claves                     = 'GNU Linux, Debian';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/DebianProbar.md';
         // Para el Organizador
-        $this->categorias      = array('GNU Linux', 'Debian');
+        $this->categorias                 = array('GNU Linux', 'Debian');
     } // constructor
 
 } // Clase DebianProbar

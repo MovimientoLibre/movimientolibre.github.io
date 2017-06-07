@@ -34,17 +34,17 @@ class MensajeEnTheTalosPrinciple extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Mensaje en The Talos Principle';
-        $this->fecha           = '2015-04-06T22:05';
+        $this->nombre                     = 'Mensaje en The Talos Principle';
+        $this->fecha                      = '2015-04-06T22:05';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'mensaje-en-the-talos-principle';
+        $this->archivo                    = 'mensaje-en-the-talos-principle';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Esto aparece en una computadora dentro del video juego The Talos Principle.';
-        $this->claves          = 'Vida Cotidiana';
+        $this->descripcion                = 'Esto aparece en una computadora dentro del video juego The Talos Principle.';
+        $this->claves                     = 'Vida Cotidiana';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/MensajeEnTheTalosPrinciple.md';
         // Para el Organizador
-        $this->categorias      = array('Vida Cotidiana');
+        $this->categorias                 = array('Vida Cotidiana');
     } // constructor
 
 } // Clase MensajeEnTheTalosPrinciple

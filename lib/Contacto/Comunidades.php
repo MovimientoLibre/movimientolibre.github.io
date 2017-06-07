@@ -42,8 +42,6 @@ class Comunidades extends \Base\Publicacion {
         $this->claves                     = 'Grupos, Comunidades';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Contacto/Comunidades.md';
-        // Para el Organizador
-        $this->categorias                 = array('Contacto');
     } // constructor
 
 } // Clase Comunidades

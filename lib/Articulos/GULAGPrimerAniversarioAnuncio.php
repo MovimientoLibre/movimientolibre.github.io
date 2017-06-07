@@ -34,17 +34,17 @@ class GULAGPrimerAniversarioAnuncio extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Primer Aniversario del GULAG';
-        $this->fecha           = '2007-08-10T11:20';
+        $this->nombre                     = 'Primer Aniversario del GULAG';
+        $this->fecha                      = '2007-08-10T11:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-primer-aniversario-anuncio';
+        $this->archivo                    = 'gulag-primer-aniversario-anuncio';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El Grupo de Usuarios de GNU/Linux de La Laguna, invita a las conferencias y taller que con motivo de la celebración del Primer Aniversario del Grupo se impartirán en el Instituto Tecnológico de La Laguna.';
-        $this->claves          = 'GULAG, Aniversario';
+        $this->descripcion                = 'El Grupo de Usuarios de GNU/Linux de La Laguna, invita a las conferencias y taller que con motivo de la celebración del Primer Aniversario del Grupo se impartirán en el Instituto Tecnológico de La Laguna.';
+        $this->claves                     = 'GULAG, Aniversario';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGPrimerAniversarioAnuncio.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGPrimerAniversarioAnuncio

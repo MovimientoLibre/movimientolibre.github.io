@@ -45,8 +45,6 @@ class KernelLinuxComoCompilar extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/Presentaciones/KernelLinuxComoCompilar.md';
         // Para el Organizador
         $this->categorias                 = array('Kernel Linux');
-        // Banderas
-        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase KernelLinuxComoCompilar

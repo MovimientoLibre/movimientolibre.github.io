@@ -34,17 +34,17 @@ class UALConferenciaSoftwareLibre extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = '"Software Libre" en la Universidad Autónoma de La Laguna - Congreso UAL 2008';
-        $this->fecha           = '2007-12-10T13:10';
+        $this->nombre                     = '"Software Libre" en la Universidad Autónoma de La Laguna - Congreso UAL 2008';
+        $this->fecha                      = '2007-12-10T13:10';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'ual-conferencia-software-libre';
+        $this->archivo                    = 'ual-conferencia-software-libre';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 7 de diciembre de 2007 participé en el Congreso UAL 2008 exponiendo el tema Software Libre ante alumnos, maestros y compañeros del GULAG.';
-        $this->claves          = 'Software Libre, UAL, Confierencia';
+        $this->descripcion                = 'El 7 de diciembre de 2007 participé en el Congreso UAL 2008 exponiendo el tema Software Libre ante alumnos, maestros y compañeros del GULAG.';
+        $this->claves                     = 'Software Libre, UAL, Confierencia';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/UALConferenciaSoftwareLibre.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase UALConferenciaSoftwareLibre

@@ -34,17 +34,17 @@ class DebianPuntosBuenos extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Puntos buenos para Debian';
-        $this->fecha           = '2007-06-17T00:00';
+        $this->nombre                     = 'Puntos buenos para Debian';
+        $this->fecha                      = '2007-06-17T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'debian-puntos-buenos';
+        $this->archivo                    = 'debian-puntos-buenos';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Con Debian he logrado una satisfactoria instalación en la cual estoy trabajando desde el jueves (¡Dios mío! llevo 4 días sin usar Gentoo en mi escritorio XD).';
-        $this->claves          = 'GNU Linux, Debian';
+        $this->descripcion                = 'Con Debian he logrado una satisfactoria instalación en la cual estoy trabajando desde el jueves (¡Dios mío! llevo 4 días sin usar Gentoo en mi escritorio XD).';
+        $this->claves                     = 'GNU Linux, Debian';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/DebianPuntosBuenos.md';
         // Para el Organizador
-        $this->categorias      = array('GNU Linux', 'Debian');
+        $this->categorias                 = array('GNU Linux', 'Debian');
     } // constructor
 
 } // Clase DebianPuntosBuenos

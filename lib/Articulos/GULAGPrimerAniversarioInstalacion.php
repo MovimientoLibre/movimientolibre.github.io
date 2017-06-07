@@ -34,17 +34,17 @@ class GULAGPrimerAniversarioInstalacion extends \Base\PublicacionSchemaBlogPosti
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Instalando los equipos para el Aniversario del GULAG';
-        $this->fecha           = '2007-08-20T18:45';
+        $this->nombre                     = 'Instalando los equipos para el Aniversario del GULAG';
+        $this->fecha                      = '2007-08-20T18:45';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-primer-aniversario-instalacion';
+        $this->archivo                    = 'gulag-primer-aniversario-instalacion';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Un gran trabajo de equipo fue la instalación del GNU/Linux en las computadoras que se usaron en el taller que se impartió con motivo del primer aniversario del GULAG, tarea en la que nos enfrentamos a un gran número de retos.';
-        $this->claves          = 'GULAG, Aniversario';
+        $this->descripcion                = 'Un gran trabajo de equipo fue la instalación del GNU/Linux en las computadoras que se usaron en el taller que se impartió con motivo del primer aniversario del GULAG, tarea en la que nos enfrentamos a un gran número de retos.';
+        $this->claves                     = 'GULAG, Aniversario';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGPrimerAniversarioInstalacion.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGPrimerAniversarioInstalacion

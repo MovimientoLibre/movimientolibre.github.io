@@ -34,17 +34,17 @@ class VIAPC2500GDesempaque extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Desempaque de la Via pc2500g';
-        $this->fecha           = '2007-10-30T13:10';
+        $this->nombre                     = 'Desempaque de la Via pc2500g';
+        $this->fecha                      = '2007-10-30T13:10';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'via-pc2500g-desempaque';
+        $this->archivo                    = 'via-pc2500g-desempaque';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Para continuar estudiando los equipos Via pc-1 adquirmos una segunda computadora. Solicité la variante g, es decir, es la pc2500g. Les muestro la tradicional secuencia de imágenes del desempaque del nuevo hardware.';
-        $this->claves          = 'Hardware, Tarjeta Madre, VIA, Mini-ITX';
+        $this->descripcion                = 'Para continuar estudiando los equipos Via pc-1 adquirmos una segunda computadora. Solicité la variante g, es decir, es la pc2500g. Les muestro la tradicional secuencia de imágenes del desempaque del nuevo hardware.';
+        $this->claves                     = 'Hardware, Tarjeta Madre, VIA, Mini-ITX';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/VIAPC2500GDesempaque.md';
         // Para el Organizador
-        $this->categorias      = array('Hardware');
+        $this->categorias                 = array('Hardware');
     } // constructor
 
 } // Clase VIAPC2500GDesempaque

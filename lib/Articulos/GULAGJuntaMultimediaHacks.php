@@ -34,17 +34,17 @@ class GULAGJuntaMultimediaHacks extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Junta de la Gulag "Multimedia Hacks"';
-        $this->fecha           = '2007-06-10T00:00';
+        $this->nombre                     = 'Junta de la Gulag "Multimedia Hacks"';
+        $this->fecha                      = '2007-06-10T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-junta-multimedia-hacks';
+        $this->archivo                    = 'gulag-junta-multimedia-hacks';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 9 de junio de 2007, Luis Páez (lobogris) nos dió una amena e interesante plática sobre hacks de multimedia para GNU/Linux. A groso modo, explicó los comandos para ripear un CD a mp3, para convertir a varios formatos de audio y cómo ripear videos desde un DVD.';
-        $this->claves          = 'GNU Linux, Multimedia, CD, MP3, DVD';
+        $this->descripcion                = 'El 9 de junio de 2007, Luis Páez (lobogris) nos dió una amena e interesante plática sobre hacks de multimedia para GNU/Linux. A groso modo, explicó los comandos para ripear un CD a mp3, para convertir a varios formatos de audio y cómo ripear videos desde un DVD.';
+        $this->claves                     = 'GNU Linux, Multimedia, CD, MP3, DVD';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGJuntaMultimediaHacks.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGJuntaMultimediaHacks

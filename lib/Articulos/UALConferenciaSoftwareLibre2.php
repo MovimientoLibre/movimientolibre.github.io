@@ -34,17 +34,17 @@ class UALConferenciaSoftwareLibre2 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = '"Software Libre" en la Universidad Autónoma de La Laguna - Para alumnos de diversas licenciaturas';
-        $this->fecha           = '2008-05-03T08:00';
+        $this->nombre                     = '"Software Libre" en la Universidad Autónoma de La Laguna - Para alumnos de diversas licenciaturas';
+        $this->fecha                      = '2008-05-03T08:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'ual-conferencia-software-libre-2';
+        $this->archivo                    = 'ual-conferencia-software-libre-2';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 25 de abril de 2008 fui amablemente invitado a dar la conferencia Software Libre al grupo de la Lic. Mayela Luna en la Universidad Autónoma de La Laguna.';
-        $this->claves          = 'Software Libre, UAL, Conferencia';
+        $this->descripcion                = 'El 25 de abril de 2008 fui amablemente invitado a dar la conferencia Software Libre al grupo de la Lic. Mayela Luna en la Universidad Autónoma de La Laguna.';
+        $this->claves                     = 'Software Libre, UAL, Conferencia';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/UALConferenciaSoftwareLibre2.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase UALConferenciaSoftwareLibre2

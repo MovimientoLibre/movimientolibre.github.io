@@ -34,17 +34,17 @@ class ITSZASConferenciaSoftwareLibre extends \Base\PublicacionSchemaBlogPosting 
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Software Libre en el Instituto Tecnológico Superior Zacatecas Sur';
-        $this->fecha           = '2007-12-02T00:20';
+        $this->nombre                     = 'Software Libre en el Instituto Tecnológico Superior Zacatecas Sur';
+        $this->fecha                      = '2007-12-02T00:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'itszas-conferencia-software-libre';
+        $this->archivo                    = 'itszas-conferencia-software-libre';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Fue una grata experiencia haber participado en el 1er Foro Regional de Ingenierías Electromecánica y Sistemas organizado por el Instituto Tecnológico Superior Zacatecas Sur.';
-        $this->claves          = 'Conferencias';
+        $this->descripcion                = 'Fue una grata experiencia haber participado en el 1er Foro Regional de Ingenierías Electromecánica y Sistemas organizado por el Instituto Tecnológico Superior Zacatecas Sur.';
+        $this->claves                     = 'Conferencias';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/ITSZASConferenciaSoftwareLibre.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase ITSZASConferenciaSoftwareLibre

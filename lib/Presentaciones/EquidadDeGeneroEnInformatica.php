@@ -45,8 +45,6 @@ class EquidadDeGeneroEnInformatica extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/Presentaciones/EquidadDeGeneroEnInformatica.md';
         // Para el Organizador
         $this->categorias                 = array('Educación');
-        // Banderas
-        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase EquidadDeGeneroEnInformatica

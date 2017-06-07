@@ -34,17 +34,17 @@ class BurrosEnAvenidaTransitada extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Burros en avenida transitada';
-        $this->fecha           = '2007-10-05T16:00';
+        $this->nombre                     = 'Burros en avenida transitada';
+        $this->fecha                      = '2007-10-05T16:00';
         // El nombre del archivo a crear
-        $this->archivo         = 'burros-en-avenida-transitada';
+        $this->archivo                    = 'burros-en-avenida-transitada';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Cuando nos trasladábamos por el boulevard Miguel Alemán nos encontramos varios burros pastando en el camellón central frente al auditorio Francisco Zarco.';
-        $this->claves          = 'Transito, Animales, Burros, Carga';
+        $this->descripcion                = 'Cuando nos trasladábamos por el boulevard Miguel Alemán nos encontramos varios burros pastando en el camellón central frente al auditorio Francisco Zarco.';
+        $this->claves                     = 'Transito, Animales, Burros, Carga';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/BurrosEnAvenidaTransitada.md';
         // Para el Organizador
-        $this->categorias      = array('Vida Cotidiana');
+        $this->categorias                 = array('Vida Cotidiana');
     } // constructor
 
 } // Clase BurrosEnAvenidaTransitada

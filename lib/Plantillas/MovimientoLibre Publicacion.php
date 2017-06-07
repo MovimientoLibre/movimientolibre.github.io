@@ -42,11 +42,14 @@ class CLASE extends \Base\Publicacion {
         // La descripción y claves dan información a los buscadores y redes sociales
         $this->descripcion               = 'Descripción.';
         $this->claves                    = 'Clave1, Clave2, Clave3';
+        // Opción de navegación a poner como activa
+        $this->nombre_menu               = 'Menú > Submenú';
         // Banderas
-    //~ $this->poner_imagen_en_contenido = TRUE; // Poner la imagen en la parte superior izquierda
-    //~ $this->para_compartir            = TRUE; // Poner los botones para compartir en redes sociales
+        $this->aparece_en_pagina_inicial = TRUE;
+        $this->poner_imagen_en_contenido = TRUE;
+        $this->para_compartir            = TRUE;
         // El estado puede ser 'publicar', 'revisar' o 'ignorar'
-    //~ $this->estado                    = 'publicar';
+        $this->estado                    = 'publicar';
         // Para el Organizador
         $this->categorias                = array();
         $this->fuentes                   = array();
@@ -76,7 +79,7 @@ FINAL;
         $this->javascript = <<<FINAL
 FINAL;
         // Ejecutar este método en el padre
-        return parent::html();
+        return parent::javascript();
     } // javascript
 
     /**

@@ -34,17 +34,17 @@ class RevolucionateATiMismoSeUnProgramador extends \Base\PublicacionSchemaBlogPo
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Revoluciónate a tí mismo, sé un programador';
-        $this->fecha           = '2014-05-11T21:00';
+        $this->nombre                     = 'Revoluciónate a tí mismo, sé un programador';
+        $this->fecha                      = '2014-05-11T21:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'revolucionate-a-ti-mismo-se-un-programador';
+        $this->archivo                    = 'revolucionate-a-ti-mismo-se-un-programador';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = '¿Qué sería de nuestra ciudad/estado/país/mundo si todo profesionista dedicara algo de su labor a la programación?';
-        $this->claves          = 'Desarrollo, Programación';
+        $this->descripcion                = '¿Qué sería de nuestra ciudad/estado/país/mundo si todo profesionista dedicara algo de su labor a la programación?';
+        $this->claves                     = 'Desarrollo, Programación';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/RevolucionateATiMismoSeUnProgramador.md';
         // Para el Organizador
-        $this->categorias      = array('Educación');
+        $this->categorias                 = array('Educación');
     } // constructor
 
 } // Clase RevolucionateATiMismoSeUnProgramador

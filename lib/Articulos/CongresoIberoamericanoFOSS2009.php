@@ -34,17 +34,17 @@ class CongresoIberoamericanoFOSS2009 extends \Base\PublicacionSchemaBlogPosting 
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Congreso Iberoamericano FOSS 1.0';
-        $this->fecha           = '2009-12-25T16:00';
+        $this->nombre                     = 'Congreso Iberoamericano FOSS 1.0';
+        $this->fecha                      = '2009-12-25T16:00';
         // El nombre del archivo a crear
-        $this->archivo         = 'congreso-iberoamericano-foss-2009';
+        $this->archivo                    = 'congreso-iberoamericano-foss-2009';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Los días 30 de noviembre y 1 de diciembre de 2009 se efectuó el [Primer Congreso Iberoamericano de Software Libre](http://www.estudiosdeldesarrollo.net/foss/). Cinco miembros del [GULAG](http://www.gulag.org.mx/) estuvimos presentes en lo que fué el evento más importante del Software Libre del año.';
-        $this->claves          = 'Congreso, Software Libre, Zacatecas';
+        $this->descripcion                = 'Los días 30 de noviembre y 1 de diciembre de 2009 se efectuó el [Primer Congreso Iberoamericano de Software Libre](http://www.estudiosdeldesarrollo.net/foss/). Cinco miembros del [GULAG](http://www.gulag.org.mx/) estuvimos presentes en lo que fué el evento más importante del Software Libre del año.';
+        $this->claves                     = 'Congreso, Software Libre, Zacatecas';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/CongresoIberoamericanoFOSS2009.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase CongresoIberoamericanoFOSS2009

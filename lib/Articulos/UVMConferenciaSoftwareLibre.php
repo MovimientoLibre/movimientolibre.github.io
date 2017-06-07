@@ -34,17 +34,17 @@ class UVMConferenciaSoftwareLibre extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = '"Software Libre" en la Universidad del Valle de México - Laguna';
-        $this->fecha           = '2008-02-29T13:00';
+        $this->nombre                     = '"Software Libre" en la Universidad del Valle de México - Laguna';
+        $this->fecha                      = '2008-02-29T13:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'uvm-conferencia-software-libre';
+        $this->archivo                    = 'uvm-conferencia-software-libre';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 27 de febrero de 2008 fui cordialmente invitado a dar la plática Software Libre en la Universidad del Valle de México (UVM) Plantel Laguna.';
-        $this->claves          = 'Software Libre, UVM, Conferencia';
+        $this->descripcion                = 'El 27 de febrero de 2008 fui cordialmente invitado a dar la plática Software Libre en la Universidad del Valle de México (UVM) Plantel Laguna.';
+        $this->claves                     = 'Software Libre, UVM, Conferencia';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/UVMConferenciaSoftwareLibre.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase UVMConferenciaSoftwareLibre

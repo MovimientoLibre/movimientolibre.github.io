@@ -34,17 +34,17 @@ class MissMarie extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Wallpaper "Miss Marie"';
-        $this->fecha           = '2007-05-21T00:00';
+        $this->nombre                     = 'Wallpaper "Miss Marie"';
+        $this->fecha                      = '2007-05-21T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'miss-marie';
+        $this->archivo                    = 'miss-marie';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Les muestro lo que a mi gusto es uno de los mejores fondo de pantalla del tipo "naturaleza" que he encontrado.';
-        $this->claves          = 'Wallpapers';
+        $this->descripcion                = 'Les muestro lo que a mi gusto es uno de los mejores fondo de pantalla del tipo "naturaleza" que he encontrado.';
+        $this->claves                     = 'Wallpapers';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/MissMarie.md';
         // Para el Organizador
-        $this->categorias      = array('Wallpapers');
+        $this->categorias                 = array('Wallpapers');
     } // constructor
 
 } // Clase MissMarie

@@ -34,17 +34,17 @@ class GTUGCampout2010 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'GTUG Campout Laguna 2010';
-        $this->fecha           = '2010-08-05T20:00';
+        $this->nombre                     = 'GTUG Campout Laguna 2010';
+        $this->fecha                      = '2010-08-05T20:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gtug-campout-2010';
+        $this->archivo                    = 'gtug-campout-2010';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'GTUG Campout es un evento de fin de semana largo en donde los participantes tienen la oportunidad de diseñar, desarrollar y demostrar una aplicación completa, elaborada durante los tres días.';
-        $this->claves          = 'GTUG, Google, Desarrollo';
+        $this->descripcion                = 'GTUG Campout es un evento de fin de semana largo en donde los participantes tienen la oportunidad de diseñar, desarrollar y demostrar una aplicación completa, elaborada durante los tres días.';
+        $this->claves                     = 'GTUG, Google, Desarrollo';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GTUGCampout2010.md';
         // Para el Organizador
-        $this->categorias      = array('Desarrollo');
+        $this->categorias                 = array('Desarrollo');
     } // constructor
 
 } // Clase GTUGCampout2010

@@ -34,17 +34,17 @@ class NuevaImagen2009 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Nueva imagen y logotipo para Movimiento Libre';
-        $this->fecha           = '2009-07-22T23:59';
+        $this->nombre                     = 'Nueva imagen y logotipo para Movimiento Libre';
+        $this->fecha                      = '2009-07-22T23:59';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'nueva-imagen-2009';
+        $this->archivo                    = 'nueva-imagen-2009';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'He dedicado varios días para renovar al sitio de Movimiento Libre. La gran pregunta que tuve en mi cabeza fué... ¿qué logotipo se podría elaborar para Movimiento Libre?.';
-        $this->claves          = 'Imagen, Logotipo, Movimiento Libre';
+        $this->descripcion                = 'He dedicado varios días para renovar al sitio de Movimiento Libre. La gran pregunta que tuve en mi cabeza fué... ¿qué logotipo se podría elaborar para Movimiento Libre?.';
+        $this->claves                     = 'Imagen, Logotipo, Movimiento Libre';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/NuevaImagen2009.md';
         // Para el Organizador
-        $this->categorias      = array('Software Libre');
+        $this->categorias                 = array('Software Libre');
     } // constructor
 
 } // Clase NuevaImagen2009

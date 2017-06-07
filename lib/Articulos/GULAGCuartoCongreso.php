@@ -34,17 +34,17 @@ class GULAGCuartoCongreso extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Cuarto Congreso Internacional de Software Libre';
-        $this->fecha           = '2010-09-11T23:00';
+        $this->nombre                     = 'Cuarto Congreso Internacional de Software Libre';
+        $this->fecha                      = '2010-09-11T23:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-cuarto-congreso';
+        $this->archivo                    = 'gulag-cuarto-congreso';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 10 y 11 de septiembre de 2010 el Grupo de Usuarios de GNU/Linux de la Laguna (GULAG) en conjunto con el Instituto Tecnológico y de Estudios Superiores de Monterrey, Campus Laguna (ITESM) organizaron el IV Congreso Internacional de Software Libre.';
-        $this->claves          = 'GULAG, Congreso, Software Libre, ITESM';
+        $this->descripcion                = 'El 10 y 11 de septiembre de 2010 el Grupo de Usuarios de GNU/Linux de la Laguna (GULAG) en conjunto con el Instituto Tecnológico y de Estudios Superiores de Monterrey, Campus Laguna (ITESM) organizaron el IV Congreso Internacional de Software Libre.';
+        $this->claves                     = 'GULAG, Congreso, Software Libre, ITESM';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGCuartoCongreso.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGCuartoCongreso

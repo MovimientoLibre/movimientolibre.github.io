@@ -37,10 +37,11 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         $this->titulo                    = 'Presentaciones';
         $this->descripcion               = 'Presentaciones hechas por Guillermo Valdés Lozano.';
         $this->claves                    = 'Presentaciones';
-        // Si la publicación NO define estos parámetros, imprenta se los copia
-        $this->nombre_menu               = 'Presentaciones';
+        // Parámetros que el Recolector definirá en las Publicaciones si éstas no los tienen
+        $this->aparece_en_pagina_inicial = TRUE;
         $this->imagen                    = '../imagenes/imagen.jpg';
         $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->nombre_menu               = 'Presentaciones';
         $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
         $this->indices_paginas           = '\\Base\\PaginasTarjetas';

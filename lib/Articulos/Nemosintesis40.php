@@ -34,17 +34,17 @@ class Nemosintesis40 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Nemosíntesis 4.0';
-        $this->fecha           = '2007-05-20T00:00';
+        $this->nombre                     = 'Nemosíntesis 4.0';
+        $this->fecha                      = '2007-05-20T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'nemosintesis-4.0';
+        $this->archivo                    = 'nemosintesis-4.0';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Después de que termina un largo trabajo siente un agradable regocijo al ver su creación andando. Con ese gusto me complace que se haya actualizado el sistema de la empresa donde trabajo Nemosíntesis de la versión 3.2 a la 4.0.';
-        $this->claves          = 'Desarrollo';
+        $this->descripcion                = 'Después de que termina un largo trabajo siente un agradable regocijo al ver su creación andando. Con ese gusto me complace que se haya actualizado el sistema de la empresa donde trabajo Nemosíntesis de la versión 3.2 a la 4.0.';
+        $this->claves                     = 'Desarrollo';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/Nemosintesis40.md';
         // Para el Organizador
-        $this->categorias      = array('Desarrollo');
+        $this->categorias                 = array('Desarrollo');
     } // constructor
 
 } // Clase Nemosintesis40

@@ -37,10 +37,11 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
         $this->titulo                    = 'Apuntes';
         $this->descripcion               = 'Apuntes sobre desarrollo y software libre.';
         $this->claves                    = 'Apuntes, Desarrollo, Software Libre';
-        // Si la publicación NO define estos parámetros, imprenta se los copia
-        $this->nombre_menu               = 'Apuntes';
+        // Parámetros que el Recolector definirá en las Publicaciones si éstas no los tienen
+        $this->aparece_en_pagina_inicial = TRUE;
         $this->imagen                    = '../imagenes/imagen.jpg';
         $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->nombre_menu               = 'Apuntes';
         $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
         $this->indices_paginas           = '\\Base\\PaginasDetallados';

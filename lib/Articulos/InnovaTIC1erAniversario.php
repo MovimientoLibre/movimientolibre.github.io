@@ -34,17 +34,17 @@ class InnovaTIC1erAniversario extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'InnovaTIC 1er Aniversario';
-        $this->fecha           = '2009-03-03T13:00';
+        $this->nombre                     = 'InnovaTIC 1er Aniversario';
+        $this->fecha                      = '2009-03-03T13:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'innovatic-1er-aniversario';
+        $this->archivo                    = 'innovatic-1er-aniversario';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Su servidor y un grupo de personas interesadas en la Innovación Colaborativa en el tema de TIC\'s estamos cumpliendo un año de habernos integrado como una RED de Trabajo, InnovaTIC.';
-        $this->claves          = 'InnovaTIC';
+        $this->descripcion                = 'Su servidor y un grupo de personas interesadas en la Innovación Colaborativa en el tema de TIC\'s estamos cumpliendo un año de habernos integrado como una RED de Trabajo, InnovaTIC.';
+        $this->claves                     = 'InnovaTIC';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/InnovaTIC1erAniversario.md';
         // Para el Organizador
-        $this->categorias      = array('Política');
+        $this->categorias                 = array('Política');
     } // constructor
 
 } // Clase InnovaTIC1erAniversario

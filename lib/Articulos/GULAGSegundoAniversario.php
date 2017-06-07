@@ -34,17 +34,17 @@ class GULAGSegundoAniversario extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Segundo Aniversario del Gulag / Software Freedom Day';
-        $this->fecha           = '2008-09-18T13:30';
+        $this->nombre                     = 'Segundo Aniversario del Gulag / Software Freedom Day';
+        $this->fecha                      = '2008-09-18T13:30';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-segundo-aniversario';
+        $this->archivo                    = 'gulag-segundo-aniversario';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Les invitamos cordialmente al Segundo Aniversario del Grupo de Usuarios de GNU/Linux de la Laguna que celebramos justo el Día del Software Libre "Software Freedom Day". Donde distinguidos protagonistas del Software Libre en México nos compartirán sus conocimientos y experiencias.';
-        $this->claves          = 'GULAG, Aniversario, Software Freedom Day';
+        $this->descripcion                = 'Les invitamos cordialmente al Segundo Aniversario del Grupo de Usuarios de GNU/Linux de la Laguna que celebramos justo el Día del Software Libre "Software Freedom Day". Donde distinguidos protagonistas del Software Libre en México nos compartirán sus conocimientos y experiencias.';
+        $this->claves                     = 'GULAG, Aniversario, Software Freedom Day';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGSegundoAniversario.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGSegundoAniversario

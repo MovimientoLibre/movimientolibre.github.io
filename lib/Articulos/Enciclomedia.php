@@ -34,17 +34,17 @@ class Enciclomedia extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = '"Enciclomedia" en la Wikipedia';
-        $this->fecha           = '2007-05-08T00:00';
+        $this->nombre                     = '"Enciclomedia" en la Wikipedia';
+        $this->fecha                      = '2007-05-08T00:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'enciclomedia';
+        $this->archivo                    = 'enciclomedia';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'A cerca de que "rasuraron" la página que sobre el tema está en la Wikipedia, lo cual significa que alguien pretende que no estén a la vista diversas opiniones.';
-        $this->claves          = 'Wikipedia, Enciclomedia, Libertad de Expresion';
+        $this->descripcion                = 'A cerca de que "rasuraron" la página que sobre el tema está en la Wikipedia, lo cual significa que alguien pretende que no estén a la vista diversas opiniones.';
+        $this->claves                     = 'Wikipedia, Enciclomedia, Libertad de Expresion';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/Enciclomedia.md';
         // Para el Organizador
-        $this->categorias      = array('Política', 'Educación');
+        $this->categorias                 = array('Política', 'Educación');
     } // constructor
 
 } // Clase Enciclomedia

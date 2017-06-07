@@ -34,17 +34,17 @@ class Cbtis435AniversarioSoftwareLibre extends \Base\PublicacionSchemaBlogPostin
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Software Libre en el 35 Aniversario del CBTiS 4';
-        $this->fecha           = '2008-10-28T23:00';
+        $this->nombre                     = 'Software Libre en el 35 Aniversario del CBTiS 4';
+        $this->fecha                      = '2008-10-28T23:00';
         // El nombre del archivo a crear
-        $this->archivo         = 'cbtis4-35-aniversario-software-libre';
+        $this->archivo                    = 'cbtis4-35-aniversario-software-libre';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 28 de octubre del presente, tuve el honor de participar en los eventos que con motivo del XXXVII Aniversario del CBTiS 4 con la ponencia Software Libre.';
-        $this->claves          = 'Conferencia, Software Libre, CBTiS 4';
+        $this->descripcion                = 'El 28 de octubre del presente, tuve el honor de participar en los eventos que con motivo del XXXVII Aniversario del CBTiS 4 con la ponencia Software Libre.';
+        $this->claves                     = 'Conferencia, Software Libre, CBTiS 4';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/Cbtis435AniversarioSoftwareLibre.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase Cbtis435AniversarioSoftwareLibre

@@ -34,17 +34,17 @@ class IntoleranciaAbsoluta extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Intolerancia absoluta';
-        $this->fecha           = '2008-04-11T14:10';
+        $this->nombre                     = 'Intolerancia absoluta';
+        $this->fecha                      = '2008-04-11T14:10';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'intolerancia-absoluta';
+        $this->archivo                    = 'intolerancia-absoluta';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El vodka Absolut tiene una de las más ingeniosas campañas publicitarias, de hecho, se ha vuelto todo un icono del medio publicitario. Podríamos asegurar que no existe un consumidor que no haya visto algún anuncio de su conocida botella.';
-        $this->claves          = 'Política';
+        $this->descripcion                = 'El vodka Absolut tiene una de las más ingeniosas campañas publicitarias, de hecho, se ha vuelto todo un icono del medio publicitario. Podríamos asegurar que no existe un consumidor que no haya visto algún anuncio de su conocida botella.';
+        $this->claves                     = 'Política';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/IntoleranciaAbsoluta.md';
         // Para el Organizador
-        $this->categorias      = array('Política');
+        $this->categorias                 = array('Política');
     } // constructor
 
 } // Clase IntoleranciaAbsoluta

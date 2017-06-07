@@ -34,17 +34,17 @@ class GULAGPrimerAniversarioBanner extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Banner para el Primer Aniversario del GULAG';
-        $this->fecha           = '2007-08-06T13:00';
+        $this->nombre                     = 'Banner para el Primer Aniversario del GULAG';
+        $this->fecha                      = '2007-08-06T13:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-primer-aniversario-banner';
+        $this->archivo                    = 'gulag-primer-aniversario-banner';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Con el fin de comenzar la promoción del evento del aniversario del GULAG tomé el diseño preeliminar de RIVE para crear un banner. Invito a todos a que comienzen a promover el evento.';
-        $this->claves          = 'GULAG, Aniversario';
+        $this->descripcion                = 'Con el fin de comenzar la promoción del evento del aniversario del GULAG tomé el diseño preeliminar de RIVE para crear un banner. Invito a todos a que comienzen a promover el evento.';
+        $this->claves                     = 'GULAG, Aniversario';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGPrimerAniversarioBanner.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGPrimerAniversarioBanner

@@ -34,17 +34,17 @@ class TecLerdoPHPBasico extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = '"PHP Básico" en el Tec de Lerdo';
-        $this->fecha           = '2008-04-17T22:55';
+        $this->nombre                     = '"PHP Básico" en el Tec de Lerdo';
+        $this->fecha                      = '2008-04-17T22:55';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'tec-lerdo-php-basico';
+        $this->archivo                    = 'tec-lerdo-php-basico';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 15 de abril de 2008, a nombre del GULAG, impartí la conferencia PHP Básico en el Instituto Tecnológico Superior de Lerdo.';
-        $this->claves          = 'PHP, Basico, Tec de Lerdo';
+        $this->descripcion                = 'El 15 de abril de 2008, a nombre del GULAG, impartí la conferencia PHP Básico en el Instituto Tecnológico Superior de Lerdo.';
+        $this->claves                     = 'PHP, Basico, Tec de Lerdo';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/TecLerdoPHPBasico.md';
         // Para el Organizador
-        $this->categorias      = array('Conferencias');
+        $this->categorias                 = array('Conferencias');
     } // constructor
 
 } // Clase TecLerdoPHPBasico

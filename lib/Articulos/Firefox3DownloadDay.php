@@ -34,17 +34,17 @@ class Firefox3DownloadDay extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Firefox 3 Download Day: ¡Descarga hoy!';
-        $this->fecha           = '2008-06-17T10:15';
+        $this->nombre                     = 'Firefox 3 Download Day: ¡Descarga hoy!';
+        $this->fecha                      = '2008-06-17T10:15';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'firefox-3-download-day';
+        $this->archivo                    = 'firefox-3-download-day';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Hoy es el día en que puedes ser parte de un récord mundial Guinnes, a la vez que descargas una de las aplicaciones libres más tracendentes de nuestro tiempo: Mozilla Firefox.';
-        $this->claves          = 'Mozilla, Firefox';
+        $this->descripcion                = 'Hoy es el día en que puedes ser parte de un récord mundial Guinnes, a la vez que descargas una de las aplicaciones libres más tracendentes de nuestro tiempo: Mozilla Firefox.';
+        $this->claves                     = 'Mozilla, Firefox';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/Firefox3DownloadDay.md';
         // Para el Organizador
-        $this->categorias      = array('Firefox');
+        $this->categorias                 = array('Firefox');
     } // constructor
 
 } // Clase Firefox3DownloadDay

@@ -34,17 +34,17 @@ class PHP4HaMuertoLargaVidaAPHP5 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'PHP4 ha muerto, larga vida a PHP5';
-        $this->fecha           = '2008-02-02T11:20';
+        $this->nombre                     = 'PHP4 ha muerto, larga vida a PHP5';
+        $this->fecha                      = '2008-02-02T11:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'php4-ha-muerto-larga-vida-a-php5';
+        $this->archivo                    = 'php4-ha-muerto-larga-vida-a-php5';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Se hace un llamado a migrar los sistemas web que aun funcionen con la versión cuatro de PHP a la cinco.';
-        $this->claves          = 'PHP';
+        $this->descripcion                = 'Se hace un llamado a migrar los sistemas web que aun funcionen con la versión cuatro de PHP a la cinco.';
+        $this->claves                     = 'PHP';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/PHP4HaMuertoLargaVidaAPHP5.md';
         // Para el Organizador
-        $this->categorias      = array('Desarrollo', 'PHP');
+        $this->categorias                 = array('Desarrollo', 'PHP');
     } // constructor
 
 } // Clase PHP4HaMuertoLargaVidaAPHP5

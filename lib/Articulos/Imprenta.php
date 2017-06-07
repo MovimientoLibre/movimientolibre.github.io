@@ -37,10 +37,11 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
         $this->titulo                    = 'Artículos';
         $this->descripcion               = 'Artículos de Movimiento Libre sobre temáticas diversas.';
         $this->claves                    = 'Articulos';
-        // Si la publicación NO define estos parámetros, imprenta se los copia
-        $this->nombre_menu               = 'Artículos';
+        // Parámetros que el Recolector definirá en las Publicaciones si éstas no los tienen
+        $this->aparece_en_pagina_inicial = TRUE;
         $this->imagen                    = '../imagenes/imagen.jpg';
         $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->nombre_menu               = 'Artículos';
         $this->poner_imagen_en_contenido = TRUE;
         // Clase para hacer el index.html
         $this->indices_paginas           = '\\Base\\PaginasDetallados';

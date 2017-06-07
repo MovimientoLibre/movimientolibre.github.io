@@ -34,17 +34,17 @@ class TankMan extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Tank Man';
-        $this->fecha           = '2009-06-04T12:55';
+        $this->nombre                     = 'Tank Man';
+        $this->fecha                      = '2009-06-04T12:55';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'tank-man';
+        $this->archivo                    = 'tank-man';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El 5 de junio de 1989, un hombre desconocido fue fotografiado y filmado cuando se paró frente a una fila de tanques de guerra que iban a la Plaza Tian\'anmen, impidiendo por poco tiempo su avance.';
-        $this->claves          = 'Tank man, Plaza Tian\'anmen';
+        $this->descripcion                = 'El 5 de junio de 1989, un hombre desconocido fue fotografiado y filmado cuando se paró frente a una fila de tanques de guerra que iban a la Plaza Tian\'anmen, impidiendo por poco tiempo su avance.';
+        $this->claves                     = 'Tank man, Plaza Tian\'anmen';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/TankMan.md';
         // Para el Organizador
-        $this->categorias      = array('Política');
+        $this->categorias                 = array('Política');
     } // constructor
 
 } // Clase TankMan

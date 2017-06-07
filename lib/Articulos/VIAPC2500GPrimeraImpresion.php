@@ -34,17 +34,17 @@ class VIAPC2500GPrimeraImpresion extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Via pc2500 primera impresión';
-        $this->fecha           = '2007-09-24T13:00';
+        $this->nombre                     = 'Via pc2500 primera impresión';
+        $this->fecha                      = '2007-09-24T13:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'via-pc2500-primera-impresion';
+        $this->archivo                    = 'via-pc2500-primera-impresion';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Después de mucho tiempo de búsqueda, por fin tengo en mis manos un equipo Mini-ITX de Via Technologies.';
-        $this->claves          = 'Hardware, Tarjeta Madre, VIA, Mini-ITX';
+        $this->descripcion                = 'Después de mucho tiempo de búsqueda, por fin tengo en mis manos un equipo Mini-ITX de Via Technologies.';
+        $this->claves                     = 'Hardware, Tarjeta Madre, VIA, Mini-ITX';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/VIAPC2500GPrimeraImpresion.md';
         // Para el Organizador
-        $this->categorias      = array('Hardware');
+        $this->categorias                 = array('Hardware');
     } // constructor
 
 } // Clase VIAPC2500GPrimeraImpresion

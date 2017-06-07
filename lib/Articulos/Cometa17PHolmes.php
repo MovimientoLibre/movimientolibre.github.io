@@ -34,17 +34,17 @@ class Cometa17PHolmes extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Cometa 17P Holmes';
-        $this->fecha           = '2007-10-31T10:20';
+        $this->nombre                     = 'Cometa 17P Holmes';
+        $this->fecha                      = '2007-10-31T10:20';
         // El nombre del archivo a crear
-        $this->archivo         = 'cometa-17p-holmes';
+        $this->archivo                    = 'cometa-17p-holmes';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'A finales de octubre de 2007, el cometa 17P/Holmes aumentó su brillo de una manera significativa, en cerca de un millón de veces, desde una magnitud 17 hasta una magnitud 2,8 en unas pocas horas';
-        $this->claves          = 'Astronomia, Cometa, 17P, Holmes';
+        $this->descripcion                = 'A finales de octubre de 2007, el cometa 17P/Holmes aumentó su brillo de una manera significativa, en cerca de un millón de veces, desde una magnitud 17 hasta una magnitud 2,8 en unas pocas horas';
+        $this->claves                     = 'Astronomia, Cometa, 17P, Holmes';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/Cometa17PHolmes.md';
         // Para el Organizador
-        $this->categorias      = array('Astronomía');
+        $this->categorias                 = array('Astronomía');
     } // constructor
 
 } // Clase Cometa17PHolmes

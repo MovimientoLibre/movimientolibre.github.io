@@ -34,17 +34,17 @@ class CalculadorasCientificasChinas extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Calculadoras Científicas Chinas';
-        $this->fecha           = '2007-07-28T23:50';
+        $this->nombre                     = 'Calculadoras Científicas Chinas';
+        $this->fecha                      = '2007-07-28T23:50';
         // El nombre del archivo a crear
-        $this->archivo         = 'calculadoras-cientificas-chinas';
+        $this->archivo                    = 'calculadoras-cientificas-chinas';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Su servidor quedó sorprendido al encontrar en Waldos un producto de particular aprecio, a un costo y en tal cantidad que nunca me la hubiera imaginado: calculadoras científicas sin marca a $11.50 más I.V.A.';
-        $this->claves          = 'Calculadoras, Cientificas, Chinas, Waldos';
+        $this->descripcion                = 'Su servidor quedó sorprendido al encontrar en Waldos un producto de particular aprecio, a un costo y en tal cantidad que nunca me la hubiera imaginado: calculadoras científicas sin marca a $11.50 más I.V.A.';
+        $this->claves                     = 'Calculadoras, Cientificas, Chinas, Waldos';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/CalculadorasCientificasChinas.md';
         // Para el Organizador
-        $this->categorias      = array('Vida Cotidiana');
+        $this->categorias                 = array('Vida Cotidiana');
     } // constructor
 
 } // Clase CalculadorasCientificasChinas

@@ -34,17 +34,17 @@ class GULAGPrimerAniversario extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Evento del Primer Aniversario del GULAG';
-        $this->fecha           = '2007-08-20T20:30';
+        $this->nombre                     = 'Evento del Primer Aniversario del GULAG';
+        $this->fecha                      = '2007-08-20T20:30';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'gulag-primer-aniversario';
+        $this->archivo                    = 'gulag-primer-aniversario';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Ponencias muy interesantes, gran camaradería y una buenísima discada es parte de lo mucho que se vivió en el evento con motivo del primer aniversario del GULAG, realizado el sábado 18 de agosto en el Instituto Tecnológico de La Laguna.';
-        $this->claves          = 'GULAG';
+        $this->descripcion                = 'Ponencias muy interesantes, gran camaradería y una buenísima discada es parte de lo mucho que se vivió en el evento con motivo del primer aniversario del GULAG, realizado el sábado 18 de agosto en el Instituto Tecnológico de La Laguna.';
+        $this->claves                     = 'GULAG';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/GULAGPrimerAniversario.md';
         // Para el Organizador
-        $this->categorias      = array('GULAG');
+        $this->categorias                 = array('GULAG');
     } // constructor
 
 } // Clase GULAGPrimerAniversario

@@ -34,17 +34,17 @@ class NuevasTecnologiasEstandaresWeb extends \Base\PublicacionSchemaBlogPosting 
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Nuevas Tecnologías y Estándares para la Web';
-        $this->fecha           = '2015-04-07T10:00';
+        $this->nombre                     = 'Nuevas Tecnologías y Estándares para la Web';
+        $this->fecha                      = '2015-04-07T10:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'nuevas-tecnologias-estandares-web';
+        $this->archivo                    = 'nuevas-tecnologias-estandares-web';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Los sitios web ahora deben ser responsivos, semánticos y apegarse estrictamente a los estándares para garantizar su visualización en la mayoría de los dispositivos.';
-        $this->claves          = 'Estandares, Web, Tecnologias, Nuevas';
+        $this->descripcion                = 'Los sitios web ahora deben ser responsivos, semánticos y apegarse estrictamente a los estándares para garantizar su visualización en la mayoría de los dispositivos.';
+        $this->claves                     = 'Estandares, Web, Tecnologias, Nuevas';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/NuevasTecnologiasEstandaresWeb.md';
         // Para el Organizador
-        $this->categorias      = array('Desarrollo');
+        $this->categorias                 = array('Desarrollo');
     } // constructor
 
 } // Clase NuevasTecnologiasEstandaresWeb

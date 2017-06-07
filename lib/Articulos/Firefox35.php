@@ -34,17 +34,17 @@ class Firefox35 extends \Base\PublicacionSchemaBlogPosting {
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Firefox 3.5';
-        $this->fecha           = '2009-07-02T00:39';
+        $this->nombre                     = 'Firefox 3.5';
+        $this->fecha                      = '2009-07-02T00:39';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'firefox-3.5';
+        $this->archivo                    = 'firefox-3.5';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Mozilla Firefox 3.5 ya está disponible para su descarga y nos brinda muchas novedades.';
-        $this->claves          = 'Mozilla, Firefox, KDE';
+        $this->descripcion                = 'Mozilla Firefox 3.5 ya está disponible para su descarga y nos brinda muchas novedades.';
+        $this->claves                     = 'Mozilla, Firefox, KDE';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/Firefox35.md';
         // Para el Organizador
-        $this->categorias      = array('Firefox');
+        $this->categorias                 = array('Firefox');
     } // constructor
 
 } // Clase Firefox35

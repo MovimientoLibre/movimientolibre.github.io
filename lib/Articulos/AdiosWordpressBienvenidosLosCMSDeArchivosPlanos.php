@@ -34,17 +34,17 @@ class AdiosWordpressBienvenidosLosCMSDeArchivosPlanos extends \Base\PublicacionS
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Adiós Wordpress, 2014 será el año de los CMS de archivos planos';
-        $this->fecha           = '2014-02-28T10:30';
+        $this->nombre                     = 'Adiós Wordpress, 2014 será el año de los CMS de archivos planos';
+        $this->fecha                      = '2014-02-28T10:30';
         // El nombre del archivo a crear
-        $this->archivo         = 'adios-wordpress-bienvenidos-los-cms-de-archivos-planos';
+        $this->archivo                    = 'adios-wordpress-bienvenidos-los-cms-de-archivos-planos';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Ha comenzado una nueva ola de sitios web que buscan la simplicidad y la rápida implementación abandonando el uso de Wordpress como software para implementar un CMS.';
-        $this->claves          = 'CMS, Gestor, Contenidos, Sitio Web';
+        $this->descripcion                = 'Ha comenzado una nueva ola de sitios web que buscan la simplicidad y la rápida implementación abandonando el uso de Wordpress como software para implementar un CMS.';
+        $this->claves                     = 'CMS, Gestor, Contenidos, Sitio Web';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/AdiosWordpressBienvenidosLosCMSDeArchivosPlanos.md';
         // Para el Organizador
-        $this->categorias      = array('Software Libre');
+        $this->categorias                 = array('Software Libre');
     } // constructor
 
 } // Clase AdiosWordpressBienvenidosLosCMSDeArchivosPlanos

@@ -34,17 +34,17 @@ class RevistaDelConsumidorLaDescargaTeHaraLibre extends \Base\PublicacionSchemaB
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Revista del Consumidor - La descarga te hará libre';
-        $this->fecha           = '2009-05-09T14:00';
+        $this->nombre                     = 'Revista del Consumidor - La descarga te hará libre';
+        $this->fecha                      = '2009-05-09T14:00';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'revista-del-consumidor-la-descarga-te-hara-libre';
+        $this->archivo                    = 'revista-del-consumidor-la-descarga-te-hara-libre';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'Una muy grata sorpresa es encontrar un artículo dedicado al software gratuito en una revista de circulación nacional. Es en la Revista del Consumidor de Mayo de 2009.';
-        $this->claves          = 'Software gratuito, Revista Consumidor, GNU Linux';
+        $this->descripcion                = 'Una muy grata sorpresa es encontrar un artículo dedicado al software gratuito en una revista de circulación nacional. Es en la Revista del Consumidor de Mayo de 2009.';
+        $this->claves                     = 'Software gratuito, Revista Consumidor, GNU Linux';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/RevistaDelConsumidorLaDescargaTeHaraLibre.md';
         // Para el Organizador
-        $this->categorias      = array('Educación', 'GNU Linux');
+        $this->categorias                 = array('Educación', 'GNU Linux');
     } // constructor
 
 } // Clase RevistaDelConsumidorLaDescargaTeHaraLibre

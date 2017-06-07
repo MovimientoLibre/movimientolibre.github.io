@@ -34,17 +34,17 @@ class VenezuelaImpulsaElSoftwareLibre extends \Base\PublicacionSchemaBlogPosting
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título y fecha
-        $this->nombre          = 'Venezuela impulsa el software libre';
-        $this->fecha           = '2008-01-01T21:20';
+        $this->nombre                     = 'Venezuela impulsa el software libre';
+        $this->fecha                      = '2008-01-01T21:20';
         // El nombre del archivo a crear, también es el nombre del directorio donde pueden estar la imagen e imagen-previa
-        $this->archivo         = 'venezuela-impulsa-el-software-libre';
+        $this->archivo                    = 'venezuela-impulsa-el-software-libre';
         // La descripción y claves dan información a los buscadores y redes sociales
-        $this->descripcion     = 'El movimiento del software libre no sólo se trata de programas para computadoras; traspasa a los ámbitos culturales, sociales y políticos. Vemos en varios países de europa y algunos en latinoamérica iniciativas concretas a nivel gubernamental por usar y promover el software libre.';
-        $this->claves          = 'Software Libre, Venezuela';
+        $this->descripcion                = 'El movimiento del software libre no sólo se trata de programas para computadoras; traspasa a los ámbitos culturales, sociales y políticos. Vemos en varios países de europa y algunos en latinoamérica iniciativas concretas a nivel gubernamental por usar y promover el software libre.';
+        $this->claves                     = 'Software Libre, Venezuela';
         // Ruta al archivo markdown con el contenido
         $this->contenido_archivo_markdown = 'lib/Articulos/VenezuelaImpulsaElSoftwareLibre.md';
         // Para el Organizador
-        $this->categorias      = array('Política');
+        $this->categorias                 = array('Política');
     } // constructor
 
 } // Clase VenezuelaImpulsaElSoftwareLibre

@@ -37,10 +37,11 @@ class Imprenta extends \Base\ImprentaPublicaciones {
         $this->titulo                    = 'Licencias';
         $this->descripcion               = 'Algunas licencias de software libre y abierto.';
         $this->claves                    = 'Licencias, Software, Libre, Abierto';
-        // Si la publicación NO define estos parámetros, imprenta se los copia
-        $this->nombre_menu               = 'Licencias';
+        // Parámetros que el Recolector definirá en las Publicaciones si éstas no los tienen
+        $this->aparece_en_pagina_inicial = FALSE;
         $this->imagen                    = '../imagenes/imagen.jpg';
         $this->imagen_previa             = '../imagenes/imagen-previa.jpg';
+        $this->nombre_menu               = 'Licencias';
         $this->poner_imagen_en_contenido = FALSE;
         // Clase para hacer el index.html
         $this->indices_paginas           = '\\Base\\PaginasListado';

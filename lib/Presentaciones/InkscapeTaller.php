@@ -45,8 +45,6 @@ class InkscapeTaller extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/Presentaciones/InkscapeTaller.md';
         // Para el Organizador
         $this->categorias                 = array('Software Libre');
-        // Banderas
-        $this->poner_imagen_en_contenido  = FALSE;
     } // constructor
 
 } // Clase InkscapeTaller
