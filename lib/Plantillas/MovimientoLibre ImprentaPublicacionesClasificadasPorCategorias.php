@@ -2,7 +2,7 @@
 /**
  * Movimiento Libre - Imprenta Publicaciones Clasificadas por Categorías
  *
- * Copyright (C) 2016 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
+ * Copyright (C) 2017 Guillermo Valdés Lozano <guivaloz@movimientolibre.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,12 +25,12 @@ namespace DIRECTORIO;
 /**
  * Clase Imprenta
  */
-class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
+class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {ob}
 
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct() {ob}
         // Nombre del directorio dentro de /lib que contiene los archivos con las publicaciones
         $this->publicaciones_directorio  = 'DIRECTORIO';
         // Los siguientes parámetros dan datos para el concentrador y las páginas que no los tienen
@@ -60,8 +60,8 @@ class Imprenta extends \Base\ImprentaPublicacionesClasificadasPorCategorias {
         $this->nivel                     = 00000;
         // Ejecutar constructor en el padre
         parent::__construct();
-    } // constructor
+    {cb} // constructor
 
-} // Clase Imprenta
+{cb} // Clase Imprenta
 
 ?>

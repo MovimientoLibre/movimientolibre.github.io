@@ -25,12 +25,12 @@ namespace DIRECTORIO;
 /**
  * Clase CLASE
  */
-class CLASE extends \Base\PublicacionSchemaBlogPosting {
+class CLASE extends \Base\PublicacionSchemaBlogPosting {ob}
 
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct() {ob}
         // Ejecutar constructor en el padre
         parent::__construct();
         // Título, autor y fecha
@@ -46,8 +46,8 @@ class CLASE extends \Base\PublicacionSchemaBlogPosting {
         $this->contenido_archivo_markdown = 'lib/DIRECTORIO/CLASE.md';
         // Para el Organizador
         $this->categorias                 = array('Categoria1', 'Categoria2', 'Categoria3');
-    } // constructor
+    {cb} // constructor
 
-} // Clase CLASE
+{cb} // Clase CLASE
 
 ?>
