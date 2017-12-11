@@ -5,11 +5,22 @@
     <link>http://www.movimientolibre.com</link>
     <description>Últimas publicaciones de Movimiento Libre.</description>
     <language>es-MX</language>
-    <pubDate>Sat, 08 Jul 2017 02:10:32 -0500</pubDate>
+    <pubDate>Sun, 10 Dec 2017 22:56:24 -0600</pubDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Plataforma de Conocimiento v3.0</generator>
     <webMaster>guivaloz@movimientolibre.com (Guillermo Valdes Lozano)</webMaster>
     <atom:link href="http://www.movimientolibre.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Plataforma del Conocimiento - Guía Descriptiva</title>
+      <link>http://www.movimientolibre.com/presentaciones/plataforma-del-conocimiento-guia-descriptiva.html</link>
+      <guid isPermaLink="false">presentaciones-plataforma-del-conocimiento-guia-descriptiva</guid>
+      <pubDate>Sun, 10 Dec 2017 10:40:00 -0600</pubDate>
+      <author>guivaloz</author>
+      <description><![CDATA[<!-- Mostrar la primer imagen de la presentación como vínculo a la página -->
+<a href="http://www.movimientolibre.com/presentaciones/plataforma-del-conocimiento-guia-descriptiva.html"><img src="http://www.movimientolibre.com/presentaciones/plataforma-del-conocimiento-guia-descriptiva/plataforma-del-conocimiento-guia-descriptiva-18.jpg"></a>
+<p>Con motivo de los informes de fin de año y términos de la administración, elaboré esta presentación como una guía descriptiva del proyecto público más importante en el que he colaborado a la fecha: La Plataforma del Conocimiento del IMPLAN Torreón.</p>
+]]></description>
+    </item>
     <item>
       <title>Plataformas de Conocimientos</title>
       <link>http://www.movimientolibre.com/presentaciones/plataformas-de-conocimientos.html</link>
@@ -612,24 +623,6 @@ auto-sync = yes
 <ul>
 <li><a href="http://www.movimientolibre.com/presentaciones/git-y-github-taller/git-y-github-taller.pdf">Presentación PDF 232 KB</a></li>
 <li><a href="http://www.movimientolibre.com/presentaciones/git-y-github-taller/git-y-github-taller.tar.gz">Fuentes LaTeX 3.3 KB</a></li>
-</ul>
-]]></description>
-    </item>
-    <item>
-      <title>Introducción a la Ciencia de Datos</title>
-      <link>http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion.html</link>
-      <guid isPermaLink="false">presentaciones-ciencia-de-datos-introduccion</guid>
-      <pubDate>Sun, 27 Sep 2015 23:30:00 -0500</pubDate>
-      <author>guivaloz</author>
-      <description><![CDATA[<p><a href="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-04.jpg"><img src="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-04-small.jpg" alt="Ciencia de Datos 04"></a> <a href="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-09.jpg"><img src="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-09-small.jpg" alt="Ciencia de Datos 09"></a> <a href="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-14.jpg"><img src="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-14-small.jpg" alt="Ciencia de Datos 14"></a></p>
-
-<p>En el <a href="http://www.gulag.org.mx/entradas/2015-09-02-congreso-2015.html">Congreso de Software Libre GULAG 2015</a> impartí la conferencia <strong>Introducción a la Ciencia de Datos</strong> donde hable'sobre lo que hacen los <strong>Científicos de Datos</strong> y de lo que se necesita para llegar a serlo.</p>
-
-<h4>Descargar:</h4>
-
-<ul>
-<li><a href="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-introduccion.pdf">Presentación PDF 1.5 MB</a></li>
-<li><a href="http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/ciencia-de-datos-introduccion.tar.gz">Fuentes LaTeX 1.4 MB</a></li>
 </ul>
 ]]></description>
     </item>
