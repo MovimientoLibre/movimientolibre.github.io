@@ -1,203 +1,165 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-<!-- ==========================================================================================
-
-     Movimiento Libre
-
-        3er. generación de la Plataforma del Conocimiento
-        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
-
-        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
-        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
-
-        Descargue, estudie y colabore bajando todo este sitio web:
-          GitHub             https://github.com/MovimientoLibre/movimientolibre.github.io
-
-        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
-          PHP                http://php.net
-          Twitter Bootstrap  http://getbootstrap.com
-          StartBootStrap     http://startbootstrap.com
-          Morris.js          https://morrisjs.github.io/morris.js/
-          Font Awesome       http://fontawesome.io
-          DataTables         https://www.datatables.net
-          GitHub             https://github.com
-          Evolvere iconos    http://github.com/franksouza183/EvolvereSuit
-
-     ========================================================================================== -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.">
-  <meta name="author" content="guivaloz">
-  <meta name="keywords" content="Gentoo Linux, Instalacion">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <title>Gentoo Linux en una netbook (2010, parte 1) - Movimiento Libre</title>
-  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
-  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
-  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
-  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Movimiento Libre">
-  <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-  <link rel="stylesheet" type="text/css" href="../dist/css/movimiento-libre.css">
-  <!-- SOPORTE PARA IE -->
-  <!--[if lt IE 9]>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="imagenes/icon-normal.png" sizes="128x128">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="alternate" href="rss.xml" type="application/rss+xml" title="Movimiento Libre">
+  <link rel="stylesheet" href="../theme/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' type='text/css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
+  <link rel="stylesheet" href="../theme/css/clean-blog.min.css">
 </head>
+
 <body>
-<div id="wrapper">
-  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
       <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../portafolio/soluciones.html">Portafolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/apuntes.html">Apuntes</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/articulos.html">Artículos</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/presentaciones.html">Presentaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contacto/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
     </div>
-  <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
-            <input type="hidden" value="" name="cx">
-            <input type="hidden" value="FORID:11" name="cof">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-        </li>
-        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
-        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
-        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
-      </ul>
-    </div>
-  </div>
   </nav>
-  <div id="page-wrapper">
-    <div class="cuerpo">
-      <article><div itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="encabezado">
-          <h1 itemprop="headline">Gentoo Linux en una netbook (2010, parte 1)</h1>
-          <div class="encabezado-descripcion" itemprop="description">Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.</div>
-          <div class="encabezado-autor-fecha">
-            Por <span itemprop="author">guivaloz</span> -
-            <meta itemprop="datePublished" content="2010-11-20T10:40">20/11/2010 10:40
+  <!-- Navigation end -->
+
+  <!-- Main content start -->
+  <header class="masthead" style="background-image: url('../images/apuntes.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Gentoo Linux en una netbook (2010, parte 1)</h1>
+            <h2 class="subheading"><p>Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.</p></h2>
+            <span class="meta">2010-11-20 10:40:00-06:00</span>
           </div>
         </div>
-        <div itemprop="articleBody">
-<!-- Contenido: Inicia  -->
-<p>Después de varios meses de tener una instalación completa de <a href="http://www.kde.org/">KDE</a> en mi <em>netbook</em> comenzé a pensar de que el poderoso y grande ambiente gráfico le restaba potencial a mi equipo. Era frecuente que el administrador de archivos Dolphin demorara algunos segundos en cargar. También la carga y velocidad de respuesta de la suite de información personal (PIM), en particular de <a href="http://pim.kde.org/">KMail</a>, era lenta.</p>
+      </div>
+    </div>
+  </header>
 
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <a href="../portafolio/soluciones.html">
+              Conozca las nuevas <strong>soluciones en desarrollo de software</strong> a la medida.
+            </a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <p>Después de varios meses de tener una instalación completa de <a href="http://www.kde.org/">KDE</a> en mi <em>netbook</em> comenzé a pensar de que el poderoso y grande ambiente gráfico le restaba potencial a mi equipo. Era frecuente que el administrador de archivos Dolphin demorara algunos segundos en cargar. También la carga y velocidad de respuesta de la suite de información personal (PIM), en particular de <a href="http://pim.kde.org/">KMail</a>, era lenta.</p>
 <p>El concepto de una <em>netbook</em> involucra un procesador versátil y modesto. El <a href="http://es.wikipedia.org/wiki/Intel_Atom">Intel Atom</a> fue diseñado con ese fin, hereda mucha tecnología de la familia Pentium y consume poca energía para prolongar la duración de la carga en un equipo portátil. Pero <strong>no</strong> se trata de un procesador de alto rendimiento. Recordemos que fue <em>Windows XP</em> y no <em>Windows Vista</em> el que apareció preinstalado en las <em>netbooks</em> a la venta, por obvias razones.</p>
-
 <p>Antes de buscar la reinstalación, me pregunté... ¿de verdad necesito vistosos elementos en mi escritorio?, ¿vale la pena que <a href="http://www.kde.org/workspaces/plasmadesktop/">Plasma</a> me consuma desde el 5% al 50% de mi procesador y en consecuencia más carga de mi batería?. Fue entonces que decidí arriesgarme, y tomar un entorno más simple, más rápido, que me consumiera menos recursos.</p>
-
 <p>Siguiendo los pasos de esta guía, lograremos tener un sistema <a href="http://www.gentoo.org/">Gentoo Linux</a> con tres opciones gráficas de trabajo:</p>
-
 <ul>
 <li><a href="http://www.fluxbox.org/">Fluxbox</a> es un gestor de ventanas muy ligero.</li>
 <li><a href="http://www.xfce.org/">XFCE4</a> es un entorno gráfico ligero con una buena cantidad de comodidades.</li>
 <li><a href="http://www.compiz.org/">Compiz</a> es un gestor de ventanas modular con efectos espectaculares.</li>
 </ul>
-
 <p>Aclaro que lo que sigue es solo una guía; los pasos que su servidor ha ejecutado. Usted tiene la libertad de tomar el rumbo que guste. No deje de consultar la <a href="http://www.gentoo.org/doc/en/handbook/">Documentación Oficial de Instalación</a> de Gentoo.</p>
-
 <p>A continuación, documento paso a paso la instalación de Gentoo Linux en una <em>netbook</em> con procesador <strong>Intel Atom N280</strong>. Le informo que los comandos con # son ejecutados con el super-usuario <strong>root</strong>, que de hecho, son la mayoría.</p>
-
-<p><a href="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-640x480.jpg"><img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-320x240.jpg"></a></p>
-
+<p><a href="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-640x480.jpg"><img class="img-fluid" src="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-320x240.jpg"></a></p>
 <h3>Instalación asistida</h3>
-
 <p>No dudo que una <em>netbook</em> pueda compilar todos los paquetes que necesito instalar para mi escritorio con Gentoo Linux; pero tardaría mucho, mucho tiempo. Es por ello que le paso esa labor a un equipo más poderoso; que lo haga en menos tiempo.</p>
-
 <p>Ante esto... si los equipos son distintos... ¿funcionará lo que compile uno en el otro?. Para ello hay que revisar las similitudes y diferencias entre los procesadores de ambos equipos. Revise en <a href="https://wiki.gentoo.org/">Gentoo Wiki</a> el documento <a href="https://wiki.gentoo.org/wiki/Safe_Cflags">Safe CFlags</a> el cual muestra los parámetros recomendados de compilación para cada procesador.</p>
-
 <p>Afortunadamente, en el momento de escribir esta guía, tanto el <strong>Intel DualCore</strong> como el <strong>Atom 230, 330 N-Series</strong> tienen los mismos parámetros de compilación:</p>
+<div class="highlight"><pre><span></span>CHOST=&quot;i686-pc-linux-gnu&quot;
+CFLAGS=&quot;-march=prescott -O2 -fomit-frame-pointer -pipe&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
+</pre></div>
 
-<pre><code>CHOST="i686-pc-linux-gnu"
-CFLAGS="-march=prescott -O2 -fomit-frame-pointer -pipe"
-CXXFLAGS="${CFLAGS}"
-</code></pre>
 
 <p>También es posible hacer compilación asistida si el procesador del equipo <em>poderoso</em> tiene la misma arquitectura y/o es más <em>nuevo</em> que el de los equipos de destino. Cuestión de probarlo. Por ejemplo, las compilaciones hechas con parámetros para el <strong>VIA C7</strong> en el <em>Intel DualCore</em> me han funcionado:</p>
+<div class="highlight"><pre><span></span>CHOST=&quot;i686-pc-linux-gnu&quot;
+CFLAGS=&quot;-march=i686 -mmmx -msse -msse2 -msse3 -O2 -pipe -fomit-frame-pointer&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
+</pre></div>
 
-<pre><code>CHOST="i686-pc-linux-gnu"
-CFLAGS="-march=i686 -mmmx -msse -msse2 -msse3 -O2 -pipe -fomit-frame-pointer"
-CXXFLAGS="${CFLAGS}"
-</code></pre>
 
 <p>Para hacer una instalación asistida elija una ubicación en el disco duro del equipo <em>poderoso</em> con suficiente espacio; lo necesario para contener el sistema completo y los archivos que descargue. Para dar una cifra, sugiero unos 8 GB libres. En mi equipo <em>poderoso</em> uso /mnt/archivos/instalaciones para ese fin. Voy a crear ahí un directorio con el nombre <em>prescott</em>:</p>
-
-<pre><code># cd /mnt/archivos/instalaciones
+<div class="highlight"><pre><span></span># cd /mnt/archivos/instalaciones
 # mkdir prescott
-</code></pre>
+</pre></div>
+
 
 <h3>Use el stage más reciente</h3>
-
 <p>Mi sitio predilecto para descargar el <em>stage</em> es en el <a href="http://osuosl.org/">Oregon State University - Open Source Lab</a> en éste URL: <a href="http://gentoo.osuosl.org/releases/">http://gentoo.osuosl.org/releases/</a>. Note que parece un nuevo <em>stage</em> frecuentemente. <strong>Le recomiendo que siempre use el stage más nuevo</strong>. Cuando escribí esta guía, bajé el <em>stage</em> <strong>x86</strong> del 9 de noviembre de 2010:</p>
-
-<pre><code># cd /mnt/archivos/software/gentoo
+<div class="highlight"><pre><span></span># cd /mnt/archivos/software/gentoo
 # wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2
 # wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2.CONTENTS
 # wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2.DIGESTS
 # wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2.DIGESTS.asc
-</code></pre>
+</pre></div>
+
 
 <p>Compruebe la integridad de los archivos descargados con...</p>
+<div class="highlight"><pre><span></span># md5sum -c stage3-i686-20101109.tar.bz2.DIGESTS
+</pre></div>
 
-<pre><code># md5sum -c stage3-i686-20101109.tar.bz2.DIGESTS
-</code></pre>
 
 <p>Desempaque.</p>
-
-<pre><code># cd /mnt/archivos/instalaciones/prescott
+<div class="highlight"><pre><span></span># cd /mnt/archivos/instalaciones/prescott
 # tar xvf /mnt/archivos/software/gentoo/stage3-i686-20101109.tar.bz2
-</code></pre>
+</pre></div>
+
 
 <p>Monte <em>dev</em> y <em>proc</em>.</p>
-
-<pre><code># mount -t proc none /mnt/archivos/instalaciones/prescott/proc
+<div class="highlight"><pre><span></span># mount -t proc none /mnt/archivos/instalaciones/prescott/proc
 # mount -o bind /dev /mnt/archivos/instalaciones/prescott/dev
-</code></pre>
+</pre></div>
+
 
 <p>Copie la configuración de resolución de nombres. Esto es necesario para cuando el Gentoo esté <em>enjaulado</em> por <em>chroot</em>, así sabrá cual es el <em>DNS</em> de su red.</p>
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/archivos/instalaciones/prescott/etc/
+</pre></div>
 
-<pre><code># cp /etc/resolv.conf /mnt/archivos/instalaciones/prescott/etc/
-</code></pre>
 
 <p>Ingrese a al <em>stage</em> con <em>chroot</em>.</p>
-
-<pre><code># chroot /mnt/archivos/instalaciones/prescott /bin/bash
+<div class="highlight"><pre><span></span># chroot /mnt/archivos/instalaciones/prescott /bin/bash
 # env-update
 # source /etc/profile
-# export PS1="(prescott) $PS1"
-</code></pre>
+# export PS1=&quot;(prescott) $PS1&quot;
+</pre></div>
+
 
 <h3>Configure</h3>
-
 <p>Edite /etc/make.conf</p>
+<div class="highlight"><pre><span></span># nano -w /etc/make.conf
+</pre></div>
 
-<pre><code># nano -w /etc/make.conf
-</code></pre>
 
 <p>Para el cual sugiero el siguiente contenido...</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # /etc/make.conf
 #
 # Para Intel Prescott (Dual Core, Atom) de 32 bits
@@ -205,50 +167,49 @@ CXXFLAGS="${CFLAGS}"
 
 # WARNING: Changing your CHOST is not something that should be done lightly.
 # Please consult http://www.gentoo.org/doc/en/change-chost.xml before changing.
-CHOST="i686-pc-linux-gnu"
+CHOST=&quot;i686-pc-linux-gnu&quot;
 
 #
 # Netbook con Intel Atom N280 @ 1.66 GHz
 #
-CFLAGS="-march=prescott -O2 -fomit-frame-pointer -pipe"
-CXXFLAGS="${CFLAGS}"
+CFLAGS=&quot;-march=prescott -O2 -fomit-frame-pointer -pipe&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
 
 # Puede hacer tres compilaciones en paralelo
-MAKEOPTS="-j3"
+MAKEOPTS=&quot;-j3&quot;
 
 # Espaniol como lengua
-LINGUAS="es es_MX"
+LINGUAS=&quot;es es_MX&quot;
 
 # Aceptar todas las licencias
-ACCEPT_LICENSE="*"
+ACCEPT_LICENSE=&quot;*&quot;
 
 #
 # Use Flags
 #
 
 # Intel Dual Core, Atom
-USE="acpi laptop mmx mmxext sse sse2 ssse3 threads"
+USE=&quot;acpi laptop mmx mmxext sse sse2 ssse3 threads&quot;
 
 #
 # Servidor Portage
 #
 SERVIDOR_PORTAGE=otroequipo.tured.lan
 PORTDIR=/usr/portage
-DISTDIR=${PORTDIR}/distfiles
-SYNC=rsync://${SERVIDOR_PORTAGE}/gentoo-portage
-FETCHCOMMAND="rsync rsync://${SERVIDOR_PORTAGE}/gentoo-distfiles/\\${FILE} ${DISTDIR}"
-</code></pre>
+DISTDIR=<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles
+SYNC=rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><span class="cp">}</span>/gentoo-portage
+FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><span class="cp">}</span>/gentoo-distfiles/\\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
+</pre></div>
+
 
 <p>Observe el final de /etc/make.conf donde configuro que las descargas se hagan desde <em>otroequipo.tured.lan</em>. Sustituya éste por el nombre de un equipo o por la dirección IP del equipo que comparta su <em>portage</em> con el <em>daemon rsyncd</em>. En cambio, si no usa un equipo para compartir el <em>portage</em> entonces omita las cinco últimas líneas para que las descargas se hagan desde internet.</p>
-
 <p>Configure /etc/locale.gen</p>
+<div class="highlight"><pre><span></span># nano -w /etc/locale.gen
+</pre></div>
 
-<pre><code># nano -w /etc/locale.gen
-</code></pre>
 
 <p>Con este contenido...</p>
-
-<pre><code># EEUU
+<div class="highlight"><pre><span></span># EEUU
 en_US ISO-8859-1
 en_US.UTF-8 UTF-8
 
@@ -260,123 +221,119 @@ es_ES@euro ISO-8859-15
 # Mexico
 es_MX ISO-8859-1
 es_MX.UTF-8 UTF-8
-</code></pre>
+</pre></div>
+
 
 <p>Luego ejecute...</p>
+<div class="highlight"><pre><span></span># locale-gen
+</pre></div>
 
-<pre><code># locale-gen
-</code></pre>
 
 <p>Descargue el <em>portage</em>.</p>
-
-<pre><code># mkdir /usr/portage
+<div class="highlight"><pre><span></span># mkdir /usr/portage
 # emerge --sync
-</code></pre>
+</pre></div>
+
 
 <p>Vamos a crear un nuevo archivo llamado <em>02locales</em>:</p>
+<div class="highlight"><pre><span></span># nano -w /etc/env.d/02locales
+</pre></div>
 
-<pre><code># nano -w /etc/env.d/02locales
-</code></pre>
 
 <p>El archivo /etc/env.d/02locales contiene los parámetros de nuestro idioma y región:</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # /etc/env.d/02locales
 #
-LANG="es_MX.UTF-8"
-LANGUAGE="es_MX.UTF-8"
-LC_ALL="es_MX.UTF-8"
-</code></pre>
+LANG=&quot;es_MX.UTF-8&quot;
+LANGUAGE=&quot;es_MX.UTF-8&quot;
+LC_ALL=&quot;es_MX.UTF-8&quot;
+</pre></div>
+
 
 <p>Configure la zona horaria con:</p>
+<div class="highlight"><pre><span></span># nano -w /etc/conf.d/clock
+</pre></div>
 
-<pre><code># nano -w /etc/conf.d/clock
-</code></pre>
 
 <p>Esta configuración hace que se ajuste la hora al iniciar o terminar el <a href="http://es.wikipedia.org/wiki/Horario_de_verano">Horario de verano</a> conocido en el idioma inglés como <em>Daylight Saving Time</em> (DST).</p>
+<div class="highlight"><pre><span></span>TIMEZONE=&quot;Mexico/General&quot;
+</pre></div>
 
-<pre><code>TIMEZONE="Mexico/General"
-</code></pre>
 
 <p>Configure el mapa de caracteres de la terminal con:</p>
+<div class="highlight"><pre><span></span># nano -w /etc/conf.d/consolefont
+</pre></div>
 
-<pre><code># nano -w /etc/conf.d/consolefont
-</code></pre>
 
 <p>Para tener un mayor soporte de caracteres uso:</p>
+<div class="highlight"><pre><span></span>CONSOLEFONT=&quot;lat9v-16&quot;
+</pre></div>
 
-<pre><code>CONSOLEFONT="lat9v-16"
-</code></pre>
 
 <p>Configure el mapa del teclado con:</p>
+<div class="highlight"><pre><span></span># nano -w /etc/conf.d/keymaps
+</pre></div>
 
-<pre><code># nano -w /etc/conf.d/keymaps
-</code></pre>
 
 <p>La gran mayoría de los teclados de computadoras de México funcionan con:</p>
+<div class="highlight"><pre><span></span>KEYMAP=&quot;la-latin1&quot;
+</pre></div>
 
-<pre><code>KEYMAP="la-latin1"
-</code></pre>
 
 <p>Pero hay también un gran número de teclados españoles, se distinguen por tener la tecla "Ç", para esos hay que usar:</p>
+<div class="highlight"><pre><span></span>KEYMAP=&quot;es&quot;
+</pre></div>
 
-<pre><code>KEYMAP="es"
-</code></pre>
 
 <p>Configure el nombre del equipo con:</p>
+<div class="highlight"><pre><span></span># nano -w /etc/conf.d/hostname
+</pre></div>
 
-<pre><code># nano -w /etc/conf.d/hostname
-</code></pre>
 
 <p>Recargue (de nuevo) las variables del entorno para asegurarnos que se apliquen los cambios hechos hasta el momento.</p>
-
-<pre><code># env-update
+<div class="highlight"><pre><span></span># env-update
 # source /etc/profile
-# export PS1="(prescott) $PS1"
-</code></pre>
+# export PS1=&quot;(prescott) $PS1&quot;
+</pre></div>
+
 
 <h3>¿Quiere recompilar todo?</h3>
-
 <p>Es su decisión tener todos los paquetes del <em>stage</em> compilados a sus parámetros en <em>make.conf</em>. Si así lo desea; ejecute <em>emerge -e world</em>. Pero le advierto que toma bastante tiempo. Si no quiere hacerlo, no hay problema, simplemente cada paquete nuevo que instale o actualice será compilado con los parámetros de <em>make.conf</em>.</p>
-
-<pre><code># emerge -pe world
+<div class="highlight"><pre><span></span># emerge -pe world
 # emerge -e world
-</code></pre>
+</pre></div>
+
 
 <h3>Kernel Linux</h3>
-
 <p>Instale <em>ccache</em>.</p>
-
-<pre><code># emerge ccache
+<div class="highlight"><pre><span></span># emerge ccache
 # ccache -M 2G
-# export PATH="/usr/lib/ccache/bin:${PATH}"
-</code></pre>
+# export PATH=&quot;/usr/lib/ccache/bin:<span class="cp">${</span><span class="n">PATH</span><span class="cp">}</span>&quot;
+</pre></div>
+
 
 <p>Descargue el <em>kernel</em>.</p>
-
-<pre><code># emerge gentoo-sources
+<div class="highlight"><pre><span></span># emerge gentoo-sources
 # cd /usr/src/linux
-</code></pre>
+</pre></div>
+
 
 <p>Si ya he compilado la misma versión con anterioridad, copie el archivo <em>.config</em> al directorio /usr/src/linux</p>
-
-<pre><code># make menuconfig
+<div class="highlight"><pre><span></span># make menuconfig
 # make
 # make modules_install
-</code></pre>
+</pre></div>
+
 
 <p>Como se trata de una compilación asistida, no voy a decirle que ejecute <em>make install</em> para instalar el kernel; eso lo haré cuando haya copiado la instalación al equipo final. Lo verá en la siguiente parte de esta guía.</p>
-
 <h3>Configure la tabla de particiones</h3>
-
 <p>Edite /etc/fstab</p>
+<div class="highlight"><pre><span></span># nano -w /etc/fstab
+</pre></div>
 
-<pre><code># nano -w /etc/fstab
-</code></pre>
 
 <p>Este es un ejemplo de /etc/fstab</p>
-
-<pre><code># &lt;fs&gt;      &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;          &lt;dump/pass&gt;
+<div class="highlight"><pre><span></span># &lt;fs&gt;      &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;          &lt;dump/pass&gt;
 /dev/sda1   /boot           ext2      noauto,noatime  1 2
 /dev/sda2   /home           ext4      defaults        0 1
 /dev/sda3   /mnt/respaldos  ext4      noauto          0 0
@@ -387,62 +344,81 @@ LC_ALL="es_MX.UTF-8"
 /dev/sda9   /usr/portage    reiserfs  defaults        0 1
 /dev/sda10  /tmp            reiserfs  noatime         0 1
 /dev/sda11  /mnt/archivos   ext4      defaults        0 1
-</code></pre>
+</pre></div>
+
 
 <h3>Fin de la primera parte</h3>
-
 <p>Termina aquí la primera parte con una instalación de Gentoo Linux configurada y con un <em>kernel</em> preparado. En la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">segunda parte</a>, cambiaremos el <em>profile</em> a <em>desktop</em> e iremos instalando las aplicaciones favoritas de su servidor.</p>
-
 <p><a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">Vaya a la Segunda parte.</a></p>
 
-<!-- Contenido: Termina -->
-        </div>
-              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-          <h3 class="titulo" itemprop="name">Movimiento Libre</h3>
-          <div class="descripcion" itemprop="description">Colección de ideas por Guillermo Valdés Lozano (guivaloz).</div>
-          <div class="contenido-imagen-previa-final"></div>
-        </div>
-      </div></article>
-    </div>
-    <div class="mapa-inferior">
-      <div class="row">
-        <div class="col-md-8">
-            <a href="../index.html">Inicio</a> |
-            <a href="../apuntes/index.html">Apuntes</a> |
-            <a href="../articulos/index.html">Artículos</a> |
-            <a href="../licencias/index.html">Licencias</a> |
-            <a href="../presentaciones/index.html">Presentaciones</a> |
-            <a href="../contacto/contacto.html">Contacto</a>
-        </div>
-        <div class="col-md-4">
-          <div class="pull-right redes-sociales">
-            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-linkedin-square" href="https://www.linkedin.com/in/guivaloz" target="_blank"></a>
-            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
-            <a class="fa fa-rss-square" href="../rss.xml"></a>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Javascript global inicia -->
-<script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
-<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
-<!-- Javascript global termina -->
-<!-- Javascript inicia -->
-<!-- Javascript termina -->
-<!-- Javascript Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-74263253-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  </article>
+  <!-- Main content end -->
+
+  <hr>
+
+  <!-- Footer start -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://plus.google.com/+GuillermoVald%C3%A9sLozano">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">
+            Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+            Se otorga permiso para copiar, distribuir y/o modificar este documento.
+            Protegido la licencia <a href="../licencias/gfdl-es.html">GFDL</a>.<br>
+            Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+            que es potenciado por <a href="http://python.org">Python</a>.
+            Tema <a href="https://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a>
+            por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer end -->
+
+  <!-- Javascript start -->
+  <script src="../theme/vendor/jquery/jquery.min.js"></script>
+  <script src="../theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../theme/js/clean-blog.min.js"></script>
+  <!-- Javascript end -->
+
 </body>
+
 </html>

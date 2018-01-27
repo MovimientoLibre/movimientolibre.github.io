@@ -1,213 +1,184 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-<!-- ==========================================================================================
-
-     Movimiento Libre
-
-        3er. generación de la Plataforma del Conocimiento
-        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
-
-        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
-        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
-
-        Descargue, estudie y colabore bajando todo este sitio web:
-          GitHub             https://github.com/MovimientoLibre/movimientolibre.github.io
-
-        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
-          PHP                http://php.net
-          Twitter Bootstrap  http://getbootstrap.com
-          StartBootStrap     http://startbootstrap.com
-          Morris.js          https://morrisjs.github.io/morris.js/
-          Font Awesome       http://fontawesome.io
-          DataTables         https://www.datatables.net
-          GitHub             https://github.com
-          Evolvere iconos    http://github.com/franksouza183/EvolvereSuit
-
-     ========================================================================================== -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Durante mi última instalación no dejé de tomar notas de esta instalación de un sistema completo. Logro con ésto tener dos entornos gráficos: XFCE4 y KDE, servidor MySQL/PostgreSQL/Apache/PHP y mucho más.">
-  <meta name="author" content="guivaloz">
-  <meta name="keywords" content="Gentoo Linux, ASUS, ROG, Instalacion">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <title>Apuntes de Instalación de Gentoo Linux en Laptop - Movimiento Libre</title>
-  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
-  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
-  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
-  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Movimiento Libre">
-  <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-  <link rel="stylesheet" type="text/css" href="../dist/css/movimiento-libre.css">
-  <!-- SOPORTE PARA IE -->
-  <!--[if lt IE 9]>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="imagenes/icon-normal.png" sizes="128x128">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="alternate" href="rss.xml" type="application/rss+xml" title="Movimiento Libre">
+  <link rel="stylesheet" href="../theme/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' type='text/css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
+  <link rel="stylesheet" href="../theme/css/clean-blog.min.css">
 </head>
+
 <body>
-<div id="wrapper">
-  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
       <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../portafolio/soluciones.html">Portafolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/apuntes.html">Apuntes</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/articulos.html">Artículos</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/presentaciones.html">Presentaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contacto/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
     </div>
-  <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
-            <input type="hidden" value="" name="cx">
-            <input type="hidden" value="FORID:11" name="cof">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-        </li>
-        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
-        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
-        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
-      </ul>
-    </div>
-  </div>
   </nav>
-  <div id="page-wrapper">
-    <div class="cuerpo">
-      <article><div itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="encabezado">
-          <h1 itemprop="headline">Apuntes de Instalación de Gentoo Linux en Laptop</h1>
-          <div class="encabezado-descripcion" itemprop="description">Durante mi última instalación no dejé de tomar notas de esta instalación de un sistema completo. Logro con ésto tener dos entornos gráficos: XFCE4 y KDE, servidor MySQL/PostgreSQL/Apache/PHP y mucho más.</div>
-          <div class="encabezado-autor-fecha">
-            Por <span itemprop="author">guivaloz</span> -
-            <meta itemprop="datePublished" content="2014-05-16T08:00">16/05/2014 08:00
+  <!-- Navigation end -->
+
+  <!-- Main content start -->
+  <header class="masthead" style="background-image: url('../images/apuntes.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Apuntes de Instalación de Gentoo Linux en Laptop</h1>
+            <h2 class="subheading"><p>Durante mi última instalación no dejé de tomar notas de esta instalación de un sistema completo. Logro con ésto tener dos entornos gráficos: XFCE4 y KDE, servidor MySQL/PostgreSQL/Apache/PHP y mucho más.</p></h2>
+            <span class="meta">2014-05-16 08:00:00-05:00</span>
           </div>
         </div>
-        <div itemprop="articleBody">
-<!-- Contenido: Inicia  -->
-<p><a href="http://www.gentoo.org">Gentoo Linux</a> es una distribución de GNU/Linux que permite una configuración <em>al extremo</em>; demanda y nos enseña muchas de las cosas que suceden en el fondo, <em>en las entrañas</em> de un Sistema Operativo; pero también <strong>es muy cambiante</strong>: los apuntes que haya hecho hace meses habrán tenido cambios al día de hoy.</p>
+      </div>
+    </div>
+  </header>
 
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <a href="../portafolio/soluciones.html">
+              Conozca las nuevas <strong>soluciones en desarrollo de software</strong> a la medida.
+            </a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <p><a href="http://www.gentoo.org">Gentoo Linux</a> es una distribución de GNU/Linux que permite una configuración <em>al extremo</em>; demanda y nos enseña muchas de las cosas que suceden en el fondo, <em>en las entrañas</em> de un Sistema Operativo; pero también <strong>es muy cambiante</strong>: los apuntes que haya hecho hace meses habrán tenido cambios al día de hoy.</p>
 <p>Por esta razón, durante mi última instalación no dejé de tomar notas de esta instalación de un <strong>sistema completo</strong>. Logro con ésto tener dos entornos gráficos: XFCE4 y KDE, servidor MySQL/PostgreSQL/Apache/PHP y mucho más.</p>
-
 <p><strong>ADVERTENCIA</strong>: El contenido de esta publicación es sólo un respaldo que puede servirle como base. <strong>Algunos comandos pueden destruir la información de su disco duro</strong>; por lo que el autor NO tiene ninguna responsabilidad en lo que usted ejecute. Lea el manual oficial <a href="http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml">Gentoo Handbook AMD64</a>.</p>
-
 <p>Además, en este apunte no pongo los parámetros <strong>pv</strong> en cada <strong>emerge</strong>. Aunque no lo haya escrito, siempre revise las dependencias y los <strong>USE flags</strong> de cada instalación.</p>
-
 <p>Formatee...</p>
-
-<pre><code># mkfs.ext4 -LHDGentoo201405 /dev/sda4
+<div class="highlight"><pre><span></span># mkfs.ext4 -LHDGentoo201405 /dev/sda4
 # mount /dev/sda4 /mnt/gentoo
-</code></pre>
+</pre></div>
+
 
 <p>Sincronize el <em>portage</em>:</p>
+<div class="highlight"><pre><span></span># emerge --sync
+</pre></div>
 
-<pre><code># emerge --sync
-</code></pre>
 
 <p>Descarge el <em>stage</em> de <strong>64 bits</strong> más reciente. Compruebe la integridad del archivo...</p>
-
-<pre><code>$ sha512sum stage3-amd64-20140515.tar.bz2
+<div class="highlight"><pre><span></span>$ sha512sum stage3-amd64-20140515.tar.bz2
 $ cat stage3-amd64-20140515.tar.bz2.DIGETS
-</code></pre>
+</pre></div>
+
 
 <p>Desempaque el <em>stage</em>...</p>
-
-<pre><code># cd /mnt/servidor
+<div class="highlight"><pre><span></span># cd /mnt/servidor
 # tar xvjpf /mnt/blackbox/Compartidos/Software/Gentoo/amd64/stage3-amd64-20140515.tar.bz2
-</code></pre>
+</pre></div>
+
 
 <p>Monte las particiones...</p>
-
-<pre><code># mount -t proc none /mnt/gentoo/proc
+<div class="highlight"><pre><span></span># mount -t proc none /mnt/gentoo/proc
 # mount --rbind /sys /mnt/gentoo/sys
 # mount --rbind /dev /mnt/gentoo/dev
 # mkdir /mnt/gentoo/usr/portage
 # mount /dev/sda6 /mnt/gentoo/usr/portage
-</code></pre>
+</pre></div>
+
 
 <p>Verifique lo montado...</p>
-
-<pre><code># mount | grep /mnt/gentoo
+<div class="highlight"><pre><span></span># mount | grep /mnt/gentoo
 /dev/sda4 on /mnt/gentoo type ext4 (rw)
 none on /mnt/gentoo/proc type proc (rw)
 /sys on /mnt/gentoo/sys type none (rw,bind,rbind)
 /dev on /mnt/gentoo/dev type none (rw,bind,rbind)
 /dev/sda6 on /mnt/gentoo/usr/portage type ext4 (rw)
-</code></pre>
+</pre></div>
+
 
 <p>Copie resolv.conf</p>
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/
+</pre></div>
 
-<pre><code># cp /etc/resolv.conf /mnt/gentoo/etc/
-</code></pre>
 
 <p>Haga el chroot</p>
-
-<pre><code># chroot /mnt/gentoo /bin/bash
+<div class="highlight"><pre><span></span># chroot /mnt/gentoo /bin/bash
 # env-update
 # source /etc/profile
-# export PS1="(nuevo) $PS1"
-</code></pre>
+# export PS1=&quot;(nuevo) $PS1&quot;
+</pre></div>
+
 
 <p>Configure 02locales</p>
+<div class="highlight"><pre><span></span># nano /etc/env.d/02locales
+</pre></div>
 
-<pre><code># nano /etc/env.d/02locales
-</code></pre>
 
 <p>Con este contenido...</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # 02locales
 #
-LANG="es_MX.UTF-8"
-LANGUAGE="es_MX.UTF-8"
-LC_ALL="es_MX.UTF-8"
-</code></pre>
+LANG=&quot;es_MX.UTF-8&quot;
+LANGUAGE=&quot;es_MX.UTF-8&quot;
+LC_ALL=&quot;es_MX.UTF-8&quot;
+</pre></div>
+
 
 <p>Configure locale.gen</p>
+<div class="highlight"><pre><span></span># nano /etc/locale.gen
+</pre></div>
 
-<pre><code># nano /etc/locale.gen
-</code></pre>
 
 <p>Con este contenido...</p>
-
-<pre><code>en_US ISO-8859-1
+<div class="highlight"><pre><span></span>en_US ISO-8859-1
 en_US.UTF-8 UTF-8
 es_ES ISO-8859-1
 es_ES.UTF-8 UTF-8
 es_ES@euro ISO-8859-15
 es_MX ISO-8859-1
 es_MX.UTF-8 UTF-8
-</code></pre>
+</pre></div>
+
 
 <p>Ejecute...</p>
+<div class="highlight"><pre><span></span># locale-gen
+</pre></div>
 
-<pre><code># locale-gen
-</code></pre>
 
 <p>Edite make.conf</p>
+<div class="highlight"><pre><span></span># nano -w /etc/portage/make.conf
+</pre></div>
 
-<pre><code># nano -w /etc/portage/make.conf
-</code></pre>
 
 <p>Si su procesador es genérico de 64 bits</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # /etc/portage/make.conf
 #
 # MINOS Gentoo Linux 64 bits GENERICO
@@ -216,427 +187,448 @@ es_MX.UTF-8 UTF-8
 #
 # 64 bits GENERICO
 #
-CFLAGS="-O2 -pipe"
-CXXFLAGS="${CFLAGS}"
-CHOST="x86_64-pc-linux-gnu"
+CFLAGS=&quot;-O2 -pipe&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
+CHOST=&quot;x86_64-pc-linux-gnu&quot;
 
 # Cantidad de compilaciones simultaneas
-MAKEOPTS="-j2"
+MAKEOPTS=&quot;-j2&quot;
 
 # Español como lengua
-LINGUAS="es es_MX es_AR es_ES"
+LINGUAS=&quot;es es_MX es_AR es_ES&quot;
 
 # Aceptar todas las licencias
-ACCEPT_LICENSE="*"
+ACCEPT_LICENSE=&quot;*&quot;
 
 #
 # USE flags
 #
-USE="acpi mmx sse sse2 sse3 ssse3"
+USE=&quot;acpi mmx sse sse2 sse3 ssse3&quot;
 
 #
 # GRUB 2
 #
-GRUB_PLATFORMS="efi-64"
+GRUB_PLATFORMS=&quot;efi-64&quot;
 
 #
 # Portage
 #
-PORTDIR="/usr/portage"
-DISTDIR="${PORTDIR}/distfiles"
-PKGDIR="${PORTDIR}/packages"
-</code></pre>
+PORTDIR=&quot;/usr/portage&quot;
+DISTDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles&quot;
+PKGDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/packages&quot;
+</pre></div>
+
 
 <p>En cambio, para un <strong>Intel i7 Ivy Bridge</strong> de 4 núcleos ajuste estas líneas...</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # 64 bits Intel Core i3/i5/i7 Ivy Bridge - GCC 4.7 o mayor
 #
-CHOST="x86_64-pc-linux-gnu"
-CFLAGS="-march=core-avx-i -O2 -pipe"
-CXXFLAGS="${CFLAGS}"
+CHOST=&quot;x86_64-pc-linux-gnu&quot;
+CFLAGS=&quot;-march=core-avx-i -O2 -pipe&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
 
 # Cantidad de compilaciones simultaneas
-MAKEOPTS="-j8"
-</code></pre>
+MAKEOPTS=&quot;-j8&quot;
+</pre></div>
+
 
 <p>Revise si necesita actualizaciones...</p>
-
-<pre><code># emerge -pu portage
+<div class="highlight"><pre><span></span># emerge -pu portage
 # emerge -u portage
 # emerge -pu world
 # emerge -u world
-</code></pre>
+</pre></div>
+
 
 <p>Desempaque el kernel...</p>
-
-<pre><code># emerge -pv gentoo-sources
+<div class="highlight"><pre><span></span># emerge -pv gentoo-sources
 # emerge gentoo-sources
-</code></pre>
+</pre></div>
+
 
 <p>Configure y compile el kernel...</p>
-
-<pre><code># cd /usr/src/linux
+<div class="highlight"><pre><span></span># cd /usr/src/linux
 # make defconfig
 # make menuconfig
 # make
 # make modules_install
-</code></pre>
+</pre></div>
+
 
 <p>Otras configuraciones</p>
-
-<pre><code># nano /etc/conf.d/keymaps
+<div class="highlight"><pre><span></span># nano /etc/conf.d/keymaps
 # nano /etc/conf.d/hostname
 # nano /etc/hosts
 # cp /usr/share/zoneinfo/Mexico/General /etc/localtime
-</code></pre>
+</pre></div>
+
 
 <p>Instale herramientas básicas</p>
+<div class="highlight"><pre><span></span># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen btrfs-progs
+</pre></div>
 
-<pre><code># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen btrfs-progs
-</code></pre>
 
 <p>Instale estos servicios básicos</p>
-
-<pre><code># emerge acpid ntp syslog-ng vixie-cron
+<div class="highlight"><pre><span></span># emerge acpid ntp syslog-ng vixie-cron
 # rc-update add acpid default
 # rc-update add syslog-ng default
 # rc-update add vixie-cron default
-</code></pre>
+</pre></div>
+
 
 <p>Instale PCI utils y ALSA</p>
-
-<pre><code># emerge pciutils alsa-utils
+<div class="highlight"><pre><span></span># emerge pciutils alsa-utils
 # rc-update add alsasound boot
-</code></pre>
+</pre></div>
+
 
 <p>Cambie la contraseña de root</p>
+<div class="highlight"><pre><span></span># passwd
+</pre></div>
 
-<pre><code># passwd
-</code></pre>
 
 <p>Cambie el profile</p>
-
-<pre><code># eselect profile list
+<div class="highlight"><pre><span></span># eselect profile list
 # eselect profile set default/linux/amd64/13.0/desktop/kde
 # eselect profile show
-</code></pre>
+</pre></div>
+
 
 <p>En este punto hay que mejorar make.conf</p>
+<div class="highlight"><pre><span></span># nano -w /etc/portage/make.conf
+</pre></div>
 
-<pre><code># nano -w /etc/portage/make.conf
-</code></pre>
 
 <p>Y agregue más USE flags y lo referente a X.org</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # USE flags
 #
-USE="acpi laptop mmx sse sse2 sse3 ssse3 wifi"
+USE=&quot;acpi laptop mmx sse sse2 sse3 ssse3 wifi&quot;
 
 # Redes
-USE="${USE} apache2 bittorrent bluetooth cups fuse samba tftp vhosts"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> apache2 bittorrent bluetooth cups fuse samba tftp vhosts&quot;
 
 # Particiones
-USE="${USE} fat ntfs reiserfs"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> fat ntfs reiserfs&quot;
 
 # Base de datos
-USE="${USE} mysql postgres sqlite"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> mysql postgres sqlite&quot;
 
 # Desarrollo (más adelante agregaré java)
-USE="${USE} git php python ruby"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> git php python ruby&quot;
 
 # Graficos
-USE="${USE} corefonts gd graphviz fontconfig freetype imagemagick"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> corefonts gd graphviz fontconfig freetype imagemagick&quot;
 
 # KDE
-USE="${USE} -gnome kde kdepim qalculate qt4 thumbnail xscreensaver"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> -gnome kde kdepim qalculate qt4 thumbnail xscreensaver&quot;
 
 # Sonido
-USE="${USE} a52 aac aften amr cdda cddb cdio cdparanoia dts faac flac"
-USE="${USE} lame live lua gstreamer ogg oggvorbis speex theora"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> a52 aac aften amr cdda cddb cdio cdparanoia dts faac flac&quot;
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> lame live lua gstreamer ogg oggvorbis speex theora&quot;
 
 # Video
-USE="${USE} bidi bluray dv dvb dvd ffmpeg httpd matroska mad mjpeg mpeg mplayer"
-USE="${USE} rtmp stream subtitles svga v4l vaapi vcd vdpau vlm vpx wxwindows xine xv xvmc"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> bidi bluray dv dvb dvd ffmpeg httpd matroska mad mjpeg mpeg mplayer&quot;
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> rtmp stream subtitles svga v4l vaapi vcd vdpau vlm vpx wxwindows xine xv xvmc&quot;
 
 # Varios (más adelante agregaré latex)
-USE="${USE} chm joystick nsplugin R rar wiimote"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> chm joystick nsplugin R rar wiimote&quot;
 
 #
 # X.org
 #
-INPUT_DEVICES="keyboard mouse joystick evdev synaptics wacom"
-VIDEO_CARDS="nouveau vesa"
-</code></pre>
+INPUT_DEVICES=&quot;keyboard mouse joystick evdev synaptics wacom&quot;
+VIDEO_CARDS=&quot;nouveau vesa&quot;
+</pre></div>
+
 
 <p>Cambie a Python 2.7, porque muchos programas piden que por defecto esté esta versión.</p>
-
-<pre><code># eselect python show
+<div class="highlight"><pre><span></span># eselect python show
 python3.3
 # eselect python list
 Available Python interpreters:
 [1]   python2.7
 [2]   python3.3 *
 # eselect python set python2.7
-</code></pre>
+</pre></div>
+
 
 <p>Instale la base de datos: PostgreSQL</p>
+<div class="highlight"><pre><span></span># emerge postgresql-server
+</pre></div>
 
-<pre><code># emerge postgresql-server
-</code></pre>
 
 <p>Instale Ruby y mis gemas preferidas</p>
+<div class="highlight"><pre><span></span># emerge ruby kramdown redcloth
+</pre></div>
 
-<pre><code># emerge ruby kramdown redcloth
-</code></pre>
 
 <p>Instale X.org, Samba, CUPS, GTK+ y MySQL</p>
+<div class="highlight"><pre><span></span># emerge xorg-x11 samba cups gtk+ mysql
+</pre></div>
 
-<pre><code># emerge xorg-x11 samba cups gtk+ mysql
-</code></pre>
 
 <p>Configure X.org</p>
-
-<pre><code># mkdir /etc/X11/xorg.conf.d
+<div class="highlight"><pre><span></span># mkdir /etc/X11/xorg.conf.d
 # nano /etc/X11/xorg.conf.d/12-keymap.conf
 # nano /etc/X11/xorg.conf.d/50-synaptics.conf
 # rc-update add dbus default
-</code></pre>
+</pre></div>
+
 
 <p>Instale utilerías de redes...</p>
+<div class="highlight"><pre><span></span># emerge app-admin/sudo bind-tools traceroute bridge-utils
+</pre></div>
 
-<pre><code># emerge app-admin/sudo bind-tools traceroute bridge-utils
-</code></pre>
 
 <p>Instale FFMpeg</p>
+<div class="highlight"><pre><span></span># emerge ffmpeg
+</pre></div>
 
-<pre><code># emerge ffmpeg
-</code></pre>
 
 <p>Instale Apache2</p>
+<div class="highlight"><pre><span></span># emerge apache
+</pre></div>
 
-<pre><code># emerge apache
-</code></pre>
 
 <p>Instale PHP</p>
+<div class="highlight"><pre><span></span># emerge php
+</pre></div>
 
-<pre><code># emerge php
-</code></pre>
 
 <p>Instale</p>
+<div class="highlight"><pre><span></span># emerge graphviz imagemagick app-crypt/gnupg
+</pre></div>
 
-<pre><code># emerge graphviz imagemagick app-crypt/gnupg
-</code></pre>
 
 <p>Instale KDE-Base</p>
-
-<pre><code># emerge kdebase-meta
+<div class="highlight"><pre><span></span># emerge kdebase-meta
 # rc-update add consolekit default
 # rc-update add xdm default
-</code></pre>
+</pre></div>
+
 
 <p>Instale tipografías</p>
+<div class="highlight"><pre><span></span># emerge corefonts droid freefonts libertine-ttf terminus-font ttf-bitstream-vera
+</pre></div>
 
-<pre><code># emerge corefonts droid freefonts libertine-ttf terminus-font ttf-bitstream-vera
-</code></pre>
 
 <p>Instale herremientas para redes</p>
+<div class="highlight"><pre><span></span># emerge wpa_supplicant ppp rfkill
+</pre></div>
 
-<pre><code># emerge wpa_supplicant ppp rfkill
-</code></pre>
 
 <p>Instale complementos de KDE</p>
-
-<pre><code># emerge kdeplasma-addons kdemultimedia-meta kdegraphics-meta kdeadmin-meta kdeutils-meta kdeartwork-meta kdenetwork-meta kdewebdev-meta
+<div class="highlight"><pre><span></span># emerge kdeplasma-addons kdemultimedia-meta kdegraphics-meta kdeadmin-meta kdeutils-meta kdeartwork-meta kdenetwork-meta kdewebdev-meta
 # emerge kdepim-meta
 # emerge kate
-</code></pre>
+</pre></div>
+
 
 <p>Instale geany y GIT</p>
-
-<pre><code># emerge geany geany-plugins geany-themes
+<div class="highlight"><pre><span></span># emerge geany geany-plugins geany-themes
 # emerge dev-vcs/git
-</code></pre>
+</pre></div>
+
 
 <p>Actualización general</p>
-
-<pre><code># emerge -puND world
+<div class="highlight"><pre><span></span># emerge -puND world
 # emerge -uND world
-</code></pre>
+</pre></div>
+
 
 <p>Instale multimedia</p>
-
-<pre><code># emerge mplayer
+<div class="highlight"><pre><span></span># emerge mplayer
 # emerge moc
 # emerge clementine
-</code></pre>
+</pre></div>
+
 
 <p>Instale extras de GTK+ para KDE</p>
-
-<pre><code># emerge gtk-engines-qtpixmap gtk-engines-qtcurve gtk-chtheme
+<div class="highlight"><pre><span></span># emerge gtk-engines-qtpixmap gtk-engines-qtcurve gtk-chtheme
 # emerge gnome-themes
 # emerge gnome-icon-theme tango-icon-theme faenza-icon-theme oxygen-gtk
-</code></pre>
+</pre></div>
+
 
 <p>Instale firmware</p>
+<div class="highlight"><pre><span></span># emerge linux-firmware
+</pre></div>
 
-<pre><code># emerge linux-firmware
-</code></pre>
 
 <p>Instale LaTeX y R</p>
-
-<pre><code># emerge R
+<div class="highlight"><pre><span></span># emerge R
 # emerge texlive
-</code></pre>
+</pre></div>
+
 
 <p>Instale herramientas para analizar redes</p>
+<div class="highlight"><pre><span></span># emerge nmap kismet wireshark
+</pre></div>
 
-<pre><code># emerge nmap kismet wireshark
-</code></pre>
 
 <p>Instale software de virtualización</p>
+<div class="highlight"><pre><span></span># emerge libvirt virt-manager
+</pre></div>
 
-<pre><code># emerge libvirt virt-manager
-</code></pre>
 
 <p>Me gusta tener mi Proxy personal con Squid</p>
+<div class="highlight"><pre><span></span># emerge squid
+</pre></div>
 
-<pre><code># emerge squid
-</code></pre>
 
 <p>Instale la suite educativa y juegos</p>
-
-<pre><code># emerge kdeedu-meta
+<div class="highlight"><pre><span></span># emerge kdeedu-meta
 # emerge kdegames-meta
 # emerge krusader
-</code></pre>
+</pre></div>
+
 
 <p>Instale programas de internet</p>
-
-<pre><code># emerge firefox
+<div class="highlight"><pre><span></span># emerge firefox
 # emerge thunderbird
 # emerge ktorrent
 # emerge konversation
 # emerge rssquite
 # emerge vidalia
-</code></pre>
+</pre></div>
+
 
 <p>Instale el reproductor multimedia vlc</p>
-
-<pre><code># emerge vlc
+<div class="highlight"><pre><span></span># emerge vlc
 # emerge audacity
 # emerge avidemux
-</code></pre>
+</pre></div>
+
 
 <p>Instale software gráfico</p>
-
-<pre><code># emerge gimp inkscape
+<div class="highlight"><pre><span></span># emerge gimp inkscape
 # emerge digikam k3b
-</code></pre>
+</pre></div>
+
 
 <p>Instale software que usa LaTeX</p>
+<div class="highlight"><pre><span></span># emerge lyx kile
+</pre></div>
 
-<pre><code># emerge lyx kile
-</code></pre>
 
 <p>Habilite java (en los USE flags) e instale LibreOffice</p>
-
-<pre><code># emerge libreoffice
+<div class="highlight"><pre><span></span># emerge libreoffice
 # emerge -puND world
 # emerge -uND world
-</code></pre>
+</pre></div>
+
 
 <p>Instale Google Chrome</p>
+<div class="highlight"><pre><span></span># emerge google-chrome
+</pre></div>
 
-<pre><code># emerge google-chrome
-</code></pre>
 
 <p>Instale XFCE4</p>
-
-<pre><code># emerge xfce4-meta
+<div class="highlight"><pre><span></span># emerge xfce4-meta
 # emerge xfce4-battery-plugin xfce4-cpugraph-plugin xfce4-mixer xfce4-power-manager xfce4-screenshooter xfce4-systemload-plugin xfce4-taskmanager
 # emerge xfce4-terminal tumbler thunar-archive-plugin thunar-media-tags-plugin
-</code></pre>
+</pre></div>
+
 
 <p>Instale VirtualBox</p>
+<div class="highlight"><pre><span></span># emerge virtualbox
+</pre></div>
 
-<pre><code># emerge virtualbox
-</code></pre>
 
 <p>Instale el agente OpenSSH</p>
+<div class="highlight"><pre><span></span># emerge ksshaskpass
+</pre></div>
 
-<pre><code># emerge ksshaskpass
-</code></pre>
 
 <p>Y configure editando los archivos...</p>
-
-<pre><code># nano /etc/kde/startup/agent-startup.sh
+<div class="highlight"><pre><span></span># nano /etc/kde/startup/agent-startup.sh
 # nano /etc/kde/shutdown/agent-shutdown.sh
-</code></pre>
+</pre></div>
+
 
 <p>Agregue su usuario</p>
-
-<pre><code># useradd -g users -G tty,wheel,lp,video,audio,cdrom,cdrw,usb,uucp,cron -m usuario
+<div class="highlight"><pre><span></span># useradd -g users -G tty,wheel,lp,video,audio,cdrom,cdrw,usb,uucp,cron -m usuario
 # passwd usuario
-</code></pre>
+</pre></div>
+
 
 <p>¿Quiere copiar TODO el S.O. a otra partición? Por ejemplo, a una ya montada en /mnt/ssdgentoo</p>
-
-<pre><code># cd /mnt/gentoo
+<div class="highlight"><pre><span></span># cd /mnt/gentoo
 # tar cf - --exclude=lost+found * | ( cd /mnt/ssdgentoo/; tar xfp -)
-</code></pre>
+</pre></div>
+
 
 <p>Reinicie y pruebe.</p>
 
-<!-- Contenido: Termina -->
-        </div>
-              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-          <h3 class="titulo" itemprop="name">Movimiento Libre</h3>
-          <div class="descripcion" itemprop="description">Colección de ideas por Guillermo Valdés Lozano (guivaloz).</div>
-          <div class="contenido-imagen-previa-final"></div>
-        </div>
-      </div></article>
-    </div>
-    <div class="mapa-inferior">
-      <div class="row">
-        <div class="col-md-8">
-            <a href="../index.html">Inicio</a> |
-            <a href="../apuntes/index.html">Apuntes</a> |
-            <a href="../articulos/index.html">Artículos</a> |
-            <a href="../licencias/index.html">Licencias</a> |
-            <a href="../presentaciones/index.html">Presentaciones</a> |
-            <a href="../contacto/contacto.html">Contacto</a>
-        </div>
-        <div class="col-md-4">
-          <div class="pull-right redes-sociales">
-            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-linkedin-square" href="https://www.linkedin.com/in/guivaloz" target="_blank"></a>
-            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
-            <a class="fa fa-rss-square" href="../rss.xml"></a>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Javascript global inicia -->
-<script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
-<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
-<!-- Javascript global termina -->
-<!-- Javascript inicia -->
-<!-- Javascript termina -->
-<!-- Javascript Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-74263253-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  </article>
+  <!-- Main content end -->
+
+  <hr>
+
+  <!-- Footer start -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://plus.google.com/+GuillermoVald%C3%A9sLozano">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">
+            Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+            Se otorga permiso para copiar, distribuir y/o modificar este documento.
+            Protegido la licencia <a href="../licencias/gfdl-es.html">GFDL</a>.<br>
+            Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+            que es potenciado por <a href="http://python.org">Python</a>.
+            Tema <a href="https://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a>
+            por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer end -->
+
+  <!-- Javascript start -->
+  <script src="../theme/vendor/jquery/jquery.min.js"></script>
+  <script src="../theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../theme/js/clean-blog.min.js"></script>
+  <!-- Javascript end -->
+
 </body>
+
 </html>

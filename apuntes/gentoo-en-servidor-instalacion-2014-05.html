@@ -1,162 +1,131 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-<!-- ==========================================================================================
-
-     Movimiento Libre
-
-        3er. generación de la Plataforma del Conocimiento
-        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
-
-        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
-        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
-
-        Descargue, estudie y colabore bajando todo este sitio web:
-          GitHub             https://github.com/MovimientoLibre/movimientolibre.github.io
-
-        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
-          PHP                http://php.net
-          Twitter Bootstrap  http://getbootstrap.com
-          StartBootStrap     http://startbootstrap.com
-          Morris.js          https://morrisjs.github.io/morris.js/
-          Font Awesome       http://fontawesome.io
-          DataTables         https://www.datatables.net
-          GitHub             https://github.com
-          Evolvere iconos    http://github.com/franksouza183/EvolvereSuit
-
-     ========================================================================================== -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su desempeño y seguridad sean de lo mejor.">
-  <meta name="author" content="guivaloz">
-  <meta name="keywords" content="Gentoo Linux, Servidor, Instalacion">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <title>Instalación de Gentoo Linux para un servidor - Movimiento Libre</title>
-  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
-  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
-  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
-  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Movimiento Libre">
-  <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-  <link rel="stylesheet" type="text/css" href="../dist/css/movimiento-libre.css">
-  <!-- SOPORTE PARA IE -->
-  <!--[if lt IE 9]>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="imagenes/icon-normal.png" sizes="128x128">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="alternate" href="rss.xml" type="application/rss+xml" title="Movimiento Libre">
+  <link rel="stylesheet" href="../theme/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' type='text/css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
+  <link rel="stylesheet" href="../theme/css/clean-blog.min.css">
 </head>
+
 <body>
-<div id="wrapper">
-  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
       <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../portafolio/soluciones.html">Portafolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/apuntes.html">Apuntes</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/articulos.html">Artículos</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/presentaciones.html">Presentaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contacto/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
     </div>
-  <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
-            <input type="hidden" value="" name="cx">
-            <input type="hidden" value="FORID:11" name="cof">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-        </li>
-        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
-        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
-        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
-      </ul>
-    </div>
-  </div>
   </nav>
-  <div id="page-wrapper">
-    <div class="cuerpo">
-      <article><div itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="encabezado">
-          <h1 itemprop="headline">Instalación de Gentoo Linux para un servidor</h1>
-          <div class="encabezado-descripcion" itemprop="description">En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su desempeño y seguridad sean de lo mejor.</div>
-          <div class="encabezado-autor-fecha">
-            Por <span itemprop="author">guivaloz</span> -
-            <meta itemprop="datePublished" content="2014-06-15T08:00">15/06/2014 08:00
+  <!-- Navigation end -->
+
+  <!-- Main content start -->
+  <header class="masthead" style="background-image: url('../images/apuntes.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Instalación de Gentoo Linux para un servidor</h1>
+            <h2 class="subheading"><p>En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su desempeño y seguridad sean de lo mejor.</p></h2>
+            <span class="meta">2014-06-15 08:00:00-05:00</span>
           </div>
         </div>
-        <div itemprop="articleBody">
-<!-- Contenido: Inicia  -->
-<p>Cuando hacemos una instalación de <a href="http://www.gentoo.org">Gentoo Linux</a> en una PC o laptop buscamos tener entorno gráfico y muchos programas; como reproductores multimedia, navegadores de internet, herramientas de desarrollo y hasta una suite de oficina. En cambio, <strong>para un servidor, nos enfocamos en instalar el sistema operativo base y los servicios que vaya otorgar a la red local o al internet.</strong></p>
+      </div>
+    </div>
+  </header>
 
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <a href="../portafolio/soluciones.html">
+              Conozca las nuevas <strong>soluciones en desarrollo de software</strong> a la medida.
+            </a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <p>Cuando hacemos una instalación de <a href="http://www.gentoo.org">Gentoo Linux</a> en una PC o laptop buscamos tener entorno gráfico y muchos programas; como reproductores multimedia, navegadores de internet, herramientas de desarrollo y hasta una suite de oficina. En cambio, <strong>para un servidor, nos enfocamos en instalar el sistema operativo base y los servicios que vaya otorgar a la red local o al internet.</strong></p>
 <p>En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su <strong>desempeño</strong> y <strong>seguridad</strong> sean de lo mejor.</p>
-
 <p>En el siguiente apunte listo los pasos que tomé para instalar un <strong>servidor web con Apache/PHP/MySQL/PostgreSQL</strong>. No hago una explicación detallada de cada paso; simplemente enlisto los comandos para instalar.</p>
-
 <p><strong>ADVERTENCIA</strong>: El contenido de esta publicación es sólo un respaldo que puede servirle como base. <strong>Algunos comandos pueden destruir la información de su disco duro</strong>; por lo que el autor NO tiene ninguna responsabilidad en lo que resulte. Lea el manual oficial <a href="http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml">Gentoo Handbook AMD64</a>.</p>
-
-<h2>Construir el Sistema</h2>
-
+<h3>Construir el Sistema</h3>
 <p>La gran flexibilidad de Gentoo Linux nos permite hacer esta "construcción" en un subdirectorio o una partición del disco duro. En contraste, otros sistemas operativos requieren un disco duro dedicado y reiniciar la computadora para ejecutar su asistente de instalación. Dicho de otra manera; puede estar construyendo un nuevo Gentoo Linux en una terminal mientras sigue trabajando/entreteniéndose en otra ventana.</p>
-
 <p>Ya teniendo particionado el disco duro y destinando <strong>/dev/sda5</strong> a la raíz del S.O. Formatee...</p>
-
-<pre><code># mkfs.ext4 -L Servidor201405 /dev/sda5
+<div class="highlight"><pre><span></span># mkfs.ext4 -L Servidor201405 /dev/sda5
 # mkdir /mnt/gentoo
 # mount /dev/sda5 /mnt/gentoo
-</code></pre>
+</pre></div>
+
 
 <p>Previamente he bajado el <em>stage</em> y puesto en <strong>/mnt/tmp</strong>. Desempaque...</p>
-
-<pre><code># cd /mnt/gentoo
+<div class="highlight"><pre><span></span># cd /mnt/gentoo
 # tar xvjpf /mnt/tmp/stage3-amd64-20140515.tar.bz2
-</code></pre>
+</pre></div>
+
 
 <p>Monte las particiones lógicas...</p>
-
-<pre><code># mount -t proc none /mnt/gentoo/proc
+<div class="highlight"><pre><span></span># mount -t proc none /mnt/gentoo/proc
 # mount --rbind /sys /mnt/gentoo/sys
 # mount --rbind /dev /mnt/gentoo/dev
-</code></pre>
+</pre></div>
+
 
 <p>Tengo una partición dedicada para <strong>/usr/portage</strong> en <strong>/dev/sda6</strong>, así que sólo la monto en <strong>/mnt/gentoo/usr/portage</strong></p>
-
-<pre><code># mkdir /mnt/gentoo/usr/portage
+<div class="highlight"><pre><span></span># mkdir /mnt/gentoo/usr/portage
 # mount /dev/sda6 /mnt/gentoo/usr/portage
-</code></pre>
+</pre></div>
+
 
 <p>Verifique lo montado...</p>
+<div class="highlight"><pre><span></span># mount | grep /mnt/gentoo
+</pre></div>
 
-<pre><code># mount | grep /mnt/gentoo
-</code></pre>
 
 <p>Copie <strong>resolv.conf</strong></p>
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/
+</pre></div>
 
-<pre><code># cp /etc/resolv.conf /mnt/gentoo/etc/
-</code></pre>
 
 <p>Edite <strong>make.conf</strong></p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/portage/make.conf
+</pre></div>
 
-<pre><code># nano -w /mnt/gentoo/etc/portage/make.conf
-</code></pre>
 
 <p>Con este contenido...</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # /etc/portage/make.conf
 #
 # Servidor Apache/PHP/PostgreSQL Gentoo Linux
@@ -165,313 +134,306 @@
 #
 # Servidor 64 bits GENERICO
 #
-CFLAGS="-O2 -pipe"
-CXXFLAGS="${CFLAGS}"
-CHOST="x86_64-pc-linux-gnu"
+CFLAGS=&quot;-O2 -pipe&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
+CHOST=&quot;x86_64-pc-linux-gnu&quot;
 
 # Cantidad de compilaciones simultaneas
-MAKEOPTS="-j2"
+MAKEOPTS=&quot;-j2&quot;
 
 # Español como lengua
-LINGUAS="es es_MX es_AR es_ES"
+LINGUAS=&quot;es es_MX es_AR es_ES&quot;
 
 # Aceptar todas las licencias
-ACCEPT_LICENSE="*"
+ACCEPT_LICENSE=&quot;*&quot;
 
 #
 # USE flags
 #
-USE="mmx sse sse2"
+USE=&quot;mmx sse sse2&quot;
 
 # Redes
-USE="${USE} apache2 fuse vhosts"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> apache2 fuse vhosts&quot;
 
 # Base de datos
-USE="${USE} mysql postgres sqlite"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> mysql postgres sqlite&quot;
 
 # Desarrollo
-USE="${USE} git php python ruby"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> git php python ruby&quot;
 
 # Graficos
-USE="${USE} corefonts fontconfig freetype gd gnuplot graphviz imagemagick jpeg png tiff truetype"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> corefonts fontconfig freetype gd gnuplot graphviz imagemagick jpeg png tiff truetype&quot;
 
 # Varios
-USE="${USE} latex"
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> latex&quot;
 
 #
 # Portage, esto es para usar otra computadora en la red como proveedor del portage y los paquetes.
 # Cambie servidor.dominio.lan por el nombre o dirección IP
 #
 SERVIDOR_PORTAGE=servidor.dominio.lan
-PORTDIR="/usr/portage"
-DISTDIR="${PORTDIR}/distfiles"
-PKGDIR="${PORTDIR}/packages"
-SYNC=rsync://${SERVIDOR_PORTAGE}/gentoo-portage
-FETCHCOMMAND="rsync rsync://${SERVIDOR_PORTAGE}/gentoo-distfiles/\${FILE} ${DISTDIR}"
-</code></pre>
+PORTDIR=&quot;/usr/portage&quot;
+DISTDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles&quot;
+PKGDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/packages&quot;
+SYNC=rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><span class="cp">}</span>/gentoo-portage
+FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><span class="cp">}</span>/gentoo-distfiles/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
+</pre></div>
+
 
 <p>Configure <strong>locale.gen</strong></p>
+<div class="highlight"><pre><span></span># nano /mnt/gentoo/etc/locale.gen
+</pre></div>
 
-<pre><code># nano /mnt/gentoo/etc/locale.gen
-</code></pre>
 
 <p>Con este contenido...</p>
-
-<pre><code>en_US ISO-8859-1
+<div class="highlight"><pre><span></span>en_US ISO-8859-1
 en_US.UTF-8 UTF-8
 es_ES ISO-8859-1
 es_ES.UTF-8 UTF-8
 es_ES@euro ISO-8859-15
 es_MX ISO-8859-1
 es_MX.UTF-8 UTF-8
-</code></pre>
+</pre></div>
+
 
 <p>Configure <strong>02locales</strong></p>
+<div class="highlight"><pre><span></span># nano /mnt/gentoo/etc/env.d/02locales
+</pre></div>
 
-<pre><code># nano /mnt/gentoo/etc/env.d/02locales
-</code></pre>
 
 <p>Con este contenido...</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # 02locales
 #
-LANG="es_MX.UTF-8"
-LANGUAGE="es_MX.UTF-8"
-LC_ALL="es_MX.UTF-8"
-</code></pre>
+LANG=&quot;es_MX.UTF-8&quot;
+LANGUAGE=&quot;es_MX.UTF-8&quot;
+LC_ALL=&quot;es_MX.UTF-8&quot;
+</pre></div>
+
 
 <p>Haga el <em>chroot</em>:</p>
-
-<pre><code># chroot /mnt/gentoo /bin/bash
+<div class="highlight"><pre><span></span># chroot /mnt/gentoo /bin/bash
 # env-update
 # source /etc/profile
-# export PS1="(nuevo) $PS1"
-</code></pre>
+# export PS1=&quot;(nuevo) $PS1&quot;
+</pre></div>
+
 
 <p>Ejecute...</p>
+<div class="highlight"><pre><span></span># locale-gen
+</pre></div>
 
-<pre><code># locale-gen
-</code></pre>
 
 <p>Salga del <em>chroot</em> y vuelva a entrar con los comandos anteriores; así nos aseguramos que se carguen las configuraciones.</p>
-
 <p>Para poder instalar paquetes que están marcados como inestables, hago uso de la reciente característica de Gentoo para desenmascarar paquetes con archivos individuales:</p>
+<div class="highlight"><pre><span></span># mkdir /etc/portage/package.keywords
+# echo &quot;dev-ruby/kramdown&quot; &gt; /etc/portage/package.keywords/dev-ruby_kramdown
+# echo &quot;sys-fs/ecryptfs-utils&quot; &gt; /etc/portage/package.keywords/sys-fs_ecryptfs-utils
+</pre></div>
 
-<pre><code># mkdir /etc/portage/package.keywords
-# echo "dev-ruby/kramdown" &gt; /etc/portage/package.keywords/dev-ruby_kramdown
-# echo "sys-fs/ecryptfs-utils" &gt; /etc/portage/package.keywords/sys-fs_ecryptfs-utils
-</code></pre>
 
 <p>También para los <em>USE flags</em> se puede hacer lo mismo:</p>
+<div class="highlight"><pre><span></span># mkdir /etc/portage/package.use
+# echo &quot;app-text/texlive extra pstricks&quot; &gt; /etc/portage/package.use/app-text_texlive
+# echo &quot;net-dns/bind -berkdb -mysql -postgres&quot; &gt; /etc/portage/package.use/net-dns_bind
+</pre></div>
 
-<pre><code># mkdir /etc/portage/package.use
-# echo "app-text/texlive extra pstricks" &gt; /etc/portage/package.use/app-text_texlive
-# echo "net-dns/bind -berkdb -mysql -postgres" &gt; /etc/portage/package.use/net-dns_bind
-</code></pre>
 
 <p>Como esta instalación es para un servidor NO cambio el profile, dejo el básico de <strong>AMD64</strong>:</p>
-
-<pre><code># eselect profile show
+<div class="highlight"><pre><span></span># eselect profile show
 Current /etc/portage/make.profile symlink:
 default/linux/amd64/13.0
-</code></pre>
+</pre></div>
+
 
 <p>Edite...</p>
-
-<pre><code># nano -w /etc/conf.d/keymaps
+<div class="highlight"><pre><span></span># nano -w /etc/conf.d/keymaps
 # nano -w /etc/hosts
 # nano -w /etc/conf.d/hostname
-</code></pre>
+</pre></div>
+
 
 <p>Luego defina la zona horaria de su región...</p>
+<div class="highlight"><pre><span></span># cp /usr/share/zoneinfo/Mexico/General /etc/localtime
+</pre></div>
 
-<pre><code># cp /usr/share/zoneinfo/Mexico/General /etc/localtime
-</code></pre>
 
 <p>Instale el <em>kernel</em>. Es largo de explicar, así que sólo diré que debe habilitar los controladores <strong>Virtio</strong> que son los necesarios para <strong>KVM</strong>:</p>
-
-<pre><code># emerge gentoo-sources
+<div class="highlight"><pre><span></span># emerge gentoo-sources
 # cd /usr/src/linux
 # make menuconfig
 # make
 # make modules_install
-</code></pre>
+</pre></div>
+
 
 <p>Instale unas herramientas básicas...</p>
+<div class="highlight"><pre><span></span># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen pciutils
+</pre></div>
 
-<pre><code># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen pciutils
-</code></pre>
 
 <p>Instale estos servicios básicos...</p>
-
-<pre><code># emerge acpid ntp syslog-ng vixie-cron logrotate
+<div class="highlight"><pre><span></span># emerge acpid ntp syslog-ng vixie-cron logrotate
 # rc-update add acpid default
 # rc-update add syslog-ng default
 # rc-update add vixie-cron default
 # rc-update add ntpd default
-</code></pre>
+</pre></div>
+
 
 <p>Cambie la contraseña de <em>root</em>:</p>
+<div class="highlight"><pre><span></span># passwd
+</pre></div>
 
-<pre><code># passwd
-</code></pre>
 
 <p>Instale la base de datos <strong>PostgreSQL</strong>:</p>
+<div class="highlight"><pre><span></span># emerge postgresql-server
+</pre></div>
 
-<pre><code># emerge postgresql-server
-</code></pre>
 
 <p>Instale <strong>Ruby</strong> y la gema <strong>RedCloth</strong> que uso para el <a href="http://cms.movimientolibre.com">CMS de Movimiento Libre</a>:</p>
+<div class="highlight"><pre><span></span># emerge ruby redcloth
+</pre></div>
 
-<pre><code># emerge ruby redcloth
-</code></pre>
 
 <p>Instale <strong>MySQL</strong>:</p>
+<div class="highlight"><pre><span></span># emerge mysql
+</pre></div>
 
-<pre><code># emerge mysql
-</code></pre>
 
 <p>Instale <strong>Apache2</strong>:</p>
+<div class="highlight"><pre><span></span># emerge apache
+</pre></div>
 
-<pre><code># emerge apache
-</code></pre>
 
 <p>Instale <strong>PHP</strong>:</p>
+<div class="highlight"><pre><span></span># emerge php
+</pre></div>
 
-<pre><code># emerge php
-</code></pre>
 
 <p>Instale <strong>LaTeX</strong> y la gema de <strong>Ruby</strong> <strong>Kramdown</strong> que también uso en el CMS:</p>
+<div class="highlight"><pre><span></span># emerge texlive kramdown
+</pre></div>
 
-<pre><code># emerge texlive kramdown
-</code></pre>
 
 <p>Instale herramientas gráficas:</p>
+<div class="highlight"><pre><span></span># emerge graphviz imagemagick sci-visualization/gnuplot
+</pre></div>
 
-<pre><code># emerge graphviz imagemagick sci-visualization/gnuplot
-</code></pre>
 
 <p>Instale <strong>Git</strong>:</p>
+<div class="highlight"><pre><span></span># emerge git
+</pre></div>
 
-<pre><code># emerge git
-</code></pre>
 
 <p>Instale software para cifrado de discos:</p>
+<div class="highlight"><pre><span></span># emerge ecryptfs-utils cryptsetup
+</pre></div>
 
-<pre><code># emerge ecryptfs-utils cryptsetup
-</code></pre>
 
 <p>Al término de esta construcción, nos salimos del <em>chroot</em> y desmontamos las particiones auxiliares, más NO la raíz.</p>
-
-<pre><code># exit
+<div class="highlight"><pre><span></span># exit
 # umount -l /mnt/gentoo/sys
 # umount -l /mnt/gentoo/dev
 # umount /mnt/gentoo/proc
 # umount /mnt/gentoo/usr/portage
-</code></pre>
+</pre></div>
+
 
 <h2>Preparar la virtualización KVM</h2>
-
 <p>Haciendo una analogía a <a href="https://es.wikipedia.org/wiki/Frankenstein_o_el_moderno_Prometeo">Frankestein</a>, ya tenemos listo el <em>cerebro</em> ahora vamos a preparar un <em>cuerpo</em>: Usando <a href="http://www.linux-kvm.org/page/Main_Page">KVM</a> cree una nueva virtualización con un disco duro virtual de 24,576 MB (o sea, 24 GB) y arranque con el ISO de Gentoo.</p>
-
 <p>Particione a su gusto con:</p>
+<div class="highlight"><pre><span></span># fdisk /dev/vda
+</pre></div>
 
-<pre><code># fdisk /dev/vda
-</code></pre>
 
 <p>Formatee la partición que va ser la raíz, en mi ejemplo es la <strong>/dev/vda6</strong></p>
+<div class="highlight"><pre><span></span># mkfs.ext4 -L Gentoo /dev/vda6
+</pre></div>
 
-<pre><code># mkfs.ext4 -L Gentoo /dev/vda6
-</code></pre>
 
 <p>Monte la raíz:</p>
+<div class="highlight"><pre><span></span># mount /dev/vda6 /mnt/gentoo
+</pre></div>
 
-<pre><code># mount /dev/vda6 /mnt/gentoo
-</code></pre>
 
 <p>Cambie la contraseña root e inicie el <em>daemon</em> OpenSSH...</p>
-
-<pre><code># passwd
+<div class="highlight"><pre><span></span># passwd
 # /etc/init.d/sshd start
-</code></pre>
+</pre></div>
 
-<h2>Copiar todo a la virtualización</h2>
 
+<h3>Copiar todo a la virtualización</h3>
 <p>Estos comandos los ejecuto en mi Gentoo Linux que tengo de base.</p>
-
 <p>En mi caso tengo KVM con un bridge con red <strong>172.16.71.0/24</strong> y he configurado una dirección IP en la virtualización con <strong>172.16.71.11</strong>. Copie TODO a una sola partición de destino con un comando como éste:</p>
+<div class="highlight"><pre><span></span><span class="cp"># cd /mnt/gentoo</span>
+<span class="cp"># tar -cvf - . | ssh root@172.16.71.11 tar -C /mnt/gentoo/ -xf -</span>
+</pre></div>
 
-<pre><code># cd /mnt/gentoo
-# tar -cvf - . | ssh root@172.16.71.11 tar -C /mnt/gentoo/ -xf -
-</code></pre>
 
-<h2>O tener directorios en otras particiones de la virtualización</h2>
-
+<h3>O tener directorios en otras particiones de la virtualización</h3>
 <p>Se vale omitir uno o más directorios para después montar otra partición en la virtualización. Por ejemplo, para mantener <strong>/var</strong> en otra partición, primero copiaría TODO menos <strong>/var</strong> con:</p>
+<div class="highlight"><pre><span></span><span class="cp"># tar -cvf - --exclude=/var . | ssh root@172.16.71.11 tar -C /mnt/gentoo/ -xf -</span>
+</pre></div>
 
-<pre><code># tar -cvf - --exclude=/var . | ssh root@172.16.71.11 tar -C /mnt/gentoo/ -xf -
-</code></pre>
 
 <p>Luego, en la virtualización ejecuto estos comandos, en mi ejemplo <strong>/var</strong> será <strong>/dev/vda7</strong></p>
-
-<pre><code># mkfs.ext4 -L Var /dev/vda7
+<div class="highlight"><pre><span></span># mkfs.ext4 -L Var /dev/vda7
 # mkdir /var
 # mount /dev/vda7 /var
-</code></pre>
+</pre></div>
+
 
 <p>Regreso al sistema Gentoo Linux base y mando copia del directorio <strong>/var</strong> y su contenido</p>
+<div class="highlight"><pre><span></span><span class="cp"># cd /mnt/gentoo/var</span>
+<span class="cp"># tar -cvf - . | ssh root@172.16.71.11 tar -C /mnt/gentoo/var/ -xf -</span>
+</pre></div>
 
-<pre><code># cd /mnt/gentoo/var
-# tar -cvf - . | ssh root@172.16.71.11 tar -C /mnt/gentoo/var/ -xf -
-</code></pre>
 
-<h2>De regreso a la virtualización</h2>
-
+<h3>De regreso a la virtualización</h3>
 <p>Monte...</p>
-
-<pre><code># mount -t proc none /mnt/gentoo/proc
+<div class="highlight"><pre><span></span># mount -t proc none /mnt/gentoo/proc
 # mount -o bind /dev /mnt/gentoo/dev
 # mount -o bind /sys /mnt/gentoo/sys
-</code></pre>
+</pre></div>
+
 
 <p><em>Formatee</em> las otras particiones...</p>
-
-<pre><code># mkfs.ext2 -L Boot /dev/vda1
+<div class="highlight"><pre><span></span># mkfs.ext2 -L Boot /dev/vda1
 # mkfs.ext4 -L Home /dev/vda2
 # mkfs.ext4 -L Portage /dev/vda3
-</code></pre>
+</pre></div>
+
 
 <p>Monte...</p>
-
-<pre><code># mount /dev/vda1 /mnt/gentoo/boot
+<div class="highlight"><pre><span></span># mount /dev/vda1 /mnt/gentoo/boot
 # mount /dev/vda3 /mnt/gentoo/usr/portage
 # mkswap /dev/vda5
 # swapon /dev/vda5
-</code></pre>
+</pre></div>
+
 
 <p>Sincronize el <em>portage</em>, en mi caso tengo un equipo con <em>rsyncd</em> andando...</p>
-
-<pre><code># cd /mnt/gentoo/usr/portage
+<div class="highlight"><pre><span></span># cd /mnt/gentoo/usr/portage
 # rsync -av rsync://servidorlocal/gentoo-portage/* .
-</code></pre>
+</pre></div>
+
 
 <p>Haga el <em>chroot</em>...</p>
-
-<pre><code># cp /etc/resolv.conf /mnt/gentoo/etc/
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/
 # chroot /mnt/gentoo /bin/bash
 # source /etc/profile
-# export PS1="(nuevo) $PS1"
-</code></pre>
+# export PS1=&quot;(nuevo) $PS1&quot;
+</pre></div>
+
 
 <p>Edite <strong>fstab</strong></p>
+<div class="highlight"><pre><span></span># nano -w /etc/fstab
+</pre></div>
 
-<pre><code># nano -w /etc/fstab
-</code></pre>
 
 <p>Esta es una sugerencia de su contenido, va de acuerdo a como haya particionado...</p>
-
-<pre><code># &lt;fs&gt;       &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;            &lt;dump/pass&gt;
+<div class="highlight"><pre><span></span># &lt;fs&gt;       &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;            &lt;dump/pass&gt;
 /dev/vda1    /boot           ext2      noauto,noatime    1 2
 /dev/vda2    /home           ext4      defaults          0 1
 /dev/vda3    /usr/portage    ext4      defaults          0 0
@@ -479,179 +441,209 @@ default/linux/amd64/13.0
 /dev/vda5    none            swap      sw                0 0
 /dev/vda6    /               ext4      defaults          0 1
 /dev/vda7    /var            ext4      noatime           0 0
-</code></pre>
+</pre></div>
+
 
 <p>Instale el <em>kernel</em>...</p>
-
-<pre><code># cd /usr/src/linux
+<div class="highlight"><pre><span></span># cd /usr/src/linux
 # make install
-</code></pre>
+</pre></div>
+
 
 <p>Instale <strong>GRUB</strong>:</p>
-
-<pre><code># emerge -pv grub
+<div class="highlight"><pre><span></span># emerge -pv grub
 # emerge grub
 # grub2-install /dev/vda
-</code></pre>
+</pre></div>
+
 
 <p>Configure <strong>GRUB</strong>:</p>
-
-<pre><code># cd /etc/default
+<div class="highlight"><pre><span></span># cd /etc/default
 # nano grub
 # cd /etc/grub.d
 # nano 40_custom
-</code></pre>
+</pre></div>
+
 
 <p>En <strong>40_custom</strong> escriba la ruta correcta al kernel que haya instalado...</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="nb">exec</span> tail -n +3 <span class="nv">$0</span>
+<span class="c1"># This file provides an easy way to add custom menu entries.  Simply type the</span>
+<span class="c1"># menu entries you want to add after this comment.  Be careful not to change</span>
+<span class="c1"># the &#39;exec tail&#39; line above.</span>
 
-<pre><code>#!/bin/sh
-exec tail -n +3 $0
-# This file provides an easy way to add custom menu entries.  Simply type the
-# menu entries you want to add after this comment.  Be careful not to change
-# the 'exec tail' line above.
-
-#
-# Gentoo Linux
-#
-menuentry 'Gentoo Linux 2014-05-26 vda6 kernel 3.12.13' {
-    linux /vmlinuz-3.12.13-gentoo root=/dev/vda6 resume=/dev/vda5
-}
-</code></pre>
+<span class="c1">#</span>
+<span class="c1"># Gentoo Linux</span>
+<span class="c1">#</span>
+menuentry <span class="s1">&#39;Gentoo Linux 2014-05-26 vda6 kernel 3.12.13&#39;</span> <span class="o">{</span>
+    linux /vmlinuz-3.12.13-gentoo <span class="nv">root</span><span class="o">=</span>/dev/vda6 <span class="nv">resume</span><span class="o">=</span>/dev/vda5
+<span class="o">}</span>
+</pre></div>
+</td></tr></table>
 
 <p>Luego, pida a <strong>GRUB</strong> que haga la configuración...</p>
+<div class="highlight"><pre><span></span># grub2-mkconfig -o /boot/grub/grub.cfg
+</pre></div>
 
-<pre><code># grub2-mkconfig -o /boot/grub/grub.cfg
-</code></pre>
 
 <p>Programe que el <em>daemon</em> <strong>OpenSSH</strong> se inicie al encender...</p>
-
-<pre><code># /etc/init.d/sshd start
+<div class="highlight"><pre><span></span># /etc/init.d/sshd start
 # rc-update add sshd default
-</code></pre>
+</pre></div>
+
 
 <p>Ponga la contraseña de <em>root</em>...</p>
+<div class="highlight"><pre><span></span># passwd
+</pre></div>
 
-<pre><code># passwd
-</code></pre>
 
 <p>Desmonte las particiones...</p>
-
-<pre><code># umount /mnt/gentoo/boot
+<div class="highlight"><pre><span></span># umount /mnt/gentoo/boot
 # umount /mnt/gentoo/usr/portage
 # umount /mnt/gentoo/var
 # umount -l /mnt/gentoo/sys
 # umount -l /mnt/gentoo/dev
 # umount /mnt/gentoo/proc
 # umount /mnt/gentoo
-</code></pre>
+</pre></div>
+
 
 <p>Apague y pruebe...</p>
+<div class="highlight"><pre><span></span># halt
+</pre></div>
 
-<pre><code># halt
-</code></pre>
 
-<h2>Consola Serial</h2>
-
+<h3>Consola Serial</h3>
 <p>Usar una consola serial libera al virtualizador de tener simpre andando una interfaz gráfica para el huésped.</p>
-
 <p>Respalde y edite <strong>inittab</strong>...</p>
-
-<pre><code># cd /etc
+<div class="highlight"><pre><span></span># cd /etc
 # cp inittab inittab.backup
 # nano inittab
-</code></pre>
+</pre></div>
+
 
 <p>Cambie estas líneas...</p>
-
-<pre><code># SERIAL CONSOLES
+<div class="highlight"><pre><span></span># SERIAL CONSOLES
 s0:12345:respawn:/sbin/agetty -L -f /etc/issue.logo 9600 ttyS0 vt100
 s1:12345:respawn:/sbin/agetty -L -f /etc/issue.logo 38400 ttyS1 vt100
-</code></pre>
+</pre></div>
+
 
 <p>Modifique <strong>GRUB</strong>...</p>
-
-<pre><code># cd /etc/default/
+<div class="highlight"><pre><span></span># cd /etc/default/
 # nano grub
-</code></pre>
+</pre></div>
+
 
 <p>Haga que estas líneas tengan esto...</p>
-
-<pre><code># Append parameters to the linux kernel command line
-GRUB_CMDLINE_LINUX="console=ttyS1,38400"
+<div class="highlight"><pre><span></span># Append parameters to the linux kernel command line
+GRUB_CMDLINE_LINUX=&quot;console=ttyS1,38400&quot;
 
 # Append parameters to the linux kernel command line for non-recovery entries
-#GRUB_CMDLINE_LINUX_DEFAULT=""
+#GRUB_CMDLINE_LINUX_DEFAULT=&quot;&quot;
 
 # Uncomment to disable graphical terminal (grub-pc only)
 GRUB_TERMINAL=console
-</code></pre>
+</pre></div>
+
 
 <p>También cambie configuración del <strong>GRUB</strong> para la carga del kernel...</p>
-
-<pre><code># cd ../grub.d
+<div class="highlight"><pre><span></span># cd ../grub.d
 # nano 40_custom
-</code></pre>
+</pre></div>
+
 
 <p>Agregue <strong>console=ttyS1,38400</strong> al final de la instrucción...</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # Gentoo Linux
 #
-menuentry 'Gentoo Linux 2014-05-26 vda6 kernel 3.12.13' {
+menuentry &#39;Gentoo Linux 2014-05-26 vda6 kernel 3.12.13&#39; {
         linux /vmlinuz-3.12.13-gentoo root=/dev/vda6 resume=/dev/vda5 console=ttyS1,38400
 }
-</code></pre>
+</pre></div>
+
 
 <p>Apague la máquina virtual. En la configuración de la virtualización retire el monitor, el ratón, el dispositivo <em>spice</em> si lo hubiera y arranque de nuevo.</p>
 
-<!-- Contenido: Termina -->
-        </div>
-              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-          <h3 class="titulo" itemprop="name">Movimiento Libre</h3>
-          <div class="descripcion" itemprop="description">Colección de ideas por Guillermo Valdés Lozano (guivaloz).</div>
-          <div class="contenido-imagen-previa-final"></div>
-        </div>
-      </div></article>
-    </div>
-    <div class="mapa-inferior">
-      <div class="row">
-        <div class="col-md-8">
-            <a href="../index.html">Inicio</a> |
-            <a href="../apuntes/index.html">Apuntes</a> |
-            <a href="../articulos/index.html">Artículos</a> |
-            <a href="../licencias/index.html">Licencias</a> |
-            <a href="../presentaciones/index.html">Presentaciones</a> |
-            <a href="../contacto/contacto.html">Contacto</a>
-        </div>
-        <div class="col-md-4">
-          <div class="pull-right redes-sociales">
-            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-linkedin-square" href="https://www.linkedin.com/in/guivaloz" target="_blank"></a>
-            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
-            <a class="fa fa-rss-square" href="../rss.xml"></a>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Javascript global inicia -->
-<script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
-<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
-<!-- Javascript global termina -->
-<!-- Javascript inicia -->
-<!-- Javascript termina -->
-<!-- Javascript Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-74263253-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  </article>
+  <!-- Main content end -->
+
+  <hr>
+
+  <!-- Footer start -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://plus.google.com/+GuillermoVald%C3%A9sLozano">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">
+            Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+            Se otorga permiso para copiar, distribuir y/o modificar este documento.
+            Protegido la licencia <a href="../licencias/gfdl-es.html">GFDL</a>.<br>
+            Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+            que es potenciado por <a href="http://python.org">Python</a>.
+            Tema <a href="https://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a>
+            por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer end -->
+
+  <!-- Javascript start -->
+  <script src="../theme/vendor/jquery/jquery.min.js"></script>
+  <script src="../theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../theme/js/clean-blog.min.js"></script>
+  <!-- Javascript end -->
+
 </body>
+
 </html>

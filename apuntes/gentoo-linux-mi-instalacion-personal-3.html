@@ -1,244 +1,201 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-<!-- ==========================================================================================
-
-     Movimiento Libre
-
-        3er. generación de la Plataforma del Conocimiento
-        Desarrollado por Ing. Guillermo Valdés Lozano <guivaloz en movimientolibre.com>
-
-        El software que lo construye está bajo la licencia GPL versión 3. © 2014, 2015, 2016, 2017.
-        Una copia está contenida en el archivo LICENCE al bajar desde GitHub.
-
-        Descargue, estudie y colabore bajando todo este sitio web:
-          GitHub             https://github.com/MovimientoLibre/movimientolibre.github.io
-
-        Agradecemos y compartimos las tecnologías abiertas y gratuitas sobre las que se basa:
-          PHP                http://php.net
-          Twitter Bootstrap  http://getbootstrap.com
-          StartBootStrap     http://startbootstrap.com
-          Morris.js          https://morrisjs.github.io/morris.js/
-          Font Awesome       http://fontawesome.io
-          DataTables         https://www.datatables.net
-          GitHub             https://github.com
-          Evolvere iconos    http://github.com/franksouza183/EvolvereSuit
-
-     ========================================================================================== -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.">
-  <meta name="author" content="guivaloz">
-  <meta name="keywords" content="Gentoo Linux, Instalacion">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
   <title>Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov) - Movimiento Libre</title>
-  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon.png">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-76x76.png" sizes="76x76">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-120x120.png" sizes="120x120">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-152x152.png" sizes="152x152">
-  <link rel="apple-touch-icon" href="../imagenes/apple-touch-icon-180x180.png" sizes="180x180">
-  <link rel="icon" href="../imagenes/icon-hires.png" sizes="192x192">
-  <link rel="icon" href="../imagenes/icon-normal.png" sizes="128x128">
-  <link rel="alternate" type="application/rss+xml" href="../rss.xml" title="Movimiento Libre">
-  <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/metisMenu/metisMenu.min.css">
-  <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/sb-admin-2.min.css">
-  <link rel="stylesheet" type="text/css" href="../dist/css/plataforma-de-conocimiento.css">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700">
-  <link rel="stylesheet" type="text/css" href="../dist/css/movimiento-libre.css">
-  <!-- SOPORTE PARA IE -->
-  <!--[if lt IE 9]>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-  <![endif]-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="imagenes/icon-hires.png" sizes="192x192">
+  <link rel="icon" href="imagenes/icon-normal.png" sizes="128x128">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="imagenes/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="alternate" href="rss.xml" type="application/rss+xml" title="Movimiento Libre">
+  <link rel="stylesheet" href="../theme/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' type='text/css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
+  <link rel="stylesheet" href="../theme/css/clean-blog.min.css">
 </head>
+
 <body>
-<div id="wrapper">
-  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
       <a class="navbar-brand" href="../index.html">Movimiento Libre</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../portafolio/soluciones.html">Portafolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/apuntes.html">Apuntes</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/articulos.html">Artículos</a></li>
+          <li class="nav-item"><a class="nav-link" href="../category/presentaciones.html">Presentaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="../contacto/contacto.html">Contacto</a></li>
+        </ul>
+      </div>
     </div>
-  <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
-      <ul class="nav" id="side-menu">
-        <li class="sidebar-search">
-          <form method="get" id="" action="http://www.movimientolibre.com/buscador-resultados.html">
-            <input type="hidden" value="" name="cx">
-            <input type="hidden" value="FORID:11" name="cof">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control" placeholder="Buscar..." value="" name="s" id="s">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit" id="searchsubmit"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-        </li>
-        <li class="active"><a href="../apuntes/index.html"><span class="navegacion-icono"><i class="fa fa-files-o"></i></span> Apuntes</a></li>
-        <li><a href="../articulos/index.html"><span class="navegacion-icono"><i class="fa fa-server"></i></span> Artículos</a></li>
-        <li><a href="../presentaciones/index.html"><span class="navegacion-icono"><i class="fa fa-sun-o"></i></span> Presentaciones</a></li>
-      </ul>
-    </div>
-  </div>
   </nav>
-  <div id="page-wrapper">
-    <div class="cuerpo">
-      <article><div itemscope itemtype="http://schema.org/BlogPosting">
-        <div class="encabezado">
-          <h1 itemprop="headline">Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov)</h1>
-          <div class="encabezado-descripcion" itemprop="description">La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</div>
-          <div class="encabezado-autor-fecha">
-            Por <span itemprop="author">guivaloz</span> -
-            <meta itemprop="datePublished" content="2008-11-15T21:10">15/11/2008 21:10
+  <!-- Navigation end -->
+
+  <!-- Main content start -->
+  <header class="masthead" style="background-image: url('../images/apuntes.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov)</h1>
+            <h2 class="subheading"><p>La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</p></h2>
+            <span class="meta">2008-11-15 21:10:00-06:00</span>
           </div>
         </div>
-        <div itemprop="articleBody">
-<!-- Contenido: Inicia  -->
-<p>Imagen: <a href="http://commons.wikimedia.org/wiki/File:Gentoo-abducted-1024x768.png">Gentoo abducted</a> con <em>Larry The Cow</em>, la mascota de <a href="http://www.gentoo.org/">Gentoo Linux</a>, elaborado por Matteo 'Peach' Pescarin.</p>
+      </div>
+    </div>
+  </header>
 
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <a href="../portafolio/soluciones.html">
+              Conozca las nuevas <strong>soluciones en desarrollo de software</strong> a la medida.
+            </a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <p>Imagen: <a href="http://commons.wikimedia.org/wiki/File:Gentoo-abducted-1024x768.png">Gentoo abducted</a> con <em>Larry The Cow</em>, la mascota de <a href="http://www.gentoo.org/">Gentoo Linux</a>, elaborado por Matteo 'Peach' Pescarin.</p>
 <p>Como introducción les escribo un breve <em>FAQ</em> (preguntas y respuestas frecuentes) sobre Gentoo Linux.</p>
-
 <p><strong>¿Qué es Gentoo?</strong> es un Sistema Operativo libre basado en Linux o FreeBSD que puede ser optimizado y personalizado para casi cualquier aplicación o necesidad. Configuración extrema, desempeño, usuarios y desarrolladores de primera categoría son las distinciones de Gentoo. Más en <a href="http://www.gentoo.org/main/en/about.xml">About Gentoo</a>.</p>
-
 <p><strong>¿Es cierto que desde 2008 no se hace un disco de instalación?</strong> Hay que aclarar que lo que se necesita para instalar Gentoo Linux es arrancar con un GNU/Linux básico que te dé las herramientas para los dispositivos de almacenamiento y de red, en otras palabras, lo necesario para accesar la red local e internet, descargar, particionar, formatear y ejecutar el <em>chroot</em>. En los repositorios de Gentoo Linux hay <em>imágenes</em> (archivos ISO) de discos <em>booteables</em> con estas herramientas; con nombres como <em>install-x86-minimal-YYYYMMDD.iso</em> por que se liberan nuevas versiones con frecuencia. También puedes hacer la instalación con un disco de otra distribución (por ejemplo <a href="http://www.knoppix.net/">Knoppix</a>), arrancando desde una memoria USB o arrancando desde red. Por ello, Gentoo Linux <em>dejó de liberar un disco anual de instalación</em>; no lo necesita.</p>
-
 <p><strong>¿Cual es la última versión de Gentoo?</strong> Aparecen nuevas versiones de los <em>stages</em> con regularidad, aproximadamente cada 15 días. Por ello, el nombre del archivo contiene el año-mes-día como <em>stage3-i686-YYYYMMDD.tar.bz2</em>. Posteriormente, para actualizar hay que ejecutar <em>emerge -uND world &amp;&amp; revdep-rebuild</em> como <em>root</em> y revisar los cambios que solicite cada programa en particular. Es por esto que Gentoo Linux es una distribución de tipo <a href="http://en.wikipedia.org/wiki/Rolling_release">rolling relase</a> donde no hay números de versión.</p>
-
 <p><strong>¿Qué pasa si no actualizo una instalación de Gentoo?</strong> Al igual que con cualquier otra distribución, puedes actualizar con regularidad para obtener nuevas versiones de tus programas y recibir mejoras en seguridad y correcciones. Si se trata de un <em>servidor conectado a internet</em> o un <em>equipo portátil que se conecta a redes públicas</em>, por seguridad, <em>deberías actualizarlo una vez por semana</em>. En cambio, si se trata de un servidor en una red confiable, puedes ser más flexible y no actualizarlo tan seguido. Son mis recomendaciones; al final la decisión es tuya. Entre más tiempo dejes pasar, más programas se añadirán a la lista de actualizaciones; si dejas pasar más de un año sin actualizar entonces puede convenir hacer una instalación desde cero en lugar de actualizar todo.</p>
-
 <p><strong>¿Es Gentoo Linux una distribución segura?</strong> Claro que sí; al instalar puedes <em>endurecer</em> el sistema; más información en <a href="http://www.gentoo.org/proj/en/hardened/index.xml">Hardened Gentoo</a>. Ante el usuario común; el hecho que tú mismo contruyas tu sistema operativo, omitiendo los programas que no necesites, constituye una gran ventaja de seguridad. Por ejemplo, para un servidor web instalarás el <a href="http://httpd.apache.org/">Apache</a> pero <em>no</em> le instalarás la compartición de archivos con <a href="http://www.samba.org/">SAMBA</a>.</p>
-
 <p><strong>¿Qué instalación toma más tiempo, la de un equipo de escritorio o la de un servidor?</strong> Toma más tiempo instalar un equipo de escritorio, porque los entornos gráficos como <a href="http://www.gnome.org/">Gnome</a> y <a href="http://www.kde.org">KDE</a> o las <em>suites</em> de oficina como <a href="http://www.openoffice.org/">OpenOffice.org</a> son bastante grandes.</p>
-
 <p><strong>¿Soporta otras arquitecturas además de la x86?</strong> Si. Gentoo Linux puede usarse en <a href="http://www.gentoo.org/proj/en/base/x86/index.xml">x86</a>, <a href="http://www.gentoo.org/proj/en/base/amd64/index.xml">AMD64</a>, <a href="http://www.gentoo.org/proj/en/base/alpha/index.xml">Alpha</a>, <a href="http://www.gentoo.org/proj/en/base/arm/index.xml">ARM</a>, <a href="http://www.gentoo.org/proj/en/base/hppa/index.xml">HPPA</a>, <a href="http://www.gentoo.org/proj/en/base/ia64/index.xml">IA-64</a>, <a href="http://www.gentoo.org/proj/en/base/mips/index.xml">MIPS</a>, <a href="http://www.gentoo.org/proj/en/base/ppc/index.xml">PowerPC</a>, <a href="http://www.gentoo.org/proj/en/base/ppc64/index.xml">PPC64</a> y <a href="http://www.gentoo.org/proj/en/base/sparc/index.xml">SPARC</a>.</p>
-
 <p><strong>¿Dónde puedo aprender más de Gentoo?</strong> Del <a href="http://www.gentoo.org/">sitio oficial</a> he tomado estos enlaces:</p>
-
 <ul>
 <li><a href="http://www.gentoo.org/doc/en/handbook/handbook-x86.xml">Gentoo Linux x86 Handbook</a>, en <a href="http://www.gentoo.org/doc/es/handbook/handbook-x86.xml">español</a>.</li>
 <li><a href="http://planet.gentoo.org/">Gentoo Planet</a>.</li>
 <li><a href="http://forums.gentoo.org/">Gentoo Forum</a>.</li>
 </ul>
-
 <p>Fuera del sitio oficial, te recomiendo:</p>
-
 <ul>
 <li><a href="https://wiki.gentoo.org/">Gentoo Wiki</a>.</li>
 <li><a href="http://www.funtoo.org/">Funtoo</a> es un <em>fork</em> dirigido por Danel Robbins, el iniciador de Gentoo Linux.</li>
 </ul>
-
 <p>A continuación la última entrega de la <em>Guía de instalación de Gentoo Linux para una notebook 2010</em>. No deje de leer la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-1.html">primera</a> y <a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">segunda</a> partes.</p>
-
 <h3>¡A seguir instalando!</h3>
-
 <p>Instale herramientas gráficas.</p>
+<div class="highlight"><pre><span></span># emerge imagemagick graphviz gd
+</pre></div>
 
-<pre><code># emerge imagemagick graphviz gd
-</code></pre>
 
 <p>Para usar mi <em>netbook</em> como ruteador, instalo los servidores de <em>DHCP</em> y <em>DNS</em>, así como los programas para <em>bridge</em>.</p>
+<div class="highlight"><pre><span></span># emerge dhcp bind bridge-utils
+</pre></div>
 
-<pre><code># emerge dhcp bind bridge-utils
-</code></pre>
 
 <p>Instale los mejores programas de multimedia.</p>
+<div class="highlight"><pre><span></span># emerge lame mp3splt vorbis-tools faad2 ffmpeg mplayer moc gstreamer
+</pre></div>
 
-<pre><code># emerge lame mp3splt vorbis-tools faad2 ffmpeg mplayer moc gstreamer
-</code></pre>
 
 <p>Instale herramentas para hacer auditoria de redes.</p>
-
-<pre><code># emerge whois traceroute geoip bind-tools
+<div class="highlight"><pre><span></span># emerge whois traceroute geoip bind-tools
 # emerge wireless-tools iw wpa_supplicant
 # emerge nmap macchanger aircrack-ng kismet
-</code></pre>
+</pre></div>
+
 
 <p>Instale el editor de texto <a href="http://www.vim.org/">VIM</a>.</p>
+<div class="highlight"><pre><span></span># emerge vim
+</pre></div>
 
-<pre><code># emerge vim
-</code></pre>
 
 <p>Instale el entorno de desarrollo <a href="http://www.geany.org/">Geany</a>.</p>
+<div class="highlight"><pre><span></span># emerge geany
+</pre></div>
 
-<pre><code># emerge geany
-</code></pre>
 
 <p>Instale <a href="http://pear.php.net/">PEAR</a> y el <a href="http://pear.php.net/package/PhpDocumentor/">Documentador de PHP</a>.</p>
+<div class="highlight"><pre><span></span># emerge PEAR-PhpDocumentor
+</pre></div>
 
-<pre><code># emerge PEAR-PhpDocumentor
-</code></pre>
 
 <p>Instale el cliente FTP llamado <em>gFTP</em>.</p>
+<div class="highlight"><pre><span></span># emerge gftp
+</pre></div>
 
-<pre><code># emerge gftp
-</code></pre>
 
 <h3>Entorno gráfico XFCE4</h3>
-
 <p>Instale <a href="http://www.xfce.org/">XFCE4</a>.</p>
-
-<pre><code># emerge xfce4-meta mousepad x11-terms/terminal
+<div class="highlight"><pre><span></span># emerge xfce4-meta mousepad x11-terms/terminal
 # emerge gnome-icon-theme tango-icon-theme
 # emerge thunar-archive-plugin thunar-media-tags-plugin thunar-thumbnailers thunar-volman
 # emerge xfce4-power-manager xfce4-screenshooter xfce4-taskmanager xfce4-mixer
-</code></pre>
+</pre></div>
+
 
 <h3>Ahora las aplicaciones grandes</h3>
-
 <p>Antes de instalar el navegador de internet, active <em>java</em> en la variable <em>USE</em> dentro de <em>/etc/make.conf</em>.</p>
+<div class="highlight"><pre><span></span># Desarrollo
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> apache2 java mysql php postgres ruby vhosts&quot;
+</pre></div>
 
-<pre><code># Desarrollo
-USE="${USE} apache2 java mysql php postgres ruby vhosts"
-</code></pre>
 
 <p>Luego instale <a href="http://www.mozilla.com/">Mozilla Firefox</a>.</p>
-
-<pre><code># emerge firefox
+<div class="highlight"><pre><span></span># emerge firefox
 # emerge adobe-flash
-</code></pre>
+</pre></div>
+
 
 <p>Actualize los paquetes que dependan de <em>java</em>.</p>
+<div class="highlight"><pre><span></span># emereg -uND world
+</pre></div>
 
-<pre><code># emereg -uND world
-</code></pre>
 
 <p>Instale <a href="http://www.mozillamessaging.com/">Mozilla Thunderbird</a>.</p>
+<div class="highlight"><pre><span></span># emerge thunderbird
+</pre></div>
 
-<pre><code># emerge thunderbird
-</code></pre>
 
 <p>Instale <a href="http://www.gimp.org/">GIMP</a>.</p>
+<div class="highlight"><pre><span></span># emerge gimp
+</pre></div>
 
-<pre><code># emerge gimp
-</code></pre>
 
 <p>Instale las dependencias de <a href="http://movimientolibre/articulos/twitter-turpial.html">Turpial</a>.</p>
+<div class="highlight"><pre><span></span># emerge simplejson notify-python pygame Babel gtkspell-python pywebkitgtk
+</pre></div>
 
-<pre><code># emerge simplejson notify-python pygame Babel gtkspell-python pywebkitgtk
-</code></pre>
 
 <p>Instale <a href="http://www.latex-project.org/">LaTeX</a>.</p>
+<div class="highlight"><pre><span></span># emerge texlive
+</pre></div>
 
-<pre><code># emerge texlive
-</code></pre>
 
 <h3>Compiz-Fusion</h3>
-
 <p>Al momento de escribir esta guía, <a href="http://www.compiz.org/">Compiz-Fusion</a> no había sido marcado como estable. Así que para permitir su instalación creo el archivo <em>/etc/portage/package.keywords</em></p>
+<div class="highlight"><pre><span></span># nano /etc/portage/package.keywords
+</pre></div>
 
-<pre><code># nano /etc/portage/package.keywords
-</code></pre>
 
 <p>Con este contenido...</p>
-
-<pre><code>#
+<div class="highlight"><pre><span></span>#
 # /etc/portage/package.keywords
 #
 
@@ -258,130 +215,120 @@ dev-python/compizconfig-python
 x11-apps/fusion-icon
 x11-wm/emerald
 x11-themes/emerald-themes
-</code></pre>
+</pre></div>
+
 
 <p>Luego, instale <a href="http://www.compiz.org/">Compiz-Fusion</a>.</p>
+<div class="highlight"><pre><span></span># emerge compiz-fusion fusion-icon
+</pre></div>
 
-<pre><code># emerge compiz-fusion fusion-icon
-</code></pre>
 
 <h3>OpenOffice.org</h3>
-
 <p>Si gusta puede instalar la versión precompilada de OpenOffice.org llamada <em>openoffice-bin</em>.</p>
-
 <p>A mi criterio no toma mucho tiempo compilar e instalar la <em>suite</em> de oficina con:</p>
+<div class="highlight"><pre><span></span>$ emerge openoffice
+</pre></div>
 
-<pre><code>$ emerge openoffice
-</code></pre>
 
-<p><a href="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-640x480.jpg"><img class="img-responsive" src="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-320x240.jpg"></a></p>
-
+<p><a href="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-640x480.jpg"><img class="img-fluid" src="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-320x240.jpg"></a></p>
 <h3>Empaque su Gentoo Linux</h3>
-
 <p>Llega el momento de pasar al número dos del diagrama de la instalación asistida. No se preocupe, los pasos siguientes no requieren de tantos comandos como la instalación misma.</p>
-
 <p>Primero salga del <em>chroot</em>.</p>
+<div class="highlight"><pre><span></span># exit
+</pre></div>
 
-<pre><code># exit
-</code></pre>
 
 <p>Luego asegúrese de desmontar <em>dev</em> y <em>proc</em>.</p>
-
-<pre><code># umount /mnt/archivos/instalaciones/prescott/dev
+<div class="highlight"><pre><span></span># umount /mnt/archivos/instalaciones/prescott/dev
 # umount /mnt/archivos/instalaciones/prescott/proc
-</code></pre>
+</pre></div>
+
 
 <p>Revise que no haya dispositivos montados en el directorio de su instalación con:</p>
+<div class="highlight"><pre><span></span># mount | grep /mnt/archivos/instalaciones
+</pre></div>
 
-<pre><code># mount | grep /mnt/archivos/instalaciones
-</code></pre>
 
 <p>Borre los archivos temporales.</p>
-
-<pre><code># cd /mnt/archivos/instalaciones/prescott/
+<div class="highlight"><pre><span></span># cd /mnt/archivos/instalaciones/prescott/
 # rm -rf root/.ccache root/.gconf root/.gconfd
 # rm -rf tmp/* var/tmp/*
-</code></pre>
+</pre></div>
+
 
 <p>Empaque el <em>portage</em>. Este archivo tendrá todo el código fuente descargado; la gran mayoría de estos archivos ya están comprimidos; por lo que recomiendo que simplemente se haga un archivo <em>.tar</em>. No deje de agregar la fecha de su creación en el nombre del archivo empacado.</p>
-
-<pre><code># cd usr
+<div class="highlight"><pre><span></span># cd usr
 # tar cvf /mnt/archivos/instalaciones/prescott-portage-2010-11-09.tar portage/
-</code></pre>
+</pre></div>
+
 
 <p>Después, empaque la raíz de su nueva instalación, pero sin el <em>portage</em>.</p>
-
-<pre><code># cd /mnt/archivos/instalaciones/prescott/
+<div class="highlight"><pre><span></span># cd /mnt/archivos/instalaciones/prescott/
 # tar czvf /mnt/archivos/instalaciones/prescott-root-2010-11-09.tar.gz --exclude=usr/portage *
-</code></pre>
+</pre></div>
+
 
 <p>Respalde estos dos archivos a un DVD-R, a una memoria USB o compártalos en su red local.</p>
-
 <h3>Para instalar un Gentoo Linux previamente empaquetado</h3>
-
 <p>Formatee la partición donde quiera alojar su Gentoo Linux. Sustituya <em>/dev/PARTICION</em> por ejemplo <em>/dev/sda2</em>.</p>
-
 <p><strong>¡CUIDADO!</strong> debe estar bien seguro de elegir la partición correcta. Podría eliminar la partición de sus archivos personales. <em>No deje de hacer un respaldo</em> antes de ejecutar este tipo de comandos.</p>
+<div class="highlight"><pre><span></span># mkfs.ext4 -L gentoo /dev/PARTICION
+</pre></div>
 
-<pre><code># mkfs.ext4 -L gentoo /dev/PARTICION
-</code></pre>
 
 <p>Monte la partición que será la raíz de su nuevo sistema Gentoo Linux. El directorio de montaje que uso es el típico <em>/mnt/gentoo</em> que puede variar si así le conviene.</p>
-
-<pre><code># mkdir /mnt/gentoo
+<div class="highlight"><pre><span></span># mkdir /mnt/gentoo
 # mount /dev/PARTICION /mnt/gentoo
-</code></pre>
+</pre></div>
+
 
 <p>A partir de aquí supongo el uso una memoria USB con los archivos de la instalación asistida y que la ruta de montaje es <em>/media/MEMORIA-USB</em>. Por supuesto, esto puede variar. Por ejemplo, si los copia por la red local, podría depositarlos en <em>/tmp</em>. Cambie <em>/media/MEMORIA-USB</em> por la ubicación de estos archivos.</p>
-
 <p>Desempaque primero la raíz de la instalación, el que tiene por nombre <em>prescott-root-yyyy-mm-dd.tar</em>.</p>
-
-<pre><code># cd /mnt/gentoo
+<div class="highlight"><pre><span></span># cd /mnt/gentoo
 # tar xvf /media/MEMORIA-USB/prescott-root-2010-11-09.tar.gz
-</code></pre>
+</pre></div>
+
 
 <p>En este punto podría ejecutar un <em>emerge --sync</em> y descargar de internet el <em>portage</em> más nuevo para luego actualizar.</p>
-
 <p>O bien, desempacar el <em>prescott-portage-yyyy-mm-dd.tar</em> y tener todo el código fuente del momento en que se creó.</p>
-
-<pre><code># cd usr
+<div class="highlight"><pre><span></span># cd usr
 # mkdir portage
 # tar xvf /media/MEMORIA-USB/prescott-portage-2010-11-09.tar
-</code></pre>
+</pre></div>
+
 
 <p>Monte la partición <em>boot</em> y también <em>dev</em> y <em>proc</em> en su nuevo sistema.</p>
-
-<pre><code># mount /dev/PARTICIONBOOT /mnt/gentoo/boot
+<div class="highlight"><pre><span></span># mount /dev/PARTICIONBOOT /mnt/gentoo/boot
 # mount -t proc none /mnt/gentoo/proc
 # mount -o bind /dev /mnt/gentoo/dev
-</code></pre>
+</pre></div>
+
 
 <p>Ingrese a su nueva instalación por <em>chroot</em></p>
-
-<pre><code># cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
 # chroot /mnt/gentoo /bin/bash
 # env-update
 # source /etc/profile
-# export PS1="(nueva) $PS1"
-</code></pre>
+# export PS1=&quot;(nueva) $PS1&quot;
+</pre></div>
+
 
 <p>Ajuste la compilación del kernel al nuevo equipo. Puede que necesite activar controladores particulares de éste; por ejemplo, tarjetas de red.</p>
-
-<pre><code># cd /usr/src/linux
+<div class="highlight"><pre><span></span># cd /usr/src/linux
 # make menuconfig
 # make
 # make modules_install
-</code></pre>
+</pre></div>
+
 
 <p>Instale el kernel y configure el gestor de arranque <em>GRUB</em>.</p>
-
-<pre><code># make install
+<div class="highlight"><pre><span></span># make install
 # nano -w /boot/grub/grub.conf
-</code></pre>
+</pre></div>
+
 
 <p>Este es un ejemplo de la configuración en <em>/boot/grub/grub.conf</em></p>
-
-<pre><code>default 0
+<div class="highlight"><pre><span></span>default 0
 timeout 10
 splashimage=(hd0,0)/boot/grub/splash.xpm.gz
 
@@ -392,68 +339,84 @@ kernel /vmlinuz-2.6.34-gentoo-r12 root=/dev/sda2 resume=/dev/sda5 clocksource=hp
 title Gentoo Linux - 2.6.34-r12 - Ahorro de energia
 root (hd0,0)
 kernel /vmlinuz-2.6.34-gentoo-r12 root=/dev/sda2 resume=/dev/sda5 clocksource=hpet
-</code></pre>
+</pre></div>
+
 
 <p>Respecto al último parámetro <em>processor.max_cstate=1</em> comento que éste lo agrego para desactivar los "C-States" que tiene el procesador Intel Atom. Los C-States son estados del procesador donde se desactivan funciones para ahorrar energía.</p>
-
 <p>Con <em>processor.max_cstate=1</em> gozo de toda la capacidad de procesamiento; pero con mayor consumo de energía y menos duración de la batería.</p>
-
 <p>Sin ese parámetro aparecen dos estados más en <em>powertop</em> que hacen que no se gasten tantos recursos, aumentando la duración de la batería; pero notará que se <em>entorpece</em> el sistema, tarda al iniciar el sistema, también en reaccionar, los videos y audios se reproducen mal. Como truco, uso el <em>trackpad</em> sin motivo para que se hagan las acciones.</p>
-
 <p>Dependiendo del uso, elijo la opción que requiero al encender el equipo. Por ejemplo, si uso la <em>netbook</em> de viaje en auto, autobús o avión, con la carga de la batería, uso la opción de ahorro de energía para escribir textos, correos electrónicos o desarrollar aplicaciones.</p>
-
 <p>En cambio, si está conectado el cargador o necesito reproducir archivos multimedia, me conviene la opción con <em>processor.max_cstate=1</em>.</p>
-
 <p>Después de editar <em>/boot/grub/grub.conf</em> reinicie y pruebe su nuevo sistema.</p>
 
-<!-- Contenido: Termina -->
-        </div>
-              <div class="publicador" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-          <h3 class="titulo" itemprop="name">Movimiento Libre</h3>
-          <div class="descripcion" itemprop="description">Colección de ideas por Guillermo Valdés Lozano (guivaloz).</div>
-          <div class="contenido-imagen-previa-final"></div>
-        </div>
-      </div></article>
-    </div>
-    <div class="mapa-inferior">
-      <div class="row">
-        <div class="col-md-8">
-            <a href="../index.html">Inicio</a> |
-            <a href="../apuntes/index.html">Apuntes</a> |
-            <a href="../articulos/index.html">Artículos</a> |
-            <a href="../licencias/index.html">Licencias</a> |
-            <a href="../presentaciones/index.html">Presentaciones</a> |
-            <a href="../contacto/contacto.html">Contacto</a>
-        </div>
-        <div class="col-md-4">
-          <div class="pull-right redes-sociales">
-            <a class="fa fa-twitter-square" href="https://twitter.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-github-square" href="https://github.com/guivaloz" target="_blank"></a>
-            <a class="fa fa-linkedin-square" href="https://www.linkedin.com/in/guivaloz" target="_blank"></a>
-            <a class="fa fa-google-plus-square" href="https://plus.google.com/+GuillermoVald%C3%A9sLozano" target="_blank"></a>
-            <a class="fa fa-rss-square" href="../rss.xml"></a>
-          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Javascript global inicia -->
-<script type="text/javascript" src="../vendor/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../vendor/metisMenu/metisMenu.min.js"></script>
-<script type="text/javascript" src="../dist/js/sb-admin-2.min.js"></script>
-<!-- Javascript global termina -->
-<!-- Javascript inicia -->
-<!-- Javascript termina -->
-<!-- Javascript Google Analytics -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-74263253-1', 'auto');
-  ga('send', 'pageview');
-</script>
+  </article>
+  <!-- Main content end -->
+
+  <hr>
+
+  <!-- Footer start -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/guivaloz">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://plus.google.com/+GuillermoVald%C3%A9sLozano">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">
+            Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+            Se otorga permiso para copiar, distribuir y/o modificar este documento.
+            Protegido la licencia <a href="../licencias/gfdl-es.html">GFDL</a>.<br>
+            Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+            que es potenciado por <a href="http://python.org">Python</a>.
+            Tema <a href="https://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a>
+            por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer end -->
+
+  <!-- Javascript start -->
+  <script src="../theme/vendor/jquery/jquery.min.js"></script>
+  <script src="../theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../theme/js/clean-blog.min.js"></script>
+  <!-- Javascript end -->
+
 </body>
+
 </html>
