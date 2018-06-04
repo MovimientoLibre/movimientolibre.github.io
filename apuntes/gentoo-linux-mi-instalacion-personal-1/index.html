@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.</p>">
+    <meta name="keywords" content="[<Tag 'gentoo linux'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)">
+    <meta itemprop="description" content="<p>Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)">
+    <meta name="twitter:description" content="<p>Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/gentoo-linux-mi-instalacion-personal-1/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov) - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2008-11-15 21:00:00-06:00</p>
+        <hr>
+        <p>Hace algunos días actualicé el <a href="http://es.wikipedia.org/wiki/Portage">Portage</a> de la instalación de <a href="http://www.gentoo.org/">Gentoo Linux</a> que tengo en mi portátil, una Dell Inspiron 9300. Observé que la versión estable del KDE había cambiado a la 3.5.8 y sentí un <em>enfermizo cosquilleo</em>... NO me daban ganas de actualizar... sino de iniciar una NUEVA instalación en este equipo.</p>
+<p>De forma habitual, después de actualizar el <em>portage</em> podemos solicitar un listado de los paquetes que se pueden actualizar (valga la redundancia). Gentoo Linux se distingue por bajar el código fuente, desempacarlo, compilarlo e instalarlo; lo cual consume más tiempo que las otras formas de actualización de las demás distribuciones.</p>
+<p>Los paquetes pequeños suelen tomar algunos minutos en actualizarse. Pero la actualización de un paquete grande (como Mozilla Firefox o KOffice) o de un entorno gráfico sofisticado (como Gnome o KDE) puede tomar varias horas.</p>
+<p>Uno de los atractivos de hacer una nueva instalación es que podemos probar nuevos parámetros de compilación. En esta ocasión me atrae la idea de <strong>desactivar arts</strong> (es el controlador de audio por defecto de KDE 3.x, no funciona tan bien como quisiera y <a href="http://multimedia.kde.org/">será depreciado con el KDE 4</a>) y <strong>activar ipv6</strong> (aunque no me he conectado aún a una red de éstas, tal vez no falte mucho para que lo tenga que hacer).</p>
+<p>Le advierto que la instalación de un Gentoo Linux con un entorno gráfico (Gnome o KDE) y decenas de aplicaciones son <strong>muchas horas</strong> de descarga, compilación, instalación y configuración. Vea el lado positivo, será <em>divertido</em>, aprenderá mucho y estará optimizando las aplicaciones a la medida de su equipo. <strong>Pues ¡SI!... me confieso adicto... a tener mi GNU/Linux optimizado y al día.</strong></p>
+<p>A continuación explico <em>una forma alternativa</em> de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.</p>
+<p>También aprovecho que ya tengo particionado el disco duro e instalado Gentoo Linux en este equipo. Gracias a esto, es posible estar instalando Gentoo Linux en una partición mientras se sigue trabajando en la instalación anterior, por que todo esto lo puede hacer en una terminal.</p>
+<p><img class="img-fluid" src="kcmsystem.png"></p>
+<p><strong>ADVERTENCIA:</strong> Esta guía va dirigida a usuarios con experiencia en GNU/Linux. <em>Los comandos mostrados aquí podrían borrar irrevesiblemente sus archivos.</em> Por lo que le sugiero que, <em>antes que nada, haga un respaldo de todo lo que considere importante</em>. No ofrezco ningua garantía ni atenderé ningún reclamo de los resultados que pudieran ocurrir.</p>
+<p><img class="img-fluid" src="kate.png"></p>
+<h3>Sobre este manual</h3>
+<ul>
+<li>Este manual describe los pasos para instalar Gentoo Linux hasta llegar a tener un entorno de escritorio KDE con los paquetes preferidos del autor. Me inclino por el desarrollo de aplicaciones web, por lo que instalaré Apache, PostgreSQL y PHP.</li>
+<li>No describo ampliamente las cualidades de los paquetes. Me he enfocado en hacer una guía <em>paso a paso</em>, comando a comando que les mostrará cómo es Gentoo Linux. Si tiene dudas sobre algún paquete, no dude en consultar al <a href="https://wiki.gentoo.org/">Gentoo Wiki</a> y a <em>Don</em> <a href="http://www.google.com/">Google</a>.</li>
+<li>En Gentoo Linux es posible tener varias instalaciones de esta distribución en el mismo equipo. Lo cual aprovecho usando la instalación anterior y haciendo todo desde una consola. No es necesario insertar el CD de instalación.</li>
+<li>El <em>portage</em> /usr/portage/ así como las fuentes descargadas (almacenadas en /usr/portage/distfiles/) las tengo en una partición dedicada. Lo cual me permite compartirlo con las varias instalaciones en el mismo equipo.</li>
+<li>Los comandos que deben ser ingresados como <em>root</em> tienen un "#" al principio, en cambio, los ingresados en una cuenta de usuario tienen "$" al inicio. Tenga la precaución de no confundir el contenido de los archivos de configuración, porque suelen usar "#" para los comentarios.</li>
+<li>En la primera parte (esta página) llegaré a tener un sistema básico que llegue a consola.</li>
+<li>En la <a href="gentoo-linux-mi-instalacion-personal-2.html">segunda parte</a> tendré instalado la base del entorno de escritorio <strong>KDE</strong>.</li>
+<li>En la <a href="gentoo-linux-mi-instalacion-personal-3.html">tercera parte</a> instalaré mis paquetes preferidos.</li>
+</ul>
+<p><img class="img-fluid" src="kcmpartitions.png"></p>
+<h3>Mis particiones</h3>
+<p>En mi computadora portátil tengo un modesto disco duro de 60 GB. El archivo <em>/etc/fstab</em> (de mi nueva instalación) tiene este contenido:</p>
+<div class="highlight"><pre><span></span>#
+# /etc/fstab
+#
+# &lt;fs&gt;       &lt;mountpoint&gt;     &lt;type&gt;      &lt;opts&gt;      &lt;dump/pass&gt;
+/dev/sda1    /boot            ext2        noauto      1 2
+/dev/sda2    /home            ext3        defaults    0 0
+/dev/sda3    /usr/portage     reiserfs    defaults    0 0
+# La particion /dev/sda4 es EXTENDED
+/dev/sda5    none             swap        sw          0 0
+/dev/sda6    /                ext3        noatime     0 1
+/dev/sda7    /mnt/anterior    ext3        noauto      0 0
+/dev/sda8    /mnt/backup      ext3        defaults    0 0
+/dev/sda9    /mnt/archivos    ext3        defaults    0 0
+</pre></div>
+
+
+<ul>
+<li><em>/boot</em> - 35 MB - Es la partición de arranque que contiene los kernels.</li>
+<li><em>/home</em> - 8 GB - Mis archivos (y directorios ocultos con configuraciones personales).</li>
+<li><em>/usr/portage</em> - 8 GB - Todo el árbol del <em>portage</em> así como los paquetes fuentes. El hecho de tenerlo en una partición me permite compartirlo con las demás instalaciones de Gentoo Linux que tenga en el equipo.</li>
+<li><em>swap</em> - 4 GB - Los datos que no quepan en la RAM pasan a esta <em>memoria virtual</em>. También se usa al suspender a disco. Lea este <a href="http://www.cyberciti.biz/tips/linux-swap-space.html">artículo</a> para saber más sobre el espacio que le convenga para su <em>swap</em>.</li>
+<li><em>/ (raíz)</em> - 9 GB - En esta partición instalaré el <em>nuevo</em> Gentoo Linux.</li>
+<li><em>/mnt/anterior</em> - 9 GB - El <em>anterior</em> Gentoo Linux. Mientras no pueda arrancar en el <em>nuevo</em> usaré éste.</li>
+<li><em>/mnt/backup</em> - 9 GB - Es el respaldo local de mis trabajos más importantes.</li>
+<li><em>/mnt/archivos</em> - Lo que resta del disco - Es la partición más grande, dedicada a los videos, la música, libros, etc. En general archivos grandes.</li>
+</ul>
+<p><img class="img-fluid" src="hdd_unmount.png"></p>
+<h3>Formatear y montar la partición raiz de la nueva instalación</h3>
+<p>Comienzo por formatear la partición. Cambie <em>sdaX</em> por la partición que corresponda en su equipo (en mi caso es <em>/dev/sda6</em>).</p>
+<div class="highlight"><pre><span></span># mkfs.ext3 /dev/sdaX
+</pre></div>
+
+
+<p>Creo el directorio para montar la partición (si ya lo tiene, omita el paso). Y la montamos.</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/gentoo
+# mount /dev/sdaX /mnt/gentoo
+# ls /mnt/gentoo
+lost+found
+</pre></div>
+
+
+<p><img class="img-fluid" src="tar.png"></p>
+<h3>Desempacamos el stage</h3>
+<p>Siempre tengo a la mano el último <em>stage</em>. Para el <em>Pentium-M</em> uso el preparado para <em>i686</em>. Puede obtenerlo en <a href="http://gentoo.osuosl.org/releases/x86/current/stages/">gentoo.osuosl.org</a>. Compruebo la integridad del archivo con <em>md5sum</em>.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/guivaloz/software/gentoo/
+$ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
+./stage3-i686-2008.0.tar.bz2: La suma coincide
+</pre></div>
+
+
+<p>Luego lo desempaco en <em>/mnt/gentoo/</em></p>
+<div class="highlight"><pre><span></span># cd /mnt/gentoo/
+# tar xvjpf /home/guivaloz/software/gentoo/stage3-i686-2008.0.tar.bz2
+</pre></div>
+
+
+<p>Antes de comenzar a instalar es muy recomendable actualizar el <em>portage</em> para que todo lo que instalemos sean versiones <em>nuevas</em>.</p>
+<div class="highlight"><pre><span></span># emerge --sync
+</pre></div>
+
+
+<p><img class="img-fluid" src="txt.png"></p>
+<h3>Configuraciones</h3>
+<p>Edito los principales archivos de la configuración de Gentoo Linux.</p>
+<p><em>make.conf</em> contiene las opciones de compilación de acuerdo a las características del equipo. Yo prefiero conservar las compilaciones de los paquetes que instalo. Esto me perite <em>compartirlas</em> con otras instalaciones de Gentoo Linux en el mismo equipo y en otros equipos <em>idénticos</em>, siempre y cuando la configuración en <em>make.conf</em> sea igual.</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/make.conf
+
+#
+# /etc/make.conf
+#
+# Dell Inspiron 9300
+#
+
+# This should not be changed unless you know exactly what you are doing.  You
+# should probably be using a different stage, instead.
+CHOST=&quot;i686-pc-linux-gnu&quot;
+
+# Intel(R) Pentium(R) M processor 1.73GHz
+#   CPU Family : 6
+#   Model      : 13
+CFLAGS=&quot;-O2 -march=pentium-m -pipe -fomit-frame-pointer&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
+
+# Dos compilaciones paralelas
+MAKEOPTS=&quot;-j2&quot;
+
+# Conservar compilaciones
+FEATURES=&quot;buildpkg fixpackages&quot;
+PKGDIR=/usr/portage/packages
+
+# Idioma
+LINGUAS=&quot;es&quot;
+
+#
+# Variable USE
+#
+USE=&quot;-kerberos mmx sse sse2&quot;
+
+#
+# Servidor de paquetes
+#
+#PORTDIR=/usr/portage
+#DISTDIR=<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles
+#SYNC=rsync://SERVIDOR/gentoo-portage
+#FETCHCOMMAND=&quot;rsync rsync://SERVIDOR/gentoo-packages/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
+</pre></div>
+
+
+<p><em>locale.gen</em> establece los conjuntos de caracteres para la compilación de los paquetes.</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/locale.gen
+
+#
+# /etc/locale.gen
+#
+# EEUU
+en_US ISO-8859-1
+en_US.UTF-8 UTF-8
+# España
+es_ES ISO-8859-1
+es_ES.UTF-8 UTF-8
+es_ES@euro ISO-8859-15
+# Mexico
+es_MX ISO-8859-1
+es_MX.UTF-8 UTF-8
+</pre></div>
+
+
+<p><em>02locales</em> define variables de entorno con datos de nuestro lenguaje.</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/env.d/02locales
+
+#
+# /etc/env.d/02locales
+#
+LANG=&quot;es_MX.utf8&quot;
+LANGUAGE=&quot;es_MX.utf8&quot;
+LC_ALL=&quot;es_MX.utf8&quot;
+</pre></div>
+
+
+<p><em>clock</em> define la zona horaria.</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/conf.d/clock
+
+#
+# /etc/conf.d/clock
+#
+
+# Set CLOCK to &quot;UTC&quot; if your system clock is set to UTC (also known as
+# Greenwich Mean Time).  If your clock is set to the local time, then
+# set CLOCK to &quot;local&quot;.  Note that if you dual boot with Windows, then
+# you should set it to &quot;local&quot;.
+
+CLOCK=&quot;UTC&quot;
+
+# Select the proper timezone.  For valid values, peek inside of the
+# /usr/share/zoneinfo/ directory.  For example, some common values are
+# &quot;America/New_York&quot; or &quot;EST5EDT&quot; or &quot;Europe/Berlin&quot;.  If you want to
+# manage /etc/localtime yourself, set this to &quot;&quot;.
+
+TIMEZONE=&quot;Mexico/General&quot;
+</pre></div>
+
+
+<p><em>consolefont</em> define la fuente y conjunto de caracteres de nuestro idioma.</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/conf.d/consolefont
+
+#
+# /etc/conf.d/consolefont
+#
+
+# CONSOLEFONT specifies the default font that you&#39;d like Linux to use on the
+# console.  You can find a good selection of fonts in /usr/share/consolefonts;
+# you shouldn&#39;t specify the trailing &quot;.psf.gz&quot;, just the font name below.
+# To use the default console font, comment out the CONSOLEFONT setting below.
+# This setting is used by the /etc/init.d/consolefont script (NOTE: if you do
+# not want to use it, run &quot;rc-update del consolefont&quot; as root).
+
+CONSOLEFONT=&quot;lat9v-16&quot;
+
+# CONSOLETRANSLATION is the charset map file to use.  Leave commented to use
+# the default one.  Have a look in /usr/share/consoletrans for a selection of
+# map files you can use.
+
+CONSOLETRANSLATION=&quot;8859-1_to_uni&quot;
+</pre></div>
+
+
+<p><em>hostname</em> establece el nombre del equipo. En mi caso, le llamo "inspiron".</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/conf.d/hostname
+
+#
+# /etc/conf.d/hostname
+#
+HOSTNAME=&quot;inspiron&quot;
+</pre></div>
+
+
+<p><em>keymaps</em> tiene que ver con el teclado. El mío es latinoamericano, por lo que uso "la-latin1". Si el suyo es español, defina KEYMAP como "es".</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/conf.d/keymaps
+
+#
+# /etc/conf.d/keymaps
+#
+
+# Use KEYMAP to specify the default console keymap.  There is a complete tree
+# of keymaps in /usr/share/keymaps to choose from.
+
+KEYMAP=&quot;la-latin1&quot;
+
+# Should we first load the &#39;windowkeys&#39; console keymap?  Most x86 users will
+# say &quot;yes&quot; here.  Note that non-x86 users should leave it as &quot;no&quot;.
+
+SET_WINDOWKEYS=&quot;yes&quot;
+</pre></div>
+
+
+<p><em>fstab</em> define el montaje de las particiones del disco duro. Observe que mi root /dev/sda6 es la que estoy instalando.</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/fstab
+
+#
+# /etc/fstab
+#
+# &lt;fs&gt;       &lt;mountpoint&gt;     &lt;type&gt;      &lt;opts&gt;      &lt;dump/pass&gt;
+/dev/sda1    /boot            ext2        noauto      1 2
+/dev/sda2    /home            ext3        defaults    0 0
+/dev/sda3    /usr/portage     reiserfs    defaults    0 0
+# La particion /dev/sda4 es EXTENDED
+/dev/sda5    none             swap        sw          0 0
+/dev/sda6    /                ext3        noatime     0 1
+/dev/sda7    /mnt/anterior    ext3        noauto      0 0
+/dev/sda8    /mnt/backup      ext3        defaults    0 0
+/dev/sda9    /mnt/archivos    ext3        defaults    0 0
+</pre></div>
+
+
+<p><em>resolv.conf</em> es la información de la resolución de nombres. Hago una copia del sistema en uso al nuevo sistema.</p>
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/
+</pre></div>
+
+
+<p><img class="img-fluid" src="kcmperformance.png"></p>
+<h3>Chroot</h3>
+<p>Monto las particiones que me apoyarán a la hora de hacer el <em>chroot</em>. Cambie cada /dev/sdaX por la partición correspondiente en su equipo.</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/gentoo/usr/portage
+# mount /dev/sdaX    /mnt/gentoo/boot
+# mount /dev/sdaX    /mnt/gentoo/usr/portage
+# mount /dev/sdaX    /mnt/gentoo/home
+# mount -t proc none /mnt/gentoo/proc
+# mount -o bind /dev /mnt/gentoo/dev
+</pre></div>
+
+
+<p>Me <em>mudo</em> a la nueva instalación por medio del comando <em>chroot</em>.</p>
+<div class="highlight"><pre><span></span># chroot /mnt/gentoo /bin/bash
+</pre></div>
+
+
+<p>Ya estoy dentro del nuevo GNU/Linux. Actualizo las variables del entorno.</p>
+<div class="highlight"><pre><span></span># env-update
+# source /etc/profile
+# export PS1=&quot;(chroot) $PS1&quot;
+</pre></div>
+
+
+<p>Copio el archivo del huso horario.</p>
+<div class="highlight"><pre><span></span># cp /usr/share/zoneinfo/Mexico/General /etc/localtime
+</pre></div>
+
+
+<p>Actualizo el <em>caché</em> del <em>portage</em>.</p>
+<div class="highlight"><pre><span></span># emerge --metadata
+</pre></div>
+
+
+<p>A raíz de los cambios hechos en /etc/locale.gen hay que ejecutar el comando <em>locale-gen</em>.</p>
+<div class="highlight"><pre><span></span># locale-gen
+</pre></div>
+
+
+<p>Si existe una actualización del paquete <em>portage</em> conviene instalarla antes que nada.</p>
+<div class="highlight"><pre><span></span># emerge -u portage
+</pre></div>
+
+
+<p>De forma extraordinaria, usando el stage <em>stage3-i686-2008.0.tar.bz2</em>, hay un conflicto al actualizar el paquete <em>e2fsprogs</em>. Es necesario remover los paquetes anteriores y luego instalar los nuevos. Seguramente estó será arreglado en las futuras versiones del <em>stage</em>.</p>
+<div class="highlight"><pre><span></span># emerge -pu sys-fs/e2fsprogs
+# emerge -pC sys-libs/ss sys-libs/com_err sys-fs/e2fsprogs
+# emerge -C sys-libs/ss sys-libs/com_err sys-fs/e2fsprogs
+# emerge sys-fs/e2fsprogs
+</pre></div>
+
+
+<p>Si hay una nueva versión de los compiladores <em>gcc</em> y del <em>glibc</em> conviene actualizarlos de una vez.</p>
+<div class="highlight"><pre><span></span># emerge -u gcc glibc
+</pre></div>
+
+
+<p><img class="img-fluid" src="time.png"></p>
+<h3>¿Convendrá <em>recompilar</em> todo?</h3>
+<p>El <em>stage</em> nos proporciona lo necesario para que el sistema funcione. Entre más antigüo sea, más paquetes deberían actualizarse. Recuerde que he tomado el <em>stage</em> <em>compatible con i686</em>, el cual es para toda la familia de procesadores Pentium 4 y más nuevos.</p>
+<p><strong>En este punto tiene que decidir entre sólo actualizar o recompilar todo.</strong></p>
+<p>Si sólo quiere que el sistema se <em>actualize</em>, revise (la opción "p") y luego actualize:</p>
+<div class="highlight"><pre><span></span># emerge -pvu system
+# emerge -u system
+</pre></div>
+
+
+<p>Este paso requiere <em>menos tiempo</em> que <em>recompilar</em> todo. Pero los paquetes que <em>no</em> sean actualizados continuarán como compatibles con el <em>i686</em>.</p>
+<p>Si quiere que <em>todo</em> lo instalado por el <em>stage</em> <em>se <em>recompile</em></em> con las opciones de <em>make.conf</em>, revise (la opción "p") y luego <em>recompile</em> todo el <em>system</em>:</p>
+<div class="highlight"><pre><span></span># emerge -pve system
+# emerge -e system
+</pre></div>
+
+
+<p>Así tendrá todos los paquetes optimizados a su equipo. Obviamente esto requiere <em>más tiempo</em> que sólo actualizar.</p>
+<p>Mi recomendación es que si no tiene prisa por terminar la instalación entonces <em><em>recompile</em> todo</em>.</p>
+<p><img class="img-fluid" src="services.png"></p>
+<h3>Gestor de arranque grub</h3>
+<p>Instalo el gestor de arranque <em>grub</em>. Consulte <a href="http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=1&amp;chap=10#doc_chap2">Installing GRUB</a> para más información sobre estos pasos.</p>
+<div class="highlight"><pre><span></span># emerge grub
+# grub
+grub&gt; root (hd0,0)
+grub&gt; setup (hd0)
+grub&gt; quit
+</pre></div>
+
+
+<p><img class="img-fluid" src="kdmconfig.png"></p>
+<h3>Kernel</h3>
+<p>Para instalar la más nueva versión estable de <em>gentoo-sources</em>, ejecuto:</p>
+<div class="highlight"><pre><span></span># emerge -p gentoo-sources
+# emerge gentoo-sources
+</pre></div>
+
+
+<p>En cambio, si se necesita una versión específica y estable de <em>gentoo-sources</em> por ejemplo la <em>2.6.24-r8</em>, ejecuto:</p>
+<div class="highlight"><pre><span></span># emerge -p =gentoo-sources-2.6.24-r8
+# emerge =gentoo-sources-2.6.24-r8
+</pre></div>
+
+
+<p>Copio el <a href="config-2.6.24-gentoo-r8.txt">archivo de configuracion</a> del <em>kernel</em> de la instalación anterior, así me ahorro la ardua tarea de configurarlo. Haga esto sólo si se trata de la misma versión.</p>
+<div class="highlight"><pre><span></span># cp /mnt/anterior/usr/src/linux/.config /usr/src/linux/
+</pre></div>
+
+
+<p>Compilo e instalo el <em>kernel</em> y sus módulos.</p>
+<div class="highlight"><pre><span></span># cd /usr/src/linux
+# make
+# make modules_install
+# make install
+</pre></div>
+
+
+<p>Configuro el gestor de arranque editando el archivo <em>grub.conf</em></p>
+<div class="highlight"><pre><span></span># nano -w /boot/grub/grub.conf
+</pre></div>
+
+
+<p>Revise dos veces la configuración en <em>grub.conf</em> antes de reiniciar. En el mío tengo dos instalaciones de Gentoo Linux, una en <em>/dev/sda6</em> (nuevo) y la otra en <em>/dev/sda7</em> (anterior). Además le paso el parámetro <em>resume</em> con la participación <em>swap</em> <em>/dev/sda5</em>, esto es para la hibernación a disco duro.</p>
+<div class="highlight"><pre><span></span>default 0
+timeout 5
+
+title Gentoo Linux - Anterior - 2.6.24-r8
+root (hd0,0)
+kernel /vmlinuz-2.6.24-gentoo-r8 root=/dev/sda7 resume=/dev/sda5
+
+title Gentoo Linux - NUEVO    - 2.6.24-r8
+root (hd0,0)
+kernel /vmlinuz-2.6.24-gentoo-r8 root=/dev/sda6 resume=/dev/sda5
+</pre></div>
+
+
+<p><img class="img-fluid" src="kcmcgi.png"></p>
+<h3>Paquetes necesarios antes del primer arranque</h3>
+<p>Instalo el demonio para administrar las bitácoras del sistema o <em>logger</em>. Mi elección es el <em>syslog-ng</em>.</p>
+<div class="highlight"><pre><span></span># emerge syslog-ng
+# rc-update syslog-ng add default
+</pre></div>
+
+
+<p>El calendarizador sirve para ejecutar programas a ciertas horas o días. Mi preferido es el <em>vixie-cron</em>.</p>
+<div class="highlight"><pre><span></span># emerge vixie-cron
+# rc-update vixie-cron add default
+</pre></div>
+
+
+<p>El demonio <em>ACPI</em> tiene que ver con el control del equipo y la administración de la energía.</p>
+<div class="highlight"><pre><span></span># emerge acpid
+# rc-update add acpid default
+</pre></div>
+
+
+<p>Las siguientes utilerías me son prácticamente indispensables.</p>
+<div class="highlight"><pre><span></span># emerge gentoolkit
+# emerge reiserfsprogs
+# emerge dhcpcd
+# emerge dosfstools
+# emerge pciutils
+# emerge usbutils
+# emerge sudo
+# emerge screen
+</pre></div>
+
+
+<p><img class="img-fluid" src="personal.png"></p>
+<h3>Contraseñas y primer uso</h3>
+<p>Defino la contraseña del superusuario <em>root</em>.</p>
+<div class="highlight"><pre><span></span># passwd
+</pre></div>
+
+
+<p>Es momento de dar de alta al usuario que uso normalmente por medio del comando <em>useradd</em>. El parámetro <em>-m</em> es para crear el directorio <em>/home/nombre_del_usuario</em>. Si ese directorio ya existe, debe omitir ese parámetro. Cambie <em>guivaloz</em> por su propio <em>nickname</em>.</p>
+<div class="highlight"><pre><span></span># useradd -g users -G tty,wheel,audio,cdrom,video,portage,cron,usb -m guivaloz
+# passwd guivaloz
+</pre></div>
+
+
+<p>Abandono el <em>chroot</em>.</p>
+<div class="highlight"><pre><span></span># exit
+</pre></div>
+
+
+<p>Reinicio el equipo. Arranco con la nueva instalación y pruebo que funcione bien.</p>
+<p><img class="img-fluid" src="kcmpci.png"></p>
+<h3>Audio, red alámbrica y red inalámbrica</h3>
+<p>Instalo las utilerías de <em>ALSA</em> para usar mi tarjeta de audio.</p>
+<div class="highlight"><pre><span></span># emerge alsa-utils
+</pre></div>
+
+
+<p>Debo configurar <em>ALSA</em> para mi equipo editando el archivo <em>/etc/modules.d/alsa</em></p>
+<div class="highlight"><pre><span></span># nano -w /etc/modules.d/alsa
+</pre></div>
+
+
+<p>El contenido de ese archivo es:</p>
+<div class="highlight"><pre><span></span># ALSA portion
+alias char-major-116 snd
+alias snd-card-0 snd-intel8x0
+
+# OSS/Free portion
+alias char-major-14 soundcore
+alias sound-slot-0 snd-card-0
+
+# Tarjeta de audio interna Intel
+alias sound-service-0-0 snd-mixer-oss
+alias sound-service-0-1 snd-seq-oss
+alias sound-service-0-3 snd-pcm-oss
+alias sound-service-0-8 snd-seq-oss
+alias sound-service-0-12 snd-pcm-oss
+
+# Alias
+alias /dev/mixer snd-mixer-oss
+alias /dev/dsp snd-pcm-oss
+alias /dev/midi snd-seq-oss
+
+# Set this to the correct number of cards.
+options snd cards_limit=1
+</pre></div>
+
+
+<p>Para terminar a lo que a <em>ALSA</em> se refiere; configuro que se cargue en el arranque con:</p>
+<div class="highlight"><pre><span></span># rc-update add alsasound boot
+</pre></div>
+
+
+<p>Para una computadora portátil conviene que la red alámbrica se levante al conectar el cable ethernet, para ello instalo <em>netplug</em>.</p>
+<div class="highlight"><pre><span></span># emerge netplug
+</pre></div>
+
+
+<p>También tengo una tarjeta de red inalámbrica <em>Intel IPW2200</em>.</p>
+<div class="highlight"><pre><span></span># emerge wireless-tools
+# emerge ipw2200-firmware
+</pre></div>
+
+
+<p><img class="img-fluid" src="editcopy.png"></p>
+<h3>Respaldo o clono lo que llevo al momento</h3>
+<p>Antes de respaldar o clonar hay que a revisar si se necesitan más actualizaciones. El siguiente comando incluye <em>-N</em> que busca paquetes por recompilar si han cambiado los parámetros de la variable <em>USE</em> que le correspondan. Como es recomendable, primero revisamos y luego actualizamos.</p>
+<div class="highlight"><pre><span></span># emerge -puvND world
+# emerge -uND world
+</pre></div>
+
+
+<p>Después, ejecuto el comando <em>python-updater</em> por si algunas aplicaciones necesiten ser recompiladas por una posible actualización del <em>phyton</em>.</p>
+<div class="highlight"><pre><span></span># python-updater
+</pre></div>
+
+
+<p>Por último, para asegurarnos que las relaciones entre los paquetes instalados no estén rotas, ejecuto <em>revdep-rebuild</em>.</p>
+<div class="highlight"><pre><span></span># revdep-rebuild
+</pre></div>
+
+
+<p>En este punto, mi <em>instalación básica</em> está lista. El siguiente paso que sugiero es <em>respaldarla</em> o <em>clonarla</em>. <em>¿Para qué?</em> se preguntará... bueno, para ahorrarse el tener que repetir todo el proceso de instalación si se arrepiente de algún paso. O bien, a partir de aquí puede, por ejemplo, instalar Gnome o KDE; si tiempo más adelante ya no le gustó su instalación, puede <em>formatear</em> esa partición y restablecer a partir del respaldo de la <em>instalación básica</em>, lo actualiza e instala un nuevo Gnome o KDE; esto le llevará menos tiempo que hacer todo este procedimiento de nuevo.</p>
+<p><strong>MUY IMPORTANTE: Para respaldar o clonar un sistema operativo Gentoo Linux debe de arrancar con un Live CD o con otra instalación GNU/Linux que tenga en su equipo.</strong> Si copia o clona una instalación que esté usando, podría fallar o quedar corrupta.</p>
+<p>En mi caso ya tengo una instalación anterior en mi portátil, así que reinicio el equipo y arranco con ésta.</p>
+<p><strong>ADVERTENCIA:</strong> Tenga mucho cuidado con las siguientes instrucciones, en un descuido podría hechar a perder su trabajo.</p>
+<p><strong>Para hacer un respaldo</strong> (ya en la instalación anterior) monto la partición con la nueva instalación y ejecuto los comandos siguientes para crear un archivo comprimido. Observe que omito el directorio <em>lost+found</em> propio del sistema bajo el que fue <em>formateado</em>, el <em>ext3</em>. Sustituya <em>/dev/sdaX</em> por la partición que corresponda.</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/gentoo
+# mount /dev/sdaX /mnt/gentoo
+# cd /mnt/gentoo
+# tar cvzf /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz --exclude=lost+found *
+# chown guivaloz:users /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz
+</pre></div>
+
+
+<p>Opcionalmente puede conservar una copia del <em>portage</em> correspondiente a la misma instalación que haya respaldado.</p>
+<div class="highlight"><pre><span></span># cd /usr/portage/
+# tar cvzf /home/guivaloz/software/inspiron_basico_portage_2008-11-10.tar.gz --exclude=distfiles --exclude=packages *
+# chown guivaloz:users /home/guivaloz/software/inspiron_basico_portage_2008-11-10.tar.gz
+</pre></div>
+
+
+<p><strong>Para reestablecer</strong> a partir de un respaldo, debe ejecutar:</p>
+<div class="highlight"><pre><span></span># mkfs.ext3 /dev/sdaX
+# mkdir /mnt/gentoo
+# mount /dev/sdaX /mnt/gentoo
+# cd /mnt/gentoo
+# tar xvzf /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz
+</pre></div>
+
+
+<p><strong>Para hacer un clon (una copia idéntica en otra partición)</strong> <em>formateo</em> la partición a donde irá el <em>clon</em> y monto esa y la original (la que tiene la nueva instalación). Sustituya <em>/dev/sdaX</em> (nueva instalación) y <em>/dev/sdaY</em> (clon) por lo que corresponda.</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/original
+# mount /dev/sdaX /mnt/original
+# mkfs.ext3 /dev/sdaY
+# mkdir /mnt/clon
+# mount /dev/sdaY /mnt/clon
+</pre></div>
+
+
+<p>Uso el comando <em>tar</em> con una tubería, omitiendo el directorio <em>lost+found</em>. Esta técnica es bastante más rápida que el comando <em>cp</em>.</p>
+<div class="highlight"><pre><span></span># cd /mnt/original
+# tar cv --exclude=lost+found * | tar x -C /mnt/clon/
+</pre></div>
+
+
+<p><img class="img-fluid" src="configure.png"></p>
+<h3>Cambios en el clon</h3>
+<p>Si desea arrancar con el <em>clon</em>, hay que modificar el archivo de configuración <em>fstab</em> del <em>clon</em>. Debemos cambiar la línea que defina la raiz del sistema (<em>/dev/sdaY</em>) y también la que apunta a la otra instalación (<em>/dev/sdaX</em>).</p>
+<div class="highlight"><pre><span></span># nano -w /mnt/clon/etc/fstab
+</pre></div>
+
+
+<p>También debe modificar la configuración del gestor de arranque <em>grub</em> para que pueda usar ambas instalaciones. Un buen truco es usar el mismo kernel para ambas (ya que son <em>clones</em>).</p>
+<div class="highlight"><pre><span></span># mount /boot
+# nano -w /boot/grub/grub.conf
+</pre></div>
+
+
+<p>Desmonte las particiones, reinicie y pruebe cada una de ellas.</p>
+<p>Vea la <a href="gentoo-linux-mi-instalacion-personal-2.html">segunda parte de este manual</a> para continuar con la instalación.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

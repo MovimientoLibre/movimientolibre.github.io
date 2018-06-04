@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.</p>">
+    <meta name="keywords" content="[<Tag 'gentoo linux'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Apuntes para la Instalación de Gentoo Linux en una laptop ASUS">
+    <meta itemprop="description" content="<p>Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Apuntes para la Instalación de Gentoo Linux en una laptop ASUS">
+    <meta name="twitter:description" content="<p>Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Apuntes para la Instalación de Gentoo Linux en una laptop ASUS">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/gentoo-en-asus-rog-instalacion-2017-05/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Apuntes para la Instalación de Gentoo Linux en una laptop ASUS - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Apuntes para la Instalación de Gentoo Linux en una laptop ASUS</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2017-05-09 07:44:00-05:00</p>
+        <hr>
+        <p>Esta guía parte de un equipo previamente particionado y con una instalación de Gentoo Linux. Aprovechamos que desde una terminal y con el usuario root se puede hacer una nueva instalación, mientras seguimos trabajando en la anterior.</p>
+<h3>Preparar la partición</h3>
+<p>Formatee la partición, cambie /dev/sdXX por la partición</p>
+<div class="highlight"><pre><span></span># mkfs.btrfs -f -L Gentoo201701 /dev/sdXX
+# mount /mnt/gentoo
+</pre></div>
+
+
+<h3>Descarge el stage</h3>
+<p>Y descomprima</p>
+<div class="highlight"><pre><span></span># cd /mnt/gentoo
+# tar xvjpf /mnt/blackbox/Compartidos/Software/Gentoo/stage3-amd64-20170105.tar.bz2
+</pre></div>
+
+
+<p>Monte</p>
+<div class="highlight"><pre><span></span># mount -t proc none /mnt/gentoo/proc
+# mount --rbind /dev /mnt/gentoo/dev
+# mount --rbind /sys /mnt/gentoo/sys
+# mkdir /mnt/gentoo/usr/portage
+# mount --rbind /usr/portage /mnt/gentoo/usr/portage
+</pre></div>
+
+
+<p>De una vez copie make.conf</p>
+<div class="highlight"><pre><span></span># cp /etc/locale.gen /mnt/gentoo/etc/locale.gen
+# cp /etc/portage/make.conf /mnt/gentoo/etc/portage/make.conf
+# cp /etc/env.d/02locales /mnt/gentoo/etc/env.d/02locales
+# nano /mnt/gentoo/etc/portage/make.conf
+</pre></div>
+
+
+<p>Copie los datos de los DNS</p>
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/
+</pre></div>
+
+
+<h3>Ingrese al nuevo Gentoo Linux</h3>
+<p>Haga el <em>chroot</em></p>
+<div class="highlight"><pre><span></span># chroot /mnt/gentoo /bin/bash
+# env-update
+# source /etc/profile
+# export PS1=&quot;(new) $PS1&quot;
+</pre></div>
+
+
+<p>Configure locale-gen</p>
+<div class="highlight"><pre><span></span># locale-gen
+</pre></div>
+
+
+<p>Verifique y actualice portage</p>
+<div class="highlight"><pre><span></span># emerge -pu portage gcc
+</pre></div>
+
+
+<p>Instale el kernel</p>
+<div class="highlight"><pre><span></span># emerge gentoo-sources
+# cd /usr/src/linux
+# make -j4
+# make modules_install
+# make install
+</pre></div>
+
+
+<p>Establezca la zona horaria.</p>
+<div class="highlight"><pre><span></span># cd /etc
+# cp /usr/share/zoneinfo/Mexico/General localtime
+</pre></div>
+
+
+<p>Otras configuraciones</p>
+<div class="highlight"><pre><span></span># nano /etc/conf.d/keymaps
+# nano /etc/conf.d/hostname
+# nano /etc/hosts
+# nano /etc/fstab
+</pre></div>
+
+
+<h3>Con KDE Plasma como interfaz gráfica</h3>
+<p>Cambie el profile a Plasma</p>
+<div class="highlight"><pre><span></span># eselect profile show
+# eselect profile list
+# eselect profile set default/linux/amd64/13.0/desktop/plasma
+# eselect profile show
+</pre></div>
+
+
+<p>Instale...</p>
+<div class="highlight"><pre><span></span># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen pwgen
+</pre></div>
+
+
+<p>Instale daemons</p>
+<div class="highlight"><pre><span></span># emerge ntp syslog-ng vixie-cron
+# rc-update add syslog-ng default
+# rc-update add vixie-cron default
+# rc-update add ntpd default
+</pre></div>
+
+
+<p>Instale utilerías del sistema y de sonido</p>
+<div class="highlight"><pre><span></span># emerge pciutils alsa-utils
+# rc-update add alsasound boot
+</pre></div>
+
+
+<h3>A instalar software</h3>
+<p>Instale PostgreSQL</p>
+<div class="highlight"><pre><span></span># emerge postgresql
+</pre></div>
+
+
+<p>Instale Apache</p>
+<div class="highlight"><pre><span></span># emerge apache
+</pre></div>
+
+
+<p>Instale Ruby</p>
+<div class="highlight"><pre><span></span># emerge ruby nokogiri redcloth dev-ruby/mechanize
+</pre></div>
+
+
+<p>Instale utilerías de red y sistemas de archivos</p>
+<div class="highlight"><pre><span></span># emerge app-admin/sudo bind-tools traceroute bridge-utils sys-fs/fuse sys-fs/ntfs3g
+</pre></div>
+
+
+<p>Instale KDE plasma-desktop, éste pone el entorno básico (es decir, NO instala "todo el combo") para luego ir instalando las aplicaciones a nuestro criterio. Revise dependencias y USE flags..</p>
+<div class="highlight"><pre><span></span># emerge --ask plasma-desktop samba cups xorg-x11
+</pre></div>
+
+
+<p>Instale LibreOffice</p>
+<div class="highlight"><pre><span></span># emerge virtual/jdk
+# emerge libreoffice
+
+# emerge firefox
+# emerge gimp
+# emerge texlive
+# emerge audacity
+</pre></div>
+
+
+<p>Instale PHP</p>
+<div class="highlight"><pre><span></span># emerge php
+
+# emerge networkmanager
+</pre></div>
+
+
+<p>Luego KDE Core</p>
+<div class="highlight"><pre><span></span># emerge kdecore-meta
+</pre></div>
+
+
+<p>Actualice todo lo demás</p>
+<div class="highlight"><pre><span></span># emerge -uND world
+</pre></div>
+
+
+<p>Instale Geany</p>
+<div class="highlight"><pre><span></span># emerge geany geany-themes geany-plugins
+# emerge droid freefonts libertine terminus-font ttf-bitstream-vera corefonts
+</pre></div>
+
+
+<p>Y de consola...</p>
+<div class="highlight"><pre><span></span># emerge xterm media-sound/moc nmap whois macchanger aircrack-ng
+</pre></div>
+
+
+<p>En lugar de kdegraphics-meta</p>
+<div class="highlight"><pre><span></span># emerge spectacle kde-apps/kate okular gwenview
+</pre></div>
+
+
+<p>En lugar de kdemultimedia-meta</p>
+<div class="highlight"><pre><span></span># emerge kdenlive kmix mplayer
+</pre></div>
+
+
+<p>Instale el GDM ssdm</p>
+<div class="highlight"><pre><span></span># emerge sddm grub gparted
+# sddm --example-config &gt; /etc/sddm.conf
+# nano -w /etc/sddm.conf
+# rc-update add xdm default
+</pre></div>
+
+
+<p>Configure /etc/conf.d/xdm con DISPLAYMANAGER="sddm"</p>
+<div class="highlight"><pre><span></span># nano /etc/conf.d/modules
+# nano /etc/conf.d/xdm
+# nano /etc/ntp.conf
+</pre></div>
+
+
+<p>Configure...</p>
+<div class="highlight"><pre><span></span># nano /etc/plasma/startup/10-agent-startup.sh
+# nano /etc/plasma/shutdown/10-agent-shutdown.sh
+</pre></div>
+
+
+<p>Utilerías de KDE</p>
+<div class="highlight"><pre><span></span># emerge kcalc umbrello
+# emerge kile
+# emerge konqueror
+# emerge kde-plasma/kdeplasma-addons
+# emerge unarj arj lha lzop rar unrar kde-apps/ark
+</pre></div>
+
+
+<p>KDE para una laptop con bluetooth, powerdevil más systemsettings y otras del sistema</p>
+<div class="highlight"><pre><span></span># emerge -pv plasma-meta
+</pre></div>
+
+
+<p>Siga instalando...</p>
+<div class="highlight"><pre><span></span># emerge gparted
+# emerge gimp inkscape
+# emerge libvirt virt-manager
+# emerge gvim vim
+# emerge audacity
+# emerge k3b vorbis-tools
+</pre></div>
+
+
+<p>XFCE4</p>
+<div class="highlight"><pre><span></span># emerge xfce4-meta xfce4-notifyd gtk-engines
+</pre></div>
+
+
+<p>Instale componentes de XFCE</p>
+<div class="highlight"><pre><span></span># emerge xfce4-volumed xfce4-mixer xfce4-terminal xfce4-taskmanager xfce4-screenshooter
+# emerge xfce4-cpugraph-plugin xfce4-verve-plugin xfce4-mount-plugin xfce4-sensors-plugin xfce4-systemload-plugin
+</pre></div>
+
+
+<p>Soporte multimedia y de archivos empacados para Thunar</p>
+<div class="highlight"><pre><span></span># emerge tumbler
+# emerge thunar-volman thunar-archive-plugin thunar-media-tags-plugin
+</pre></div>
+
+
+<p>Instale iconos</p>
+<div class="highlight"><pre><span></span># emerge gtk-chtheme tango-icon-theme faenza-icon-theme tangerine-icon-theme
+</pre></div>
+
+
+<p>Configure arranque de servicios...</p>
+<div class="highlight"><pre><span></span># rc-update add dbus default
+# rc-update add udev default
+# rc-update add ntpd default
+# rc-update add cupsd default
+</pre></div>
+
+
+<p>Zona horaria</p>
+<div class="highlight"><pre><span></span># cp /usr/share/zoneinfo/Mexico/General /etc/localtime
+</pre></div>
+
+
+<p>Contraseña</p>
+<div class="highlight"><pre><span></span># passwd
+</pre></div>
+
+
+<p>Más utilerías</p>
+<div class="highlight"><pre><span></span># emerge tilda mousepad xfwm4-themes xfce4-whiskermenu-plugin alacarte xfce4-clipman-plugin
+# emerge pcmanfm gftp
+</pre></div>
+
+
+<p>Instale más software</p>
+<div class="highlight"><pre><span></span># emerge tor privoxy arm
+# emerge htop net-fs/sshfs
+# emerge dia
+</pre></div>
+
+
+<p>Kramdawn es inestable, libere dependencias</p>
+<div class="highlight"><pre><span></span># emerge kramdown
+</pre></div>
+
+
+<p>Librerías que uso en Python</p>
+<div class="highlight"><pre><span></span># emerge tabulate psycopg
+</pre></div>
+
+
+<p>Software necesario para compilar QGIS desde fuentes</p>
+<div class="highlight"><pre><span></span># emerge sci-geosciences/gpsbabel x11-libs/qwtpolar x11-libs/qscintilla dev-db/spatialite dev-python/PyQt4 sci-libs/libspatialindex dev-python/sip dev-python/jinja dev-python/httplib2 dev-python/pytz dev-python/qscintilla-python dev-libs/qjson sci-geosciences/gpsbabel dev-python/python-dateutil
+# emerge -uN sci-libs/gdal
+</pre></div>
+
+
+<p>Instale R 3.2.2 y R studio</p>
+<div class="highlight"><pre><span></span># emerge rstudio R
+</pre></div>
+
+
+<p>Y...</p>
+<div class="highlight"><pre><span></span># emerge ccache
+# emerge sys-process/at
+# emerge xarchiver
+# emerge app-admin/testdisk
+</pre></div>
+
+
+<h3>Configurar el gestor de arranque GRUB 2</h3>
+<p>Edite...</p>
+<div class="highlight"><pre><span></span># nano -w /etc/default/grub
+</pre></div>
+
+
+<p>Edite estas líneas, cambie la identificación de la partición swap...</p>
+<div class="highlight"><pre><span></span>GRUB_TIMEOUT=30
+GRUB_CMDLINE_LINUX=&quot;resume=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx kvm-intel.nested=1&quot;
+GRUB_GFXMODE=1920x1080
+GRUB_GFXPAYLOAD_LINUX=keep
+</pre></div>
+
+
+<p>No deje de tener opciones manuales en...</p>
+<div class="highlight"><pre><span></span># nano -w /etc/grub.d/40_custom
+</pre></div>
+
+
+<p>Formatee la partición de 64 MB code EF00 /dev/sdb1</p>
+<div class="highlight"><pre><span></span># mkfs.vfat -n EFIBOOT /dev/sdb1
+</pre></div>
+
+
+<p>Copie la clave UUID de /dev/sdb1</p>
+<div class="highlight"><pre><span></span># blkid
+</pre></div>
+
+
+<p>Y cambie la clave UUID en...</p>
+<div class="highlight"><pre><span></span># nano -w /etc/fstab
+# nano -w /etc/grub.d/40_custom
+</pre></div>
+
+
+<p>Con ésto, puede montarla...</p>
+<div class="highlight"><pre><span></span># mount /boot/efi
+</pre></div>
+
+
+<p>Así montada, instale GRUB2...</p>
+<div class="highlight"><pre><span></span># grub-install --efi-directory=/boot/efi
+Instalando para plataforma x86_64-efi.
+Instalación terminada. No se notificó ningún error.
+</pre></div>
+
+
+<p>Y habilite la configuración...</p>
+<div class="highlight"><pre><span></span># grub-mkconfig -o /boot/grub/grub.cfg
+Generando un fichero de configuración de grub...
+Encontrada imagen de linux: /boot/vmlinuz-4.4.39-gentoo
+hecho
+</pre></div>
+
+
+<p>Fin.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

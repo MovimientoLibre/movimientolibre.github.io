@@ -1,0 +1,21 @@
+/*
+ * Movimiento Libre
+ * Copyright 2018
+ * Licensed under GFDLv1.2 (http://www.movimientolibre.com/licencias/gfdl-es/)
+ */
+
+pre {
+    font-family: 'Source Code Pro',monospace;
+    background: none repeat scroll 0 0 #F0F0F0;
+    font-style: normal;
+    letter-spacing: 0.015em;
+    line-height: 130%;
+    padding: 0.7em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+blockquote {
+    padding: 0.7em;
+    font-size: 1.2em;
+}

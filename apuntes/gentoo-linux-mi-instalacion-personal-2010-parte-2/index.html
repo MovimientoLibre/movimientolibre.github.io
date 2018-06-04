@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.</p>">
+    <meta name="keywords" content="[<Tag 'gentoo linux'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Gentoo Linux en una netbook (2010, parte 2)">
+    <meta itemprop="description" content="<p>Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Gentoo Linux en una netbook (2010, parte 2)">
+    <meta name="twitter:description" content="<p>Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Gentoo Linux en una netbook (2010, parte 2)">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-2/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Gentoo Linux en una netbook (2010, parte 2) - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Gentoo Linux en una netbook (2010, parte 2)</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2010-11-26 10:30:00-06:00</p>
+        <hr>
+        <p>En este fondo de pantalla aparece <em>Morpheus</em>, personaje de las películas <a href="http://www.imdb.com/title/tt0133093/">The Matrix</a> y muestra un <em>diálogo alterado</em> de cuando <em>Morpheus</em> le explica a <em>Neo</em> qué es la <em>Matrix</em>. Claro que el resultado es una divertida exageración. He aquí lo que dice en español:</p>
+<blockquote>
+<p>Morpheus: Las formas actuales de instalar un S.O. en computadoras son un sistema Neo. Ese es nuestro enemigo. Pero cuando instalas, mira a tu alrededor. ¿Qué es lo que ves? Distros Linux que se basan en software binario y a la gente que intenta usuarlos. Las mentes débiles de las personas que tratamos de salvar. Pero hasta que lo logremos, esas personas seguirán siendo parte del sistema y las vuelve nuestro enemigo. Tú debes de entender, que la mayoría de la gente no está lista para cambiar la forma en que usa sus computadoras. Y muchos de ellos están tan dentro y son tan dependientes del sistema que pelearán por protegerlo.</p>
+</blockquote>
+<p>Este fondo de pantalla fue elaborado por <em>likewhoa</em>. Puedes descargar éste y otros más en <a href="http://gentooligans.com/GentooTenWallpapers2009.tar.bz2">http://gentooligans.com/GentooTenWallpapers2009.tar.bz2</a>.</p>
+<p>Le invito a continuar leyendo esta <strong>segunda parte</strong> de la <strong>Guía de Instalación de Gentoo Linux para una netbook</strong>. No deje de leer la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-1.html">primera parte</a>.</p>
+<h3>Use el profile desktop</h3>
+<p>Cambie el <em>profile</em> a <em>desktop</em>:</p>
+<div class="highlight"><pre><span></span># eselect profile list
+# eselect profile set default/linux/x86/10.0/desktop
+# eselect profile show
+# env-update
+# source /etc/profile
+# export PS1=&quot;(prescott) $PS1&quot;
+</pre></div>
+
+
+<p>Modifique la variable <strong>USE</strong> en /etc/make.conf con los parámetros que definen las dependencias y uso del equipo. Estos son los que he elegido:</p>
+<div class="highlight"><pre><span></span># Redes
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> bluetooth cups ppd samba wifi&quot;
+
+# Desarrollo. He desactivado java, más adelante lo activare
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> apache2 -java mysql php postgres ruby vhosts&quot;
+
+# PHP
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> ctype imap json pdo refection spl xml xmlrpc xsl&quot;
+
+# Graficos
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> fontconfig gd graphviz gs imagemagick&quot;
+
+# Entorno XFCE
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> -gnome -qt4&quot;
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> thunar xcomposite xscreensaver&quot;
+XFCE_PLUGINS=&quot;brightness menu trash&quot;
+
+# Sonido
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> amr amrnb amrwb cddb cdparanoia faac faad flac -gstreamer&quot;
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> lame mtp speex theora&quot;
+
+# Video
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> a52 css dv dvb fbcon ffmpeg live matroska mplayer rtsp&quot;
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> shout v4l v4l2 vcd win32codecs x264 xvid xvmc&quot;
+
+# Otros
+# gnutls es para cups y lo pide firefox
+# kpathsea es para LaTeX
+# nsplugin es para que vlc y java instalen plugins para firefox
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> gnutls joystick kqemu kpathsea nsplugin&quot;
+</pre></div>
+
+
+<p>También aproveche el editar el contenido de /etc/make.conf para agregar los parámetros de <em>X.org</em></p>
+<div class="highlight"><pre><span></span>#
+# X.org
+#
+INPUT_DEVICES=&quot;keyboard mouse synaptics joystick evdev&quot;
+VIDEO_CARDS=&quot;fbdev intel&quot;
+</pre></div>
+
+
+<h3>Instale el software básico</h3>
+<p>Los siguientes programas son indispensables:</p>
+<div class="highlight"><pre><span></span># emerge gentoolkit reiserfsprogs dhcpcd dosfstools screen logrotate iptables pwgen
+</pre></div>
+
+
+<p>Instale <a href="http://www.alsa-project.org/">ALSA</a></p>
+<div class="highlight"><pre><span></span># emerge pciutils alsa-utils
+</pre></div>
+
+
+<p>Y configúrelo:</p>
+<div class="highlight"><pre><span></span># nano -w /etc/modprobe.d/alsa.conf
+</pre></div>
+
+
+<p>Este es el contenido de /etc/modprobe.d/alsa.conf para mi <em>netbook</em>:</p>
+<div class="highlight"><pre><span></span># ALSA portion
+alias char-major-116 snd
+
+# OSS/Free portion
+alias char-major-14 soundcore
+
+# Intel High Definition Audio
+alias snd-card-0 snd-hda-intel
+alias sound-slot-0 snd-card-0
+
+# OSS/Free portion - card #1
+alias sound-service-0-0 snd-mixer-oss
+alias sound-service-0-1 snd-seq-oss
+alias sound-service-0-3 snd-pcm-oss
+alias sound-service-0-8 snd-seq-oss
+alias sound-service-0-12 snd-pcm-oss
+
+# More aliases
+alias /dev/mixer snd-mixer-oss
+alias /dev/dsp snd-pcm-oss
+alias /dev/midi snd-seq-oss
+
+# Set this to the correct number of cards.
+options snd cards_limit=1
+
+# Autoload model
+options snd-hda-intel index=0 model=auto
+</pre></div>
+
+
+<p>Instale <a href="http://www.x.org/">X.org</a></p>
+<div class="highlight"><pre><span></span># emerge xorg-x11
+# emerge freefonts terminus-font ttf-bitstream-vera corefonts artwiz-latin1 dejavu
+</pre></div>
+
+
+<p>Instale el gestor de ventanas <a href="http://www.fluxbox.org/">Fluxbox</a>, el monitor de sistema <a href="http://conky.sourceforge.net/">Conky</a> y la terminal <em>XTerm</em>.</p>
+<div class="highlight"><pre><span></span># emerge fluxbox conky xterm
+</pre></div>
+
+
+<p>Instale servicios para <em>log, cron, acpi</em> y <em>ntp</em>.</p>
+<div class="highlight"><pre><span></span># emerge syslog-ng vixie-cron acpid ntp
+</pre></div>
+
+
+<p>Estos servicios y otros más deben iniciarce al encender el equipo.</p>
+<div class="highlight"><pre><span></span># rc-update add alsasound boot
+# rc-update add consolekit default
+# rc-update add dbus default
+# rc-update add hald default
+# rc-update add syslog-ng default
+# rc-update add vixie-cron default
+# rc-update add acpid default
+</pre></div>
+
+
+<p>Instale bases de datos, el servidor web <a href="http://httpd.apache.org/">Apache</a> y <a href="http://php.net/">PHP</a>.</p>
+<div class="highlight"><pre><span></span># emerge postgresql-server
+# emerge mysql
+# emerge apache php
+</pre></div>
+
+
+<p>Instale <a href="http://www.samba.org/">SAMBA</a> y <a href="http://www.gtk.org/">GTK+</a>:</p>
+<div class="highlight"><pre><span></span># emerge samba cups gtk+
+</pre></div>
+
+
+<p>Ya instalado el GTK+ podemos instalar más programas útiles que dependen de éste.</p>
+<div class="highlight"><pre><span></span># emerge sudo fusesmb geeqie xscreensaver
+</pre></div>
+
+
+<p>Para hacer consultas en el portage, el <a href="http://eix.berlios.de/">eix</a> es más rápido que <em>emerge -s <texto></em>.</p>
+<div class="highlight"><pre><span></span># emerge eix
+# emerge eix-update
+</pre></div>
+
+
+<p>Si tiene un procesador <strong>Intel</strong> le conviene instalar <strong>powertop</strong>, un programa que identifica los procesos que más energía consumen. De forma similar, son útiles <strong>cpufrequtils</strong> y <strong>acpitool</strong>.</p>
+<div class="highlight"><pre><span></span># emerge powertop cpufrequtils acpitool
+</pre></div>
+
+
+<p>Instale <a href="http://www.ruby-lang.org/">Ruby</a>:</p>
+<div class="highlight"><pre><span></span># emerge ruby eruby rubygems redcloth
+</pre></div>
+
+
+<h3>Revisión de dependencias y actualizaciones</h3>
+<p>En /etc/portage/package.use puede confugurar las opciones de la variable <em>USE</em> de forma directa para cada paquete.</p>
+<div class="highlight"><pre><span></span># nano /etc/portage/package.use
+</pre></div>
+
+
+<p>Yo tengo este contenido en /etc/portage/package.use:</p>
+<div class="highlight"><pre><span></span># Sin GTK+
+sys-devel/gcc -gtk
+
+# Sin gd
+sys-libs/glibc -gd
+
+# Udev
+sys-fs/udev extras
+
+# LaTeX
+app-text/texlive extra pstricks
+
+# Tight VNC
+net-misc/tightvnc server
+
+# OpenOffice.org templates
+app-office/openoffice templates
+
+# Compiz-Fusion
+x11-wm/compiz-fusion emerald
+</pre></div>
+
+
+<p>Revisamos que no falten dependencias y que se actualizen los paquetes que tengan nuevas <em>USE</em>:</p>
+<div class="highlight"><pre><span></span># emerge -puND world
+# emerge -uND world
+# python-updater
+# perl-cleaner --all
+</pre></div>
+
+
+<h3>Establecer cuentas y contraseñas</h3>
+<p>Establezca la contraseña de root</p>
+<div class="highlight"><pre><span></span># passwd
+</pre></div>
+
+
+<p>De de alta a un usuario. Sustituya USUARIO por su nombre de usuario.</p>
+<div class="highlight"><pre><span></span># useradd -g users -G tty,wheel,audio,cdrom,video,portage,cron,usb,lp,plugdev -m &lt;USUARIO&gt;
+# passwd USUARIO
+</pre></div>
+
+
+<h3>Fin de la segunda parte</h3>
+<p>En la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-3.html">tercera y última entrega</a> instalaremos el entorno gráfico y detallaremos el proceso de <em>empacamiento</em> e instalación.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

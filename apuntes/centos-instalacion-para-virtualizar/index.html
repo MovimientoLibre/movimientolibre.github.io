@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o GUI. La administración será vía OpenSSH y por el Administrador de Virtualizaciones desde otro equipo.</p>">
+    <meta name="keywords" content="[<Tag 'centos'>, <Tag 'virtualización'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Instalación de CentOS para virtualizar">
+    <meta itemprop="description" content="<p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o GUI. La administración será vía OpenSSH y por el Administrador de Virtualizaciones desde otro equipo.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Instalación de CentOS para virtualizar">
+    <meta name="twitter:description" content="<p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o GUI. La administración será vía OpenSSH y por el Administrador de Virtualizaciones desde otro equipo.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Instalación de CentOS para virtualizar">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/centos-instalacion-para-virtualizar/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o GUI. La administración será vía OpenSSH y por el Administrador de Virtualizaciones desde otro equipo.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Instalación de CentOS para virtualizar - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Instalación de CentOS para virtualizar</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2014-01-30 10:20:00-06:00</p>
+        <hr>
+        <p><a href="https://www.centos.org/">CentOS</a> es una distribución GNU/Linux mantenida por la comunidad a partir del código libre de <a href="https://www.redhat.com/">Red Hat</a>. De una forma práctica, <strong>CentOS</strong> es lo mismo que <strong>Red Hat</strong> pero sin su marca comercial ni soporte técnico de paga. La estabilidad y confiabilidad de CentOS lo hacen la mejor opción para sistema operativo base de un servidor cuyo fin sea virtualizar. Recientemente se ha anunciado el apoyo directo de Red Hat a la comunidad de CentOS; de lo cual esperamos muchas ganancias para todos.</p>
+<h3>Objetivo</h3>
+<p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o <em>GUI</em>. La administración será vía <strong>OpenSSH</strong> y por el <strong>Administrador de Virtualizaciones</strong> desde otro equipo.</p>
+<h3>Requerimientos</h3>
+<ul>
+<li>Una computadora o servidor con capacidad para virtualizar en hardware. Consulte el sitio del <a href="http://www.linux-kvm.org/page/Main_Page">KVM</a> para saber más.</li>
+<li>Un mínimo de 2 GB de RAM.</li>
+<li>Disco duro dedicado de por lo menos 100 GB.</li>
+<li>Descargar y quemar el CD Minimal de <a href="https://www.centos.org/">CentOS</a>.</li>
+</ul>
+<h3>Arranque con el CD Minimal</h3>
+<p>Hay varios tipos de discos ISO de CentOS para cada versión. Desde DVD completos a CD para instarar por red. Su servidor recomienda usar el <strong>CD Minimal x86_64</strong> ya que contiene lo básico para llegar a una terminal. Considere que es poco útil y riesgoso tener una interfaz gráfica en un servidor.</p>
+<p>Durante la instalación elija estas opciones:</p>
+<ul>
+<li>GRUB: Install or Update</li>
+<li>Idioma: Spanish</li>
+<li>Teclado: Latinoamericano</li>
+<li>Special Storage Devices</li>
+<li>Use All Space</li>
+</ul>
+<p>Ya que haga su primer arranque, a partir de lo instalado en el disco duro, continúe con los siguientes pasos.</p>
+<h3>Levante la red</h3>
+<p>Por defecto no levanta ningún dispositivo de red. Como partimos del <strong>CD Minimal</strong> necesitaremos salida a internet para bajar el software. Para configurar el dispositivo de red <strong>eth0</strong> edite:</p>
+<div class="highlight"><pre><span></span># cd /etc/sysconfig/network-scripts
+# vi ifcfg-eth0
+</pre></div>
+
+
+<p>Si quiere usar una <strong>dirección IP fija</strong>, por ejemplo 192.168.0.250 con ruteador 192.168.0.254 (conserve el <strong>HWADDR</strong>):</p>
+<div class="highlight"><pre><span></span>DEVICE=eth0
+HWADDR=xx:xx:xx:xx:xx:xx
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=no
+IPADDR=192.168.0.250
+NETMASK=255.255.255.0
+GATEWAY=192.168.0.254
+</pre></div>
+
+
+<p>Luego debe configurar cuáles serán sus servidores DNS:</p>
+<div class="highlight"><pre><span></span>vi /etc/resolv.conf
+</pre></div>
+
+
+<p>Escriba el dominio si lo usa, luego cada servidor DNS como una línea <em>nameserver</em>. En el siguiente ejemplo se usa un dominio <em>oficina.lan</em> y las direcciones IP de los <a href="https://developers.google.com/speed/public-dns/?hl=es-">DNS de Google</a>:</p>
+<div class="highlight"><pre><span></span>domain oficina.lan
+search oficina.lan
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+</pre></div>
+
+
+<p>En cambio, para solicitar una <strong>dirección IP dinámica</strong> al servidor DHCP se usa <strong>BOOTPROTO</strong>:</p>
+<div class="highlight"><pre><span></span>DEVICE=eth0
+HWADDR=xx:xx:xx:xx:xx:xx
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=no
+BOOTPROTO=dhcp
+</pre></div>
+
+
+<p>Después de cambiar estos archivos de configuración, reinicie el servicio de red para hacerlos efectivos.</p>
+<div class="highlight"><pre><span></span># service network restart
+</pre></div>
+
+
+<p>Revise la dirección IP obtenida con:</p>
+<div class="highlight"><pre><span></span># ifconfig eth0
+</pre></div>
+
+
+<p>Revise la tabla de ruteo también:</p>
+<div class="highlight"><pre><span></span># route -n
+</pre></div>
+
+
+<h3>Configure proxy de ser necesario</h3>
+<p>En caso de tener internet a través de un <em>proxy</em> debe de editar el archivo de configuración de <strong>Yum</strong>:</p>
+<div class="highlight"><pre><span></span># vi /etc/yum.conf
+</pre></div>
+
+
+<p>Agregue una línea como la siguiente para definir el servidor <em>proxy</em>. Cambie <em>proxy.oficina.lan</em> por el nombre o dirección IP del <em>proxy</em>.</p>
+<div class="highlight"><pre><span></span>proxy=http://proxy.oficina.lan:3128
+</pre></div>
+
+
+<h3>Actualize e instale el software para virtualizar</h3>
+<p>Ejecute estos dos comandos para actualizar las listas de los repositorios de CentOS:</p>
+<div class="highlight"><pre><span></span># yum check-update
+# yum update
+</pre></div>
+
+
+<p>Por ser programas indispensables, instale <strong>nano</strong>, <strong>sudo</strong> y <strong>man</strong>:</p>
+<div class="highlight"><pre><span></span># yum install nano sudo man
+</pre></div>
+
+
+<p>Yum ofrece la instalación por <strong>grupos</strong>, éstos son conjuntos de paquetes de software. Para listar los <strong>grupos</strong> ejecute este comando:</p>
+<div class="highlight"><pre><span></span># yum grouplist
+</pre></div>
+
+
+<p>Instale los <strong>grupos</strong> de paquetes que tienen que ver con virtualización en servidor:</p>
+<div class="highlight"><pre><span></span># yum groupinstall &quot;Virtualización&quot;
+# yum groupinstall &quot;Plataforma de virtualización&quot;
+# yum install tunctl
+</pre></div>
+
+
+<p>Esta descarga es grande y puede demorar algo de tiempo, dependiendo de su velocidad de internet. Al terminar de instalar reinicie el servidor para asegurar que las actualizaciones y el nuevo software estén trabajando. Reinicie con:</p>
+<div class="highlight"><pre><span></span># shutdown -r 1 &amp;
+# exit
+</pre></div>
+
+
+<h3>Configuración del bridge</h3>
+<p>Cree el archivo <strong>ifcfg-br0</strong> con la configuración para el <em>bridge</em>:</p>
+<div class="highlight"><pre><span></span># cd /etc/sysconfig/network-scripts/
+# nano ifcfg-br0
+</pre></div>
+
+
+<p>Si <strong>br0</strong> va a tener una dirección IP estática, use lo siguiente como contenido del archivo <strong>ifcfg-br0</strong> ajustando la dirección IP, la máscara y el <em>gateway</em> a sus necesidades:</p>
+<div class="highlight"><pre><span></span>DEVICE=br0
+TYPE=Bridge
+ONBOOT=yes
+DELAY=0
+NM_CONTROLLED=no
+IPADDR=192.168.0.250
+NETMASK=255.255.255.0
+GATEWAY=192.168.0.254
+</pre></div>
+
+
+<p>Luego, hay que editar el archivo <strong>ifcfg-eth0</strong> para indicar que ese dispositivo de red se va conectar al <em>bridge</em>:</p>
+<div class="highlight"><pre><span></span># nano ifcfg-eth0
+</pre></div>
+
+
+<p>Con este contenido:</p>
+<div class="highlight"><pre><span></span>DEVICE=&quot;eth0&quot;
+HWADDR=&quot;xx:xx:xx:xx:xx:xx&quot;
+NM_CONTROLLED=&quot;no&quot;
+ONBOOT=&quot;yes&quot;
+BRIDGE=&quot;br0&quot;
+</pre></div>
+
+
+<h3>Configure el muro de fuego</h3>
+<p>Para que se permitan todas las comunicaciones que fluyan a través del <em>bridge</em> <strong>br0</strong> es necesario indicarlo. Edite la configuración del muro de fuego:</p>
+<div class="highlight"><pre><span></span># cd /etc/sysconfig/
+# nano iptables
+</pre></div>
+
+
+<p>Agregue la línea <strong>-A FORWARD -i br0 -j ACCEPT</strong> como la primer línea con <em>FORWARD</em>, por ejemplo:</p>
+<div class="highlight"><pre><span></span>*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -i br0 -j ACCEPT
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+</pre></div>
+
+
+<p>Reinicie el muro de fuego</p>
+<div class="highlight"><pre><span></span># service iptables restart
+</pre></div>
+
+
+<p>Verifique...</p>
+<div class="highlight"><pre><span></span># iptables -L -v -n
+</pre></div>
+
+
+<h3>Destruir el puente virbr0</h3>
+<p>Como se va a levantar el <em>bridge</em> <strong>br0</strong> desde el sistema operativo, sale sobrando el puente que por defecto habilita <strong>libvirt</strong>. Para observar que esta presente <strong>virtbr0</strong> ejecute:</p>
+<div class="highlight"><pre><span></span># ifconfig
+</pre></div>
+
+
+<p>Notará que hay un dispositivo <strong>virbr0</strong> con una dirección IP indpenediente (p.e. 192.168.122.1). El comando <strong>virsh net-list</strong> mostrará las redes para las virtualizaciones:</p>
+<div class="highlight"><pre><span></span># virsh net-list
+Nombre               Estado     Inicio automático Persistente
+--------------------------------------------------
+default              activo     si            si
+</pre></div>
+
+
+<p>Para destruir la red <strong>default</strong> ejecute:</p>
+<div class="highlight"><pre><span></span># virsh net-destroy default
+# virsh net-undefine default
+</pre></div>
+
+
+<p>Revise:</p>
+<div class="highlight"><pre><span></span># virsh net-list
+# ifconfig
+</pre></div>
+
+
+<h3>Reinicie el servidor</h3>
+<p>Para asegurar que las actualizaciones y configuraciones inicien al encender, reinicie el servidor.</p>
+<div class="highlight"><pre><span></span># shutdown -r 1 &amp;
+# exit
+</pre></div>
+
+
+<p>Y revise que los dispositivos de red y los servicios estén trabajando como debe.</p>
+<div class="highlight"><pre><span></span># ifconfig br0
+# ifconfig eth0
+# brctl show
+</pre></div>
+
+
+<h3>Configurar libvirt para que use br0</h3>
+<p>Para que las virtualizaciones usen el <em>bridge</em> del sistema operativo, cree un archivo de configuración <strong>xml</strong>. Use el nombre de archivo que guste:</p>
+<div class="highlight"><pre><span></span># cd /root
+# nano bridge-br0.xml
+</pre></div>
+
+
+<p>Escriba el siguiente contenido, cambiando <strong>bridge-br0</strong> por el nombre que usted prefiera:</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+  <span class="nt">&lt;name&gt;</span>bridge-br0<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;forward</span> <span class="na">mode=</span><span class="s">&quot;bridge&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&quot;br0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+
+
+<p>Para cargar ese archivo <strong>xml</strong> en <strong>libvirt</strong> ejecute...</p>
+<div class="highlight"><pre><span></span># virsh net-define bridge-br0.xml
+La red bridge-br0 se encuentra definida desde bridge-br0.xml
+</pre></div>
+
+
+<p><strong>Atención:</strong> En este momento, el comando <strong># virsh net-list</strong> NO mostrará esta red. En cambio, con el parámetro <strong>--all</strong> sí lo verá:</p>
+<div class="highlight"><pre><span></span># virsh net-list --all
+Nombre               Estado     Inicio automático
+-----------------------------------------
+bridge-br0           activo     no
+</pre></div>
+
+
+<p>Puede solicitar información detallada de una red con el comando <strong>virsh net-info</strong> seguido por el nombre de la red.</p>
+<div class="highlight"><pre><span></span># virsh net-info bridge-br0
+Nombre          bridge-br0
+UUID            xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Activar:        no
+Persistente:    si
+Autoinicio:     no
+Puente:         br0
+</pre></div>
+
+
+<p>Observe que Activar y Autoinicio están en <strong>no</strong>. Configure que esta red se habilite al inicio, con:</p>
+<div class="highlight"><pre><span></span># virsh net-autostart bridge-br0
+La red bridge-br0-dgspm ha sido marcada para iniciarse automáticamente
+</pre></div>
+
+
+<p>Luego, arranque esta red con:</p>
+<div class="highlight"><pre><span></span># virsh net-start bridge-br0
+La red bridge-br0 se ha iniciado
+</pre></div>
+
+
+<p>Verifique que Activar, Persistente y Autoinicio estén en <strong>si</strong>:</p>
+<div class="highlight"><pre><span></span># virsh net-info bridge-br0
+Nombre          bridge-br0
+UUID            xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Activar:        si
+Persistente:    si
+Autoinicio:     si
+Puente:         br0
+</pre></div>
+
+
+<p>También con el comando <strong>virsh net-list</strong>:</p>
+<div class="highlight"><pre><span></span># virsh net-list
+Nombre               Estado     Inicio automático Persistente
+--------------------------------------------------
+bridge-br0           activo     si            si
+</pre></div>
+
+
+<p>En dado caso de que necesite recuperar la información de la red en formato <strong>xml</strong>, use el comando <strong>virsh net-dumpxml</strong>:</p>
+<div class="highlight"><pre><span></span># virsh net-dumpxml bridge-br0
+<span class="nt">&lt;network&gt;</span>
+  <span class="nt">&lt;name&gt;</span>bridge-br0<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;uuid&gt;</span>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx<span class="nt">&lt;/uuid&gt;</span>
+  <span class="nt">&lt;forward</span> <span class="na">mode=</span><span class="s">&#39;bridge&#39;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&#39;br0&#39;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+
+
+<h3>Agregue un usuario común</h3>
+<p>Como en todo equipo de escritorio o servidor, es ampliamente recomendable dar de alta un usuario común y no usar root para todo. Para dar de alta un usuario ejecute el comando <strong>useradd</strong> con los grupos a los que necesite pertenecer y cambie <em>minombre</em> por su nombre para ingresar.</p>
+<div class="highlight"><pre><span></span># useradd -g users -G tty,lp,wheel,uucp,games,video,audio,cdrom,kvm,qemu -m minombre
+</pre></div>
+
+
+<p>Establezca la contraseña:</p>
+<div class="highlight"><pre><span></span># passwd minombre
+</pre></div>
+
+
+<h3>Administrador de virtualizaciones</h3>
+<p>Desde un equipo con interfaz gráfica y el <strong>VirtManager</strong> instalado administramos las virtaliuzaciones.</p>
+<p><img alt="Administrador de Virtualizaciones" src="administrador-virtualizaciones-1.png"></p>
+<p>Establezca la conexión vía OpenSSH. Le solicitará la contraseña <em>root</em>:</p>
+<p><img alt="Administrador de Virtualizaciones nueva conexion" src="administrador-virtualizaciones-2-nueva-conexion.png"></p>
+<p>Verifique que en los detalles se use la configuración de red con el <em>bridge</em> <strong>br0</strong>:</p>
+<p><img alt="Administrador de Virtualizaciones detalle" src="administrador-virtualizaciones-3-detalles-redes.png"></p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

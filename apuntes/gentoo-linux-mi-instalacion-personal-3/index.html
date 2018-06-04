@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</p>">
+    <meta name="keywords" content="[<Tag 'gentoo linux'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov)">
+    <meta itemprop="description" content="<p>La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov)">
+    <meta name="twitter:description" content="<p>La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov)">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/gentoo-linux-mi-instalacion-personal-3/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov) - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov)</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2008-11-15 21:10:00-06:00</p>
+        <hr>
+        <p>Imagen: <a href="http://commons.wikimedia.org/wiki/File:Gentoo-abducted-1024x768.png">Gentoo abducted</a> con <em>Larry The Cow</em>, la mascota de <a href="http://www.gentoo.org/">Gentoo Linux</a>, elaborado por Matteo 'Peach' Pescarin.</p>
+<p>Como introducción les escribo un breve <em>FAQ</em> (preguntas y respuestas frecuentes) sobre Gentoo Linux.</p>
+<p><strong>¿Qué es Gentoo?</strong> es un Sistema Operativo libre basado en Linux o FreeBSD que puede ser optimizado y personalizado para casi cualquier aplicación o necesidad. Configuración extrema, desempeño, usuarios y desarrolladores de primera categoría son las distinciones de Gentoo. Más en <a href="http://www.gentoo.org/main/en/about.xml">About Gentoo</a>.</p>
+<p><strong>¿Es cierto que desde 2008 no se hace un disco de instalación?</strong> Hay que aclarar que lo que se necesita para instalar Gentoo Linux es arrancar con un GNU/Linux básico que te dé las herramientas para los dispositivos de almacenamiento y de red, en otras palabras, lo necesario para accesar la red local e internet, descargar, particionar, formatear y ejecutar el <em>chroot</em>. En los repositorios de Gentoo Linux hay <em>imágenes</em> (archivos ISO) de discos <em>booteables</em> con estas herramientas; con nombres como <em>install-x86-minimal-YYYYMMDD.iso</em> por que se liberan nuevas versiones con frecuencia. También puedes hacer la instalación con un disco de otra distribución (por ejemplo <a href="http://www.knoppix.net/">Knoppix</a>), arrancando desde una memoria USB o arrancando desde red. Por ello, Gentoo Linux <em>dejó de liberar un disco anual de instalación</em>; no lo necesita.</p>
+<p><strong>¿Cual es la última versión de Gentoo?</strong> Aparecen nuevas versiones de los <em>stages</em> con regularidad, aproximadamente cada 15 días. Por ello, el nombre del archivo contiene el año-mes-día como <em>stage3-i686-YYYYMMDD.tar.bz2</em>. Posteriormente, para actualizar hay que ejecutar <em>emerge -uND world &amp;&amp; revdep-rebuild</em> como <em>root</em> y revisar los cambios que solicite cada programa en particular. Es por esto que Gentoo Linux es una distribución de tipo <a href="http://en.wikipedia.org/wiki/Rolling_release">rolling relase</a> donde no hay números de versión.</p>
+<p><strong>¿Qué pasa si no actualizo una instalación de Gentoo?</strong> Al igual que con cualquier otra distribución, puedes actualizar con regularidad para obtener nuevas versiones de tus programas y recibir mejoras en seguridad y correcciones. Si se trata de un <em>servidor conectado a internet</em> o un <em>equipo portátil que se conecta a redes públicas</em>, por seguridad, <em>deberías actualizarlo una vez por semana</em>. En cambio, si se trata de un servidor en una red confiable, puedes ser más flexible y no actualizarlo tan seguido. Son mis recomendaciones; al final la decisión es tuya. Entre más tiempo dejes pasar, más programas se añadirán a la lista de actualizaciones; si dejas pasar más de un año sin actualizar entonces puede convenir hacer una instalación desde cero en lugar de actualizar todo.</p>
+<p><strong>¿Es Gentoo Linux una distribución segura?</strong> Claro que sí; al instalar puedes <em>endurecer</em> el sistema; más información en <a href="http://www.gentoo.org/proj/en/hardened/index.xml">Hardened Gentoo</a>. Ante el usuario común; el hecho que tú mismo contruyas tu sistema operativo, omitiendo los programas que no necesites, constituye una gran ventaja de seguridad. Por ejemplo, para un servidor web instalarás el <a href="http://httpd.apache.org/">Apache</a> pero <em>no</em> le instalarás la compartición de archivos con <a href="http://www.samba.org/">SAMBA</a>.</p>
+<p><strong>¿Qué instalación toma más tiempo, la de un equipo de escritorio o la de un servidor?</strong> Toma más tiempo instalar un equipo de escritorio, porque los entornos gráficos como <a href="http://www.gnome.org/">Gnome</a> y <a href="http://www.kde.org">KDE</a> o las <em>suites</em> de oficina como <a href="http://www.openoffice.org/">OpenOffice.org</a> son bastante grandes.</p>
+<p><strong>¿Soporta otras arquitecturas además de la x86?</strong> Si. Gentoo Linux puede usarse en <a href="http://www.gentoo.org/proj/en/base/x86/index.xml">x86</a>, <a href="http://www.gentoo.org/proj/en/base/amd64/index.xml">AMD64</a>, <a href="http://www.gentoo.org/proj/en/base/alpha/index.xml">Alpha</a>, <a href="http://www.gentoo.org/proj/en/base/arm/index.xml">ARM</a>, <a href="http://www.gentoo.org/proj/en/base/hppa/index.xml">HPPA</a>, <a href="http://www.gentoo.org/proj/en/base/ia64/index.xml">IA-64</a>, <a href="http://www.gentoo.org/proj/en/base/mips/index.xml">MIPS</a>, <a href="http://www.gentoo.org/proj/en/base/ppc/index.xml">PowerPC</a>, <a href="http://www.gentoo.org/proj/en/base/ppc64/index.xml">PPC64</a> y <a href="http://www.gentoo.org/proj/en/base/sparc/index.xml">SPARC</a>.</p>
+<p><strong>¿Dónde puedo aprender más de Gentoo?</strong> Del <a href="http://www.gentoo.org/">sitio oficial</a> he tomado estos enlaces:</p>
+<ul>
+<li><a href="http://www.gentoo.org/doc/en/handbook/handbook-x86.xml">Gentoo Linux x86 Handbook</a>, en <a href="http://www.gentoo.org/doc/es/handbook/handbook-x86.xml">español</a>.</li>
+<li><a href="http://planet.gentoo.org/">Gentoo Planet</a>.</li>
+<li><a href="http://forums.gentoo.org/">Gentoo Forum</a>.</li>
+</ul>
+<p>Fuera del sitio oficial, te recomiendo:</p>
+<ul>
+<li><a href="https://wiki.gentoo.org/">Gentoo Wiki</a>.</li>
+<li><a href="http://www.funtoo.org/">Funtoo</a> es un <em>fork</em> dirigido por Danel Robbins, el iniciador de Gentoo Linux.</li>
+</ul>
+<p>A continuación la última entrega de la <em>Guía de instalación de Gentoo Linux para una notebook 2010</em>. No deje de leer la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-1.html">primera</a> y <a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">segunda</a> partes.</p>
+<h3>¡A seguir instalando!</h3>
+<p>Instale herramientas gráficas.</p>
+<div class="highlight"><pre><span></span># emerge imagemagick graphviz gd
+</pre></div>
+
+
+<p>Para usar mi <em>netbook</em> como ruteador, instalo los servidores de <em>DHCP</em> y <em>DNS</em>, así como los programas para <em>bridge</em>.</p>
+<div class="highlight"><pre><span></span># emerge dhcp bind bridge-utils
+</pre></div>
+
+
+<p>Instale los mejores programas de multimedia.</p>
+<div class="highlight"><pre><span></span># emerge lame mp3splt vorbis-tools faad2 ffmpeg mplayer moc gstreamer
+</pre></div>
+
+
+<p>Instale herramentas para hacer auditoria de redes.</p>
+<div class="highlight"><pre><span></span># emerge whois traceroute geoip bind-tools
+# emerge wireless-tools iw wpa_supplicant
+# emerge nmap macchanger aircrack-ng kismet
+</pre></div>
+
+
+<p>Instale el editor de texto <a href="http://www.vim.org/">VIM</a>.</p>
+<div class="highlight"><pre><span></span># emerge vim
+</pre></div>
+
+
+<p>Instale el entorno de desarrollo <a href="http://www.geany.org/">Geany</a>.</p>
+<div class="highlight"><pre><span></span># emerge geany
+</pre></div>
+
+
+<p>Instale <a href="http://pear.php.net/">PEAR</a> y el <a href="http://pear.php.net/package/PhpDocumentor/">Documentador de PHP</a>.</p>
+<div class="highlight"><pre><span></span># emerge PEAR-PhpDocumentor
+</pre></div>
+
+
+<p>Instale el cliente FTP llamado <em>gFTP</em>.</p>
+<div class="highlight"><pre><span></span># emerge gftp
+</pre></div>
+
+
+<h3>Entorno gráfico XFCE4</h3>
+<p>Instale <a href="http://www.xfce.org/">XFCE4</a>.</p>
+<div class="highlight"><pre><span></span># emerge xfce4-meta mousepad x11-terms/terminal
+# emerge gnome-icon-theme tango-icon-theme
+# emerge thunar-archive-plugin thunar-media-tags-plugin thunar-thumbnailers thunar-volman
+# emerge xfce4-power-manager xfce4-screenshooter xfce4-taskmanager xfce4-mixer
+</pre></div>
+
+
+<h3>Ahora las aplicaciones grandes</h3>
+<p>Antes de instalar el navegador de internet, active <em>java</em> en la variable <em>USE</em> dentro de <em>/etc/make.conf</em>.</p>
+<div class="highlight"><pre><span></span># Desarrollo
+USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> apache2 java mysql php postgres ruby vhosts&quot;
+</pre></div>
+
+
+<p>Luego instale <a href="http://www.mozilla.com/">Mozilla Firefox</a>.</p>
+<div class="highlight"><pre><span></span># emerge firefox
+# emerge adobe-flash
+</pre></div>
+
+
+<p>Actualize los paquetes que dependan de <em>java</em>.</p>
+<div class="highlight"><pre><span></span># emereg -uND world
+</pre></div>
+
+
+<p>Instale <a href="http://www.mozillamessaging.com/">Mozilla Thunderbird</a>.</p>
+<div class="highlight"><pre><span></span># emerge thunderbird
+</pre></div>
+
+
+<p>Instale <a href="http://www.gimp.org/">GIMP</a>.</p>
+<div class="highlight"><pre><span></span># emerge gimp
+</pre></div>
+
+
+<p>Instale las dependencias de <a href="http://movimientolibre/articulos/twitter-turpial.html">Turpial</a>.</p>
+<div class="highlight"><pre><span></span># emerge simplejson notify-python pygame Babel gtkspell-python pywebkitgtk
+</pre></div>
+
+
+<p>Instale <a href="http://www.latex-project.org/">LaTeX</a>.</p>
+<div class="highlight"><pre><span></span># emerge texlive
+</pre></div>
+
+
+<h3>Compiz-Fusion</h3>
+<p>Al momento de escribir esta guía, <a href="http://www.compiz.org/">Compiz-Fusion</a> no había sido marcado como estable. Así que para permitir su instalación creo el archivo <em>/etc/portage/package.keywords</em></p>
+<div class="highlight"><pre><span></span># nano /etc/portage/package.keywords
+</pre></div>
+
+
+<p>Con este contenido...</p>
+<div class="highlight"><pre><span></span>#
+# /etc/portage/package.keywords
+#
+
+# Compiz
+x11-wm/compiz-fusion
+x11-plugins/compiz-plugins-main
+x11-plugins/compiz-plugins-extra
+x11-plugins/compiz-plugins-unsupported
+x11-libs/compiz-bcop
+x11-libs/compizconfig-backend-gconf
+x11-libs/compizconfig-backend-kconfig4
+x11-libs/libcompizconfig
+x11-wm/compiz
+x11-apps/ccsm
+dev-libs/protobuf
+dev-python/compizconfig-python
+x11-apps/fusion-icon
+x11-wm/emerald
+x11-themes/emerald-themes
+</pre></div>
+
+
+<p>Luego, instale <a href="http://www.compiz.org/">Compiz-Fusion</a>.</p>
+<div class="highlight"><pre><span></span># emerge compiz-fusion fusion-icon
+</pre></div>
+
+
+<h3>OpenOffice.org</h3>
+<p>Si gusta puede instalar la versión precompilada de OpenOffice.org llamada <em>openoffice-bin</em>.</p>
+<p>A mi criterio no toma mucho tiempo compilar e instalar la <em>suite</em> de oficina con:</p>
+<div class="highlight"><pre><span></span>$ emerge openoffice
+</pre></div>
+
+
+<p><a href="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-640x480.jpg"><img class="img-fluid" src="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-320x240.jpg"></a></p>
+<h3>Empaque su Gentoo Linux</h3>
+<p>Llega el momento de pasar al número dos del diagrama de la instalación asistida. No se preocupe, los pasos siguientes no requieren de tantos comandos como la instalación misma.</p>
+<p>Primero salga del <em>chroot</em>.</p>
+<div class="highlight"><pre><span></span># exit
+</pre></div>
+
+
+<p>Luego asegúrese de desmontar <em>dev</em> y <em>proc</em>.</p>
+<div class="highlight"><pre><span></span># umount /mnt/archivos/instalaciones/prescott/dev
+# umount /mnt/archivos/instalaciones/prescott/proc
+</pre></div>
+
+
+<p>Revise que no haya dispositivos montados en el directorio de su instalación con:</p>
+<div class="highlight"><pre><span></span># mount | grep /mnt/archivos/instalaciones
+</pre></div>
+
+
+<p>Borre los archivos temporales.</p>
+<div class="highlight"><pre><span></span># cd /mnt/archivos/instalaciones/prescott/
+# rm -rf root/.ccache root/.gconf root/.gconfd
+# rm -rf tmp/* var/tmp/*
+</pre></div>
+
+
+<p>Empaque el <em>portage</em>. Este archivo tendrá todo el código fuente descargado; la gran mayoría de estos archivos ya están comprimidos; por lo que recomiendo que simplemente se haga un archivo <em>.tar</em>. No deje de agregar la fecha de su creación en el nombre del archivo empacado.</p>
+<div class="highlight"><pre><span></span># cd usr
+# tar cvf /mnt/archivos/instalaciones/prescott-portage-2010-11-09.tar portage/
+</pre></div>
+
+
+<p>Después, empaque la raíz de su nueva instalación, pero sin el <em>portage</em>.</p>
+<div class="highlight"><pre><span></span># cd /mnt/archivos/instalaciones/prescott/
+# tar czvf /mnt/archivos/instalaciones/prescott-root-2010-11-09.tar.gz --exclude=usr/portage *
+</pre></div>
+
+
+<p>Respalde estos dos archivos a un DVD-R, a una memoria USB o compártalos en su red local.</p>
+<h3>Para instalar un Gentoo Linux previamente empaquetado</h3>
+<p>Formatee la partición donde quiera alojar su Gentoo Linux. Sustituya <em>/dev/PARTICION</em> por ejemplo <em>/dev/sda2</em>.</p>
+<p><strong>¡CUIDADO!</strong> debe estar bien seguro de elegir la partición correcta. Podría eliminar la partición de sus archivos personales. <em>No deje de hacer un respaldo</em> antes de ejecutar este tipo de comandos.</p>
+<div class="highlight"><pre><span></span># mkfs.ext4 -L gentoo /dev/PARTICION
+</pre></div>
+
+
+<p>Monte la partición que será la raíz de su nuevo sistema Gentoo Linux. El directorio de montaje que uso es el típico <em>/mnt/gentoo</em> que puede variar si así le conviene.</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/gentoo
+# mount /dev/PARTICION /mnt/gentoo
+</pre></div>
+
+
+<p>A partir de aquí supongo el uso una memoria USB con los archivos de la instalación asistida y que la ruta de montaje es <em>/media/MEMORIA-USB</em>. Por supuesto, esto puede variar. Por ejemplo, si los copia por la red local, podría depositarlos en <em>/tmp</em>. Cambie <em>/media/MEMORIA-USB</em> por la ubicación de estos archivos.</p>
+<p>Desempaque primero la raíz de la instalación, el que tiene por nombre <em>prescott-root-yyyy-mm-dd.tar</em>.</p>
+<div class="highlight"><pre><span></span># cd /mnt/gentoo
+# tar xvf /media/MEMORIA-USB/prescott-root-2010-11-09.tar.gz
+</pre></div>
+
+
+<p>En este punto podría ejecutar un <em>emerge --sync</em> y descargar de internet el <em>portage</em> más nuevo para luego actualizar.</p>
+<p>O bien, desempacar el <em>prescott-portage-yyyy-mm-dd.tar</em> y tener todo el código fuente del momento en que se creó.</p>
+<div class="highlight"><pre><span></span># cd usr
+# mkdir portage
+# tar xvf /media/MEMORIA-USB/prescott-portage-2010-11-09.tar
+</pre></div>
+
+
+<p>Monte la partición <em>boot</em> y también <em>dev</em> y <em>proc</em> en su nuevo sistema.</p>
+<div class="highlight"><pre><span></span># mount /dev/PARTICIONBOOT /mnt/gentoo/boot
+# mount -t proc none /mnt/gentoo/proc
+# mount -o bind /dev /mnt/gentoo/dev
+</pre></div>
+
+
+<p>Ingrese a su nueva instalación por <em>chroot</em></p>
+<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf
+# chroot /mnt/gentoo /bin/bash
+# env-update
+# source /etc/profile
+# export PS1=&quot;(nueva) $PS1&quot;
+</pre></div>
+
+
+<p>Ajuste la compilación del kernel al nuevo equipo. Puede que necesite activar controladores particulares de éste; por ejemplo, tarjetas de red.</p>
+<div class="highlight"><pre><span></span># cd /usr/src/linux
+# make menuconfig
+# make
+# make modules_install
+</pre></div>
+
+
+<p>Instale el kernel y configure el gestor de arranque <em>GRUB</em>.</p>
+<div class="highlight"><pre><span></span># make install
+# nano -w /boot/grub/grub.conf
+</pre></div>
+
+
+<p>Este es un ejemplo de la configuración en <em>/boot/grub/grub.conf</em></p>
+<div class="highlight"><pre><span></span>default 0
+timeout 10
+splashimage=(hd0,0)/boot/grub/splash.xpm.gz
+
+title Gentoo Linux - 2.6.34-r12
+root (hd0,0)
+kernel /vmlinuz-2.6.34-gentoo-r12 root=/dev/sda2 resume=/dev/sda5 clocksource=hpet processor.max_cstate=1
+
+title Gentoo Linux - 2.6.34-r12 - Ahorro de energia
+root (hd0,0)
+kernel /vmlinuz-2.6.34-gentoo-r12 root=/dev/sda2 resume=/dev/sda5 clocksource=hpet
+</pre></div>
+
+
+<p>Respecto al último parámetro <em>processor.max_cstate=1</em> comento que éste lo agrego para desactivar los "C-States" que tiene el procesador Intel Atom. Los C-States son estados del procesador donde se desactivan funciones para ahorrar energía.</p>
+<p>Con <em>processor.max_cstate=1</em> gozo de toda la capacidad de procesamiento; pero con mayor consumo de energía y menos duración de la batería.</p>
+<p>Sin ese parámetro aparecen dos estados más en <em>powertop</em> que hacen que no se gasten tantos recursos, aumentando la duración de la batería; pero notará que se <em>entorpece</em> el sistema, tarda al iniciar el sistema, también en reaccionar, los videos y audios se reproducen mal. Como truco, uso el <em>trackpad</em> sin motivo para que se hagan las acciones.</p>
+<p>Dependiendo del uso, elijo la opción que requiero al encender el equipo. Por ejemplo, si uso la <em>netbook</em> de viaje en auto, autobús o avión, con la carga de la batería, uso la opción de ahorro de energía para escribir textos, correos electrónicos o desarrollar aplicaciones.</p>
+<p>En cambio, si está conectado el cargador o necesito reproducir archivos multimedia, me conviene la opción con <em>processor.max_cstate=1</em>.</p>
+<p>Después de editar <em>/boot/grub/grub.conf</em> reinicie y pruebe su nuevo sistema.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>El BIOS es el software que se ejecuta al encender una computadora. Este apunte es para actualizar el BIOS por medio del gestor de arranque GRUB.</p>">
+    <meta name="keywords" content="[<Tag 'software libre'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Actualización del BIOS con GRUB">
+    <meta itemprop="description" content="<p>El BIOS es el software que se ejecuta al encender una computadora. Este apunte es para actualizar el BIOS por medio del gestor de arranque GRUB.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Actualización del BIOS con GRUB">
+    <meta name="twitter:description" content="<p>El BIOS es el software que se ejecuta al encender una computadora. Este apunte es para actualizar el BIOS por medio del gestor de arranque GRUB.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Actualización del BIOS con GRUB">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/bios-update-with-grub/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>El BIOS es el software que se ejecuta al encender una computadora. Este apunte es para actualizar el BIOS por medio del gestor de arranque GRUB.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Actualización del BIOS con GRUB - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Actualización del BIOS con GRUB</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2010-12-28 14:00:00-06:00</p>
+        <hr>
+        <p>El <a href="http://es.wikipedia.org/wiki/BIOS">BIOS</a> es el software que se ejecuta al encender una computadora. Es un software muy básico, que suele estar instalado en un <em>chip</em> en la tarjeta madre.</p>
+<p>El fabricante del equipo de cómputo suele ofrecer actualizaciones del BIOS en su sitio web. Como la gran mayoría de los equipos siguen vendiéndose con <em>Windows</em>, estas actualizaciones están disponibles sólo para este sistema operativo. Quienes usamos GNU/Linux tenemos que realizar una serie de <em>trucos</em> técnicos para actualizar el BIOS con éxito.</p>
+<p>El caso que documento es más complicado de resolver, ya que es para actualizar el BIOS de una <em>Netbook</em>; equipo donde <em>NO</em> disponemos de lector de <em>floppys</em> o CD-ROM. Pareciera que nuestra única alternativa es hacer una memoria USB booteable con el software proporcionado por el fabricante o conteniendo el <a href="http://freedos.org/">FreeDOS</a>. Pero les muestro otra: <strong>Actualizar el BIOS por medio del gestor de arranque GRUB.</strong></p>
+<h3>ADVERTENCIA</h3>
+<p>La actualización del BIOS de una computadora es un proceso en el que se deben de tomar todas las precauciones posibles. Por ejemplo, debe tener completamente cargada la batería de su equipo portátil, así como mantenerlo conectado al cargador; de forma que se garantize que no se interrumpa el suministro eléctrico.</p>
+<p><strong>Tenga en cuenta de que existe el riesgo de que falle la actualización del BIOS y que provoque que el equipo quede fuera de operación.</strong></p>
+<p>Considere que este manual es meramente informativo y que debe de leer los pasos sugeridos por el fabricante. Si no tiene mucha experiencia en cuestiones computacionales, solicite la ayuda de un especialista en equipo de cómputo.</p>
+<h3>Procedimiento</h3>
+<p><img alt="BIOS update with GRUB" src="phoenix-bios-chip-small.jpg"></p>
+<p>Busque en el sitio web del fabricante de su computadora el software para hacer la actualización del BIOS. En mi caso, tengo una Toshiba NB200, así que obtengo el software del <a href="http://www.csd.toshiba.com/">sitio web de soporte de Toshiba</a>.</p>
+<p><img alt="Toshiba download" src="toshiba-download.jpg"></p>
+<p><img alt="ll20v210.exe" src="ll20v190-exe-small.jpg"></p>
+<p>¿Y qué cree?... Sí... El archivo de actualización <strong>ll20v210.exe</strong> es un programa para <em>Windows</em>.</p>
+<p>Si en su GNU/Linux tiene <a href="http://www.winehq.org/">Wine</a> instalado, pruebe ejecutar el archivo <strong>EXE</strong> en él y así desempacar su contenido.</p>
+<p>Si <strong>no tiene el Wine</strong>, copie el archivo <strong>EXE</strong> a un dispositivo de almacenamiento (por ejemplo, una memoria USB) y vaya a otro equipo con <em>Windows</em> para que lo desempaque. Copie lo desempacado en el mismo dispositivo de almacenamiento. De regreso en GNU/Linux, copie los archivos a su disco duro.</p>
+<p>Uno de los archivos es un <strong>readme.txt</strong> que explica:</p>
+<ul>
+<li>Cómo crear un disco de arranque (floppy, memoria USB) con la actualización.</li>
+<li>Cómo actualizar el BIOS desde <em>Windows</em>.</li>
+<li>Cómo crear un CD-ROM <em>arrancable</em> con la actualización.</li>
+</ul>
+<p>Para hacer la actualización (por medio de GRUB) he fijado mi atención en el archivo <strong>ll20v210.iso</strong>, el cual es es la imagen de un CD-ROM <em>arrancable</em>. Suponemos que tiene dentro la actualización del BIOS.</p>
+<p><img alt="ll20v210 desempacado" src="ll20v190-desempacado.png"></p>
+<p>Como <strong>root</strong> lo montamos en un directorio de nuestro GNU/Linux con el comando <strong>mount</strong>. Sustituya /home/USUARIO/ por la ruta correcta a ese archivo:</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/iso
+# mount -o loop,ro /home/USUARIO/ll20v210.iso /mnt/iso
+# ls /mnt/iso
+</pre></div>
+
+
+<p>El parámetro <strong>loop</strong> en indispensable para <strong>mount</strong> al montar una imagen de disco. Por otro lado, hago que se monte como sólo lectura con el parámetro <strong>ro</strong> para evitar causarle algún cambio.</p>
+<p><img alt="ISO montado" src="iso-montado-small.jpg"></p>
+<p>Busque en el contenido del <strong>ISO</strong> algún un archivo <strong>IMG</strong> o <strong>IMA</strong>. Éste puede ser un sistema operativo compacto que al arrancar ejecutará la actualización del BIOS.</p>
+<p>Ahora es momento de configurar GRUB para que cargue el archivo <strong>2533d210.ima</strong>. Primero necesitamos de <strong>memdisk</strong> que viene incluido con <strong>syslinux</strong>. Instalamos <strong>syslinux</strong> en <a href="http://www.gentoo.org/">Gentoo Linux</a> con...</p>
+<div class="highlight"><pre><span></span># emerge syslinux
+</pre></div>
+
+
+<p>La ubicación del archivo <strong>memdisk</strong> puede variar según su distribución. En Gentoo podemos averiguar los archivos que nos instala un paquete ejecutando...</p>
+<div class="highlight"><pre><span></span># equery files syslinux
+</pre></div>
+
+
+<p>Con el anterior comando obtengo que la ubicación es /usr/share/syslinux/memdisk</p>
+<p>Si tiene /boot en su propia partición debemos montarla, puesto que ahí copiaremos el archivo IMG/IMA y memdisk...</p>
+<div class="highlight"><pre><span></span># mount /boot
+</pre></div>
+
+
+<p>Copie memdisk a su directorio /boot</p>
+<div class="highlight"><pre><span></span># cp /usr/share/syslinux/memdisk /boot/
+</pre></div>
+
+
+<p>Luego copie el archivo que suponemos es el actualizador del BIOS a /boot</p>
+<div class="highlight"><pre><span></span># cp 2533d210.ima /boot/
+</pre></div>
+
+
+<p>Edite el archivo de configuración de GRUB. Si usa una versión anterior a GRUB 2 (en mi caso es la 0.97) basta con editar el archivo...</p>
+<div class="highlight"><pre><span></span># nano -w /boot/grub/grub.conf
+</pre></div>
+
+
+<p>Y agregar al final es siguiente contenido. Sustituya 2533d210.ima por el nombre de su archivo IMA o IMG.</p>
+<div class="highlight"><pre><span></span>title BIOS Update
+root (hd0,0)
+kernel /memdisk
+initrd /2533d210.ima
+</pre></div>
+
+
+<p>Si está usando GRUB 2 deberá agregar la opción con la nueva sintaxis. Según <a href="http://www.thinkwiki.org/wiki/BIOS_Upgrade">Think Wiki - BIOS Update</a> debe agregar al archivo /boot/grub/grub.cfg lo siguiente:</p>
+<div class="highlight"><pre><span></span>menuentry &quot;BIOS Update&quot; {
+    set root=(hd0,0) #Revise que coincida con las otras opciones en grub.cfg
+    linux16 /boot/memdisk
+    initrd16 /boot/2533d210.ima
+}
+</pre></div>
+
+
+<p>Conecte el cargador de su <em>netboot</em> o <em>laptop</em> y reinicie su computadora. Cuando aparezca el menú del gestor de arranque GRUB elija la opción <strong>BIOS update</strong>.</p>
+<p><img alt="GRUB menu" src="grub-menu.jpg">
+<img alt="Phoenix BIOS update" src="phoenix-bios-update.jpg"></p>
+<h3>Más información en:</h3>
+<ul>
+<li><a href="http://es.wikipedia.org/wiki/BIOS">Wikipedia - BIOS</a></li>
+<li><a href="http://www.thinkwiki.org/wiki/BIOS_Upgrade">Think Wiki - BIOS Update</a></li>
+</ul>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

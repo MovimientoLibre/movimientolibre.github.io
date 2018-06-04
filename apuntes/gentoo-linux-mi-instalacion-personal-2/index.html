@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>En este manual vamos rumbo a tener un entorno de escritorio KDE y los paquetes preferidos de su servidor.</p>">
+    <meta name="keywords" content="[<Tag 'gentoo linux'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Mi instalación personal de Gentoo Linux, segunda parte (actualizado 2008-nov)">
+    <meta itemprop="description" content="<p>En este manual vamos rumbo a tener un entorno de escritorio KDE y los paquetes preferidos de su servidor.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Mi instalación personal de Gentoo Linux, segunda parte (actualizado 2008-nov)">
+    <meta name="twitter:description" content="<p>En este manual vamos rumbo a tener un entorno de escritorio KDE y los paquetes preferidos de su servidor.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Mi instalación personal de Gentoo Linux, segunda parte (actualizado 2008-nov)">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/gentoo-linux-mi-instalacion-personal-2/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>En este manual vamos rumbo a tener un entorno de escritorio KDE y los paquetes preferidos de su servidor.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Mi instalación personal de Gentoo Linux, segunda parte (actualizado 2008-nov) - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Mi instalación personal de Gentoo Linux, segunda parte (actualizado 2008-nov)</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2008-11-15 21:05:00-06:00</p>
+        <hr>
+        <p>Algo de lo mucho que me maravilla del <a href="http://es.wikipedia.org/wiki/Portal:Software_libre">Software Libre</a> es la gran cantidad y variedad de aplicaciones que existen en éste, las hay para todas las necesidades y gustos. Ante tal diversidad, en algunas ocasiones nos podemos sentir desorientados, en el sentido de decidir cuáles aplicaciones nos conviene instalar.</p>
+<p>Podemos imaginarnos que el Software Libre es un gran bosque, donde nosotros como exploradores nos aventuramos en él, descubrimos lugares facinantes y compartimos nuestras experiencias.</p>
+<p>Lo que pretendo con este manual, es mostrarles mi ruta preferida en este bosque, es decir, paso a paso cómo voy instalando mis aplicaciones preferidas hasta llegar a tener mi entorno de trabajo habitual. Debo dar mérito a muchos usuarios como ustedes que me han mostrado muchos de estos paquetes. También a los buscadores como <a href="http://www.google.com.mx/">Google</a> y a los foros de discusión como buena fuente de información para conocer las aplicaciones libres.</p>
+<p>Claro que aquí están impresas mis preferencias personales. En el Software Libre, todos tenemos la libertad de elegir las aplicaciones que queramos usar. Tome Usted de este manual la información que más le convenga...</p>
+<h3>Sobre esta segunda parte</h3>
+<p>En la <a href="gentoo-linux-mi-instalacion-personal-1.html">primera parte</a> de este manual hemos logrado instalar Gentoo Linux a un nivel <em>básico</em>, esto es, que podemos arrancar con éste y llegar a la consola en modo texto.</p>
+<p>Si la meta de nuestra nueva instalación es tener un servidor de archivos, web, base de datos o <em>firewall</em>, instalaríamos sólo los paquetes necesarios para ello, por ejemplo, para un servidor <em>LAMP</em> instalamos <em>Apache</em>, <em>MySQL</em> y <em>PHP</em>. Al configurarlos y ponerlos en marcha tendrá listo un servidor eficiente y rápido con Gentoo Linux.</p>
+<p>En cambio, en este manual vamos rumbo a tener un entorno de escritorio KDE y los paquetes preferidos de su servidor. Serán más pasos que si fuéramos a instalar un servidor.</p>
+<h3>Cómo instalar un nuevo Gentoo Linux usando la instalación anterior</h3>
+<p>Tal como fue en la <a href="gentoo-linux-mi-instalacion-personal-1.html">primera parte</a> podemos continuar instalando la <em>nueva instalación</em> mientras trabajamos en la <em>anterior instalación</em>. Gracias a que todo lo podemos hacer en una terminal.</p>
+<p>Para ello, hice este sencillo <em>bash script</em> para <em>montar las particiones de la nueva instalación</em>. Ajuste las definiciones de las particones (/dev/sdaN) a las correspondientes en su equipo. Debe primero crear el directorio <em>/mnt/gentoo</em>. Ejecútelo como <em>root</em>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> Montando...
+mount /dev/sda6 /mnt/gentoo
+mount /dev/sda3 /mnt/gentoo/usr/portage
+mount /dev/sda1 /mnt/gentoo/boot
+mount /dev/sda2 /mnt/gentoo/home
+mount /dev/sda7 /mnt/gentoo/mnt/anterior
+mount -t proc none /mnt/gentoo/proc
+mount -o <span class="nb">bind</span> /dev /mnt/gentoo/dev
+cp /etc/resolv.conf /mnt/gentoo/etc/
+<span class="nb">echo</span> Listo.
+mount <span class="p">|</span> grep /mnt/gentoo
+</pre></div>
+</td></tr></table>
+
+<p>Despúes de ejecutarlo, hago el <em>chroot</em> y actualizo las variables del entorno.</p>
+<div class="highlight"><pre><span></span># chroot /mnt/gentoo /bin/bash
+# env-update
+# source /etc/profile
+# export PS1=&quot;(chroot) $PS1&quot;
+</pre></div>
+
+
+<p>Listo. Puede continuar la instalación.</p>
+<p>Le advierto que si dentro del <em>chroot</em> arranca un <em>demonio o servicio</em> éste pudiera tener conflictos con los <em>demonios</em> del sistema que esté usando. Por ejemplo, si dentro del <em>chroot</em> arranco el <em>PostgreSQL</em> y también lo tengo corriendo en el otro sistema, entonces ambos solicitarán los mismos puertos <em>TCP</em> para comunicarse y uno de los dos fallará. Así pues, le recomiendo que sólo instale y configure; cuando reinicie el equipo y entre en su nueva instalación podrá probar sus <em>demonios</em>.</p>
+<p>Si quiero abandonar el <em>chroot</em> ejecuto <em>exit</em>.</p>
+<div class="highlight"><pre><span></span># exit
+</pre></div>
+
+
+<p>Y ejecuto este otro <em>bash script</em> para <em>desmontar las particiones</em>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> Desmontando...
+umount /mnt/gentoo/dev
+umount /mnt/gentoo/proc
+umount /mnt/gentoo/mnt/anterior
+umount /mnt/gentoo/home
+umount /mnt/gentoo/boot
+umount /mnt/gentoo/usr/portage
+umount /mnt/gentoo
+<span class="nb">echo</span> Listo.
+mount <span class="p">|</span> grep /mnt/gentoo
+</pre></div>
+</td></tr></table>
+
+<h3>Cambio el <em>profile</em></h3>
+<p>Instalo <em>eselect</em>, que es un programa para revisar y cambiar ciertas configuraciones del sistema; entre ellas el <em>profile</em> establecido.</p>
+<div class="highlight"><pre><span></span># emerge eselect
+</pre></div>
+
+
+<p>Por defecto, el stage <em>stage3-i686-2008.0.tar.bz2</em> usa un <em>profile</em> genérico. Para ver el profile en uso, ejecuto:</p>
+<div class="highlight"><pre><span></span># eselect profile show
+Current make.profile symlink:
+  /usr/portage/profiles/default/linux/x86/2008.0
+</pre></div>
+
+
+<p>Para listar todos los <em>profiles</em> disponibles, ejecuto:</p>
+<div class="highlight"><pre><span></span># eselect profile list
+Available profile symlink targets:
+  [1]   default-linux/x86/2006.1
+  [2]   default-linux/x86/2006.1/desktop
+  [3]   default-linux/x86/2007.0
+  [4]   default-linux/x86/2007.0/desktop
+  [5]   hardened/x86/2.6
+  [6]   selinux/2007.0/x86
+  [7]   selinux/2007.0/x86/hardened
+  [8]   default/linux/x86/2008.0 *
+  [9]   default/linux/x86/2008.0/desktop
+  [10]  default/linux/x86/2008.0/developer
+  [11]  default/linux/x86/2008.0/server
+  [12]  hardened/linux/x86
+</pre></div>
+
+
+<p>Como nuestro fin es Gentoo Linux con entorno de escritorio completo, vamos a seleccionar el <em>profile</em> <em>desktop</em>.</p>
+<div class="highlight"><pre><span></span># eselect profile set default/linux/x86/2008.0/desktop
+</pre></div>
+
+
+<p>Y reviso para asegurarme del cambio:</p>
+<div class="highlight"><pre><span></span># eselect profile show
+Current make.profile symlink:
+  /usr/portage/profiles/default/linux/x86/2008.0/desktop
+</pre></div>
+
+
+<h3>Configuraciones adicionales para el <em>portage</em></h3>
+<p>En <em>/etc/make.conf</em> se definen los parámetros de compilación de los paquetes que vayan a instalar. La variable <em>USE</em> está formada por una serie de banderas o <em>flags</em> que habilitan o deshabilitan opciones de la compilación de los paquetes.</p>
+<p>Las opciones que escriba en la variable <em>USE</em> dependerán de muchos factores, desde los componentes de hardware hasta el uso fina que le vaya a dar al equipo. Por ejemplo, yo prefiero <em>no usar <em>arts</em></em> el cual es el demonio de sonido del KDE. No funciona tan bien como desearía; aunque su desactivación me deja sin ningún sonido para los avisos del KDE; prefiero un entorno silencioso y configurar ALSA como la salida del sonido.</p>
+<p>Este es el contenido de mi archivo <em>/etc/make.conf</em></p>
+<div class="highlight"><pre><span></span>#
+# /etc/make.conf
+#
+# Dell Inspiron 9300
+#
+
+# This should not be changed unless you know exactly what you are doing.  You
+# should probably be using a different stage, instead.
+CHOST=&quot;i686-pc-linux-gnu&quot;
+
+# Intel(R) Pentium(R) M processor 1.73GHz
+#   CPU Family : 6
+#   Model      : 13
+CFLAGS=&quot;-O2 -march=pentium-m -pipe -fomit-frame-pointer&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
+
+# Dos compilaciones paralelas
+MAKEOPTS=&quot;-j2&quot;
+
+# Conservar compilaciones
+FEATURES=&quot;buildpkg fixpackages&quot;
+PKGDIR=/usr/portage/packages
+
+# Idioma
+LINGUAS=&quot;es&quot;
+
+#
+# Variable USE
+#
+USE=&quot;-arts -gnome -kerberos a52 aac aalib amr amrnb amrwb apache2 bluetooth \\
+cups curl css dts dv dvb ffmpeg flac ftp gd gtk ieee1394 imagemagick java \\
+joystick kde laptop lame matroska mmx mmxext mtp php ppd pcmcia postgres \\
+qt3 qt4 ruby samba sse sse2 theora threads v4l v4l2 vcd wifi x264 \\
+xscreensaver xvid&quot;
+
+# Xorg
+INPUT_DEVICES=&quot;keyboard mouse synaptics joystick evdev&quot;
+VIDEO_CARDS=&quot;radeon vesa&quot;
+
+# Apache 2
+APACHE2_MODULES=&quot;actions alias auth_basic authn_anon authn_default \\
+authn_file authz_default authz_groupfile authz_host authz_owner authz_user \\
+autoindex cache deflate dir disk_cache env expires file_cache filter \\
+include info log_config logio mem_cache mime mime_magic negotiation \\
+rewrite setenvif status unique_id vhost_alias&quot;
+
+# Servidor de paquetes
+#PORTDIR=/usr/portage
+#DISTDIR=<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles
+#SYNC=rsync://SERVIDOR/gentoo-portage
+#FETCHCOMMAND=&quot;rsync rsync://SERVIDOR/gentoo-packages/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
+</pre></div>
+
+
+<p>En <em>/etc/portage/package.use</em> doy cambios en la variable USE a programas en particular.</p>
+<div class="highlight"><pre><span></span># HAL con soporte para Dell Inspiron 9300
+sys-apps/hal dell
+
+# Sin GTK+
+sys-devel/gcc -gtk
+media-libs/imlib -gtk
+
+# Sin gd
+sys-libs/glibc -gd
+
+# Java plug-in para los navegadores de internet
+dev-java/sun-jdk nsplugin
+
+# Krdc con remote desktop
+kde-base/krdc rdesktop
+
+# LaTeX con componentes extra
+app-text/texlive extra
+
+# wxGTK es usado por Audacity. Sin GStreamer
+x11-libs/wxGTK -gstreamer
+
+# KMPlayer debe usar solo MPlayer y Xine
+media-video/kmplayer -gstreamer mplayer xine
+
+# XSane es para que Gimp pueda usar el scanner
+media-gfx/xsane gimp
+
+# i8kutils requiere tk para monitorear la temperatura
+app-laptop/i8kutils tk
+</pre></div>
+
+
+<p>En <em>/etc/portage/package.keywords</em> doy permiso a Gentoo Linux que instale las versiones inestables de ciertos paquetes.</p>
+<div class="highlight"><pre><span></span># KPowerSave
+sys-power/kpowersave
+
+# Mozilla Firefox 3.0
+net-libs/xulrunner
+dev-libs/nspr
+dev-libs/nss
+www-client/mozilla-firefox
+
+# Para usar el scanner HP Scanjet 4070 necesito el driver hp3900
+media-gfx/sane-backends
+</pre></div>
+
+
+<p><img class="img-fluid" src="xorg-logo.png"></p>
+<h3>Servidor gráfico: el Xorg</h3>
+<p>La primer instalación es el servidor <a href="http://www.x.org/">X.org</a> que constituye el motor gráfico, para la posterior instalación del (o los) entornos gráficos. Así como algunas tipografías libres.</p>
+<div class="highlight"><pre><span></span># emerge xorg-x11
+# rc-update add dbus default
+# emerge freefonts terminus-font corefonts
+</pre></div>
+
+
+<p>Debe de configurar <em>xorg.conf</em> de acuerdo a su equipo. Yo ya tengo listo mi archivo <a href="xorg.conf">xorg.conf</a> para mi Dell Inspiron 9300 con chip ATI M22. En esta instrucción hago una copia de la instalación anterior.</p>
+<div class="highlight"><pre><span></span># cp /mnt/anterior/etc/X11/xorg.conf /etc/X11/
+</pre></div>
+
+
+<p>Para probar que X.org funcione bien, instale y ejecute un gestor de ventanas ligero, le recomiendo <a href="http://fluxbox.sourceforge.net/">FluxBox</a>.</p>
+<div class="highlight"><pre><span></span># emerge fluxbox
+</pre></div>
+
+
+<p>Una forma para usar Fluxbox es crear un archivo llamado <em>.xinitrc</em> con el nombre del ejecutable. Este archivo debe de estar en el <em>home</em> del usuario. Estando listo, arranque las X's con FluxBox ejecutando <em>startx</em>.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;fluxbox&quot;</span> &gt; ~/.xinitrc
+$ startx
+</pre></div>
+
+
+<p>Muy en particular para la Dell Inspiron 9300 instalo estas utilerías propias para el hardware que tengo:</p>
+<div class="highlight"><pre><span></span># emerge radeontool
+# emerge i8kutils
+</pre></div>
+
+
+<p><img class="img-fluid" src="postgresql-logo.png"></p>
+<h3>Base de datos: PostgreSQL</h3>
+<p>Mi base de datos preferida es el <a href="http://www.postgresql.org/">PostgreSQL</a>, el cual instalo con:</p>
+<div class="highlight"><pre><span></span># emerge postgresql
+# emerge --config =postgresql-8.0.15
+# rc-update add postgresql default
+</pre></div>
+
+
+<p>Puede arrancar el <em>demonio</em> para dar de alta a un usuario del PostgreSQL (si está cargado sólo el nuevo sistema, recuerde lo mencionado en "Para hacer una nueva instalación mientras sigue usando la anterior").</p>
+<div class="highlight"><pre><span></span># /etc/init.d/postgresql start
+</pre></div>
+
+
+<p>Como <em>root</em> cámbiese al usuario del sistema <em>postgres</em>:</p>
+<div class="highlight"><pre><span></span># su - postgres
+</pre></div>
+
+
+<p>Para crear el usuario <em>guivaloz</em> con cualidades para crear nuevas bases de datos y nuevos usuarios en el PostgreSQL</p>
+<div class="highlight"><pre><span></span>$ createuser -a -d -P -E guivaloz
+$ <span class="nb">exit</span>
+</pre></div>
+
+
+<p>Si es paranoico, modifique la capacidad de ingresar como el usuario <em>postgres</em> para que <em>NO</em> ingrese.</p>
+<div class="highlight"><pre><span></span># usermod -s /sbin/nologin postgres
+</pre></div>
+
+
+<p>Pruebe que tenga acceso a las bases de datos con la cuenta de usuario.</p>
+<div class="highlight"><pre><span></span>$ psql -l
+      Listado de base de datos
+  Nombre   <span class="p">|</span>  Dueño   <span class="p">|</span> Codificación
+-----------+----------+--------------
+ template0 <span class="p">|</span> postgres <span class="p">|</span> UNICODE
+ template1 <span class="p">|</span> postgres <span class="p">|</span> UNICODE
+<span class="o">(</span><span class="m">2</span> filas<span class="o">)</span>
+</pre></div>
+
+
+<p><img class="img-fluid" src="apache-php-logo.png"></p>
+<h3>Servicios para el desarrollo de aplicaciones web</h3>
+<p>Instalo el servidor de páginas web <a href="http://httpd.apache.org/">Apache</a> y luego el lenguaje de programación <a href="http://www.php.net/">PHP</a>.</p>
+<div class="highlight"><pre><span></span># emerge apache
+# emerge php
+</pre></div>
+
+
+<h3>Java</h3>
+<p>Instalo el <em>Java</em> en este punnto, de una vez, ya que es una dependencia que me solicitarán los navegadores de internet. También me interesa el desarrollo en este lenguaje de programación.</p>
+<div class="highlight"><pre><span></span># emerge virtual/jre
+</pre></div>
+
+
+<h3>Samba</h3>
+<p><em>Samba</em> es una implementación libre del protocolo de archivos compartidos de Microsoft Windows. Esta instalación jalará además los paquetes <em>CUPS</em> y <em>GTK+</em>.</p>
+<div class="highlight"><pre><span></span># emerge samba
+</pre></div>
+
+
+<h3>Más instalaciones previas a la instalación del KDE</h3>
+<p>Los <a href="http://www.dockapps.org/">Dock Applications</a> son pequeños programas que en su mayoría trabajan como monitores del equipo. Son herencia del gestor de ventanas <a href="http://es.wikipedia.org/wiki/Window_Maker">Window Maker</a> y consumen muy pocos recursos.</p>
+<p><img class="img-fluid" src="wmdocks.png"></p>
+<p>Mis preferidos son el monitor de la carga del procesador, de la memoria, y varios de redes. Los instalo con:</p>
+<div class="highlight"><pre><span></span># emerge wmcpuload wmmemmon wmnd wmifinfo wmwifi
+</pre></div>
+
+
+<p>Para controlar el muro de fuego, instalo el ejecutable que me permite controlarlo:</p>
+<div class="highlight"><pre><span></span># emerge iptables
+</pre></div>
+
+
+<p>Instalo el lenguaje de programación <a href="http://www.ruby-lang.org/">Ruby</a> junto con la gema <a href="http://whytheluckystiff.net/ruby/redcloth/">RedCloth</a> que uso en el <a href="http://cms.movimientolibre.com/">CMS de Movimiento Libre</a>:</p>
+<div class="highlight"><pre><span></span># emerge ruby eruby rubygems redcloth
+</pre></div>
+
+
+<p><a href="http://www.vim.org/">VIM</a> es un excelente editor de texto en consola:</p>
+<p><a href="vim.png"><img class="img-fluid" src="vim-small.png"></a></p>
+<div class="highlight"><pre><span></span># emerge vim
+</pre></div>
+
+
+<p>Para ver fotografías, me gusta el <a href="http://gqview.sourceforge.net/">GQView</a> el cual es ligero y rápido.</p>
+<p><a href="gqview.jpg"><img class="img-fluid" src="gqview-small.jpg"></a></p>
+<div class="highlight"><pre><span></span># emerge gqview
+</pre></div>
+
+
+<p>Para guardar mis contraseñas uso el <a href="http://kedpm.sourceforge.net/">KED Password Manager</a></p>
+<p><a href="kedpm.png"><img class="img-fluid" src="kedpm-small.png"></a></p>
+<div class="highlight"><pre><span></span># emerge kedpm
+</pre></div>
+
+
+<p>En el siguiente <em>screenshot</em> verá al gestor de ventanas <em>FluxBox</em> con algunas aplicaciones que he instalado. Es más cómodo seguir instalando en este entorno, simplemente por que la terminal nos muestra más información.</p>
+<p><a href="fluxbox.png"><img class="img-fluid" src="fluxbox-small.png"></a></p>
+<h3>Base del KDE</h3>
+<p>Instalo el <a href="http://www.freedesktop.org/Software/hal">HAL</a> que de hecho lo requiere el KDE. HAL es una capa de abstracción de hardware software que permite a las aplicaciones de escritorio tengan acceso a información de hardware.</p>
+<div class="highlight"><pre><span></span># emerge hal
+# rc-update add hald default
+</pre></div>
+
+
+<p>Al instalar <em>HAL</em> se crea el grupo <em>plugdev</em> al cual deben de agregarse los usuarios para poder montar dispositivos de almacenamiento externo (como las memorias USB). Así que agrego mi cuenta habitual a ese grupo.</p>
+<div class="highlight"><pre><span></span># gpasswd -a guivaloz plugdev
+</pre></div>
+
+
+<p>Instalo la base del KDE y la capacidad multilingüe del mismo con:</p>
+<div class="highlight"><pre><span></span># emerge kdebase-meta kde-i18n
+</pre></div>
+
+
+<p>Luego edito el archivo /etc/conf.d/xdm</p>
+<div class="highlight"><pre><span></span># nano -w /etc/conf.d/xdm
+</pre></div>
+
+
+<p>Configuro que al encender el equipo, arranquen las X's y se cargue el gestor gráfico <em>KDM</em> cambiando la siguiente línea:</p>
+<div class="highlight"><pre><span></span>DISPLAYMANAGER=&quot;kdm&quot;
+</pre></div>
+
+
+<p>Luego configuramos que se inicien las X's al encender el equipo.</p>
+<div class="highlight"><pre><span></span># rc-update add xdm default
+</pre></div>
+
+
+<p>Reinicie el equipo y pruebe su <em>nueva instalación</em>. <em>Bienvenido a KDE</em>.</p>
+<p><a href="kde-bienvenida.jpg"><img class="img-fluid" src="kde-bienvenida-small.jpg"></a> <a href="kde-base.jpg"><img class="img-fluid" src="kde-base-small.jpg"></a></p>
+<p>En la <a href="gentoo-linux-mi-instalacion-personal-3.html">tercera parte de este manual</a> continuaré con la instalación de mis aplicaciones favoritas.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

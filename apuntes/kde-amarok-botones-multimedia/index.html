@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Quienes usamos GNU/Linux nos vemos en la necesidad de hacer la configuración de los botones multimedia forma manual.</p>">
+    <meta name="keywords" content="[<Tag 'gentoo linux'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Cómo configurar los botones multimedia en KDE">
+    <meta itemprop="description" content="<p>Quienes usamos GNU/Linux nos vemos en la necesidad de hacer la configuración de los botones multimedia forma manual.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Cómo configurar los botones multimedia en KDE">
+    <meta name="twitter:description" content="<p>Quienes usamos GNU/Linux nos vemos en la necesidad de hacer la configuración de los botones multimedia forma manual.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Cómo configurar los botones multimedia en KDE">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/kde-amarok-botones-multimedia/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Quienes usamos GNU/Linux nos vemos en la necesidad de hacer la configuración de los botones multimedia forma manual.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Cómo configurar los botones multimedia en KDE - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Cómo configurar los botones multimedia en KDE</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2007-12-20 00:25:00-06:00</p>
+        <hr>
+        <p>Este manual está actualizado. Para la computadora portátil <strong>Dell Inspiron 9300</strong> con <strong>Debian Lenny</strong>, <a href="http://www.kde.org">KDE</a> como entorno de escritorio y <a href="http://amarok.kde.org">Amarok</a> como reproductor de audio.</p>
+<p>Gran parte de las computadoras de escritorio y portátiles modernos tienen botones <em>multimedia</em>, si este equipo viene con Windows instalado de fábrica, estos botones ya estarán configurados. Quienes usamos GNU/Linux nos vemos en la necesidad de hacer esta configuración de forma manual.</p>
+<p><a href="botones.jpg"><img class="img-fluid" src="botones-small.jpg"></a></p>
+<h3>Configuración de las X's</h3>
+<p>El primer paso es revisar que tengamos bien configuradas las X's. Muestro a continuación el segmento del archivo de configuración /etc/X11/xorg.conf para un teclado en español y latinoamericano. Para modificar el archivo xorg.conf se necesita ser root.</p>
+<div class="highlight"><pre><span></span>Section &quot;InputDevice&quot;
+    Identifier      &quot;Generic Keyboard&quot;
+    Driver          &quot;kbd&quot;
+    Option          &quot;CoreKeyboard&quot;
+    Option          &quot;XkbRules&quot;      &quot;xorg&quot;
+    Option          &quot;XkbModel&quot;      &quot;pc105&quot;
+    Option          &quot;XkbLayout&quot;     &quot;latam&quot;
+EndSection
+</pre></div>
+
+
+<p>Las X's correctamente configuradas <em>deberán entregar un código</em> cuando sea presionado un botón multimedia.</p>
+<h3>Descubriendo los <em>scancodes</em></h3>
+<p>Vamos a ejecutar el programa <em>xev</em>, que es una utilería de las X's. Inicie su sesión como un usuario normal en KDE, abra una terminal y ejecute el comando:</p>
+<div class="highlight"><pre><span></span>$ xev
+</pre></div>
+
+
+<p>Este programa muestra una pequeña ventana blanca y en la terminal se pueden ver los textos de salida. Mientras corra, estará atento a cualquier tecla o movimiento del ratón, mandando información del evento a la terminal.</p>
+<p>Coloque el puntero sobre la ventana blanca del <em>xev</em>, vaya presionando uno por uno los botones multimedia y tomando nota de los <em>keycodes</em>.</p>
+<p><a href="xev.png"><img class="img-fluid" src="xev-small.png"></a></p>
+<p>Como ejemplo, cuando presiono el botón de <em>Play/Pausa</em> me aparece dos bloques de datos, de cuando presiono el botón y cuando lo libero:</p>
+<div class="highlight"><pre><span></span>KeyPress event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 4421581, (88,247), root:(351,455),
+    state 0x0, keycode 162 (keysym 0x0, NoSymbol), same_screen YES,
+    XLookupString gives 0 bytes:
+    XmbLookupString gives 0 bytes:
+    XFilterEvent returns: False
+
+KeyRelease event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 4421760, (88,247), root:(351,455),
+    state 0x0, keycode 162 (keysym 0x0, NoSymbol), same_screen YES,
+    XLookupString gives 0 bytes:
+    XFilterEvent returns: False
+</pre></div>
+
+
+<p>Observe el tercer renglón de cada bloque, el botón de <em>Play/Pausa</em> tiene el <em>keycode 162</em>, pero no hay un <em>caracter</em> asociado al mismo por que muestra <em>NoSymbol</em>.</p>
+<p>Cuando el botón nos da su <em>keycode</em> pero no tiene un <em>caracter</em> asociado, debemos configurar el <em>keycode</em> al <em>caracter</em> que creamos conveniente. Esto es justo lo que haremos en la siguiente sección.</p>
+<h3>Estableciendo los caracteres para los <em>keycode</em> no definidos.</h3>
+<p>Vamos a crear un archivo de configuración en su directorio <em>home</em> con el nombre <em>.xmodmaprc</em> (nombre recomendado por el manual del <em>xmodmap</em>) con las claves y su equivalencia para las X's. He aquí la muestra:</p>
+<div class="highlight"><pre><span></span>keycode 160 = XF86AudioMute
+keycode 174 = XF86AudioLowerVolume
+keycode 176 = XF86AudioRaiseVolume
+keycode 162 = XF86AudioPlay
+keycode 144 = XF86AudioPrev
+keycode 153 = XF86AudioNext
+keycode 164 = XF86AudioStop
+</pre></div>
+
+
+<p>Procedemos a probar si esta configuración es correcta. Para cargar esta configuración y revisarla con <em>xev</em> ejecute en una terminal:</p>
+<div class="highlight"><pre><span></span>$ xmodmap ~/.xmodmaprc
+$ xev
+</pre></div>
+
+
+<p><a href="xev-2.png"><img class="img-fluid" src="xev-2-small.png"></a></p>
+<p>Al presionar de nuevo el botón de <em>Play/Pausa</em> vemos que el <em>caracter</em> está correctamente asignado:</p>
+<div class="highlight"><pre><span></span>KeyPress event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 5096736, (131,124), root:(666,262),
+    state 0x0, keycode 162 (keysym 0x1008ff14, XF86AudioPlay), same_screen YES,
+    XLookupString gives 0 bytes:
+    XmbLookupString gives 0 bytes:
+    XFilterEvent returns: False
+
+KeyRelease event, serial 31, synthetic NO, window 0x2400001,
+    root 0x44, subw 0x0, time 5096946, (131,124), root:(666,262),
+    state 0x0, keycode 162 (keysym 0x1008ff14, XF86AudioPlay), same_screen YES,
+    XLookupString gives 0 bytes:
+    XFilterEvent returns: False
+</pre></div>
+
+
+<h3>Haciendo que la configuración se cargue al iniciar la sesión.</h3>
+<p>En este punto tenemos las asiganciones <em>keycode</em> a <em>caracter</em>, pero debemos cargarlas manualmente cada vez que encendemos el equipo.</p>
+<p>Para no ser invasivos al sistema operativo, vamos a crear un <em>Bash script</em> que ejecute el comando <em>xmodmap</em> y cargue la configuración cada vez que iniciamos la sesión de usuario. KDE tiene un directorio <em>Autostart</em> para cada usuario.</p>
+<p>Para crear este <em>Bash script</em> abra una terminal y escriba:</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/.kde/Autostart/
+$ nano -w botones-multimedia.sh
+</pre></div>
+
+
+<p>El script <em>botones-multimedia.sh</em> simplemente va ejecutar el programa <em>xmodmap</em> con un parámetro, el archivo de configuración que hemos creado:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+xmodmap ~/.xmodmaprc
+</pre></div>
+</td></tr></table>
+
+<p>Guarde los cambios y salga del editor. Haga este script ejecutable con el comando <em>chmod</em>:</p>
+<div class="highlight"><pre><span></span>$ chmod a+x botones-multimedia.sh
+$ <span class="nb">exit</span>
+</pre></div>
+
+
+<p>Cierre su sesión del KDE y vuelva a entrar. Abra una nueva terminal y ejecute <em>xev</em> de nuevo para presionar cada botón multimedia y revisar que todos ellos tengan su caracter correcto.</p>
+<h3>Descubriendo los comandos DCOP para Amarok</h3>
+<p>La Dell Inspiron 9300 tiene los botones Play/Pausa, Anterior (previous), Siguiente (next) y Stop (detener). Los cuales vamos a configurar para que controlen al Amarok.</p>
+<p>Necesitamos conocer los comandos DCOP que nos permitan controlar la reproducción de audio en Amarok. Para ello, abra una terminal y ejecute el siguiente comando:</p>
+<div class="highlight"><pre><span></span>$ dcop amarok player
+</pre></div>
+
+
+<p>Nos entregará una larga lista de operadores. Tome nota de los que quiera controlar con los botones multimedia. En mi equipo he elegido los siguientes:</p>
+<div class="highlight"><pre><span></span>void next()
+void playPause()
+void prev()
+void stop()
+</pre></div>
+
+
+<p>Ejecute Amarok y pruebe cada comando DCOP (observe que van sin paréntesis):</p>
+<div class="highlight"><pre><span></span>$ dcop amarok player next
+$ dcop amarok player playPause
+$ dcop amarok player prev
+$ dcop amarok player stop
+</pre></div>
+
+
+<p>Tome nota de los comandos DCOP para Amarok que quiera configurar para sus botones multimedia.</p>
+<h3>Descubriendo los comandos DCOP para kMix</h3>
+<p>Ahora viene una situación muy particular de mi computadora portátil Dell Inspiron 9300: necesito ajustar dos controles de volumen, por que un volumen es el de las bocinas delanteras y el otro de las traseras y bajos.</p>
+<p><a href="kmix-volumenes-bajos.png"><img class="img-fluid" src="kmix-volumenes-bajos-small.png"></a>
+<a href="kmix-volumenes-altos.png"><img class="img-fluid" src="kmix-volumenes-altos-small.png"></a></p>
+<p>Primero descubro los operadores DCOP de la aplicación Kmix ejecutando el siguiente comando:</p>
+<div class="highlight"><pre><span></span>$ dcop kmix Mixer0
+</pre></div>
+
+
+<p>De entre todos elijo los tres siguientes. Como verán, son los que me incrementarán, decrementarán y silenciarán los volúmenes.</p>
+<div class="highlight"><pre><span></span>void increaseVolume(int deviceidx)
+void decreaseVolume(int deviceidx)
+void toggleMute(int deviceidx)
+</pre></div>
+
+
+<p>Cada uno necesita como parámetro un número entero que se refiere al <em>control</em> a alterar. En mi caso, las bocinas principales son 0 y las de los bajos son 1.</p>
+<p>Entonces, para incrementar el volumen ejecuto:</p>
+<div class="highlight"><pre><span></span>$ dcop kmix Mixer0 increaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 increaseVolume <span class="m">1</span>
+</pre></div>
+
+
+<p>Para decrementar el volumen:</p>
+<div class="highlight"><pre><span></span>$ dcop kmix Mixer0 decreaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 decreaseVolume <span class="m">1</span>
+</pre></div>
+
+
+<p>Y para silenciar/des-silenciar:</p>
+<div class="highlight"><pre><span></span>$ dcop kmix Mixer0 toggleMute <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 toggleMute <span class="m">1</span>
+</pre></div>
+
+
+<h3>Creando las acciones para Amarok.</h3>
+<p>Ejecute <em>Centro de control</em>, vaya al apartado <em>Regional y Accesibilidad</em>, luego a <em>Introducir acciones</em>.</p>
+<p>Con el fin de mantener organizadas las nuevas acciones, le recomiendo que cree un nuevo grupo. Presione el botón <em>Nuevo grupo</em> y como nombre del mismo escriba <em>Botones multimedia</em>.</p>
+<p><a href="acciones-nuevo-grupo.png"><img class="img-fluid" src="acciones-nuevo-grupo-small.png"></a></p>
+<p>Para agregar una nueva acción presione <em>Nueva acción</em>, luego escriba el nombre que prefiera. Establezca que el tipo de acción es <em>Acceso rápido de teclado -&gt; LLamada a DCOP (simple)</em>.</p>
+<p><a href="acciones-nueva-accion.png"><img class="img-fluid" src="acciones-nueva-accion-small.png"></a></p>
+<p>Vaya al apartado <em>Acceso rápido de teclado</em>, de clic en el botón para definir la tecla y presione el botón multimedia que corresponda a la acción que esté creando.</p>
+<p><a href="acciones-acceso-rapido.png"><img class="img-fluid" src="acciones-acceso-rapido-small.png"></a></p>
+<p>Vaya al apartado <em>Preferencias de llamada a DCOP</em> y llene los campos correspondientes para comunicarse con la aplicación amarok.</p>
+<p><a href="acciones-preferencias-dcop.png"><img class="img-fluid" src="acciones-preferencias-dcop-small.png"></a></p>
+<p>Repita este proceso por cada botón multimedia que requiera su acción.</p>
+<h3>Creando las acciones para Kmix.</h3>
+<p>En el mismo grupo vamos a agregar las tres acciones para incrementar, decrementar y silenciar los volúmenes.</p>
+<p>Presione <em>Nueva acción</em>. Como la órden ejecuta dos comandos, vamos a definir <em>Tipo de la acción</em> como <em>Acceso rápido de teclado -&gt; Orden/URL (simple)</em>:</p>
+<p><a href="accion-doble-1.png"><img class="img-fluid" src="accion-doble-1-small.png"></a></p>
+<p>Vaya al apartado <em>Acceso rápido de teclado</em>, de clic en el botón para definir la tecla y presione el botón multimedia que corresponda a la acción que esté creando.</p>
+<p><a href="accion-doble-2.png"><img class="img-fluid" src="accion-doble-2-small.png"></a></p>
+<p>Y en <em>Preferencias de orden/URL</em>, escriba los dos comandos, separados por ";"</p>
+<p><a href="accion-doble-3.png"><img class="img-fluid" src="accion-doble-3-small.png"></a></p>
+<h3>Pruebe sus botones multimedia.</h3>
+<p>Notará que toda esta configuración es a nivel del usuario, por lo que si hay varias cuentas definidas en un equipo, será necesario copiar los archivos <em>.xmodmap</em> <em>botones-multimedia.sh</em> a cada directorio <em>home</em> y también declarar las acciones.</p>
+<p>Vale la pena dedicarle algunos minutos a relizar este procedimiento. A la larga se ahorrará muchos movimientos y clicks de ratón usando en su lugar los botones multimedia. ¡Disfrute de la comodidad de controlar su música!</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

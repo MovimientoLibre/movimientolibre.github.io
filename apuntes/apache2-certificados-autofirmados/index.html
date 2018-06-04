@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.</p>">
+    <meta name="keywords" content="[<Tag 'software libre'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Crear certificados autofirmados para Apache 2">
+    <meta itemprop="description" content="<p>En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Crear certificados autofirmados para Apache 2">
+    <meta name="twitter:description" content="<p>En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Crear certificados autofirmados para Apache 2">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/apache2-certificados-autofirmados/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Crear certificados autofirmados para Apache 2 - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Crear certificados autofirmados para Apache 2</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2014-02-22 17:30:00-06:00</p>
+        <hr>
+        <p>Involucrarse en el <strong>cifrado de la información</strong> que viaja a través de internet es como adentrarse a un mundo <em>bizarro</em> que es más complicado que el nuestro. Pero cada día se vuelve más importante e indispensable para cada servicio <em>web</em> que fabriquemos.</p>
+<p>Podemos listar muchas razones para justificar que <strong>todos</strong> los sistemas y sitios web deberían <strong>cifrar sus datos al viajar del servidor al cliente y viceversa</strong>. Pero sólo basta una: el fin de dificultar las acciones de <em>espionaje masivo</em> al que todos estamos expuestos.</p>
+<p>En este <strong>apunte</strong> escribo los pasos para <strong>crear certificados autofirmados</strong> para que el servidor web <strong>Apache</strong> opere cifrando las comunicaciones con <strong>SSL</strong>. Dicho de otra forma, es usar el <strong>HTTPS</strong> en lugar del <strong>HTTP</strong>.</p>
+<h3>Advertencia</h3>
+<p>Cabe aclarar que las grandes entidades, sean empresas o gobiernos, quienes tienen grandes cantidades de usuarios vía internet <strong>deberían adquirir certificados firmados por entidades más altas</strong>. Éstos certificados ya están instalados en los navegadores de internet más populares. Para verlos en <strong>Mozilla Firefox</strong> vaya a <em>Preferencias</em>, en <em>Avanzado</em>, en <em>Ver Certificados</em> y a <em>Autoridades</em>.</p>
+<p>Adquirir un certificado de un proveedor de prestigio es costoso. Una alternativa es optar por generar un certificado gratuito de <a href="http://www.cacert.org/">CAcert</a>.</p>
+<p>En cambio, los certificados autofirmados convienen cuando no podemos desembolsar el costo de un certificado comercial, los usuarios son pocos y confían en nosotros. La desventaja es que la primera vez que ingresen al sitio, su navegador de internet pondrá una <strong>advertencia de seguridad</strong>; a la cual debemos de indicar que el sitio <strong>sí es de confianza</strong> y guardarla para que no nos pregunte en el futuro.</p>
+<h3>Procedimiento para crear certificados autofirmados</h3>
+<p>Primero, como un usuario común vamos a abrir una terminal en <strong>GNU/Linux</strong> y crear un directorio donde vamos a trabajar con los certificados.</p>
+<div class="highlight"><pre><span></span>$ mkdir apache-self-signed-cert
+$ <span class="nb">cd</span> apache-self-signed-cert
+</pre></div>
+
+
+<p>Ejecute el siguiente comando <strong>openssl</strong> reemplazando el texto <em>SERVIDORSISTEMA</em> por algo que identifique el servidor y/o nombre del sistema o sitio:</p>
+<div class="highlight"><pre><span></span>$ openssl req -x509 -nodes -days <span class="m">1460</span> -newkey rsa:2048 <span class="se">\</span>
+  -keyout SERVIDORSISTEMA.key <span class="se">\</span>
+  -out SERVIDORSISTEMA.crt
+</pre></div>
+
+
+<p>Este programa le preguntará datos importantes que ayudarán a identificar el certificado. En particular en <em>common name</em> use el nombre de domino completo del servidor.</p>
+<div class="highlight"><pre><span></span>Country Name (2 letter code) [AU]: **
+State or Province Name (full name) [Some-State]: ******
+Locality Name (eg, city) []: ******
+Organization Name (eg, company) [Internet Widgits Pty Ltd]: ******
+Organizational Unit Name (eg, section) []: ******
+Common Name (e.g. server FQDN or YOUR name) []: sistema.servidor.com
+Email Address []: webmaster@servidor.com
+</pre></div>
+
+
+<p>Copie los archivos creados al directorio donde <strong>Apache</strong> espere encontrarlos. Lea la documentación de su distribución de <strong>GNU/Linux</strong> porque puede ser distinta a la que muestro a continuación que es para <a href="http://gentoo.org/">Gentoo Linux</a>:</p>
+<div class="highlight"><pre><span></span>$ sudo cp * /etc/ssl/apache2/
+</pre></div>
+
+
+<p>Cambie los permisos de estos archivos como lo indican estos comandos:</p>
+<div class="highlight"><pre><span></span>$ sudo chmod <span class="m">444</span> /etc/ssl/apache2/SERVIDORSISTEMA.crt
+$ sudo chmod <span class="m">400</span> /etc/ssl/apache2/SERVIDORSISTEMA.key
+</pre></div>
+
+
+<p>Configure el sitio o sistema web en <strong>Apache</strong> para que haga uso del cifrado <strong>SSL</strong> creando un archivo <strong>conf</strong>. En <a href="http://gentoo.org/">Gentoo Linux</a> se usa el directorio <code>/etc/apache2/vhosts.d</code>. Consulte la documentación de su <em>distro</em> para hacerlo de la forma correcta.</p>
+<div class="highlight"><pre><span></span>$ sudo nano /etc/apache2/vhosts.d/0443_https.conf
+</pre></div>
+
+
+<p>A continuación sigue una muestra del contenido de <code>0443_https.conf</code> que deberá de ajustar a sus necesidades:</p>
+<div class="highlight"><pre><span></span># Escuchar el puerto 443
+Listen 443
+
+# Desde cualquier IP por el puerto 80
+NameVirtualHost *:443
+
+# Raiz
+<span class="nt">&lt;VirtualHost</span> <span class="err">*:443</span><span class="nt">&gt;</span>
+
+    # Nombre de este servidor web
+    ServerName sistema.servidor.com
+
+    # Habilitar SSL
+    SSLEngine on
+    SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+    SSLCertificateFile /etc/ssl/apache2/SERVIDORSISTEMA.crt
+    SSLCertificateKeyFile /etc/ssl/apache2/SERVIDORSISTEMA.key
+
+    # Raíz del sitio o sistema web
+    DocumentRoot /var/www/htdocs
+    <span class="nt">&lt;Directory</span> <span class="err">/var/www/htdocs</span><span class="nt">&gt;</span>
+        Options -Indexes -FollowSymLinks
+        AllowOverride all
+        Order allow,deny
+        Allow from all
+    <span class="nt">&lt;/Directory&gt;</span>
+
+    # Bitácoras
+    ErrorLog /var/log/apache2/ssl_error_log
+    <span class="nt">&lt;IfModule</span> <span class="err">log_config_module</span><span class="nt">&gt;</span>
+        TransferLog /var/log/apache2/ssl_access_log
+    <span class="nt">&lt;/IfModule&gt;</span>
+
+    # OptRenegotiate
+    <span class="nt">&lt;FilesMatch</span> <span class="err">&quot;\.(cgi|shtml|phtml|php)$&quot;</span><span class="nt">&gt;</span>
+        SSLOptions +StdEnvVars
+    <span class="nt">&lt;/FilesMatch&gt;</span>
+    <span class="nt">&lt;Directory</span> <span class="err">&quot;/var/www/localhost/cgi-bin&quot;</span><span class="nt">&gt;</span>
+        SSLOptions +StdEnvVars
+    <span class="nt">&lt;/Directory&gt;</span>
+
+    # ssl-accurate-shutdown
+    <span class="nt">&lt;IfModule</span> <span class="err">setenvif_module</span><span class="nt">&gt;</span>
+        BrowserMatch &quot;.*MSIE.*&quot; \
+        nokeepalive ssl-unclean-shutdown \
+        downgrade-1.0 force-response-1.0
+    <span class="nt">&lt;/IfModule&gt;</span>
+
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+
+
+<p>La instalación de <strong>Apache</strong> en <a href="http://gentoo.org/">Gentoo Linux</a> deja por defecto el <strong>SSL</strong> deshabilitado. Así que hay que cambiar el archivo de configuración de arranque:</p>
+<div class="highlight"><pre><span></span>$ sudo nano /etc/conf.d/apache2
+</pre></div>
+
+
+<p>Ubique la línea que define el valor <code>APACHE2_OPTS</code> y agregue <code>-D SSL</code>. Por ejemplo, para declarar el uso de <strong>PHP 5</strong> y de <strong>SSL</strong> la línea debe ser:</p>
+<div class="highlight"><pre><span></span>APACHE2_OPTS=&quot;-D SSL -D PHP5&quot;
+</pre></div>
+
+
+<p>Guarde los cambios realizados en el archivo. Luego, arranque o reinicie el <em>daemon</em> de <strong>Apache</strong> para aplicarlos.</p>
+<div class="highlight"><pre><span></span>$ sudo /etc/init.d/apache2 restart
+</pre></div>
+
+
+<p>Verifique que el puerto 443 esté abierto y ejecute su navegador de internet consultando la URL <code>https://localhost</code> para comprobar que funcione. No deje de revisar su <strong>muro de fuego</strong> para tener abierto el puerto 443 si necesita acceder desde otros equipos por red.</p>
+<h3>Referencias</h3>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/LAMP">Arch Linux LAMP</a></li>
+<li><a href="http://httpd.apache.org/docs/2.2/ssl/">Apache Documentation 2.2 SSL/TLS Encryption</a></li>
+<li><a href="https://www.cacert.org/">CAcert</a></li>
+</ul>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>">
+    <meta name="keywords" content="[<Tag 'gentoo linux'>, <Tag 'software libre'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Respaldos con rsync">
+    <meta itemprop="description" content="<p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Respaldos con rsync">
+    <meta name="twitter:description" content="<p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Respaldos con rsync">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/rsync-respaldos/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Respaldos con rsync - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Respaldos con rsync</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2011-12-29 20:50:00-06:00</p>
+        <hr>
+        <p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer <em>respaldos periódicos</em>. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>
+<p>Existen muchas formas en las cuales podríamos perder nuestros archivos, que van desde el robo de nuestra <em>laptop</em> hasta el borrado accidental. <em>La verdad es que la gran mayoría de nosotros no piensa en respaldar sus documentos hasta que la fatal desgracia nos enseña que debimos haberlo hecho.</em> Y que cuando es por descompostura, pérdida o robo; nos dolerá más la pérdida de los archivos que el valor del equipo mismo.</p>
+<p>Como solución simple sugiero instalar un segundo disco duro en un equipo de escritorio, donde los los usuarios depositen el respaldo de sus <em>laptops</em> vía <em>wireless</em> desde sus equipos portátiles. <em>No confío que sea seguro compartir un disco duro externo entre varias personas, ya que se les puede caer o perder.</em></p>
+<p>Así pues instalé un segundo disco duro en el equipo de escritorio, el cual dedicaré enteramente a respaldos. Y como <em>tú y yo</em> usamos GNU/Linux, éste aparece como /dev/sdb.</p>
+<div class="highlight"><pre><span></span># fdisk -l /dev/sdb
+
+Disk /dev/sdb: 250.1 GB, 250059350016 bytes
+81 heads, 63 sectors/track, 95707 cylinders, 488397168 sectores en total
+Units = sectores of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Identificador del disco: 0x7da5580f
+
+Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
+/dev/sdb1            2048   488397167   244197560   83  Linux
+</pre></div>
+
+
+<p>Su única partición la <em>formateé</em> bajo el confiable sistema de archivos Ext4.</p>
+<div class="highlight"><pre><span></span># mkfs.ext4 -L respaldos /dev/sdb1
+</pre></div>
+
+
+<p>Para luego montarlo manualmente en /mnt/respaldos</p>
+<div class="highlight"><pre><span></span># mount /dev/sdb1 /mnt/respaldos
+</pre></div>
+
+
+<p>Claro que me conviene que esta partición se monte cada vez que enciendo el equipo, así que agrego la siguiente línea a la configuración de /etc/fstab para ello.</p>
+<div class="highlight"><pre><span></span>/dev/sdb1   /mnt/respaldos    ext4    defaults    0 1
+</pre></div>
+
+
+<p>Ya <em>particionado</em> y <em>formateado</em> el disco, procedo a crear directorios para cada usuario que deba respaldar. Con anterioridad ya había creado los usuarios. Sustituya <em>usuario1</em>, <em>usuario2</em> y <em>usuario3</em> con los nombres de los usuarios que vayan a hacer respaldos.</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/respaldos/usuario1
+# mkdir /mnt/respaldos/usuario2
+# mkdir /mnt/respaldos/usuario3
+# chown usuario1:users /mnt/respaldos/usuario1
+# chown usuario2:users /mnt/respaldos/usuario2
+# chown usuario3:users /mnt/respaldos/usuario3
+</pre></div>
+
+
+<p>El equipo mantiene en ejecución el <em>daemon</em> <em>SSH</em>. Por medio de éste se pueden transferir los archivos de forma cifrada protegiéndonos de que algún intruso pueda atraparlos fácilmente.</p>
+<p>En este punto, la computadora de escritorio está lista para recibir los respaldos. Punto aparte, tengo habilitado un servidor DNS que me resuelve el nombre <em>escritorio.casa.lan</em> por su respectiva dirección IP. Si no lo tiene, puede usar la dirección IP en los comandos que siguen.</p>
+<p>Para realizar un <em>respaldo manual</em> del directorio <em>Documentos</em> ejecuto este comando en la <em>laptop</em> bajo la sesión del usuario (si es necesario, sustituya <em>escritorio.casa.lan</em> por la dirección IP del equipo y <em>usuario1</em> por su nombre de usuario):</p>
+<div class="highlight"><pre><span></span>$ rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/
+</pre></div>
+
+
+<p>Como iniciativa propia, no deseo respaldar videos o música, prefiero darle prioridad a lo que tengo en <em>Documentos</em>, Usted seguramente me entenderá.</p>
+<p>En las siguientes ejecuciones, el comando <em>rsync</em> copiará sólo los archivos nuevos o los que hayan cambiado.</p>
+<p>Sólo un detalle más: como el anterior comando es largo, prefiero ejecutarlo fácilmente con un <em>atajo</em>. Para ello edito el archivo <em>.bashrc</em> que tengo en la raíz de mi <em>home</em>:</p>
+<div class="highlight"><pre><span></span>$ nano -w ~/.bashrc
+</pre></div>
+
+
+<p>Y agrego esta línea que habilita el <em>atajo</em>:</p>
+<div class="highlight"><pre><span></span>alias respaldar=&quot;rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/&quot;
+</pre></div>
+
+
+<p>Cierre la terminal, abra una nueva, y ejecute el <em>atajo</em> (que equivale al comando largo).</p>
+<div class="highlight"><pre><span></span>$ respaldar
+</pre></div>
+
+
+<p>Así pues, procuro ejecutar <em>respaldar</em> frecuentemente para mantener una copia de mis documentos en el otro equipo. Puede automatizar esta labor si agrega el comando al <em>cron</em> y establece una hora del día a la cual se ejecute sin intervención del usuario. Esto se lo dejo de tarea.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
