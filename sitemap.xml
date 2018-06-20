@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/</loc>
-<lastmod>2018-06-04T10:42:27-00:00</lastmod>
+<lastmod>2018-06-20T18:35:50-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -64,6 +64,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2017-12-27T22:20:00-06:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-01/</loc>
+<lastmod>2018-06-20T18:25:00-05:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>1</priority>
 </url>
 
 <url>
@@ -859,7 +866,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2017-05-09T07:44:00-06:37</lastmod>
+<lastmod>2018-06-20T18:25:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -874,6 +881,34 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.movimientolibre.com/category/presentaciones.html</loc>
 <lastmod>2017-12-10T10:40:00-06:37</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/tag/fedora.html</loc>
+<lastmod>2018-06-20T18:25:00-06:37</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/tag/gnu-linux.html</loc>
+<lastmod>2018-06-20T18:25:00-06:37</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/tag/servidores.html</loc>
+<lastmod>2018-06-20T18:25:00-06:37</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/tag/software-libre.html</loc>
+<lastmod>2018-06-20T18:25:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -970,13 +1005,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.movimientolibre.com/tag/software-libre.html</loc>
-<lastmod>2014-02-28T11:40:00-06:37</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://www.movimientolibre.com/tag/centos.html</loc>
 <lastmod>2014-01-30T10:20:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
@@ -1007,13 +1035,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.movimientolibre.com/tag/conferencias.html</loc>
 <lastmod>2011-06-14T10:17:00-06:37</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.movimientolibre.com/tag/gnu-linux.html</loc>
-<lastmod>2010-10-19T23:55:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
