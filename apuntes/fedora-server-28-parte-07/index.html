@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Crear una nueva partición lógica para compartir archivos por medio de SAMBA.</p>">
+    <meta name="keywords" content="[<Tag 'fedora'>, <Tag 'gnu linux'>, <Tag 'servidores'>, <Tag 'software libre'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Instalación de Fedora Server 28, parte 7, servidor de archivos SAMBA">
+    <meta itemprop="description" content="<p>Crear una nueva partición lógica para compartir archivos por medio de SAMBA.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Instalación de Fedora Server 28, parte 7, servidor de archivos SAMBA">
+    <meta name="twitter:description" content="<p>Crear una nueva partición lógica para compartir archivos por medio de SAMBA.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Instalación de Fedora Server 28, parte 7, servidor de archivos SAMBA">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/fedora-server-28-parte-07/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Crear una nueva partición lógica para compartir archivos por medio de SAMBA.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Instalación de Fedora Server 28, parte 7, servidor de archivos SAMBA - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Instalación de Fedora Server 28, parte 7, servidor de archivos SAMBA</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2018-06-24 22:17:00-05:00</p>
+        <hr>
+        <p>Vamos a crear una partición dedicada a almacenar archivos llamada <em>biblioteca</em> y dentro de ella un directorio con <em>software</em> para todos los usuarios <strong>SAMBA</strong>.</p>
+<h3>Crear particiones</h3>
+<p><strong>System Storage Manager</strong> nos brinda el comando <strong>ssm</strong> que es muy versátil; ya que en un comando se ordena...</p>
+<ul>
+<li>Crear una partición lógica con un tamaño de 128 GB.</li>
+<li>Hacerlo en el conjunto <strong>LVM</strong> que llamé <em>nogal</em> (vea la <a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-01/">parte 1</a>).</li>
+<li>Formatear con el sistema de archivos <strong>ext4</strong></li>
+<li>Montar en el directorio <code>/mnt/biblioteca</code></li>
+</ul>
+<p>Cree el directorio y ejecute el comando <strong>ssm</strong>...</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/biblioteca
+# ssm create -s 128G -p nogal -n biblioteca --fstype ext4 /mnt/biblioteca
+</pre></div>
+
+
+<p>Luego debe agregar una línea en <code>/etc/fstab</code> para que se monte la partición al encender el servidor...</p>
+<div class="highlight"><pre><span></span>/dev/mapper/nogal-biblioteca  /mnt/biblioteca  ext4  defaults  1 2
+</pre></div>
+
+
+<p>Para poder copiar archivos cómodamente en <code>/mnt/biblioteca</code> otorgue permisos de escritura a su usuario <strong>miusuario</strong>. Por ejemplo...</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/biblioteca/software
+# chown miusuario:users /mnt/biblioteca/software
+</pre></div>
+
+
+<h3>Instale y configure SAMBA en el servidor</h3>
+<p>Instale SAMBA...</p>
+<div class="highlight"><pre><span></span># dnf install samba
+</pre></div>
+
+
+<p>Edite...</p>
+<div class="highlight"><pre><span></span># nano /etc/samba/smb.conf
+</pre></div>
+
+
+<p>Lo más sencillo es configurar un <em>servidor solitario</em> con <em>software</em> para todos los usuarios y de sólo lectura. No deje de definir el nombre del grupo <strong>MIGRUPO</strong> y el nombre del servidor <strong>MISERVIDOR</strong>...</p>
+<div class="highlight"><pre><span></span><span class="k">[global]</span>
+<span class="na">workgroup</span> <span class="o">=</span> <span class="s">MIGRUPO</span>
+<span class="na">netbios name</span> <span class="o">=</span> <span class="s">MISERVIDOR</span>
+<span class="na">security</span> <span class="o">=</span> <span class="s">user</span>
+
+<span class="k">[software]</span>
+<span class="na">comment</span> <span class="o">=</span> <span class="s">Biblioteca de software</span>
+<span class="na">path</span> <span class="o">=</span> <span class="s">/mnt/biblioteca/software</span>
+<span class="na">browseable</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">public</span> <span class="o">=</span> <span class="s">no</span>
+<span class="na">writable</span> <span class="o">=</span> <span class="s">no</span>
+</pre></div>
+
+
+<p>Agregue sus usuarios <strong>SAMBA</strong> y contraseñas cifradas con...</p>
+<div class="highlight"><pre><span></span># smbpasswd -a miusuario
+</pre></div>
+
+
+<p>Después de hacer cambios en <code>/etc/samba/smb.conf</code> haga una revisión con...</p>
+<div class="highlight"><pre><span></span># testparm
+</pre></div>
+
+
+<p>Configure el muro de fuego para que sólo desde la red local se pueda accesar...</p>
+<div class="highlight"><pre><span></span># firewall-cmd --permanent --zone=internal --add-service=samba
+</pre></div>
+
+
+<p>Arranque el <em>daemon</em>...</p>
+<div class="highlight"><pre><span></span># systemctl start smb.service
+</pre></div>
+
+
+<p>Recuerde que si cambia <code>/etc/samba/smb.conf</code> deberá reiniciar el <em>daemon</em>...</p>
+<div class="highlight"><pre><span></span># systemctl restart smb.service
+</pre></div>
+
+
+<p>Y para habilitar que inicie al encender, ejecute...</p>
+<div class="highlight"><pre><span></span># systemctl enable smb.service
+</pre></div>
+
+
+<h3>Quitar bloqueos de SELinux a SAMBA</h3>
+<p>Por defecto <strong>SELinux</strong> asegura el servidor limitando las comparticiones <strong>SAMBA</strong>. Para ver todos las <em>boleanos</em> que tienen que ver con samba ejecute...</p>
+<div class="highlight"><pre><span></span># getsebool -a | grep samba
+</pre></div>
+
+
+<p>Encontrará...</p>
+<div class="highlight"><pre><span></span>samba_export_all_ro --&gt; off
+samba_export_all_rw --&gt; off
+</pre></div>
+
+
+<p>Cambie <em>con las consideraciones que esto implica</em> las <em>bandera</em> <code>samba_export_all_ro</code> que habilita a <strong>SAMBA</strong> a leer...</p>
+<div class="highlight"><pre><span></span># setsebool -P samba_export_all_ro on
+# getsebool -a | grep samba_export
+</pre></div>
+
+
+<p>Los <em>meta-permisos</em> en <code>/mnt/biblioteca/software</code> no tienen a <code>samba_share_t</code>...</p>
+<div class="highlight"><pre><span></span># ls -Z -l /mnt/biblioteca/software
+</pre></div>
+
+
+<p>Para que <strong>SELinux</strong> permita a <strong>SAMBA</strong> compartir <em>temporalmente</em>...</p>
+<div class="highlight"><pre><span></span># chcon -R -t samba_share_t /mnt/biblioteca/software
+# ls -Z -l /mnt/biblioteca/software
+</pre></div>
+
+
+<p>Haga permanentes los cambios en <strong>SELinux</strong> con...</p>
+<div class="highlight"><pre><span></span># semanage fcontext -a -t samba_share_t &quot;/mnt/biblioteca/software(/.*)?&quot;
+# restorecon /mnt/biblioteca/software
+# ls -Z -l /mnt/biblioteca/software
+</pre></div>
+
+
+<p>Más documentación en:</p>
+<ul>
+<li><a href="https://selinuxproject.org/page/SambaRecipes">SELinuxProject.org - SambaRecipes</a></li>
+</ul>
+<h3>Pruebas en los clientes</h3>
+<p>Puede exportar el usuario y contraseña a variables de entorno...</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">USER</span><span class="o">=</span>miusuario
+$ <span class="nb">export</span> <span class="nv">PASSWD</span><span class="o">=</span>micontraseña
+</pre></div>
+
+
+<p>Liste los recursos compartidos con...</p>
+<div class="highlight"><pre><span></span># smbclient -L miservidor
+</pre></div>
+
+
+<p>Pruebe ingresar a un recurso compartido...</p>
+<div class="highlight"><pre><span></span>$ smbclient //profeta/software
+</pre></div>
+
+
+<p>Si su administrador de archivos lo soporta, por ejemplo <strong>Dolphin</strong>, escriba esto en el campo de ubicación...</p>
+<div class="highlight"><pre><span></span>smb://miservidor/
+</pre></div>
+
+
+<h3>Grupos de usuarios</h3>
+<p>Esto es para cuando necesita ofrecer un espacio en común para dos personas o más.</p>
+<p>Igual, <em>con las consideraciones que esto implica</em> las <em>bandera</em> <code>samba_export_all_rw</code> que habilita a <strong>SAMBA</strong> a leer y escribir...</p>
+<div class="highlight"><pre><span></span># setsebool -P samba_export_all_rw on
+# getsebool -a | grep samba_export
+</pre></div>
+
+
+<p>Cree un nuevo directorio para su nuevo grupo de trabajo, por ejemplo, el grupo <em>ventas</em> con los usuarios <em>vendedor1</em> y <em>vendedor2</em>...</p>
+<div class="highlight"><pre><span></span># groupadd ventas
+# useradd vendedor1
+# useradd vendedor2
+# usermod -a -G ventas vendedor1
+# usermod -a -G ventas vendedor2
+# mkdir /mnt/biblioteca/ventas
+# chmod 0770 /mnt/biblioteca/ventas
+# chgrp ventas /mnt/biblioteca/ventas
+</pre></div>
+
+
+<p>Agregue en <code>/etc/samba/smb.conf</code>...</p>
+<div class="highlight"><pre><span></span><span class="k">[ventas]</span>
+<span class="na">comment</span> <span class="o">=</span> <span class="s">Unidad de Sistemas de Infomacion</span>
+<span class="na">path</span> <span class="o">=</span> <span class="s">/mnt/biblioteca/ventas</span>
+<span class="na">valid users</span> <span class="o">=</span> <span class="s">@ventas</span>
+<span class="na">write list</span> <span class="o">=</span> <span class="s">@ventas</span>
+<span class="na">browsable</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">public</span> <span class="o">=</span> <span class="s">no</span>
+<span class="na">writable</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">create mask</span> <span class="o">=</span> <span class="s">0770</span>
+<span class="na">Force create mode</span> <span class="o">=</span> <span class="s">0770</span>
+<span class="na">force group</span> <span class="o">=</span> <span class="s">ventas</span>
+</pre></div>
+
+
+<p>Haga las autorizaciones de <strong>SELinux</strong>...</p>
+<div class="highlight"><pre><span></span># semanage fcontext -a -t samba_share_t &quot;/mnt/biblioteca/ventas(/.*)?&quot;
+# restorecon /mnt/biblioteca/ventas
+# ls -Z -l /mnt/biblioteca/ventas
+</pre></div>
+
+
+<h3>Más documentación</h3>
+<ul>
+<li><a href="https://docs.fedoraproject.org/f28/system-administrators-guide/servers/File_and_Print_Servers.html">Fedora DOCS - Fedora System Administration Guide - Servers - File and Print Servers</a></li>
+<li><a href="https://www.tecmint.com/setup-samba-file-sharing-for-linux-windows-clients/">Setting Up Samba and Configure FirewallD and SELinux to Allow File Sharing on Linux/Windows Clients – Part 6</a></li>
+</ul>
+<h3>Final</h3>
+<p>Le agradezco la lectura y aprovechamiento de estos apuntes; deseando que le sean de gran utilidad. Si tiene alguna sugerencia me la puede hacer llegar a mi correo electrónico.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

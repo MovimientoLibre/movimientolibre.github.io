@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Haremos que sea automática la carga de la configuración del proxy para los equipos en la red local.</p>">
+    <meta name="keywords" content="[<Tag 'fedora'>, <Tag 'gnu linux'>, <Tag 'servidores'>, <Tag 'software libre'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Instalación de Fedora Server 28, parte 6, configuración del proxy en los clientes">
+    <meta itemprop="description" content="<p>Haremos que sea automática la carga de la configuración del proxy para los equipos en la red local.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Instalación de Fedora Server 28, parte 6, configuración del proxy en los clientes">
+    <meta name="twitter:description" content="<p>Haremos que sea automática la carga de la configuración del proxy para los equipos en la red local.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Instalación de Fedora Server 28, parte 6, configuración del proxy en los clientes">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/fedora-server-28-parte-06/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Haremos que sea automática la carga de la configuración del proxy para los equipos en la red local.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Instalación de Fedora Server 28, parte 6, configuración del proxy en los clientes - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Instalación de Fedora Server 28, parte 6, configuración del proxy en los clientes</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2018-06-24 22:16:00-05:00</p>
+        <hr>
+        <h3>Apache HTTPD</h3>
+<p>Instale Apache HTTPD si no lo ha hecho...</p>
+<div class="highlight"><pre><span></span># dnf install httpd
+</pre></div>
+
+
+<p>Cree el archivo <code>/etc/httpd/conf.d/proxy-autoconfig.conf</code>...</p>
+<div class="highlight"><pre><span></span># nano /etc/httpd/conf.d/proxy-autoconfig.conf
+</pre></div>
+
+
+<p>Con este contenido...</p>
+<div class="highlight"><pre><span></span>AddType application/x-ns-proxy-autoconfig .pac
+AddType application/x-ns-proxy-autoconfig .dat
+</pre></div>
+
+
+<p>Vaya al directorio...</p>
+<div class="highlight"><pre><span></span># cd /var/www/html/
+</pre></div>
+
+
+<p>Donde vamos a crear los archivos <code>proxy.pac</code> y <code>wpad.dat</code> que definen si usar o no el proxy...</p>
+<ul>
+<li>Directo - 127.0.0.1</li>
+<li>Directo - 0.0.0.0</li>
+<li>Directo - Direcciones IP de la red local 192.168.4.0/255.255.255.0</li>
+<li>Directo - Dominios sin puntos, como http://equipo1</li>
+<li>Directo - Dominios de la red local, como http://proxy.miredlocal.lan</li>
+<li>Directo - WhatsApp Web usa Socks</li>
+<li>Todo lo demás al PROXY</li>
+</ul>
+<p>Cree <code>proxy.pac</code>...</p>
+<div class="highlight"><pre><span></span># nano proxy.pac
+</pre></div>
+
+
+<p>Con este contenido (cambie <code>miredlocal.lan</code> y <code>192.168.4.0</code> por su configuración)...</p>
+<div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">FindProxyForURL</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">host</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="cm">/* Normalize the URL for pattern matching */</span>
+    <span class="nx">url</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="nx">host</span> <span class="o">=</span> <span class="nx">host</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+
+    <span class="cm">/* Don&#39;t proxy local hostnames */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isPlainHostName</span><span class="p">(</span><span class="nx">host</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;DIRECT&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Don&#39;t proxy local domains */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">dnsDomainIs</span><span class="p">(</span><span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;*.miredlocal.lan&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;DIRECT&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isInNet</span><span class="p">(</span><span class="nx">host</span><span class="p">,</span> <span class="s2">&quot;192.168.4.0&quot;</span><span class="p">,</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;DIRECT&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Don&#39;t proxy non-routable addresses (RFC 3330) */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">isResolvable</span><span class="p">(</span><span class="nx">host</span><span class="p">))</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">hostIP</span> <span class="o">=</span> <span class="nx">dnsResolve</span><span class="p">(</span><span class="nx">host</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.0.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;10.0.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.0.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;127.0.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.0.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;169.254.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.255.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;172.16.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.240.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;192.0.2.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.255.255.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;192.88.99.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.255.255.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;192.168.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.255.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;198.18.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;255.254.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;224.0.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;240.0.0.0&#39;</span><span class="p">)</span> <span class="o">||</span>
+            <span class="nx">isInNet</span><span class="p">(</span><span class="nx">hostIP</span><span class="p">,</span> <span class="s1">&#39;240.0.0.0&#39;</span><span class="p">,</span> <span class="s1">&#39;240.0.0.0&#39;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s1">&#39;DIRECT&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="s2">&quot;PROXY proxy.miredlocal.lan:3128&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Internet */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;http:&quot;</span> <span class="o">||</span>
+        <span class="nx">url</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;https:&quot;</span> <span class="o">||</span>
+        <span class="nx">url</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;ftp:&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;PROXY proxy.miredlocal.lan:3128&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Default*/</span>
+    <span class="k">return</span> <span class="s2">&quot;DIRECT&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Cópielo a <code>wpad.dat</code>...</p>
+<div class="highlight"><pre><span></span># cp proxy.pac wpad.dat
+</pre></div>
+
+
+<p>Como está escrito previamente, en <code>/etc/hosts</code> está declarado "wpad" con la dirección IP del servidor...</p>
+<div class="highlight"><pre><span></span>192.168.4.1  proxy wpad
+</pre></div>
+
+
+<p>Debe activar la línea <code>dhcp-option=252,...</code> en <code>/etc/dnsmasq.conf</code>...</p>
+<div class="highlight"><pre><span></span># nano /etc/dnsmasq.conf
+</pre></div>
+
+
+<p>Con el URL al archivo <code>proxy.pac</code>...</p>
+<div class="highlight"><pre><span></span># URL del script de configuración automática de proxy en el navegador
+dhcp-option=252,http://proxy.miredlocal.lan/proxy.pac
+# En cambio, para Windows, cuando no se tiene, se envía un avance de línea
+#dhcp-option=252,&quot;\n&quot;
+</pre></div>
+
+
+<p>Recargue Apache HTTPD...</p>
+<div class="highlight"><pre><span></span># systemctl reload httpd
+</pre></div>
+
+
+<p>Reinicie DNSmasq...</p>
+<div class="highlight"><pre><span></span># systemctl restart dnsmasq
+</pre></div>
+
+
+<p>Agregue el servicio HTTP (TCP 80) al muro de fuego en la zona <em>interna</em>...</p>
+<div class="highlight"><pre><span></span># firewall-cmd --zone=internal --add-service=http
+# firewall-cmd --runtime-to-permanent
+</pre></div>
+
+
+<p>Haga estas pruebas desde un equipo en su red local...</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">dig</span> <span class="mf">@192.168.4.1</span> <span class="n">wpad</span><span class="p">.</span><span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span>
+<span class="err">$</span> <span class="n">dig</span> <span class="mf">@192.168.4.1</span> <span class="n">proxy</span><span class="p">.</span><span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//proxy.miredlocal.lan/proxy.pac</span>
+<span class="err">$</span> <span class="n">wget</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//wpad.miredlocal.lan/wpad.dat</span>
+</pre></div>
+
+
+<h3>Continuación...</h3>
+<p><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-07/">Vaya a la parte 7, servidor de archivos SAMBA</a>.</p>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -3,24 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28 con el propósito de trabajar como ruteador y proxy de red local.</p>">
+    <meta name="description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28.</p>">
     <meta name="keywords" content="[<Tag 'fedora'>, <Tag 'gnu linux'>, <Tag 'servidores'>, <Tag 'software libre'>]">
     <meta name="author" content="Guillermo Valdés Lozano">
-    <meta itemprop="name" content="Instalación de Fedora Server 28, parte 1, primeros pasos">
-    <meta itemprop="description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28 con el propósito de trabajar como ruteador y proxy de red local.</p>">
+    <meta itemprop="name" content="Instalación de Fedora Server 28, parte 1, instalación">
+    <meta itemprop="description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28.</p>">
     <meta itemprop="image" content="">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
-    <meta name="twitter:title" content="Instalación de Fedora Server 28, parte 1, primeros pasos">
-    <meta name="twitter:description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28 con el propósito de trabajar como ruteador y proxy de red local.</p>">
+    <meta name="twitter:title" content="Instalación de Fedora Server 28, parte 1, instalación">
+    <meta name="twitter:description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28.</p>">
     <meta name="twitter:image:src" content="">
-    <meta property="og:title" content="Instalación de Fedora Server 28, parte 1, primeros pasos">
+    <meta property="og:title" content="Instalación de Fedora Server 28, parte 1, instalación">
     <meta property="og:type" content="article">
     <meta property="og:url" content="apuntes/fedora-server-28-parte-01/">
     <meta property="og:image" content="">
-    <meta property="og:description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28 con el propósito de trabajar como ruteador y proxy de red local.</p>">
+    <meta property="og:description" content="<p>Primeros pasos para la instalación de un servidor con Fedora Server 28.</p>">
     <meta property="og:site_name" content="Movimiento Libre">
-    <title>Instalación de Fedora Server 28, parte 1, primeros pasos - Movimiento Libre</title>
+    <title>Instalación de Fedora Server 28, parte 1, instalación - Movimiento Libre</title>
     <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
     <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
     <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
@@ -67,14 +67,27 @@
         <div class="row">
             <div class="col-lg-8">
     <article>
-        <h1 class="mt-4">Instalación de Fedora Server 28, parte 1, primeros pasos</h1>
+        <h1 class="mt-4">Instalación de Fedora Server 28, parte 1, instalación</h1>
         <p class="lead">Guillermo Valdés Lozano</p>
         <p>2018-06-20 18:25:00-05:00</p>
         <hr>
         <h3>Acerca de Fedora Server</h3>
 <p><a href="https://getfedora.org/">Fedora Server</a> es un sistema operativo GNU/Linux poderoso y flexible que incorpora las mejores y últimas tecnologías para servidores.</p>
-<p>En esta serie de apuntes detallaré la instalación y configuración de un servidor que haga las funciones de DNS y Proxy para controlar el consumo de internet de la red local.</p>
-<p>El equipo consta de una tarjeta madre <em>micro</em> con un procesador Intel Atom sin ventilador, tiene un dispositivo de red ethernet incorporado y una ranura PCI. Además de 2 GB de memoria RAM, un disco duro SATA de 500 GB y una segunda tarjeta de red ethernet. Así, un dispositivo de red se conectará al <em>modem</em> que brinda Internet y el otro a la red local.</p>
+<h3>Sobre esta serie de apuntes</h3>
+<p>Detallaré la instalación y configuración de un servidor que haga las funciones de DHCP, DNS, Proxy y servidor de archivos SAMBA para una red local.</p>
+<ul>
+<li>Parte 1, instalación. Justo la página en la que se encuentra.</li>
+<li><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-02/">Parte 2, configuración básica de red</a></li>
+<li><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-03/">Parte 3, servicios DHCP y DNS</a></li>
+<li><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-04/">Parte 4, muro de fuego para ruteador</a></li>
+<li><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/">Parte 5, proxy Squid</a></li>
+<li><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-06/">Parte 6, configuración del proxy en los clientes</a></li>
+<li><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-07/">Parte 7, servidor de archivos SAMBA</a></li>
+</ul>
+<h3>ADVERTENCIA</h3>
+<p><strong>Es obvio que el procedimiento de instalación borrará los contenidos del disco duro y memoria USB que utilice.</strong> Use componentes nuevos o que no tengan información que necesite.</p>
+<p>Su servidor usó un <em>modesto</em> servidor que consta de una tarjeta madre <em>micro</em> con un procesador <strong>Intel Celeron J1800</strong> sin ventilador, tiene un dispositivo de red ethernet incorporado y una ranura PCI. Además de 2 GB de memoria RAM, un disco duro SATA de 500 GB y una segunda tarjeta de red ethernet. Así, un dispositivo de red se conectará al <em>modem</em> que brinda Internet y el otro a la red local.</p>
+<p>El propósito de estos apuntes es contribuir a compartir el conocimiento del Software Libre sin ánimo de lucro. No me hago responsable por pérdidas, fallas o daños.</p>
 <h3>Descarga y preparación</h3>
 <p>Para preprarar el medio de instalación vía USB <a href="https://getfedora.org/es/server/download/">descargue Fedora Server</a> como un archivo ISO e inserte una memoria USB de una capacidad mayor al tamaño de ese archivo. Al momento de escribir este apunte, el archivo ISO es <code>Fedora-Server-dvd-x86_64-27-1.6.iso</code></p>
 <p>Ejecute <code>fdisk</code> como root para saber cuál dispositivo es la memoria USB...</p>
@@ -161,6 +174,10 @@
 <p>Después de la actualización podría tener una nueva versión del kernel linux, así que reinice para que ya la use.</p>
 <div class="highlight"><pre><span></span># systemctl reboot
 </pre></div>
+
+
+<h3>Continuación...</h3>
+<p><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-02/">Vaya a la parte 2, configuración básica de red</a>.</p>
     </article>
             </div>
             <div class="col-md-4">
