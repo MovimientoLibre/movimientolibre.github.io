@@ -184,13 +184,13 @@ dhcp-option=252,http://proxy.miredlocal.lan/proxy.pac
 </pre></div>
 
 
-<p>Recargue Apache HTTPD...</p>
-<div class="highlight"><pre><span></span># systemctl reload httpd
+<p>Reinicie DNSmasq...</p>
+<div class="highlight"><pre><span></span># systemctl restart dnsmasq
 </pre></div>
 
 
-<p>Reinicie DNSmasq...</p>
-<div class="highlight"><pre><span></span># systemctl restart dnsmasq
+<p>Arranque o recargue el <em>daemon</em> Apache HTTPD...</p>
+<div class="highlight"><pre><span></span># systemctl start httpd
 </pre></div>
 
 

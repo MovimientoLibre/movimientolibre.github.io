@@ -71,14 +71,25 @@
         <p class="lead">Guillermo Valdés Lozano</p>
         <p>2018-06-24 22:12:00-05:00</p>
         <hr>
-        <h3>System Storage Manager</h3>
-<p>Instale el programa <strong>System Storage Manager</strong> de <strong>Red Hat</strong> para la administración de discos.</p>
-<div class="highlight"><pre><span></span># dnf install system-storage-manager
+        <h3>Detalles de los dispositivos de red</h3>
+<p>Liste todos los dispositivos de red con...</p>
+<div class="highlight"><pre><span></span># lspci | grep -i ethernet
 </pre></div>
 
 
-<p>Verifique su particionamiento.</p>
-<div class="highlight"><pre><span></span># ssm list
+<p>Averigue detalles, como la velocidad actual de la conexión con...</p>
+<div class="highlight"><pre><span></span># ethtool enp1s0
+# ethtool enp4s0
+</pre></div>
+
+
+<p>También puede instalar <strong>lshw</strong>.</p>
+<div class="highlight"><pre><span></span># dnf install lshw
+</pre></div>
+
+
+<p>Y ejecutar...</p>
+<div class="highlight"><pre><span></span># lshw -class network
 </pre></div>
 
 
@@ -176,18 +187,26 @@ PasswordAuthentication no
 </pre></div>
 
 
-<p>Apague el servidor.</p>
+<h3>Apague el servidor</h3>
 <div class="highlight"><pre><span></span># systemctl poweroff
 </pre></div>
 
 
-<p>Conecte los cables de red del modem a <code>enp4s0</code> y de <code>enp1s0</code> a su <em>switch</em> o <em>access point</em>.</p>
-<p>Encienda y revise con con el comando <code>networkctl</code>...</p>
+<p>Estando apagado los cables de red del modem a <code>enp4s0</code> y de <code>enp1s0</code> a su <em>switch</em> o <em>access point</em>.</p>
+<h3>Encienda el servidor</h3>
+<p>Revise con con el comando <code>networkctl</code>...</p>
 <div class="highlight"><pre><span></span># networkctl
 IDX LINK             TYPE               OPERATIONAL SETUP
   1 lo               loopback           carrier     unmanaged
   2 enp4s0           ether              routable    configured
   3 enp1s0           ether              routable    configured
+</pre></div>
+
+
+<p>También revise...</p>
+<div class="highlight"><pre><span></span># ip addr show enp1s0
+# ip addr show enp4s0
+# route -n
 </pre></div>
 
 

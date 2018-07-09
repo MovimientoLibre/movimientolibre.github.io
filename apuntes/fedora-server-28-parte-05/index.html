@@ -377,7 +377,20 @@ delay_access 2 allow DesdeLAN
 
 <p>5) Vuelva al paso uno si ha fallado el arranque de Squid.</p>
 <p>Tuve que <strong>repetir siete veces</strong> este proceso para dar con la política correcta, que mostrando <code>MYSQUIDPOLICY7.te</code> es...</p>
-<div class="highlight"><pre><span></span><span class="nt">module</span> <span class="nt">MYSQUIDPOLICY7</span> <span class="nt">1</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span>
+<p><strong>Opción 2:</strong>: Cree la política a partir del archivo de texto.</p>
+<p>Instale <strong>policycoreutils-devel</strong>...</p>
+<div class="highlight"><pre><span></span># dnf install policycoreutils-devel
+</pre></div>
+
+
+<p>Cree <code>DnsmasqSquidPolicy.te</code>...</p>
+<div class="highlight"><pre><span></span># cd /root
+# nano DnsmasqSquidPolicy.te
+</pre></div>
+
+
+<p>Con este contenido...</p>
+<div class="highlight"><pre><span></span><span class="nt">module</span> <span class="nt">DnsmasqSquidPolicy</span> <span class="nt">1</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span>
 
 <span class="nt">require</span> <span class="p">{</span>
         <span class="err">type</span> <span class="err">squid_t</span><span class="p">;</span>
@@ -400,9 +413,16 @@ delay_access 2 allow DesdeLAN
 </pre></div>
 
 
-<p><strong>Opción 2:</strong>: Cree la política a partir del archivo de texto.</p>
-<p>Instale...</p>
-<div class="highlight"><pre><span></span># dnf install policycoreutils-devel
+<p>Compile e instale...</p>
+<div class="highlight"><pre><span></span># checkmodule -M -m -o DnsmasqSquidPolicy.mod DnsmasqSquidPolicy.te
+# semodule_package -o DnsmasqSquidPolicy.pp -m DnsmasqSquidPolicy.mod
+# semodule -i DnsmasqSquidPolicy.pp
+</pre></div>
+
+
+<p>Arranque el daemon...</p>
+<div class="highlight"><pre><span></span># systemctl start squid.service
+# systemctl status squid.service
 </pre></div>
 
 
@@ -415,6 +435,23 @@ delay_access 2 allow DesdeLAN
 <p>Verifique que el muro de fuego tenga abierto el servicio <strong>squid</strong> en la LAN...</p>
 <div class="highlight"><pre><span></span># firewall-cmd --zone=internal --list-services
 ssh mdns samba-client dhcpv6-client cockpit dns squid dhcp
+</pre></div>
+
+
+<h3>Hacer que el servidor YA NO SEA un ruteador</h3>
+<p>Al estar habilitado el enmascaramiento, cualquier equipo puede acceder a Internet sin pasar por el proxy. Consulte con...</p>
+<div class="highlight"><pre><span></span># firewall-cmd --zone=external --query-masquerade
+</pre></div>
+
+
+<p>Deshabilite el enmascaramiento con...</p>
+<div class="highlight"><pre><span></span># firewall-cmd --zone=external --remove-masquerade
+</pre></div>
+
+
+<p>Haga pruebas con su navegador de internet en un equipo en la red local. Si configura <em>sin proxy</em> no debería tener Internet. Luego configure el proxy y pruebe que funcione.</p>
+<p>Si tiene éxito, haga los cambios permanantes...</p>
+<div class="highlight"><pre><span></span># firewall-cmd --runtime-to-permanent
 </pre></div>
 
 
