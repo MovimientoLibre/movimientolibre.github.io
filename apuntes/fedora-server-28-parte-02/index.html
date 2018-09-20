@@ -181,6 +181,7 @@ PasswordAuthentication no
 
 <p>Ahora deshabilite <strong>Network Manager</strong> y habilite <strong>systemd-networkd</strong></p>
 <div class="highlight"><pre><span></span># systemctl disable NetworkManager
+# systemctl disable ModemManager
 # systemctl mask NetworkManager
 # systemctl mask NetworkManager-wait-online
 # systemctl enable systemd-networkd

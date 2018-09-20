@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<p>Cómo crear menús de servicios o acciones en Dolphin que se van a desplegar en el menú contexual.</p>">
+    <meta name="keywords" content="[<Tag 'kde'>]">
+    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta itemprop="name" content="Crear menús de servicios en Dolphin">
+    <meta itemprop="description" content="<p>Cómo crear menús de servicios o acciones en Dolphin que se van a desplegar en el menú contexual.</p>">
+    <meta itemprop="image" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Crear menús de servicios en Dolphin">
+    <meta name="twitter:description" content="<p>Cómo crear menús de servicios o acciones en Dolphin que se van a desplegar en el menú contexual.</p>">
+    <meta name="twitter:image:src" content="">
+    <meta property="og:title" content="Crear menús de servicios en Dolphin">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="apuntes/dolphin-menu-servicios/">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="<p>Cómo crear menús de servicios o acciones en Dolphin que se van a desplegar en el menú contexual.</p>">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Crear menús de servicios en Dolphin - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+    <article>
+        <h1 class="mt-4">Crear menús de servicios en Dolphin</h1>
+        <p class="lead">Guillermo Valdés Lozano</p>
+        <p>2018-09-20 08:02:00-05:00</p>
+        <hr>
+        <p>Las acciones de Dolphin, también llamadas "menús de servicios", sirven para ejecutar un programa enviando como parámetros los archivos seleccionados.</p>
+<p>Como ejemplo, es un trabajo frecuente preparar las imágenes para un sitio web; porque consume varios minutos abrir cada imagen, recortar, cambiar el tamaño y exportar a JPEG o PNG.</p>
+<p>Vamos a hacer esa rutina más rápido, simplemente dando clic con el botón derecho sobre las imágenes para convertirlas.</p>
+<p><img class="img-fluid" src="dolphin-acciones.jpg" alt="Acciones en Dolphin"></p>
+<h3>Instale ImageMagick</h3>
+<p>Para hacer la conversión de las imágenes usaremos <strong>ImageMagick</strong>. En <strong>Fedora Linux</strong> se instala como <code>root</code> con...</p>
+<div class="highlight"><pre><span></span># dnf install ImageMagick
+</pre></div>
+
+
+<h3>Elabore los Bash Scripts</h3>
+<p>Como se trata de programas propios, no del sistema, conviene tenerlos en un <code>bin</code> personal...</p>
+<div class="highlight"><pre><span></span>$ mkdir ~/bin
+</pre></div>
+
+
+<p>Cree un script para convertir las imágenes a PNG...</p>
+<div class="highlight"><pre><span></span>$ kwrite ~/bin/imagen-png.sh
+</pre></div>
+
+
+<p>Con este contenido...</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="k">for</span> ARCHIVO in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="k">do</span>
+    <span class="nv">DIR</span><span class="o">=</span><span class="sb">`</span>dirname <span class="s2">&quot;</span><span class="nv">$ARCHIVO</span><span class="s2">&quot;</span><span class="sb">`</span>
+    <span class="nv">NOMBRE</span><span class="o">=</span><span class="sb">`</span>basename <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARCHIVO</span><span class="p">%.[^.]*</span><span class="si">}</span><span class="s2">&quot;</span><span class="sb">`</span>
+    <span class="nv">SALIDA</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">NOMBRE</span><span class="si">}</span><span class="s2">.png&quot;</span>
+    convert <span class="s2">&quot;</span><span class="nv">$ARCHIVO</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$SALIDA</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</td></tr></table>
+
+<p>Cree un script para convertir las imágenes a JPEG...</p>
+<div class="highlight"><pre><span></span>$ kwrite ~/bin/imagen-jpg.sh
+</pre></div>
+
+
+<p>Con este contenido...</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="k">for</span> ARCHIVO in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="k">do</span>
+    <span class="nv">DIR</span><span class="o">=</span><span class="sb">`</span>dirname <span class="s2">&quot;</span><span class="nv">$ARCHIVO</span><span class="s2">&quot;</span><span class="sb">`</span>
+    <span class="nv">NOMBRE</span><span class="o">=</span><span class="sb">`</span>basename <span class="s2">&quot;</span><span class="si">${</span><span class="nv">ARCHIVO</span><span class="p">%.[^.]*</span><span class="si">}</span><span class="s2">&quot;</span><span class="sb">`</span>
+    <span class="nv">SALIDA</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">NOMBRE</span><span class="si">}</span><span class="s2">.jpg&quot;</span>
+    convert -quality <span class="m">80</span> <span class="s2">&quot;</span><span class="nv">$ARCHIVO</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$SALIDA</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</td></tr></table>
+
+<p>Hágalos ejecutables...</p>
+<div class="highlight"><pre><span></span>$ chmod +x ~/bin/imagen-png.sh
+$ chmod +x ~/bin/imagen-jpg.sh
+</pre></div>
+
+
+<p>Pruebe desde una terminal que funcionen. Son capaces de recibir muchos archivos para convertir. Por ejemplo...</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/Descargas
+$ ~/bin/imagen-jpg.sh logotipo.png
+$ ~/bin/imagen-jpg.sh pagina-1.png pagina-2.png pagina-3.png
+$ ~/bin/imagen-png.sh *.jpg
+</pre></div>
+
+
+<h3>Crear acciones para Dolphin en KDE 5</h3>
+<p>Averigüe dónde deben de estar los archivos de las acciones; para ello, en <strong>KDE 5,</strong> ejecute...</p>
+<div class="highlight"><pre><span></span>$ kf5-config --path services
+/home/USUARIO/.local/share/kservices5/:/usr/share/kservices5/
+</pre></div>
+
+
+<p>Por defecto no existe el directorio, hay que crearlo...</p>
+<div class="highlight"><pre><span></span>$ mkdir -p ~/.local/share/kservices5
+</pre></div>
+
+
+<p>Nos cambiamos a ese directorio...</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/.local/share/kservices5
+</pre></div>
+
+
+<p>Cree un archivo <code>desktop</code>. En este ejemplo, vamos a definir acciones para convertir archivos...</p>
+<div class="highlight"><pre><span></span>$ kwrite ConvertImages.desktop
+</pre></div>
+
+
+<p>Con este contenido...</p>
+<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Service</span>
+<span class="na">ServiceTypes</span><span class="o">=</span><span class="s">KonqPopupMenu/Plugin</span>
+<span class="na">X-KDE-ServiceTypes</span><span class="o">=</span><span class="s">KonqPopupMenu/Plugin</span>
+<span class="na">MimeType</span><span class="o">=</span><span class="s">image/*;</span>
+<span class="na">Actions</span><span class="o">=</span><span class="s">ConvertToPNG;ConvertToJPG;</span>
+<span class="na">X-KDE-Submenu</span><span class="o">=</span><span class="s">Convert images to</span>
+<span class="na">X-KDE-Submenu[es]</span><span class="o">=</span><span class="s">Convertir imágenes a</span>
+<span class="na">Encoding</span><span class="o">=</span><span class="s">UTF-8</span>
+
+<span class="k">[Desktop Action ConvertToPNG]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">Convert to PNG</span>
+<span class="na">Icon</span><span class="o">=</span><span class="s">image-png</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">~/bin/imagen-png.sh %F</span>
+
+<span class="k">[Desktop Action ConvertToJPG]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">Convert to JPG</span>
+<span class="na">Icon</span><span class="o">=</span><span class="s">image-jpeg</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">~/bin/imagen-jpg.sh %F</span>
+</pre></div>
+
+
+<p>Reinicie Dolphin y pruebe.</p>
+<p>Algunas de las opciones que tiene ese archivo son:</p>
+<ul>
+<li>Un <code>Desktop Entry</code> y uno o varios <code>Desktop Action</code>.</li>
+<li>En <code>Actions</code> se declaran cada acción, que deben aparacer más adelante como <code>Desktop Action</code>.</li>
+<li>En <code>MimeType</code> se filtra que la acción es para cualquier archivo de imagen.</li>
+<li>Con <code>X-KDE-Submenu</code> se define el nombre a usar en el menú contextual.</li>
+<li>Las acciones, que forman el sub-menú, tienen en <code>Name</code> su nombre, en <code>Icon</code> el icono a mostrar y la orden a ejecutar en <code>Exec</code>.</li>
+<li>En <code>Exec</code> está el programa y sus parámetros. En este caso <code>%F</code> es para pasar muchos archivos con sus rutas completas.</li>
+</ul>
+<p>Lea la documentación de <a href="https://imagemagick.org/">ImageMagick</a> para crear sus propios scripts. Por ejemplo, elaborar imágenes previas (128x128) o fondos de escritorio (1920x1080).</p>
+<h3>Referencias</h3>
+<ul>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=136722">ArchLinux - Forum - Custom File Actions in Dolphin</a></li>
+<li><a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html">FreeDesktop - Desktop Entry Specification</a></li>
+<li><a href="https://imagemagick.org/">ImageMagick</a></li>
+<li><a href="https://forum.kde.org/viewtopic.php?t=10667">KDE Forum - How do I add a custom right-click menu command in dolphin?</a></li>
+<li><a href="https://store.kde.org/p/1228224/">KDE Store - KDE-DolphinServiceMenu-Share como ejemplo</a></li>
+</ul>
+    </article>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card my-4">
+                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                    <div class="card-body">
+                        Es un sitio web que busca divulgar conocimiento
+                        y promover el uso de software libre. Su creador
+                        es reconocido por ser un desarrollador que
+                        fabrica estas herramientas tanto para entidades
+                        públicas como privadas. Le invito a conocer el
+                        portafolio:
+                        <ul>
+                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li>Plataformas web</li>
+                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card my-4">
+                    <h5 class="card-header">Etiquetas</h5>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
+                        </ul>
+                    </div>
+                </div>            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="copyright text-muted">
+                Copyright &copy; 2006-2018 Guillermo Valdés Lozano.<br>
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.<br>
+                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a>,
+                que es programado en <a href="http://python.org/">Python</a>.
+                Tema <a href="https://startbootstrap.com/template-overviews/blog-post/">Blog post</a>
+                creado por <a href="https://startbootstrap.com/">Start Bootstrap</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
