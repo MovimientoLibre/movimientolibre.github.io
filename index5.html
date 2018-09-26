@@ -8,16 +8,16 @@
     <meta name="author" content="Guillermo Valdés Lozano">
     <meta itemprop="name" content="Índice - Movimiento Libre">
     <meta itemprop="description" content="Índice de publicaciones.">
-    <meta itemprop="image" content="http://www.movimientolibre.com/imagenes/movimientolibre.png">
+    <meta itemprop="image" content="http://www.movimientolibre.com/theme/images/movimientolibre.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Índice - Movimiento Libre">
     <meta name="twitter:description" content="Índice de publicaciones.">
-    <meta name="twitter:image:src" content="http://www.movimientolibre.com/imagenes/movimientolibre.png">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/theme/images/movimientolibre.png">
     <meta property="og:title" content="Índice - Movimiento Libre">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/index5.html">
-    <meta property="og:image" content="http://www.movimientolibre.com/imagenes/movimientolibre.png">
+    <meta property="og:image" content="http://www.movimientolibre.com/theme/images/movimientolibre.png">
     <meta property="og:description" content="Índice de publicaciones.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>    Movimiento Libre
@@ -36,7 +36,15 @@
     <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/blog-post.css">
     <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,700">
-</head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-74263253-1');
+</script></head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -68,46 +76,62 @@
         <div class="row">
             <div class="col-lg-8">
     <h1 class="mt-4"></h1>
-            <a href="http://www.movimientolibre.com/apuntes/apuntes-de-git/">
-                <h2>Apuntes de Git</h2>
-            </a>
-            <p>GIT es un software de Control de Revisiones. Esto significa que es capaz de recordar los estados previos en que se hayan guardado los muchos archivos de un sistema.</p>
-            <hr>
-            <a href="http://www.movimientolibre.com/presentaciones/openstreetmap/">
-                <h2>OpenStreetMap</h2>
-            </a>
-            <p>Presentación sobre OpenStreetMap, la Wikipedia de los mapas.</p>
-            <hr>
-            <a href="http://www.movimientolibre.com/articulos/caida-de-meteorito-2014-01-14/">
-                <h2>Avistamiento de un bólido</h2>
-            </a>
-            <p>Veníamos conduciendo por el Periférico (en Gómez Palacio, Durango, México) y antes de subir el paso a desnivel que está frente a Soriana Hamburgo vimos un bólido surcar el cielo.</p>
-            <hr>
-            <a href="http://www.movimientolibre.com/apuntes/rsync-respaldos/">
-                <h2>Respaldos con rsync</h2>
-            </a>
-            <p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>
-            <hr>
-            <a href="http://www.movimientolibre.com/articulos/congreso-iberoamericano-foss-2011-resena/">
-                <h2>FOSS 2.0 - Reseña</h2>
-            </a>
-            <p>Los días 1 y 2 de junio de 2011 fue el Segundo Congreso Internacional de Software Libre organizado por la Universidad Autónoma de Zacatecas. A modo de reseña les muestro fotografías y fragmentos de las ponencias.</p>
-            <hr>
-            <a href="http://www.movimientolibre.com/articulos/congreso-iberoamericano-foss-2011/">
-                <h2>Segundo Congreso Internacional de Software Libre</h2>
-            </a>
-            <p>El Segundo Congreso Internacional de Software Libre se llevó a cabo los días 1 y 2 de junio del 2011, en la ciudad de Zacatecas, México. El marco del evento fue el Auditorio de la Unidad Académica en Estudios del Desarrollo de la Universidad Autónoma de Zacatecas.</p>
-            <hr>
-            <a href="http://www.movimientolibre.com/articulos/ual-sinergia-empresarial-2011-04-07/">
-                <h2>Radio UAL - Sinergia Empresarial</h2>
-            </a>
-            <p>El 7 de abril del 2011 impartí el Taller Básico de Ruby ante un buen número de estudiantes, en el marco de la Semana Académica de la UAL.</p>
-            <hr>
-            <a href="http://www.movimientolibre.com/apuntes/telcel-zte-mf100/">
-                <h2>Internet 3G con Telcel ZTE MF100</h2>
-            </a>
-            <p>Listo los programas a instalar y las configuraciones necesarias para que el ZTE MF100 de Telcel funcione en Gentoo Linux.</p>
-            <hr>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/apuntes/centos-instalacion-para-virtualizar/">
+                    <h2>Instalación de CentOS para virtualizar</h2>
+                </a>
+                <p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o GUI. La administración será vía OpenSSH y por el Administrador de Virtualizaciones desde otro equipo.</p>
+            </div>
+            <div class="index-list-clean"></div>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/apuntes/apuntes-de-git/">
+                    <h2>Apuntes de Git</h2>
+                </a>
+                <p>GIT es un software de Control de Revisiones. Esto significa que es capaz de recordar los estados previos en que se hayan guardado los muchos archivos de un sistema.</p>
+            </div>
+            <div class="index-list-clean"></div>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/presentaciones/openstreetmap/">
+                    <h2>OpenStreetMap</h2>
+                </a>
+                <p>Presentación sobre OpenStreetMap, la Wikipedia de los mapas.</p>
+            </div>
+            <div class="index-list-clean"></div>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/articulos/caida-de-meteorito-2014-01-14/">
+                    <h2>Avistamiento de un bólido</h2>
+                </a>
+                <p>Veníamos conduciendo por el Periférico (en Gómez Palacio, Durango, México) y antes de subir el paso a desnivel que está frente a Soriana Hamburgo vimos un bólido surcar el cielo.</p>
+            </div>
+            <div class="index-list-clean"></div>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/apuntes/rsync-respaldos/">
+                    <h2>Respaldos con rsync</h2>
+                </a>
+                <p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>
+            </div>
+            <div class="index-list-clean"></div>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/articulos/congreso-iberoamericano-foss-2011-resena/">
+                    <h2>FOSS 2.0 - Reseña</h2>
+                </a>
+                <p>Los días 1 y 2 de junio de 2011 fue el Segundo Congreso Internacional de Software Libre organizado por la Universidad Autónoma de Zacatecas. A modo de reseña les muestro fotografías y fragmentos de las ponencias.</p>
+            </div>
+            <div class="index-list-clean"></div>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/articulos/congreso-iberoamericano-foss-2011/">
+                    <h2>Segundo Congreso Internacional de Software Libre</h2>
+                </a>
+                <p>El Segundo Congreso Internacional de Software Libre se llevó a cabo los días 1 y 2 de junio del 2011, en la ciudad de Zacatecas, México. El marco del evento fue el Auditorio de la Unidad Académica en Estudios del Desarrollo de la Universidad Autónoma de Zacatecas.</p>
+            </div>
+            <div class="index-list-clean"></div>
+            <div class="index-list-text">
+                <a href="http://www.movimientolibre.com/articulos/ual-sinergia-empresarial-2011-04-07/">
+                    <h2>Radio UAL - Sinergia Empresarial</h2>
+                </a>
+                <p>El 7 de abril del 2011 impartí el Taller Básico de Ruby ante un buen número de estudiantes, en el marco de la Semana Académica de la UAL.</p>
+            </div>
+            <div class="index-list-clean"></div>
         <nav>
             <ul class="pagination justify-content-center">
                 <li class="page-item">

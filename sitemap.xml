@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/</loc>
-<lastmod>2018-09-20T08:10:58-00:00</lastmod>
+<lastmod>2018-09-26T17:50:51-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -64,6 +64,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2017-12-27T22:20:00-06:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</loc>
+<lastmod>2018-09-26T17:45:00-05:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>1</priority>
 </url>
 
 <url>
@@ -915,7 +922,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2018-09-20T08:02:00-06:37</lastmod>
+<lastmod>2018-09-26T17:45:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -935,6 +942,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.movimientolibre.com/tag/gnu-linux.html</loc>
+<lastmod>2018-09-26T17:45:00-06:37</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.movimientolibre.com/tag/kde.html</loc>
 <lastmod>2018-09-20T08:02:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
@@ -943,13 +957,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/tag/fedora.html</loc>
-<lastmod>2018-06-24T22:17:00-06:37</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.movimientolibre.com/tag/gnu-linux.html</loc>
 <lastmod>2018-06-24T22:17:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
