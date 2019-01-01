@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.">
     <meta name="keywords" content="software libre, apuntes">
-    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Crear certificados autofirmados para Apache 2">
     <meta itemprop="description" content="En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/apache2-certificados-autofirmados/apache-web-server.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Crear certificados autofirmados para Apache 2">
     <meta name="twitter:description" content="En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/apache2-certificados-autofirmados/apache-web-server.jpg">
     <meta property="og:title" content="Crear certificados autofirmados para Apache 2">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/apuntes/apache2-certificados-autofirmados/">
+    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/apache2-certificados-autofirmados/apache-web-server.jpg">
     <meta property="og:description" content="En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Crear certificados autofirmados para Apache 2 - Movimiento Libre</title>
@@ -42,7 +45,7 @@
   gtag('config', 'UA-74263253-1');
 </script></head>
 <body>
-
+    <!-- Navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
@@ -67,16 +70,41 @@
             </div>
         </div>
     </nav>
-
+    <!-- Navigation ends -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-    <article>
-        <h1 class="mt-4">Crear certificados autofirmados para Apache 2</h1>
-        <p class="lead">Guillermo Valdés Lozano</p>
-        <p>2014-02-22 17:30:00-06:00</p>
-        <hr>
-        <p>Involucrarse en el <strong>cifrado de la información</strong> que viaja a través de internet es como adentrarse a un mundo <em>bizarro</em> que es más complicado que el nuestro. Pero cada día se vuelve más importante e indispensable para cada servicio <em>web</em> que fabriquemos.</p>
+                <!-- Article start -->
+                <article>
+                    <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Article",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "http://www.movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "Crear certificados autofirmados para Apache 2",
+                        "headline": "Crear certificados autofirmados para Apache 2",
+                        "description": "En este apunte escribo los pasos para crear certificados autofirmados para que el servidor web Apache opere cifrando las comunicaciones con SSL. Dicho de otra forma, es usar el HTTPS en lugar del HTTP.",
+                        "dateCreated": "2014-02-22 17:30:00-06:00",
+                        "datePublished": "2014-02-22 17:30:00-06:00",
+                        "dateModified": "2014-02-22 17:30:00-06:00",
+                        "image": "http://www.movimientolibre.com/apuntes/apache2-certificados-autofirmados/apache-web-server.jpg",
+                        "url": "http://www.movimientolibre.com/apuntes/apache2-certificados-autofirmados/"
+                    }
+                    </script>
+                    <h1 class="mt-4">Crear certificados autofirmados para Apache 2</h1>
+                    <p class="lead">Guillermo Valdés Lozano (guivaloz)</p>
+                    <p>2014-02-22 17:30:00-06:00</p>
+                    <hr>
+<p>Involucrarse en el <strong>cifrado de la información</strong> que viaja a través de internet es como adentrarse a un mundo <em>bizarro</em> que es más complicado que el nuestro. Pero cada día se vuelve más importante e indispensable para cada servicio <em>web</em> que fabriquemos.</p>
 <p>Podemos listar muchas razones para justificar que <strong>todos</strong> los sistemas y sitios web deberían <strong>cifrar sus datos al viajar del servidor al cliente y viceversa</strong>. Pero sólo basta una: el fin de dificultar las acciones de <em>espionaje masivo</em> al que todos estamos expuestos.</p>
 <p>En este <strong>apunte</strong> escribo los pasos para <strong>crear certificados autofirmados</strong> para que el servidor web <strong>Apache</strong> opere cifrando las comunicaciones con <strong>SSL</strong>. Dicho de otra forma, es usar el <strong>HTTPS</strong> en lugar del <strong>HTTP</strong>.</p>
 <h3>Advertencia</h3>
@@ -199,65 +227,65 @@ NameVirtualHost *:443
 <li><a href="http://httpd.apache.org/docs/2.2/ssl/">Apache Documentation 2.2 SSL/TLS Encryption</a></li>
 <li><a href="https://www.cacert.org/">CAcert</a></li>
 </ul>
-    </article>
+                </article>
+                <!-- Article ends -->
             </div>
             <div class="col-md-4">
-
-                <div class="card my-4">
-                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
-                    <div class="card-body">
-                        Es un sitio web que busca divulgar conocimiento
-                        y promover el uso de software libre. Su creador
-                        es reconocido por ser un desarrollador que
-                        fabrica estas herramientas tanto para entidades
-                        públicas como privadas. Le invito a conocer el
-                        portafolio:
-                        <ul>
-                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
-                            <li>Plataformas web</li>
-                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
-                        </ul>
+                <!-- Sidebar start -->
+                <aside>
+                    <div class="card my-4">
+                        <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                        <div class="card-body">
+                            Es un sitio web que busca divulgar conocimiento
+                            y promover el uso de software libre. Su creador
+                            es reconocido por ser un desarrollador que
+                            fabrica estas herramientas tanto para entidades
+                            públicas como privadas. Le invito a conocer el
+                            portafolio:
+                            <ul>
+                                <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                                <li>Plataformas web</li>
+                                <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card my-4">
-                    <h5 class="card-header">Etiquetas</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
-                        </ul>
+                    <div class="card my-4">
+                        <h5 class="card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>            </div>
+                </aside>
+                <!-- Sidebar ends -->
+            </div>
         </div>
     </div>
-
+    <!-- Footer start -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="copyright text-muted">
@@ -271,7 +299,7 @@ NameVirtualHost *:443
             </p>
         </div>
     </footer>
-
+    <!-- Footer ends -->
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
     <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

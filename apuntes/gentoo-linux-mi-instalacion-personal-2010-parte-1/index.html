@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.">
     <meta name="keywords" content="gentoo linux, apuntes">
-    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Gentoo Linux en una netbook (2010, parte 1)">
     <meta itemprop="description" content="Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Gentoo Linux en una netbook (2010, parte 1)">
     <meta name="twitter:description" content="Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/preview.jpg">
     <meta property="og:title" content="Gentoo Linux en una netbook (2010, parte 1)">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/">
+    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/preview.jpg">
     <meta property="og:description" content="Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Gentoo Linux en una netbook (2010, parte 1) - Movimiento Libre</title>
@@ -42,7 +45,7 @@
   gtag('config', 'UA-74263253-1');
 </script></head>
 <body>
-
+    <!-- Navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
@@ -67,16 +70,42 @@
             </div>
         </div>
     </nav>
-
+    <!-- Navigation ends -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-    <article>
-        <h1 class="mt-4">Gentoo Linux en una netbook (2010, parte 1)</h1>
-        <p class="lead">Guillermo Valdés Lozano</p>
-        <p>2010-11-20 10:40:00-06:00</p>
-        <hr>
-        <p>Después de varios meses de tener una instalación completa de <a href="http://www.kde.org/">KDE</a> en mi <em>netbook</em> comenzé a pensar de que el poderoso y grande ambiente gráfico le restaba potencial a mi equipo. Era frecuente que el administrador de archivos Dolphin demorara algunos segundos en cargar. También la carga y velocidad de respuesta de la suite de información personal (PIM), en particular de <a href="http://pim.kde.org/">KMail</a>, era lenta.</p>
+                <!-- Article start -->
+                <article>
+                    <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Article",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "http://www.movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "Gentoo Linux en una netbook (2010, parte 1)",
+                        "headline": "Gentoo Linux en una netbook (2010, parte 1)",
+                        "description": "Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.",
+                        "dateCreated": "2010-11-20 10:40:00-06:00",
+                        "datePublished": "2010-11-20 10:40:00-06:00",
+                        "dateModified": "2010-11-20 10:40:00-06:00",
+                        "image": "http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/preview.jpg",
+                        "url": "http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/"
+                    }
+                    </script>
+                    <h1 class="mt-4">Gentoo Linux en una netbook (2010, parte 1)</h1>
+                    <p class="lead">Guillermo Valdés Lozano (guivaloz)</p>
+                    <p>2010-11-20 10:40:00-06:00</p>
+                    <hr>
+<p><img alt="Cow Push" src="cow-push.jpg"></p>
+<p>Después de varios meses de tener una instalación completa de <a href="http://www.kde.org/">KDE</a> en mi <em>netbook</em> comenzé a pensar de que el poderoso y grande ambiente gráfico le restaba potencial a mi equipo. Era frecuente que el administrador de archivos Dolphin demorara algunos segundos en cargar. También la carga y velocidad de respuesta de la suite de información personal (PIM), en particular de <a href="http://pim.kde.org/">KMail</a>, era lenta.</p>
 <p>El concepto de una <em>netbook</em> involucra un procesador versátil y modesto. El <a href="http://es.wikipedia.org/wiki/Intel_Atom">Intel Atom</a> fue diseñado con ese fin, hereda mucha tecnología de la familia Pentium y consume poca energía para prolongar la duración de la carga en un equipo portátil. Pero <strong>no</strong> se trata de un procesador de alto rendimiento. Recordemos que fue <em>Windows XP</em> y no <em>Windows Vista</em> el que apareció preinstalado en las <em>netbooks</em> a la venta, por obvias razones.</p>
 <p>Antes de buscar la reinstalación, me pregunté... ¿de verdad necesito vistosos elementos en mi escritorio?, ¿vale la pena que <a href="http://www.kde.org/workspaces/plasmadesktop/">Plasma</a> me consuma desde el 5% al 50% de mi procesador y en consecuencia más carga de mi batería?. Fue entonces que decidí arriesgarme, y tomar un entorno más simple, más rápido, que me consumiera menos recursos.</p>
 <p>Siguiendo los pasos de esta guía, lograremos tener un sistema <a href="http://www.gentoo.org/">Gentoo Linux</a> con tres opciones gráficas de trabajo:</p>
@@ -87,8 +116,8 @@
 </ul>
 <p>Aclaro que lo que sigue es solo una guía; los pasos que su servidor ha ejecutado. Usted tiene la libertad de tomar el rumbo que guste. No deje de consultar la <a href="http://www.gentoo.org/doc/en/handbook/">Documentación Oficial de Instalación</a> de Gentoo.</p>
 <p>A continuación, documento paso a paso la instalación de Gentoo Linux en una <em>netbook</em> con procesador <strong>Intel Atom N280</strong>. Le informo que los comandos con # son ejecutados con el super-usuario <strong>root</strong>, que de hecho, son la mayoría.</p>
-<p><a href="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-640x480.jpg"><img class="img-fluid" src="gentoo-linux-mi-instalacion-personal-2010/instalacion-asistida-320x240.jpg"></a></p>
 <h3>Instalación asistida</h3>
+<p><img class="img-fluid" src="instalacion-asistida.jpg" alt="Instalación asistida"></p>
 <p>No dudo que una <em>netbook</em> pueda compilar todos los paquetes que necesito instalar para mi escritorio con Gentoo Linux; pero tardaría mucho, mucho tiempo. Es por ello que le paso esa labor a un equipo más poderoso; que lo haga en menos tiempo.</p>
 <p>Ante esto... si los equipos son distintos... ¿funcionará lo que compile uno en el otro?. Para ello hay que revisar las similitudes y diferencias entre los procesadores de ambos equipos. Revise en <a href="https://wiki.gentoo.org/">Gentoo Wiki</a> el documento <a href="https://wiki.gentoo.org/wiki/Safe_Cflags">Safe CFlags</a> el cual muestra los parámetros recomendados de compilación para cada procesador.</p>
 <p>Afortunadamente, en el momento de escribir esta guía, tanto el <strong>Intel DualCore</strong> como el <strong>Atom 230, 330 N-Series</strong> tienen los mismos parámetros de compilación:</p>
@@ -349,65 +378,65 @@ LC_ALL=&quot;es_MX.UTF-8&quot;
 <h3>Fin de la primera parte</h3>
 <p>Termina aquí la primera parte con una instalación de Gentoo Linux configurada y con un <em>kernel</em> preparado. En la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">segunda parte</a>, cambiaremos el <em>profile</em> a <em>desktop</em> e iremos instalando las aplicaciones favoritas de su servidor.</p>
 <p><a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">Vaya a la Segunda parte.</a></p>
-    </article>
+                </article>
+                <!-- Article ends -->
             </div>
             <div class="col-md-4">
-
-                <div class="card my-4">
-                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
-                    <div class="card-body">
-                        Es un sitio web que busca divulgar conocimiento
-                        y promover el uso de software libre. Su creador
-                        es reconocido por ser un desarrollador que
-                        fabrica estas herramientas tanto para entidades
-                        públicas como privadas. Le invito a conocer el
-                        portafolio:
-                        <ul>
-                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
-                            <li>Plataformas web</li>
-                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
-                        </ul>
+                <!-- Sidebar start -->
+                <aside>
+                    <div class="card my-4">
+                        <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                        <div class="card-body">
+                            Es un sitio web que busca divulgar conocimiento
+                            y promover el uso de software libre. Su creador
+                            es reconocido por ser un desarrollador que
+                            fabrica estas herramientas tanto para entidades
+                            públicas como privadas. Le invito a conocer el
+                            portafolio:
+                            <ul>
+                                <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                                <li>Plataformas web</li>
+                                <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card my-4">
-                    <h5 class="card-header">Etiquetas</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
-                        </ul>
+                    <div class="card my-4">
+                        <h5 class="card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>            </div>
+                </aside>
+                <!-- Sidebar ends -->
+            </div>
         </div>
     </div>
-
+    <!-- Footer start -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="copyright text-muted">
@@ -421,7 +450,7 @@ LC_ALL=&quot;es_MX.UTF-8&quot;
             </p>
         </div>
     </footer>
-
+    <!-- Footer ends -->
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
     <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

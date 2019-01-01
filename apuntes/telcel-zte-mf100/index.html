@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Listo los programas a instalar y las configuraciones necesarias para que el ZTE MF100 de Telcel funcione en Gentoo Linux.">
     <meta name="keywords" content="gentoo linux, apuntes">
-    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Internet 3G con Telcel ZTE MF100">
     <meta itemprop="description" content="Listo los programas a instalar y las configuraciones necesarias para que el ZTE MF100 de Telcel funcione en Gentoo Linux.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/telcel-zte-mf100/preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Internet 3G con Telcel ZTE MF100">
     <meta name="twitter:description" content="Listo los programas a instalar y las configuraciones necesarias para que el ZTE MF100 de Telcel funcione en Gentoo Linux.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/telcel-zte-mf100/preview.jpg">
     <meta property="og:title" content="Internet 3G con Telcel ZTE MF100">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/apuntes/telcel-zte-mf100/">
+    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/telcel-zte-mf100/preview.jpg">
     <meta property="og:description" content="Listo los programas a instalar y las configuraciones necesarias para que el ZTE MF100 de Telcel funcione en Gentoo Linux.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Internet 3G con Telcel ZTE MF100 - Movimiento Libre</title>
@@ -42,7 +45,7 @@
   gtag('config', 'UA-74263253-1');
 </script></head>
 <body>
-
+    <!-- Navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
@@ -67,19 +70,44 @@
             </div>
         </div>
     </nav>
-
+    <!-- Navigation ends -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-    <article>
-        <h1 class="mt-4">Internet 3G con Telcel ZTE MF100</h1>
-        <p class="lead">Guillermo Valdés Lozano</p>
-        <p>2011-01-20 12:50:00-06:00</p>
-        <hr>
-        <p>Me vi con la necesidad de tener conectividad a Internet en cualquier parte de la ciudad. Así que opté por contratar un servicio de Internet vía la red de telefonía celular.</p>
+                <!-- Article start -->
+                <article>
+                    <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Article",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "http://www.movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "Internet 3G con Telcel ZTE MF100",
+                        "headline": "Internet 3G con Telcel ZTE MF100",
+                        "description": "Listo los programas a instalar y las configuraciones necesarias para que el ZTE MF100 de Telcel funcione en Gentoo Linux.",
+                        "dateCreated": "2011-01-20 12:50:00-06:00",
+                        "datePublished": "2011-01-20 12:50:00-06:00",
+                        "dateModified": "2011-01-20 12:50:00-06:00",
+                        "image": "http://www.movimientolibre.com/apuntes/telcel-zte-mf100/preview.jpg",
+                        "url": "http://www.movimientolibre.com/apuntes/telcel-zte-mf100/"
+                    }
+                    </script>
+                    <h1 class="mt-4">Internet 3G con Telcel ZTE MF100</h1>
+                    <p class="lead">Guillermo Valdés Lozano (guivaloz)</p>
+                    <p>2011-01-20 12:50:00-06:00</p>
+                    <hr>
+<p>Me vi con la necesidad de tener conectividad a Internet en cualquier parte de la ciudad. Así que opté por contratar un servicio de Internet vía la red de telefonía celular.</p>
 <p>Como se imaginarán, su servidor requiere que el dispositivo de comunicación funcione con GNU/Linux; así que elegí el <a href="http://www.ztemobile.com.mx/">ZTE</a> MF100, el cual, según la caja, funciona con <a href="http://www.ubuntu.com/">Ubuntu</a> 8.1. Den clic en las siguientes imágenes para verlas a mayor tamaño.</p>
-<p><a href="telcel-zte-mf100-frente.jpg"><img class="img-fluid" src="telcel-zte-mf100-frente-small.jpg"></a>
-<a href="telcel-zte-mf100-reverso.jpg"><img class="img-fluid" src="telcel-zte-mf100-reverso-small.jpg"></a></p>
+<p><img class="img-fluid" src="telcel-zte-mf100-frente.jpg" alt="Telcel ZTE MF100 frente"></p>
+<p><img class="img-fluid" src="telcel-zte-mf100-reverso.jpg" alt="Telcel ZTE MF100 reverso"></p>
 <p>Lamentablemente la guía impresa no da ningún paso para Ubuntu. Ni siquiera en el sitio web del fabricante hay una guía al respecto.</p>
 <p>Por lo que a continuación describiré los programas a instalar y las configuraciones necesarias para que el <em>ZTE MF100</em> de <a href="http://www.telcel.com/">Telcel</a> funcione en <a href="http://www.gentoo.org/">Gentoo Linux</a>. No dudo que esta información sea útil para otras distribuciones.</p>
 <p>Como es costumbre, los comandos con # son ejecutados por <em>root</em>, mientras que los comandos con $ son ejecutados con un usuario común.</p>
@@ -223,65 +251,65 @@ option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
 
 <p>Éste comando también sirve para monitorear la cantidad de información recibida y enviada. De forma manual, puede tomar nota de lo que consume antes de desconectar el dispositivo y así cuidar de no exceder el límite del proveedor.</p>
 <p>Para terminar la conexión, vaya a la terminal donde ejecutó <em>wvdial</em>, presione CTRL-C, espere a que termine y desconecte el dispositivo.</p>
-    </article>
+                </article>
+                <!-- Article ends -->
             </div>
             <div class="col-md-4">
-
-                <div class="card my-4">
-                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
-                    <div class="card-body">
-                        Es un sitio web que busca divulgar conocimiento
-                        y promover el uso de software libre. Su creador
-                        es reconocido por ser un desarrollador que
-                        fabrica estas herramientas tanto para entidades
-                        públicas como privadas. Le invito a conocer el
-                        portafolio:
-                        <ul>
-                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
-                            <li>Plataformas web</li>
-                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
-                        </ul>
+                <!-- Sidebar start -->
+                <aside>
+                    <div class="card my-4">
+                        <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                        <div class="card-body">
+                            Es un sitio web que busca divulgar conocimiento
+                            y promover el uso de software libre. Su creador
+                            es reconocido por ser un desarrollador que
+                            fabrica estas herramientas tanto para entidades
+                            públicas como privadas. Le invito a conocer el
+                            portafolio:
+                            <ul>
+                                <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                                <li>Plataformas web</li>
+                                <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card my-4">
-                    <h5 class="card-header">Etiquetas</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
-                        </ul>
+                    <div class="card my-4">
+                        <h5 class="card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>            </div>
+                </aside>
+                <!-- Sidebar ends -->
+            </div>
         </div>
     </div>
-
+    <!-- Footer start -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="copyright text-muted">
@@ -295,7 +323,7 @@ option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
             </p>
         </div>
     </footer>
-
+    <!-- Footer ends -->
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
     <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

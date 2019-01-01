@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.">
     <meta name="keywords" content="gentoo linux, apuntes">
-    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)">
     <meta itemprop="description" content="Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)">
     <meta name="twitter:description" content="Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/preview.jpg">
     <meta property="og:title" content="Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/">
+    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/preview.jpg">
     <meta property="og:description" content="Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov) - Movimiento Libre</title>
@@ -42,7 +45,7 @@
   gtag('config', 'UA-74263253-1');
 </script></head>
 <body>
-
+    <!-- Navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
@@ -67,16 +70,41 @@
             </div>
         </div>
     </nav>
-
+    <!-- Navigation ends -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-    <article>
-        <h1 class="mt-4">Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)</h1>
-        <p class="lead">Guillermo Valdés Lozano</p>
-        <p>2008-11-15 21:00:00-06:00</p>
-        <hr>
-        <p>Hace algunos días actualicé el <a href="http://es.wikipedia.org/wiki/Portage">Portage</a> de la instalación de <a href="http://www.gentoo.org/">Gentoo Linux</a> que tengo en mi portátil, una Dell Inspiron 9300. Observé que la versión estable del KDE había cambiado a la 3.5.8 y sentí un <em>enfermizo cosquilleo</em>... NO me daban ganas de actualizar... sino de iniciar una NUEVA instalación en este equipo.</p>
+                <!-- Article start -->
+                <article>
+                    <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Article",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "http://www.movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)",
+                        "headline": "Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)",
+                        "description": "Explico una forma alternativa de instalar Gentoo Linux. No es por medio de un asistente ni del LiveCD, sino por gran cantidad de comandos que nos brindarán gran flexibilidad.",
+                        "dateCreated": "2008-11-15 21:00:00-06:00",
+                        "datePublished": "2008-11-15 21:00:00-06:00",
+                        "dateModified": "2008-11-15 21:00:00-06:00",
+                        "image": "http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/preview.jpg",
+                        "url": "http://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/"
+                    }
+                    </script>
+                    <h1 class="mt-4">Mi instalación personal de Gentoo Linux, primera parte (actualizado 2008-nov)</h1>
+                    <p class="lead">Guillermo Valdés Lozano (guivaloz)</p>
+                    <p>2008-11-15 21:00:00-06:00</p>
+                    <hr>
+<p>Hace algunos días actualicé el <a href="http://es.wikipedia.org/wiki/Portage">Portage</a> de la instalación de <a href="http://www.gentoo.org/">Gentoo Linux</a> que tengo en mi portátil, una Dell Inspiron 9300. Observé que la versión estable del KDE había cambiado a la 3.5.8 y sentí un <em>enfermizo cosquilleo</em>... NO me daban ganas de actualizar... sino de iniciar una NUEVA instalación en este equipo.</p>
 <p>De forma habitual, después de actualizar el <em>portage</em> podemos solicitar un listado de los paquetes que se pueden actualizar (valga la redundancia). Gentoo Linux se distingue por bajar el código fuente, desempacarlo, compilarlo e instalarlo; lo cual consume más tiempo que las otras formas de actualización de las demás distribuciones.</p>
 <p>Los paquetes pequeños suelen tomar algunos minutos en actualizarse. Pero la actualización de un paquete grande (como Mozilla Firefox o KOffice) o de un entorno gráfico sofisticado (como Gnome o KDE) puede tomar varias horas.</p>
 <p>Uno de los atractivos de hacer una nueva instalación es que podemos probar nuevos parámetros de compilación. En esta ocasión me atrae la idea de <strong>desactivar arts</strong> (es el controlador de audio por defecto de KDE 3.x, no funciona tan bien como quisiera y <a href="http://multimedia.kde.org/">será depreciado con el KDE 4</a>) y <strong>activar ipv6</strong> (aunque no me he conectado aún a una red de éstas, tal vez no falte mucho para que lo tenga que hacer).</p>
@@ -654,65 +682,65 @@ options snd cards_limit=1
 
 <p>Desmonte las particiones, reinicie y pruebe cada una de ellas.</p>
 <p>Vea la <a href="gentoo-linux-mi-instalacion-personal-2.html">segunda parte de este manual</a> para continuar con la instalación.</p>
-    </article>
+                </article>
+                <!-- Article ends -->
             </div>
             <div class="col-md-4">
-
-                <div class="card my-4">
-                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
-                    <div class="card-body">
-                        Es un sitio web que busca divulgar conocimiento
-                        y promover el uso de software libre. Su creador
-                        es reconocido por ser un desarrollador que
-                        fabrica estas herramientas tanto para entidades
-                        públicas como privadas. Le invito a conocer el
-                        portafolio:
-                        <ul>
-                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
-                            <li>Plataformas web</li>
-                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
-                        </ul>
+                <!-- Sidebar start -->
+                <aside>
+                    <div class="card my-4">
+                        <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                        <div class="card-body">
+                            Es un sitio web que busca divulgar conocimiento
+                            y promover el uso de software libre. Su creador
+                            es reconocido por ser un desarrollador que
+                            fabrica estas herramientas tanto para entidades
+                            públicas como privadas. Le invito a conocer el
+                            portafolio:
+                            <ul>
+                                <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                                <li>Plataformas web</li>
+                                <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card my-4">
-                    <h5 class="card-header">Etiquetas</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
-                        </ul>
+                    <div class="card my-4">
+                        <h5 class="card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>            </div>
+                </aside>
+                <!-- Sidebar ends -->
+            </div>
         </div>
     </div>
-
+    <!-- Footer start -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="copyright text-muted">
@@ -726,7 +754,7 @@ options snd cards_limit=1
             </p>
         </div>
     </footer>
-
+    <!-- Footer ends -->
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
     <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

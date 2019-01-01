@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
     <meta name="keywords" content="php, apuntes">
-    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Instalación de FreeMED en Debian Etch">
     <meta itemprop="description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Instalación de FreeMED en Debian Etch">
     <meta name="twitter:description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png">
     <meta property="og:title" content="Instalación de FreeMED en Debian Etch">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/">
+    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png">
     <meta property="og:description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Instalación de FreeMED en Debian Etch - Movimiento Libre</title>
@@ -42,7 +45,7 @@
   gtag('config', 'UA-74263253-1');
 </script></head>
 <body>
-
+    <!-- Navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
@@ -67,23 +70,48 @@
             </div>
         </div>
     </nav>
-
+    <!-- Navigation ends -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-    <article>
-        <h1 class="mt-4">Instalación de FreeMED en Debian Etch</h1>
-        <p class="lead">Guillermo Valdés Lozano</p>
-        <p>2008-01-16 19:10:00-06:00</p>
-        <hr>
-        <p><strong>ACTUALIZACION</strong> Freemed ya es compatible con PHP5 y MySQL5, <a href="http://www.freemedsoftware.org/node/187">Más información aquí</a>.</p>
+                <!-- Article start -->
+                <article>
+                    <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Article",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "http://www.movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "Instalación de FreeMED en Debian Etch",
+                        "headline": "Instalación de FreeMED en Debian Etch",
+                        "description": "La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.",
+                        "dateCreated": "2008-01-16 19:10:00-06:00",
+                        "datePublished": "2008-01-16 19:10:00-06:00",
+                        "dateModified": "2008-01-16 19:10:00-06:00",
+                        "image": "http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png",
+                        "url": "http://www.movimientolibre.com/apuntes/freemed-instalacion/"
+                    }
+                    </script>
+                    <h1 class="mt-4">Instalación de FreeMED en Debian Etch</h1>
+                    <p class="lead">Guillermo Valdés Lozano (guivaloz)</p>
+                    <p>2008-01-16 19:10:00-06:00</p>
+                    <hr>
+<p><strong>ACTUALIZACION</strong> Freemed ya es compatible con PHP5 y MySQL5, <a href="http://www.freemedsoftware.org/node/187">Más información aquí</a>.</p>
 <p>No cabe duda que el mundo del software libre es vasto y que podemos encontrar respuesta a problemas particulares. Todos nos hemos preguntado alguna vez: ¿tendrá alguien más mi problema? ¿ya habrá una solución en software libre?.</p>
 <p>Les explicaré a continuación la instalación del <a href="http://freemed.org/">FreeMED</a>, una aplicación web basada en <strong>PHP</strong>, <strong>MySQL</strong> y <strong>Apache</strong> que sirve (en principio) para administrar las citas de los pacientes con sus médicos. He aquí unas imágenes del mismo:</p>
-<p><a href="screenshot-1-small.png"><img class="img-fluid" src="screenshot-1.png"></a>
-<a href="screenshot-2-small.png"><img class="img-fluid" src="screenshot-2.png"></a>
-<a href="screenshot-3-small.png"><img class="img-fluid" src="screenshot-3.png"></a>
-<a href="screenshot-4-small.png"><img class="img-fluid" src="screenshot-4.png"></a>
-<a href="screenshot-5-small.png"><img class="img-fluid" src="screenshot-5.png"></a></p>
+<p><img class="img-fluid" src="screenshot-1.png" alt="FreeMED 1"></p>
+<p><img class="img-fluid" src="screenshot-2.png" alt="FreeMED 2"></p>
+<p><img class="img-fluid" src="screenshot-3.png" alt="FreeMED 3"></p>
+<p><img class="img-fluid" src="screenshot-4.png" alt="FreeMED 4"></p>
+<p><img class="img-fluid" src="screenshot-5.png" alt="FreeMED 5"></p>
 <p>El proyecto se ve maduro, tiene un código genial y es usado en varios países. Pero tiene en este momento dos desventajas: el sistema está programado en <strong>PHP 4</strong> (incompatible con el más nuevo PHP 5) y necesita invariablemente el <strong>MySQL 4</strong> (falla con MySQL 5). Tiene traducción al español, aunque se le notan varios errores en ello.</p>
 <p>Mi gusto personal es que los servidores tengan instalada la distribución <a href="http://www.gentoo.org/">Gentoo</a>. Pero los líderes de Gentoo han removido al PHP 4 de sus repositorios, por la sencilla razón de que <em>PHP 4 está <em>sentenciado a muerte</em></em>: en un futuro muy próximo se le dejará de dar mantenimiento. Lamentablemente tenemos al día de hoy un enorme número de buenos sistemas en PHP 4 que necesitan ser migrados al PHP 5 si es que quieren <em>mantenerse vivos</em> en los años venideros. Uno de tantos es el FreeMED. Ni modo, la mejor opción para este sistema es <a href="http://www.debian.org/">Debian</a> no es Gentoo.</p>
 <p>El otro problema es que <strong>necesita MySQL 4</strong>, por que los comandos SQL que usa fallarán al tratar de insertar fechas en MySQL 5. No aparece MySQL 4 en Debian Lenny, así que tendremos que usar <strong>Debian Etch</strong>.</p>
@@ -211,73 +239,73 @@ define (&#39;BASE_URL&#39;, &#39;/freemed&#39;);          // offset (i.e. http:/
 <p>Y reinicie el servidor. Entre a la página <em>home</em> del módem 2Wire para confirmar que el <em>hostname</em> del servidor sea freemed.</p>
 <h3>Script de instalación</h3>
 <p>Visite la página del sistema por el navegador, http://freemed/. Si todo va bien, el sistema se dará cuenta que es ejecutado por primera vez.</p>
-<p><a href="1-primer-ingreso.png"><img class="img-fluid" src="1-primer-ingreso-small.png"></a></p>
+<p><img class="img-fluid" src="1-primer-ingreso.png"></p>
 <p>Escriba el nombre de la base de datos (que llamamos igual <em>freemed</em>) y la contraseña que haya declarado para el usuario <em>freemed</em>. También debe escribir en dos ocasiones la contraseña del administrador del sistema. Procure tomar nota y evite confundirse. Tenga en mente que el sistema operativo, los servicios y los sistemas pueden tener sus propios usuarios y contraseñas.</p>
-<p><a href="2-escribir-bd-y-contrasenas.png"><img class="img-fluid" src="2-escribir-bd-y-contrasenas-small.png"></a>
-<a href="3-script-instalacion-terminado.png"><img class="img-fluid" src="3-script-instalacion-terminado-small.png"></a></p>
+<p><img class="img-fluid" src="2-escribir-bd-y-contrasenas.png">
+<img class="img-fluid" src="3-script-instalacion-terminado.png"></p>
 <p>Así se crearán y poblarán las tablas de la base de datos. La instalación estará terminada.</p>
 <p>En la pantalla de ingreso, use como nombre de usuario <em>admin</em> y escriba la contraseña del administrador:</p>
-<p><a href="4-pantalla-ingreso.png"><img class="img-fluid" src="4-pantalla-ingreso-small.png"></a></p>
+<p><img class="img-fluid" src="4-pantalla-ingreso.png"></p>
 <p>Estaré aprendiendiendo el uso de este sistema. Esperen comentarios futuros.</p>
-    </article>
+                </article>
+                <!-- Article ends -->
             </div>
             <div class="col-md-4">
-
-                <div class="card my-4">
-                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
-                    <div class="card-body">
-                        Es un sitio web que busca divulgar conocimiento
-                        y promover el uso de software libre. Su creador
-                        es reconocido por ser un desarrollador que
-                        fabrica estas herramientas tanto para entidades
-                        públicas como privadas. Le invito a conocer el
-                        portafolio:
-                        <ul>
-                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
-                            <li>Plataformas web</li>
-                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
-                        </ul>
+                <!-- Sidebar start -->
+                <aside>
+                    <div class="card my-4">
+                        <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                        <div class="card-body">
+                            Es un sitio web que busca divulgar conocimiento
+                            y promover el uso de software libre. Su creador
+                            es reconocido por ser un desarrollador que
+                            fabrica estas herramientas tanto para entidades
+                            públicas como privadas. Le invito a conocer el
+                            portafolio:
+                            <ul>
+                                <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                                <li>Plataformas web</li>
+                                <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card my-4">
-                    <h5 class="card-header">Etiquetas</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
-                        </ul>
+                    <div class="card my-4">
+                        <h5 class="card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>            </div>
+                </aside>
+                <!-- Sidebar ends -->
+            </div>
         </div>
     </div>
-
+    <!-- Footer start -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="copyright text-muted">
@@ -291,7 +319,7 @@ define (&#39;BASE_URL&#39;, &#39;/freemed&#39;);          // offset (i.e. http:/
             </p>
         </div>
     </footer>
-
+    <!-- Footer ends -->
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
     <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

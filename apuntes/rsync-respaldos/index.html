@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
     <meta name="keywords" content="gentoo linux, software libre, apuntes">
-    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Respaldos con rsync">
     <meta itemprop="description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Respaldos con rsync">
     <meta name="twitter:description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg">
     <meta property="og:title" content="Respaldos con rsync">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/">
+    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg">
     <meta property="og:description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Respaldos con rsync - Movimiento Libre</title>
@@ -42,7 +45,7 @@
   gtag('config', 'UA-74263253-1');
 </script></head>
 <body>
-
+    <!-- Navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
@@ -67,16 +70,41 @@
             </div>
         </div>
     </nav>
-
+    <!-- Navigation ends -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-    <article>
-        <h1 class="mt-4">Respaldos con rsync</h1>
-        <p class="lead">Guillermo Valdés Lozano</p>
-        <p>2011-12-29 20:50:00-06:00</p>
-        <hr>
-        <p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer <em>respaldos periódicos</em>. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>
+                <!-- Article start -->
+                <article>
+                    <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Article",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "http://www.movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "Respaldos con rsync",
+                        "headline": "Respaldos con rsync",
+                        "description": "Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.",
+                        "dateCreated": "2011-12-29 20:50:00-06:00",
+                        "datePublished": "2011-12-29 20:50:00-06:00",
+                        "dateModified": "2011-12-29 20:50:00-06:00",
+                        "image": "http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg",
+                        "url": "http://www.movimientolibre.com/apuntes/rsync-respaldos/"
+                    }
+                    </script>
+                    <h1 class="mt-4">Respaldos con rsync</h1>
+                    <p class="lead">Guillermo Valdés Lozano (guivaloz)</p>
+                    <p>2011-12-29 20:50:00-06:00</p>
+                    <hr>
+<p>Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer <em>respaldos periódicos</em>. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.</p>
 <p>Existen muchas formas en las cuales podríamos perder nuestros archivos, que van desde el robo de nuestra <em>laptop</em> hasta el borrado accidental. <em>La verdad es que la gran mayoría de nosotros no piensa en respaldar sus documentos hasta que la fatal desgracia nos enseña que debimos haberlo hecho.</em> Y que cuando es por descompostura, pérdida o robo; nos dolerá más la pérdida de los archivos que el valor del equipo mismo.</p>
 <p>Como solución simple sugiero instalar un segundo disco duro en un equipo de escritorio, donde los los usuarios depositen el respaldo de sus <em>laptops</em> vía <em>wireless</em> desde sus equipos portátiles. <em>No confío que sea seguro compartir un disco duro externo entre varias personas, ya que se les puede caer o perder.</em></p>
 <p>Así pues instalé un segundo disco duro en el equipo de escritorio, el cual dedicaré enteramente a respaldos. Y como <em>tú y yo</em> usamos GNU/Linux, éste aparece como /dev/sdb.</p>
@@ -144,65 +172,65 @@ Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
 
 
 <p>Así pues, procuro ejecutar <em>respaldar</em> frecuentemente para mantener una copia de mis documentos en el otro equipo. Puede automatizar esta labor si agrega el comando al <em>cron</em> y establece una hora del día a la cual se ejecute sin intervención del usuario. Esto se lo dejo de tarea.</p>
-    </article>
+                </article>
+                <!-- Article ends -->
             </div>
             <div class="col-md-4">
-
-                <div class="card my-4">
-                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
-                    <div class="card-body">
-                        Es un sitio web que busca divulgar conocimiento
-                        y promover el uso de software libre. Su creador
-                        es reconocido por ser un desarrollador que
-                        fabrica estas herramientas tanto para entidades
-                        públicas como privadas. Le invito a conocer el
-                        portafolio:
-                        <ul>
-                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
-                            <li>Plataformas web</li>
-                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
-                        </ul>
+                <!-- Sidebar start -->
+                <aside>
+                    <div class="card my-4">
+                        <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                        <div class="card-body">
+                            Es un sitio web que busca divulgar conocimiento
+                            y promover el uso de software libre. Su creador
+                            es reconocido por ser un desarrollador que
+                            fabrica estas herramientas tanto para entidades
+                            públicas como privadas. Le invito a conocer el
+                            portafolio:
+                            <ul>
+                                <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                                <li>Plataformas web</li>
+                                <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card my-4">
-                    <h5 class="card-header">Etiquetas</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
-                        </ul>
+                    <div class="card my-4">
+                        <h5 class="card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>            </div>
+                </aside>
+                <!-- Sidebar ends -->
+            </div>
         </div>
     </div>
-
+    <!-- Footer start -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="copyright text-muted">
@@ -216,7 +244,7 @@ Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
             </p>
         </div>
     </footer>
-
+    <!-- Footer ends -->
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
     <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

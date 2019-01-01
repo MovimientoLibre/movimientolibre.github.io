@@ -1,2 +1,2 @@
 User-Agent: *
-Disallow: /feeds /theme
+Disallow:  /author /category /feeds /tag /theme

@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Se hace un llamado a migrar los sistemas web que aun funcionen con la versión cuatro de PHP a la cinco.">
     <meta name="keywords" content="desarrollo, php, articulos">
-    <meta name="author" content="Guillermo Valdés Lozano">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="PHP4 ha muerto, larga vida a PHP5">
     <meta itemprop="description" content="Se hace un llamado a migrar los sistemas web que aun funcionen con la versión cuatro de PHP a la cinco.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/php.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="PHP4 ha muerto, larga vida a PHP5">
     <meta name="twitter:description" content="Se hace un llamado a migrar los sistemas web que aun funcionen con la versión cuatro de PHP a la cinco.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/php.png">
     <meta property="og:title" content="PHP4 ha muerto, larga vida a PHP5">
     <meta property="og:type" content="article">
     <meta property="og:url" content="http://www.movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/">
+    <meta property="og:image" content="http://www.movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/php.png">
     <meta property="og:description" content="Se hace un llamado a migrar los sistemas web que aun funcionen con la versión cuatro de PHP a la cinco.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>PHP4 ha muerto, larga vida a PHP5 - Movimiento Libre</title>
@@ -42,7 +45,7 @@
   gtag('config', 'UA-74263253-1');
 </script></head>
 <body>
-
+    <!-- Navigation start -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="http://www.movimientolibre.com/">Movimiento Libre</a>
@@ -67,81 +70,106 @@
             </div>
         </div>
     </nav>
-
+    <!-- Navigation ends -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-    <article>
-        <h1 class="mt-4">PHP4 ha muerto, larga vida a PHP5</h1>
-        <p class="lead">Guillermo Valdés Lozano</p>
-        <p>2008-02-02 11:20:00-06:00</p>
-        <hr>
-        <p><img class="img-fluid" src="gophp5_logo.png" alt="Go to PHP5"></p>
+                <!-- Article start -->
+                <article>
+                    <script type="application/ld+json">
+                    {
+                        "@context": "http://schema.org",
+                        "@type": "Article",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "http://www.movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "PHP4 ha muerto, larga vida a PHP5",
+                        "headline": "PHP4 ha muerto, larga vida a PHP5",
+                        "description": "Se hace un llamado a migrar los sistemas web que aun funcionen con la versión cuatro de PHP a la cinco.",
+                        "dateCreated": "2008-02-02 11:20:00-06:00",
+                        "datePublished": "2008-02-02 11:20:00-06:00",
+                        "dateModified": "2008-02-02 11:20:00-06:00",
+                        "image": "http://www.movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/php.png",
+                        "url": "http://www.movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/"
+                    }
+                    </script>
+                    <h1 class="mt-4">PHP4 ha muerto, larga vida a PHP5</h1>
+                    <p class="lead">Guillermo Valdés Lozano (guivaloz)</p>
+                    <p>2008-02-02 11:20:00-06:00</p>
+                    <hr>
+<p><img class="img-fluid" src="gophp5_logo.png" alt="Go to PHP5"></p>
 <p><a href="http://es.wikipedia.org/wiki/Php">PHP</a> es un lenguaje de programación interpretado que nació con la intención de elaborar páginas web dinámicas. Gracias a que es software libre y de que puede operar en la mayoría de los sistemas operativos (GNU/Linux, MacOS, Windows, sólo por mencionarlos) es hoy en día el lenguaje de programación <em>libre</em> más usado en aplicaciones web.</p>
 <p>PHP4 tiene siete años de haber sido liberado y PHP5 lleva tres. La principal diferencia entre ambas versiones está en la mejor implementación de la <a href="http://es.wikipedia.org/wiki/OOP">programación orientada a objetos</a>. Si estudiáramos dos sistemas que hicieran exactamente lo mismo, donde uno estuviese programado en PHP4 y el otro en PHP5, los códigos (o sea los programas) serían muy distintos uno del otro.</p>
 <p>Lamentablemente es muy complicado y nada recomendable instalar en un mismo equipo al Apache, el PHP4 y PHP5. Por lo que, haciendo uso de las libertades del software libre, podemos elegir entre instalar PHP4 o PHP5. En el artículo <a href="../apuntes/freemed-instalacion.html">Instalación de FreeMED en Debian Etch</a> les comenté a cerca de un muy buen sistema que está programado en PHP4, y que no funciona en PHP5.</p>
 <p>La problemática actual es que muchos proveedores de <em>hosting</em> no han cambiado al PHP5, por temor a que pierdan a sus usuarios que programan en PHP4. Y esto es un círculo vicioso: los usuarios no se animan a programar en PHP5 por que la mayoría de los proveedores de <em>hosting</em> siguen usando PHP4. De acuerdo con <a href="http://www.nexen.net/chiffres_cles/phpversion/17283-php_statistics_for_june_2007.php#majeure">Nexen.net el 80% de los hostings aún continúan usando php4</a> en sus servidores.</p>
 <p><strong>Llegó el tiempo de tomar medidas más drásticas</strong>. <a href="http://gophp5.org/">GoPHP5.org</a> es una iniciativa de numerosos proyectos y organizaciones de la comunidad de desarrollo de PHP, como Drupal, Moodle, PEAR, phpMyAdmin, PHPUnit y más para detener conjuntamente, el próximo 5 de febrero, el <a href="http://javieraroche.com/2007/07/06/gophp5com-quitando-el-soporte-a-php4/">soporte al código de PHP4</a> en sus proyectos en favor de PHP5, mucho más avanzado tecnológicamente.</p>
 <p>Nadie afirmará que los cambios sean fáciles. Respetando la pluralidad de voces, hay quienes desean <a href="http://stopphp5.org/">mantener al PHP4</a>. Personalmente, yo sólo uso y recomiendo PHP5.</p>
-    </article>
+                </article>
+                <!-- Article ends -->
             </div>
             <div class="col-md-4">
-
-                <div class="card my-4">
-                    <h5 class="card-header">A cerca de Movimiento Libre</h5>
-                    <div class="card-body">
-                        Es un sitio web que busca divulgar conocimiento
-                        y promover el uso de software libre. Su creador
-                        es reconocido por ser un desarrollador que
-                        fabrica estas herramientas tanto para entidades
-                        públicas como privadas. Le invito a conocer el
-                        portafolio:
-                        <ul>
-                            <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
-                            <li>Plataformas web</li>
-                            <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
-                        </ul>
+                <!-- Sidebar start -->
+                <aside>
+                    <div class="card my-4">
+                        <h5 class="card-header">A cerca de Movimiento Libre</h5>
+                        <div class="card-body">
+                            Es un sitio web que busca divulgar conocimiento
+                            y promover el uso de software libre. Su creador
+                            es reconocido por ser un desarrollador que
+                            fabrica estas herramientas tanto para entidades
+                            públicas como privadas. Le invito a conocer el
+                            portafolio:
+                            <ul>
+                                <li><a href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                                <li>Plataformas web</li>
+                                <li>Instalación y mantenimiento de sistemas operativos libres en servidores</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card my-4">
-                    <h5 class="card-header">Etiquetas</h5>
-                    <div class="card-body">
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/centos.html">centos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/openstreetmap.html">openstreetmap</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/virtualizacion.html">virtualización</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
-                            <li><a href="http://www.movimientolibre.com/tag/xfce4.html">xfce4</a></li>
-                        </ul>
+                    <div class="card my-4">
+                        <h5 class="card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>            </div>
+                </aside>
+                <!-- Sidebar ends -->
+            </div>
         </div>
     </div>
-
+    <!-- Footer start -->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="copyright text-muted">
@@ -155,7 +183,7 @@
             </p>
         </div>
     </footer>
-
+    <!-- Footer ends -->
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery.min.js"></script>
     <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
