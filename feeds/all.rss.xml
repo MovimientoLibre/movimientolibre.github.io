@@ -1,2 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Movimiento Libre</title><link>http://www.movimientolibre.com/</link><description></description><lastBuildDate>Tue, 01 Jan 2019 12:22:00 -0600</lastBuildDate><item><title>Instalación de Fedora Workstation 29, parte 1</title><link>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/</link><description>&lt;p&gt;A través de esta serie de imágenes se vislumbra la instalación de Fedora 29 para usarse como estación de trabajo con el entrono gráfico KDE.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Tue, 01 Jan 2019 12:22:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2019-01-01:/apuntes/fedora-workstation-29-parte-01/</guid><category>fedora</category><category>gnu linux</category></item><item><title>Eliminar todas las particiones de una unidad de almacenamiento</title><link>http://www.movimientolibre.com/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</link><description>&lt;p&gt;Cómo usar el comando dd para eliminar todas las particiones de un disco duro, memoria externa o cualquier otro dispositivo de almacenamiento.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Wed, 26 Sep 2018 17:45:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-09-26:/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</guid><category>gnu linux</category></item><item><title>Crear menús de servicios en Dolphin</title><link>http://www.movimientolibre.com/apuntes/dolphin-menu-servicios/</link><description>&lt;p&gt;Cómo crear menús de servicios o acciones en Dolphin que se van a desplegar en el menú contexual.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Thu, 20 Sep 2018 08:02:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-09-20:/apuntes/dolphin-menu-servicios/</guid><category>kde</category></item><item><title>Instalación de Fedora Server 28, parte 7, servidor de archivos SAMBA</title><link>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-07/</link><description>&lt;p&gt;Crear una nueva partición lógica para compartir archivos por medio de SAMBA.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 24 Jun 2018 22:17:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-06-24:/apuntes/fedora-server-28-parte-07/</guid><category>fedora</category><category>gnu linux</category><category>servidores</category><category>software libre</category></item><item><title>Instalación de Fedora Server 28, parte 6, configuración del proxy en los clientes</title><link>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-06/</link><description>&lt;p&gt;Haremos que sea automática la carga de la configuración del proxy para los equipos en la red local.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 24 Jun 2018 22:16:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-06-24:/apuntes/fedora-server-28-parte-06/</guid><category>fedora</category><category>gnu linux</category><category>servidores</category><category>software libre</category></item><item><title>Instalación de Fedora Server 28, parte 5, proxy Squid</title><link>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/</link><description>&lt;p&gt;Vamos a configurar un proxy con Squid.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 24 Jun 2018 22:15:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-06-24:/apuntes/fedora-server-28-parte-05/</guid><category>fedora</category><category>gnu linux</category><category>servidores</category><category>software libre</category></item><item><title>Instalación de Fedora Server 28, parte 4, muro de fuego para ruteador</title><link>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-04/</link><description>&lt;p&gt;Configuraremos el muro de fuego para que los servicios de la red local sólo estén abiertos en el dispositivo correspondiente.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 24 Jun 2018 22:14:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-06-24:/apuntes/fedora-server-28-parte-04/</guid><category>fedora</category><category>gnu linux</category><category>servidores</category><category>software libre</category></item><item><title>Instalación de Fedora Server 28, parte 3, servicios DHCP y DNS</title><link>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-03/</link><description>&lt;p&gt;Configuraremos el servidor para que proporcione direcciones IP y sea el DNS de la red local con DNSmasq.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 24 Jun 2018 22:13:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-06-24:/apuntes/fedora-server-28-parte-03/</guid><category>fedora</category><category>gnu linux</category><category>servidores</category><category>software libre</category></item><item><title>Instalación de Fedora Server 28, parte 2, configuración básica de red</title><link>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-02/</link><description>&lt;p&gt;Proseguimos con la configuración de OpenSSH y de los dispositivos de red.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 24 Jun 2018 22:12:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-06-24:/apuntes/fedora-server-28-parte-02/</guid><category>fedora</category><category>gnu linux</category><category>servidores</category><category>software libre</category></item><item><title>Instalación de Fedora Server 28, parte 1, instalación</title><link>http://www.movimientolibre.com/apuntes/fedora-server-28-parte-01/</link><description>&lt;p&gt;Primeros pasos para la instalación de un servidor con Fedora Server 28.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Wed, 20 Jun 2018 18:25:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-06-20:/apuntes/fedora-server-28-parte-01/</guid><category>fedora</category><category>gnu linux</category><category>servidores</category><category>software libre</category></item><item><title>Plataforma del Conocimiento - guía descriptiva</title><link>http://www.movimientolibre.com/presentaciones/plataforma-del-conocimiento-guia-descriptiva/</link><description>&lt;p&gt;Con motivo de los informes de fin de año y términos de la administración, elaboré esta presentación como una guía descriptiva del proyecto público más importante en el que he colaborado a la fecha, la Plataforma del Conocimiento del IMPLAN Torreón.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 10 Dec 2017 10:40:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2017-12-10:/presentaciones/plataforma-del-conocimiento-guia-descriptiva/</guid><category>php</category><category>markdown</category></item><item><title>Plataformas de Conocimientos</title><link>http://www.movimientolibre.com/presentaciones/plataformas-de-conocimientos/</link><description>&lt;p&gt;Cómo funciona la Plataforma del Conocimiento que construye el sitio web del IMPLAN Torreón; reconocido nacionalmente.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sat, 08 Jul 2017 01:50:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2017-07-08:/presentaciones/plataformas-de-conocimientos/</guid><category>php</category><category>markdown</category><category>política</category></item><item><title>Apuntes para la Instalación de Gentoo Linux en una laptop ASUS</title><link>http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/</link><description>&lt;p&gt;Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Tue, 09 May 2017 07:44:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2017-05-09:/apuntes/gentoo-en-asus-rog-instalacion-2017-05/</guid><category>gentoo linux</category></item><item><title>Gentoo Linux - Servidor local de portage</title><link>http://www.movimientolibre.com/apuntes/gentoo-portage-lan-server/</link><description>&lt;p&gt;Pasos para configurar un servidor del portage de Gentoo en la red local.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Thu, 23 Mar 2017 07:42:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2017-03-23:/apuntes/gentoo-portage-lan-server/</guid><category>gentoo linux</category></item><item><title>GULAG Congreso 2016 - Invitación al taller GenesisPHP</title><link>http://www.movimientolibre.com/articulos/gulag-congreso-2016-genesisphp-invitacion/</link><description>&lt;p&gt;Invitación a la primera presentación en público del software libre GenesisPHP.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Fri, 23 Sep 2016 11:15:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2016-09-23:/articulos/gulag-congreso-2016-genesisphp-invitacion/</guid><category>gulag</category><category>php</category><category>postgresql</category></item><item><title>Asus Reparación Memo Pad 7 ME70C</title><link>http://www.movimientolibre.com/articulos/asus-reparacion-memo-pad-7-me70c/</link><description>&lt;p&gt;Hace días mi tablet ASUS Memo Pad 7 me180c dejó de funcionar súbitamente después de una caída de no más de medio metro. Simplemente resbaló detrás de un buró pequeño con todo y funda protectora.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Fri, 01 Apr 2016 16:10:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2016-04-01:/articulos/asus-reparacion-memo-pad-7-me70c/</guid><category>hardware</category></item><item><title>El Poder de los Datos Abiertos</title><link>http://www.movimientolibre.com/presentaciones/el-poder-de-los-datos-abiertos/</link><description>&lt;p&gt;El Encuentro de Ciudades Abiertas e Innovadoras de PIDES Innovación Social es un evento que forma parte del programa de Ciudades ASI el cuál se centra en promover mecanismos para el desarrollo y la sustentabilidad a través de políticas públicas y proyectos de gobierno abierto a nivel local.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Wed, 24 Feb 2016 13:08:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2016-02-24:/presentaciones/el-poder-de-los-datos-abiertos/</guid><category>ciencia de datos</category><category>política</category></item><item><title>Taller de Git y GitHub</title><link>http://www.movimientolibre.com/presentaciones/git-y-github-taller/</link><description>&lt;p&gt;Presentación para el Taller de Git y GitHub.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 27 Sep 2015 23:40:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2015-09-27:/presentaciones/git-y-github-taller/</guid><category>git</category></item><item><title>Introducción a la Ciencia de Datos</title><link>http://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/</link><description>&lt;p&gt;Presentación para hacer una introducción a la Ciencia de Datos.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sun, 27 Sep 2015 23:30:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2015-09-27:/presentaciones/ciencia-de-datos-introduccion/</guid><category>ciencia de datos</category></item><item><title>Nuevas Tecnologías y Estándares para la Web</title><link>http://www.movimientolibre.com/articulos/nuevas-tecnologias-estandares-web/</link><description>&lt;p&gt;Los sitios web ahora deben ser responsivos, semánticos y apegarse estrictamente a los estándares para garantizar su visualización en la mayoría de los dispositivos.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Tue, 07 Apr 2015 10:00:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2015-04-07:/articulos/nuevas-tecnologias-estandares-web/</guid><category>desarrollo</category></item><item><title>Mensaje en The Talos Principle</title><link>http://www.movimientolibre.com/articulos/mensaje-en-the-talos-principle/</link><description>&lt;p&gt;Esto aparece en una computadora dentro del video juego The Talos Principle.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Mon, 06 Apr 2015 22:05:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2015-04-06:/articulos/mensaje-en-the-talos-principle/</guid><category>vida cotidiana</category></item><item><title>Equidad de Género en Informática</title><link>http://www.movimientolibre.com/presentaciones/equidad-genero-informatica/</link><description>&lt;p&gt;Aunque vivimos el mejor momento de las Ciencias Computacionales, el género femenino tiene muy poca participación en el sector.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Mon, 09 Mar 2015 11:00:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2015-03-09:/presentaciones/equidad-genero-informatica/</guid><category>educación</category></item><item><title>XFCE4 deshabilitar agente GPG y habilitar agente SSH</title><link>http://www.movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/</link><description>&lt;p&gt;Cómo deshabilitar el agente GPG y en su lugar habilitar el agente SSH.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Thu, 07 Aug 2014 09:15:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2014-08-07:/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/</guid><category>software libre</category></item><item><title>Enmascarar paquetes en Gentoo Linux</title><link>http://www.movimientolibre.com/apuntes/gentoo-portage-enmascarar/</link><description>&lt;p&gt;Para evitar que una determinada versión de un paquete de software se instale en Gentoo Linux podemos enmascararlo.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sat, 26 Jul 2014 13:00:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2014-07-26:/apuntes/gentoo-portage-enmascarar/</guid><category>gentoo linux</category></item></channel></rss>
+<rss version="2.0"><channel><title>Movimiento Libre</title><link>http://www.movimientolibre.com/</link><description></description><lastBuildDate>Sat, 05 Jan 2019 17:40:00 -0600</lastBuildDate><item><title>Instalación de Fedora Workstation 29, parte 2</title><link>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</link><description>&lt;p&gt;En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar &lt;a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/"&gt;Fedora Workstation con KDE&lt;/a&gt;, hacemos una actualización...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf upgrade
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y reiniciamos...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# systemctl reboot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="libreoffice.jpg" alt="LibreOffice"&gt;&lt;/p&gt;
+&lt;p&gt;Instale LibreOffice y los programas cliente para PostgreSQL...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf group install --with-optional LibreOffice
+# dnf install libreoffice-help-es libreoffice-langpack-es
+# dnf install libreoffice-postgresql
+# dnf install postgresql
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale LaTeX...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf search texlive-scheme
+# dnf install texlive-scheme-tetex
+# dnf install texlive-scheme-medium
+# dnf install texlive-scheme-tetex
+# dnf install texlive-collection-latexextra
+# dnf install texlive-collection-pstricks
+# dnf install texlive-babel-spanish texlive-babel-spanish-doc texlive-hyphen-spanish
+# dnf install texlive-babel-english texlive-babel-english-doc texlive-hyphen-english
+# fmtutil --all -sys
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Python...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf group install --with-optional &amp;quot;Python Classroom&amp;quot;
+# dnf group install --with-optional &amp;quot;Python Science&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale utilerías...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install system-storage-manager
+# dnf install pwgen
+# dnf install youtube-dl
+# dnf install hwinfo
+# dnf install fuse-exfat exfat-utils
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale software de KDE...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install kate
+# dnf install filelight
+# dnf install umbrello
+# dnf install krename
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale soporte para impresoras HP...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install hplip
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="gimp.jpg" alt="GIMP"&gt;&lt;/p&gt;
+&lt;p&gt;Instale GIMP...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install gimp
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Inkscape...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install inkscape
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale tipografías...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install clearlooks-phenix-gtk2-theme clearlooks-phenix-gtk3-theme
+# dnf install liberation-fonts
+# dnf install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts
+# dnf install terminus-fonts
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale el lector y convertidor de libros electrónicos Calibre...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install calibre
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Prepare los repositorios adicionales...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install fedora-workstation-repositories
+# dnf repolist --all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="google-chrome.jpg" alt="Google Chrome"&gt;&lt;/p&gt;
+&lt;p&gt;Instale Google Chrome...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf config-manager --set-enabled google-chrome
+# dnf update
+# dnf install google-chrome-stable
+# dnf install google-noto-sans-fonts google-noto-serif-fonts google-noto-mono-fonts
+# dnf install google-droid-sans-fonts google-droid-serif-fonts google-droid-sans-mono-fonts
+# dnf install google-roboto-fonts google-roboto-mono-fonts google-roboto-condensed-fonts
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Configure los repositorios RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+# dnf update
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para mi equipo, requiero el controlador &lt;em&gt;anterior&lt;/em&gt; y binario NVIDIA...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf search nvidia-390
+# dnf install xorg-x11-drv-nvidia-390xx akmod-nvidia-390xx
+# nano /etc/X11/xorg.conf.d/00-monitor.conf 
+# systemctl reboot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale más programas de RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install ffmpeg ffmpegthumbs
+# dnf install mplayer mencoder
+# dnf install audacity-freeworld
+# dnf install k3b-extras-freeworld
+# dnf install kdenlive
+# dnf install moc
+# dnf groupupdate Multimedia
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para usar contenedores, instale Docker...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install docker
+# docker-storage-setup
+# restorecon -vR /var/lib/docker/
+# systemctl start docker
+# systemctl status docker
+# docker info
+# systemctl enable docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para controlar Docker con mi usuario, cree un grupo para ese fin...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# grep docker /etc/group
+# groupadd docker
+# gpasswd -a guivaloz docker
+# systemctl restart docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E instalo Docker Compose...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install docker-compose
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="sublime-text.jpg" alt="Sublime Text"&gt;&lt;/p&gt;
+&lt;p&gt;Instale Sublime Text a partir de su propio repositorio...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf update&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf install sublime-text&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Libvirtd...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf group install &amp;#39;Virtualización&amp;#39; --with-optional
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Steam, a partir de RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf config-manager --set-enabled rpmfusion-nonfree-steam
+# dnf install steam
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="vlc.jpg" alt="VLC"&gt;&lt;/p&gt;
+&lt;p&gt;Instale VLC, con complementos desde RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install vlc
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Sat, 05 Jan 2019 17:40:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2019-01-05:/apuntes/fedora-workstation-29-parte-02/</guid><category>fedora</category><category>gnu linux</category></item><item><title>Instalación de Fedora Workstation 29, parte 1</title><link>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/</link><description>&lt;h3&gt;Advertencia&lt;/h3&gt;
+&lt;p&gt;Los comandos escritos en estos apuntes tienen el poder de borrar los archivos y sistemas operativos. &lt;strong&gt;Siempre es recomendable tener un respaldo de sus archivos más importantes y hacer este procedimiento en un dispositivo de almacenamiento vacío.&lt;/strong&gt; Su servidor sólo comparte sus experiencias y no se hace responsable de los resultados.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Las imágenes fueron obtendidas a partir de hacer la instalación en una virtualización.&lt;/strong&gt; Por lo que notará el tamaño de las particiones es muy pequeña, por debajo del mínimo recomendado. Sea libre de ajustar el tamaño de las particiones a medida de su dispositivo y necesidades.&lt;/p&gt;
+&lt;h3&gt;Descargue Fedora 29&lt;/h3&gt;
+&lt;p&gt;Fedora ofrece los archivos ISO para instalar en &lt;a href="https://getfedora.org/"&gt;getfedora.org&lt;/a&gt;. Para acelerar la instalación del entorno gráfico KDE, baje el &lt;em&gt;spin-off&lt;/em&gt; &lt;a href="https://spins.fedoraproject.org/kde/"&gt;KDE Plasma Destop&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Transfiera a una memoria USB&lt;/h3&gt;
+&lt;p&gt;Averigüe con &lt;code&gt;fdisk&lt;/code&gt; cuál dispositivo es la memoria USB&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# fdisk -l
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Si la memoria USB es &lt;code&gt;/dev/sdX&lt;/code&gt; y descargó el ISO &lt;code&gt;Fedora-KDE-Live-x86_64-29-1.2.iso&lt;/code&gt;, ejecute&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dd if=Fedora-KDE-Live-x86_64-29-1.2.iso of=/dev/sdX status=progress
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Este proceso es lento. Tenga paciencia. Cuando acabe el comando, asegúrese de que se haya copiado todo ejecutando&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# sync
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Apague el equipo. Si tiene un disco duro nuevo, instálelo.&lt;/p&gt;
+&lt;p&gt;Encienda y desde el arranque del BIOS o UEFI elija la memoria como medio de arranque.&lt;/p&gt;
+&lt;h3&gt;Instale&lt;/h3&gt;
+&lt;p&gt;Elija &lt;code&gt;Test this media &amp;amp; start Fedora-KDE-Live 29&lt;/code&gt; para comprobar que los datos en el dispositivo de almacenamiento no estén corruptos. Si ya lo probó con anterioridad, elija &lt;code&gt;Start Fedora-KDE-Live 29&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-01.png" alt="Fedora Workstation install step 01"&gt;&lt;/p&gt;
+&lt;p&gt;Así tendrá un entorno "vivo" de Fedora 29 KDE. De doble clic a &lt;code&gt;Install to Hard Drive&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-02.jpg" alt="Fedora Workstation install step 02"&gt;&lt;/p&gt;
+&lt;p&gt;Elija Español y su país.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-03.png" alt="Fedora Workstation install step 03"&gt;&lt;/p&gt;
+&lt;p&gt;El &lt;strong&gt;Resumen de la Instalación&lt;/strong&gt; nos muestra cuatro secciones a revisar o modificar. Elija &lt;code&gt;Destino de la instalación&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-04.png" alt="Fedora Workstation install step 04"&gt;&lt;/p&gt;
+&lt;p&gt;Por defecto se detecta el dispositivo de almacenamiento y está habilitada la &lt;strong&gt;Configuración de almacenamiento&lt;/strong&gt; en &lt;strong&gt;Automática&lt;/strong&gt;. Yo recomiendo activar &lt;code&gt;Personalizada&lt;/code&gt; y de clic en &lt;code&gt;Hecho&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-05.png" alt="Fedora Workstation install step 05"&gt;&lt;/p&gt;
+&lt;p&gt;Por medio del &lt;strong&gt;Particionado manual&lt;/strong&gt; tendremos completo control sobre cómo se hará la instalación. De clic en &lt;code&gt;Pulse aquí para crearlas automáticamente&lt;/code&gt; para que el instalador nos ponga su recomendación.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-06.png" alt="Fedora Workstation install step 06"&gt;&lt;/p&gt;
+&lt;p&gt;Como mínimo, debe haber una partición de arranque &lt;em&gt;boot&lt;/em&gt;, la raíz del Fedora Linux y el área de intercambio &lt;em&gt;swap&lt;/em&gt;. Se usa el moderno &lt;strong&gt;LVM&lt;/strong&gt; para organizar el almacenamiento. De clic en &lt;code&gt;Modificar...&lt;/code&gt; del &lt;strong&gt;Grupo Del Volumen&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-07.png" alt="Fedora Workstation install step 07"&gt;&lt;/p&gt;
+&lt;p&gt;Cambie el nombre del &lt;strong&gt;grupo de volúmenes&lt;/strong&gt; por una palabra simple que lo identifique. Y lo más importante, cambie el &lt;strong&gt;Tamaño de la política&lt;/strong&gt; por &lt;code&gt;Lo mayor posible&lt;/code&gt;. Esto hace que &lt;strong&gt;LVM&lt;/strong&gt; use todo el espacio del dispositivo.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-08.png" alt="Fedora Workstation install step 08"&gt;&lt;/p&gt;
+&lt;p&gt;Ajuste el tamaño de las particiones y cree las que necesite, recomiendo:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La raíz de Fedora Linux con 48 GB, mínimo 16 GB.&lt;/li&gt;
+&lt;li&gt;El área de intercambio &lt;em&gt;swap&lt;/em&gt; desde una vez al doble de su memoria RAM.&lt;/li&gt;
+&lt;li&gt;Su &lt;em&gt;home&lt;/em&gt; como lo que necesite.&lt;/li&gt;
+&lt;li&gt;Deje espacio libre en su &lt;strong&gt;Grupo del volumen&lt;/strong&gt;. Puede necesitar crear nuevas particiones en el futuro.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-09.png" alt="Fedora Workstation install step 09"&gt;&lt;/p&gt;
+&lt;p&gt;Al presionar el botón &lt;code&gt;Hecho&lt;/code&gt; aparecerá una ventana que advierte los cambios que se harán al dispositivo. Revise y de clic en &lt;code&gt;Aceptar cambios&lt;/code&gt; para aplicarlos.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-10.png" alt="Fedora Workstation install step 10"&gt;&lt;/p&gt;
+&lt;p&gt;Salvo que requiera hacer otros ajustes, como cambiar la distribución del teclado o el huso horario, de clic en &lt;code&gt;Empezar instalación&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-11.png" alt="Fedora Workstation install step 11"&gt;&lt;/p&gt;
+&lt;p&gt;Durante la instalación, defina la contraseña de &lt;em&gt;root&lt;/em&gt; y cree un usuario.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-12.png" alt="Fedora Workstation install step 12"&gt;&lt;/p&gt;
+&lt;p&gt;Defina la contraseña &lt;em&gt;root&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-13.png" alt="Fedora Workstation install step 13"&gt;&lt;/p&gt;
+&lt;p&gt;Cree un nuevo usuario. Active la casilla &lt;code&gt;Hacer de este usuario un administrador&lt;/code&gt; para que pueda ejecutar órdenes con &lt;code&gt;sudo&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-14.png" alt="Fedora Workstation install step 14"&gt;&lt;/p&gt;
+&lt;p&gt;Terminada la instalación, de clic en el botón &lt;code&gt;Salir&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-15.png" alt="Fedora Workstation install step 15"&gt;&lt;/p&gt;
+&lt;p&gt;Recuerde que está en el arranque "vivo" desde la memoria USB, así que reinicie para arrancar con el nuevo Fedora Linux.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-16.jpg" alt="Fedora Workstation install step 16"&gt;&lt;/p&gt;
+&lt;p&gt;¡Listo! Conozca, use y disfrute su nueva instalación de Fedora 29 Workstation con KDE. No deje de hacer las actualizaciones de software.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="fedora-workstation-29-kde-install-17.jpg" alt="Fedora Workstation install step 17"&gt;&lt;/p&gt;
+&lt;p&gt;En la &lt;a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/"&gt;segunda parte de esta guía&lt;/a&gt;, se publicarán los comandos para instalar software adicional.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Tue, 01 Jan 2019 12:22:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2019-01-01:/apuntes/fedora-workstation-29-parte-01/</guid><category>fedora</category><category>gnu linux</category></item><item><title>Eliminar todas las particiones de una unidad de almacenamiento</title><link>http://www.movimientolibre.com/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</link><description>&lt;p&gt;&lt;img alt="Eliminar todas las particiones de una unidad de almacenamiento" src="disco-duro-eliminar.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html"&gt;DD&lt;/a&gt; forma parte de &lt;a href="https://www.gnu.org/software/coreutils/coreutils.html"&gt;Coreutils de GNU&lt;/a&gt; y realiza copias desde un origen (&lt;em&gt;input&lt;/em&gt;) a un destino (&lt;em&gt;output&lt;/em&gt;), donde se puede especificar el tamaño de bloques y otras opciones de bajo nivel.&lt;/p&gt;
+&lt;p&gt;Las siguientes órdenes, que tiene que hacer como &lt;code&gt;root&lt;/code&gt;, &lt;strong&gt;son sumamente peligrosas porque pueden ocasionar la pérdidad de información.&lt;/strong&gt; Así que, antes de borrar todas las particiones de una unidad de almacenamiento, es recomendable que...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Siempre respalde periódicamente sus archivos más importantes.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Mantenga sus respaldos en &lt;strong&gt;unidades desconectadas&lt;/strong&gt; de su equipo. El error más grave sería equivocarse de unidad de almacenamiento y ordenar borrar el disco de respaldo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Identifique a la unidad principal, su disco de arranque con el sistema operativo y archivos,&lt;/strong&gt; la puede ser &lt;code&gt;/dev/sda&lt;/code&gt;. No vaya a dañar su instalación en uso.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Verifique la &lt;strong&gt;ruta que identifica al dispositivo&lt;/strong&gt; que tiene las particiones que desea eliminar. Cambie  &lt;code&gt;/dev/sdX&lt;/code&gt; por &lt;code&gt;/dev/sdb&lt;/code&gt;,  &lt;code&gt;/dev/sdc&lt;/code&gt;, etc. hasta encontrarla.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# fdisk -l /dev/sdX
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Identifíquelo por su tamaño y particiones existentes. Revise de nuevo, un par de veces, no está demás ser doblemente cuidadosos.&lt;/p&gt;
+&lt;p&gt;Para eliminar todas las particiones, ejecute el comando &lt;code&gt;dd&lt;/code&gt; cambiando &lt;code&gt;/dev/sdX&lt;/code&gt; por la &lt;strong&gt;ruta que identifica al dispositivo&lt;/strong&gt; y con los parámetros siguientes...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dd if=/dev/zero of=/dev/sdX bs=512 count=1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Verifique que se hayan eliminado las particiones...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# fdisk -l /dev/sdc
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Wed, 26 Sep 2018 17:45:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-09-26:/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</guid><category>gnu linux</category></item><item><title>Crear menús de servicios en Dolphin</title><link>http://www.movimientolibre.com/apuntes/dolphin-menu-servicios/</link><description>&lt;p&gt;Las acciones de Dolphin, también llamadas "menús de servicios", sirven para ejecutar un programa enviando como parámetros los archivos seleccionados.&lt;/p&gt;
+&lt;p&gt;Como ejemplo, es un trabajo frecuente preparar las imágenes para un sitio web; porque consume varios minutos abrir cada imagen, recortar, cambiar el tamaño y exportar a JPEG o PNG.&lt;/p&gt;
+&lt;p&gt;Vamos a hacer esa rutina más rápido, simplemente dando clic con el botón derecho sobre las imágenes para convertirlas.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="dolphin-acciones.jpg" alt="Acciones en Dolphin"&gt;&lt;/p&gt;
+&lt;h3&gt;Instale ImageMagick&lt;/h3&gt;
+&lt;p&gt;Para hacer la conversión de las imágenes usaremos &lt;strong&gt;ImageMagick&lt;/strong&gt;. En &lt;strong&gt;Fedora Linux&lt;/strong&gt; se instala como &lt;code&gt;root&lt;/code&gt; con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install ImageMagick
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Elabore los Bash Scripts&lt;/h3&gt;
+&lt;p&gt;Como se trata de programas propios, no del sistema, conviene tenerlos en un &lt;code&gt;bin&lt;/code&gt; personal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir ~/bin
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cree un script para convertir las imágenes a PNG...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kwrite ~/bin/imagen-png.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este contenido...&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; ARCHIVO in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+    &lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;basename &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ARCHIVO&lt;/span&gt;&lt;span class="p"&gt;%.[^.]*&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+    &lt;span class="nv"&gt;SALIDA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.png&amp;quot;&lt;/span&gt;
+    convert &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SALIDA&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Cree un script para convertir las imágenes a JPEG...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kwrite ~/bin/imagen-jpg.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este contenido...&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2
+3
+4
+5
+6
+7
+8
+9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; ARCHIVO in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+    &lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;basename &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ARCHIVO&lt;/span&gt;&lt;span class="p"&gt;%.[^.]*&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
+    &lt;span class="nv"&gt;SALIDA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.jpg&amp;quot;&lt;/span&gt;
+    convert -quality &lt;span class="m"&gt;80&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SALIDA&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Hágalos ejecutables...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ chmod +x ~/bin/imagen-png.sh
+$ chmod +x ~/bin/imagen-jpg.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pruebe desde una terminal que funcionen. Son capaces de recibir muchos archivos para convertir. Por ejemplo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/Descargas
+$ ~/bin/imagen-jpg.sh logotipo.png
+$ ~/bin/imagen-jpg.sh pagina-1.png pagina-2.png pagina-3.png
+$ ~/bin/imagen-png.sh *.jpg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Crear acciones para Dolphin en KDE 5&lt;/h3&gt;
+&lt;p&gt;Averigüe dónde deben de estar los archivos de las acciones; para ello, en &lt;strong&gt;KDE 5,&lt;/strong&gt; ejecute...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kf5-config --path services
+/home/USUARIO/.local/share/kservices5/:/usr/share/kservices5/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Por defecto no existe el directorio, hay que crearlo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir -p ~/.local/share/kservices5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Nos cambiamos a ese directorio...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/.local/share/kservices5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cree un archivo &lt;code&gt;desktop&lt;/code&gt;. En este ejemplo, vamos a definir acciones para convertir archivos...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kwrite ConvertImages.desktop
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este contenido...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Desktop Entry]&lt;/span&gt;
+&lt;span class="na"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Service&lt;/span&gt;
+&lt;span class="na"&gt;ServiceTypes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;KonqPopupMenu/Plugin&lt;/span&gt;
+&lt;span class="na"&gt;X-KDE-ServiceTypes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;KonqPopupMenu/Plugin&lt;/span&gt;
+&lt;span class="na"&gt;MimeType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;image/*;&lt;/span&gt;
+&lt;span class="na"&gt;Actions&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;ConvertToPNG;ConvertToJPG;&lt;/span&gt;
+&lt;span class="na"&gt;X-KDE-Submenu&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convert images to&lt;/span&gt;
+&lt;span class="na"&gt;X-KDE-Submenu[es]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convertir imágenes a&lt;/span&gt;
+&lt;span class="na"&gt;Encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;UTF-8&lt;/span&gt;
+
+&lt;span class="k"&gt;[Desktop Action ConvertToPNG]&lt;/span&gt;
+&lt;span class="na"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convert to PNG&lt;/span&gt;
+&lt;span class="na"&gt;Icon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;image-png&lt;/span&gt;
+&lt;span class="na"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;~/bin/imagen-png.sh %F&lt;/span&gt;
+
+&lt;span class="k"&gt;[Desktop Action ConvertToJPG]&lt;/span&gt;
+&lt;span class="na"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convert to JPG&lt;/span&gt;
+&lt;span class="na"&gt;Icon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;image-jpeg&lt;/span&gt;
+&lt;span class="na"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;~/bin/imagen-jpg.sh %F&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reinicie Dolphin y pruebe.&lt;/p&gt;
+&lt;p&gt;Algunas de las opciones que tiene ese archivo son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un &lt;code&gt;Desktop Entry&lt;/code&gt; y uno o varios &lt;code&gt;Desktop Action&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;En &lt;code&gt;Actions&lt;/code&gt; se declaran cada acción, que deben aparacer más adelante como &lt;code&gt;Desktop Action&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;En &lt;code&gt;MimeType&lt;/code&gt; se filtra que la acción es para cualquier archivo de imagen.&lt;/li&gt;
+&lt;li&gt;Con &lt;code&gt;X-KDE-Submenu&lt;/code&gt; se define el nombre a usar en el menú contextual.&lt;/li&gt;
+&lt;li&gt;Las acciones, que forman el sub-menú, tienen en &lt;code&gt;Name&lt;/code&gt; su nombre, en &lt;code&gt;Icon&lt;/code&gt; el icono a mostrar y la orden a ejecutar en &lt;code&gt;Exec&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;En &lt;code&gt;Exec&lt;/code&gt; está el programa y sus parámetros. En este caso &lt;code&gt;%F&lt;/code&gt; es para pasar muchos archivos con sus rutas completas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lea la documentación de &lt;a href="https://imagemagick.org/"&gt;ImageMagick&lt;/a&gt; para crear sus propios scripts. Por ejemplo, elaborar imágenes previas (128x128) o fondos de escritorio (1920x1080).&lt;/p&gt;
+&lt;h3&gt;Referencias&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bbs.archlinux.org/viewtopic.php?id=136722"&gt;ArchLinux - Forum - Custom File Actions in Dolphin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html"&gt;FreeDesktop - Desktop Entry Specification&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://imagemagick.org/"&gt;ImageMagick&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://forum.kde.org/viewtopic.php?t=10667"&gt;KDE Forum - How do I add a custom right-click menu command in dolphin?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://store.kde.org/p/1228224/"&gt;KDE Store - KDE-DolphinServiceMenu-Share como ejemplo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Thu, 20 Sep 2018 08:02:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-09-20:/apuntes/dolphin-menu-servicios/</guid><category>kde</category></item></channel></rss>
