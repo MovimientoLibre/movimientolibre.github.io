@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Movimiento Libre</title><link>http://www.movimientolibre.com/</link><description></description><lastBuildDate>Sat, 05 Jan 2019 17:40:00 -0600</lastBuildDate><item><title>Instalación de Fedora Workstation 29, parte 2</title><link>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</link><description>&lt;p&gt;En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar &lt;a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/"&gt;Fedora Workstation con KDE&lt;/a&gt;, hacemos una actualización...&lt;/p&gt;
+<rss version="2.0"><channel><title>Movimiento Libre</title><link>http://www.movimientolibre.com/</link><description></description><lastBuildDate>Thu, 10 Jan 2019 16:30:00 -0600</lastBuildDate><item><title>Instalación de Fedora Workstation 29, parte 2</title><link>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</link><description>&lt;p&gt;En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar &lt;a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/"&gt;Fedora Workstation con KDE&lt;/a&gt;, hacemos una actualización...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf upgrade
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -20,8 +20,6 @@
 
 &lt;p&gt;Instale LaTeX...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf search texlive-scheme
-# dnf install texlive-scheme-tetex
-# dnf install texlive-scheme-medium
 # dnf install texlive-scheme-tetex
 # dnf install texlive-collection-latexextra
 # dnf install texlive-collection-pstricks
