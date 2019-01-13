@@ -8,6 +8,23 @@ h4 { font-size:1.2rem; }
 h5 { font-size:1.1rem; }
 h6 { font-size:1.0rem; }
 
+pre {
+    font-family: 'Droid Sans Mono','Liberation Mono',monospace;
+    font-size: 12pt;
+    background: none repeat scroll 0 0 #F0F0F0;
+    font-style: normal;
+    letter-spacing: 0.015em;
+    line-height: 130%;
+    padding: 0.7em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+blockquote {
+    padding: 0.7em;
+    font-size: 1.2em;
+}
+
 .header-welcome {
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
