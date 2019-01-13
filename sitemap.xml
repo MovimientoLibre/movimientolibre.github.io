@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/</loc>
-<lastmod>2019-01-10T16:31:49-00:00</lastmod>
+<lastmod>2019-01-13T15:10:15-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -263,7 +263,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.movimientolibre.com/misc/revolucionate-a-ti-mismo-se-un-programador/</loc>
+<loc>http://www.movimientolibre.com/articulos/revolucionate-a-ti-mismo-se-un-programador/</loc>
 <lastmod>2014-05-11T21:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
@@ -944,13 +944,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.movimientolibre.com/category/articulos.html</loc>
 <lastmod>2016-09-23T11:15:00-06:37</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.movimientolibre.com/category/misc.html</loc>
-<lastmod>2014-05-11T21:00:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>

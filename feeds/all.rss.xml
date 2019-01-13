@@ -40,7 +40,6 @@
 # dnf install pwgen
 # dnf install youtube-dl
 # dnf install hwinfo
-# dnf install fuse-exfat exfat-utils
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -114,7 +113,8 @@
 
 
 &lt;p&gt;Instale más programas de RPM Fusion...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install ffmpeg ffmpegthumbs
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install fuse-exfat exfat-utils
+# dnf install ffmpeg ffmpegthumbs
 # dnf install mplayer mencoder
 # dnf install audacity-freeworld
 # dnf install k3b-extras-freeworld
