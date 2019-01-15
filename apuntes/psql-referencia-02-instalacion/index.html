@@ -70,7 +70,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8">
-          <article>
+          <article class="article-post">
             <script type="application/ld+json">
             {
                 "@context": "http://schema.org",
@@ -95,9 +95,8 @@
                 "url": "http://www.movimientolibre.com/apuntes/psql-referencia-02-instalacion/"
             }
             </script>
-            <div class="article-post">
-              <h2 class="article-post-title">PostgreSQL referencia rápida - 2) Instalación</h2>
-              <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>12 junio 2007</p>
+            <h2 class="article-post-title">PostgreSQL referencia rápida - 2) Instalación</h2>
+            <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>12 junio 2007</p>
 <p>Los pasos descritos a contiuación son para instalar y configurar PostgreSQL en <a href="http://www.gentoo.org">Gentoo Linux</a>, si usa otra distribución consulte el procedimiento requerido para la misma.</p>
 <p>En el archivo <em>make.conf</em> la variable <em>USE</em> debe tener el parámetro <em>postgres</em>.  Como el usuario root puede editar el contenido de <em>make.conf</em> con:</p>
 <div class="highlight"><pre><span></span># nano -w /etc/make.conf
@@ -158,7 +157,6 @@ $ exit
 <p>Si quiere que el demonio del postgresql se inicie cada vez que enciende el equipo, ejecute el comando <em>rc-update</em>:</p>
 <div class="highlight"><pre><span></span># rc-update add postgresql default
 </pre></div>
-            </div>
           </article>
         </div>
         <div class="col-sm-4">
