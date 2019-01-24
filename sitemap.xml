@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/</loc>
-<lastmod>2019-01-15T10:38:02-00:00</lastmod>
+<lastmod>2019-01-24T10:37:09-00:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -67,8 +67,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/</loc>
+<lastmod>2019-01-24T10:30:00-06:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
 <loc>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</loc>
-<lastmod>2019-01-10T16:30:00-06:00</lastmod>
+<lastmod>2019-01-24T10:05:00-06:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>1</priority>
 </url>
@@ -936,7 +943,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2019-01-10T16:30:00-06:37</lastmod>
+<lastmod>2019-01-24T10:30:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -957,14 +964,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/tag/fedora.html</loc>
-<lastmod>2019-01-10T16:30:00-06:37</lastmod>
+<lastmod>2019-01-24T10:30:00-06:37</lastmod>
+<changefreq>hourly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/tag/docker.html</loc>
+<lastmod>2019-01-24T10:30:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/tag/gnu-linux.html</loc>
-<lastmod>2019-01-10T16:30:00-06:37</lastmod>
+<lastmod>2019-01-24T10:05:00-06:37</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>

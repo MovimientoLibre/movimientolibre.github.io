@@ -90,14 +90,14 @@
                 "description": "Listo los comandos de instalación del software (preferido por el autor) en Fedora Linux 29 con KDE.",
                 "dateCreated": "2019-01-05 17:40:00-06:00",
                 "datePublished": "2019-01-05 17:40:00-06:00",
-                "dateModified": "2019-01-10 16:30:00-06:00",
+                "dateModified": "2019-01-24 10:05:00-06:00",
                 "image": "http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/imagen.jpg",
                 "url": "http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/"
             }
             </script>
             <h2 class="article-post-title">Instalación de Fedora Workstation 29, parte 2</h2>
             <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>05 enero 2019</p>
-<p>En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar <a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/">Fedora Workstation con KDE</a>, hacemos una actualización...</p>
+<p>En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar <a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/">Fedora Workstation con KDE</a>. Primero hacemos una actualización...</p>
 <div class="highlight"><pre><span></span># dnf upgrade
 </pre></div>
 
@@ -133,7 +133,7 @@
 </pre></div>
 
 
-<p>Instale utilerías...</p>
+<p>Instale utilerías diversas...</p>
 <div class="highlight"><pre><span></span># dnf install system-storage-manager
 # dnf install pwgen
 # dnf install youtube-dl
@@ -165,9 +165,13 @@
 </pre></div>
 
 
-<p>Instale tipografías...</p>
+<p>Instale temas de decoración de ventanas de GTK...</p>
 <div class="highlight"><pre><span></span># dnf install clearlooks-phenix-gtk2-theme clearlooks-phenix-gtk3-theme
-# dnf install liberation-fonts
+</pre></div>
+
+
+<p>Instale tipografías...</p>
+<div class="highlight"><pre><span></span># dnf install liberation-fonts
 # dnf install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts
 # dnf install terminus-fonts
 </pre></div>
@@ -185,7 +189,7 @@
 
 
 <p><img class="img-fluid" src="google-chrome.jpg" alt="Google Chrome"></p>
-<p>Instale Google Chrome...</p>
+<p>Instale Google Chrome y sus tipografías...</p>
 <div class="highlight"><pre><span></span># dnf config-manager --set-enabled google-chrome
 # dnf update
 # dnf install google-chrome-stable
@@ -205,7 +209,7 @@
 <p>Para mi equipo, requiero el controlador <em>anterior</em> y binario NVIDIA...</p>
 <div class="highlight"><pre><span></span># dnf search nvidia-390
 # dnf install xorg-x11-drv-nvidia-390xx akmod-nvidia-390xx
-# nano /etc/X11/xorg.conf.d/00-monitor.conf 
+# nano /etc/X11/xorg.conf.d/00-monitor.conf
 # systemctl reboot
 </pre></div>
 
@@ -224,25 +228,7 @@
 
 <p>Para usar contenedores, instale Docker...</p>
 <div class="highlight"><pre><span></span># dnf install docker
-# docker-storage-setup
-# restorecon -vR /var/lib/docker/
-# systemctl start docker
-# systemctl status docker
-# docker info
-# systemctl enable docker
-</pre></div>
-
-
-<p>Para controlar Docker con mi usuario, cree un grupo para ese fin...</p>
-<div class="highlight"><pre><span></span># grep docker /etc/group
-# groupadd docker
-# gpasswd -a guivaloz docker
-# systemctl restart docker
-</pre></div>
-
-
-<p>E instalo Docker Compose...</p>
-<div class="highlight"><pre><span></span># dnf install docker-compose
+# dnf install docker-compose
 </pre></div>
 
 
@@ -300,6 +286,7 @@
                   <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
                   <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
                   <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/docker.html">docker</a></li>
                   <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
                   <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
                   <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>

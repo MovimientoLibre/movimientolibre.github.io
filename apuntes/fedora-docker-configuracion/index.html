@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.">
+    <meta name="keywords" content="fedora, docker, apuntes">
+    <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
+    <meta itemprop="name" content="Configuración de Docker en Fedora">
+    <meta itemprop="description" content="Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.">
+    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/imagen.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Configuración de Docker en Fedora">
+    <meta name="twitter:description" content="Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.">
+    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/imagen.png">
+    <meta property="og:title" content="Configuración de Docker en Fedora">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/">
+    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/imagen.png">
+    <meta property="og:description" content="Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Configuración de Docker en Fedora - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/screen.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-74263253-1');
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBootstrap4">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/index.html">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <article class="article-post">
+            <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Article",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Movimiento Libre",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                    },
+                    "url": "http://www.movimientolibre.com"
+                },
+                "author": "Guillermo Valdés Lozano (guivaloz)",
+                "name": "Configuración de Docker en Fedora",
+                "headline": "Configuración de Docker en Fedora",
+                "description": "Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.",
+                "dateCreated": "2019-01-24 10:10:00-06:00",
+                "datePublished": "2019-01-24 10:10:00-06:00",
+                "dateModified": "2019-01-24 10:30:00-06:00",
+                "image": "http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/imagen.png",
+                "url": "http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/"
+            }
+            </script>
+            <h2 class="article-post-title">Configuración de Docker en Fedora</h2>
+            <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>24 enero 2019</p>
+<h3>Requisitos</h3>
+<p>Este apunte es para Fedora Linux. Su objetivo es usar una partición dedicada a Docker y que sea controlable a través de una cuenta de usuario.</p>
+<p>Ya debe tiene instalado...</p>
+<ul>
+<li>LibVirt</li>
+<li>System Storage Manager</li>
+</ul>
+<p>Por defecto, Fedora Linux usa LVM para admnistrar el disco duro; se tiene un volumen con espacio libre, más de 64 GB.</p>
+<h3>Partición dedicada</h3>
+<p>Es buena idea crear una partición dedicada. Montada en una ruta temporal...</p>
+<div class="highlight"><pre><span></span># mkdir /mnt/docker
+# ssm create -s 64G -p integridad -n docker --fstype ext4 /mnt/docker
+</pre></div>
+
+
+<p>Cambie la etiqueta de la unidad...</p>
+<div class="highlight"><pre><span></span># e2label /dev/mapper/integridad-docker Docker
+</pre></div>
+
+
+<p>Copie todo el contenido que se ha puesto en la instalación al directorio de montaje temporal...</p>
+<div class="highlight"><pre><span></span># cd /var/lib/docker/
+# tar cvf - * | (cd /mnt/docker/; tar xf -)
+</pre></div>
+
+
+<p>Desmonte del directorio temporal...</p>
+<div class="highlight"><pre><span></span># umount /mnt/docker
+</pre></div>
+
+
+<p>Para que se monte al encender, edite...</p>
+<div class="highlight"><pre><span></span># nano /etc/fstab
+</pre></div>
+
+
+<p>Y agregue esta línea...</p>
+<div class="highlight"><pre><span></span>/dev/mapper/integridad-docker  /var/lib/docker  ext4  defaults  1 2
+</pre></div>
+
+
+<p>Monte en el directorio definitivo...</p>
+<div class="highlight"><pre><span></span># mount /var/lib/docker
+</pre></div>
+
+
+<p>Re-aplique los permisos SELinux...</p>
+<div class="highlight"><pre><span></span># docker-storage-setup
+# restorecon -vR /var/lib/docker/
+</pre></div>
+
+
+<p>Reinicie el sistema...</p>
+<div class="highlight"><pre><span></span># systemctl reboot
+</pre></div>
+
+
+<p>Verifique que se haya iniciado con éxito el daemon...</p>
+<div class="highlight"><pre><span></span># systemctl status docker
+</pre></div>
+
+
+<p>Ya no se necesita el directorio temporal...</p>
+<div class="highlight"><pre><span></span># rmdir /mnt/docker
+</pre></div>
+
+
+<h3>Control por usuario</h3>
+<p>Revise si existe el grupo docker...</p>
+<div class="highlight"><pre><span></span># grep docker /etc/group
+</pre></div>
+
+
+<p>De NO existir, habrá que crearlo con...</p>
+<div class="highlight"><pre><span></span># groupadd docker
+</pre></div>
+
+
+<p>Agregue su usuario al grupo...</p>
+<div class="highlight"><pre><span></span># gpasswd -a guillermovaldes docker
+</pre></div>
+
+
+<p>Reinicie el daemon...</p>
+<div class="highlight"><pre><span></span># systemctl restart docker
+</pre></div>
+
+
+<p>Cierre la sesión y vuelva a entrar.</p>
+          </article>
+        </div>
+        <div class="col-sm-4">
+          <aside>
+            <div class="card my-4 aside-about">
+              <h5 class="card-header">A cerca de</h5>
+              <div class="card-body">
+                <p class="card-text">
+                  Este es un sitio web que busca divulgar
+                  conocimiento y promover el uso de software libre.
+                  Su creador es reconocido como desarrollador que
+                  fabrica estas herramientas tanto para entidades
+                  públicas como privadas.
+                  Conozca el portafolio:
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a class="card-link" href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                <li class="list-group-item">Plataformas web</li>
+                <li class="list-group-item">Sistemas operativos libres en servidores</li>
+              </ul>
+            </div>
+            <div class="card my-4">
+              <h5 class="card-header">Etiquetas</h5>
+              <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                  <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/docker.html">docker</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                  <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="card my-4">
+              <h5 class="card-header">Buscar</h5>
+              <div class="card-body">
+    <script>
+      (function() {
+        var cx = '015464194519155410478:jqayrodgycs';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+    <gcse:search></gcse:search>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <footer class="text-muted">
+      <div class="container">
+        <p>Copyright &copy; 2006-2019 Guillermo Valdés Lozano. Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>. Se otorga permiso para copiar, distribuir y/o modificar estos documentos.</p>
+        <p>Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.</p>
+      </div>
+    </footer>
+    <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="http://www.movimientolibre.com/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

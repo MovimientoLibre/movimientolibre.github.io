@@ -1,5 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Movimiento Libre</title><link>http://www.movimientolibre.com/</link><description></description><lastBuildDate>Thu, 10 Jan 2019 16:30:00 -0600</lastBuildDate><item><title>Instalación de Fedora Workstation 29, parte 2</title><link>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</link><description>&lt;p&gt;En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar &lt;a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/"&gt;Fedora Workstation con KDE&lt;/a&gt;, hacemos una actualización...&lt;/p&gt;
+<rss version="2.0"><channel><title>Movimiento Libre</title><link>http://www.movimientolibre.com/</link><description></description><lastBuildDate>Thu, 24 Jan 2019 10:30:00 -0600</lastBuildDate><item><title>Configuración de Docker en Fedora</title><link>http://www.movimientolibre.com/apuntes/fedora-docker-configuracion/</link><description>&lt;h3&gt;Requisitos&lt;/h3&gt;
+&lt;p&gt;Este apunte es para Fedora Linux. Su objetivo es usar una partición dedicada a Docker y que sea controlable a través de una cuenta de usuario.&lt;/p&gt;
+&lt;p&gt;Ya debe tiene instalado...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LibVirt&lt;/li&gt;
+&lt;li&gt;System Storage Manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Por defecto, Fedora Linux usa LVM para admnistrar el disco duro; se tiene un volumen con espacio libre, más de 64 GB.&lt;/p&gt;
+&lt;h3&gt;Partición dedicada&lt;/h3&gt;
+&lt;p&gt;Es buena idea crear una partición dedicada. Montada en una ruta temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# mkdir /mnt/docker
+# ssm create -s 64G -p integridad -n docker --fstype ext4 /mnt/docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cambie la etiqueta de la unidad...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# e2label /dev/mapper/integridad-docker Docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copie todo el contenido que se ha puesto en la instalación al directorio de montaje temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# cd /var/lib/docker/
+# tar cvf - * | (cd /mnt/docker/; tar xf -)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Desmonte del directorio temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# umount /mnt/docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para que se monte al encender, edite...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# nano /etc/fstab
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y agregue esta línea...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/dev/mapper/integridad-docker  /var/lib/docker  ext4  defaults  1 2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Monte en el directorio definitivo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# mount /var/lib/docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Re-aplique los permisos SELinux...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# docker-storage-setup
+# restorecon -vR /var/lib/docker/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reinicie el sistema...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# systemctl reboot
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Verifique que se haya iniciado con éxito el daemon...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# systemctl status docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ya no se necesita el directorio temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# rmdir /mnt/docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Control por usuario&lt;/h3&gt;
+&lt;p&gt;Revise si existe el grupo docker...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# grep docker /etc/group
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De NO existir, habrá que crearlo con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# groupadd docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agregue su usuario al grupo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# gpasswd -a guillermovaldes docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reinicie el daemon...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# systemctl restart docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cierre la sesión y vuelva a entrar.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Thu, 24 Jan 2019 10:10:00 -0600</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2019-01-24:/apuntes/fedora-docker-configuracion/</guid><category>fedora</category><category>docker</category></item><item><title>Instalación de Fedora Workstation 29, parte 2</title><link>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</link><description>&lt;p&gt;En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar &lt;a href="http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/"&gt;Fedora Workstation con KDE&lt;/a&gt;. Primero hacemos una actualización...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf upgrade
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -35,7 +123,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Instale utilerías...&lt;/p&gt;
+&lt;p&gt;Instale utilerías diversas...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install system-storage-manager
 # dnf install pwgen
 # dnf install youtube-dl
@@ -67,9 +155,13 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Instale tipografías...&lt;/p&gt;
+&lt;p&gt;Instale temas de decoración de ventanas de GTK...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install clearlooks-phenix-gtk2-theme clearlooks-phenix-gtk3-theme
-# dnf install liberation-fonts
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale tipografías...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install liberation-fonts
 # dnf install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts
 # dnf install terminus-fonts
 &lt;/pre&gt;&lt;/div&gt;
@@ -87,7 +179,7 @@
 
 
 &lt;p&gt;&lt;img class="img-fluid" src="google-chrome.jpg" alt="Google Chrome"&gt;&lt;/p&gt;
-&lt;p&gt;Instale Google Chrome...&lt;/p&gt;
+&lt;p&gt;Instale Google Chrome y sus tipografías...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf config-manager --set-enabled google-chrome
 # dnf update
 # dnf install google-chrome-stable
@@ -107,7 +199,7 @@
 &lt;p&gt;Para mi equipo, requiero el controlador &lt;em&gt;anterior&lt;/em&gt; y binario NVIDIA...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf search nvidia-390
 # dnf install xorg-x11-drv-nvidia-390xx akmod-nvidia-390xx
-# nano /etc/X11/xorg.conf.d/00-monitor.conf 
+# nano /etc/X11/xorg.conf.d/00-monitor.conf
 # systemctl reboot
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -126,25 +218,7 @@
 
 &lt;p&gt;Para usar contenedores, instale Docker...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install docker
-# docker-storage-setup
-# restorecon -vR /var/lib/docker/
-# systemctl start docker
-# systemctl status docker
-# docker info
-# systemctl enable docker
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Para controlar Docker con mi usuario, cree un grupo para ese fin...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# grep docker /etc/group
-# groupadd docker
-# gpasswd -a guivaloz docker
-# systemctl restart docker
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;E instalo Docker Compose...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install docker-compose
+# dnf install docker-compose
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -256,149 +330,4 @@
 
 &lt;p&gt;Verifique que se hayan eliminado las particiones...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# fdisk -l /dev/sdc
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Wed, 26 Sep 2018 17:45:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-09-26:/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</guid><category>gnu linux</category></item><item><title>Crear menús de servicios en Dolphin</title><link>http://www.movimientolibre.com/apuntes/dolphin-menu-servicios/</link><description>&lt;p&gt;Las acciones de Dolphin, también llamadas "menús de servicios", sirven para ejecutar un programa enviando como parámetros los archivos seleccionados.&lt;/p&gt;
-&lt;p&gt;Como ejemplo, es un trabajo frecuente preparar las imágenes para un sitio web; porque consume varios minutos abrir cada imagen, recortar, cambiar el tamaño y exportar a JPEG o PNG.&lt;/p&gt;
-&lt;p&gt;Vamos a hacer esa rutina más rápido, simplemente dando clic con el botón derecho sobre las imágenes para convertirlas.&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-fluid" src="dolphin-acciones.jpg" alt="Acciones en Dolphin"&gt;&lt;/p&gt;
-&lt;h3&gt;Instale ImageMagick&lt;/h3&gt;
-&lt;p&gt;Para hacer la conversión de las imágenes usaremos &lt;strong&gt;ImageMagick&lt;/strong&gt;. En &lt;strong&gt;Fedora Linux&lt;/strong&gt; se instala como &lt;code&gt;root&lt;/code&gt; con...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# dnf install ImageMagick
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Elabore los Bash Scripts&lt;/h3&gt;
-&lt;p&gt;Como se trata de programas propios, no del sistema, conviene tenerlos en un &lt;code&gt;bin&lt;/code&gt; personal...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir ~/bin
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Cree un script para convertir las imágenes a PNG...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kwrite ~/bin/imagen-png.sh
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Con este contenido...&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class="k"&gt;for&lt;/span&gt; ARCHIVO in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;do&lt;/span&gt;
-    &lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
-    &lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;basename &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ARCHIVO&lt;/span&gt;&lt;span class="p"&gt;%.[^.]*&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
-    &lt;span class="nv"&gt;SALIDA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.png&amp;quot;&lt;/span&gt;
-    convert &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SALIDA&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Cree un script para convertir las imágenes a JPEG...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kwrite ~/bin/imagen-jpg.sh
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Con este contenido...&lt;/p&gt;
-&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8
-9&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/bash&lt;/span&gt;
-
-&lt;span class="k"&gt;for&lt;/span&gt; ARCHIVO in &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$@&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;do&lt;/span&gt;
-    &lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
-    &lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;basename &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ARCHIVO&lt;/span&gt;&lt;span class="p"&gt;%.[^.]*&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;
-    &lt;span class="nv"&gt;SALIDA&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;NOMBRE&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;.jpg&amp;quot;&lt;/span&gt;
-    convert -quality &lt;span class="m"&gt;80&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ARCHIVO&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$SALIDA&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
-&lt;span class="k"&gt;done&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Hágalos ejecutables...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ chmod +x ~/bin/imagen-png.sh
-$ chmod +x ~/bin/imagen-jpg.sh
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Pruebe desde una terminal que funcionen. Son capaces de recibir muchos archivos para convertir. Por ejemplo...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/Descargas
-$ ~/bin/imagen-jpg.sh logotipo.png
-$ ~/bin/imagen-jpg.sh pagina-1.png pagina-2.png pagina-3.png
-$ ~/bin/imagen-png.sh *.jpg
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;h3&gt;Crear acciones para Dolphin en KDE 5&lt;/h3&gt;
-&lt;p&gt;Averigüe dónde deben de estar los archivos de las acciones; para ello, en &lt;strong&gt;KDE 5,&lt;/strong&gt; ejecute...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kf5-config --path services
-/home/USUARIO/.local/share/kservices5/:/usr/share/kservices5/
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Por defecto no existe el directorio, hay que crearlo...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir -p ~/.local/share/kservices5
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Nos cambiamos a ese directorio...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/.local/share/kservices5
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Cree un archivo &lt;code&gt;desktop&lt;/code&gt;. En este ejemplo, vamos a definir acciones para convertir archivos...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ kwrite ConvertImages.desktop
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Con este contenido...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Desktop Entry]&lt;/span&gt;
-&lt;span class="na"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Service&lt;/span&gt;
-&lt;span class="na"&gt;ServiceTypes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;KonqPopupMenu/Plugin&lt;/span&gt;
-&lt;span class="na"&gt;X-KDE-ServiceTypes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;KonqPopupMenu/Plugin&lt;/span&gt;
-&lt;span class="na"&gt;MimeType&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;image/*;&lt;/span&gt;
-&lt;span class="na"&gt;Actions&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;ConvertToPNG;ConvertToJPG;&lt;/span&gt;
-&lt;span class="na"&gt;X-KDE-Submenu&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convert images to&lt;/span&gt;
-&lt;span class="na"&gt;X-KDE-Submenu[es]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convertir imágenes a&lt;/span&gt;
-&lt;span class="na"&gt;Encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;UTF-8&lt;/span&gt;
-
-&lt;span class="k"&gt;[Desktop Action ConvertToPNG]&lt;/span&gt;
-&lt;span class="na"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convert to PNG&lt;/span&gt;
-&lt;span class="na"&gt;Icon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;image-png&lt;/span&gt;
-&lt;span class="na"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;~/bin/imagen-png.sh %F&lt;/span&gt;
-
-&lt;span class="k"&gt;[Desktop Action ConvertToJPG]&lt;/span&gt;
-&lt;span class="na"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Convert to JPG&lt;/span&gt;
-&lt;span class="na"&gt;Icon&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;image-jpeg&lt;/span&gt;
-&lt;span class="na"&gt;Exec&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;~/bin/imagen-jpg.sh %F&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Reinicie Dolphin y pruebe.&lt;/p&gt;
-&lt;p&gt;Algunas de las opciones que tiene ese archivo son:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Un &lt;code&gt;Desktop Entry&lt;/code&gt; y uno o varios &lt;code&gt;Desktop Action&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;En &lt;code&gt;Actions&lt;/code&gt; se declaran cada acción, que deben aparacer más adelante como &lt;code&gt;Desktop Action&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;En &lt;code&gt;MimeType&lt;/code&gt; se filtra que la acción es para cualquier archivo de imagen.&lt;/li&gt;
-&lt;li&gt;Con &lt;code&gt;X-KDE-Submenu&lt;/code&gt; se define el nombre a usar en el menú contextual.&lt;/li&gt;
-&lt;li&gt;Las acciones, que forman el sub-menú, tienen en &lt;code&gt;Name&lt;/code&gt; su nombre, en &lt;code&gt;Icon&lt;/code&gt; el icono a mostrar y la orden a ejecutar en &lt;code&gt;Exec&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;En &lt;code&gt;Exec&lt;/code&gt; está el programa y sus parámetros. En este caso &lt;code&gt;%F&lt;/code&gt; es para pasar muchos archivos con sus rutas completas.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Lea la documentación de &lt;a href="https://imagemagick.org/"&gt;ImageMagick&lt;/a&gt; para crear sus propios scripts. Por ejemplo, elaborar imágenes previas (128x128) o fondos de escritorio (1920x1080).&lt;/p&gt;
-&lt;h3&gt;Referencias&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://bbs.archlinux.org/viewtopic.php?id=136722"&gt;ArchLinux - Forum - Custom File Actions in Dolphin&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html"&gt;FreeDesktop - Desktop Entry Specification&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://imagemagick.org/"&gt;ImageMagick&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://forum.kde.org/viewtopic.php?t=10667"&gt;KDE Forum - How do I add a custom right-click menu command in dolphin?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://store.kde.org/p/1228224/"&gt;KDE Store - KDE-DolphinServiceMenu-Share como ejemplo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Thu, 20 Sep 2018 08:02:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-09-20:/apuntes/dolphin-menu-servicios/</guid><category>kde</category></item></channel></rss>
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Guillermo Valdés Lozano (guivaloz)</dc:creator><pubDate>Wed, 26 Sep 2018 17:45:00 -0500</pubDate><guid isPermaLink="false">tag:www.movimientolibre.com,2018-09-26:/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</guid><category>gnu linux</category></item></channel></rss>
