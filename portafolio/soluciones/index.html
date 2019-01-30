@@ -40,7 +40,7 @@
     </script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: white">
       <div class="container">
         <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,6 +65,12 @@
       </div>
     </nav>
     <div class="container">
+      <header>
+        <div class="jumbotron head-welcome" itemscope itemtype="http://schema.org/Organization">
+          <h1 class="jumbotron-heading head-site-name" itemprop="name">Movimiento Libre</h1>
+          <p class="head-site-description" itemprop="description">Plataforma de divulgación de conocimiento libre por Ing. Guillermo Valdés Lozano (guivaloz)</p>
+        </div>
+      </header>
       <div class="row">
         <div class="col-sm-8">
           <article class="page-post">
@@ -155,10 +161,6 @@
   </div>
 </div>
 
-<hr>
-
-<h3>Para solicitar más información</h3>
-<p>Escríbanos a <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#105;&#115;&#116;&#101;&#109;&#97;&#115;&#64;&#109;&#111;&#118;&#105;&#109;&#105;&#101;&#110;&#116;&#111;&#108;&#105;&#98;&#114;&#101;&#46;&#99;&#111;&#109;">&#115;&#105;&#115;&#116;&#101;&#109;&#97;&#115;&#64;&#109;&#111;&#118;&#105;&#109;&#105;&#101;&#110;&#116;&#111;&#108;&#105;&#98;&#114;&#101;&#46;&#99;&#111;&#109;</a></p>
 <h3>Misión</h3>
 <p>Desarrollar a la medida de las empresas, gobiernos y particulares,
 los sistemas que administren, resguarden y analicen la información con
@@ -174,6 +176,8 @@ incrementando la creatividad y usando herramientas modernas.</p>
 <li>Sencillez</li>
 <li>Versatilidad</li>
 </ul>
+<h3>Para solicitar más información</h3>
+<p>Escríbanos a <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#105;&#115;&#116;&#101;&#109;&#97;&#115;&#64;&#109;&#111;&#118;&#105;&#109;&#105;&#101;&#110;&#116;&#111;&#108;&#105;&#98;&#114;&#101;&#46;&#99;&#111;&#109;">&#115;&#105;&#115;&#116;&#101;&#109;&#97;&#115;&#64;&#109;&#111;&#118;&#105;&#109;&#105;&#101;&#110;&#116;&#111;&#108;&#105;&#98;&#114;&#101;&#46;&#99;&#111;&#109;</a></p>
           </article>
         </div>
         <div class="col-sm-4">
@@ -251,8 +255,12 @@ incrementando la creatividad y usando herramientas modernas.</p>
     </div>
     <footer class="text-muted">
       <div class="container">
-        <p>Copyright &copy; 2006-2019 Guillermo Valdés Lozano. Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>. Se otorga permiso para copiar, distribuir y/o modificar estos documentos.</p>
-        <p>Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.</p>
+        <hr>
+        <p>
+            Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
+            Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
+            Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+            Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.</p>
       </div>
     </footer>
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery-3.3.1.min.js"></script>

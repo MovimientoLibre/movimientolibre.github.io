@@ -43,7 +43,7 @@
     </script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-md navbar-light" style="background-color: white">
       <div class="container">
         <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,64 +68,70 @@
       </div>
     </nav>
     <div class="container">
+      <header>
+        <div class="jumbotron head-welcome" itemscope itemtype="http://schema.org/Organization">
+          <h1 class="jumbotron-heading head-site-name" itemprop="name">Movimiento Libre</h1>
+          <p class="head-site-description" itemprop="description">Plataforma de divulgación de conocimiento libre por Ing. Guillermo Valdés Lozano (guivaloz)</p>
+        </div>
+      </header>
       <div class="row">
         <div class="col-sm-8">
         <main>
           <section>
             <h2 class="index-title"></h2>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/articulos/debian-puntos-buenos/"><img class="mr-3" src="http://www.movimientolibre.com/articulos/debian-puntos-buenos/preview.png" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/articulos/debian-puntos-buenos/">Puntos buenos para Debian</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/articulos/debian-puntos-buenos/">Puntos buenos para Debian</a></h3>
 <p>Con Debian he logrado una satisfactoria instalación en la cual estoy trabajando desde el jueves (¡Dios mío! llevo 4 días sin usar Gentoo en mi escritorio XD).</p>
               </div>
             </div>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/apuntes/psql-referencia-03-primer-bd/"><img class="mr-3" src="http://www.movimientolibre.com/apuntes/psql-referencia-03-primer-bd/postgresql.png" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/apuntes/psql-referencia-03-primer-bd/">PostgreSQL referencia rápida - 3) Primer base de datos</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/apuntes/psql-referencia-03-primer-bd/">PostgreSQL referencia rápida - 3) Primer base de datos</a></h3>
 <p>La lista de usuarios para las bases de datos PostgreSQL es independiente de la de los usuarios de su GNU/Linux, por lo que puede dar de alta libremente los usuarios que vayan a usar PostgreSQL.</p>
               </div>
             </div>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/apuntes/psql-referencia-02-instalacion/"><img class="mr-3" src="http://www.movimientolibre.com/apuntes/psql-referencia-02-instalacion/postgresql.png" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/apuntes/psql-referencia-02-instalacion/">PostgreSQL referencia rápida - 2) Instalación</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/apuntes/psql-referencia-02-instalacion/">PostgreSQL referencia rápida - 2) Instalación</a></h3>
 <p>Los pasos descritos a contiuación son para instalar y configurar PostgreSQL en Gentoo Linux.</p>
               </div>
             </div>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/articulos/gulag-junta-multimedia-hacks/"><img class="mr-3" src="http://www.movimientolibre.com/articulos/gulag-junta-multimedia-hacks/preview.jpg" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/articulos/gulag-junta-multimedia-hacks/">Junta de la Gulag "Multimedia Hacks"</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/articulos/gulag-junta-multimedia-hacks/">Junta de la Gulag "Multimedia Hacks"</a></h3>
 <p>El 9 de junio de 2007, Luis Páez (lobogris) nos dió una amena e interesante plática sobre hacks de multimedia para GNU/Linux. A groso modo, explicó los comandos para ripear un CD a mp3, para convertir a varios formatos de audio y cómo ripear videos desde un DVD.</p>
               </div>
             </div>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/apuntes/psql-referencia-01-introduccion/"><img class="mr-3" src="http://www.movimientolibre.com/apuntes/psql-referencia-01-introduccion/postgresql.png" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/apuntes/psql-referencia-01-introduccion/">PostgreSQL referencia rápida - 1) Introducción</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/apuntes/psql-referencia-01-introduccion/">PostgreSQL referencia rápida - 1) Introducción</a></h3>
 <p>Primera parte de la guía PostgreSQL. Desarrollada originalmente en el Departamento de Ciencias de la Computación de la Universidad de California en Berkeley, fue pionera en muchos de los conceptos de bases de datos relacionales orientadas a objetos.</p>
               </div>
             </div>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/articulos/debian-probar/"><img class="mr-3" src="http://www.movimientolibre.com/articulos/debian-probar/preview.png" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/articulos/debian-probar/">Razones para dejar Gentoo y probar Debian</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/articulos/debian-probar/">Razones para dejar Gentoo y probar Debian</a></h3>
 <p>He sido un devoto usuario de la distribución Gentoo Linux por aproximadamente 4 años, pero ayer reparticioné el disco duro de mi portátil para tener arranque dual con Gentoo y Debian.</p>
               </div>
             </div>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/articulos/miss-marie/"><img class="mr-3" src="http://www.movimientolibre.com/articulos/miss-marie/preview.jpg" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/articulos/miss-marie/">Wallpaper "Miss Marie"</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/articulos/miss-marie/">Wallpaper "Miss Marie"</a></h3>
 <p>Les muestro lo que a mi gusto es uno de los mejores fondo de pantalla del tipo "naturaleza" que he encontrado.</p>
               </div>
             </div>
-            <div class="media mb-4">
+            <div class="media mb-4 index-article">
               <a href="http://www.movimientolibre.com/articulos/nemosintesis-4.0/"><img class="mr-3" src="http://www.movimientolibre.com/articulos/nemosintesis-4.0/preview.jpg" alt="Imagen previa"></a>
               <div class="media-body">
-                <h3><a href="http://www.movimientolibre.com/articulos/nemosintesis-4.0/">Nemosíntesis 4.0</a></h3>
+                <h3 class="index-article-title"><a href="http://www.movimientolibre.com/articulos/nemosintesis-4.0/">Nemosíntesis 4.0</a></h3>
 <p>Después de que termina un largo trabajo siente un agradable regocijo al ver su creación andando. Con ese gusto me complace que se haya actualizado el sistema de la empresa donde trabajo Nemosíntesis de la versión 3.2 a la 4.0.</p>
               </div>
             </div>
@@ -270,8 +276,12 @@
     </div>
     <footer class="text-muted">
       <div class="container">
-        <p>Copyright &copy; 2006-2019 Guillermo Valdés Lozano. Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>. Se otorga permiso para copiar, distribuir y/o modificar estos documentos.</p>
-        <p>Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.</p>
+        <hr>
+        <p>
+            Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
+            Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
+            Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+            Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.</p>
       </div>
     </footer>
     <script src="http://www.movimientolibre.com/theme/vendor/jquery/jquery-3.3.1.min.js"></script>

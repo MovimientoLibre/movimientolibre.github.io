@@ -1,13 +1,19 @@
 /* Movimiento Libre */
 
-body { font-family: 'Noto Sans', sans-serif; }
+body { font-family: 'Noto Sans', sans-serif; font-size: 12pt; }
 
-h1 { font-size:1.8rem; }
-h2 { font-size:1.6rem; }
-h3 { font-size:1.4rem; }
-h4 { font-size:1.2rem; }
-h5 { font-size:1.1rem; }
-h6 { font-size:1.0rem; }
+h1 { font-size: 1.6rem; margin-top: 1.4rem; }
+h2 { font-size: 1.4rem; margin-top: 1.4rem; }
+h3 { font-size: 1.2rem; margin-top: 1.4rem; }
+h4 { font-size: 1.0rem; margin-top: 1.2rem; }
+h5 { font-size: 0.8rem; }
+h6 { font-size: 0.6rem; }
+
+a         { color: #000; text-decoration: none; }
+a:focus,
+a:hover   { color: #003060; text-decoration: underline; }
+a:active,
+a:visited { color: #000; text-decoration: none; }
 
 pre {
     font-family: 'Droid Sans Mono','Liberation Mono',monospace;
@@ -25,6 +31,18 @@ blockquote {
     padding: 0.7em;
     font-size: 1.2em;
 }
+
+hr {
+    border-top: 1px solid #888;
+}
+
+/* Navigation */
+
+.navbar-brand         { color: #212529; text-decoration: none; }
+.navbar-brand:focus,
+.navbar-brand:hover   { color: #003060; text-decoration: underline; }
+.navbar-brand:active,
+.navbar-brand:visited { color: #212529; text-decoration: none; }
 
 /* Headers */
 
@@ -54,6 +72,9 @@ blockquote {
 	margin-top: 1rem;
 	margin-bottom: 1.25rem;
 }
+.index-article-title {
+    margin-top: 0;
+}
 
 .article-post {
 	margin-top: 1.5rem;
@@ -76,6 +97,23 @@ blockquote {
 	margin-bottom: 1.25rem;
 }
 
+/* Aside */
+
 .aside-about {
 	font-size: 0.8rem;
+}
+.card {
+    border: 1px solid #888;
+}
+.card-header {
+    border-bottom: 1px solid #888;
+}
+.list-group-item {
+    border: 1px solid #888;
+}
+
+/* Footer */
+
+footer {
+    padding-top: 2rem;
 }
