@@ -38,16 +38,50 @@ hr {
 
 /* Navigation */
 
+#mainNav {
+    position: absolute;
+    background-color: white;
+    border-bottom: 1px solid white;
+}
+
+/* Used by movimiento-libre.js to show the main navigation when scroll ups */
+@media only screen and (min-width: 992px) {
+    #mainNav {
+        border-bottom: 1px solid transparent;
+    }
+    #mainNav.is-fixed {
+        /* when the user scrolls down, we hide the header right above the viewport */
+        position: fixed;
+        top: -57px;
+        -webkit-transition: -webkit-transform 0.2s;
+        transition: -webkit-transform 0.2s;
+        transition: transform 0.2s;
+        transition: transform 0.2s, -webkit-transform 0.2s;
+        border-bottom: 1px solid #888;
+    }
+    #mainNav.is-visible {
+        /* if the user changes the scrolling direction, we show the header */
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
 .navbar-brand         { color: #212529; text-decoration: none; }
 .navbar-brand:focus,
 .navbar-brand:hover   { color: #003060; text-decoration: underline; }
 .navbar-brand:active,
 .navbar-brand:visited { color: #212529; text-decoration: none; }
 
+.navbar-light .navbar-nav a.nav-link         { color: #808080; text-decoration: none; }
+.navbar-light .navbar-nav a.nav-link:focus,
+.navbar-light .navbar-nav a.nav-link:hover   { color: #003060; text-decoration: underline; }
+.navbar-light .navbar-nav a.nav-link:active,
+.navbar-light .navbar-nav a.nav-link:visited { color: #808080; text-decoration: none; }
+
 /* Headers */
 
 .head-welcome {
-	margin-top: 0.5rem;
+	margin-top: 70px; /* give space to mainNav */
 	margin-bottom: 0.5rem;
 	padding-top: 2rem;
 	padding-bottom: 0.5rem;
@@ -111,6 +145,12 @@ hr {
 .list-group-item {
     border: 1px solid #888;
 }
+
+a.card-link         { color: #000000; text-decoration: none; }
+a.card-link:focus,
+a.card-link:hover   { color: #003060; text-decoration: underline; }
+a.card-link:active,
+a.card-link:visited { color: #000000; text-decoration: none; }
 
 /* Footer */
 
