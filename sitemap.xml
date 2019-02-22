@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/</loc>
-<lastmod>2019-02-02T23:11:12-00:00</lastmod>
+<lastmod>2019-02-22T12:03:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/archives.html</loc>
-<lastmod>2019-02-02T23:11:12-00:00</lastmod>
+<lastmod>2019-02-22T12:03:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/tags.html</loc>
-<lastmod>2019-02-02T23:11:12-00:00</lastmod>
+<lastmod>2019-02-22T12:03:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/categories.html</loc>
-<lastmod>2019-02-02T23:11:12-00:00</lastmod>
+<lastmod>2019-02-22T12:03:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -84,6 +84,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <loc>http://www.movimientolibre.com/portafolio/soluciones/</loc>
 <lastmod>2017-12-27T22:20:00-06:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/apuntes/fedora-docker-ce/</loc>
+<lastmod>2019-02-22T11:45:00-06:00</lastmod>
+<changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
@@ -964,7 +971,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2019-01-29T12:02:00-06:37</lastmod>
+<lastmod>2019-02-22T11:45:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -985,14 +992,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/tag/fedora.html</loc>
-<lastmod>2019-01-29T12:02:00-06:37</lastmod>
+<lastmod>2019-02-22T11:45:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/tag/docker.html</loc>
-<lastmod>2019-01-24T10:30:00-06:37</lastmod>
+<lastmod>2019-02-22T11:45:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
