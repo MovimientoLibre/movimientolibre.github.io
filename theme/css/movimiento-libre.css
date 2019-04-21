@@ -9,11 +9,11 @@ h4 { font-size: 1.0rem; margin-top: 1.2rem; }
 h5 { font-size: 0.8rem; }
 h6 { font-size: 0.6rem; }
 
-a         { color: #000; text-decoration: none; }
+a         { color: #003399; text-decoration: none; }
 a:focus,
-a:hover   { color: #003060; text-decoration: underline; }
+a:hover   { color: #9933FF; text-decoration: underline; }
 a:active,
-a:visited { color: #000; text-decoration: none; }
+a:visited { color: #003399; text-decoration: none; }
 
 pre {
     font-family: 'Droid Sans Mono','Liberation Mono',monospace;

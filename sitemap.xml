@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/</loc>
-<lastmod>2019-02-22T12:03:37-00:00</lastmod>
+<lastmod>2019-04-20T19:58:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/archives.html</loc>
-<lastmod>2019-02-22T12:03:37-00:00</lastmod>
+<lastmod>2019-04-20T19:58:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/tags.html</loc>
-<lastmod>2019-02-22T12:03:37-00:00</lastmod>
+<lastmod>2019-04-20T19:58:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/categories.html</loc>
-<lastmod>2019-02-22T12:03:37-00:00</lastmod>
+<lastmod>2019-04-20T19:58:54-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/portafolio/blogs/</loc>
-<lastmod>2017-12-27T22:22:00-06:00</lastmod>
+<lastmod>2019-04-18T14:50:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
@@ -47,7 +47,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/portafolio/contacto/</loc>
-<lastmod>2017-12-27T22:20:00-06:00</lastmod>
+<lastmod>2019-04-18T14:48:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
@@ -82,8 +82,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/portafolio/soluciones/</loc>
-<lastmod>2017-12-27T22:20:00-06:00</lastmod>
+<lastmod>2019-04-18T14:32:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/presentaciones/revolucion-tecnologica/</loc>
+<lastmod>2019-04-01T18:52:00-06:00</lastmod>
+<changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
@@ -103,7 +110,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</loc>
-<lastmod>2019-01-29T12:02:00-06:00</lastmod>
+<lastmod>2019-02-07T22:04:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
@@ -985,7 +992,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/category/presentaciones.html</loc>
-<lastmod>2017-12-10T10:40:00-06:37</lastmod>
+<lastmod>2019-04-01T18:52:00-06:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/tag/conferencias.html</loc>
+<lastmod>2019-04-01T18:52:00-06:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.movimientolibre.com/tag/educacion.html</loc>
+<lastmod>2019-04-01T18:52:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1006,7 +1027,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/tag/gnu-linux.html</loc>
-<lastmod>2019-01-29T12:02:00-06:37</lastmod>
+<lastmod>2019-02-07T22:04:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1110,22 +1131,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://www.movimientolibre.com/tag/educacion.html</loc>
-<lastmod>2015-03-09T11:00:00-06:37</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://www.movimientolibre.com/tag/astronomia.html</loc>
 <lastmod>2014-01-14T15:55:00-06:37</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.movimientolibre.com/tag/conferencias.html</loc>
-<lastmod>2011-06-14T10:17:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
