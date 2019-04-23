@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/</loc>
-<lastmod>2019-04-20T19:58:54-00:00</lastmod>
+<lastmod>2019-04-23T14:55:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/archives.html</loc>
-<lastmod>2019-04-20T19:58:54-00:00</lastmod>
+<lastmod>2019-04-23T14:55:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/tags.html</loc>
-<lastmod>2019-04-20T19:58:54-00:00</lastmod>
+<lastmod>2019-04-23T14:55:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/categories.html</loc>
-<lastmod>2019-04-20T19:58:54-00:00</lastmod>
+<lastmod>2019-04-23T14:55:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -89,7 +89,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/presentaciones/revolucion-tecnologica/</loc>
-<lastmod>2019-04-01T18:52:00-06:00</lastmod>
+<lastmod>2019-04-23T14:48:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
@@ -992,21 +992,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.movimientolibre.com/category/presentaciones.html</loc>
-<lastmod>2019-04-01T18:52:00-06:37</lastmod>
+<lastmod>2019-04-23T14:48:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/tag/conferencias.html</loc>
-<lastmod>2019-04-01T18:52:00-06:37</lastmod>
+<lastmod>2019-04-23T14:48:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.movimientolibre.com/tag/educacion.html</loc>
-<lastmod>2019-04-01T18:52:00-06:37</lastmod>
+<lastmod>2019-04-23T14:48:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
