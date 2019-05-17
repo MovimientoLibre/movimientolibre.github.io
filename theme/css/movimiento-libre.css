@@ -152,6 +152,16 @@ a.card-link:hover   { color: #003060; text-decoration: underline; }
 a.card-link:active,
 a.card-link:visited { color: #000000; text-decoration: none; }
 
+/* Pagination */
+a.page-link {
+    border: 1px solid #888;
+    color: #003399; text-decoration: none;
+}
+a.page-link:focus,
+a.page-link:hover   { color: #9933FF; text-decoration: underline; }
+a.page-link:active,
+a.page-link:visited { color: #003399; text-decoration: none; }
+
 /* Footer */
 
 footer {
