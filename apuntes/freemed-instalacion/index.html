@@ -8,32 +8,32 @@
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Instalación de FreeMED en Debian Etch">
     <meta itemprop="description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
-    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png">
+    <meta itemprop="image" content="/apuntes/freemed-instalacion/php.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Instalación de FreeMED en Debian Etch">
     <meta name="twitter:description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
-    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png">
+    <meta name="twitter:image:src" content="/apuntes/freemed-instalacion/php.png">
     <meta property="og:title" content="Instalación de FreeMED en Debian Etch">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/">
-    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png">
+    <meta property="og:url" content="/apuntes/freemed-instalacion/">
+    <meta property="og:image" content="/apuntes/freemed-instalacion/php.png">
     <meta property="og:description" content="La instalación del FreeMED, una aplicación web basada en PHP, MySQL y Apache que sirve para administrar las citas de los pacientes con sus médicos.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Instalación de FreeMED en Debian Etch - Movimiento Libre</title>
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="/theme/css/movimiento-libre.css">
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
                     <script>
                         window.dataLayer = window.dataLayer || [];
@@ -45,22 +45,22 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
+            <a class="navbar-brand" href="/">Movimiento Libre</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navBootstrap4">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/index.html">Contacto</a></li>
+                    <li><a class="nav-link" href="/category/apuntes.html">Apuntes</a></li>
+                    <li><a class="nav-link" href="/category/articulos.html">Artículos</a></li>
+                    <li><a class="nav-link" href="/category/presentaciones.html">Presentaciones</a></li>
+                    <li><a class="nav-link" href="/portafolio/contacto/index.html">Contacto</a></li>
                 </ul>
                 <ul class="navbar-nav movimientolibre-navbar-icons">
                     <li><a class="movimientolibre-navbar-icon-link" href="https://twitter.com/guivaloz/" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://www.facebook.com/movimientolibrepuntocom/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://github.com/guivaloz" target="_blank"><i class="fab fa-github-square"></i></a></li>
-                    <li><a class="movimientolibre-navbar-icon-link" href="http://www.movimientolibre.com/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -84,9 +84,9 @@
                             "name": "Movimiento Libre",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
                             },
-                            "url": "http://www.movimientolibre.com"
+                            "url": "https://movimientolibre.com"
                         },
                         "author": "Guillermo Valdés Lozano (guivaloz)",
                         "name": "Instalación de FreeMED en Debian Etch",
@@ -95,8 +95,8 @@
                         "dateCreated": "2008-01-16 19:10:00-06:00",
                         "datePublished": "2008-01-16 19:10:00-06:00",
                         "dateModified": "2008-01-16 19:10:00-06:00",
-                        "image": "http://www.movimientolibre.com/apuntes/freemed-instalacion/php.png",
-                        "url": "http://www.movimientolibre.com/apuntes/freemed-instalacion/"
+                        "image": "https://movimientolibre.com/apuntes/freemed-instalacion/php.png",
+                        "url": "https://movimientolibre.com/apuntes/freemed-instalacion/"
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de FreeMED en Debian Etch</h2>
@@ -115,49 +115,49 @@
 <p>Vamos a partir de que tenga instalado Debian Etch en su equipo, a partir de un disco de instalación por red (CD de network install), ya que no es obligado tener interfaz gráfica en el servidor...</p>
 <h3>Instalaciones</h3>
 <p>Instale Apache 2, MySQL, PHP 4, TeTeX y Subversion:</p>
-<div class="highlight"><pre><span></span># aptitude update
-# aptitude install apache2 libapache2-mod-php4 php4-cgi mysql-server-4.1 php4-mysql imagemagick tetex-bin tetex-extra subversion
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">aptitude</span> <span class="k">update</span>
+<span class="o">#</span> <span class="n">aptitude</span> <span class="n">install</span> <span class="n">apache2</span> <span class="n">libapache2</span><span class="o">-</span><span class="k">mod</span><span class="o">-</span><span class="n">php4</span> <span class="n">php4</span><span class="o">-</span><span class="n">cgi</span> <span class="n">mysql</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="mi">4</span><span class="p">.</span><span class="mi">1</span> <span class="n">php4</span><span class="o">-</span><span class="n">mysql</span> <span class="n">imagemagick</span> <span class="n">tetex</span><span class="o">-</span><span class="n">bin</span> <span class="n">tetex</span><span class="o">-</span><span class="n">extra</span> <span class="n">subversion</span>
 </pre></div>
 
 
 <h3>Cree el usuario y la base de datos para el FreeMED en MySQL</h3>
 <p>Si necesita establecer la contraseña del usuario root en MySQL:</p>
-<div class="highlight"><pre><span></span># mysqladmin -u root password ROOTPASSWD
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mysqladmin</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="n">password</span> <span class="n">ROOTPASSWD</span>
 </pre></div>
 
 
 <p>Ingrese a MySQL como root:</p>
-<div class="highlight"><pre><span></span># mysql -u root -p
-Enter password:******
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+<span class="n">Enter</span> <span class="n">password</span><span class="p">:</span><span class="o">******</span>
 </pre></div>
 
 
 <p>Otorgue (y en consecencia se creará el usuario) a freemed los privilegios totales en esa base de datos:</p>
-<div class="highlight"><pre><span></span>&gt; GRANT ALL ON freemed.* TO freemed@localhost IDENTIFIED BY &#39;FREEMEDPASSWD&#39;;
+<div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="ow">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">freemed</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">freemed</span><span class="nv">@localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;FREEMEDPASSWD&#39;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 
 <p>Salga de MySQL con:</p>
-<div class="highlight"><pre><span></span>&gt; EXIT
+<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="k">EXIT</span>
 </pre></div>
 
 
 <h3>Baje el FreeMED</h3>
 <p>Debe instalarse FreeMED en /usr/share/freemed. Tenga paciencia con el comando <em>svn</em>, ya que puede tardar varios minutos en mostrar actividad.</p>
-<div class="highlight"><pre><span></span># mkdir /usr/share/freemed
-# cd /usr/share
-# svn co http://svn.freemedsoftware.org/freemed/branches/0.8.x freemed
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">freemed</span>
+<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span>
+<span class="o">#</span> <span class="n">svn</span> <span class="n">co</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">freemedsoftware</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">freemed</span><span class="o">/</span><span class="n">branches</span><span class="o">/</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="n">x</span> <span class="n">freemed</span>
 </pre></div>
 
 
 <p>Cambie los permisos de todos los archivos del FreeMED al usuario del Apache:</p>
-<div class="highlight"><pre><span></span># chown -Rf www-data:www-data freemed
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chown</span> <span class="o">-</span><span class="n">Rf</span> <span class="n">www</span><span class="o">-</span><span class="k">data</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="k">data</span> <span class="n">freemed</span>
 </pre></div>
 
 
 <h3>Configure el Apache</h3>
 <p>Edite la directiva DirectoryIndex de Apache para que tome por defecto primero a index.php y luego a los demás:</p>
-<div class="highlight"><pre><span></span># nano -w /etc/apache2/mods-available/dir.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">mods</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">dir</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
@@ -169,7 +169,7 @@ Enter password:******
 
 
 <p>Necesitamos declararle al Apache dónde se encuentra el sistema FreeMED, así que modificaremos su configuración:</p>
-<div class="highlight"><pre><span></span># nano -w /etc/apache2/sites-available/default
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="k">default</span>
 </pre></div>
 
 
@@ -198,38 +198,38 @@ Enter password:******
 
 
 <p>Reinicie el Apache para que se apliquen los cambios que hemos hecho</p>
-<div class="highlight"><pre><span></span># /etc/init.d/apache2 restart
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">apache2</span> <span class="k">restart</span>
 </pre></div>
 
 
 <h3>Configure FreeMed</h3>
-<div class="highlight"><pre><span></span># nano -w /usr/share/freemed/lib/settings.php
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">freemed</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">settings</span><span class="p">.</span><span class="n">php</span>
 </pre></div>
 
 
 <p>Modifique los siguientes comandos:</p>
-<div class="highlight"><pre><span></span>define (&#39;DB_HOST&#39;, &quot;localhost&quot;);          // database (SQL) host location
-define (&#39;DB_NAME&#39;, &quot;freemed&quot;);            // database name
-define (&#39;DB_USER&#39;, &quot;freemed&quot;);            // SQL server username
-define (&#39;DB_PASSWORD&#39;, &quot;FREEMEDPASSWD&quot;);  // SQL server password
-define (&#39;HOST&#39;, &#39;freemed&#39;);               // host name for this system
-define (&#39;BASE_URL&#39;, &#39;/freemed&#39;);          // offset (i.e. http://here/package)
+<div class="highlight"><pre><span></span><span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_HOST</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">localhost</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;          // database (SQL) host location</span>
+<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_NAME</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">freemed</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;            // database name</span>
+<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_USER</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">freemed</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;            // SQL server username</span>
+<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_PASSWORD</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">FREEMEDPASSWD</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;  // SQL server password</span>
+<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">HOST</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">freemed</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;               // host name for this system</span>
+<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">BASE_URL</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">/freemed</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;          // offset (i.e. http://here/package)</span>
 </pre></div>
 
 
 <p>Si el servidor no tiene instalada la interfaz gráfica, y por lo tanto, no tiene instalado un navegador de internet, necesitará autorizar que el script de instalación sea ejecutado desde otra estación de trabajo modificando la siguiente línea, use la IP del equipo donde entrará por primera vez a FreeMED:</p>
-<div class="highlight"><pre><span></span>define (&#39;INIT_ADDR&#39;,&quot;192.168.1.66&quot;);  // this is the only IP address that can run the init wizard...
+<div class="highlight"><pre><span></span><span class="n">define</span> <span class="p">(</span><span class="s1">&#39;INIT_ADDR&#39;</span><span class="p">,</span><span class="ss">&quot;192.168.1.66&quot;</span><span class="p">);</span>  <span class="o">//</span> <span class="n">this</span> <span class="k">is</span> <span class="n">the</span> <span class="k">only</span> <span class="n">IP</span> <span class="n">address</span> <span class="n">that</span> <span class="n">can</span> <span class="n">run</span> <span class="n">the</span> <span class="n">init</span> <span class="n">wizard</span><span class="p">...</span>
 </pre></div>
 
 
 <h3>Hostname</h3>
 <p>Como uso un modem 2Wire de Infinitum que es un ruteador y un ligero DNS, necesito que se pueda accesar a la aplicación web escribiendo http://freemed desde cualquier estación de trabajo. Modifique el archivo de configuración del dhclient3:</p>
-<div class="highlight"><pre><span></span># nano -w /etc/dhcp3/dhclient.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">dhcp3</span><span class="o">/</span><span class="n">dhclient</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Y modifique esta línea:</p>
-<div class="highlight"><pre><span></span>send host-name &quot;freemed&quot;
+<div class="highlight"><pre><span></span><span class="k">send</span> <span class="nv">host</span><span class="o">-</span><span class="nv">name</span> <span class="s2">&quot;</span><span class="s">freemed</span><span class="s2">&quot;</span>
 </pre></div>
 
 
@@ -261,38 +261,38 @@ define (&#39;BASE_URL&#39;, &#39;/freemed&#39;);          // offset (i.e. http:/
                             </p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="/portafolio/soluciones/">Soluciones en software a la medida</a></li>
                         </ul>
                     </div>
                     <div class="card my-4 movimientolibre-card">
                         <h5 class="card-header movimientolibre-card-header">Etiquetas</h5>
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/docker.html">docker</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                                <li><a href="/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="/tag/docker.html">docker</a></li>
+                                <li><a href="/tag/educacion.html">educación</a></li>
+                                <li><a href="/tag/fedora.html">fedora</a></li>
+                                <li><a href="/tag/flisol.html">flisol</a></li>
+                                <li><a href="/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="/tag/git.html">git</a></li>
+                                <li><a href="/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="/tag/gulag.html">gulag</a></li>
+                                <li><a href="/tag/hardware.html">hardware</a></li>
+                                <li><a href="/tag/kde.html">kde</a></li>
+                                <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="/tag/latex.html">latex</a></li>
+                                <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/php.html">php</a></li>
+                                <li><a href="/tag/politica.html">política</a></li>
+                                <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/ruby.html">ruby</a></li>
+                                <li><a href="/tag/servidores.html">servidores</a></li>
+                                <li><a href="/tag/software-libre.html">software libre</a></li>
+                                <li><a href="/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="/tag/wallpapers.html">wallpapers</a></li>
                             </ul>
                         </div>
                     </div>
@@ -322,15 +322,15 @@ define (&#39;BASE_URL&#39;, &#39;/freemed&#39;);          // offset (i.e. http:/
             <hr>
             <p>
                 Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
-                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
+                Protegidos por la licencia <a href="/licencias/gfdl-es/">GFDL</a>.
                 Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
-                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.
+                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="/licencias/gpl-2-es/">GPLv3</a>.
             </p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="http://www.movimientolibre.com/theme/js/movimiento-libre.js"></script>
+    <script src="/theme/js/movimiento-libre.js"></script>
 </body>
 </html>

@@ -8,32 +8,32 @@
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Respaldos con rsync">
     <meta itemprop="description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
-    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg">
+    <meta itemprop="image" content="/apuntes/rsync-respaldos/backup.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Respaldos con rsync">
     <meta name="twitter:description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
-    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg">
+    <meta name="twitter:image:src" content="/apuntes/rsync-respaldos/backup.jpg">
     <meta property="og:title" content="Respaldos con rsync">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/">
-    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg">
+    <meta property="og:url" content="/apuntes/rsync-respaldos/">
+    <meta property="og:image" content="/apuntes/rsync-respaldos/backup.jpg">
     <meta property="og:description" content="Algo que todo usuario de la informática debe mantener como parte de su quehacer es la labor de hacer respaldos periódicos. Ya sea en un medio de almacenamiento grande (por ejemplo, un disco duro externo) o bien en otro equipo en la red local.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Respaldos con rsync - Movimiento Libre</title>
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="/theme/css/movimiento-libre.css">
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
                     <script>
                         window.dataLayer = window.dataLayer || [];
@@ -45,22 +45,22 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
+            <a class="navbar-brand" href="/">Movimiento Libre</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navBootstrap4">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/index.html">Contacto</a></li>
+                    <li><a class="nav-link" href="/category/apuntes.html">Apuntes</a></li>
+                    <li><a class="nav-link" href="/category/articulos.html">Artículos</a></li>
+                    <li><a class="nav-link" href="/category/presentaciones.html">Presentaciones</a></li>
+                    <li><a class="nav-link" href="/portafolio/contacto/index.html">Contacto</a></li>
                 </ul>
                 <ul class="navbar-nav movimientolibre-navbar-icons">
                     <li><a class="movimientolibre-navbar-icon-link" href="https://twitter.com/guivaloz/" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://www.facebook.com/movimientolibrepuntocom/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://github.com/guivaloz" target="_blank"><i class="fab fa-github-square"></i></a></li>
-                    <li><a class="movimientolibre-navbar-icon-link" href="http://www.movimientolibre.com/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -84,9 +84,9 @@
                             "name": "Movimiento Libre",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
                             },
-                            "url": "http://www.movimientolibre.com"
+                            "url": "https://movimientolibre.com"
                         },
                         "author": "Guillermo Valdés Lozano (guivaloz)",
                         "name": "Respaldos con rsync",
@@ -95,8 +95,8 @@
                         "dateCreated": "2011-12-29 20:50:00-06:00",
                         "datePublished": "2011-12-29 20:50:00-06:00",
                         "dateModified": "2011-12-29 20:50:00-06:00",
-                        "image": "http://www.movimientolibre.com/apuntes/rsync-respaldos/backup.jpg",
-                        "url": "http://www.movimientolibre.com/apuntes/rsync-respaldos/"
+                        "image": "https://movimientolibre.com/apuntes/rsync-respaldos/backup.jpg",
+                        "url": "https://movimientolibre.com/apuntes/rsync-respaldos/"
                         }
                     </script>
                     <h2 class="article-post-title">Respaldos con rsync</h2>
@@ -105,42 +105,42 @@
 <p>Existen muchas formas en las cuales podríamos perder nuestros archivos, que van desde el robo de nuestra <em>laptop</em> hasta el borrado accidental. <em>La verdad es que la gran mayoría de nosotros no piensa en respaldar sus documentos hasta que la fatal desgracia nos enseña que debimos haberlo hecho.</em> Y que cuando es por descompostura, pérdida o robo; nos dolerá más la pérdida de los archivos que el valor del equipo mismo.</p>
 <p>Como solución simple sugiero instalar un segundo disco duro en un equipo de escritorio, donde los los usuarios depositen el respaldo de sus <em>laptops</em> vía <em>wireless</em> desde sus equipos portátiles. <em>No confío que sea seguro compartir un disco duro externo entre varias personas, ya que se les puede caer o perder.</em></p>
 <p>Así pues instalé un segundo disco duro en el equipo de escritorio, el cual dedicaré enteramente a respaldos. Y como <em>tú y yo</em> usamos GNU/Linux, éste aparece como /dev/sdb.</p>
-<div class="highlight"><pre><span></span># fdisk -l /dev/sdb
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span>
 
-Disk /dev/sdb: 250.1 GB, 250059350016 bytes
-81 heads, 63 sectors/track, 95707 cylinders, 488397168 sectores en total
-Units = sectores of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Identificador del disco: 0x7da5580f
+<span class="n">Disk</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span><span class="p">:</span> <span class="mi">250</span><span class="p">.</span><span class="mi">1</span> <span class="n">GB</span><span class="p">,</span> <span class="mi">250059350016</span> <span class="n">bytes</span>
+<span class="mi">81</span> <span class="n">heads</span><span class="p">,</span> <span class="mi">63</span> <span class="n">sectors</span><span class="o">/</span><span class="n">track</span><span class="p">,</span> <span class="mi">95707</span> <span class="n">cylinders</span><span class="p">,</span> <span class="mi">488397168</span> <span class="n">sectores</span> <span class="n">en</span> <span class="n">total</span>
+<span class="n">Units</span> <span class="o">=</span> <span class="n">sectores</span> <span class="k">of</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">512</span> <span class="o">=</span> <span class="mi">512</span> <span class="n">bytes</span>
+<span class="n">Sector</span> <span class="k">size</span> <span class="p">(</span><span class="n">logical</span><span class="o">/</span><span class="n">physical</span><span class="p">):</span> <span class="mi">512</span> <span class="n">bytes</span> <span class="o">/</span> <span class="mi">512</span> <span class="n">bytes</span>
+<span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="k">size</span> <span class="p">(</span><span class="n">minimum</span><span class="o">/</span><span class="n">optimal</span><span class="p">):</span> <span class="mi">512</span> <span class="n">bytes</span> <span class="o">/</span> <span class="mi">512</span> <span class="n">bytes</span>
+<span class="n">Identificador</span> <span class="n">del</span> <span class="n">disco</span><span class="p">:</span> <span class="mi">0</span><span class="n">x7da5580f</span>
 
-Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
-/dev/sdb1            2048   488397167   244197560   83  Linux
+<span class="n">Disposit</span><span class="p">.</span> <span class="n">Inicio</span>    <span class="n">Comienzo</span>      <span class="n">Fin</span>      <span class="n">Bloques</span>  <span class="n">Id</span>  <span class="n">Sistema</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>            <span class="mi">2048</span>   <span class="mi">488397167</span>   <span class="mi">244197560</span>   <span class="mi">83</span>  <span class="n">Linux</span>
 </pre></div>
 
 
 <p>Su única partición la <em>formateé</em> bajo el confiable sistema de archivos Ext4.</p>
-<div class="highlight"><pre><span></span># mkfs.ext4 -L respaldos /dev/sdb1
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext4</span> <span class="o">-</span><span class="n">L</span> <span class="n">respaldos</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>
 </pre></div>
 
 
 <p>Para luego montarlo manualmente en /mnt/respaldos</p>
-<div class="highlight"><pre><span></span># mount /dev/sdb1 /mnt/respaldos
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span>
 </pre></div>
 
 
 <p>Claro que me conviene que esta partición se monte cada vez que enciendo el equipo, así que agrego la siguiente línea a la configuración de /etc/fstab para ello.</p>
-<div class="highlight"><pre><span></span>/dev/sdb1   /mnt/respaldos    ext4    defaults    0 1
+<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>   <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span>    <span class="n">ext4</span>    <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">1</span>
 </pre></div>
 
 
 <p>Ya <em>particionado</em> y <em>formateado</em> el disco, procedo a crear directorios para cada usuario que deba respaldar. Con anterioridad ya había creado los usuarios. Sustituya <em>usuario1</em>, <em>usuario2</em> y <em>usuario3</em> con los nombres de los usuarios que vayan a hacer respaldos.</p>
-<div class="highlight"><pre><span></span># mkdir /mnt/respaldos/usuario1
-# mkdir /mnt/respaldos/usuario2
-# mkdir /mnt/respaldos/usuario3
-# chown usuario1:users /mnt/respaldos/usuario1
-# chown usuario2:users /mnt/respaldos/usuario2
-# chown usuario3:users /mnt/respaldos/usuario3
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario1</span>
+<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario2</span>
+<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario3</span>
+<span class="o">#</span> <span class="n">chown</span> <span class="n">usuario1</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario1</span>
+<span class="o">#</span> <span class="n">chown</span> <span class="n">usuario2</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario2</span>
+<span class="o">#</span> <span class="n">chown</span> <span class="n">usuario3</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario3</span>
 </pre></div>
 
 
@@ -159,7 +159,7 @@ Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
 
 
 <p>Y agrego esta línea que habilita el <em>atajo</em>:</p>
-<div class="highlight"><pre><span></span>alias respaldar=&quot;rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/&quot;
+<div class="highlight"><pre><span></span><span class="k">alias</span> <span class="n">respaldar</span><span class="o">=</span><span class="ss">&quot;rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/&quot;</span>
 </pre></div>
 
 
@@ -186,38 +186,38 @@ Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
                             </p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="/portafolio/soluciones/">Soluciones en software a la medida</a></li>
                         </ul>
                     </div>
                     <div class="card my-4 movimientolibre-card">
                         <h5 class="card-header movimientolibre-card-header">Etiquetas</h5>
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/docker.html">docker</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                                <li><a href="/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="/tag/docker.html">docker</a></li>
+                                <li><a href="/tag/educacion.html">educación</a></li>
+                                <li><a href="/tag/fedora.html">fedora</a></li>
+                                <li><a href="/tag/flisol.html">flisol</a></li>
+                                <li><a href="/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="/tag/git.html">git</a></li>
+                                <li><a href="/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="/tag/gulag.html">gulag</a></li>
+                                <li><a href="/tag/hardware.html">hardware</a></li>
+                                <li><a href="/tag/kde.html">kde</a></li>
+                                <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="/tag/latex.html">latex</a></li>
+                                <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/php.html">php</a></li>
+                                <li><a href="/tag/politica.html">política</a></li>
+                                <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/ruby.html">ruby</a></li>
+                                <li><a href="/tag/servidores.html">servidores</a></li>
+                                <li><a href="/tag/software-libre.html">software libre</a></li>
+                                <li><a href="/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="/tag/wallpapers.html">wallpapers</a></li>
                             </ul>
                         </div>
                     </div>
@@ -247,15 +247,15 @@ Disposit. Inicio    Comienzo      Fin      Bloques  Id  Sistema
             <hr>
             <p>
                 Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
-                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
+                Protegidos por la licencia <a href="/licencias/gfdl-es/">GFDL</a>.
                 Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
-                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.
+                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="/licencias/gpl-2-es/">GPLv3</a>.
             </p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="http://www.movimientolibre.com/theme/js/movimiento-libre.js"></script>
+    <script src="/theme/js/movimiento-libre.js"></script>
 </body>
 </html>

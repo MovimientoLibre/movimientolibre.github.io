@@ -8,32 +8,32 @@
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Instalación de Fedora Server 28, parte 5, proxy Squid">
     <meta itemprop="description" content="Vamos a configurar un proxy con Squid.">
-    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png">
+    <meta itemprop="image" content="/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Instalación de Fedora Server 28, parte 5, proxy Squid">
     <meta name="twitter:description" content="Vamos a configurar un proxy con Squid.">
-    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png">
+    <meta name="twitter:image:src" content="/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png">
     <meta property="og:title" content="Instalación de Fedora Server 28, parte 5, proxy Squid">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/">
-    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png">
+    <meta property="og:url" content="/apuntes/fedora-server-28-parte-05/">
+    <meta property="og:image" content="/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png">
     <meta property="og:description" content="Vamos a configurar un proxy con Squid.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Instalación de Fedora Server 28, parte 5, proxy Squid - Movimiento Libre</title>
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="/theme/css/movimiento-libre.css">
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
                     <script>
                         window.dataLayer = window.dataLayer || [];
@@ -45,22 +45,22 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
+            <a class="navbar-brand" href="/">Movimiento Libre</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navBootstrap4">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/index.html">Contacto</a></li>
+                    <li><a class="nav-link" href="/category/apuntes.html">Apuntes</a></li>
+                    <li><a class="nav-link" href="/category/articulos.html">Artículos</a></li>
+                    <li><a class="nav-link" href="/category/presentaciones.html">Presentaciones</a></li>
+                    <li><a class="nav-link" href="/portafolio/contacto/index.html">Contacto</a></li>
                 </ul>
                 <ul class="navbar-nav movimientolibre-navbar-icons">
                     <li><a class="movimientolibre-navbar-icon-link" href="https://twitter.com/guivaloz/" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://www.facebook.com/movimientolibrepuntocom/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://github.com/guivaloz" target="_blank"><i class="fab fa-github-square"></i></a></li>
-                    <li><a class="movimientolibre-navbar-icon-link" href="http://www.movimientolibre.com/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -84,9 +84,9 @@
                             "name": "Movimiento Libre",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
                             },
-                            "url": "http://www.movimientolibre.com"
+                            "url": "https://movimientolibre.com"
                         },
                         "author": "Guillermo Valdés Lozano (guivaloz)",
                         "name": "Instalación de Fedora Server 28, parte 5, proxy Squid",
@@ -95,227 +95,227 @@
                         "dateCreated": "2018-06-24 22:15:00-05:00",
                         "datePublished": "2018-06-24 22:15:00-05:00",
                         "dateModified": "2018-06-24 22:15:00-05:00",
-                        "image": "http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png",
-                        "url": "http://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/"
+                        "image": "https://movimientolibre.com/apuntes/fedora-server-28-parte-05/fedora-logo-icon.png",
+                        "url": "https://movimientolibre.com/apuntes/fedora-server-28-parte-05/"
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de Fedora Server 28, parte 5, proxy Squid</h2>
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>24 junio 2018</p>
 <h3>Squid - archivos de configuración</h3>
 <p>Instale Squid...</p>
-<div class="highlight"><pre><span></span># dnf install squid
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">squid</span>
 </pre></div>
 
 
 <p>En el directorio <code>/etc/squid</code> se deben de encontrar los archivos de configuración.</p>
-<div class="highlight"><pre><span></span># cd /etc/squid
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">squid</span>
 </pre></div>
 
 
 <p>Ahí debe estar el archivo <code>squid.conf</code>. Éste puede cargar otros archivos <em>conf</em>, <em>txt</em>, <em>css</em>, etc.</p>
 <p>Como puede ser muy extensa la configuración de Squid, vamos a dividir la configuración de <code>squid.conf</code> en archivos según su propósito. Comienze por el principal que cargará los demás...</p>
-<div class="highlight"><pre><span></span># nano squid.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span># Correo electronico
-cache_mgr webmaster@miredlocal.lan
+<div class="highlight"><pre><span></span># <span class="nv">Correo</span> <span class="nv">electronico</span>
+<span class="nv">cache_mgr</span> <span class="nv">webmaster</span>@<span class="nv">miredlocal</span>.<span class="nv">lan</span>
 
-# Nombre de este servidor
-visible_hostname miproxy
+# <span class="nv">Nombre</span> <span class="nv">de</span> <span class="nv">este</span> <span class="nv">servidor</span>
+<span class="nv">visible_hostname</span> <span class="nv">miproxy</span>
 
-# Archivos separados de configuracion
-include &quot;/etc/squid/squid-01-declaraciones.conf&quot;
-include &quot;/etc/squid/squid-02-accesos.conf&quot;
-include &quot;/etc/squid/squid-03-opciones.conf&quot;
-include &quot;/etc/squid/squid-04-balanceo.conf&quot;
+# <span class="nv">Archivos</span> <span class="nv">separados</span> <span class="nv">de</span> <span class="nv">configuracion</span>
+<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-01-declaraciones.conf</span><span class="s2">&quot;</span>
+<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-02-accesos.conf</span><span class="s2">&quot;</span>
+<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-03-opciones.conf</span><span class="s2">&quot;</span>
+<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-04-balanceo.conf</span><span class="s2">&quot;</span>
 </pre></div>
 
 
 <h3>Squid - declaraciones</h3>
 <p>Cree <code>squid-01-declaraciones.conf</code>...</p>
-<div class="highlight"><pre><span></span># nano squid-01-declaraciones.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="n">declaraciones</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span># Puerto para permitir https
-acl SSLPorts  port  443        # https
-acl SSLPorts  port 5222        # .whatsapp.com, .whatsapp.net
-acl SSLPorts  port 5228        # mtalk.google.com
+<div class="highlight"><pre><span></span># <span class="nv">Puerto</span> <span class="nv">para</span> <span class="nv">permitir</span> <span class="nv">https</span>
+<span class="nv">acl</span> <span class="nv">SSLPorts</span>  <span class="nv">port</span>  <span class="mi">443</span>        # <span class="nv">https</span>
+<span class="nv">acl</span> <span class="nv">SSLPorts</span>  <span class="nv">port</span> <span class="mi">5222</span>        # .<span class="nv">whatsapp</span>.<span class="nv">com</span>, .<span class="nv">whatsapp</span>.<span class="nv">net</span>
+<span class="nv">acl</span> <span class="nv">SSLPorts</span>  <span class="nv">port</span> <span class="mi">5228</span>        # <span class="nv">mtalk</span>.<span class="nv">google</span>.<span class="nv">com</span>
 
-# Puertos que se pueden usar
-acl SafePorts port   21        # ftp
-acl SafePorts port   70        # gopher
-acl SafePorts port   80        # http
-acl SafePorts port  443        # https
-acl SafePorts port 1025-65535  # unregistered ports
+# <span class="nv">Puertos</span> <span class="nv">que</span> <span class="nv">se</span> <span class="nv">pueden</span> <span class="nv">usar</span>
+<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>   <span class="mi">21</span>        # <span class="nv">ftp</span>
+<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>   <span class="mi">70</span>        # <span class="nv">gopher</span>
+<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>   <span class="mi">80</span>        # <span class="nv">http</span>
+<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>  <span class="mi">443</span>        # <span class="nv">https</span>
+<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span> <span class="mi">1025</span><span class="o">-</span><span class="mi">65535</span>  # <span class="nv">unregistered</span> <span class="nv">ports</span>
 
-# Declaración connect
-acl CONNECT method CONNECT
+# <span class="nv">Declaraci</span>ó<span class="nv">n</span> <span class="k">connect</span>
+<span class="nv">acl</span> <span class="k">CONNECT</span> <span class="nv">method</span> <span class="k">CONNECT</span>
 
-# Desde y hacia Localhost
-acl DesdeLocalhost    src        127.0.0.0/8
-acl HaciaLocalhost    dst        127.0.0.0/8
+# <span class="nv">Desde</span> <span class="nv">y</span> <span class="nv">hacia</span> <span class="nv">Localhost</span>
+<span class="nv">acl</span> <span class="nv">DesdeLocalhost</span>    <span class="nv">src</span>        <span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
+<span class="nv">acl</span> <span class="nv">HaciaLocalhost</span>    <span class="nv">dst</span>        <span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
 
-# Desde y hacia LAN
-acl DesdeLAN          src        192.168.4.0/24
-acl HaciaLAN          dst        192.168.4.0/24
+# <span class="nv">Desde</span> <span class="nv">y</span> <span class="nv">hacia</span> <span class="nv">LAN</span>
+<span class="nv">acl</span> <span class="nv">DesdeLAN</span>          <span class="nv">src</span>        <span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
+<span class="nv">acl</span> <span class="nv">HaciaLAN</span>          <span class="nv">dst</span>        <span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
 
-# Definiciones de sitios
-acl SitiosPermitidos  dstdomain  &quot;/etc/squid/sitios-permitidos.txt&quot;
-acl SitiosProhibidos  dstdomain  &quot;/etc/squid/sitios-prohibidos.txt&quot;
+# <span class="nv">Definiciones</span> <span class="nv">de</span> <span class="nv">sitios</span>
+<span class="nv">acl</span> <span class="nv">SitiosPermitidos</span>  <span class="nv">dstdomain</span>  <span class="s2">&quot;</span><span class="s">/etc/squid/sitios-permitidos.txt</span><span class="s2">&quot;</span>
+<span class="nv">acl</span> <span class="nv">SitiosProhibidos</span>  <span class="nv">dstdomain</span>  <span class="s2">&quot;</span><span class="s">/etc/squid/sitios-prohibidos.txt</span><span class="s2">&quot;</span>
 
-# Definiciones de expresiones regulares sobre publicidad
-acl RegExpPublicidad  dstdom_regex -i &quot;/etc/squid/regexp-publicidad.txt&quot;
+# <span class="nv">Definiciones</span> <span class="nv">de</span> <span class="nv">expresiones</span> <span class="nv">regulares</span> <span class="nv">sobre</span> <span class="nv">publicidad</span>
+<span class="nv">acl</span> <span class="nv">RegExpPublicidad</span>  <span class="nv">dstdom_regex</span> <span class="o">-</span><span class="nv">i</span> <span class="s2">&quot;</span><span class="s">/etc/squid/regexp-publicidad.txt</span><span class="s2">&quot;</span>
 
-# Audio MP3
-acl AudioMP3Mime      rep_mime_type  audio/mpeg
-acl AudioMP3RegExp    urlpath_regex  \.mp3$
+# <span class="nv">Audio</span> <span class="nv">MP3</span>
+<span class="nv">acl</span> <span class="nv">AudioMP3Mime</span>      <span class="nv">rep_mime_type</span>  <span class="nv">audio</span><span class="o">/</span><span class="nv">mpeg</span>
+<span class="nv">acl</span> <span class="nv">AudioMP3RegExp</span>    <span class="nv">urlpath_regex</span>  \.<span class="nv">mp3</span>$
 
-# Video MPEG4 (MPG4)
-acl VideoMP4Mime      rep_mime_type  video/mp4 video/x-mp4
-acl VideoMP4RegExp    urlpath_regex  \.mp4$
+# <span class="nv">Video</span> <span class="nv">MPEG4</span> <span class="ss">(</span><span class="nv">MPG4</span><span class="ss">)</span>
+<span class="nv">acl</span> <span class="nv">VideoMP4Mime</span>      <span class="nv">rep_mime_type</span>  <span class="nv">video</span><span class="o">/</span><span class="nv">mp4</span> <span class="nv">video</span><span class="o">/</span><span class="nv">x</span><span class="o">-</span><span class="nv">mp4</span>
+<span class="nv">acl</span> <span class="nv">VideoMP4RegExp</span>    <span class="nv">urlpath_regex</span>  \.<span class="nv">mp4</span>$
 
-# Flash Video Format (FLV)
-acl FlashVideoMime    rep_mime_type  video/flv video/x-flv
-acl FlashVideoRegExp  urlpath_regex  \.flv$
+# <span class="nv">Flash</span> <span class="nv">Video</span> <span class="nv">Format</span> <span class="ss">(</span><span class="nv">FLV</span><span class="ss">)</span>
+<span class="nv">acl</span> <span class="nv">FlashVideoMime</span>    <span class="nv">rep_mime_type</span>  <span class="nv">video</span><span class="o">/</span><span class="nv">flv</span> <span class="nv">video</span><span class="o">/</span><span class="nv">x</span><span class="o">-</span><span class="nv">flv</span>
+<span class="nv">acl</span> <span class="nv">FlashVideoRegExp</span>  <span class="nv">urlpath_regex</span>  \.<span class="nv">flv</span>$
 
-# Flash General Media Scripts (SWF)
-acl FlashMime         rep_mime_type  application/x-shockwave-flash
-acl FlashRegExp       urlpath_regex  \.swf$
+# <span class="nv">Flash</span> <span class="nv">General</span> <span class="nv">Media</span> <span class="nv">Scripts</span> <span class="ss">(</span><span class="nv">SWF</span><span class="ss">)</span>
+<span class="nv">acl</span> <span class="nv">FlashMime</span>         <span class="nv">rep_mime_type</span>  <span class="nv">application</span><span class="o">/</span><span class="nv">x</span><span class="o">-</span><span class="nv">shockwave</span><span class="o">-</span><span class="nv">flash</span>
+<span class="nv">acl</span> <span class="nv">FlashRegExp</span>       <span class="nv">urlpath_regex</span>  \.<span class="nv">swf</span>$
 </pre></div>
 
 
 <h3>Squid - accesos</h3>
 <p>Cree <code>squid-02-accesos.conf</code>...</p>
-<div class="highlight"><pre><span></span># nano squid-02-accesos.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="n">accesos</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span># El administrador del cache &#39;manager&#39; solo lo hará localhost
-http_access         allow  DesdeLocalhost manager
-http_access         deny                  manager
+<div class="highlight"><pre><span></span># <span class="nv">El</span> <span class="nv">administrador</span> <span class="nv">del</span> <span class="nv">cache</span> <span class="s1">&#39;</span><span class="s">manager</span><span class="s1">&#39;</span> <span class="nv">solo</span> <span class="nv">lo</span> <span class="nv">har</span>á <span class="nv">localhost</span>
+<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">DesdeLocalhost</span> <span class="nv">manager</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>                  <span class="nv">manager</span>
 
-# NEGAR solicitudes por los puertos NO seguros
-http_access         deny   !SafePorts
+# <span class="nv">NEGAR</span> <span class="nv">solicitudes</span> <span class="nv">por</span> <span class="nv">los</span> <span class="nv">puertos</span> <span class="nv">NO</span> <span class="nv">seguros</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="o">!</span><span class="nv">SafePorts</span>
 
-# NEGAR CONNECT a otros puertos NO SSL seguros
-http_access         deny   CONNECT !SSLPorts
+# <span class="nv">NEGAR</span> <span class="k">CONNECT</span> <span class="nv">a</span> <span class="nv">otros</span> <span class="nv">puertos</span> <span class="nv">NO</span> <span class="nv">SSL</span> <span class="nv">seguros</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="k">CONNECT</span> <span class="o">!</span><span class="nv">SSLPorts</span>
 
-# Es recomendable negar conexiones a 127.0.0.1, éstas deben hacerce fuera del proxy
-http_access         deny   HaciaLocalhost
+# <span class="nv">Es</span> <span class="nv">recomendable</span> <span class="nv">negar</span> <span class="nv">conexiones</span> <span class="nv">a</span> <span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>, é<span class="nv">stas</span> <span class="nv">deben</span> <span class="nv">hacerce</span> <span class="nv">fuera</span> <span class="nv">del</span> <span class="nv">proxy</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">HaciaLocalhost</span>
 
-# NEGAR Adobe Flash
-http_access         deny   FlashRegExp
+# <span class="nv">NEGAR</span> <span class="nv">Adobe</span> <span class="nv">Flash</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">FlashRegExp</span>
 
-# Permitir sitios permitidos
-http_access         allow  SitiosPermitidos
+# <span class="nv">Permitir</span> <span class="nv">sitios</span> <span class="nv">permitidos</span>
+<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">SitiosPermitidos</span>
 
-# NEGAR prohibidos y publicidad
-http_access         deny   SitiosProhibidos
-http_access         deny   RegExpPublicidad
+# <span class="nv">NEGAR</span> <span class="nv">prohibidos</span> <span class="nv">y</span> <span class="nv">publicidad</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">SitiosProhibidos</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">RegExpPublicidad</span>
 
-# Permitir todo lo demás a localhost
-http_access         allow  DesdeLocalhost
+# <span class="nv">Permitir</span> <span class="nv">todo</span> <span class="nv">lo</span> <span class="nv">dem</span>á<span class="nv">s</span> <span class="nv">a</span> <span class="nv">localhost</span>
+<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">DesdeLocalhost</span>
 
-# Permitir equipos LAN
-http_access         allow  DesdeLAN
+# <span class="nv">Permitir</span> <span class="nv">equipos</span> <span class="nv">LAN</span>
+<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">DesdeLAN</span>
 
-# NEGAR TODO a todos los demás
-http_access         deny   all
+# <span class="nv">NEGAR</span> <span class="nv">TODO</span> <span class="nv">a</span> <span class="nv">todos</span> <span class="nv">los</span> <span class="nv">dem</span>á<span class="nv">s</span>
+<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">all</span>
 </pre></div>
 
 
 <h3>Squid - opciones</h3>
 <p>Cree <code>squid-03-opciones.conf</code>...</p>
-<div class="highlight"><pre><span></span># nano squid-03-opciones.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="n">opciones</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span># Puerto
-http_port 3128
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Puerto</span>
+<span class="n">http_port</span> <span class="mi">3128</span>
 
-# Disk cache directory
-# - ufs es el sistema de almacenamiento propio de Squid
-# - /var/cache/squid es la ruta
-# - 8192 es la cantidad en MB, debe tener como maximo 20% menos del tamano de la particion
-#        la partición /var tiene 16 GB, así que 8 GB es la mitad
-# -   64 es L1, el numero de subdirectorios de primer nivel
-# -  256 es L2, el numero de subdirectorios de segundo nivel
-cache_dir ufs /var/cache/squid 8192 64 256
+<span class="o">#</span> <span class="n">Disk</span> <span class="k">cache</span> <span class="n">directory</span>
+<span class="o">#</span> <span class="o">-</span> <span class="n">ufs</span> <span class="n">es</span> <span class="n">el</span> <span class="n">sistema</span> <span class="n">de</span> <span class="n">almacenamiento</span> <span class="n">propio</span> <span class="n">de</span> <span class="n">Squid</span>
+<span class="o">#</span> <span class="o">-</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span> <span class="n">es</span> <span class="n">la</span> <span class="n">ruta</span>
+<span class="o">#</span> <span class="o">-</span> <span class="mi">8192</span> <span class="n">es</span> <span class="n">la</span> <span class="n">cantidad</span> <span class="n">en</span> <span class="n">MB</span><span class="p">,</span> <span class="n">debe</span> <span class="n">tener</span> <span class="n">como</span> <span class="n">maximo</span> <span class="mi">20</span><span class="o">%</span> <span class="n">menos</span> <span class="n">del</span> <span class="n">tamano</span> <span class="n">de</span> <span class="n">la</span> <span class="n">particion</span>
+<span class="o">#</span>        <span class="n">la</span> <span class="n">partición</span> <span class="o">/</span><span class="n">var</span> <span class="n">tiene</span> <span class="mi">16</span> <span class="n">GB</span><span class="p">,</span> <span class="n">así</span> <span class="n">que</span> <span class="mi">8</span> <span class="n">GB</span> <span class="n">es</span> <span class="n">la</span> <span class="n">mitad</span>
+<span class="o">#</span> <span class="o">-</span>   <span class="mi">64</span> <span class="n">es</span> <span class="n">L1</span><span class="p">,</span> <span class="n">el</span> <span class="n">numero</span> <span class="n">de</span> <span class="n">subdirectorios</span> <span class="n">de</span> <span class="n">primer</span> <span class="n">nivel</span>
+<span class="o">#</span> <span class="o">-</span>  <span class="mi">256</span> <span class="n">es</span> <span class="n">L2</span><span class="p">,</span> <span class="n">el</span> <span class="n">numero</span> <span class="n">de</span> <span class="n">subdirectorios</span> <span class="n">de</span> <span class="n">segundo</span> <span class="n">nivel</span>
+<span class="n">cache_dir</span> <span class="n">ufs</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span> <span class="mi">8192</span> <span class="mi">64</span> <span class="mi">256</span>
 
-# Tamano maximo por objeto
-maximum_object_size 128 MB
+<span class="o">#</span> <span class="n">Tamano</span> <span class="n">maximo</span> <span class="n">por</span> <span class="n">objeto</span>
+<span class="n">maximum_object_size</span> <span class="mi">128</span> <span class="n">MB</span>
 
-# Cantidad de Memoria RAM que se usara antes de escribir en el disco
-cache_mem 256 MB
-cache_replacement_policy heap LFUDA
+<span class="o">#</span> <span class="n">Cantidad</span> <span class="n">de</span> <span class="n">Memoria</span> <span class="n">RAM</span> <span class="n">que</span> <span class="n">se</span> <span class="n">usara</span> <span class="n">antes</span> <span class="n">de</span> <span class="n">escribir</span> <span class="n">en</span> <span class="n">el</span> <span class="n">disco</span>
+<span class="n">cache_mem</span> <span class="mi">256</span> <span class="n">MB</span>
+<span class="n">cache_replacement_policy</span> <span class="n">heap</span> <span class="n">LFUDA</span>
 
-# Patrones de archivos y sus tiempos de permanencia en el cache
-refresh_pattern ^ftp:             1440  20%  10080
-refresh_pattern ^gopher:          1440   0%   1440
-refresh_pattern -i (/cgi-bin/|\?)    0   0%      0
-refresh_pattern .                    0  20%   4320
+<span class="o">#</span> <span class="n">Patrones</span> <span class="n">de</span> <span class="n">archivos</span> <span class="n">y</span> <span class="n">sus</span> <span class="n">tiempos</span> <span class="n">de</span> <span class="n">permanencia</span> <span class="n">en</span> <span class="n">el</span> <span class="k">cache</span>
+<span class="n">refresh_pattern</span> <span class="o">^</span><span class="n">ftp</span><span class="p">:</span>             <span class="mi">1440</span>  <span class="mi">20</span><span class="o">%</span>  <span class="mi">10080</span>
+<span class="n">refresh_pattern</span> <span class="o">^</span><span class="n">gopher</span><span class="p">:</span>          <span class="mi">1440</span>   <span class="mi">0</span><span class="o">%</span>   <span class="mi">1440</span>
+<span class="n">refresh_pattern</span> <span class="o">-</span><span class="n">i</span> <span class="p">(</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="n">bin</span><span class="o">/|</span><span class="err">\</span><span class="o">?</span><span class="p">)</span>    <span class="mi">0</span>   <span class="mi">0</span><span class="o">%</span>      <span class="mi">0</span>
+<span class="n">refresh_pattern</span> <span class="p">.</span>                    <span class="mi">0</span>  <span class="mi">20</span><span class="o">%</span>   <span class="mi">4320</span>
 
-# Leave coredumps in the first cache dir
-coredump_dir /var/cache/squid
+<span class="o">#</span> <span class="n">Leave</span> <span class="n">coredumps</span> <span class="k">in</span> <span class="n">the</span> <span class="k">first</span> <span class="k">cache</span> <span class="n">dir</span>
+<span class="n">coredump_dir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span>
 
-# Tiempo de espera de cierre de conexiones
-# al disminuirlo el apagado sera mas breve
-shutdown_lifetime 12 seconds
+<span class="o">#</span> <span class="n">Tiempo</span> <span class="n">de</span> <span class="n">espera</span> <span class="n">de</span> <span class="n">cierre</span> <span class="n">de</span> <span class="n">conexiones</span>
+<span class="o">#</span> <span class="n">al</span> <span class="n">disminuirlo</span> <span class="n">el</span> <span class="n">apagado</span> <span class="n">sera</span> <span class="n">mas</span> <span class="n">breve</span>
+<span class="n">shutdown_lifetime</span> <span class="mi">12</span> <span class="n">seconds</span>
 </pre></div>
 
 
 <h3>Squid - balanceo</h3>
 <p>Cree <code>squid-04-balanceo.conf</code>...</p>
-<div class="highlight"><pre><span></span># nano squid-04-balanceo.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="n">balanceo</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span># Se usaran esta cantidad de cubos
-delay_pools 2
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Se</span> <span class="n">usaran</span> <span class="n">esta</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">cubos</span>
+<span class="n">delay_pools</span> <span class="mi">2</span>
 
-# Hay tres tipos de clases
-# 1 - Tiene un unico cubo Global
-# 2 - Tiene un cubo Global y 256 cubos individuales
-# 3 - Tiene un cubo Global, 256 cubos de Red y 65536 individuales
-# Declaracion de las clases de los cubos
-#   delay_class N clase
-delay_class 1 1
-delay_class 2 2
+<span class="o">#</span> <span class="n">Hay</span> <span class="n">tres</span> <span class="n">tipos</span> <span class="n">de</span> <span class="n">clases</span>
+<span class="o">#</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">Tiene</span> <span class="n">un</span> <span class="n">unico</span> <span class="n">cubo</span> <span class="k">Global</span>
+<span class="o">#</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">Tiene</span> <span class="n">un</span> <span class="n">cubo</span> <span class="k">Global</span> <span class="n">y</span> <span class="mi">256</span> <span class="n">cubos</span> <span class="n">individuales</span>
+<span class="o">#</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">Tiene</span> <span class="n">un</span> <span class="n">cubo</span> <span class="k">Global</span><span class="p">,</span> <span class="mi">256</span> <span class="n">cubos</span> <span class="n">de</span> <span class="n">Red</span> <span class="n">y</span> <span class="mi">65536</span> <span class="n">individuales</span>
+<span class="o">#</span> <span class="n">Declaracion</span> <span class="n">de</span> <span class="n">las</span> <span class="n">clases</span> <span class="n">de</span> <span class="n">los</span> <span class="n">cubos</span>
+<span class="o">#</span>   <span class="n">delay_class</span> <span class="n">N</span> <span class="n">clase</span>
+<span class="n">delay_class</span> <span class="mi">1</span> <span class="mi">1</span>
+<span class="n">delay_class</span> <span class="mi">2</span> <span class="mi">2</span>
 
-# Los tamanos de los cubos son en bytes
-# El contrato con Telmex es de hasta 10 Mb/s
-# 1250000 bytes/seg =  10.0 Mb/s
-#  625000 bytes/seg =   5.0 Mb/s
-#  312500 bytes/seg =   2.5 Mb/s
-#  250000 bytes/seg =   2.0 Mb/s
-#  125000 bytes/seg =   1.0 Mb/s
+<span class="o">#</span> <span class="n">Los</span> <span class="n">tamanos</span> <span class="n">de</span> <span class="n">los</span> <span class="n">cubos</span> <span class="n">son</span> <span class="n">en</span> <span class="n">bytes</span>
+<span class="o">#</span> <span class="n">El</span> <span class="n">contrato</span> <span class="n">con</span> <span class="n">Telmex</span> <span class="n">es</span> <span class="n">de</span> <span class="n">hasta</span> <span class="mi">10</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="o">#</span> <span class="mi">1250000</span> <span class="n">bytes</span><span class="o">/</span><span class="n">seg</span> <span class="o">=</span>  <span class="mi">10</span><span class="p">.</span><span class="mi">0</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="o">#</span>  <span class="mi">625000</span> <span class="n">bytes</span><span class="o">/</span><span class="n">seg</span> <span class="o">=</span>   <span class="mi">5</span><span class="p">.</span><span class="mi">0</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="o">#</span>  <span class="mi">312500</span> <span class="n">bytes</span><span class="o">/</span><span class="n">seg</span> <span class="o">=</span>   <span class="mi">2</span><span class="p">.</span><span class="mi">5</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="o">#</span>  <span class="mi">250000</span> <span class="n">bytes</span><span class="o">/</span><span class="n">seg</span> <span class="o">=</span>   <span class="mi">2</span><span class="p">.</span><span class="mi">0</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="o">#</span>  <span class="mi">125000</span> <span class="n">bytes</span><span class="o">/</span><span class="n">seg</span> <span class="o">=</span>   <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
 
-# Cubo clase 1: 10/5 Mb/s
-# Pocos equipos y grandes descargas
-delay_parameters 1 1250000/625000
+<span class="o">#</span> <span class="n">Cubo</span> <span class="n">clase</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">10</span><span class="o">/</span><span class="mi">5</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="o">#</span> <span class="n">Pocos</span> <span class="n">equipos</span> <span class="n">y</span> <span class="n">grandes</span> <span class="n">descargas</span>
+<span class="n">delay_parameters</span> <span class="mi">1</span> <span class="mi">1250000</span><span class="o">/</span><span class="mi">625000</span>
 
-# Cubo clase 2: 10/10 Mb/s y 2/2 Mb/s
-# Muchos equipos y carga balanceada
-delay_parameters 2 1250000/1250000 250000/250000
+<span class="o">#</span> <span class="n">Cubo</span> <span class="n">clase</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">10</span><span class="o">/</span><span class="mi">10</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span> <span class="n">y</span> <span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="n">Mb</span><span class="o">/</span><span class="n">s</span>
+<span class="o">#</span> <span class="n">Muchos</span> <span class="n">equipos</span> <span class="n">y</span> <span class="n">carga</span> <span class="n">balanceada</span>
+<span class="n">delay_parameters</span> <span class="mi">2</span> <span class="mi">1250000</span><span class="o">/</span><span class="mi">1250000</span> <span class="mi">250000</span><span class="o">/</span><span class="mi">250000</span>
 
-# El primer cubo es para localhost
-delay_access 1 allow DesdeLocalhost
+<span class="o">#</span> <span class="n">El</span> <span class="n">primer</span> <span class="n">cubo</span> <span class="n">es</span> <span class="n">para</span> <span class="n">localhost</span>
+<span class="n">delay_access</span> <span class="mi">1</span> <span class="n">allow</span> <span class="n">DesdeLocalhost</span>
 
-# El segundo cubo es para la LAN
-delay_access 2 allow DesdeLAN
+<span class="o">#</span> <span class="n">El</span> <span class="n">segundo</span> <span class="n">cubo</span> <span class="n">es</span> <span class="n">para</span> <span class="n">la</span> <span class="n">LAN</span>
+<span class="n">delay_access</span> <span class="mi">2</span> <span class="n">allow</span> <span class="n">DesdeLAN</span>
 </pre></div>
 
 
 <h3>Squid - stios permitidos y prohibidos</h3>
 <p>Baje las expresiones regulares para bloquear publicidad...</p>
-<div class="highlight"><pre><span></span># wget &quot;http://pgl.yoyo.org/adservers/serverlist.php?hostformat=squid-dstdom-regex&amp;showintro=0&amp;mimetype=plaintext&quot; -O regexp-publicidad.txt
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">wget</span> <span class="ss">&quot;http://pgl.yoyo.org/adservers/serverlist.php?hostformat=squid-dstdom-regex&amp;showintro=0&amp;mimetype=plaintext&quot;</span> <span class="o">-</span><span class="n">O</span> <span class="n">regexp</span><span class="o">-</span><span class="n">publicidad</span><span class="p">.</span><span class="n">txt</span>
 </pre></div>
 
 
@@ -341,67 +341,67 @@ delay_access 2 allow DesdeLAN
 
 <h3>Políticas de SELinux</h3>
 <p>Prepare el directorio para el caché...</p>
-<div class="highlight"><pre><span></span># mkdir /var/cache/squid
-# chown squid /var/cache/squid
-# squid -z -N -f /etc/squid/squid.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span>
+<span class="o">#</span> <span class="n">chown</span> <span class="n">squid</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span>
+<span class="o">#</span> <span class="n">squid</span> <span class="o">-</span><span class="n">z</span> <span class="o">-</span><span class="n">N</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">squid</span><span class="o">/</span><span class="n">squid</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Arranque el daemon...</p>
-<div class="highlight"><pre><span></span># systemctl start squid.service
-# systemctl status squid.service
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
+<span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
 </pre></div>
 
 
 <p>En mi caso ha fallado porque las política de seguridad SELinux no permiten algunas acciones de Squid. Revise el estatus...</p>
-<div class="highlight"><pre><span></span># systemctl status squid
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span>
 </pre></div>
 
 
 <p>Me reporta este error...</p>
-<div class="highlight"><pre><span></span>Ipc::Mem::Segment::create failed to shm_open
+<div class="highlight"><pre><span></span><span class="n">Ipc</span><span class="p">::</span><span class="n">Mem</span><span class="p">::</span><span class="n">Segment</span><span class="p">::</span><span class="k">create</span> <span class="n">failed</span> <span class="k">to</span> <span class="n">shm_open</span>
 </pre></div>
 
 
 <p>Al revisar los últimos registros en la bitácora...</p>
-<div class="highlight"><pre><span></span># tail /var/log/audit/audit.log
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">tail</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">audit</span><span class="p">.</span><span class="n">log</span>
 </pre></div>
 
 
 <p>Aparece una negación...</p>
-<div class="highlight"><pre><span></span>type=AVC msg=audit(1529629815.011:337): avc:  denied  { unlink } for  pid=2086 comm=&quot;squid&quot; name=&quot;squid-cf__metadata.shm&quot; dev=&quot;tmpfs&quot; ino=32961 scontext=system_u:system_r:squid_t:s0 tcontext=unconfined_u:object_r:user_tmp_t:s0 tclass=file permissive=0
+<div class="highlight"><pre><span></span><span class="nv">type</span><span class="o">=</span><span class="nv">AVC</span> <span class="nv">msg</span><span class="o">=</span><span class="nv">audit</span><span class="ss">(</span><span class="mi">1529629815</span>.<span class="mi">011</span>:<span class="mi">337</span><span class="ss">)</span>: <span class="nv">avc</span>:  <span class="nv">denied</span>  { <span class="k">unlink</span> } <span class="k">for</span>  <span class="nv">pid</span><span class="o">=</span><span class="mi">2086</span> <span class="nv">comm</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">squid</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">squid-cf__metadata.shm</span><span class="s2">&quot;</span> <span class="nv">dev</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">tmpfs</span><span class="s2">&quot;</span> <span class="nv">ino</span><span class="o">=</span><span class="mi">32961</span> <span class="nv">scontext</span><span class="o">=</span><span class="nv">system_u</span>:<span class="nv">system_r</span>:<span class="nv">squid_t</span>:<span class="nv">s0</span> <span class="nv">tcontext</span><span class="o">=</span><span class="nv">unconfined_u</span>:<span class="nv">object_r</span>:<span class="nv">user_tmp_t</span>:<span class="nv">s0</span> <span class="nv">tclass</span><span class="o">=</span><span class="nv">file</span> <span class="nv">permissive</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 
 
 <p>Si gusta profundizar en <strong>SELinux</strong> lea <a href="https://docs-old.fedoraproject.org/en-US/Fedora/22/html/SELinux_Users_and_Administrators_Guide/index.html">Fedora 22 SELinux User's and Administrator's Guide</a>.</p>
 <p><strong>Opción 1:</strong>: Crear una nueva política a partir de la bitácora. Instale <code>policycoreutils-python-utils</code>...</p>
-<div class="highlight"><pre><span></span># dnf install policycoreutils-python-utils
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">policycoreutils</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">utils</span>
 </pre></div>
 
 
 <p>Como <em>root</em> nos vamos al directorio <code>/root</code> o donde podamos crear archivos...</p>
-<div class="highlight"><pre><span></span># cd /root
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">root</span>
 </pre></div>
 
 
 <p>1) Ejecute <code>audit2allow</code> alimentado por la bitácora <code>audit.log</code>...</p>
-<div class="highlight"><pre><span></span># audit2allow -M MYSQUIDPOLICY &lt; /var/log/audit/audit.log
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">audit2allow</span> <span class="o">-</span><span class="n">M</span> <span class="n">MYSQUIDPOLICY</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">audit</span><span class="p">.</span><span class="n">log</span>
 </pre></div>
 
 
 <p>2) Lea el texto de la política creada</p>
-<div class="highlight"><pre><span></span># cat MYSQUIDPOLICY.te
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cat</span> <span class="n">MYSQUIDPOLICY</span><span class="p">.</span><span class="n">te</span>
 </pre></div>
 
 
 <p>3) Cargue la política, <strong>note que se usa el archivo pp</strong>...</p>
-<div class="highlight"><pre><span></span># semodule -i MYSQUIDPOLICY.pp
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">semodule</span> <span class="o">-</span><span class="n">i</span> <span class="n">MYSQUIDPOLICY</span><span class="p">.</span><span class="n">pp</span>
 </pre></div>
 
 
 <p>4) Arranque el daemon...</p>
-<div class="highlight"><pre><span></span># systemctl start squid.service
-# systemctl status squid.service
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
+<span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
 </pre></div>
 
 
@@ -409,84 +409,84 @@ delay_access 2 allow DesdeLAN
 <p>Tuve que <strong>repetir siete veces</strong> este proceso para dar con la política correcta, que mostrando <code>MYSQUIDPOLICY7.te</code> es...</p>
 <p><strong>Opción 2:</strong>: Cree la política a partir del archivo de texto.</p>
 <p>Instale <strong>policycoreutils-devel</strong>...</p>
-<div class="highlight"><pre><span></span># dnf install policycoreutils-devel
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">policycoreutils</span><span class="o">-</span><span class="n">devel</span>
 </pre></div>
 
 
 <p>Cree <code>DnsmasqSquidPolicy.te</code>...</p>
-<div class="highlight"><pre><span></span># cd /root
-# nano DnsmasqSquidPolicy.te
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">root</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">te</span>
 </pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="nt">module</span> <span class="nt">DnsmasqSquidPolicy</span> <span class="nt">1</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><span class="nv">module</span> <span class="nv">DnsmasqSquidPolicy</span> <span class="mi">1</span>.<span class="mi">0</span><span class="c1">;</span>
 
-<span class="nt">require</span> <span class="p">{</span>
-        <span class="err">type</span> <span class="err">squid_t</span><span class="p">;</span>
-        <span class="err">type</span> <span class="err">dnsmasq_t</span><span class="p">;</span>
-        <span class="err">type</span> <span class="err">user_tmp_t</span><span class="p">;</span>
-        <span class="err">type</span> <span class="err">var_t</span><span class="p">;</span>
-        <span class="err">class</span> <span class="err">capability</span> <span class="err">dac_override</span><span class="p">;</span>
-        <span class="err">class</span> <span class="err">file</span> <span class="err">{</span> <span class="err">append</span> <span class="err">create</span> <span class="err">getattr</span> <span class="err">open</span> <span class="err">read</span> <span class="err">rename</span> <span class="err">unlink</span> <span class="err">write</span> <span class="p">}</span><span class="o">;</span>
-<span class="err">}</span>
+<span class="nv">require</span> {
+        <span class="nv">type</span> <span class="nv">squid_t</span><span class="c1">;</span>
+        <span class="nv">type</span> <span class="nv">dnsmasq_t</span><span class="c1">;</span>
+        <span class="nv">type</span> <span class="nv">user_tmp_t</span><span class="c1">;</span>
+        <span class="nv">type</span> <span class="nv">var_t</span><span class="c1">;</span>
+        <span class="nv">class</span> <span class="nv">capability</span> <span class="nv">dac_override</span><span class="c1">;</span>
+        <span class="nv">class</span> <span class="nv">file</span> { <span class="nv">append</span> <span class="nv">create</span> <span class="nv">getattr</span> <span class="nv">open</span> <span class="nv">read</span> <span class="nv">rename</span> <span class="k">unlink</span> <span class="nv">write</span> }<span class="c1">;</span>
+}
 
-<span class="err">#</span><span class="o">=============</span> <span class="nt">dnsmasq_t</span> <span class="o">==============</span>
+#<span class="o">=============</span> <span class="nv">dnsmasq_t</span> <span class="o">==============</span>
 
-<span class="nt">allow</span> <span class="nt">dnsmasq_t</span> <span class="nt">self</span><span class="p">:</span><span class="nd">capability</span> <span class="nt">dac_override</span><span class="o">;</span>
+<span class="nv">allow</span> <span class="nv">dnsmasq_t</span> <span class="nv">self</span>:<span class="nv">capability</span> <span class="nv">dac_override</span><span class="c1">;</span>
 
-<span class="err">#</span><span class="o">=============</span> <span class="nt">squid_t</span> <span class="o">==============</span>
+#<span class="o">=============</span> <span class="nv">squid_t</span> <span class="o">==============</span>
 
-<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">user_tmp_t</span><span class="p">:</span><span class="nd">file</span> <span class="nt">unlink</span><span class="o">;</span>
-<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">var_t</span><span class="p">:</span><span class="nd">file</span> <span class="nt">unlink</span><span class="o">;</span>
-<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">var_t</span><span class="p">:</span><span class="nd">file</span> <span class="p">{</span> <span class="err">append</span> <span class="err">create</span> <span class="err">getattr</span> <span class="err">open</span> <span class="err">read</span> <span class="err">rename</span> <span class="err">write</span> <span class="p">}</span><span class="o">;</span>
+<span class="nv">allow</span> <span class="nv">squid_t</span> <span class="nv">user_tmp_t</span>:<span class="nv">file</span> <span class="k">unlink</span><span class="c1">;</span>
+<span class="nv">allow</span> <span class="nv">squid_t</span> <span class="nv">var_t</span>:<span class="nv">file</span> <span class="k">unlink</span><span class="c1">;</span>
+<span class="nv">allow</span> <span class="nv">squid_t</span> <span class="nv">var_t</span>:<span class="nv">file</span> { <span class="nv">append</span> <span class="nv">create</span> <span class="nv">getattr</span> <span class="nv">open</span> <span class="nv">read</span> <span class="nv">rename</span> <span class="nv">write</span> }<span class="c1">;</span>
 </pre></div>
 
 
 <p>Compile e instale...</p>
-<div class="highlight"><pre><span></span># checkmodule -M -m -o DnsmasqSquidPolicy.mod DnsmasqSquidPolicy.te
-# semodule_package -o DnsmasqSquidPolicy.pp -m DnsmasqSquidPolicy.mod
-# semodule -i DnsmasqSquidPolicy.pp
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">checkmodule</span> <span class="o">-</span><span class="n">M</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">o</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="k">mod</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">te</span>
+<span class="o">#</span> <span class="n">semodule_package</span> <span class="o">-</span><span class="n">o</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">pp</span> <span class="o">-</span><span class="n">m</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="k">mod</span>
+<span class="o">#</span> <span class="n">semodule</span> <span class="o">-</span><span class="n">i</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">pp</span>
 </pre></div>
 
 
 <p>Arranque el daemon...</p>
-<div class="highlight"><pre><span></span># systemctl start squid.service
-# systemctl status squid.service
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
+<span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
 </pre></div>
 
 
 <h3>Arranque al encender y muro de fuego</h3>
 <p>Habilite que inicie el <em>daemon</em> al encender...</p>
-<div class="highlight"><pre><span></span># systemctl enable squid
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">squid</span>
 </pre></div>
 
 
 <p>Verifique que el muro de fuego tenga abierto el servicio <strong>squid</strong> en la LAN...</p>
-<div class="highlight"><pre><span></span># firewall-cmd --zone=internal --list-services
-ssh mdns samba-client dhcpv6-client cockpit dns squid dhcp
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --list-services</span>
+<span class="n">ssh</span> <span class="n">mdns</span> <span class="n">samba</span><span class="o">-</span><span class="n">client</span> <span class="n">dhcpv6</span><span class="o">-</span><span class="n">client</span> <span class="n">cockpit</span> <span class="n">dns</span> <span class="n">squid</span> <span class="n">dhcp</span>
 </pre></div>
 
 
 <h3>Hacer que el servidor YA NO SEA un ruteador</h3>
 <p>Al estar habilitado el enmascaramiento, cualquier equipo puede acceder a Internet sin pasar por el proxy. Consulte con...</p>
-<div class="highlight"><pre><span></span># firewall-cmd --zone=external --query-masquerade
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --query-masquerade</span>
 </pre></div>
 
 
 <p>Deshabilite el enmascaramiento con...</p>
-<div class="highlight"><pre><span></span># firewall-cmd --zone=external --remove-masquerade
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --remove-masquerade</span>
 </pre></div>
 
 
 <p>Haga pruebas con su navegador de internet en un equipo en la red local. Si configura <em>sin proxy</em> no debería tener Internet. Luego configure el proxy y pruebe que funcione.</p>
 <p>Si tiene éxito, haga los cambios permanantes...</p>
-<div class="highlight"><pre><span></span># firewall-cmd --runtime-to-permanent
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--runtime-to-permanent</span>
 </pre></div>
 
 
 <h3>Continuación...</h3>
-<p><a href="http://www.movimientolibre.com/apuntes/fedora-server-28-parte-06/">Vaya a la parte 6, configuración del proxy en los clientes</a>.</p>
+<p><a href="https://movimientolibre.com/apuntes/fedora-server-28-parte-06/">Vaya a la parte 6, configuración del proxy en los clientes</a>.</p>
                 </article>
             </div>
             <div class="col-sm-4">
@@ -504,38 +504,38 @@ ssh mdns samba-client dhcpv6-client cockpit dns squid dhcp
                             </p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="/portafolio/soluciones/">Soluciones en software a la medida</a></li>
                         </ul>
                     </div>
                     <div class="card my-4 movimientolibre-card">
                         <h5 class="card-header movimientolibre-card-header">Etiquetas</h5>
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/docker.html">docker</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                                <li><a href="/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="/tag/docker.html">docker</a></li>
+                                <li><a href="/tag/educacion.html">educación</a></li>
+                                <li><a href="/tag/fedora.html">fedora</a></li>
+                                <li><a href="/tag/flisol.html">flisol</a></li>
+                                <li><a href="/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="/tag/git.html">git</a></li>
+                                <li><a href="/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="/tag/gulag.html">gulag</a></li>
+                                <li><a href="/tag/hardware.html">hardware</a></li>
+                                <li><a href="/tag/kde.html">kde</a></li>
+                                <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="/tag/latex.html">latex</a></li>
+                                <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/php.html">php</a></li>
+                                <li><a href="/tag/politica.html">política</a></li>
+                                <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/ruby.html">ruby</a></li>
+                                <li><a href="/tag/servidores.html">servidores</a></li>
+                                <li><a href="/tag/software-libre.html">software libre</a></li>
+                                <li><a href="/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="/tag/wallpapers.html">wallpapers</a></li>
                             </ul>
                         </div>
                     </div>
@@ -565,15 +565,15 @@ ssh mdns samba-client dhcpv6-client cockpit dns squid dhcp
             <hr>
             <p>
                 Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
-                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
+                Protegidos por la licencia <a href="/licencias/gfdl-es/">GFDL</a>.
                 Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
-                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.
+                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="/licencias/gpl-2-es/">GPLv3</a>.
             </p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="http://www.movimientolibre.com/theme/js/movimiento-libre.js"></script>
+    <script src="/theme/js/movimiento-libre.js"></script>
 </body>
 </html>

@@ -8,32 +8,32 @@
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Apuntes para la Instalación de Gentoo Linux en una laptop ASUS">
     <meta itemprop="description" content="Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.">
-    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg">
+    <meta itemprop="image" content="/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Apuntes para la Instalación de Gentoo Linux en una laptop ASUS">
     <meta name="twitter:description" content="Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.">
-    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg">
+    <meta name="twitter:image:src" content="/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg">
     <meta property="og:title" content="Apuntes para la Instalación de Gentoo Linux en una laptop ASUS">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/">
-    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg">
+    <meta property="og:url" content="/apuntes/gentoo-en-asus-rog-instalacion-2017-05/">
+    <meta property="og:image" content="/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg">
     <meta property="og:description" content="Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Apuntes para la Instalación de Gentoo Linux en una laptop ASUS - Movimiento Libre</title>
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="/theme/css/movimiento-libre.css">
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
                     <script>
                         window.dataLayer = window.dataLayer || [];
@@ -45,22 +45,22 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
+            <a class="navbar-brand" href="/">Movimiento Libre</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navBootstrap4">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/index.html">Contacto</a></li>
+                    <li><a class="nav-link" href="/category/apuntes.html">Apuntes</a></li>
+                    <li><a class="nav-link" href="/category/articulos.html">Artículos</a></li>
+                    <li><a class="nav-link" href="/category/presentaciones.html">Presentaciones</a></li>
+                    <li><a class="nav-link" href="/portafolio/contacto/index.html">Contacto</a></li>
                 </ul>
                 <ul class="navbar-nav movimientolibre-navbar-icons">
                     <li><a class="movimientolibre-navbar-icon-link" href="https://twitter.com/guivaloz/" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://www.facebook.com/movimientolibrepuntocom/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://github.com/guivaloz" target="_blank"><i class="fab fa-github-square"></i></a></li>
-                    <li><a class="movimientolibre-navbar-icon-link" href="http://www.movimientolibre.com/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -84,9 +84,9 @@
                             "name": "Movimiento Libre",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
                             },
-                            "url": "http://www.movimientolibre.com"
+                            "url": "https://movimientolibre.com"
                         },
                         "author": "Guillermo Valdés Lozano (guivaloz)",
                         "name": "Apuntes para la Instalación de Gentoo Linux en una laptop ASUS",
@@ -95,8 +95,8 @@
                         "dateCreated": "2017-05-09 07:44:00-05:00",
                         "datePublished": "2017-05-09 07:44:00-05:00",
                         "dateModified": "2017-05-09 07:44:00-05:00",
-                        "image": "http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg",
-                        "url": "http://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/"
+                        "image": "https://movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/preview.jpg",
+                        "url": "https://movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/"
                         }
                     </script>
                     <h2 class="article-post-title">Apuntes para la Instalación de Gentoo Linux en una laptop ASUS</h2>
@@ -104,364 +104,364 @@
 <p>Esta guía parte de un equipo previamente particionado y con una instalación de Gentoo Linux. Aprovechamos que desde una terminal y con el usuario root se puede hacer una nueva instalación, mientras seguimos trabajando en la anterior.</p>
 <h3>Preparar la partición</h3>
 <p>Formatee la partición, cambie /dev/sdXX por la partición</p>
-<div class="highlight"><pre><span></span># mkfs.btrfs -f -L Gentoo201701 /dev/sdXX
-# mount /mnt/gentoo
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">btrfs</span> <span class="o">-</span><span class="n">f</span> <span class="o">-</span><span class="n">L</span> <span class="n">Gentoo201701</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdXX</span>
+<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
 </pre></div>
 
 
 <h3>Descarge el stage</h3>
 <p>Y descomprima</p>
-<div class="highlight"><pre><span></span># cd /mnt/gentoo
-# tar xvjpf /mnt/blackbox/Compartidos/Software/Gentoo/stage3-amd64-20170105.tar.bz2
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
+<span class="o">#</span> <span class="n">tar</span> <span class="n">xvjpf</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">blackbox</span><span class="o">/</span><span class="n">Compartidos</span><span class="o">/</span><span class="n">Software</span><span class="o">/</span><span class="n">Gentoo</span><span class="o">/</span><span class="n">stage3</span><span class="o">-</span><span class="n">amd64</span><span class="o">-</span><span class="mi">20170105</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span>
 </pre></div>
 
 
 <p>Monte</p>
-<div class="highlight"><pre><span></span># mount -t proc none /mnt/gentoo/proc
-# mount --rbind /dev /mnt/gentoo/dev
-# mount --rbind /sys /mnt/gentoo/sys
-# mkdir /mnt/gentoo/usr/portage
-# mount --rbind /usr/portage /mnt/gentoo/usr/portage
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">proc</span> <span class="k">none</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">proc</span>
+<span class="o">#</span> <span class="n">mount</span> <span class="c1">--rbind /dev /mnt/gentoo/dev</span>
+<span class="o">#</span> <span class="n">mount</span> <span class="c1">--rbind /sys /mnt/gentoo/sys</span>
+<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
+<span class="o">#</span> <span class="n">mount</span> <span class="c1">--rbind /usr/portage /mnt/gentoo/usr/portage</span>
 </pre></div>
 
 
 <p>De una vez copie make.conf</p>
-<div class="highlight"><pre><span></span># cp /etc/locale.gen /mnt/gentoo/etc/locale.gen
-# cp /etc/portage/make.conf /mnt/gentoo/etc/portage/make.conf
-# cp /etc/env.d/02locales /mnt/gentoo/etc/env.d/02locales
-# nano /mnt/gentoo/etc/portage/make.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span>
+<span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">make</span><span class="p">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">make</span><span class="p">.</span><span class="n">conf</span>
+<span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">env</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">02</span><span class="n">locales</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">env</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">02</span><span class="n">locales</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">make</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Copie los datos de los DNS</p>
-<div class="highlight"><pre><span></span># cp /etc/resolv.conf /mnt/gentoo/etc/
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span>
 </pre></div>
 
 
 <h3>Ingrese al nuevo Gentoo Linux</h3>
 <p>Haga el <em>chroot</em></p>
-<div class="highlight"><pre><span></span># chroot /mnt/gentoo /bin/bash
-# env-update
-# source /etc/profile
-# export PS1=&quot;(new) $PS1&quot;
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="o">#</span> <span class="n">env</span><span class="o">-</span><span class="k">update</span>
+<span class="o">#</span> <span class="k">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
+<span class="o">#</span> <span class="n">export</span> <span class="n">PS1</span><span class="o">=</span><span class="ss">&quot;(new) $PS1&quot;</span>
 </pre></div>
 
 
 <p>Configure locale-gen</p>
-<div class="highlight"><pre><span></span># locale-gen
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">locale</span><span class="o">-</span><span class="n">gen</span>
 </pre></div>
 
 
 <p>Verifique y actualice portage</p>
-<div class="highlight"><pre><span></span># emerge -pu portage gcc
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pu</span> <span class="n">portage</span> <span class="n">gcc</span>
 </pre></div>
 
 
 <p>Instale el kernel</p>
-<div class="highlight"><pre><span></span># emerge gentoo-sources
-# cd /usr/src/linux
-# make -j4
-# make modules_install
-# make install
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gentoo</span><span class="o">-</span><span class="n">sources</span>
+<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span>
+<span class="o">#</span> <span class="n">make</span> <span class="o">-</span><span class="n">j4</span>
+<span class="o">#</span> <span class="n">make</span> <span class="n">modules_install</span>
+<span class="o">#</span> <span class="n">make</span> <span class="n">install</span>
 </pre></div>
 
 
 <p>Establezca la zona horaria.</p>
-<div class="highlight"><pre><span></span># cd /etc
-# cp /usr/share/zoneinfo/Mexico/General localtime
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span>
+<span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">zoneinfo</span><span class="o">/</span><span class="n">Mexico</span><span class="o">/</span><span class="k">General</span> <span class="k">localtime</span>
 </pre></div>
 
 
 <p>Otras configuraciones</p>
-<div class="highlight"><pre><span></span># nano /etc/conf.d/keymaps
-# nano /etc/conf.d/hostname
-# nano /etc/hosts
-# nano /etc/fstab
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">keymaps</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">hostname</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
 </pre></div>
 
 
 <h3>Con KDE Plasma como interfaz gráfica</h3>
 <p>Cambie el profile a Plasma</p>
-<div class="highlight"><pre><span></span># eselect profile show
-# eselect profile list
-# eselect profile set default/linux/amd64/13.0/desktop/plasma
-# eselect profile show
+<div class="highlight"><pre><span></span># <span class="nv">eselect</span> <span class="nv">profile</span> <span class="k">show</span>
+# <span class="nv">eselect</span> <span class="nv">profile</span> <span class="nv">list</span>
+# <span class="nv">eselect</span> <span class="nv">profile</span> <span class="nv">set</span> <span class="nv">default</span><span class="o">/</span><span class="nv">linux</span><span class="o">/</span><span class="nv">amd64</span><span class="o">/</span><span class="mi">13</span>.<span class="mi">0</span><span class="o">/</span><span class="nv">desktop</span><span class="o">/</span><span class="nv">plasma</span>
+# <span class="nv">eselect</span> <span class="nv">profile</span> <span class="k">show</span>
 </pre></div>
 
 
 <p>Instale...</p>
-<div class="highlight"><pre><span></span># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen pwgen
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gentoolkit</span> <span class="n">reiserfsprogs</span> <span class="n">dhcpcd</span> <span class="n">dosfstools</span> <span class="n">app</span><span class="o">-</span><span class="n">misc</span><span class="o">/</span><span class="n">screen</span> <span class="n">pwgen</span>
 </pre></div>
 
 
 <p>Instale daemons</p>
-<div class="highlight"><pre><span></span># emerge ntp syslog-ng vixie-cron
-# rc-update add syslog-ng default
-# rc-update add vixie-cron default
-# rc-update add ntpd default
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">ntp</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span> <span class="n">vixie</span><span class="o">-</span><span class="n">cron</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span> <span class="k">default</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">vixie</span><span class="o">-</span><span class="n">cron</span> <span class="k">default</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">ntpd</span> <span class="k">default</span>
 </pre></div>
 
 
 <p>Instale utilerías del sistema y de sonido</p>
-<div class="highlight"><pre><span></span># emerge pciutils alsa-utils
-# rc-update add alsasound boot
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">pciutils</span> <span class="n">alsa</span><span class="o">-</span><span class="n">utils</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">alsasound</span> <span class="n">boot</span>
 </pre></div>
 
 
 <h3>A instalar software</h3>
 <p>Instale PostgreSQL</p>
-<div class="highlight"><pre><span></span># emerge postgresql
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">postgresql</span>
 </pre></div>
 
 
 <p>Instale Apache</p>
-<div class="highlight"><pre><span></span># emerge apache
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">apache</span>
 </pre></div>
 
 
 <p>Instale Ruby</p>
-<div class="highlight"><pre><span></span># emerge ruby nokogiri redcloth dev-ruby/mechanize
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">ruby</span> <span class="n">nokogiri</span> <span class="n">redcloth</span> <span class="n">dev</span><span class="o">-</span><span class="n">ruby</span><span class="o">/</span><span class="n">mechanize</span>
 </pre></div>
 
 
 <p>Instale utilerías de red y sistemas de archivos</p>
-<div class="highlight"><pre><span></span># emerge app-admin/sudo bind-tools traceroute bridge-utils sys-fs/fuse sys-fs/ntfs3g
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">app</span><span class="o">-</span><span class="k">admin</span><span class="o">/</span><span class="n">sudo</span> <span class="n">bind</span><span class="o">-</span><span class="n">tools</span> <span class="n">traceroute</span> <span class="n">bridge</span><span class="o">-</span><span class="n">utils</span> <span class="n">sys</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">fuse</span> <span class="n">sys</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">ntfs3g</span>
 </pre></div>
 
 
 <p>Instale KDE plasma-desktop, éste pone el entorno básico (es decir, NO instala "todo el combo") para luego ir instalando las aplicaciones a nuestro criterio. Revise dependencias y USE flags..</p>
-<div class="highlight"><pre><span></span># emerge --ask plasma-desktop samba cups xorg-x11
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="c1">--ask plasma-desktop samba cups xorg-x11</span>
 </pre></div>
 
 
 <p>Instale LibreOffice</p>
-<div class="highlight"><pre><span></span># emerge virtual/jdk
-# emerge libreoffice
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">virtual</span><span class="o">/</span><span class="n">jdk</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">libreoffice</span>
 
-# emerge firefox
-# emerge gimp
-# emerge texlive
-# emerge audacity
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">firefox</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">gimp</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">texlive</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">audacity</span>
 </pre></div>
 
 
 <p>Instale PHP</p>
-<div class="highlight"><pre><span></span># emerge php
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">php</span>
 
-# emerge networkmanager
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">networkmanager</span>
 </pre></div>
 
 
 <p>Luego KDE Core</p>
-<div class="highlight"><pre><span></span># emerge kdecore-meta
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">kdecore</span><span class="o">-</span><span class="n">meta</span>
 </pre></div>
 
 
 <p>Actualice todo lo demás</p>
-<div class="highlight"><pre><span></span># emerge -uND world
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">uND</span> <span class="n">world</span>
 </pre></div>
 
 
 <p>Instale Geany</p>
-<div class="highlight"><pre><span></span># emerge geany geany-themes geany-plugins
-# emerge droid freefonts libertine terminus-font ttf-bitstream-vera corefonts
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">geany</span> <span class="n">geany</span><span class="o">-</span><span class="n">themes</span> <span class="n">geany</span><span class="o">-</span><span class="n">plugins</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">droid</span> <span class="n">freefonts</span> <span class="n">libertine</span> <span class="n">terminus</span><span class="o">-</span><span class="n">font</span> <span class="n">ttf</span><span class="o">-</span><span class="n">bitstream</span><span class="o">-</span><span class="n">vera</span> <span class="n">corefonts</span>
 </pre></div>
 
 
 <p>Y de consola...</p>
-<div class="highlight"><pre><span></span># emerge xterm media-sound/moc nmap whois macchanger aircrack-ng
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">xterm</span> <span class="n">media</span><span class="o">-</span><span class="n">sound</span><span class="o">/</span><span class="n">moc</span> <span class="n">nmap</span> <span class="n">whois</span> <span class="n">macchanger</span> <span class="n">aircrack</span><span class="o">-</span><span class="n">ng</span>
 </pre></div>
 
 
 <p>En lugar de kdegraphics-meta</p>
-<div class="highlight"><pre><span></span># emerge spectacle kde-apps/kate okular gwenview
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">spectacle</span> <span class="n">kde</span><span class="o">-</span><span class="n">apps</span><span class="o">/</span><span class="n">kate</span> <span class="n">okular</span> <span class="n">gwenview</span>
 </pre></div>
 
 
 <p>En lugar de kdemultimedia-meta</p>
-<div class="highlight"><pre><span></span># emerge kdenlive kmix mplayer
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">kdenlive</span> <span class="n">kmix</span> <span class="n">mplayer</span>
 </pre></div>
 
 
 <p>Instale el GDM ssdm</p>
-<div class="highlight"><pre><span></span># emerge sddm grub gparted
-# sddm --example-config &gt; /etc/sddm.conf
-# nano -w /etc/sddm.conf
-# rc-update add xdm default
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">sddm</span> <span class="n">grub</span> <span class="n">gparted</span>
+<span class="o">#</span> <span class="n">sddm</span> <span class="c1">--example-config &gt; /etc/sddm.conf</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sddm</span><span class="p">.</span><span class="n">conf</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">xdm</span> <span class="k">default</span>
 </pre></div>
 
 
 <p>Configure /etc/conf.d/xdm con DISPLAYMANAGER="sddm"</p>
-<div class="highlight"><pre><span></span># nano /etc/conf.d/modules
-# nano /etc/conf.d/xdm
-# nano /etc/ntp.conf
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">modules</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">xdm</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ntp</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Configure...</p>
-<div class="highlight"><pre><span></span># nano /etc/plasma/startup/10-agent-startup.sh
-# nano /etc/plasma/shutdown/10-agent-shutdown.sh
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">plasma</span><span class="o">/</span><span class="n">startup</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">startup</span><span class="p">.</span><span class="n">sh</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">plasma</span><span class="o">/</span><span class="n">shutdown</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">agent</span><span class="o">-</span><span class="n">shutdown</span><span class="p">.</span><span class="n">sh</span>
 </pre></div>
 
 
 <p>Utilerías de KDE</p>
-<div class="highlight"><pre><span></span># emerge kcalc umbrello
-# emerge kile
-# emerge konqueror
-# emerge kde-plasma/kdeplasma-addons
-# emerge unarj arj lha lzop rar unrar kde-apps/ark
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">kcalc</span> <span class="n">umbrello</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">kile</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">konqueror</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">kde</span><span class="o">-</span><span class="n">plasma</span><span class="o">/</span><span class="n">kdeplasma</span><span class="o">-</span><span class="n">addons</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">unarj</span> <span class="n">arj</span> <span class="n">lha</span> <span class="n">lzop</span> <span class="n">rar</span> <span class="n">unrar</span> <span class="n">kde</span><span class="o">-</span><span class="n">apps</span><span class="o">/</span><span class="n">ark</span>
 </pre></div>
 
 
 <p>KDE para una laptop con bluetooth, powerdevil más systemsettings y otras del sistema</p>
-<div class="highlight"><pre><span></span># emerge -pv plasma-meta
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pv</span> <span class="n">plasma</span><span class="o">-</span><span class="n">meta</span>
 </pre></div>
 
 
 <p>Siga instalando...</p>
-<div class="highlight"><pre><span></span># emerge gparted
-# emerge gimp inkscape
-# emerge libvirt virt-manager
-# emerge gvim vim
-# emerge audacity
-# emerge k3b vorbis-tools
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gparted</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">gimp</span> <span class="n">inkscape</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">libvirt</span> <span class="n">virt</span><span class="o">-</span><span class="n">manager</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">gvim</span> <span class="n">vim</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">audacity</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">k3b</span> <span class="n">vorbis</span><span class="o">-</span><span class="n">tools</span>
 </pre></div>
 
 
 <p>XFCE4</p>
-<div class="highlight"><pre><span></span># emerge xfce4-meta xfce4-notifyd gtk-engines
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">meta</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">notifyd</span> <span class="n">gtk</span><span class="o">-</span><span class="n">engines</span>
 </pre></div>
 
 
 <p>Instale componentes de XFCE</p>
-<div class="highlight"><pre><span></span># emerge xfce4-volumed xfce4-mixer xfce4-terminal xfce4-taskmanager xfce4-screenshooter
-# emerge xfce4-cpugraph-plugin xfce4-verve-plugin xfce4-mount-plugin xfce4-sensors-plugin xfce4-systemload-plugin
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">volumed</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">mixer</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">terminal</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">taskmanager</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">screenshooter</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">cpugraph</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">verve</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">mount</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">sensors</span><span class="o">-</span><span class="n">plugin</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">systemload</span><span class="o">-</span><span class="n">plugin</span>
 </pre></div>
 
 
 <p>Soporte multimedia y de archivos empacados para Thunar</p>
-<div class="highlight"><pre><span></span># emerge tumbler
-# emerge thunar-volman thunar-archive-plugin thunar-media-tags-plugin
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">tumbler</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">thunar</span><span class="o">-</span><span class="n">volman</span> <span class="n">thunar</span><span class="o">-</span><span class="n">archive</span><span class="o">-</span><span class="n">plugin</span> <span class="n">thunar</span><span class="o">-</span><span class="n">media</span><span class="o">-</span><span class="n">tags</span><span class="o">-</span><span class="n">plugin</span>
 </pre></div>
 
 
 <p>Instale iconos</p>
-<div class="highlight"><pre><span></span># emerge gtk-chtheme tango-icon-theme faenza-icon-theme tangerine-icon-theme
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gtk</span><span class="o">-</span><span class="n">chtheme</span> <span class="n">tango</span><span class="o">-</span><span class="n">icon</span><span class="o">-</span><span class="n">theme</span> <span class="n">faenza</span><span class="o">-</span><span class="n">icon</span><span class="o">-</span><span class="n">theme</span> <span class="n">tangerine</span><span class="o">-</span><span class="n">icon</span><span class="o">-</span><span class="n">theme</span>
 </pre></div>
 
 
 <p>Configure arranque de servicios...</p>
-<div class="highlight"><pre><span></span># rc-update add dbus default
-# rc-update add udev default
-# rc-update add ntpd default
-# rc-update add cupsd default
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">dbus</span> <span class="k">default</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">udev</span> <span class="k">default</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">ntpd</span> <span class="k">default</span>
+<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">cupsd</span> <span class="k">default</span>
 </pre></div>
 
 
 <p>Zona horaria</p>
-<div class="highlight"><pre><span></span># cp /usr/share/zoneinfo/Mexico/General /etc/localtime
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">zoneinfo</span><span class="o">/</span><span class="n">Mexico</span><span class="o">/</span><span class="k">General</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">localtime</span>
 </pre></div>
 
 
 <p>Contraseña</p>
-<div class="highlight"><pre><span></span># passwd
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">passwd</span>
 </pre></div>
 
 
 <p>Más utilerías</p>
-<div class="highlight"><pre><span></span># emerge tilda mousepad xfwm4-themes xfce4-whiskermenu-plugin alacarte xfce4-clipman-plugin
-# emerge pcmanfm gftp
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">tilda</span> <span class="n">mousepad</span> <span class="n">xfwm4</span><span class="o">-</span><span class="n">themes</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">whiskermenu</span><span class="o">-</span><span class="n">plugin</span> <span class="n">alacarte</span> <span class="n">xfce4</span><span class="o">-</span><span class="n">clipman</span><span class="o">-</span><span class="n">plugin</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">pcmanfm</span> <span class="n">gftp</span>
 </pre></div>
 
 
 <p>Instale más software</p>
-<div class="highlight"><pre><span></span># emerge tor privoxy arm
-# emerge htop net-fs/sshfs
-# emerge dia
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">tor</span> <span class="n">privoxy</span> <span class="n">arm</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">htop</span> <span class="n">net</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">sshfs</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">dia</span>
 </pre></div>
 
 
 <p>Kramdawn es inestable, libere dependencias</p>
-<div class="highlight"><pre><span></span># emerge kramdown
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">kramdown</span>
 </pre></div>
 
 
 <p>Librerías que uso en Python</p>
-<div class="highlight"><pre><span></span># emerge tabulate psycopg
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">tabulate</span> <span class="n">psycopg</span>
 </pre></div>
 
 
 <p>Software necesario para compilar QGIS desde fuentes</p>
-<div class="highlight"><pre><span></span># emerge sci-geosciences/gpsbabel x11-libs/qwtpolar x11-libs/qscintilla dev-db/spatialite dev-python/PyQt4 sci-libs/libspatialindex dev-python/sip dev-python/jinja dev-python/httplib2 dev-python/pytz dev-python/qscintilla-python dev-libs/qjson sci-geosciences/gpsbabel dev-python/python-dateutil
-# emerge -uN sci-libs/gdal
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">sci</span><span class="o">-</span><span class="n">geosciences</span><span class="o">/</span><span class="n">gpsbabel</span> <span class="n">x11</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">qwtpolar</span> <span class="n">x11</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">qscintilla</span> <span class="n">dev</span><span class="o">-</span><span class="n">db</span><span class="o">/</span><span class="n">spatialite</span> <span class="n">dev</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="n">PyQt4</span> <span class="n">sci</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">libspatialindex</span> <span class="n">dev</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="n">sip</span> <span class="n">dev</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="n">jinja</span> <span class="n">dev</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="n">httplib2</span> <span class="n">dev</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="n">pytz</span> <span class="n">dev</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="n">qscintilla</span><span class="o">-</span><span class="n">python</span> <span class="n">dev</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">qjson</span> <span class="n">sci</span><span class="o">-</span><span class="n">geosciences</span><span class="o">/</span><span class="n">gpsbabel</span> <span class="n">dev</span><span class="o">-</span><span class="n">python</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">dateutil</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">uN</span> <span class="n">sci</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">gdal</span>
 </pre></div>
 
 
 <p>Instale R 3.2.2 y R studio</p>
-<div class="highlight"><pre><span></span># emerge rstudio R
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">rstudio</span> <span class="n">R</span>
 </pre></div>
 
 
 <p>Y...</p>
-<div class="highlight"><pre><span></span># emerge ccache
-# emerge sys-process/at
-# emerge xarchiver
-# emerge app-admin/testdisk
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">ccache</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">sys</span><span class="o">-</span><span class="n">process</span><span class="o">/</span><span class="k">at</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">xarchiver</span>
+<span class="o">#</span> <span class="n">emerge</span> <span class="n">app</span><span class="o">-</span><span class="k">admin</span><span class="o">/</span><span class="n">testdisk</span>
 </pre></div>
 
 
 <h3>Configurar el gestor de arranque GRUB 2</h3>
 <p>Edite...</p>
-<div class="highlight"><pre><span></span># nano -w /etc/default/grub
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">default</span><span class="o">/</span><span class="n">grub</span>
 </pre></div>
 
 
 <p>Edite estas líneas, cambie la identificación de la partición swap...</p>
-<div class="highlight"><pre><span></span>GRUB_TIMEOUT=30
-GRUB_CMDLINE_LINUX=&quot;resume=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx kvm-intel.nested=1&quot;
-GRUB_GFXMODE=1920x1080
-GRUB_GFXPAYLOAD_LINUX=keep
+<div class="highlight"><pre><span></span><span class="n">GRUB_TIMEOUT</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="ss">&quot;resume=UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx kvm-intel.nested=1&quot;</span>
+<span class="n">GRUB_GFXMODE</span><span class="o">=</span><span class="mi">1920</span><span class="n">x1080</span>
+<span class="n">GRUB_GFXPAYLOAD_LINUX</span><span class="o">=</span><span class="n">keep</span>
 </pre></div>
 
 
 <p>No deje de tener opciones manuales en...</p>
-<div class="highlight"><pre><span></span># nano -w /etc/grub.d/40_custom
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">40</span><span class="n">_custom</span>
 </pre></div>
 
 
 <p>Formatee la partición de 64 MB code EF00 /dev/sdb1</p>
-<div class="highlight"><pre><span></span># mkfs.vfat -n EFIBOOT /dev/sdb1
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">vfat</span> <span class="o">-</span><span class="n">n</span> <span class="n">EFIBOOT</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>
 </pre></div>
 
 
 <p>Copie la clave UUID de /dev/sdb1</p>
-<div class="highlight"><pre><span></span># blkid
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">blkid</span>
 </pre></div>
 
 
 <p>Y cambie la clave UUID en...</p>
-<div class="highlight"><pre><span></span># nano -w /etc/fstab
-# nano -w /etc/grub.d/40_custom
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+<span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">40</span><span class="n">_custom</span>
 </pre></div>
 
 
 <p>Con ésto, puede montarla...</p>
-<div class="highlight"><pre><span></span># mount /boot/efi
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">efi</span>
 </pre></div>
 
 
 <p>Así montada, instale GRUB2...</p>
-<div class="highlight"><pre><span></span># grub-install --efi-directory=/boot/efi
-Instalando para plataforma x86_64-efi.
-Instalación terminada. No se notificó ningún error.
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">grub</span><span class="o">-</span><span class="n">install</span> <span class="c1">--efi-directory=/boot/efi</span>
+<span class="n">Instalando</span> <span class="n">para</span> <span class="n">plataforma</span> <span class="n">x86_64</span><span class="o">-</span><span class="n">efi</span><span class="p">.</span>
+<span class="n">Instalación</span> <span class="n">terminada</span><span class="p">.</span> <span class="k">No</span> <span class="n">se</span> <span class="n">notificó</span> <span class="n">ningún</span> <span class="n">error</span><span class="p">.</span>
 </pre></div>
 
 
 <p>Y habilite la configuración...</p>
-<div class="highlight"><pre><span></span># grub-mkconfig -o /boot/grub/grub.cfg
-Generando un fichero de configuración de grub...
-Encontrada imagen de linux: /boot/vmlinuz-4.4.39-gentoo
-hecho
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">grub</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">cfg</span>
+<span class="n">Generando</span> <span class="n">un</span> <span class="n">fichero</span> <span class="n">de</span> <span class="n">configuración</span> <span class="n">de</span> <span class="n">grub</span><span class="p">...</span>
+<span class="n">Encontrada</span> <span class="n">imagen</span> <span class="n">de</span> <span class="n">linux</span><span class="p">:</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mi">4</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">39</span><span class="o">-</span><span class="n">gentoo</span>
+<span class="n">hecho</span>
 </pre></div>
 
 
@@ -483,38 +483,38 @@ hecho
                             </p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="/portafolio/soluciones/">Soluciones en software a la medida</a></li>
                         </ul>
                     </div>
                     <div class="card my-4 movimientolibre-card">
                         <h5 class="card-header movimientolibre-card-header">Etiquetas</h5>
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/docker.html">docker</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                                <li><a href="/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="/tag/docker.html">docker</a></li>
+                                <li><a href="/tag/educacion.html">educación</a></li>
+                                <li><a href="/tag/fedora.html">fedora</a></li>
+                                <li><a href="/tag/flisol.html">flisol</a></li>
+                                <li><a href="/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="/tag/git.html">git</a></li>
+                                <li><a href="/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="/tag/gulag.html">gulag</a></li>
+                                <li><a href="/tag/hardware.html">hardware</a></li>
+                                <li><a href="/tag/kde.html">kde</a></li>
+                                <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="/tag/latex.html">latex</a></li>
+                                <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/php.html">php</a></li>
+                                <li><a href="/tag/politica.html">política</a></li>
+                                <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/ruby.html">ruby</a></li>
+                                <li><a href="/tag/servidores.html">servidores</a></li>
+                                <li><a href="/tag/software-libre.html">software libre</a></li>
+                                <li><a href="/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="/tag/wallpapers.html">wallpapers</a></li>
                             </ul>
                         </div>
                     </div>
@@ -544,15 +544,15 @@ hecho
             <hr>
             <p>
                 Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
-                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
+                Protegidos por la licencia <a href="/licencias/gfdl-es/">GFDL</a>.
                 Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
-                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.
+                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="/licencias/gpl-2-es/">GPLv3</a>.
             </p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="http://www.movimientolibre.com/theme/js/movimiento-libre.js"></script>
+    <script src="/theme/js/movimiento-libre.js"></script>
 </body>
 </html>

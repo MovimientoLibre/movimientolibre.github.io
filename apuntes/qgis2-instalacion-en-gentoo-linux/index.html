@@ -8,32 +8,32 @@
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta itemprop="name" content="Instalación de QGIS 2 en Gentoo Linux">
     <meta itemprop="description" content="QGIS es un programa para visulizar y manipular información georreferenciada.">
-    <meta itemprop="image" content="http://www.movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg">
+    <meta itemprop="image" content="/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Instalación de QGIS 2 en Gentoo Linux">
     <meta name="twitter:description" content="QGIS es un programa para visulizar y manipular información georreferenciada.">
-    <meta name="twitter:image:src" content="http://www.movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg">
+    <meta name="twitter:image:src" content="/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg">
     <meta property="og:title" content="Instalación de QGIS 2 en Gentoo Linux">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://www.movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/">
-    <meta property="og:image" content="http://www.movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg">
+    <meta property="og:url" content="/apuntes/qgis2-instalacion-en-gentoo-linux/">
+    <meta property="og:image" content="/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg">
     <meta property="og:description" content="QGIS es un programa para visulizar y manipular información georreferenciada.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Instalación de QGIS 2 en Gentoo Linux - Movimiento Libre</title>
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.movimientolibre.com/favicon.ico">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
-    <link rel="icon" href="http://www.movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="http://www.movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="alternate" href="http://www.movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-    <link rel="stylesheet" href="http://www.movimientolibre.com/theme/css/movimiento-libre.css">
+    <link rel="stylesheet" href="/theme/css/movimiento-libre.css">
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
                     <script>
                         window.dataLayer = window.dataLayer || [];
@@ -45,22 +45,22 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="http://www.movimientolibre.com">Movimiento Libre</a>
+            <a class="navbar-brand" href="/">Movimiento Libre</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navBootstrap4">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/apuntes.html">Apuntes</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/articulos.html">Artículos</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/category/presentaciones.html">Presentaciones</a></li>
-                    <li><a class="nav-link" href="http://www.movimientolibre.com/portafolio/contacto/index.html">Contacto</a></li>
+                    <li><a class="nav-link" href="/category/apuntes.html">Apuntes</a></li>
+                    <li><a class="nav-link" href="/category/articulos.html">Artículos</a></li>
+                    <li><a class="nav-link" href="/category/presentaciones.html">Presentaciones</a></li>
+                    <li><a class="nav-link" href="/portafolio/contacto/index.html">Contacto</a></li>
                 </ul>
                 <ul class="navbar-nav movimientolibre-navbar-icons">
                     <li><a class="movimientolibre-navbar-icon-link" href="https://twitter.com/guivaloz/" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://www.facebook.com/movimientolibrepuntocom/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                     <li><a class="movimientolibre-navbar-icon-link" href="https://github.com/guivaloz" target="_blank"><i class="fab fa-github-square"></i></a></li>
-                    <li><a class="movimientolibre-navbar-icon-link" href="http://www.movimientolibre.com/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -84,9 +84,9 @@
                             "name": "Movimiento Libre",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "http://www.movimientolibre.com/theme/images/movimientolibre.png"
+                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
                             },
-                            "url": "http://www.movimientolibre.com"
+                            "url": "https://movimientolibre.com"
                         },
                         "author": "Guillermo Valdés Lozano (guivaloz)",
                         "name": "Instalación de QGIS 2 en Gentoo Linux",
@@ -95,8 +95,8 @@
                         "dateCreated": "2014-02-28 11:40:00-06:00",
                         "datePublished": "2014-02-28 11:40:00-06:00",
                         "dateModified": "2014-02-28 11:40:00-06:00",
-                        "image": "http://www.movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg",
-                        "url": "http://www.movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/"
+                        "image": "https://movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/qgis2-icon.jpg",
+                        "url": "https://movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/"
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de QGIS 2 en Gentoo Linux</h2>
@@ -104,75 +104,75 @@
 <p><a href="http://www.qgis.org/es/site/index.html">QGIS</a> es un programa para visulizar y manipular información georreferenciada. Al momento de escribir este apunte, la instalación en <a href="http://gentoo.org/">Gentoo Linux</a> de QGIS lo realizaba para la versión 1.8. Como las mejoras de la última versión son significativas, procedo a redactar cómo instalar esta última.</p>
 <h3>Layman Sabayon</h3>
 <p>Debe instalar <strong>Layman</strong> para agregar más adelante otro repositorio.</p>
-<div class="highlight"><pre><span></span># emerge layman
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">layman</span>
 </pre></div>
 
 
 <p>Para listar los <em>laymans</em> que se pueden descargar.</p>
-<div class="highlight"><pre><span></span># layman -L
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">layman</span> <span class="o">-</span><span class="n">L</span>
 </pre></div>
 
 
 <p>Agregue el <strong>Layman Sabayon</strong>, que es el que contiene el <strong>QGIS 2.0</strong>. Esta instrucción baja el repositorio de Sabayón vía <strong>git</strong> que contiene 56 MB aproximadamente.</p>
-<div class="highlight"><pre><span></span># layman -a sabayon
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">layman</span> <span class="o">-</span><span class="n">a</span> <span class="n">sabayon</span>
 </pre></div>
 
 
 <p>Si es el primer <em>layman</em> que agrega, entonces agregue esta línea a <code>/etc/portage/make.conf</code></p>
-<div class="highlight"><pre><span></span>source /var/lib/layman/make.conf
+<div class="highlight"><pre><span></span><span class="k">source</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">layman</span><span class="o">/</span><span class="n">make</span><span class="p">.</span><span class="n">conf</span>
 </pre></div>
 
 
 <p>Si tiene instalado <strong>eix</strong>, actualize la base de datos de este consultor de software. Observe que toma información del <em>layman sabayon</em>.</p>
-<div class="highlight"><pre><span></span># eix-update
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">eix</span><span class="o">-</span><span class="k">update</span>
 </pre></div>
 
 
 <h3>Use Python 2.7</h3>
 <p>Debe tener Python 2.7 como versión por defecto.</p>
-<div class="highlight"><pre><span></span># eselect python show
-python2.7
+<div class="highlight"><pre><span></span># <span class="nv">eselect</span> <span class="nv">python</span> <span class="k">show</span>
+<span class="nv">python2</span>.<span class="mi">7</span>
 </pre></div>
 
 
 <p>Si tiene habilitada la versión 3, cámbiela con este comando</p>
-<div class="highlight"><pre><span></span># eselect python set python2.7
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">eselect</span> <span class="n">python</span> <span class="k">set</span> <span class="n">python2</span><span class="p">.</span><span class="mi">7</span>
 </pre></div>
 
 
 <h3>Configuraciones previas a la instalación</h3>
 <p>Edite <code>/etc/portage/package.use</code>.</p>
-<div class="highlight"><pre><span></span># nano -w /etc/portage/package.use
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">use</span>
 </pre></div>
 
 
 <p>Configure los <em>USE flags</em> para las dependencias. En mi caso ha tenido que deshabilitar el soporte de algunos lenguajes para tener éxito en la compilación.</p>
-<div class="highlight"><pre><span></span># Desactivo estos flags para instalar PostGIS
-sci-libs/geos -php -ruby
-sci-libs/gdal -pdf -ruby -java geos
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Desactivo</span> <span class="n">estos</span> <span class="n">flags</span> <span class="n">para</span> <span class="n">instalar</span> <span class="n">PostGIS</span>
+<span class="n">sci</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">geos</span> <span class="o">-</span><span class="n">php</span> <span class="o">-</span><span class="n">ruby</span>
+<span class="n">sci</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">gdal</span> <span class="o">-</span><span class="n">pdf</span> <span class="o">-</span><span class="n">ruby</span> <span class="o">-</span><span class="n">java</span> <span class="n">geos</span>
 </pre></div>
 
 
 <p>Luego edite <code>/etc/portage/package.keywords</code></p>
-<div class="highlight"><pre><span></span># nano -w /etc/portage/package.keywords
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">keywords</span>
 </pre></div>
 
 
 <p>Y agregue estas líneas que le permitirán instalar la última versión de QGIS.</p>
-<div class="highlight"><pre><span></span># QGIS
-sci-geosciences/qgis
-sci-libs/gdal
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">QGIS</span>
+<span class="n">sci</span><span class="o">-</span><span class="n">geosciences</span><span class="o">/</span><span class="n">qgis</span>
+<span class="n">sci</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">gdal</span>
 </pre></div>
 
 
 <h3>Instale</h3>
 <p>Verifique la versión y que los <em>USE flags</em> sean los correctos.</p>
-<div class="highlight"><pre><span></span># emerge -pv qgis
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pv</span> <span class="n">qgis</span>
 </pre></div>
 
 
 <p>Instale.</p>
-<div class="highlight"><pre><span></span># emerge qgis
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">qgis</span>
 </pre></div>
                 </article>
             </div>
@@ -191,38 +191,38 @@ sci-libs/gdal
                             </p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="http://www.movimientolibre.com/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="/portafolio/soluciones/">Soluciones en software a la medida</a></li>
                         </ul>
                     </div>
                     <div class="card my-4 movimientolibre-card">
                         <h5 class="card-header movimientolibre-card-header">Etiquetas</h5>
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="http://www.movimientolibre.com/tag/astronomia.html">astronomía</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/conferencias.html">conferencias</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/docker.html">docker</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/educacion.html">educación</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/fedora.html">fedora</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/flisol.html">flisol</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/git.html">git</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/gulag.html">gulag</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/hardware.html">hardware</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kde.html">kde</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/latex.html">latex</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/markdown.html">markdown</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/php.html">php</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/politica.html">política</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/postgresql.html">postgresql</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/ruby.html">ruby</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/servidores.html">servidores</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/software-libre.html">software libre</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                                <li><a href="http://www.movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
+                                <li><a href="/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="/tag/docker.html">docker</a></li>
+                                <li><a href="/tag/educacion.html">educación</a></li>
+                                <li><a href="/tag/fedora.html">fedora</a></li>
+                                <li><a href="/tag/flisol.html">flisol</a></li>
+                                <li><a href="/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="/tag/git.html">git</a></li>
+                                <li><a href="/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="/tag/gulag.html">gulag</a></li>
+                                <li><a href="/tag/hardware.html">hardware</a></li>
+                                <li><a href="/tag/kde.html">kde</a></li>
+                                <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="/tag/latex.html">latex</a></li>
+                                <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/php.html">php</a></li>
+                                <li><a href="/tag/politica.html">política</a></li>
+                                <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/ruby.html">ruby</a></li>
+                                <li><a href="/tag/servidores.html">servidores</a></li>
+                                <li><a href="/tag/software-libre.html">software libre</a></li>
+                                <li><a href="/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="/tag/wallpapers.html">wallpapers</a></li>
                             </ul>
                         </div>
                     </div>
@@ -252,15 +252,15 @@ sci-libs/gdal
             <hr>
             <p>
                 Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
-                Protegidos por la licencia <a href="http://www.movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
+                Protegidos por la licencia <a href="/licencias/gfdl-es/">GFDL</a>.
                 Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
-                Sitio web elaborado con <a href="http://getpelican.com/">Pelican</a> que es programado en <a href="http://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="http://www.movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.
+                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="/licencias/gpl-2-es/">GPLv3</a>.
             </p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="http://www.movimientolibre.com/theme/js/movimiento-libre.js"></script>
+    <script src="/theme/js/movimiento-libre.js"></script>
 </body>
 </html>

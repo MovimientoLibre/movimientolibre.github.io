@@ -3,24 +3,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Listo los comandos de instalación del software (preferido por el autor) en Fedora Linux 29 con KDE.">
+    <meta name="description" content="Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.">
     <meta name="keywords" content="fedora, gnu linux, apuntes">
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
-    <meta itemprop="name" content="Instalación de Fedora Workstation 29, parte 2">
-    <meta itemprop="description" content="Listo los comandos de instalación del software (preferido por el autor) en Fedora Linux 29 con KDE.">
-    <meta itemprop="image" content="/apuntes/fedora-workstation-29-parte-02/imagen.jpg">
+    <meta itemprop="name" content="Instalación de Fedora Workstation 30">
+    <meta itemprop="description" content="Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.">
+    <meta itemprop="image" content="/apuntes/fedora-workstation-30/imagen.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
-    <meta name="twitter:title" content="Instalación de Fedora Workstation 29, parte 2">
-    <meta name="twitter:description" content="Listo los comandos de instalación del software (preferido por el autor) en Fedora Linux 29 con KDE.">
-    <meta name="twitter:image:src" content="/apuntes/fedora-workstation-29-parte-02/imagen.jpg">
-    <meta property="og:title" content="Instalación de Fedora Workstation 29, parte 2">
+    <meta name="twitter:title" content="Instalación de Fedora Workstation 30">
+    <meta name="twitter:description" content="Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.">
+    <meta name="twitter:image:src" content="/apuntes/fedora-workstation-30/imagen.jpg">
+    <meta property="og:title" content="Instalación de Fedora Workstation 30">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="/apuntes/fedora-workstation-29-parte-02/">
-    <meta property="og:image" content="/apuntes/fedora-workstation-29-parte-02/imagen.jpg">
-    <meta property="og:description" content="Listo los comandos de instalación del software (preferido por el autor) en Fedora Linux 29 con KDE.">
+    <meta property="og:url" content="/apuntes/fedora-workstation-30/">
+    <meta property="og:image" content="/apuntes/fedora-workstation-30/imagen.jpg">
+    <meta property="og:description" content="Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.">
     <meta property="og:site_name" content="Movimiento Libre">
-    <title>Instalación de Fedora Workstation 29, parte 2 - Movimiento Libre</title>
+    <title>Instalación de Fedora Workstation 30 - Movimiento Libre</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
     <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
@@ -89,20 +89,22 @@
                             "url": "https://movimientolibre.com"
                         },
                         "author": "Guillermo Valdés Lozano (guivaloz)",
-                        "name": "Instalación de Fedora Workstation 29, parte 2",
-                        "headline": "Instalación de Fedora Workstation 29, parte 2",
-                        "description": "Listo los comandos de instalación del software (preferido por el autor) en Fedora Linux 29 con KDE.",
-                        "dateCreated": "2019-01-05 17:40:00-06:00",
-                        "datePublished": "2019-01-05 17:40:00-06:00",
-                        "dateModified": "2019-02-07 22:04:00-06:00",
-                        "image": "https://movimientolibre.com/apuntes/fedora-workstation-29-parte-02/imagen.jpg",
-                        "url": "https://movimientolibre.com/apuntes/fedora-workstation-29-parte-02/"
+                        "name": "Instalación de Fedora Workstation 30",
+                        "headline": "Instalación de Fedora Workstation 30",
+                        "description": "Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.",
+                        "dateCreated": "2019-08-13 19:32:00-05:00",
+                        "datePublished": "2019-08-13 19:32:00-05:00",
+                        "dateModified": "2019-08-13 19:32:00-05:00",
+                        "image": "https://movimientolibre.com/apuntes/fedora-workstation-30/imagen.jpg",
+                        "url": "https://movimientolibre.com/apuntes/fedora-workstation-30/"
                         }
                     </script>
-                    <h2 class="article-post-title">Instalación de Fedora Workstation 29, parte 2</h2>
-                    <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>05 enero 2019</p>
-<p>En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar <a href="https://movimientolibre.com/apuntes/fedora-workstation-29-parte-01/">Fedora Workstation con KDE</a>. Primero hacemos una actualización...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">upgrade</span>
+                    <h2 class="article-post-title">Instalación de Fedora Workstation 30</h2>
+                    <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>13 agosto 2019</p>
+<p>En este apunte es una actualización de <a href="https://movimientolibre.com/apuntes/fedora-workstation-29-parte-02/">Fedora Workstation 29 con KDE parte 2</a>.</p>
+<p>Luego de instalar Fedora con KDE con una memoria USB y eligiendo el entorno gráfico KDE; hacemos una actualización...</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="c1">--refresh check-update</span>
+<span class="o">#</span> <span class="n">dnf</span> <span class="k">update</span>
 </pre></div>
 
 
@@ -111,23 +113,18 @@
 </pre></div>
 
 
-<p><img class="img-fluid" src="libreoffice.jpg" alt="LibreOffice"></p>
-<p>Instale LibreOffice y los programas cliente para PostgreSQL...</p>
+<p>Instale LibreOffice...</p>
 <div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">group</span> <span class="n">install</span> <span class="c1">--with-optional LibreOffice</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">libreoffice</span><span class="o">-</span><span class="n">help</span><span class="o">-</span><span class="n">es</span> <span class="n">libreoffice</span><span class="o">-</span><span class="n">langpack</span><span class="o">-</span><span class="n">es</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">libreoffice</span><span class="o">-</span><span class="n">postgresql</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">postgresql</span>
 </pre></div>
 
 
 <p>Instale LaTeX...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">search</span> <span class="n">texlive</span><span class="o">-</span><span class="n">scheme</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">scheme</span><span class="o">-</span><span class="n">tetex</span>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">scheme</span><span class="o">-</span><span class="n">tetex</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">collection</span><span class="o">-</span><span class="n">latexextra</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">collection</span><span class="o">-</span><span class="n">pstricks</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">spanish</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">spanish</span><span class="o">-</span><span class="n">doc</span> <span class="n">texlive</span><span class="o">-</span><span class="n">hyphen</span><span class="o">-</span><span class="n">spanish</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">english</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">english</span><span class="o">-</span><span class="n">doc</span> <span class="n">texlive</span><span class="o">-</span><span class="n">hyphen</span><span class="o">-</span><span class="n">english</span>
-<span class="o">#</span> <span class="n">fmtutil</span> <span class="c1">--all -sys</span>
 </pre></div>
 
 
@@ -139,17 +136,12 @@
 
 <p>Instale utilerías diversas...</p>
 <div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="k">system</span><span class="o">-</span><span class="k">storage</span><span class="o">-</span><span class="n">manager</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">pwgen</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">youtube</span><span class="o">-</span><span class="n">dl</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">hwinfo</span>
+<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">pwgen</span> <span class="n">youtube</span><span class="o">-</span><span class="n">dl</span> <span class="n">hwinfo</span>
 </pre></div>
 
 
 <p>Instale software de KDE...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">kate</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">filelight</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">umbrello</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">krename</span>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">kate</span> <span class="n">filelight</span> <span class="n">umbrello</span> <span class="n">krename</span> <span class="n">okular</span> <span class="n">texstudio</span>
 </pre></div>
 
 
@@ -158,7 +150,6 @@
 </pre></div>
 
 
-<p><img class="img-fluid" src="gimp.jpg" alt="GIMP"></p>
 <p>Instale GIMP...</p>
 <div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">gimp</span>
 </pre></div>
@@ -169,8 +160,8 @@
 </pre></div>
 
 
-<p>Instale temas de decoración de ventanas de GTK...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">clearlooks</span><span class="o">-</span><span class="n">phenix</span><span class="o">-</span><span class="n">gtk2</span><span class="o">-</span><span class="n">theme</span> <span class="n">clearlooks</span><span class="o">-</span><span class="n">phenix</span><span class="o">-</span><span class="n">gtk3</span><span class="o">-</span><span class="n">theme</span>
+<p>Instale Calibre...</p>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">calibre</span>
 </pre></div>
 
 
@@ -181,25 +172,20 @@
 </pre></div>
 
 
-<p>Instale el lector y convertidor de libros electrónicos Calibre...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">calibre</span>
-</pre></div>
-
-
 <p>Prepare los repositorios adicionales...</p>
 <div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">fedora</span><span class="o">-</span><span class="n">workstation</span><span class="o">-</span><span class="n">repositories</span>
+<span class="o">#</span> <span class="n">dnf</span> <span class="k">update</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">repolist</span> <span class="c1">--all</span>
 </pre></div>
 
 
-<p><img class="img-fluid" src="google-chrome.jpg" alt="Google Chrome"></p>
 <p>Instale Google Chrome y sus tipografías...</p>
 <div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="c1">--set-enabled google-chrome</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="k">update</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">chrome</span><span class="o">-</span><span class="k">stable</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">serif</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">serif</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">condensed</span><span class="o">-</span><span class="n">fonts</span>
+<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">serif</span><span class="o">-</span><span class="n">fonts</span>
+<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">serif</span><span class="o">-</span><span class="n">fonts</span>
+<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">condensed</span><span class="o">-</span><span class="n">fonts</span>
 </pre></div>
 
 
@@ -210,33 +196,17 @@
 </pre></div>
 
 
-<p>Para mi equipo, requiero el controlador <em>anterior</em> y binario NVIDIA...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">search</span> <span class="n">nvidia</span><span class="o">-</span><span class="mi">390</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">xorg</span><span class="o">-</span><span class="n">x11</span><span class="o">-</span><span class="n">drv</span><span class="o">-</span><span class="n">nvidia</span><span class="o">-</span><span class="mi">390</span><span class="n">xx</span> <span class="n">akmod</span><span class="o">-</span><span class="n">nvidia</span><span class="o">-</span><span class="mi">390</span><span class="n">xx</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">X11</span><span class="o">/</span><span class="n">xorg</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">00</span><span class="o">-</span><span class="n">monitor</span><span class="p">.</span><span class="n">conf</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">reboot</span>
-</pre></div>
-
-
 <p>Instale más programas de RPM Fusion...</p>
 <div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">fuse</span><span class="o">-</span><span class="n">exfat</span> <span class="n">exfat</span><span class="o">-</span><span class="n">utils</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">ffmpeg</span> <span class="n">ffmpegthumbs</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">mplayer</span> <span class="n">mencoder</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">audacity</span><span class="o">-</span><span class="n">freeworld</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">k3b</span><span class="o">-</span><span class="n">extras</span><span class="o">-</span><span class="n">freeworld</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">kdenlive</span> <span class="n">frei0r</span><span class="o">-</span><span class="n">plugins</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">moc</span>
 <span class="o">#</span> <span class="n">dnf</span> <span class="n">groupupdate</span> <span class="n">Multimedia</span>
 </pre></div>
 
 
-<p>Para usar contenedores, instale Docker, después <a href="https://movimientolibre.com/apuntes/fedora-docker-configuracion/">configure</a>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">docker</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span>
-</pre></div>
-
-
-<p><img class="img-fluid" src="sublime-text.jpg" alt="Sublime Text"></p>
 <p>Instale Sublime Text a partir de su propio repositorio...</p>
 <div class="highlight"><pre><span></span><span class="c1"># rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg</span>
 <span class="c1"># dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo</span>
@@ -250,15 +220,9 @@
 </pre></div>
 
 
-<p>Instale Steam, a partir de RPM Fusion...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="c1">--set-enabled rpmfusion-nonfree-steam</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">steam</span>
-</pre></div>
-
-
-<p><img class="img-fluid" src="vlc.jpg" alt="VLC"></p>
-<p>Instale VLC, con complementos desde RPM Fusion...</p>
+<p>Instale los reproductores de multimedia VLC y MPV</p>
 <div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">vlc</span>
+<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">mpv</span>
 </pre></div>
                 </article>
             </div>
