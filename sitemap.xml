@@ -4,1176 +4,1176 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://www.movimientolibre.com/</loc>
-<lastmod>2019-08-14T23:36:06-00:00</lastmod>
+<loc>https://movimientolibre.com/</loc>
+<lastmod>2019-08-15T07:28:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/archives.html</loc>
-<lastmod>2019-08-14T23:36:06-00:00</lastmod>
+<loc>https://movimientolibre.com/archives.html</loc>
+<lastmod>2019-08-15T07:28:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tags.html</loc>
-<lastmod>2019-08-14T23:36:06-00:00</lastmod>
+<loc>https://movimientolibre.com/tags.html</loc>
+<lastmod>2019-08-15T07:28:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/categories.html</loc>
-<lastmod>2019-08-14T23:36:06-00:00</lastmod>
+<loc>https://movimientolibre.com/categories.html</loc>
+<lastmod>2019-08-15T07:28:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/portafolio/blogs/</loc>
+<loc>https://movimientolibre.com/portafolio/blogs/</loc>
 <lastmod>2019-04-18T14:50:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/portafolio/comunidades/</loc>
+<loc>https://movimientolibre.com/portafolio/comunidades/</loc>
 <lastmod>2017-12-27T22:24:00-06:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/portafolio/contacto/</loc>
+<loc>https://movimientolibre.com/portafolio/contacto/</loc>
 <lastmod>2019-04-18T14:48:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/licencias/gfdl-es/</loc>
+<loc>https://movimientolibre.com/licencias/gfdl-es/</loc>
 <lastmod>2018-05-22T20:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/licencias/gfdl/</loc>
+<loc>https://movimientolibre.com/licencias/gfdl/</loc>
 <lastmod>2018-05-22T20:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/licencias/gpl-2-es/</loc>
+<loc>https://movimientolibre.com/licencias/gpl-2-es/</loc>
 <lastmod>2018-05-22T20:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/licencias/gpl-2/</loc>
+<loc>https://movimientolibre.com/licencias/gpl-2/</loc>
 <lastmod>2018-05-22T20:00:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/portafolio/soluciones/</loc>
+<loc>https://movimientolibre.com/portafolio/soluciones/</loc>
 <lastmod>2019-04-18T14:32:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-workstation-30/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-workstation-30/</loc>
 <lastmod>2019-08-13T19:32:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/revolucion-tecnologica/</loc>
+<loc>https://movimientolibre.com/presentaciones/revolucion-tecnologica/</loc>
 <lastmod>2019-04-23T14:48:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-docker-ce/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-docker-ce/</loc>
 <lastmod>2019-02-22T11:45:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-docker-configuracion/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-docker-configuracion/</loc>
 <lastmod>2019-01-24T10:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-workstation-29-parte-02/</loc>
 <lastmod>2019-02-07T22:04:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-workstation-29-parte-01/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-workstation-29-parte-01/</loc>
 <lastmod>2019-01-01T12:22:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</loc>
+<loc>https://movimientolibre.com/apuntes/dd-eliminar-todas-particiones-unidad-almacenamiento/</loc>
 <lastmod>2018-09-26T17:45:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/dolphin-menu-servicios/</loc>
+<loc>https://movimientolibre.com/apuntes/dolphin-menu-servicios/</loc>
 <lastmod>2018-09-20T08:02:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-server-28-parte-07/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-server-28-parte-07/</loc>
 <lastmod>2018-06-24T22:17:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-server-28-parte-06/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-server-28-parte-06/</loc>
 <lastmod>2018-06-24T22:16:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-server-28-parte-05/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-server-28-parte-05/</loc>
 <lastmod>2018-06-24T22:15:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-server-28-parte-04/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-server-28-parte-04/</loc>
 <lastmod>2018-06-24T22:14:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-server-28-parte-03/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-server-28-parte-03/</loc>
 <lastmod>2018-06-24T22:13:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-server-28-parte-02/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-server-28-parte-02/</loc>
 <lastmod>2018-06-24T22:12:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/fedora-server-28-parte-01/</loc>
+<loc>https://movimientolibre.com/apuntes/fedora-server-28-parte-01/</loc>
 <lastmod>2018-06-24T22:11:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/plataforma-del-conocimiento-guia-descriptiva/</loc>
+<loc>https://movimientolibre.com/presentaciones/plataforma-del-conocimiento-guia-descriptiva/</loc>
 <lastmod>2017-12-10T10:40:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/plataformas-de-conocimientos/</loc>
+<loc>https://movimientolibre.com/presentaciones/plataformas-de-conocimientos/</loc>
 <lastmod>2017-07-08T01:50:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2017-05/</loc>
 <lastmod>2017-05-09T07:44:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-portage-lan-server/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-portage-lan-server/</loc>
 <lastmod>2017-03-23T07:42:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-congreso-2016-genesisphp-invitacion/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-congreso-2016-genesisphp-invitacion/</loc>
 <lastmod>2016-09-23T11:15:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/asus-reparacion-memo-pad-7-me70c/</loc>
+<loc>https://movimientolibre.com/articulos/asus-reparacion-memo-pad-7-me70c/</loc>
 <lastmod>2016-04-01T16:10:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/el-poder-de-los-datos-abiertos/</loc>
+<loc>https://movimientolibre.com/presentaciones/el-poder-de-los-datos-abiertos/</loc>
 <lastmod>2016-02-24T13:08:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/git-y-github-taller/</loc>
+<loc>https://movimientolibre.com/presentaciones/git-y-github-taller/</loc>
 <lastmod>2015-09-27T23:40:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/</loc>
+<loc>https://movimientolibre.com/presentaciones/ciencia-de-datos-introduccion/</loc>
 <lastmod>2015-09-27T23:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/nuevas-tecnologias-estandares-web/</loc>
+<loc>https://movimientolibre.com/articulos/nuevas-tecnologias-estandares-web/</loc>
 <lastmod>2015-04-07T10:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/mensaje-en-the-talos-principle/</loc>
+<loc>https://movimientolibre.com/articulos/mensaje-en-the-talos-principle/</loc>
 <lastmod>2015-04-06T22:05:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/equidad-genero-informatica/</loc>
+<loc>https://movimientolibre.com/presentaciones/equidad-genero-informatica/</loc>
 <lastmod>2015-03-09T11:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/</loc>
+<loc>https://movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/</loc>
 <lastmod>2014-08-07T09:15:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-portage-enmascarar/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-portage-enmascarar/</loc>
 <lastmod>2014-07-26T13:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-en-servidor-instalacion-2014-05/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-en-servidor-instalacion-2014-05/</loc>
 <lastmod>2014-06-15T08:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-atom-instalacion/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-atom-instalacion/</loc>
 <lastmod>2014-05-26T15:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2014-05/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-en-asus-rog-instalacion-2014-05/</loc>
 <lastmod>2014-05-16T08:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/revolucionate-a-ti-mismo-se-un-programador/</loc>
+<loc>https://movimientolibre.com/articulos/revolucionate-a-ti-mismo-se-un-programador/</loc>
 <lastmod>2014-05-11T21:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/</loc>
+<loc>https://movimientolibre.com/apuntes/qgis2-instalacion-en-gentoo-linux/</loc>
 <lastmod>2014-02-28T11:40:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/adios-wordpress-bienvenidos-los-cms-de-archivos-planos/</loc>
+<loc>https://movimientolibre.com/articulos/adios-wordpress-bienvenidos-los-cms-de-archivos-planos/</loc>
 <lastmod>2014-02-28T10:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/apache2-certificados-autofirmados/</loc>
+<loc>https://movimientolibre.com/apuntes/apache2-certificados-autofirmados/</loc>
 <lastmod>2014-02-22T17:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/markdown/</loc>
+<loc>https://movimientolibre.com/apuntes/markdown/</loc>
 <lastmod>2014-02-09T23:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/mozilla-firefox-dejar-preguntar-plugin-faltante/</loc>
+<loc>https://movimientolibre.com/apuntes/mozilla-firefox-dejar-preguntar-plugin-faltante/</loc>
 <lastmod>2014-02-03T19:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/centos-instalacion-para-virtualizar/</loc>
+<loc>https://movimientolibre.com/apuntes/centos-instalacion-para-virtualizar/</loc>
 <lastmod>2014-01-30T10:20:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/git-apuntes/</loc>
+<loc>https://movimientolibre.com/apuntes/git-apuntes/</loc>
 <lastmod>2014-01-21T19:20:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/openstreetmap/</loc>
+<loc>https://movimientolibre.com/presentaciones/openstreetmap/</loc>
 <lastmod>2014-01-19T20:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/caida-de-meteorito-2014-01-14/</loc>
+<loc>https://movimientolibre.com/articulos/caida-de-meteorito-2014-01-14/</loc>
 <lastmod>2014-01-14T15:55:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/rsync-respaldos/</loc>
+<loc>https://movimientolibre.com/apuntes/rsync-respaldos/</loc>
 <lastmod>2011-12-29T20:50:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/congreso-iberoamericano-foss-2011-resena/</loc>
+<loc>https://movimientolibre.com/articulos/congreso-iberoamericano-foss-2011-resena/</loc>
 <lastmod>2011-06-14T10:17:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/congreso-iberoamericano-foss-2011/</loc>
+<loc>https://movimientolibre.com/articulos/congreso-iberoamericano-foss-2011/</loc>
 <lastmod>2011-05-27T11:20:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/ual-sinergia-empresarial-2011-04-07/</loc>
+<loc>https://movimientolibre.com/articulos/ual-sinergia-empresarial-2011-04-07/</loc>
 <lastmod>2011-04-26T16:10:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/telcel-zte-mf100/</loc>
+<loc>https://movimientolibre.com/apuntes/telcel-zte-mf100/</loc>
 <lastmod>2011-01-20T12:50:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/bios-update-with-grub/</loc>
+<loc>https://movimientolibre.com/apuntes/bios-update-with-grub/</loc>
 <lastmod>2010-12-28T14:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-3/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-3/</loc>
 <lastmod>2010-12-02T22:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-2/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-2/</loc>
 <lastmod>2010-11-26T10:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2010-parte-1/</loc>
 <lastmod>2010-11-20T10:40:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/cwiid-0.6.00/</loc>
+<loc>https://movimientolibre.com/apuntes/cwiid-0.6.00/</loc>
 <lastmod>2010-10-26T20:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/distribuciones-gnulinux/</loc>
+<loc>https://movimientolibre.com/presentaciones/distribuciones-gnulinux/</loc>
 <lastmod>2010-10-19T23:55:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/twitter-turpial/</loc>
+<loc>https://movimientolibre.com/apuntes/twitter-turpial/</loc>
 <lastmod>2010-10-18T14:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-cuarto-congreso/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-cuarto-congreso/</loc>
 <lastmod>2010-09-11T23:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gtug-campout-2010/</loc>
+<loc>https://movimientolibre.com/articulos/gtug-campout-2010/</loc>
 <lastmod>2010-08-05T20:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/juan-carlos-rodriguez-ibarra-premios-internet-2/</loc>
+<loc>https://movimientolibre.com/articulos/juan-carlos-rodriguez-ibarra-premios-internet-2/</loc>
 <lastmod>2010-06-27T00:50:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-flisol-2010/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-flisol-2010/</loc>
 <lastmod>2010-04-22T22:10:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/congreso-iberoamericano-foss-2009/</loc>
+<loc>https://movimientolibre.com/articulos/congreso-iberoamericano-foss-2009/</loc>
 <lastmod>2009-12-25T16:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/virtualizacion-con-qemu/</loc>
+<loc>https://movimientolibre.com/presentaciones/virtualizacion-con-qemu/</loc>
 <lastmod>2009-11-28T23:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/ruby-basico-taller/</loc>
+<loc>https://movimientolibre.com/presentaciones/ruby-basico-taller/</loc>
 <lastmod>2009-11-22T23:55:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/edubuntu-en-la-educacion/</loc>
+<loc>https://movimientolibre.com/presentaciones/edubuntu-en-la-educacion/</loc>
 <lastmod>2009-10-28T01:05:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gentoo-linux-10-years/</loc>
+<loc>https://movimientolibre.com/articulos/gentoo-linux-10-years/</loc>
 <lastmod>2009-10-06T22:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/itt-edubuntu-en-la-educacion/</loc>
+<loc>https://movimientolibre.com/articulos/itt-edubuntu-en-la-educacion/</loc>
 <lastmod>2009-10-01T12:20:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-tercer-congreso/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-tercer-congreso/</loc>
 <lastmod>2009-09-04T10:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/dell-inspiron-9300-reparacion-bisagra/</loc>
+<loc>https://movimientolibre.com/apuntes/dell-inspiron-9300-reparacion-bisagra/</loc>
 <lastmod>2009-07-26T14:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/nueva-imagen-2009/</loc>
+<loc>https://movimientolibre.com/articulos/nueva-imagen-2009/</loc>
 <lastmod>2009-07-22T23:59:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/firefox-3.5/</loc>
+<loc>https://movimientolibre.com/articulos/firefox-3.5/</loc>
 <lastmod>2009-07-02T00:39:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/kernel-linux-2.6.29/</loc>
+<loc>https://movimientolibre.com/apuntes/kernel-linux-2.6.29/</loc>
 <lastmod>2009-06-17T21:45:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/tank-man/</loc>
+<loc>https://movimientolibre.com/articulos/tank-man/</loc>
 <lastmod>2009-06-04T12:55:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/revista-del-consumidor-la-descarga-te-hara-libre/</loc>
+<loc>https://movimientolibre.com/articulos/revista-del-consumidor-la-descarga-te-hara-libre/</loc>
 <lastmod>2009-05-09T14:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-flisol-2009/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-flisol-2009/</loc>
 <lastmod>2009-04-27T09:25:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/kde-4-reinventando-el-entorno-grafico/</loc>
+<loc>https://movimientolibre.com/presentaciones/kde-4-reinventando-el-entorno-grafico/</loc>
 <lastmod>2009-04-21T12:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/software-libre-en-tiempos-de-crisis/</loc>
+<loc>https://movimientolibre.com/presentaciones/software-libre-en-tiempos-de-crisis/</loc>
 <lastmod>2009-03-14T16:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/innovatic-1er-aniversario/</loc>
+<loc>https://movimientolibre.com/articulos/innovatic-1er-aniversario/</loc>
 <lastmod>2009-03-03T13:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-3/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-3/</loc>
 <lastmod>2008-11-15T21:10:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-2/</loc>
 <lastmod>2008-11-15T21:05:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/</loc>
+<loc>https://movimientolibre.com/apuntes/gentoo-linux-mi-instalacion-personal-1/</loc>
 <lastmod>2008-11-15T21:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/cbtis4-35-aniversario-software-libre/</loc>
+<loc>https://movimientolibre.com/articulos/cbtis4-35-aniversario-software-libre/</loc>
 <lastmod>2008-10-28T23:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/tec-lerdo-sinasci-4/</loc>
+<loc>https://movimientolibre.com/articulos/tec-lerdo-sinasci-4/</loc>
 <lastmod>2008-10-26T21:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/audio-y-video-en-gnu-linux/</loc>
+<loc>https://movimientolibre.com/presentaciones/audio-y-video-en-gnu-linux/</loc>
 <lastmod>2008-10-26T20:45:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/coecyt-semana-ciencia-tecnologia-15/</loc>
+<loc>https://movimientolibre.com/articulos/coecyt-semana-ciencia-tecnologia-15/</loc>
 <lastmod>2008-10-26T08:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-segundo-aniversario/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-segundo-aniversario/</loc>
 <lastmod>2008-09-18T13:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/firefox-3-download-day/</loc>
+<loc>https://movimientolibre.com/articulos/firefox-3-download-day/</loc>
 <lastmod>2008-06-17T10:15:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/consejos-informatica-ecologica/</loc>
+<loc>https://movimientolibre.com/presentaciones/consejos-informatica-ecologica/</loc>
 <lastmod>2008-05-17T15:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-flisol-2008/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-flisol-2008/</loc>
 <lastmod>2008-05-03T08:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/ual-conferencia-software-libre-2/</loc>
+<loc>https://movimientolibre.com/articulos/ual-conferencia-software-libre-2/</loc>
 <lastmod>2008-05-03T08:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/tec-lerdo-php-basico/</loc>
+<loc>https://movimientolibre.com/articulos/tec-lerdo-php-basico/</loc>
 <lastmod>2008-04-17T22:55:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/intolerancia-absoluta/</loc>
+<loc>https://movimientolibre.com/articulos/intolerancia-absoluta/</loc>
 <lastmod>2008-04-11T14:10:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/uvm-conferencia-software-libre/</loc>
+<loc>https://movimientolibre.com/articulos/uvm-conferencia-software-libre/</loc>
 <lastmod>2008-02-29T13:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/licencia-automovilista/</loc>
+<loc>https://movimientolibre.com/articulos/licencia-automovilista/</loc>
 <lastmod>2008-02-18T10:20:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/</loc>
+<loc>https://movimientolibre.com/articulos/php4-ha-muerto-larga-vida-a-php5/</loc>
 <lastmod>2008-02-02T11:20:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/freemed-instalacion/</loc>
+<loc>https://movimientolibre.com/apuntes/freemed-instalacion/</loc>
 <lastmod>2008-01-16T19:10:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/venezuela-impulsa-el-software-libre/</loc>
+<loc>https://movimientolibre.com/articulos/venezuela-impulsa-el-software-libre/</loc>
 <lastmod>2008-01-01T21:20:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/kde-amarok-botones-multimedia/</loc>
+<loc>https://movimientolibre.com/apuntes/kde-amarok-botones-multimedia/</loc>
 <lastmod>2007-12-20T00:25:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/latex-curriculum-vitae/</loc>
+<loc>https://movimientolibre.com/apuntes/latex-curriculum-vitae/</loc>
 <lastmod>2007-12-15T22:40:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/nevada-de-1997/</loc>
+<loc>https://movimientolibre.com/articulos/nevada-de-1997/</loc>
 <lastmod>2007-12-12T18:30:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/ual-conferencia-software-libre/</loc>
+<loc>https://movimientolibre.com/articulos/ual-conferencia-software-libre/</loc>
 <lastmod>2007-12-10T13:10:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/navidad-a-la-led-que-caro/</loc>
+<loc>https://movimientolibre.com/articulos/navidad-a-la-led-que-caro/</loc>
 <lastmod>2007-12-05T10:55:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/itszas-conferencia-software-libre/</loc>
+<loc>https://movimientolibre.com/articulos/itszas-conferencia-software-libre/</loc>
 <lastmod>2007-12-02T00:20:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/software-libre/</loc>
+<loc>https://movimientolibre.com/presentaciones/software-libre/</loc>
 <lastmod>2007-11-28T11:50:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/latex-introduccion/</loc>
+<loc>https://movimientolibre.com/presentaciones/latex-introduccion/</loc>
 <lastmod>2007-11-12T13:00:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-junta-latex/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-junta-latex/</loc>
 <lastmod>2007-11-09T08:50:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/cometa-17p-holmes/</loc>
+<loc>https://movimientolibre.com/articulos/cometa-17p-holmes/</loc>
 <lastmod>2007-10-31T10:20:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/via-pc2500g-desempaque/</loc>
+<loc>https://movimientolibre.com/articulos/via-pc2500g-desempaque/</loc>
 <lastmod>2007-10-30T13:10:00-06:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/via-pc2500-gentoo-lan-boot/</loc>
+<loc>https://movimientolibre.com/apuntes/via-pc2500-gentoo-lan-boot/</loc>
 <lastmod>2007-10-24T23:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/burros-en-avenida-transitada/</loc>
+<loc>https://movimientolibre.com/articulos/burros-en-avenida-transitada/</loc>
 <lastmod>2007-10-05T16:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/cirugia-nasal/</loc>
+<loc>https://movimientolibre.com/articulos/cirugia-nasal/</loc>
 <lastmod>2007-09-29T14:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/via-pc2500-primera-impresion/</loc>
+<loc>https://movimientolibre.com/articulos/via-pc2500-primera-impresion/</loc>
 <lastmod>2007-09-24T13:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-primer-aniversario/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-primer-aniversario/</loc>
 <lastmod>2007-08-20T20:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-primer-aniversario-instalacion/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-primer-aniversario-instalacion/</loc>
 <lastmod>2007-08-20T18:45:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/inkscape-taller/</loc>
+<loc>https://movimientolibre.com/presentaciones/inkscape-taller/</loc>
 <lastmod>2007-08-16T22:45:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-primer-aniversario-anuncio/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-primer-aniversario-anuncio/</loc>
 <lastmod>2007-08-10T11:20:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/calculadoras-cientificas-chinas/</loc>
+<loc>https://movimientolibre.com/articulos/calculadoras-cientificas-chinas/</loc>
 <lastmod>2007-07-28T23:50:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/kernel-linux-como-compilar/</loc>
+<loc>https://movimientolibre.com/presentaciones/kernel-linux-como-compilar/</loc>
 <lastmod>2007-07-14T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/debian-puntos-buenos/</loc>
+<loc>https://movimientolibre.com/articulos/debian-puntos-buenos/</loc>
 <lastmod>2007-06-17T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/psql-referencia-03-primer-bd/</loc>
+<loc>https://movimientolibre.com/apuntes/psql-referencia-03-primer-bd/</loc>
 <lastmod>2007-06-14T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/psql-referencia-02-instalacion/</loc>
+<loc>https://movimientolibre.com/apuntes/psql-referencia-02-instalacion/</loc>
 <lastmod>2007-06-12T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/gulag-junta-multimedia-hacks/</loc>
+<loc>https://movimientolibre.com/articulos/gulag-junta-multimedia-hacks/</loc>
 <lastmod>2007-06-10T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/apuntes/psql-referencia-01-introduccion/</loc>
+<loc>https://movimientolibre.com/apuntes/psql-referencia-01-introduccion/</loc>
 <lastmod>2007-06-10T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/debian-probar/</loc>
+<loc>https://movimientolibre.com/articulos/debian-probar/</loc>
 <lastmod>2007-06-01T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/miss-marie/</loc>
+<loc>https://movimientolibre.com/articulos/miss-marie/</loc>
 <lastmod>2007-05-21T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/nemosintesis-4.0/</loc>
+<loc>https://movimientolibre.com/articulos/nemosintesis-4.0/</loc>
 <lastmod>2007-05-20T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/webmin/</loc>
+<loc>https://movimientolibre.com/presentaciones/webmin/</loc>
 <lastmod>2007-05-11T09:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/articulos/enciclomedia/</loc>
+<loc>https://movimientolibre.com/articulos/enciclomedia/</loc>
 <lastmod>2007-05-08T00:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/gnulinux-introduccion/</loc>
+<loc>https://movimientolibre.com/presentaciones/gnulinux-introduccion/</loc>
 <lastmod>2007-04-01T14:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/gentoo-instalacion/</loc>
+<loc>https://movimientolibre.com/presentaciones/gentoo-instalacion/</loc>
 <lastmod>2006-10-01T15:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/presentaciones/php-basico/</loc>
+<loc>https://movimientolibre.com/presentaciones/php-basico/</loc>
 <lastmod>2006-09-01T15:00:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/category/apuntes.html</loc>
+<loc>https://movimientolibre.com/category/apuntes.html</loc>
 <lastmod>2019-08-13T19:32:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/category/articulos.html</loc>
+<loc>https://movimientolibre.com/category/articulos.html</loc>
 <lastmod>2016-09-23T11:15:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/category/presentaciones.html</loc>
+<loc>https://movimientolibre.com/category/presentaciones.html</loc>
 <lastmod>2019-04-23T14:48:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/fedora.html</loc>
+<loc>https://movimientolibre.com/tag/fedora.html</loc>
 <lastmod>2019-08-13T19:32:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/gnu-linux.html</loc>
+<loc>https://movimientolibre.com/tag/gnu-linux.html</loc>
 <lastmod>2019-08-13T19:32:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/conferencias.html</loc>
+<loc>https://movimientolibre.com/tag/conferencias.html</loc>
 <lastmod>2019-04-23T14:48:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/educacion.html</loc>
+<loc>https://movimientolibre.com/tag/educacion.html</loc>
 <lastmod>2019-04-23T14:48:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/docker.html</loc>
+<loc>https://movimientolibre.com/tag/docker.html</loc>
 <lastmod>2019-02-22T11:45:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/kde.html</loc>
+<loc>https://movimientolibre.com/tag/kde.html</loc>
 <lastmod>2018-09-20T08:02:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/servidores.html</loc>
+<loc>https://movimientolibre.com/tag/servidores.html</loc>
 <lastmod>2018-06-24T22:17:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/software-libre.html</loc>
+<loc>https://movimientolibre.com/tag/software-libre.html</loc>
 <lastmod>2018-06-24T22:17:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/php.html</loc>
+<loc>https://movimientolibre.com/tag/php.html</loc>
 <lastmod>2017-12-10T10:40:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/markdown.html</loc>
+<loc>https://movimientolibre.com/tag/markdown.html</loc>
 <lastmod>2017-12-10T10:40:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/politica.html</loc>
+<loc>https://movimientolibre.com/tag/politica.html</loc>
 <lastmod>2017-07-08T01:50:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/gentoo-linux.html</loc>
+<loc>https://movimientolibre.com/tag/gentoo-linux.html</loc>
 <lastmod>2017-05-09T07:44:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/gulag.html</loc>
+<loc>https://movimientolibre.com/tag/gulag.html</loc>
 <lastmod>2016-09-23T11:15:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/postgresql.html</loc>
+<loc>https://movimientolibre.com/tag/postgresql.html</loc>
 <lastmod>2016-09-23T11:15:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/hardware.html</loc>
+<loc>https://movimientolibre.com/tag/hardware.html</loc>
 <lastmod>2016-04-01T16:10:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/ciencia-de-datos.html</loc>
+<loc>https://movimientolibre.com/tag/ciencia-de-datos.html</loc>
 <lastmod>2016-02-24T13:08:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/git.html</loc>
+<loc>https://movimientolibre.com/tag/git.html</loc>
 <lastmod>2015-09-27T23:40:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/desarrollo.html</loc>
+<loc>https://movimientolibre.com/tag/desarrollo.html</loc>
 <lastmod>2015-04-07T10:00:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/vida-cotidiana.html</loc>
+<loc>https://movimientolibre.com/tag/vida-cotidiana.html</loc>
 <lastmod>2015-04-06T22:05:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/astronomia.html</loc>
+<loc>https://movimientolibre.com/tag/astronomia.html</loc>
 <lastmod>2014-01-14T15:55:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/flisol.html</loc>
+<loc>https://movimientolibre.com/tag/flisol.html</loc>
 <lastmod>2010-04-22T22:10:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/ruby.html</loc>
+<loc>https://movimientolibre.com/tag/ruby.html</loc>
 <lastmod>2009-11-22T23:55:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/kernel-linux.html</loc>
+<loc>https://movimientolibre.com/tag/kernel-linux.html</loc>
 <lastmod>2009-06-17T21:45:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/latex.html</loc>
+<loc>https://movimientolibre.com/tag/latex.html</loc>
 <lastmod>2007-12-15T22:40:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://www.movimientolibre.com/tag/wallpapers.html</loc>
+<loc>https://movimientolibre.com/tag/wallpapers.html</loc>
 <lastmod>2007-05-21T00:00:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
