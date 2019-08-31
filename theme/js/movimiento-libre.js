@@ -29,4 +29,10 @@
       });
   }
 
+  // Set style to tables
+  $(document).ready(function () {
+    $("article table").addClass("table table-bordered");
+    $("article table thead").addClass("thead-light");
+  });
+
 })(jQuery); // End of use strict

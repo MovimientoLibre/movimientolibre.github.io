@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Como fruto del trabajo sobre Gobierno Abierto, el equipo de la Estrategia Digital Nacional redactó la Guía de los Datos Abiertos para México que en el presente se encuentra fuera de línea. A partir de su repositorio en GitHub he copiado su contenido pues considero que es un valioso material de consulta y no debe ser eliminado.">
+    <meta name="keywords" content="política, articulos">
+    <meta name="author" content="Estrategia Digital Nacional México">
+    <meta itemprop="name" content="Guía de los Datos Abiertos para México (respaldo)">
+    <meta itemprop="description" content="Como fruto del trabajo sobre Gobierno Abierto, el equipo de la Estrategia Digital Nacional redactó la Guía de los Datos Abiertos para México que en el presente se encuentra fuera de línea. A partir de su repositorio en GitHub he copiado su contenido pues considero que es un valioso material de consulta y no debe ser eliminado.">
+    <meta itemprop="image" content="/articulos/guia-datos-abiertos-mexico/datos.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@guivaloz">
+    <meta name="twitter:title" content="Guía de los Datos Abiertos para México (respaldo)">
+    <meta name="twitter:description" content="Como fruto del trabajo sobre Gobierno Abierto, el equipo de la Estrategia Digital Nacional redactó la Guía de los Datos Abiertos para México que en el presente se encuentra fuera de línea. A partir de su repositorio en GitHub he copiado su contenido pues considero que es un valioso material de consulta y no debe ser eliminado.">
+    <meta name="twitter:image:src" content="/articulos/guia-datos-abiertos-mexico/datos.png">
+    <meta property="og:title" content="Guía de los Datos Abiertos para México (respaldo)">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/articulos/guia-datos-abiertos-mexico/">
+    <meta property="og:image" content="/articulos/guia-datos-abiertos-mexico/datos.png">
+    <meta property="og:description" content="Como fruto del trabajo sobre Gobierno Abierto, el equipo de la Estrategia Digital Nacional redactó la Guía de los Datos Abiertos para México que en el presente se encuentra fuera de línea. A partir de su repositorio en GitHub he copiado su contenido pues considero que es un valioso material de consulta y no debe ser eliminado.">
+    <meta property="og:site_name" content="Movimiento Libre">
+    <title>Guía de los Datos Abiertos para México (respaldo) - Movimiento Libre</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+    <link rel="stylesheet" href="/theme/css/movimiento-libre.css">
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
+                    <script>
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'UA-74263253-1');
+                    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="/">Movimiento Libre</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBootstrap4">
+                <ul class="navbar-nav mr-auto">
+                    <li><a class="nav-link" href="/category/apuntes.html">Apuntes</a></li>
+                    <li><a class="nav-link" href="/category/articulos.html">Artículos</a></li>
+                    <li><a class="nav-link" href="/category/presentaciones.html">Presentaciones</a></li>
+                    <li><a class="nav-link" href="/portafolio/contacto/index.html">Contacto</a></li>
+                </ul>
+                <ul class="navbar-nav movimientolibre-navbar-icons">
+                    <li><a class="movimientolibre-navbar-icon-link" href="https://twitter.com/guivaloz/" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="https://www.facebook.com/movimientolibrepuntocom/" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="https://github.com/guivaloz" target="_blank"><i class="fab fa-github-square"></i></a></li>
+                    <li><a class="movimientolibre-navbar-icon-link" href="https://movimientolibre.com/feeds/all.rss.xml"><i class="fa fa-rss-square"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <header>
+            <div class="jumbotron head-welcome" itemscope itemtype="http://schema.org/Organization">
+                <h1 class="jumbotron-heading head-site-name" itemprop="name">Movimiento Libre</h1>
+                <p class="head-site-description" itemprop="description">Plataforma de divulgación de conocimiento libre por Ing. Guillermo Valdés Lozano (guivaloz)</p>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-sm-8">
+                <article class="article-post">
+                    <script type="application/ld+json">
+                        {
+                            "@context": "http://schema.org",
+                            "@type": "Article",
+                            "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "https://movimientolibre.com"
+                        },
+                        "author": "Estrategia Digital Nacional México",
+                        "name": "Guía de los Datos Abiertos para México (respaldo)",
+                        "headline": "Guía de los Datos Abiertos para México (respaldo)",
+                        "description": "Como fruto del trabajo sobre Gobierno Abierto, el equipo de la Estrategia Digital Nacional redactó la Guía de los Datos Abiertos para México que en el presente se encuentra fuera de línea. A partir de su repositorio en GitHub he copiado su contenido pues considero que es un valioso material de consulta y no debe ser eliminado.",
+                        "dateCreated": "2019-08-30 22:20:00-05:00",
+                        "datePublished": "2019-08-30 22:20:00-05:00",
+                        "dateModified": "2019-08-30 22:20:00-05:00",
+                        "image": "https://movimientolibre.com/articulos/guia-datos-abiertos-mexico/datos.png",
+                        "url": "https://movimientolibre.com/articulos/guia-datos-abiertos-mexico/"
+                        }
+                    </script>
+                    <h2 class="article-post-title">Guía de los Datos Abiertos para México (respaldo)</h2>
+                    <p class="article-post-meta">Estrategia Digital Nacional México<br>30 agosto 2019</p>
+<blockquote>
+<p>Como fruto del trabajo sobre <strong>Gobierno Abierto</strong> el equipo de la <strong>Estrategia Digital Nacional</strong> redactó la <a href="https://datos.gob.mx/guia/">Guía de los Datos Abiertos para México</a> que <strong>en el presente se encuentra fuera de línea.</strong> A partir de su <a href="https://github.com/mxabierto/guia-dgm">repositorio en GitHub</a> he copiado su contenido pues considero que es un valioso material de consulta y no debe ser <em>eliminada</em>.</p>
+</blockquote>
+<p>Esta Guía de Implementación de la Política de Datos Abiertos es una actualización a la versión publicada en el <strong>Diario Oficial de la Federación</strong> el <strong>18 de junio de 2015,</strong> y está dirigida a las instituciones responsables de cumplir con lo establecido en el Decreto por el que se establece la regulación en materia de <strong>Datos Abiertos</strong> publicado en el <strong>Diario Oficial de la Federación</strong> el <strong>20 de febrero de 2015.</strong></p>
+<p>Además, esta Guía permitirá cumplir con la normatividad vigente ligada a la Política de Datos Abiertos como:</p>
+<ul>
+<li>El Índice de Datos Abiertos establecido por el Programa para un Gobierno Cercano y Moderno (PGCM) 2013-2018;</li>
+<li>La Norma Técnica para el acceso y publicación de Datos Abiertos de la Información Estadística y Geográfica de Interés Nacional; y,</li>
+<li>La Ley General de Transparencia y Acceso a la Información Pública.</li>
+<li>Ley Federal de Transparencia y Acceso a la Información Pública.</li>
+<li>Lineamientos para determinar los catálogos y publicación de información de interés público; para la emisión y evaluación de políticas de transparencia proactiva.</li>
+</ul>
+<p>Esta Guía contiene 4 pasos básicos: 1) Planea, 2) Publica, 3) Perfecciona y 4) Promueve, que contienen acciones específicas para cumplir con las disposiciones establecidas en el Decreto de Datos Abiertos.</p>
+<p>La implementación de esta Guía será apoyada con recursos digitales, lineamientos, materiales de capacitación y herramientas tecnológicas que podrán encontrarse en el sitio de internet datos.gob.mx.</p>
+<h2>Paso 1 | Planea</h2>
+<h3>1.1 Formar un grupo de trabajo y designar un Enlace y Administrador de Datos Abiertos</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 días naturales</td>
+<td>Coordinación de Asesores del Titular de la dependencia, homólogas o equivalentes; Dirección General de Tecnologías de Información, homólogas o equivalentes; Unidad Administrativa o Área generadora y/o administradoras de datos; Unidades de Transparencia, homólogas o equivalentes; y, Órganos Internos de Control, homólogas o equivalentes.</td>
+<td>Designar al Enlace Institucional y Administrador de Datos; y Sesionar el Grupo de Trabajo Institucional de Datos Abiertos.</td>
+</tr>
+</tbody>
+</table>
+<p>El Titular de la Institución designará a dos servidores públicos responsables de dar cumplimiento al Decreto por el que se establece la regulación en materia de Datos Abiertos y esta Guía de Implementación:</p>
+<ul>
+<li>El Enlace Institucional, que será el Coordinador de Asesores, el Jefe de la Oficina del Titular de la Institución, o un servidor público con cargo mínimo de Director General que dentro del Reglamento Interno de la Institución tenga como responsabilidad la generación y uso de Datos Abiertos y sea responsable de coordinar las acciones para cumplir con estas disposiciones de acuerdo con la normatividad en la materia.</li>
+<li>El Administrador de Datos, que será el Director General de Tecnologías de la Información u homólogo, y será responsable de coordinar la creación del Plan de Apertura, implementar los procesos para que los datos se publiquen en el sitio institucional y se vean reflejados en datos.gob.mx, y establecer los mecanismos necesarios para asegurar la disponibilidad de los datos de la Institución publicados en el portal datos.gob.mx.</li>
+</ul>
+<p>Las designaciones y sus respectivas actualizaciones, deberán ser comunicados de forma oficial a la UGD, con copia para la Coordinación, conforme a la plantilla que se encuentra en la sección correspondiente del portal de internet datos.gob.mx. En caso de contar ya con la designación de estos responsables, en virtud de las obligaciones plasmadas en la Guía de Implementación de la Política de Datos Abiertos, publicada en el Diario Oficial de la Federación el 18 de junio de 2015, esta actividad no deberá realizarse. Los oficios de designación deberán hacerse públicos en datos.gob.mx.</p>
+<p>La UGD, en colaboración con la Coordinación, podrán hacer recomendaciones sobre las designaciones cuando las Instituciones cuenten con áreas administrativas estratégicas encargadas específicamente de la planeación y administración de datos.</p>
+<p>Grupo de Trabajo Institucional de Datos Abiertos</p>
+<p>El Enlace Institucional será encargado de crear y coordinar un Grupo de Trabajo Institucional de Datos Abiertos, que tendrá los objetivos de:</p>
+<ul>
+<li>Asegurar el cumplimiento de la Política de Datos Abiertos y la normatividad aplicable en materia de Datos Abiertos al interior de la Institución;</li>
+<li>Asegurar la publicación, actualización, perfeccionamiento y uso de los Datos Abiertos, así como los recursos requeridos en la Institución para este fin;</li>
+<li>Atender en tiempo y forma las recomendaciones que puedan ser realizadas por la UGD en colaboración con la Coordinación; mismas que podrán realizarse a través de diversos medios; no siendo necesario hacerlas mediante un oficio;</li>
+<li>Promover el uso de los estándares de apertura aplicables al proceso de generación y publicación de los Datos Abiertos dentro de la institución; e</li>
+<li>Impulsar el uso de Datos Abiertos dentro y fuera de la institución para generar impacto en la población.</li>
+</ul>
+<p>El Grupo de Trabajo Institucional de Datos Abiertos estará presidido por:</p>
+<ul>
+<li>El Enlace Institucional, y</li>
+<li>El Administrador de Datos.</li>
+</ul>
+<p>Además, el Grupo de Trabajo Institucional de Datos Abiertos estará conformado, cuando sea necesario, por:</p>
+<ul>
+<li>El Titular del Órgano Interno de Control, responsable de dar seguimiento al cumplimiento de la normatividad vigente en materia de Datos Abiertos;</li>
+<li>El Titular de la Unidad de Transparencia, responsable de velar la normatividad vigente en materia de transparencia, archivos, datos personales o confidenciales, de implementar procesos de anonimización y solicitar criterios para la protección de datos personales a la autoridad correspondiente cuando sea necesario;</li>
+</ul>
+<p>Los Titulares de las Áreas Generadoras de datos pertinentes, responsables de asegurar la calidad, estandarización y actualización de los datos para ser publicados; y,</p>
+<ul>
+<li>El Enlace de Comunicación Digital (de conformidad con las Disposiciones Generales para la Implementación, Operación y Funcionamiento de la Ventanilla Única Nacional), responsable de integrar una estrategia de comunicación respecto a la publicación de datos prioritarios y de informar al Grupo de Trabajo Institucional de Datos Abiertos sobre el sentimiento ciudadano en redes sociales y otros medios.</li>
+</ul>
+<p>El Grupo de Trabajo Institucional de Datos Abiertos deberá sesionar como mínimo una vez por semestre o de conformidad con sus planes de trabajo. Las minutas de las sesiones podrán tener un formato libre cuyo requisito mínimo es establecer las circunstancias de tiempo, modo y lugar. A dicha minuta se le deberá adjuntar la lista de asistencia de los servidores públicos que asistan a la misma. Los oficios de designación podrán hacerse públicos en datos.gob.mx</p>
+<h3>1.2 Priorizar los datos de valor</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>70 días naturales y de manera anual</td>
+<td>Enlace Institucional; Unidades o áreas generadoras o administradoras de datos; Unidad de Transparencia, homólogas o equivalentes; Grupo de Trabajo Institucional de Datos Abiertos.</td>
+<td>Realizar un inventario de los Sistemas de Información Pública utilizados por la institución y publicarlos en datos.gob.mx. Realizar un inventario de los Registros públicos oficiales mantenidos por la institución publicarlo en datos.gob.mx. Priorizar los datos e incluirlos en el Plan de Apertura</td>
+</tr>
+</tbody>
+</table>
+<p>La priorización de datos de valor es importante para que los esfuerzos de gobernanza, apertura y publicación estén enfocados en la provisión de datos que sean de utilidad, valor y tengan el potencial de crear impacto para la ciudadanía.</p>
+<p>Por lo anterior, la priorización de los datos que serán incluidos en el Plan de Apertura, para su posterior publicación como Datos Abiertos deberá guiarse como mínimo por los criterios siguientes:</p>
+<ol>
+<li>Los datos solicitados anualmente mediante la Infraestructura de Datos Abiertos;</li>
+<li>Los datos de los registros públicos oficiales generados por la Institución;</li>
+<li>Los datos públicos generados o administrados por los Sistemas de Información de la Institución; y,</li>
+<li>Los datos públicos utilizados por herramientas digitales, aplicativos web o móviles, desarrollados por la institución o a nombre de ella.</li>
+</ol>
+<p>Cuando aplique, la priorización también deberá tomar en cuenta:</p>
+<ul>
+<li>Los datos solicitados por la ciudadanía de manera recurrente mediante solicitudes de acceso a la información o que los que deriven de ellas;</li>
+<li>Las opiniones de audiencias estratégicas, específicas o de la población en general;</li>
+<li>La información que conforme al ámbito de sus atribuciones contribuya a un propósito de política pública específico o bien, las mejores prácticas a nivel nacional e internacional en la materia, y</li>
+<li>Aquellos solicitados directamente por la Unidad en colaboración con la coordinación.</li>
+</ul>
+<p>Los datos resultantes de este ejercicio de priorización, particularmente en lo referente a los numerales 1 a 4, deberán ser incluidos en el Plan de Apertura Institucional para ser publicados en datos.gob.mx durante 2017.</p>
+<h3>1.3 Generar, publicar y actualizar el Plan de Apertura Institucional de Datos Abiertos</h3>
+<p>Tiempo para el cumplimiento | Áreas Involucradas | Resumen de acciones a realizar
+90 días naturales naturales para la primera iteración, y de manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de dato | Enlace Institucional; Grupo de Trabajo Institucional de Datos Abiertos | Generar, publicar  y/o actualizar el Plan de Apertura Institucional</p>
+<p>El Plan de Apertura Institucional es construido de manera permanente y gradual, y es conformado por los conjuntos y recursos de datos proporcionados por las Unidades Administrativas o Áreas responsables de generar y/o administrar datos en la Institución.</p>
+<p>El Plan de Apertura tiene como objetivos:</p>
+<ul>
+<li>Conformar un listado público de los datos generados o administrados por la institución, y</li>
+<li>Señalar al público las fechas propuestas para la publicación de aquellos datos de carácter público, como Datos Abiertos.</li>
+</ul>
+<p>El Plan de Apertura deberá ser generado o actualizado de manera constante de acuerdo a la priorización, peticiones, uso y demanda de Datos Abiertos.</p>
+<p>Durante el paso 2.4, estas acciones se utilizarán para documentar y preparar los datos para su publicación en datos.gob.mx.</p>
+<h3>Eliminación o cambios significativos de los Datos Abiertos</h3>
+<p>Los Datos Abiertos son activos que tienen el objetivo de ser usados, reutilizados y redistribuidos por cualquier persona.</p>
+<p>La eliminación de la publicación de algún recurso de datos deberá ser aprobado por el Grupo de Trabajo Institucional de Datos Abiertos. La modificación o eliminación de un conjunto o recurso de datos en el Plan de Apertura no significará su eliminación de www.datos.gob.mx, siguiendo el principio de ‘Permanencia’ establecido en el Artículo QUINTO, inciso VIII del Decreto por el que se establece la regulación en materia de Datos Abiertos.</p>
+<h2>Paso 2 | Publica</h2>
+<h3>2.1 Convertir los datos a formatos abiertos</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de datos.</td>
+<td>Administrador de Datos Abiertos; Unidades Administrativas o áreas generadoras y/o administradoras de datos.</td>
+<td>Exportar los datos a archivos en formatos abiertos. Identificar si se requiere estructurar algún formato adicional que facilite su lectura y uso de acuerdo al tipo de conjunto de dato. Asegurar la validez del formato y estructura del archivo.</td>
+</tr>
+</tbody>
+</table>
+<p>Publicar datos en formatos abiertos - formatos de archivo para los cuales su especificación se encuentra disponible abiertamente y, por lo cual, no se requiere de licencias o software especializado para su interpretación - asegura que los datos estén disponibles y de modo que puedan ser utilizados por computadoras y personas.</p>
+<h3>Formatos abiertos</h3>
+<p>Existen diversos tipos de formatos para publicar Datos Abiertos (Anexo I). Por lo anterior, se recomienda seguir los siguientes formatos de publicación:</p>
+<ul>
+<li>Datos tabulares, se recomienda el formato CSV, en los cuales los valores o cadenas de caracteres que conforman los datos, se acomodan en filas <em>separadas por saltos de línea</em> y columnas <em>separadas por comas</em> ;</li>
+<li>Datos estructurados, se recomienda el uso de los formatos JSON o XML cuya especificación se encuentra disponible abiertamente;</li>
+<li>Datos espaciales se recomienda el uso de los formatos SHP, GeoJSON, o KML;</li>
+<li>Documentos de texto, se recomienda el uso del formato ODT. Dicho formato forma parte del estándar ODF (del inglés, Open Document File Format), y</li>
+<li>Finalmente, se podrán publicar datos en formatos abiertos de base de datos contenidas en un solo archivo, como es el caso de los archivos de base de datos SQLite. Adicionalmente se podrán publicar datos que contengan en un solo archivo las sentencias necesarias en sintaxis del lenguaje SQL para que los mismos puedan ser importados en una base de datos que soporte el estándar de SQL.</li>
+</ul>
+<p>Además, se podrán publicar formatos adicionales para cada conjunto para asegurar la mayor inclusión y entendimiento posible, por ejemplo: en el caso de datos tabulares hacer disponible la versión XLS o XLSX del archivo junto con el CSV.</p>
+<h3>2.2 Incrementar la interoperabilidad y usabilidad de los datos</h3>
+<p>Tiempo para el cumplimiento | Áreas Involucradas | Resumen de acciones a realizar
+90 días naturales para la primera iteración, y de manera continua y según sea recomendado por la Unidad en conjunto con la Coordinación. | Administrador de Datos Abiertos; Unidades Administrativas o áreas generadoras y/o administradoras de datos. | Utilizar el Marco Geoestadístico Nacional para todos los nuevos Recursos de Datos publicados que contengan referencias geográficas. Utilizar el formato UTF-8 para la codificación de los textos en todos los nuevos Recursos de Datos publicados. Utilizar el estándar ISO 8601 para todos los nuevos Recursos de Datos publicados que contengan referencias temporales. Utilizar el estándar para la generación y publicación de boletines y notificaciones técnicas como Datos Abiertos. Cuando sea necesario, utilizar el estándar para fomentar el uso y visualización de datos en datos.gob.mx. Adecuar los procesos de generación o administración de datos para orientar la generación de Recursos de Datos de conformidad con estándares y convenciones generales.</p>
+<p>A fin de que los datos sean más útiles, estos deben ser fáciles de encontrar y comparar dentro y entre sectores, a través de localizaciones geográficas y del tiempo, por lo anterior, se deben emprender acciones para mejorar:</p>
+<ul>
+<li>La interoperabilidad de los datos publicados mediante su estandarización, y</li>
+<li>La usabilidad de los datos, mejorando la legibilidad y lógica de publicación de los conjuntos y recursos de datos.</li>
+</ul>
+<h3>Interoperabilidad de Datos Abiertos</h3>
+<p>Para incrementar la interoperabilidad de los Datos Abiertos las áreas generadoras o administradoras de Datos deberán utilizar:</p>
+<ul>
+<li>El Catálogo Único de Claves de Áreas Geoestadísticas Estatales Municipales y Localidades para el registro de información de domicilios (Anexo 2);</li>
+<li>El estándar ISO-8601 para el registro fechas, horas y periodos de tiempo;</li>
+<li>Codificación de texto en formato UTF-8;</li>
+<li>El estándar ASCII6;</li>
+<li>Los estándares en materia de datos para contrataciones abiertas impulsados por el Gobierno de la República;</li>
+<li>El estándar para la generación y publicación de boletines y notificaciones técnicas como Datos Abiertos (ver manuales en línea en datos.gob.mx/guia) impulsados por el Gobierno de la República; y,</li>
+<li>Los lineamientos para fomentar el uso y visualización de datos en datos.gob.mx (ver recursos en línea) establecidos por la UGD, en colaboración con la  Coordinación.</li>
+</ul>
+<h3>Usabilidad</h3>
+<p>Para incrementar la usabilidad de los Datos Abiertos, las instituciones deberán:</p>
+<ul>
+<li>Promover la legibilidad por máquinas: Se deberá utilizar en la medida de lo posible, formatos de archivo como JSON y XML. Incrementar la legibilidad por máquinas se refiere a hacer disponible información en un formato digital, así como a que la información se encuentre en un formato de archivo cuya estructura sea adecuada para su procesamiento por computadora. Para lo anterior se recomienda:<ul>
+<li>Eliminar cálculos adicionales en formatos tabulares, p. ej. una celda "Total" con la suma de una de las columnas.</li>
+<li>Remover imágenes, celdas unidas, y cualquier otra decoración de los archivos; para facilitar su procesamiento, estos deben ser planos.</li>
+<li>Los campos numéricos, incluyendo los monetarios y magnitudes, deben permanecer en un formato numérico de tipo entero o flotante. Es decir, evitar agregar símbolos monetarios o de unidades de medición, p. ej. "200 m2" o "£20", haciendo explícitas las unidades en el nombre de la columna, o en una segunda columna. P. ej. "Monto en MXN", "Distancia en KM".</li>
+</ul>
+</li>
+<li>Promover la legibilidad por humanos: Se podrá publicar los datos en diversos formatos que, además de permitir la legibilidad por máquina, permitan a un usuario comprender los Datos Abiertos. Para lo anterior se recomienda:<ul>
+<li>Acompañar formatos abiertos por archivos XLS, a manera de que usuarios de diferentes niveles de conocimiento técnico puedan usarlo.</li>
+<li>Describir claramente los nombres de columnas, p. ej. "Fecha de solicitud" en lugar de "fech_sol". En caso de mantener dicha codificación, se deberá acompañar el conjunto de datos con un diccionario de datos (ver ACTIVIDAD C: Documentar los conjuntos de datos).</li>
+<li>Evitar tener valores de diferentes tipos (como texto y número) para una columna en diferentes registros o filas.</li>
+<li>Evitar información duplicada.</li>
+<li>Eliminar redundancia en datos.</li>
+<li>Asegurar la representación de variables (unificar datos).</li>
+<li>Evitar el uso de rangos numéricos y optar por rangos definidos en el ISO 8601, p. ej. en lugar de 0-5, 6-10, usar quinquenios; y,</li>
+<li>Evitar errores sintácticos.</li>
+</ul>
+</li>
+<li>Establecer categorizaciones de datos: Utilizar categorías bien definidas facilita la consulta y el análisis de datos masivos. Las categorías permiten agrupar datos conforme a una cierta característica o propiedad en común. El establecimiento de categorías en los datos se podrá realizar utilizando atributos de los datos para los cuales es posible establecer valores predefinidos.</li>
+<li>Cualquier recomendación de estándares realizada por la Unidad, en colaboración con la Coordinación.</li>
+</ul>
+<h3>2.3 Mejorar la disponibilidad y medios de distribución de los Datos Abiertos</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90 días naturales para la primera iteración, y de manera continua.</td>
+<td>Administrador de Datos Abiertos</td>
+<td>Publicar los recursos de Datos Abiertos privilegiando el uso de servicios web, en los términos establecidos en el esquema de interoperabilidad y de datos abiertos (EIDA); y, Asegurar la disponibilidad de las URL para descarga de los Recursos de Datos.</td>
+</tr>
+</tbody>
+</table>
+<p>Los conjuntos de datos deben estar disponibles para descarga directa en un URL único, asegurando su disponibilidad continua y evitando cualquier barrera de acceso, como el uso de contraseñas o interfaces de usuario.</p>
+<p>Es responsabilidad del Administrador de Datos mantenerlos accesibles de forma permanente e ininterrumpida. De acuerdo al Paso 3.1, la Unidad, en conjunto con la Coordinación podrán analizar la disponibilidad de las ligas, y hacer público el resultado en datos.gob.mx. Para lo anterior, las instituciones podrán utilizar los siguientes medios de distribución para los Datos Abiertos:</p>
+<ul>
+<li>Servicios Web: para el establecimiento de comunicaciones de máquina a máquina, a través del intercambio de formatos estructurados y legibles por máquinas como XML o JSON;</li>
+<li>Archivos: para publicar datos o información estática. Se pueden emplear tanto los formatos de apertura (Anexo 2) así como en formatos alternos para distribuir datos desde almacenamiento en línea; y</li>
+<li>Alimentadores de noticias (Web feed): para proporcionar contenido de frecuente actualización. Es particularmente útil para proporcionar notificaciones, noticias, boletines o comunicados que por su naturaleza se actualizan con frecuencia y no resulta conveniente exportarlos a archivos estáticos en formatos de apertura. Ejemplos de estas tecnologías son RSS y Atom.</li>
+</ul>
+<h3>2.4 Documentar de acuerdo al estándar DCAT y publicar el Catálogo institucional de Datos Abiertos</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90 días naturales para la primera iteración, y de manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de datos.</td>
+<td>Administrador de Datos Abiertos</td>
+<td>Seguir la Guía para documentar metadatos en la Plataforma ADELA para administrar la publicación de Datos Abiertos; Acompañar los conjuntos de datos de los diccionarios de datos correspondientes; y, Publicar Datos Abiertos de acuerdo a la periodicidad establecida en el Plan de Apertura.</td>
+</tr>
+</tbody>
+</table>
+<p>Asegurar que los conjuntos de Datos Abiertos incluyen metadatos consistentes y en formatos legibles para humanos y máquinas facilita el entendimiento del origen, tratamiento y significado de los conjuntos y recursos de datos.</p>
+<p>Por lo anterior, los metadatos que se publican en el sitio de Internet de datos.gob.mx siguen una estructura basada en el estándar DCAT, un estándar de metadatos que tiene el objetivo de mejorar la interoperabilidad de catálogos de datos en la red, con adiciones para incrementar la utilidad de los datos para los usuarios.</p>
+<p>A continuación, se muestran los metadatos solicitados, su descripción y en qué sección de la Plataforma ADELA pueden ser generados.</p>
+<h3>Metadatos solicitados (los metadatos marcados con * son obligatorios)</h3>
+<table>
+<thead>
+<tr>
+<th>Metadatos</th>
+<th>Descripciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ds:identifier*</td>
+<td>Identificador único del conjunto de datos, utilizado para agrupar recursos dentro de este, p. ej. “rezago-social”, “unidades_medicas”, “adquisiciones”. Utilizar caracteres ASCII (p. ej. sin acentos).</td>
+</tr>
+<tr>
+<td>ds:title*</td>
+<td>Título descriptivo del conjunto de datos, p.ej. “Programa de fomento a la agricultura”, “Vuelos comerciales”.</td>
+</tr>
+<tr>
+<td>ds:description*</td>
+<td>Una explicación de los datos, con suficiente detalle para que los usuarios puedan entender si es de su interés, p.ej. “Apoyos otorgados a través del programa Opciones Productivas, desglosado a nivel localidad”.</td>
+</tr>
+<tr>
+<td>ds:keyword</td>
+<td>Lista de términos clave separados por coma, que facilitarán al usuario la búsqueda del conjunto de datos. Es importante considerar el uso de términos no técnicos. p.ej. “salud, medicinas, compras, agricultura”.</td>
+</tr>
+<tr>
+<td>ds:modified*</td>
+<td>Fecha y hora de la última modificación del conjunto de datos; en formato ISO 8601, p.ej. “2014-05-27T01:42:05-05:00”</td>
+</tr>
+<tr>
+<td>ds:contactPoint*</td>
+<td>Nombre de la persona de contacto que atenderá dudas y comentarios sobre el conjunto de datos.</td>
+</tr>
+<tr>
+<td>ds:mbox*</td>
+<td>Correo electrónico de contacto para atender dudas y comentarios sobre el conjunto de datos.</td>
+</tr>
+<tr>
+<td>ds:temporal</td>
+<td>La fecha o fechas que cubren los datos, p.ej. “2013”, “2010/2012”, “2014-01/2014-04”. Si es un rango de fechas, deberán ordenarse ascendentemente.</td>
+</tr>
+<tr>
+<td>ds:spatial</td>
+<td>El espacio geográfico que cubre el conjunto de datos. Puede ser una región, el nombre de un lugar, una clave INEGI, un polígono o un cuadro delimitador de coordenadas geográficas (bounding box) en GML. P.ej. “Baja California”, 002, www.geonames.org/4017700/baja-california.html, “estatal”, o “32.71,-112.32 27.99, -118.45”.</td>
+</tr>
+<tr>
+<td>ds:landingPage*</td>
+<td>Dirección electrónica para obtener mayor documentación o información sobre el conjunto de datos, como lo puede ser un manual, un sitio web, o un diccionario de datos. Este documento sirve como guía adicional para que el usuario entienda con mayor detalle los datos.</td>
+</tr>
+<tr>
+<td>ds:accrualPeriodicity*</td>
+<td>Frecuencia con la cual el conjunto de datos será publicado o actualizado, p. ej. “mensualmente”.</td>
+</tr>
+<tr>
+<td>ds:quality</td>
+<td>Información adicional sobre la calidad y procesos de control de calidad de los conjuntos de datos de los procesos de control de calidad del conjunto de datos</td>
+</tr>
+</tbody>
+</table>
+<h3>Metadatos (descriptores) del recurso o descargable (dcat:Distribution)</h3>
+<table>
+<thead>
+<tr>
+<th>Metadatos</th>
+<th>Descripciones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ds:identifier*</td>
+<td>La clave que identifica al conjunto de datos al que pertenece (y bajo el que se agrupa) este recurso. Ver ds:identifier.</td>
+</tr>
+<tr>
+<td>rs:title*</td>
+<td>Título descriptivo del recurso o descargable, p.ej. “Otorgamientos del 2013”, “Otorgamientos del 2014”, “Apoyos por municipio”, “Apoyos por localidad”.</td>
+</tr>
+<tr>
+<td>rs:description</td>
+<td>Ver ds:description. Esta explicación es adicional a la que existe en el conjunto de datos.</td>
+</tr>
+<tr>
+<td>rs:downloadURL*</td>
+<td>Dirección electrónica (enlace) para la descarga del recurso.</td>
+</tr>
+<tr>
+<td>rs:mediaType*</td>
+<td>Formato de archivo del recurso a descargar, p. ej. “text/csv”, “application/rss+xml”. Este campo permite al usuario buscar conjuntos de datos por formato en datos.gob.mx.</td>
+</tr>
+<tr>
+<td>rs:byteSize</td>
+<td>El tamaño en bytes del recurso o descargable, p. ej. 3145728</td>
+</tr>
+<tr>
+<td>rs:temporal</td>
+<td>Ver ds:temporal</td>
+</tr>
+<tr>
+<td>rs:spatial</td>
+<td>Ver ds:spatial</td>
+</tr>
+<tr>
+<td>rs:codelists</td>
+<td>Información y documentación sobre los códigos utilizados en el recurso de datos ej. Marco Geoestadístico Nacional o ISO 8601</td>
+</tr>
+<tr>
+<td>re:codelistlink</td>
+<td>Hipervínculos a las fuentes oficiales de los códigos y estándares utilizados</td>
+</tr>
+<tr>
+<td>rs:copyright</td>
+<td>En caso de ser necesario, describir los derechos de copyright de los datos o información contenida dentro del recurso de datos ej. Fotografías de un acervo</td>
+</tr>
+<tr>
+<td>rs:tools</td>
+<td>Especificar las herramientas recomendadas para el uso, visualización o análisis ligadas al recurso de datos. Ej. JsonView, Herramienta de Datos para Cambio Climático</td>
+</tr>
+</tbody>
+</table>
+<p>Además de los metadatos, es necesario que cada conjunto se acompañe de un Diccionario de datos con el objetivo de que los usuarios comprendan el origen, metodologías, significado y potencial de los datos (Anexo IV), de ser posible privilegiando su publicación en formato CSV.</p>
+<h3>Publicación</h3>
+<p>De manera general, la publicación de Datos Abiertos se llevará a cabo a través de la Plataforma ADELA, una aplicación web que permite documentar y publicar de manera manual los datos para su publicación en datos.gob.mx, y tiene dos funciones básicas; facilitar el proceso de apertura de datos y transparentar su seguimiento.</p>
+<p>Dentro de esta plataforma las instituciones podrán:</p>
+<ul>
+<li>Publicar los oficios de designación, minutas de trabajo y demás documentos</li>
+<li>Desarrollar el Plan de Apertura Institucional</li>
+<li>Documentar los conjuntos y recursos de Datos Abiertos</li>
+<li>Dar seguimiento a las recomendaciones y acciones pendientes en su Plan de Apertura</li>
+<li>Publicar los Datos Abiertos en datos.gob.mx</li>
+</ul>
+<p>El uso de ADELA está recomendado para la mayoría de las instituciones, excepto aquellas que cuenten con plataformas de datos propias.</p>
+<p>Además, existen otros mecanismos para la carga masiva y automática de datos (Anexo V). Siempre y cuando haya previa validación desde portales de Datos Abiertos propios basados en CKAN o DKAN. Esto con previa validación de la UGD en colaboración con la Coordinación.</p>
+<p>Al publicar los datos abiertos en www.datos.gob.mx, éstos serán asociados inmediatamente con los Términos de Libre Uso MX, con los cual se da la certidumbre de que cualquier persona puede usar los datos para cualquier fin legal que se proponga, con el único requisito de citar la fuente de origen.</p>
+<h2>Paso 3 | Perfecciona</h2>
+<h3>3.1 Asegurar la disponibilidad de las URLs utilizadas para publicar los Datos Abiertos</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90 días naturales para la primera iteración, y de manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de datos.</td>
+<td>Administrador de Datos Abiertos</td>
+<td>Proveer los procedimientos, recursos e infraestructura necesaria para mantener la publicación permanente de los Datos Abiertos de la Institución conforme a los lineamientos de esta Guía; Asegurar la disponibilidad de las URL utilizadas para publicar Datos Abiertos, e implementar acciones para monitorear su disponibilidad; y, De ser el caso, atender las recomendaciones sobre la disponibilidad de las URL.</td>
+</tr>
+</tbody>
+</table>
+<p>El Administrador de Datos deberá  asegurar la disponibilidad de los URLs publicados en www.datos.gob.mx</p>
+<p>Particularmente, se recomienda contemplar los siguientes lineamientos:</p>
+<ul>
+<li>Fuentes válidas: apuntar las URL a un medio de distribución válido, de acceso directo y legible por máquina, como se describe en el Paso 2.4 de esta Guía. Cualquier otro medio de distribución, particularmente para lectura humana, deberá tratarse como una herramienta de la Institución, conforme a lo establecido en el Paso 4.4;</li>
+<li>Infraestructura adecuada: una infraestructura (ya sea propia o de terceros) suficiente y adecuadamente monitoreada para servir el volumen de transacciones estimadas de los Datos Abiertos; en caso de contar con infraestructura física propia, salvaguardar la integridad, disponibilidad y seguridad de los datos en todo momento, y servir los datos con un caché con tiempo de vida corto;</li>
+<li>Definición de las URL: asegurar que las URL deriven de un nombre de dominio y no de una IP. Las URL deberán conformarse únicamente por caracteres dentro del rango ASCII;</li>
+<li>Actualización de los datos: contar con métodos y procedimientos que mantengan la integridad de los directorios, nombres de los archivos y otros medios de distribución, particularmente al hacer una actualización de los datos, de manera que los vínculos se mantengan activos en el proceso. Es recomendable que los recursos de datos sean generados y actualizados de manera automática; y</li>
+<li>Mantenimiento a la infraestructura: considerar y prever los casos de posible mantenimiento a la infraestructura (propia o de terceros) que pudiera afectar o interrumpir la disponibilidad de los datos de la Institución, así como contar con procedimientos y responsables para restablecimiento inmediato del servicio en caso de fallas imprevistas.</li>
+</ul>
+<p>La UGD, en colaboración con la Coordinación, podrá monitorear y emitir recomendaciones específicas sobre la disponibilidad de las URL de los Datos Abiertos de la Institución y publicar los resultados en www.datos.gob.mx, con el fin de asegurar la adecuada implementación de estos lineamientos.</p>
+<h3>3.2 Fomentar la calidad de los Datos Abiertos publicados</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90 días naturales para la primera iteración, y posteriormente de manera continua y cuando sea recomendado por la Unidad en conjunto con la Coordinación.</td>
+<td>Enlace Institucional; Administrador de Datos Abiertos; áreas generadoras o administradoras de datos; Unidad de Transparencia; Órganos Internos de Control.</td>
+<td>Atender las recomendaciones generales y actividades pendientes informadas a las Instituciones.</td>
+</tr>
+</tbody>
+</table>
+<p>La UGD, en colaboración con la Coordinación, podrá hacer recomendaciones a las Instituciones sobre cómo incrementar el cumplimiento de la Política de Datos Abiertos, y la calidad y utilidad de los datos publicados.</p>
+<p>Estas recomendaciones podrán realizarse por diversos medios en donde el público en general, el Enlace Institucional, Administrador de Datos y OICs podrán conocer lo siguiente:</p>
+<ul>
+<li>Recomendaciones generales: por ejemplo, cumplimiento con la Política de Datos Abiertos, solicitudes ciudadanas, ligas rotas y calidad de metadatos, entre otros; y,</li>
+<li>Actividades pendientes: por ejemplo, la publicación o actualización de datos según el Plan de Apertura.</li>
+</ul>
+<p>Las Instituciones de la APF deberán atender todas las recomendaciones y actividades pendientes como sea pertinente.</p>
+<h3>3.3 Responder a los reportes ciudadanos de Datos Abiertos realizados mediante datos.gob.mx</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De manera continua.</td>
+<td>Enlace Institucional; Administrador de Datos Abiertos; áreas generadoras o administradoras de datos; Órganos Internos de Control.</td>
+<td>Dar respuesta a las solicitudes ciudadanas de Datos Abiertos obtenidas en un periodo no mayor a 30 treinta días naturales a partir de que sean informados a la institución.</td>
+</tr>
+</tbody>
+</table>
+<p>datos.gob.mx podrá incluir mecanismos para informes y reportes ciudadanos de Datos Abiertos, las cuales seguirán el siguiente proceso:</p>
+<ol>
+<li>Los informes o reportes podrán ser remitidas al correo electrónico de los responsables de cada conjunto de datos y al Administrador de Datos Abiertos;</li>
+<li>De ser el caso, el Administrador de Datos deberá consultar a las Áreas Generadoras sobre la disponibilidad de los Datos Solicitados y si el informe o reporte procede o no de acuerdo a la existencia de los datos;</li>
+<li>De tener una respuesta afirmativa, el Administrador de Datos dará respuesta a la solicitud especificando la fecha estimada de publicación de los datos en datos.gob.mx, en el plan de apertura; y,</li>
+<li>De tener respuesta negativa, el Administrador de Datos dará respuesta a la solicitud con el fundamento jurídico que corresponda.</li>
+</ol>
+<p>Se deberá responder a los informes o reportes ciudadanos en un periodo de 30 treinta días hábiles a partir de que se informen al Administrador de Datos, después del cual el resultado y estatus de la petición podrá ser publicado en datos.gob.mx</p>
+<h3>3.4 Asegurar el cumplimiento con la Política de Datos Abiertos</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Según los tiempos específicos marcados por esta Guía y posteriormente de manera semestral.</td>
+<td>Órganos Internos de Control; Enlace de Datos Abiertos; Administrador de Datos Abiertos.</td>
+<td>Verificar el cumplimiento de las acciones de esta Guía y su implementación.</td>
+</tr>
+</tbody>
+</table>
+<h2>Paso 4 | Promueve</h2>
+<h3>4.1 Asegurar la generación, publicación y uso de Datos Abiertos en las herramientas y aplicativos digitales del gobierno</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>90 días naturales para la primera iteración, y de manera continua.</td>
+<td>Administrador de Datos Abiertos; áreas generadoras o administradoras de datos.</td>
+<td>Publicar los datos generados o utilizados por las herramientas y aplicativos desarrollados o mantenidos por la institución o a nombre de ella en datos.gob.mx; e Incluir una liga visible en todas las herramientas y aplicativos mantenidos por la institución para la descarga de datos en www.datos.gob.mx.</td>
+</tr>
+</tbody>
+</table>
+<p>Las Instituciones que desarrollen o mantengan herramientas o aplicativos de acceso público deberán, obligatoriamente:</p>
+<ol>
+<li>Publicar o referenciar todos los datos generados o utilizados por las mismas en datos.gob.mx, de acuerdo a lo establecido en esta Guía;</li>
+<li>Publicar la herramienta o aplicativo correspondiente en la sección de ‘Herramientas’ de datos.gob.mx y en la sección de aplicaciones de gob.mx, e</li>
+<li>Incluir una liga visible en la herramienta o aplicación para la descarga de los datos desde datos.gob.mx.</li>
+</ol>
+<p>Se consideran como herramientas los siguientes:</p>
+<ul>
+<li>Sitios técnicos (no incluidos en gob.mx) dentro del dominio de la Institución, que presenten datos estadísticos, gráficas, mapas, imágenes y/o textos;</li>
+<li>Procesadores analíticos comúnmente relacionados con “Business Intelligence” (inteligencia de negocios), incluyendo tableros (“dashboards”), calculadoras y/o modelos numéricos;</li>
+<li>Visores geográficos que utilicen mapas, imágenes geomórficas, satelitales, modelos atmosféricos, superficiales, submarinos o subterráneos, así como cualquier otro tipo de dato espacial o georeferencial;</li>
+<li>Indexadores de datos sobre bancos de información, colecciones de documentos, archivos, digitalizaciones, audio, video o imágenes; y</li>
+<li>Aplicaciones web o móviles que utilizan o procesan datos dinámicos y/o estáticos de referencia, estadísticos o geográficos.</li>
+</ul>
+<p>Las Instituciones deberán observar los lineamientos anteriores para el desarrollo o migración de sus Herramientas, así como para su publicación en datos.gob.mx.</p>
+<p>La UGD, en colaboración con la  Coordinación podrá emitir recomendaciones específicas sobre las Herramientas publicadas con el fin de asegurar la adecuada implementación de estos lineamientos.</p>
+<h3>4.2 Impulsar el uso de Datos Abiertos en la ciudadanía</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De manera continua.</td>
+<td>Enlace Institucional; Enlaces de Participación ciudadana en cada institución.</td>
+<td>Cuando aplique, asegurarse que se llevarán a cabo consultas ciudadanas sobre la priorización, plan de apertura, catálogo de datos abiertos u otras iniciativas de publicación y uso de datos abiertos institucionales en www.gob.mx/participa</td>
+</tr>
+</tbody>
+</table>
+<p>Las Instituciones deberán tener contacto constante con todos los sectores de la sociedad para conocer la opinión directa de los usuarios sobre la prioridad, estructura, calidad y uso de los Datos publicados en datos.gob.mx.</p>
+<p>Para lo anterior, las instituciones de la APF tienen a su disposición la sección “Participa” en gob.mx/participa, mediante la cual se podrá promover estrategias de consulta y encuestas para promover la creación de impacto mediante la publicación y uso de datos Abiertos en colaboración con la ciudadanía.</p>
+<p>Además, las Instituciones podrán llevar a cabo datatones y/o hackatones para fomentar mayor participación de la ciudadanía para el desarrollo de aplicaciones, plataformas del sector público, visualizaciones u otras soluciones tecnológicas demandadas por el gobierno.</p>
+<p>Las Instituciones que decidan emprender estas acciones deberán asegurarse que la provisión de datos para uso de los ciudadanos en el evento se haga a través de Datos Abiertos en datos.gob.mx.</p>
+<h3>4.3 Establecer estrategias de comunicación digital</h3>
+<table>
+<thead>
+<tr>
+<th>Tiempo para el cumplimiento</th>
+<th>Áreas Involucradas</th>
+<th>Resumen de acciones a realizar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De manera bimestral.</td>
+<td>Enlace Institucional; Enlaces de comunicación digital en cada institución</td>
+<td>Informar a los Enlaces de Comunicación Digital sobre la publicación de Datos Abiertos de alto valor; Usar los mecanismos de comunicación disponibles en la institución para comunicar datatones se y/o uso de Datos Abiertos.</td>
+</tr>
+</tbody>
+</table>
+<p>Contar con una estrategia de comunicación digital es importante para que la población conozca la disponibilidad de nuevos recursos de Datos Abiertos, en especial cuando estos son de alto valor. De igual manera, la comunicación a través de redes sociales permite conocer las necesidades y reacción de la población hacia la publicación de Datos Abiertos.</p>
+<p>Por lo anterior, las instituciones deberán comunicar a los ciudadanos las acciones para el uso y publicación de Datos Abiertos mediante sus redes sociales y otros mecanismos de comunicación disponibles. Para esto, se podrán utilizar los siguientes canales, entre otros:</p>
+<ul>
+<li>Sitios institucionales de internet;</li>
+<li>Redes sociales de la institución;</li>
+<li>Publicación de historias en datos.gob.mx; y,</li>
+<li>Otros que la institución considere pertinentes.</li>
+</ul>
+<p>Las instituciones deberán realizar estas acciones de comunicación como mínimo bimestralmente, y en cualquier momento cuando sea solicitado por la Unidad, o la Coordinación, así como asegurarse de hacer mención específica a la URL directa de los Datos Abiertos en cuestión.</p>
+                </article>
+            </div>
+            <div class="col-sm-4">
+                <aside>
+                    <div class="card my-4 movimientolibre-card aside-about">
+                        <h5 class="card-header movimientolibre-card-header">A cerca de</h5>
+                        <div class="card-body">
+                            <p class="card-text">
+                                Este es un sitio web que busca divulgar
+                                conocimiento y promover el uso de software libre.
+                                Su creador es reconocido como desarrollador que
+                                fabrica estas herramientas tanto para entidades
+                                públicas como privadas.
+                                Conozca el portafolio:
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item movimientolibre-list-group-item"><a class="card-link" href="/portafolio/soluciones/">Soluciones en software a la medida</a></li>
+                        </ul>
+                    </div>
+                    <div class="card my-4 movimientolibre-card">
+                        <h5 class="card-header movimientolibre-card-header">Etiquetas</h5>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="/tag/docker.html">docker</a></li>
+                                <li><a href="/tag/educacion.html">educación</a></li>
+                                <li><a href="/tag/fedora.html">fedora</a></li>
+                                <li><a href="/tag/flisol.html">flisol</a></li>
+                                <li><a href="/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="/tag/git.html">git</a></li>
+                                <li><a href="/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="/tag/gulag.html">gulag</a></li>
+                                <li><a href="/tag/hardware.html">hardware</a></li>
+                                <li><a href="/tag/kde.html">kde</a></li>
+                                <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="/tag/latex.html">latex</a></li>
+                                <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/php.html">php</a></li>
+                                <li><a href="/tag/politica.html">política</a></li>
+                                <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/ruby.html">ruby</a></li>
+                                <li><a href="/tag/servidores.html">servidores</a></li>
+                                <li><a href="/tag/software-libre.html">software libre</a></li>
+                                <li><a href="/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="/tag/wallpapers.html">wallpapers</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card my-4 movimientolibre-card">
+                        <h5 class="card-header movimientolibre-card-header">Buscar</h5>
+                        <div class="card-body">
+                    <script>
+                        (function() {
+                            var cx = '015464194519155410478:jqayrodgycs';
+                            var gcse = document.createElement('script');
+                            gcse.type = 'text/javascript';
+                            gcse.async = true;
+                            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                            var s = document.getElementsByTagName('script')[0];
+                            s.parentNode.insertBefore(gcse, s);
+                        })();
+                    </script>
+                    <gcse:search></gcse:search>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <footer class="text-muted">
+        <div class="container">
+            <hr>
+            <p>
+                Copyright &copy; 2006-2019 Guillermo Valdés Lozano.
+                Protegidos por la licencia <a href="/licencias/gfdl-es/">GFDL</a>.
+                Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
+                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="/licencias/gpl-2-es/">GPLv3</a>.
+            </p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="/theme/js/movimiento-libre.js"></script>
+</body>
+</html>

@@ -4,12 +4,12 @@
 
 body { font-family: 'Noto Sans', sans-serif; font-size: 12pt; }
 
-h1 { font-size: 1.6rem; margin-top: 1.4rem; }
-h2 { font-size: 1.4rem; margin-top: 1.4rem; }
-h3 { font-size: 1.2rem; margin-top: 1.4rem; }
-h4 { font-size: 1.0rem; margin-top: 1.2rem; }
-h5 { font-size: 0.8rem; }
-h6 { font-size: 0.6rem; }
+h1 { font-size: 1.6rem; font-weight: 600; margin-top: 1.4rem; }
+h2 { font-size: 1.4rem; font-weight: 600; margin-top: 1.4rem; }
+h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.4rem; }
+h4 { font-size: 1.0rem; font-weight: 600; margin-top: 1.2rem; }
+h5 { font-size: 0.8rem; font-weight: 600; }
+h6 { font-size: 0.6rem; font-weight: 600; }
 
 a         { color: #003399; text-decoration: none; }
 a:focus,
