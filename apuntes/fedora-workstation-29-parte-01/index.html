@@ -106,18 +106,18 @@
 <p>Fedora ofrece los archivos ISO para instalar en <a href="https://getfedora.org/">getfedora.org</a>. Para acelerar la instalación del entorno gráfico KDE, baje el <em>spin-off</em> <a href="https://spins.fedoraproject.org/kde/">KDE Plasma Destop</a>.</p>
 <h3>Transfiera a una memoria USB</h3>
 <p>Averigüe con <code>fdisk</code> cuál dispositivo es la memoria USB</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># fdisk -l</span>
+</code></pre></div>
 
 
 <p>Si la memoria USB es <code>/dev/sdX</code> y descargó el ISO <code>Fedora-KDE-Live-x86_64-29-1.2.iso</code>, ejecute</p>
-<div class="highlight"><pre><span></span># <span class="nv">dd</span> <span class="k">if</span><span class="o">=</span><span class="nv">Fedora</span><span class="o">-</span><span class="nv">KDE</span><span class="o">-</span><span class="nv">Live</span><span class="o">-</span><span class="nv">x86_64</span><span class="o">-</span><span class="mi">29</span><span class="o">-</span><span class="mi">1</span>.<span class="mi">2</span>.<span class="nv">iso</span> <span class="nv">of</span><span class="o">=/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">sdX</span> <span class="nv">status</span><span class="o">=</span><span class="nv">progress</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dd if=Fedora-KDE-Live-x86_64-29-1.2.iso of=/dev/sdX status=progress</span>
+</code></pre></div>
 
 
 <p>Este proceso es lento. Tenga paciencia. Cuando acabe el comando, asegúrese de que se haya copiado todo ejecutando</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">sync</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># sync</span>
+</code></pre></div>
 
 
 <p>Apague el equipo. Si tiene un disco duro nuevo, instálelo.</p>
@@ -201,9 +201,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

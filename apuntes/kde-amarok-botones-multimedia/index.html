@@ -104,123 +104,123 @@
 <p><img class="img-fluid" src="botones.jpg" alt="Botones"></p>
 <h3>Configuración de las X's</h3>
 <p>El primer paso es revisar que tengamos bien configuradas las X's. Muestro a continuación el segmento del archivo de configuración /etc/X11/xorg.conf para un teclado en español y latinoamericano. Para modificar el archivo xorg.conf se necesita ser root.</p>
-<div class="highlight"><pre><span></span><span class="n">Section</span> <span class="ss">&quot;InputDevice&quot;</span>
-    <span class="n">Identifier</span>      <span class="ss">&quot;Generic Keyboard&quot;</span>
-    <span class="n">Driver</span>          <span class="ss">&quot;kbd&quot;</span>
-    <span class="k">Option</span>          <span class="ss">&quot;CoreKeyboard&quot;</span>
-    <span class="k">Option</span>          <span class="ss">&quot;XkbRules&quot;</span>      <span class="ss">&quot;xorg&quot;</span>
-    <span class="k">Option</span>          <span class="ss">&quot;XkbModel&quot;</span>      <span class="ss">&quot;pc105&quot;</span>
-    <span class="k">Option</span>          <span class="ss">&quot;XkbLayout&quot;</span>     <span class="ss">&quot;latam&quot;</span>
-<span class="n">EndSection</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Section &quot;InputDevice&quot;</span>
+<span class="err">    Identifier      &quot;Generic Keyboard&quot;</span>
+<span class="err">    Driver          &quot;kbd&quot;</span>
+<span class="err">    Option          &quot;CoreKeyboard&quot;</span>
+<span class="err">    Option          &quot;XkbRules&quot;      &quot;xorg&quot;</span>
+<span class="err">    Option          &quot;XkbModel&quot;      &quot;pc105&quot;</span>
+<span class="err">    Option          &quot;XkbLayout&quot;     &quot;latam&quot;</span>
+<span class="err">EndSection</span>
+</code></pre></div>
 
 
 <p>Las X's correctamente configuradas <em>deberán entregar un código</em> cuando sea presionado un botón multimedia.</p>
 <h3>Descubriendo los <em>scancodes</em></h3>
 <p>Vamos a ejecutar el programa <em>xev</em>, que es una utilería de las X's. Inicie su sesión como un usuario normal en KDE, abra una terminal y ejecute el comando:</p>
-<div class="highlight"><pre><span></span>$ xev
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ xev
+</code></pre></div>
 
 
 <p>Este programa muestra una pequeña ventana blanca y en la terminal se pueden ver los textos de salida. Mientras corra, estará atento a cualquier tecla o movimiento del ratón, mandando información del evento a la terminal.</p>
 <p>Coloque el puntero sobre la ventana blanca del <em>xev</em>, vaya presionando uno por uno los botones multimedia y tomando nota de los <em>keycodes</em>.</p>
 <p><img class="img-fluid" src="xev.png" alt="XEV"></p>
 <p>Como ejemplo, cuando presiono el botón de <em>Play/Pausa</em> me aparece dos bloques de datos, de cuando presiono el botón y cuando lo libero:</p>
-<div class="highlight"><pre><span></span><span class="n">KeyPress</span> <span class="n">event</span><span class="p">,</span> <span class="nb">serial</span> <span class="mi">31</span><span class="p">,</span> <span class="n">synthetic</span> <span class="k">NO</span><span class="p">,</span> <span class="n">window</span> <span class="mi">0</span><span class="n">x2400001</span><span class="p">,</span>
-    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">time</span> <span class="mi">4421581</span><span class="p">,</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span><span class="mi">247</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">351</span><span class="p">,</span><span class="mi">455</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><code><span class="n">KeyPress</span> <span class="n">event</span><span class="p">,</span> <span class="nb">serial</span> <span class="mi">31</span><span class="p">,</span> <span class="n">synthetic</span> <span class="k">NO</span><span class="p">,</span> <span class="n">window</span> <span class="mi">0</span><span class="n">x2400001</span><span class="p">,</span>
+    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="k">time</span> <span class="mi">4421581</span><span class="p">,</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span><span class="mi">247</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">351</span><span class="p">,</span><span class="mi">455</span><span class="p">),</span>
     <span class="k">state</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">keycode</span> <span class="mi">162</span> <span class="p">(</span><span class="n">keysym</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">NoSymbol</span><span class="p">),</span> <span class="n">same_screen</span> <span class="n">YES</span><span class="p">,</span>
     <span class="n">XLookupString</span> <span class="n">gives</span> <span class="mi">0</span> <span class="n">bytes</span><span class="p">:</span>
     <span class="n">XmbLookupString</span> <span class="n">gives</span> <span class="mi">0</span> <span class="n">bytes</span><span class="p">:</span>
     <span class="n">XFilterEvent</span> <span class="k">returns</span><span class="p">:</span> <span class="k">False</span>
 
 <span class="n">KeyRelease</span> <span class="n">event</span><span class="p">,</span> <span class="nb">serial</span> <span class="mi">31</span><span class="p">,</span> <span class="n">synthetic</span> <span class="k">NO</span><span class="p">,</span> <span class="n">window</span> <span class="mi">0</span><span class="n">x2400001</span><span class="p">,</span>
-    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">time</span> <span class="mi">4421760</span><span class="p">,</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span><span class="mi">247</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">351</span><span class="p">,</span><span class="mi">455</span><span class="p">),</span>
+    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="k">time</span> <span class="mi">4421760</span><span class="p">,</span> <span class="p">(</span><span class="mi">88</span><span class="p">,</span><span class="mi">247</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">351</span><span class="p">,</span><span class="mi">455</span><span class="p">),</span>
     <span class="k">state</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">keycode</span> <span class="mi">162</span> <span class="p">(</span><span class="n">keysym</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">NoSymbol</span><span class="p">),</span> <span class="n">same_screen</span> <span class="n">YES</span><span class="p">,</span>
     <span class="n">XLookupString</span> <span class="n">gives</span> <span class="mi">0</span> <span class="n">bytes</span><span class="p">:</span>
     <span class="n">XFilterEvent</span> <span class="k">returns</span><span class="p">:</span> <span class="k">False</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Observe el tercer renglón de cada bloque, el botón de <em>Play/Pausa</em> tiene el <em>keycode 162</em>, pero no hay un <em>caracter</em> asociado al mismo por que muestra <em>NoSymbol</em>.</p>
 <p>Cuando el botón nos da su <em>keycode</em> pero no tiene un <em>caracter</em> asociado, debemos configurar el <em>keycode</em> al <em>caracter</em> que creamos conveniente. Esto es justo lo que haremos en la siguiente sección.</p>
 <h3>Estableciendo los caracteres para los <em>keycode</em> no definidos.</h3>
 <p>Vamos a crear un archivo de configuración en su directorio <em>home</em> con el nombre <em>.xmodmaprc</em> (nombre recomendado por el manual del <em>xmodmap</em>) con las claves y su equivalencia para las X's. He aquí la muestra:</p>
-<div class="highlight"><pre><span></span><span class="n">keycode</span> <span class="mi">160</span> <span class="o">=</span> <span class="n">XF86AudioMute</span>
-<span class="n">keycode</span> <span class="mi">174</span> <span class="o">=</span> <span class="n">XF86AudioLowerVolume</span>
-<span class="n">keycode</span> <span class="mi">176</span> <span class="o">=</span> <span class="n">XF86AudioRaiseVolume</span>
-<span class="n">keycode</span> <span class="mi">162</span> <span class="o">=</span> <span class="n">XF86AudioPlay</span>
-<span class="n">keycode</span> <span class="mi">144</span> <span class="o">=</span> <span class="n">XF86AudioPrev</span>
-<span class="n">keycode</span> <span class="mi">153</span> <span class="o">=</span> <span class="n">XF86AudioNext</span>
-<span class="n">keycode</span> <span class="mi">164</span> <span class="o">=</span> <span class="n">XF86AudioStop</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">keycode 160 = XF86AudioMute</span>
+<span class="err">keycode 174 = XF86AudioLowerVolume</span>
+<span class="err">keycode 176 = XF86AudioRaiseVolume</span>
+<span class="err">keycode 162 = XF86AudioPlay</span>
+<span class="err">keycode 144 = XF86AudioPrev</span>
+<span class="err">keycode 153 = XF86AudioNext</span>
+<span class="err">keycode 164 = XF86AudioStop</span>
+</code></pre></div>
 
 
 <p>Procedemos a probar si esta configuración es correcta. Para cargar esta configuración y revisarla con <em>xev</em> ejecute en una terminal:</p>
-<div class="highlight"><pre><span></span>$ xmodmap ~/.xmodmaprc
+<div class="highlight"><pre><span></span><code>$ xmodmap ~/.xmodmaprc
 $ xev
-</pre></div>
+</code></pre></div>
 
 
 <p>Al presionar de nuevo el botón de <em>Play/Pausa</em> vemos que el <em>caracter</em> está correctamente asignado:</p>
-<div class="highlight"><pre><span></span><span class="n">KeyPress</span> <span class="n">event</span><span class="p">,</span> <span class="nb">serial</span> <span class="mi">31</span><span class="p">,</span> <span class="n">synthetic</span> <span class="k">NO</span><span class="p">,</span> <span class="n">window</span> <span class="mi">0</span><span class="n">x2400001</span><span class="p">,</span>
-    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">time</span> <span class="mi">5096736</span><span class="p">,</span> <span class="p">(</span><span class="mi">131</span><span class="p">,</span><span class="mi">124</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">666</span><span class="p">,</span><span class="mi">262</span><span class="p">),</span>
+<div class="highlight"><pre><span></span><code><span class="n">KeyPress</span> <span class="n">event</span><span class="p">,</span> <span class="nb">serial</span> <span class="mi">31</span><span class="p">,</span> <span class="n">synthetic</span> <span class="k">NO</span><span class="p">,</span> <span class="n">window</span> <span class="mi">0</span><span class="n">x2400001</span><span class="p">,</span>
+    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="k">time</span> <span class="mi">5096736</span><span class="p">,</span> <span class="p">(</span><span class="mi">131</span><span class="p">,</span><span class="mi">124</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">666</span><span class="p">,</span><span class="mi">262</span><span class="p">),</span>
     <span class="k">state</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">keycode</span> <span class="mi">162</span> <span class="p">(</span><span class="n">keysym</span> <span class="mi">0</span><span class="n">x1008ff14</span><span class="p">,</span> <span class="n">XF86AudioPlay</span><span class="p">),</span> <span class="n">same_screen</span> <span class="n">YES</span><span class="p">,</span>
     <span class="n">XLookupString</span> <span class="n">gives</span> <span class="mi">0</span> <span class="n">bytes</span><span class="p">:</span>
     <span class="n">XmbLookupString</span> <span class="n">gives</span> <span class="mi">0</span> <span class="n">bytes</span><span class="p">:</span>
     <span class="n">XFilterEvent</span> <span class="k">returns</span><span class="p">:</span> <span class="k">False</span>
 
 <span class="n">KeyRelease</span> <span class="n">event</span><span class="p">,</span> <span class="nb">serial</span> <span class="mi">31</span><span class="p">,</span> <span class="n">synthetic</span> <span class="k">NO</span><span class="p">,</span> <span class="n">window</span> <span class="mi">0</span><span class="n">x2400001</span><span class="p">,</span>
-    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">time</span> <span class="mi">5096946</span><span class="p">,</span> <span class="p">(</span><span class="mi">131</span><span class="p">,</span><span class="mi">124</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">666</span><span class="p">,</span><span class="mi">262</span><span class="p">),</span>
+    <span class="n">root</span> <span class="mi">0</span><span class="n">x44</span><span class="p">,</span> <span class="n">subw</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="k">time</span> <span class="mi">5096946</span><span class="p">,</span> <span class="p">(</span><span class="mi">131</span><span class="p">,</span><span class="mi">124</span><span class="p">),</span> <span class="n">root</span><span class="p">:(</span><span class="mi">666</span><span class="p">,</span><span class="mi">262</span><span class="p">),</span>
     <span class="k">state</span> <span class="mi">0</span><span class="n">x0</span><span class="p">,</span> <span class="n">keycode</span> <span class="mi">162</span> <span class="p">(</span><span class="n">keysym</span> <span class="mi">0</span><span class="n">x1008ff14</span><span class="p">,</span> <span class="n">XF86AudioPlay</span><span class="p">),</span> <span class="n">same_screen</span> <span class="n">YES</span><span class="p">,</span>
     <span class="n">XLookupString</span> <span class="n">gives</span> <span class="mi">0</span> <span class="n">bytes</span><span class="p">:</span>
     <span class="n">XFilterEvent</span> <span class="k">returns</span><span class="p">:</span> <span class="k">False</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Haciendo que la configuración se cargue al iniciar la sesión.</h3>
 <p>En este punto tenemos las asiganciones <em>keycode</em> a <em>caracter</em>, pero debemos cargarlas manualmente cada vez que encendemos el equipo.</p>
 <p>Para no ser invasivos al sistema operativo, vamos a crear un <em>Bash script</em> que ejecute el comando <em>xmodmap</em> y cargue la configuración cada vez que iniciamos la sesión de usuario. KDE tiene un directorio <em>Autostart</em> para cada usuario.</p>
 <p>Para crear este <em>Bash script</em> abra una terminal y escriba:</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/.kde/Autostart/
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/.kde/Autostart/
 $ nano -w botones-multimedia.sh
-</pre></div>
+</code></pre></div>
 
 
 <p>El script <em>botones-multimedia.sh</em> simplemente va ejecutar el programa <em>xmodmap</em> con un parámetro, el archivo de configuración que hemos creado:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 xmodmap ~/.xmodmaprc
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Guarde los cambios y salga del editor. Haga este script ejecutable con el comando <em>chmod</em>:</p>
-<div class="highlight"><pre><span></span>$ <span class="nv">chmod</span> <span class="nv">a</span><span class="o">+</span><span class="nv">x</span> <span class="nv">botones</span><span class="o">-</span><span class="nv">multimedia</span>.<span class="nv">sh</span>
-$ <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ chmod a+x botones-multimedia.sh
+$ <span class="nb">exit</span>
+</code></pre></div>
 
 
 <p>Cierre su sesión del KDE y vuelva a entrar. Abra una nueva terminal y ejecute <em>xev</em> de nuevo para presionar cada botón multimedia y revisar que todos ellos tengan su caracter correcto.</p>
 <h3>Descubriendo los comandos DCOP para Amarok</h3>
 <p>La Dell Inspiron 9300 tiene los botones Play/Pausa, Anterior (previous), Siguiente (next) y Stop (detener). Los cuales vamos a configurar para que controlen al Amarok.</p>
 <p>Necesitamos conocer los comandos DCOP que nos permitan controlar la reproducción de audio en Amarok. Para ello, abra una terminal y ejecute el siguiente comando:</p>
-<div class="highlight"><pre><span></span>$ dcop amarok player
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dcop amarok player
+</code></pre></div>
 
 
 <p>Nos entregará una larga lista de operadores. Tome nota de los que quiera controlar con los botones multimedia. En mi equipo he elegido los siguientes:</p>
-<div class="highlight"><pre><span></span><span class="nv">void</span> <span class="k">next</span><span class="ss">()</span>
-<span class="nv">void</span> <span class="nv">playPause</span><span class="ss">()</span>
-<span class="nv">void</span> <span class="nv">prev</span><span class="ss">()</span>
-<span class="nv">void</span> <span class="nv">stop</span><span class="ss">()</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">void next()</span>
+<span class="err">void playPause()</span>
+<span class="err">void prev()</span>
+<span class="err">void stop()</span>
+</code></pre></div>
 
 
 <p>Ejecute Amarok y pruebe cada comando DCOP (observe que van sin paréntesis):</p>
-<div class="highlight"><pre><span></span>$ <span class="nv">dcop</span> <span class="nv">amarok</span> <span class="nv">player</span> <span class="k">next</span>
-$ <span class="nv">dcop</span> <span class="nv">amarok</span> <span class="nv">player</span> <span class="nv">playPause</span>
-$ <span class="nv">dcop</span> <span class="nv">amarok</span> <span class="nv">player</span> <span class="nv">prev</span>
-$ <span class="nv">dcop</span> <span class="nv">amarok</span> <span class="nv">player</span> <span class="nv">stop</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dcop amarok player next
+$ dcop amarok player playPause
+$ dcop amarok player prev
+$ dcop amarok player stop
+</code></pre></div>
 
 
 <p>Tome nota de los comandos DCOP para Amarok que quiera configurar para sus botones multimedia.</p>
@@ -229,31 +229,31 @@ $ <span class="nv">dcop</span> <span class="nv">amarok</span> <span class="nv">p
 <p><img class="img-fluid" src="kmix-volumenes-bajos.png" alt="KMix 1"></p>
 <p><img class="img-fluid" src="kmix-volumenes-altos.png" alt="KMix 2"></p>
 <p>Primero descubro los operadores DCOP de la aplicación Kmix ejecutando el siguiente comando:</p>
-<div class="highlight"><pre><span></span>$ dcop kmix Mixer0
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0
+</code></pre></div>
 
 
 <p>De entre todos elijo los tres siguientes. Como verán, son los que me incrementarán, decrementarán y silenciarán los volúmenes.</p>
-<div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">increaseVolume</span><span class="p">(</span><span class="nb">int</span> <span class="n">deviceidx</span><span class="p">)</span>
-<span class="n">void</span> <span class="n">decreaseVolume</span><span class="p">(</span><span class="nb">int</span> <span class="n">deviceidx</span><span class="p">)</span>
-<span class="n">void</span> <span class="n">toggleMute</span><span class="p">(</span><span class="nb">int</span> <span class="n">deviceidx</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">void increaseVolume(int deviceidx)</span>
+<span class="err">void decreaseVolume(int deviceidx)</span>
+<span class="err">void toggleMute(int deviceidx)</span>
+</code></pre></div>
 
 
 <p>Cada uno necesita como parámetro un número entero que se refiere al <em>control</em> a alterar. En mi caso, las bocinas principales son 0 y las de los bajos son 1.</p>
 <p>Entonces, para incrementar el volumen ejecuto:</p>
-<div class="highlight"><pre><span></span>$ dcop kmix Mixer0 increaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 increaseVolume <span class="m">1</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0 increaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 increaseVolume <span class="m">1</span>
+</code></pre></div>
 
 
 <p>Para decrementar el volumen:</p>
-<div class="highlight"><pre><span></span>$ dcop kmix Mixer0 decreaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 decreaseVolume <span class="m">1</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0 decreaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 decreaseVolume <span class="m">1</span>
+</code></pre></div>
 
 
 <p>Y para silenciar/des-silenciar:</p>
-<div class="highlight"><pre><span></span>$ dcop kmix Mixer0 toggleMute <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 toggleMute <span class="m">1</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0 toggleMute <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 toggleMute <span class="m">1</span>
+</code></pre></div>
 
 
 <h3>Creando las acciones para Amarok.</h3>
@@ -315,9 +315,11 @@ $ <span class="nv">dcop</span> <span class="nv">amarok</span> <span class="nv">p
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

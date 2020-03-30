@@ -122,300 +122,300 @@
 <p>Ya que haga su primer arranque, a partir de lo instalado en el disco duro, continúe con los siguientes pasos.</p>
 <h3>Levante la red</h3>
 <p>Por defecto no levanta ningún dispositivo de red. Como partimos del <strong>CD Minimal</strong> necesitaremos salida a internet para bajar el software. Para configurar el dispositivo de red <strong>eth0</strong> edite:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">network</span><span class="o">-</span><span class="n">scripts</span>
-<span class="o">#</span> <span class="n">vi</span> <span class="n">ifcfg</span><span class="o">-</span><span class="n">eth0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/sysconfig/network-scripts</span>
+<span class="err"># vi ifcfg-eth0</span>
+</code></pre></div>
 
 
 <p>Si quiere usar una <strong>dirección IP fija</strong>, por ejemplo 192.168.0.250 con ruteador 192.168.0.254 (conserve el <strong>HWADDR</strong>):</p>
-<div class="highlight"><pre><span></span><span class="n">DEVICE</span><span class="o">=</span><span class="n">eth0</span>
-<span class="n">HWADDR</span><span class="o">=</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span>
-<span class="k">TYPE</span><span class="o">=</span><span class="n">Ethernet</span>
-<span class="n">ONBOOT</span><span class="o">=</span><span class="n">yes</span>
-<span class="n">NM_CONTROLLED</span><span class="o">=</span><span class="k">no</span>
-<span class="n">IPADDR</span><span class="o">=</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">250</span>
-<span class="n">NETMASK</span><span class="o">=</span><span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">GATEWAY</span><span class="o">=</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">254</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">DEVICE=eth0</span>
+<span class="err">HWADDR=xx:xx:xx:xx:xx:xx</span>
+<span class="err">TYPE=Ethernet</span>
+<span class="err">ONBOOT=yes</span>
+<span class="err">NM_CONTROLLED=no</span>
+<span class="err">IPADDR=192.168.0.250</span>
+<span class="err">NETMASK=255.255.255.0</span>
+<span class="err">GATEWAY=192.168.0.254</span>
+</code></pre></div>
 
 
 <p>Luego debe configurar cuáles serán sus servidores DNS:</p>
-<div class="highlight"><pre><span></span><span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">vi /etc/resolv.conf</span>
+</code></pre></div>
 
 
 <p>Escriba el dominio si lo usa, luego cada servidor DNS como una línea <em>nameserver</em>. En el siguiente ejemplo se usa un dominio <em>oficina.lan</em> y las direcciones IP de los <a href="https://developers.google.com/speed/public-dns/?hl=es-">DNS de Google</a>:</p>
-<div class="highlight"><pre><span></span><span class="k">domain</span> <span class="n">oficina</span><span class="p">.</span><span class="n">lan</span>
-<span class="k">search</span> <span class="n">oficina</span><span class="p">.</span><span class="n">lan</span>
-<span class="n">nameserver</span> <span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">8</span>
-<span class="n">nameserver</span> <span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">4</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">domain oficina.lan</span>
+<span class="err">search oficina.lan</span>
+<span class="err">nameserver 8.8.8.8</span>
+<span class="err">nameserver 8.8.4.4</span>
+</code></pre></div>
 
 
 <p>En cambio, para solicitar una <strong>dirección IP dinámica</strong> al servidor DHCP se usa <strong>BOOTPROTO</strong>:</p>
-<div class="highlight"><pre><span></span><span class="n">DEVICE</span><span class="o">=</span><span class="n">eth0</span>
-<span class="n">HWADDR</span><span class="o">=</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span><span class="p">:</span><span class="n">xx</span>
-<span class="k">TYPE</span><span class="o">=</span><span class="n">Ethernet</span>
-<span class="n">ONBOOT</span><span class="o">=</span><span class="n">yes</span>
-<span class="n">NM_CONTROLLED</span><span class="o">=</span><span class="k">no</span>
-<span class="n">BOOTPROTO</span><span class="o">=</span><span class="n">dhcp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">DEVICE=eth0</span>
+<span class="err">HWADDR=xx:xx:xx:xx:xx:xx</span>
+<span class="err">TYPE=Ethernet</span>
+<span class="err">ONBOOT=yes</span>
+<span class="err">NM_CONTROLLED=no</span>
+<span class="err">BOOTPROTO=dhcp</span>
+</code></pre></div>
 
 
 <p>Después de cambiar estos archivos de configuración, reinicie el servicio de red para hacerlos efectivos.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">service</span> <span class="n">network</span> <span class="k">restart</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># service network restart</span>
+</code></pre></div>
 
 
 <p>Revise la dirección IP obtenida con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ifconfig</span> <span class="n">eth0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ifconfig eth0</span>
+</code></pre></div>
 
 
 <p>Revise la tabla de ruteo también:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">route</span> <span class="o">-</span><span class="n">n</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># route -n</span>
+</code></pre></div>
 
 
 <h3>Configure proxy de ser necesario</h3>
 <p>En caso de tener internet a través de un <em>proxy</em> debe de editar el archivo de configuración de <strong>Yum</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># vi /etc/yum.conf</span>
+</code></pre></div>
 
 
 <p>Agregue una línea como la siguiente para definir el servidor <em>proxy</em>. Cambie <em>proxy.oficina.lan</em> por el nombre o dirección IP del <em>proxy</em>.</p>
-<div class="highlight"><pre><span></span><span class="n">proxy</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">proxy</span><span class="p">.</span><span class="n">oficina</span><span class="p">.</span><span class="n">lan</span><span class="p">:</span><span class="mi">3128</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">proxy=http://proxy.oficina.lan:3128</span>
+</code></pre></div>
 
 
 <h3>Actualize e instale el software para virtualizar</h3>
 <p>Ejecute estos dos comandos para actualizar las listas de los repositorios de CentOS:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">yum</span> <span class="k">check</span><span class="o">-</span><span class="k">update</span>
-<span class="o">#</span> <span class="n">yum</span> <span class="k">update</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># yum check-update</span>
+<span class="err"># yum update</span>
+</code></pre></div>
 
 
 <p>Por ser programas indispensables, instale <strong>nano</strong>, <strong>sudo</strong> y <strong>man</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">nano</span> <span class="n">sudo</span> <span class="n">man</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># yum install nano sudo man</span>
+</code></pre></div>
 
 
 <p>Yum ofrece la instalación por <strong>grupos</strong>, éstos son conjuntos de paquetes de software. Para listar los <strong>grupos</strong> ejecute este comando:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">yum</span> <span class="n">grouplist</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># yum grouplist</span>
+</code></pre></div>
 
 
 <p>Instale los <strong>grupos</strong> de paquetes que tienen que ver con virtualización en servidor:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">yum</span> <span class="n">groupinstall</span> <span class="ss">&quot;Virtualización&quot;</span>
-<span class="o">#</span> <span class="n">yum</span> <span class="n">groupinstall</span> <span class="ss">&quot;Plataforma de virtualización&quot;</span>
-<span class="o">#</span> <span class="n">yum</span> <span class="n">install</span> <span class="n">tunctl</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># yum groupinstall &quot;Virtualización&quot;</span>
+<span class="err"># yum groupinstall &quot;Plataforma de virtualización&quot;</span>
+<span class="err"># yum install tunctl</span>
+</code></pre></div>
 
 
 <p>Esta descarga es grande y puede demorar algo de tiempo, dependiendo de su velocidad de internet. Al terminar de instalar reinicie el servidor para asegurar que las actualizaciones y el nuevo software estén trabajando. Reinicie con:</p>
-<div class="highlight"><pre><span></span># <span class="nv">shutdown</span> <span class="o">-</span><span class="nv">r</span> <span class="mi">1</span> <span class="o">&amp;</span>
-# <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># shutdown -r 1 &amp;</span>
+<span class="err"># exit</span>
+</code></pre></div>
 
 
 <h3>Configuración del bridge</h3>
 <p>Cree el archivo <strong>ifcfg-br0</strong> con la configuración para el <em>bridge</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">network</span><span class="o">-</span><span class="n">scripts</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">ifcfg</span><span class="o">-</span><span class="n">br0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/sysconfig/network-scripts/</span>
+<span class="err"># nano ifcfg-br0</span>
+</code></pre></div>
 
 
 <p>Si <strong>br0</strong> va a tener una dirección IP estática, use lo siguiente como contenido del archivo <strong>ifcfg-br0</strong> ajustando la dirección IP, la máscara y el <em>gateway</em> a sus necesidades:</p>
-<div class="highlight"><pre><span></span><span class="n">DEVICE</span><span class="o">=</span><span class="n">br0</span>
-<span class="k">TYPE</span><span class="o">=</span><span class="n">Bridge</span>
-<span class="n">ONBOOT</span><span class="o">=</span><span class="n">yes</span>
-<span class="n">DELAY</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">NM_CONTROLLED</span><span class="o">=</span><span class="k">no</span>
-<span class="n">IPADDR</span><span class="o">=</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">250</span>
-<span class="n">NETMASK</span><span class="o">=</span><span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">255</span><span class="p">.</span><span class="mi">0</span>
-<span class="n">GATEWAY</span><span class="o">=</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">254</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">DEVICE=br0</span>
+<span class="err">TYPE=Bridge</span>
+<span class="err">ONBOOT=yes</span>
+<span class="err">DELAY=0</span>
+<span class="err">NM_CONTROLLED=no</span>
+<span class="err">IPADDR=192.168.0.250</span>
+<span class="err">NETMASK=255.255.255.0</span>
+<span class="err">GATEWAY=192.168.0.254</span>
+</code></pre></div>
 
 
 <p>Luego, hay que editar el archivo <strong>ifcfg-eth0</strong> para indicar que ese dispositivo de red se va conectar al <em>bridge</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">ifcfg</span><span class="o">-</span><span class="n">eth0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano ifcfg-eth0</span>
+</code></pre></div>
 
 
 <p>Con este contenido:</p>
-<div class="highlight"><pre><span></span><span class="n">DEVICE</span><span class="o">=</span><span class="ss">&quot;eth0&quot;</span>
-<span class="n">HWADDR</span><span class="o">=</span><span class="ss">&quot;xx:xx:xx:xx:xx:xx&quot;</span>
-<span class="n">NM_CONTROLLED</span><span class="o">=</span><span class="ss">&quot;no&quot;</span>
-<span class="n">ONBOOT</span><span class="o">=</span><span class="ss">&quot;yes&quot;</span>
-<span class="n">BRIDGE</span><span class="o">=</span><span class="ss">&quot;br0&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">DEVICE=&quot;eth0&quot;</span>
+<span class="err">HWADDR=&quot;xx:xx:xx:xx:xx:xx&quot;</span>
+<span class="err">NM_CONTROLLED=&quot;no&quot;</span>
+<span class="err">ONBOOT=&quot;yes&quot;</span>
+<span class="err">BRIDGE=&quot;br0&quot;</span>
+</code></pre></div>
 
 
 <h3>Configure el muro de fuego</h3>
 <p>Para que se permitan todas las comunicaciones que fluyan a través del <em>bridge</em> <strong>br0</strong> es necesario indicarlo. Edite la configuración del muro de fuego:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">iptables</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/sysconfig/</span>
+<span class="err"># nano iptables</span>
+</code></pre></div>
 
 
 <p>Agregue la línea <strong>-A FORWARD -i br0 -j ACCEPT</strong> como la primer línea con <em>FORWARD</em>, por ejemplo:</p>
-<div class="highlight"><pre><span></span><span class="o">*</span><span class="n">filter</span>
-<span class="p">:</span><span class="k">INPUT</span> <span class="n">ACCEPT</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
-<span class="p">:</span><span class="k">FORWARD</span> <span class="n">ACCEPT</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
-<span class="p">:</span><span class="k">OUTPUT</span> <span class="n">ACCEPT</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
-<span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">m</span> <span class="k">state</span> <span class="c1">--state ESTABLISHED,RELATED -j ACCEPT</span>
-<span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">p</span> <span class="n">icmp</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
-<span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">i</span> <span class="n">lo</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
-<span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">m</span> <span class="k">state</span> <span class="c1">--state NEW -m tcp -p tcp --dport 22 -j ACCEPT</span>
-<span class="o">-</span><span class="n">A</span> <span class="k">INPUT</span> <span class="o">-</span><span class="n">j</span> <span class="n">REJECT</span> <span class="c1">--reject-with icmp-host-prohibited</span>
-<span class="o">-</span><span class="n">A</span> <span class="k">FORWARD</span> <span class="o">-</span><span class="n">i</span> <span class="n">br0</span> <span class="o">-</span><span class="n">j</span> <span class="n">ACCEPT</span>
-<span class="o">-</span><span class="n">A</span> <span class="k">FORWARD</span> <span class="o">-</span><span class="n">j</span> <span class="n">REJECT</span> <span class="c1">--reject-with icmp-host-prohibited</span>
-<span class="k">COMMIT</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">*filter</span>
+<span class="err">:INPUT ACCEPT [0:0]</span>
+<span class="err">:FORWARD ACCEPT [0:0]</span>
+<span class="err">:OUTPUT ACCEPT [0:0]</span>
+<span class="err">-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT</span>
+<span class="err">-A INPUT -p icmp -j ACCEPT</span>
+<span class="err">-A INPUT -i lo -j ACCEPT</span>
+<span class="err">-A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT</span>
+<span class="err">-A INPUT -j REJECT --reject-with icmp-host-prohibited</span>
+<span class="err">-A FORWARD -i br0 -j ACCEPT</span>
+<span class="err">-A FORWARD -j REJECT --reject-with icmp-host-prohibited</span>
+<span class="err">COMMIT</span>
+</code></pre></div>
 
 
 <p>Reinicie el muro de fuego</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">service</span> <span class="n">iptables</span> <span class="k">restart</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># service iptables restart</span>
+</code></pre></div>
 
 
 <p>Verifique...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">iptables</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">n</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># iptables -L -v -n</span>
+</code></pre></div>
 
 
 <h3>Destruir el puente virbr0</h3>
 <p>Como se va a levantar el <em>bridge</em> <strong>br0</strong> desde el sistema operativo, sale sobrando el puente que por defecto habilita <strong>libvirt</strong>. Para observar que esta presente <strong>virtbr0</strong> ejecute:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ifconfig</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ifconfig</span>
+</code></pre></div>
 
 
 <p>Notará que hay un dispositivo <strong>virbr0</strong> con una dirección IP indpenediente (p.e. 192.168.122.1). El comando <strong>virsh net-list</strong> mostrará las redes para las virtualizaciones:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">list</span>
-<span class="n">Nombre</span>               <span class="n">Estado</span>     <span class="n">Inicio</span> <span class="n">automático</span> <span class="n">Persistente</span>
-<span class="c1">--------------------------------------------------</span>
-<span class="k">default</span>              <span class="n">activo</span>     <span class="n">si</span>            <span class="n">si</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-list</span>
+<span class="err">Nombre               Estado     Inicio automático Persistente</span>
+<span class="err">--------------------------------------------------</span>
+<span class="err">default              activo     si            si</span>
+</code></pre></div>
 
 
 <p>Para destruir la red <strong>default</strong> ejecute:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="k">destroy</span> <span class="k">default</span>
-<span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">undefine</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-destroy default</span>
+<span class="err"># virsh net-undefine default</span>
+</code></pre></div>
 
 
 <p>Revise:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">list</span>
-<span class="o">#</span> <span class="n">ifconfig</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-list</span>
+<span class="err"># ifconfig</span>
+</code></pre></div>
 
 
 <h3>Reinicie el servidor</h3>
 <p>Para asegurar que las actualizaciones y configuraciones inicien al encender, reinicie el servidor.</p>
-<div class="highlight"><pre><span></span># <span class="nv">shutdown</span> <span class="o">-</span><span class="nv">r</span> <span class="mi">1</span> <span class="o">&amp;</span>
-# <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># shutdown -r 1 &amp;</span>
+<span class="err"># exit</span>
+</code></pre></div>
 
 
 <p>Y revise que los dispositivos de red y los servicios estén trabajando como debe.</p>
-<div class="highlight"><pre><span></span># <span class="nv">ifconfig</span> <span class="nv">br0</span>
-# <span class="nv">ifconfig</span> <span class="nv">eth0</span>
-# <span class="nv">brctl</span> <span class="k">show</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ifconfig br0</span>
+<span class="err"># ifconfig eth0</span>
+<span class="err"># brctl show</span>
+</code></pre></div>
 
 
 <h3>Configurar libvirt para que use br0</h3>
 <p>Para que las virtualizaciones usen el <em>bridge</em> del sistema operativo, cree un archivo de configuración <strong>xml</strong>. Use el nombre de archivo que guste:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">root</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span><span class="p">.</span><span class="n">xml</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /root</span>
+<span class="err"># nano bridge-br0.xml</span>
+</code></pre></div>
 
 
 <p>Escriba el siguiente contenido, cambiando <strong>bridge-br0</strong> por el nombre que usted prefiera:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;network&gt;</span>
   <span class="nt">&lt;name&gt;</span>bridge-br0<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;forward</span> <span class="na">mode=</span><span class="s">&quot;bridge&quot;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&quot;br0&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/network&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Para cargar ese archivo <strong>xml</strong> en <strong>libvirt</strong> ejecute...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">define</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span><span class="p">.</span><span class="n">xml</span>
-<span class="n">La</span> <span class="n">red</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span> <span class="n">se</span> <span class="n">encuentra</span> <span class="n">definida</span> <span class="n">desde</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span><span class="p">.</span><span class="n">xml</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-define bridge-br0.xml</span>
+<span class="err">La red bridge-br0 se encuentra definida desde bridge-br0.xml</span>
+</code></pre></div>
 
 
 <p><strong>Atención:</strong> En este momento, el comando <strong># virsh net-list</strong> NO mostrará esta red. En cambio, con el parámetro <strong>--all</strong> sí lo verá:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">list</span> <span class="c1">--all</span>
-<span class="n">Nombre</span>               <span class="n">Estado</span>     <span class="n">Inicio</span> <span class="n">automático</span>
-<span class="c1">-----------------------------------------</span>
-<span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>           <span class="n">activo</span>     <span class="k">no</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-list --all</span>
+<span class="err">Nombre               Estado     Inicio automático</span>
+<span class="err">-----------------------------------------</span>
+<span class="err">bridge-br0           activo     no</span>
+</code></pre></div>
 
 
 <p>Puede solicitar información detallada de una red con el comando <strong>virsh net-info</strong> seguido por el nombre de la red.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">info</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
-<span class="n">Nombre</span>          <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
-<span class="n">UUID</span>            <span class="n">xxxxxxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxxxxxxxxxx</span>
-<span class="n">Activar</span><span class="p">:</span>        <span class="k">no</span>
-<span class="n">Persistente</span><span class="p">:</span>    <span class="n">si</span>
-<span class="n">Autoinicio</span><span class="p">:</span>     <span class="k">no</span>
-<span class="n">Puente</span><span class="p">:</span>         <span class="n">br0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-info bridge-br0</span>
+<span class="err">Nombre          bridge-br0</span>
+<span class="err">UUID            xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</span>
+<span class="c">Activar:        no</span>
+<span class="c">Persistente:    si</span>
+<span class="c">Autoinicio:     no</span>
+<span class="c">Puente:         br0</span>
+</code></pre></div>
 
 
 <p>Observe que Activar y Autoinicio están en <strong>no</strong>. Configure que esta red se habilite al inicio, con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">autostart</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
-<span class="n">La</span> <span class="n">red</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span><span class="o">-</span><span class="n">dgspm</span> <span class="n">ha</span> <span class="n">sido</span> <span class="n">marcada</span> <span class="n">para</span> <span class="n">iniciarse</span> <span class="n">automáticamente</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-autostart bridge-br0</span>
+<span class="err">La red bridge-br0-dgspm ha sido marcada para iniciarse automáticamente</span>
+</code></pre></div>
 
 
 <p>Luego, arranque esta red con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="k">start</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
-<span class="n">La</span> <span class="n">red</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span> <span class="n">se</span> <span class="n">ha</span> <span class="n">iniciado</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-start bridge-br0</span>
+<span class="err">La red bridge-br0 se ha iniciado</span>
+</code></pre></div>
 
 
 <p>Verifique que Activar, Persistente y Autoinicio estén en <strong>si</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">info</span> <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
-<span class="n">Nombre</span>          <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
-<span class="n">UUID</span>            <span class="n">xxxxxxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxxxxxxxxxx</span>
-<span class="n">Activar</span><span class="p">:</span>        <span class="n">si</span>
-<span class="n">Persistente</span><span class="p">:</span>    <span class="n">si</span>
-<span class="n">Autoinicio</span><span class="p">:</span>     <span class="n">si</span>
-<span class="n">Puente</span><span class="p">:</span>         <span class="n">br0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-info bridge-br0</span>
+<span class="err">Nombre          bridge-br0</span>
+<span class="err">UUID            xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</span>
+<span class="c">Activar:        si</span>
+<span class="c">Persistente:    si</span>
+<span class="c">Autoinicio:     si</span>
+<span class="c">Puente:         br0</span>
+</code></pre></div>
 
 
 <p>También con el comando <strong>virsh net-list</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">virsh</span> <span class="n">net</span><span class="o">-</span><span class="n">list</span>
-<span class="n">Nombre</span>               <span class="n">Estado</span>     <span class="n">Inicio</span> <span class="n">automático</span> <span class="n">Persistente</span>
-<span class="c1">--------------------------------------------------</span>
-<span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>           <span class="n">activo</span>     <span class="n">si</span>            <span class="n">si</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># virsh net-list</span>
+<span class="err">Nombre               Estado     Inicio automático Persistente</span>
+<span class="err">--------------------------------------------------</span>
+<span class="err">bridge-br0           activo     si            si</span>
+</code></pre></div>
 
 
 <p>En dado caso de que necesite recuperar la información de la red en formato <strong>xml</strong>, use el comando <strong>virsh net-dumpxml</strong>:</p>
-<div class="highlight"><pre><span></span># virsh net-dumpxml bridge-br0
+<div class="highlight"><pre><span></span><code># virsh net-dumpxml bridge-br0
 <span class="nt">&lt;network&gt;</span>
   <span class="nt">&lt;name&gt;</span>bridge-br0<span class="nt">&lt;/name&gt;</span>
   <span class="nt">&lt;uuid&gt;</span>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx<span class="nt">&lt;/uuid&gt;</span>
   <span class="nt">&lt;forward</span> <span class="na">mode=</span><span class="s">&#39;bridge&#39;</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&#39;br0&#39;</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/network&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Agregue un usuario común</h3>
 <p>Como en todo equipo de escritorio o servidor, es ampliamente recomendable dar de alta un usuario común y no usar root para todo. Para dar de alta un usuario ejecute el comando <strong>useradd</strong> con los grupos a los que necesite pertenecer y cambie <em>minombre</em> por su nombre para ingresar.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">useradd</span> <span class="o">-</span><span class="k">g</span> <span class="n">users</span> <span class="o">-</span><span class="k">G</span> <span class="n">tty</span><span class="p">,</span><span class="n">lp</span><span class="p">,</span><span class="n">wheel</span><span class="p">,</span><span class="n">uucp</span><span class="p">,</span><span class="n">games</span><span class="p">,</span><span class="n">video</span><span class="p">,</span><span class="n">audio</span><span class="p">,</span><span class="n">cdrom</span><span class="p">,</span><span class="n">kvm</span><span class="p">,</span><span class="n">qemu</span> <span class="o">-</span><span class="n">m</span> <span class="n">minombre</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># useradd -g users -G tty,lp,wheel,uucp,games,video,audio,cdrom,kvm,qemu -m minombre</span>
+</code></pre></div>
 
 
 <p>Establezca la contraseña:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">passwd</span> <span class="n">minombre</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># passwd minombre</span>
+</code></pre></div>
 
 
 <h3>Administrador de virtualizaciones</h3>
@@ -462,9 +462,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

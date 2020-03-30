@@ -106,48 +106,48 @@
 <h3>Construir el Sistema</h3>
 <p>La gran flexibilidad de Gentoo Linux nos permite hacer esta "construcción" en un subdirectorio o una partición del disco duro. En contraste, otros sistemas operativos requieren un disco duro dedicado y reiniciar la computadora para ejecutar su asistente de instalación. Dicho de otra manera; puede estar construyendo un nuevo Gentoo Linux en una terminal mientras sigue trabajando/entreteniéndose en otra ventana.</p>
 <p>Ya teniendo particionado el disco duro y destinando <strong>/dev/sda5</strong> a la raíz del S.O. Formatee...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext4</span> <span class="o">-</span><span class="n">L</span> <span class="n">Servidor201405</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda5</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda5</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext4 -L Servidor201405 /dev/sda5</span>
+<span class="err"># mkdir /mnt/gentoo</span>
+<span class="err"># mount /dev/sda5 /mnt/gentoo</span>
+</code></pre></div>
 
 
 <p>Previamente he bajado el <em>stage</em> y puesto en <strong>/mnt/tmp</strong>. Desempaque...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="n">xvjpf</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stage3</span><span class="o">-</span><span class="n">amd64</span><span class="o">-</span><span class="mi">20140515</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/gentoo</span>
+<span class="err"># tar xvjpf /mnt/tmp/stage3-amd64-20140515.tar.bz2</span>
+</code></pre></div>
 
 
 <p>Monte las particiones lógicas...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">proc</span> <span class="k">none</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">proc</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="c1">--rbind /sys /mnt/gentoo/sys</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="c1">--rbind /dev /mnt/gentoo/dev</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount -t proc none /mnt/gentoo/proc</span>
+<span class="err"># mount --rbind /sys /mnt/gentoo/sys</span>
+<span class="err"># mount --rbind /dev /mnt/gentoo/dev</span>
+</code></pre></div>
 
 
 <p>Tengo una partición dedicada para <strong>/usr/portage</strong> en <strong>/dev/sda6</strong>, así que sólo la monto en <strong>/mnt/gentoo/usr/portage</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda6</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/gentoo/usr/portage</span>
+<span class="err"># mount /dev/sda6 /mnt/gentoo/usr/portage</span>
+</code></pre></div>
 
 
 <p>Verifique lo montado...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount | grep /mnt/gentoo</span>
+</code></pre></div>
 
 
 <p>Copie <strong>resolv.conf</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
+</code></pre></div>
 
 
 <p>Edite <strong>make.conf</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">make</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /mnt/gentoo/etc/portage/make.conf</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span>#
+<div class="highlight"><pre><span></span><code>#
 # /etc/portage/make.conf
 #
 # Servidor Apache/PHP/PostgreSQL Gentoo Linux
@@ -199,292 +199,292 @@ DISTDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span clas
 PKGDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/packages&quot;
 SYNC=rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><span class="cp">}</span>/gentoo-portage
 FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><span class="cp">}</span>/gentoo-distfiles/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>Configure <strong>locale.gen</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /mnt/gentoo/etc/locale.gen</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="n">en_US</span><span class="w"> </span><span class="n">ISO</span><span class="o">-</span><span class="mi">8859</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
-<span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"></span>
-<span class="n">es_ES</span><span class="w"> </span><span class="n">ISO</span><span class="o">-</span><span class="mi">8859</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
-<span class="n">es_ES</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"></span>
-<span class="n">es_ES</span><span class="nv">@euro</span><span class="w"> </span><span class="n">ISO</span><span class="o">-</span><span class="mi">8859</span><span class="o">-</span><span class="mi">15</span><span class="w"></span>
-<span class="n">es_MX</span><span class="w"> </span><span class="n">ISO</span><span class="o">-</span><span class="mi">8859</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
-<span class="n">es_MX</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"></span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">en_US ISO-8859-1</span>
+<span class="err">en_US.UTF-8 UTF-8</span>
+<span class="err">es_ES ISO-8859-1</span>
+<span class="err">es_ES.UTF-8 UTF-8</span>
+<span class="err">es_ES@euro ISO-8859-15</span>
+<span class="err">es_MX ISO-8859-1</span>
+<span class="err">es_MX.UTF-8 UTF-8</span>
+</code></pre></div>
 
 
 <p>Configure <strong>02locales</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">env</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">02</span><span class="n">locales</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /mnt/gentoo/etc/env.d/02locales</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
-<span class="o">#</span> <span class="mi">02</span><span class="n">locales</span>
-<span class="o">#</span>
-<span class="n">LANG</span><span class="o">=</span><span class="ss">&quot;es_MX.UTF-8&quot;</span>
-<span class="k">LANGUAGE</span><span class="o">=</span><span class="ss">&quot;es_MX.UTF-8&quot;</span>
-<span class="n">LC_ALL</span><span class="o">=</span><span class="ss">&quot;es_MX.UTF-8&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">#</span>
+<span class="err"># 02locales</span>
+<span class="err">#</span>
+<span class="err">LANG=&quot;es_MX.UTF-8&quot;</span>
+<span class="err">LANGUAGE=&quot;es_MX.UTF-8&quot;</span>
+<span class="err">LC_ALL=&quot;es_MX.UTF-8&quot;</span>
+</code></pre></div>
 
 
 <p>Haga el <em>chroot</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
-<span class="o">#</span> <span class="n">env</span><span class="o">-</span><span class="k">update</span>
-<span class="o">#</span> <span class="k">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
-<span class="o">#</span> <span class="n">export</span> <span class="n">PS1</span><span class="o">=</span><span class="ss">&quot;(nuevo) $PS1&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/gentoo /bin/bash</span>
+<span class="err"># env-update</span>
+<span class="err"># source /etc/profile</span>
+<span class="err"># export PS1=&quot;(nuevo) $PS1&quot;</span>
+</code></pre></div>
 
 
 <p>Ejecute...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">locale</span><span class="o">-</span><span class="n">gen</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># locale-gen</span>
+</code></pre></div>
 
 
 <p>Salga del <em>chroot</em> y vuelva a entrar con los comandos anteriores; así nos aseguramos que se carguen las configuraciones.</p>
 <p>Para poder instalar paquetes que están marcados como inestables, hago uso de la reciente característica de Gentoo para desenmascarar paquetes con archivos individuales:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">keywords</span>
-<span class="o">#</span> <span class="n">echo</span> <span class="ss">&quot;dev-ruby/kramdown&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">keywords</span><span class="o">/</span><span class="n">dev</span><span class="o">-</span><span class="n">ruby_kramdown</span>
-<span class="o">#</span> <span class="n">echo</span> <span class="ss">&quot;sys-fs/ecryptfs-utils&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">keywords</span><span class="o">/</span><span class="n">sys</span><span class="o">-</span><span class="n">fs_ecryptfs</span><span class="o">-</span><span class="n">utils</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /etc/portage/package.keywords</span>
+<span class="err"># echo &quot;dev-ruby/kramdown&quot; &gt; /etc/portage/package.keywords/dev-ruby_kramdown</span>
+<span class="err"># echo &quot;sys-fs/ecryptfs-utils&quot; &gt; /etc/portage/package.keywords/sys-fs_ecryptfs-utils</span>
+</code></pre></div>
 
 
 <p>También para los <em>USE flags</em> se puede hacer lo mismo:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">use</span>
-<span class="o">#</span> <span class="n">echo</span> <span class="ss">&quot;app-text/texlive extra pstricks&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">use</span><span class="o">/</span><span class="n">app</span><span class="o">-</span><span class="n">text_texlive</span>
-<span class="o">#</span> <span class="n">echo</span> <span class="ss">&quot;net-dns/bind -berkdb -mysql -postgres&quot;</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">use</span><span class="o">/</span><span class="n">net</span><span class="o">-</span><span class="n">dns_bind</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /etc/portage/package.use</span>
+<span class="err"># echo &quot;app-text/texlive extra pstricks&quot; &gt; /etc/portage/package.use/app-text_texlive</span>
+<span class="err"># echo &quot;net-dns/bind -berkdb -mysql -postgres&quot; &gt; /etc/portage/package.use/net-dns_bind</span>
+</code></pre></div>
 
 
 <p>Como esta instalación es para un servidor NO cambio el profile, dejo el básico de <strong>AMD64</strong>:</p>
-<div class="highlight"><pre><span></span># <span class="nv">eselect</span> <span class="nv">profile</span> <span class="k">show</span>
-<span class="nv">Current</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">portage</span><span class="o">/</span><span class="nv">make</span>.<span class="nv">profile</span> <span class="nv">symlink</span>:
-<span class="nv">default</span><span class="o">/</span><span class="nv">linux</span><span class="o">/</span><span class="nv">amd64</span><span class="o">/</span><span class="mi">13</span>.<span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># eselect profile show</span>
+<span class="err">Current /etc/portage/make.profile symlink:</span>
+<span class="err">default/linux/amd64/13.0</span>
+</code></pre></div>
 
 
 <p>Edite...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">keymaps</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">hostname</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/keymaps</span>
+<span class="err"># nano -w /etc/hosts</span>
+<span class="err"># nano -w /etc/conf.d/hostname</span>
+</code></pre></div>
 
 
 <p>Luego defina la zona horaria de su región...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">zoneinfo</span><span class="o">/</span><span class="n">Mexico</span><span class="o">/</span><span class="k">General</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">localtime</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp /usr/share/zoneinfo/Mexico/General /etc/localtime</span>
+</code></pre></div>
 
 
 <p>Instale el <em>kernel</em>. Es largo de explicar, así que sólo diré que debe habilitar los controladores <strong>Virtio</strong> que son los necesarios para <strong>KVM</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gentoo</span><span class="o">-</span><span class="n">sources</span>
-<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span>
-<span class="o">#</span> <span class="n">make</span> <span class="n">menuconfig</span>
-<span class="o">#</span> <span class="n">make</span>
-<span class="o">#</span> <span class="n">make</span> <span class="n">modules_install</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoo-sources</span>
+<span class="err"># cd /usr/src/linux</span>
+<span class="err"># make menuconfig</span>
+<span class="err"># make</span>
+<span class="err"># make modules_install</span>
+</code></pre></div>
 
 
 <p>Instale unas herramientas básicas...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gentoolkit</span> <span class="n">reiserfsprogs</span> <span class="n">dhcpcd</span> <span class="n">dosfstools</span> <span class="n">app</span><span class="o">-</span><span class="n">misc</span><span class="o">/</span><span class="n">screen</span> <span class="n">iptables</span> <span class="n">pwgen</span> <span class="n">pciutils</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen pciutils</span>
+</code></pre></div>
 
 
 <p>Instale estos servicios básicos...</p>
-<div class="highlight"><pre><span></span># <span class="nv">emerge</span> <span class="nv">acpid</span> <span class="nv">ntp</span> <span class="nv">syslog</span><span class="o">-</span><span class="nv">ng</span> <span class="nv">vixie</span><span class="o">-</span><span class="nv">cron</span> <span class="k">logrotate</span>
-# <span class="nv">rc</span><span class="o">-</span><span class="nv">update</span> <span class="nv">add</span> <span class="nv">acpid</span> <span class="nv">default</span>
-# <span class="nv">rc</span><span class="o">-</span><span class="nv">update</span> <span class="nv">add</span> <span class="nv">syslog</span><span class="o">-</span><span class="nv">ng</span> <span class="nv">default</span>
-# <span class="nv">rc</span><span class="o">-</span><span class="nv">update</span> <span class="nv">add</span> <span class="nv">vixie</span><span class="o">-</span><span class="nv">cron</span> <span class="nv">default</span>
-# <span class="nv">rc</span><span class="o">-</span><span class="nv">update</span> <span class="nv">add</span> <span class="nv">ntpd</span> <span class="nv">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge acpid ntp syslog-ng vixie-cron logrotate</span>
+<span class="err"># rc-update add acpid default</span>
+<span class="err"># rc-update add syslog-ng default</span>
+<span class="err"># rc-update add vixie-cron default</span>
+<span class="err"># rc-update add ntpd default</span>
+</code></pre></div>
 
 
 <p>Cambie la contraseña de <em>root</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">passwd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
+</code></pre></div>
 
 
 <p>Instale la base de datos <strong>PostgreSQL</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">postgresql</span><span class="o">-</span><span class="n">server</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql-server</span>
+</code></pre></div>
 
 
 <p>Instale <strong>Ruby</strong> y la gema <strong>RedCloth</strong> que uso para el <a href="http://cms.movimientolibre.com">CMS de Movimiento Libre</a>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">ruby</span> <span class="n">redcloth</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge ruby redcloth</span>
+</code></pre></div>
 
 
 <p>Instale <strong>MySQL</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">mysql</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge mysql</span>
+</code></pre></div>
 
 
 <p>Instale <strong>Apache2</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">apache</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge apache</span>
+</code></pre></div>
 
 
 <p>Instale <strong>PHP</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">php</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge php</span>
+</code></pre></div>
 
 
 <p>Instale <strong>LaTeX</strong> y la gema de <strong>Ruby</strong> <strong>Kramdown</strong> que también uso en el CMS:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">texlive</span> <span class="n">kramdown</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge texlive kramdown</span>
+</code></pre></div>
 
 
 <p>Instale herramientas gráficas:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">graphviz</span> <span class="n">imagemagick</span> <span class="n">sci</span><span class="o">-</span><span class="n">visualization</span><span class="o">/</span><span class="n">gnuplot</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge graphviz imagemagick sci-visualization/gnuplot</span>
+</code></pre></div>
 
 
 <p>Instale <strong>Git</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">git</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge git</span>
+</code></pre></div>
 
 
 <p>Instale software para cifrado de discos:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">ecryptfs</span><span class="o">-</span><span class="n">utils</span> <span class="n">cryptsetup</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge ecryptfs-utils cryptsetup</span>
+</code></pre></div>
 
 
 <p>Al término de esta construcción, nos salimos del <em>chroot</em> y desmontamos las particiones auxiliares, más NO la raíz.</p>
-<div class="highlight"><pre><span></span># <span class="k">exit</span>
-# <span class="nv">umount</span> <span class="o">-</span><span class="nv">l</span> <span class="o">/</span><span class="nv">mnt</span><span class="o">/</span><span class="nv">gentoo</span><span class="o">/</span><span class="nv">sys</span>
-# <span class="nv">umount</span> <span class="o">-</span><span class="nv">l</span> <span class="o">/</span><span class="nv">mnt</span><span class="o">/</span><span class="nv">gentoo</span><span class="o">/</span><span class="nv">dev</span>
-# <span class="nv">umount</span> <span class="o">/</span><span class="nv">mnt</span><span class="o">/</span><span class="nv">gentoo</span><span class="o">/</span><span class="nv">proc</span>
-# <span class="nv">umount</span> <span class="o">/</span><span class="nv">mnt</span><span class="o">/</span><span class="nv">gentoo</span><span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">portage</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># exit</span>
+<span class="err"># umount -l /mnt/gentoo/sys</span>
+<span class="err"># umount -l /mnt/gentoo/dev</span>
+<span class="err"># umount /mnt/gentoo/proc</span>
+<span class="err"># umount /mnt/gentoo/usr/portage</span>
+</code></pre></div>
 
 
 <h2>Preparar la virtualización KVM</h2>
 <p>Haciendo una analogía a <a href="https://es.wikipedia.org/wiki/Frankenstein_o_el_moderno_Prometeo">Frankestein</a>, ya tenemos listo el <em>cerebro</em> ahora vamos a preparar un <em>cuerpo</em>: Usando <a href="http://www.linux-kvm.org/page/Main_Page">KVM</a> cree una nueva virtualización con un disco duro virtual de 24,576 MB (o sea, 24 GB) y arranque con el ISO de Gentoo.</p>
 <p>Particione a su gusto con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">fdisk</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># fdisk /dev/vda</span>
+</code></pre></div>
 
 
 <p>Formatee la partición que va ser la raíz, en mi ejemplo es la <strong>/dev/vda6</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext4</span> <span class="o">-</span><span class="n">L</span> <span class="n">Gentoo</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda6</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext4 -L Gentoo /dev/vda6</span>
+</code></pre></div>
 
 
 <p>Monte la raíz:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda6</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount /dev/vda6 /mnt/gentoo</span>
+</code></pre></div>
 
 
 <p>Cambie la contraseña root e inicie el <em>daemon</em> OpenSSH...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">passwd</span>
-<span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">sshd</span> <span class="k">start</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
+<span class="err"># /etc/init.d/sshd start</span>
+</code></pre></div>
 
 
 <h3>Copiar todo a la virtualización</h3>
 <p>Estos comandos los ejecuto en mi Gentoo Linux que tengo de base.</p>
 <p>En mi caso tengo KVM con un bridge con red <strong>172.16.71.0/24</strong> y he configurado una dirección IP en la virtualización con <strong>172.16.71.11</strong>. Copie TODO a una sola partición de destino con un comando como éste:</p>
-<div class="highlight"><pre><span></span><span class="cp"># cd /mnt/gentoo</span>
+<div class="highlight"><pre><span></span><code><span class="cp"># cd /mnt/gentoo</span>
 <span class="cp"># tar -cvf - . | ssh root@172.16.71.11 tar -C /mnt/gentoo/ -xf -</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>O tener directorios en otras particiones de la virtualización</h3>
 <p>Se vale omitir uno o más directorios para después montar otra partición en la virtualización. Por ejemplo, para mantener <strong>/var</strong> en otra partición, primero copiaría TODO menos <strong>/var</strong> con:</p>
-<div class="highlight"><pre><span></span><span class="cp"># tar -cvf - --exclude=/var . | ssh root@172.16.71.11 tar -C /mnt/gentoo/ -xf -</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp"># tar -cvf - --exclude=/var . | ssh root@172.16.71.11 tar -C /mnt/gentoo/ -xf -</span>
+</code></pre></div>
 
 
 <p>Luego, en la virtualización ejecuto estos comandos, en mi ejemplo <strong>/var</strong> será <strong>/dev/vda7</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext4</span> <span class="o">-</span><span class="n">L</span> <span class="n">Var</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda7</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda7</span> <span class="o">/</span><span class="n">var</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext4 -L Var /dev/vda7</span>
+<span class="err"># mkdir /var</span>
+<span class="err"># mount /dev/vda7 /var</span>
+</code></pre></div>
 
 
 <p>Regreso al sistema Gentoo Linux base y mando copia del directorio <strong>/var</strong> y su contenido</p>
-<div class="highlight"><pre><span></span><span class="cp"># cd /mnt/gentoo/var</span>
+<div class="highlight"><pre><span></span><code><span class="cp"># cd /mnt/gentoo/var</span>
 <span class="cp"># tar -cvf - . | ssh root@172.16.71.11 tar -C /mnt/gentoo/var/ -xf -</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>De regreso a la virtualización</h3>
 <p>Monte...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">proc</span> <span class="k">none</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">proc</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">-</span><span class="n">o</span> <span class="n">bind</span> <span class="o">/</span><span class="n">dev</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">dev</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">-</span><span class="n">o</span> <span class="n">bind</span> <span class="o">/</span><span class="n">sys</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">sys</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount -t proc none /mnt/gentoo/proc</span>
+<span class="err"># mount -o bind /dev /mnt/gentoo/dev</span>
+<span class="err"># mount -o bind /sys /mnt/gentoo/sys</span>
+</code></pre></div>
 
 
 <p><em>Formatee</em> las otras particiones...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext2</span> <span class="o">-</span><span class="n">L</span> <span class="n">Boot</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda1</span>
-<span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext4</span> <span class="o">-</span><span class="n">L</span> <span class="n">Home</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda2</span>
-<span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext4</span> <span class="o">-</span><span class="n">L</span> <span class="n">Portage</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda3</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext2 -L Boot /dev/vda1</span>
+<span class="err"># mkfs.ext4 -L Home /dev/vda2</span>
+<span class="err"># mkfs.ext4 -L Portage /dev/vda3</span>
+</code></pre></div>
 
 
 <p>Monte...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda1</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">boot</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda3</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-<span class="o">#</span> <span class="n">mkswap</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda5</span>
-<span class="o">#</span> <span class="n">swapon</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda5</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount /dev/vda1 /mnt/gentoo/boot</span>
+<span class="err"># mount /dev/vda3 /mnt/gentoo/usr/portage</span>
+<span class="err"># mkswap /dev/vda5</span>
+<span class="err"># swapon /dev/vda5</span>
+</code></pre></div>
 
 
 <p>Sincronize el <em>portage</em>, en mi caso tengo un equipo con <em>rsyncd</em> andando...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-<span class="o">#</span> <span class="n">rsync</span> <span class="o">-</span><span class="n">av</span> <span class="n">rsync</span><span class="p">:</span><span class="o">//</span><span class="n">servidorlocal</span><span class="o">/</span><span class="n">gentoo</span><span class="o">-</span><span class="n">portage</span><span class="cm">/* .</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/gentoo/usr/portage</span>
+<span class="err"># rsync -av rsync://servidorlocal/gentoo-portage/* .</span>
+</code></pre></div>
 
 
 <p>Haga el <em>chroot</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
-<span class="o">#</span> <span class="k">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
-<span class="o">#</span> <span class="n">export</span> <span class="n">PS1</span><span class="o">=</span><span class="ss">&quot;(nuevo) $PS1&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
+<span class="err"># chroot /mnt/gentoo /bin/bash</span>
+<span class="err"># source /etc/profile</span>
+<span class="err"># export PS1=&quot;(nuevo) $PS1&quot;</span>
+</code></pre></div>
 
 
 <p>Edite <strong>fstab</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/fstab</span>
+</code></pre></div>
 
 
 <p>Esta es una sugerencia de su contenido, va de acuerdo a como haya particionado...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>       <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="k">type</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">opts</span><span class="o">&gt;</span>            <span class="o">&lt;</span><span class="n">dump</span><span class="o">/</span><span class="n">pass</span><span class="o">&gt;</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda1</span>    <span class="o">/</span><span class="n">boot</span>           <span class="n">ext2</span>      <span class="n">noauto</span><span class="p">,</span><span class="n">noatime</span>    <span class="mi">1</span> <span class="mi">2</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda2</span>    <span class="o">/</span><span class="n">home</span>           <span class="n">ext4</span>      <span class="k">defaults</span>          <span class="mi">0</span> <span class="mi">1</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda3</span>    <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>    <span class="n">ext4</span>      <span class="k">defaults</span>          <span class="mi">0</span> <span class="mi">0</span>
-<span class="o">#####</span>  <span class="n">EXTENDED</span>  <span class="o">#####</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda5</span>    <span class="k">none</span>            <span class="n">swap</span>      <span class="n">sw</span>                <span class="mi">0</span> <span class="mi">0</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda6</span>    <span class="o">/</span>               <span class="n">ext4</span>      <span class="k">defaults</span>          <span class="mi">0</span> <span class="mi">1</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda7</span>    <span class="o">/</span><span class="n">var</span>            <span class="n">ext4</span>      <span class="n">noatime</span>           <span class="mi">0</span> <span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># &lt;fs&gt;       &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;            &lt;dump/pass&gt;</span>
+<span class="err">/dev/vda1    /boot           ext2      noauto,noatime    1 2</span>
+<span class="err">/dev/vda2    /home           ext4      defaults          0 1</span>
+<span class="err">/dev/vda3    /usr/portage    ext4      defaults          0 0</span>
+<span class="err">#####  EXTENDED  #####</span>
+<span class="err">/dev/vda5    none            swap      sw                0 0</span>
+<span class="err">/dev/vda6    /               ext4      defaults          0 1</span>
+<span class="err">/dev/vda7    /var            ext4      noatime           0 0</span>
+</code></pre></div>
 
 
 <p>Instale el <em>kernel</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span>
-<span class="o">#</span> <span class="n">make</span> <span class="n">install</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /usr/src/linux</span>
+<span class="err"># make install</span>
+</code></pre></div>
 
 
 <p>Instale <strong>GRUB</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pv</span> <span class="n">grub</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">grub</span>
-<span class="o">#</span> <span class="n">grub2</span><span class="o">-</span><span class="n">install</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -pv grub</span>
+<span class="err"># emerge grub</span>
+<span class="err"># grub2-install /dev/vda</span>
+</code></pre></div>
 
 
 <p>Configure <strong>GRUB</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">default</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">grub</span>
-<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">d</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="mi">40</span><span class="n">_custom</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/default</span>
+<span class="err"># nano grub</span>
+<span class="err"># cd /etc/grub.d</span>
+<span class="err"># nano 40_custom</span>
+</code></pre></div>
 
 
 <p>En <strong>40_custom</strong> escriba la ruta correcta al kernel que haya instalado...</p>
@@ -499,7 +499,7 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="nb">exec</span> tail -n +3 <span class="nv">$0</span>
 <span class="c1"># This file provides an easy way to add custom menu entries.  Simply type the</span>
 <span class="c1"># menu entries you want to add after this comment.  Be careful not to change</span>
@@ -511,89 +511,89 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 menuentry <span class="s1">&#39;Gentoo Linux 2014-05-26 vda6 kernel 3.12.13&#39;</span> <span class="o">{</span>
     linux /vmlinuz-3.12.13-gentoo <span class="nv">root</span><span class="o">=</span>/dev/vda6 <span class="nv">resume</span><span class="o">=</span>/dev/vda5
 <span class="o">}</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Luego, pida a <strong>GRUB</strong> que haga la configuración...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">grub2</span><span class="o">-</span><span class="n">mkconfig</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">cfg</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># grub2-mkconfig -o /boot/grub/grub.cfg</span>
+</code></pre></div>
 
 
 <p>Programe que el <em>daemon</em> <strong>OpenSSH</strong> se inicie al encender...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">sshd</span> <span class="k">start</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">sshd</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/sshd start</span>
+<span class="err"># rc-update add sshd default</span>
+</code></pre></div>
 
 
 <p>Ponga la contraseña de <em>root</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">passwd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
+</code></pre></div>
 
 
 <p>Desmonte las particiones...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">boot</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">var</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">sys</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">dev</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">proc</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># umount /mnt/gentoo/boot</span>
+<span class="err"># umount /mnt/gentoo/usr/portage</span>
+<span class="err"># umount /mnt/gentoo/var</span>
+<span class="err"># umount -l /mnt/gentoo/sys</span>
+<span class="err"># umount -l /mnt/gentoo/dev</span>
+<span class="err"># umount /mnt/gentoo/proc</span>
+<span class="err"># umount /mnt/gentoo</span>
+</code></pre></div>
 
 
 <p>Apague y pruebe...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">halt</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># halt</span>
+</code></pre></div>
 
 
 <h3>Consola Serial</h3>
 <p>Usar una consola serial libera al virtualizador de tener simpre andando una interfaz gráfica para el huésped.</p>
 <p>Respalde y edite <strong>inittab</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span>
-<span class="o">#</span> <span class="n">cp</span> <span class="n">inittab</span> <span class="n">inittab</span><span class="p">.</span><span class="n">backup</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">inittab</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc</span>
+<span class="err"># cp inittab inittab.backup</span>
+<span class="err"># nano inittab</span>
+</code></pre></div>
 
 
 <p>Cambie estas líneas...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="nb">SERIAL</span> <span class="n">CONSOLES</span>
-<span class="n">s0</span><span class="p">:</span><span class="mi">12345</span><span class="p">:</span><span class="n">respawn</span><span class="p">:</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">agetty</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">issue</span><span class="p">.</span><span class="n">logo</span> <span class="mi">9600</span> <span class="n">ttyS0</span> <span class="n">vt100</span>
-<span class="n">s1</span><span class="p">:</span><span class="mi">12345</span><span class="p">:</span><span class="n">respawn</span><span class="p">:</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">agetty</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">issue</span><span class="p">.</span><span class="n">logo</span> <span class="mi">38400</span> <span class="n">ttyS1</span> <span class="n">vt100</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># SERIAL CONSOLES</span>
+<span class="c">s0:12345:respawn:/sbin/agetty -L -f /etc/issue.logo 9600 ttyS0 vt100</span>
+<span class="c">s1:12345:respawn:/sbin/agetty -L -f /etc/issue.logo 38400 ttyS1 vt100</span>
+</code></pre></div>
 
 
 <p>Modifique <strong>GRUB</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">default</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">grub</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/default/</span>
+<span class="err"># nano grub</span>
+</code></pre></div>
 
 
 <p>Haga que estas líneas tengan esto...</p>
-<div class="highlight"><pre><span></span># <span class="nv">Append</span> <span class="nv">parameters</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">linux</span> <span class="nv">kernel</span> <span class="nv">command</span> <span class="nv">line</span>
-<span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">console=ttyS1,38400</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Append</span> <span class="k">parameters</span> <span class="k">to</span> <span class="n">the</span> <span class="n">linux</span> <span class="n">kernel</span> <span class="n">command</span> <span class="n">line</span>
+<span class="n">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="ss">&quot;console=ttyS1,38400&quot;</span>
 
-# <span class="nv">Append</span> <span class="nv">parameters</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">linux</span> <span class="nv">kernel</span> <span class="nv">command</span> <span class="nv">line</span> <span class="k">for</span> <span class="nv">non</span><span class="o">-</span><span class="nv">recovery</span> <span class="nv">entries</span>
-#<span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="o">#</span> <span class="n">Append</span> <span class="k">parameters</span> <span class="k">to</span> <span class="n">the</span> <span class="n">linux</span> <span class="n">kernel</span> <span class="n">command</span> <span class="n">line</span> <span class="k">for</span> <span class="n">non</span><span class="o">-</span><span class="n">recovery</span> <span class="n">entries</span>
+<span class="o">#</span><span class="n">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="ss">&quot;&quot;</span>
 
-# <span class="nv">Uncomment</span> <span class="nv">to</span> <span class="nv">disable</span> <span class="nv">graphical</span> <span class="nv">terminal</span> <span class="ss">(</span><span class="nv">grub</span><span class="o">-</span><span class="nv">pc</span> <span class="nv">only</span><span class="ss">)</span>
-<span class="nv">GRUB_TERMINAL</span><span class="o">=</span><span class="nv">console</span>
-</pre></div>
+<span class="o">#</span> <span class="n">Uncomment</span> <span class="k">to</span> <span class="n">disable</span> <span class="n">graphical</span> <span class="n">terminal</span> <span class="p">(</span><span class="n">grub</span><span class="o">-</span><span class="n">pc</span> <span class="k">only</span><span class="p">)</span>
+<span class="n">GRUB_TERMINAL</span><span class="o">=</span><span class="n">console</span>
+</code></pre></div>
 
 
 <p>También cambie configuración del <strong>GRUB</strong> para la carga del kernel...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="p">..</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">d</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="mi">40</span><span class="n">_custom</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd ../grub.d</span>
+<span class="err"># nano 40_custom</span>
+</code></pre></div>
 
 
 <p>Agregue <strong>console=ttyS1,38400</strong> al final de la instrucción...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
-<span class="o">#</span> <span class="n">Gentoo</span> <span class="n">Linux</span>
-<span class="o">#</span>
-<span class="n">menuentry</span> <span class="s1">&#39;Gentoo Linux 2014-05-26 vda6 kernel 3.12.13&#39;</span> <span class="err">{</span>
-        <span class="n">linux</span> <span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">12</span><span class="p">.</span><span class="mi">13</span><span class="o">-</span><span class="n">gentoo</span> <span class="n">root</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda6</span> <span class="n">resume</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda5</span> <span class="n">console</span><span class="o">=</span><span class="n">ttyS1</span><span class="p">,</span><span class="mi">38400</span>
+<div class="highlight"><pre><span></span><code><span class="err">#</span>
+<span class="err"># Gentoo Linux</span>
+<span class="err">#</span>
+<span class="err">menuentry &#39;Gentoo Linux 2014-05-26 vda6 kernel 3.12.13&#39; {</span>
+<span class="err">        linux /vmlinuz-3.12.13-gentoo root=/dev/vda6 resume=/dev/vda5 console=ttyS1,38400</span>
 <span class="err">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Apague la máquina virtual. En la configuración de la virtualización retire el monitor, el ratón, el dispositivo <em>spice</em> si lo hubiera y arranque de nuevo.</p>
@@ -634,9 +634,11 @@ menuentry <span class="s1">&#39;Gentoo Linux 2014-05-26 vda6 kernel 3.12.13&#39;
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

@@ -100,164 +100,164 @@
                     <h2 class="article-post-title">Instalación de Fedora Workstation 29, parte 2</h2>
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>05 enero 2019</p>
 <p>En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar <a href="https://movimientolibre.com/apuntes/fedora-workstation-29-parte-01/">Fedora Workstation con KDE</a>. Primero hacemos una actualización...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">upgrade</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf upgrade</span>
+</code></pre></div>
 
 
 <p>Y reiniciamos...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">reboot</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="libreoffice.jpg" alt="LibreOffice"></p>
 <p>Instale LibreOffice y los programas cliente para PostgreSQL...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">group</span> <span class="n">install</span> <span class="c1">--with-optional LibreOffice</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">libreoffice</span><span class="o">-</span><span class="n">help</span><span class="o">-</span><span class="n">es</span> <span class="n">libreoffice</span><span class="o">-</span><span class="n">langpack</span><span class="o">-</span><span class="n">es</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">libreoffice</span><span class="o">-</span><span class="n">postgresql</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">postgresql</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf group install --with-optional LibreOffice</span>
+<span class="err"># dnf install libreoffice-help-es libreoffice-langpack-es</span>
+<span class="err"># dnf install libreoffice-postgresql</span>
+<span class="err"># dnf install postgresql</span>
+</code></pre></div>
 
 
 <p>Instale LaTeX...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">search</span> <span class="n">texlive</span><span class="o">-</span><span class="n">scheme</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">scheme</span><span class="o">-</span><span class="n">tetex</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">collection</span><span class="o">-</span><span class="n">latexextra</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">collection</span><span class="o">-</span><span class="n">pstricks</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">spanish</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">spanish</span><span class="o">-</span><span class="n">doc</span> <span class="n">texlive</span><span class="o">-</span><span class="n">hyphen</span><span class="o">-</span><span class="n">spanish</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">english</span> <span class="n">texlive</span><span class="o">-</span><span class="n">babel</span><span class="o">-</span><span class="n">english</span><span class="o">-</span><span class="n">doc</span> <span class="n">texlive</span><span class="o">-</span><span class="n">hyphen</span><span class="o">-</span><span class="n">english</span>
-<span class="o">#</span> <span class="n">fmtutil</span> <span class="c1">--all -sys</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf search texlive-scheme</span>
+<span class="err"># dnf install texlive-scheme-tetex</span>
+<span class="err"># dnf install texlive-collection-latexextra</span>
+<span class="err"># dnf install texlive-collection-pstricks</span>
+<span class="err"># dnf install texlive-babel-spanish texlive-babel-spanish-doc texlive-hyphen-spanish</span>
+<span class="err"># dnf install texlive-babel-english texlive-babel-english-doc texlive-hyphen-english</span>
+<span class="err"># fmtutil --all -sys</span>
+</code></pre></div>
 
 
 <p>Instale Python...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">group</span> <span class="n">install</span> <span class="c1">--with-optional &quot;Python Classroom&quot;</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="k">group</span> <span class="n">install</span> <span class="c1">--with-optional &quot;Python Science&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf group install --with-optional &quot;Python Classroom&quot;</span>
+<span class="err"># dnf group install --with-optional &quot;Python Science&quot;</span>
+</code></pre></div>
 
 
 <p>Instale utilerías diversas...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="k">system</span><span class="o">-</span><span class="k">storage</span><span class="o">-</span><span class="n">manager</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">pwgen</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">youtube</span><span class="o">-</span><span class="n">dl</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">hwinfo</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install system-storage-manager</span>
+<span class="err"># dnf install pwgen</span>
+<span class="err"># dnf install youtube-dl</span>
+<span class="err"># dnf install hwinfo</span>
+</code></pre></div>
 
 
 <p>Instale software de KDE...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">kate</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">filelight</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">umbrello</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">krename</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install kate</span>
+<span class="err"># dnf install filelight</span>
+<span class="err"># dnf install umbrello</span>
+<span class="err"># dnf install krename</span>
+</code></pre></div>
 
 
 <p>Instale soporte para impresoras HP...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">hplip</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install hplip</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="gimp.jpg" alt="GIMP"></p>
 <p>Instale GIMP...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">gimp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install gimp</span>
+</code></pre></div>
 
 
 <p>Instale Inkscape...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">inkscape</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install inkscape</span>
+</code></pre></div>
 
 
 <p>Instale temas de decoración de ventanas de GTK...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">clearlooks</span><span class="o">-</span><span class="n">phenix</span><span class="o">-</span><span class="n">gtk2</span><span class="o">-</span><span class="n">theme</span> <span class="n">clearlooks</span><span class="o">-</span><span class="n">phenix</span><span class="o">-</span><span class="n">gtk3</span><span class="o">-</span><span class="n">theme</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install clearlooks-phenix-gtk2-theme clearlooks-phenix-gtk3-theme</span>
+</code></pre></div>
 
 
 <p>Instale tipografías...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">liberation</span><span class="o">-</span><span class="n">fonts</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">bitstream</span><span class="o">-</span><span class="n">vera</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">fonts</span> <span class="n">bitstream</span><span class="o">-</span><span class="n">vera</span><span class="o">-</span><span class="n">serif</span><span class="o">-</span><span class="n">fonts</span> <span class="n">bitstream</span><span class="o">-</span><span class="n">vera</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">terminus</span><span class="o">-</span><span class="n">fonts</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install liberation-fonts</span>
+<span class="err"># dnf install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts</span>
+<span class="err"># dnf install terminus-fonts</span>
+</code></pre></div>
 
 
 <p>Instale el lector y convertidor de libros electrónicos Calibre...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">calibre</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install calibre</span>
+</code></pre></div>
 
 
 <p>Prepare los repositorios adicionales...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">fedora</span><span class="o">-</span><span class="n">workstation</span><span class="o">-</span><span class="n">repositories</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">repolist</span> <span class="c1">--all</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install fedora-workstation-repositories</span>
+<span class="err"># dnf repolist --all</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="google-chrome.jpg" alt="Google Chrome"></p>
 <p>Instale Google Chrome y sus tipografías...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="c1">--set-enabled google-chrome</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="k">update</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">chrome</span><span class="o">-</span><span class="k">stable</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">serif</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">noto</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">serif</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">droid</span><span class="o">-</span><span class="n">sans</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">mono</span><span class="o">-</span><span class="n">fonts</span> <span class="n">google</span><span class="o">-</span><span class="n">roboto</span><span class="o">-</span><span class="n">condensed</span><span class="o">-</span><span class="n">fonts</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf config-manager --set-enabled google-chrome</span>
+<span class="err"># dnf update</span>
+<span class="err"># dnf install google-chrome-stable</span>
+<span class="err"># dnf install google-noto-sans-fonts google-noto-serif-fonts google-noto-mono-fonts</span>
+<span class="err"># dnf install google-droid-sans-fonts google-droid-serif-fonts google-droid-sans-mono-fonts</span>
+<span class="err"># dnf install google-roboto-fonts google-roboto-mono-fonts google-roboto-condensed-fonts</span>
+</code></pre></div>
 
 
 <p>Configure los repositorios RPM Fusion...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download1</span><span class="p">.</span><span class="n">rpmfusion</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="k">free</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">rpmfusion</span><span class="o">-</span><span class="k">free</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="err">$</span><span class="p">(</span><span class="n">rpm</span> <span class="o">-</span><span class="n">E</span> <span class="o">%</span><span class="n">fedora</span><span class="p">).</span><span class="n">noarch</span><span class="p">.</span><span class="n">rpm</span> <span class="err">\</span>
-  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download1</span><span class="p">.</span><span class="n">rpmfusion</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">nonfree</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">rpmfusion</span><span class="o">-</span><span class="n">nonfree</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="err">$</span><span class="p">(</span><span class="n">rpm</span> <span class="o">-</span><span class="n">E</span> <span class="o">%</span><span class="n">fedora</span><span class="p">).</span><span class="n">noarch</span><span class="p">.</span><span class="n">rpm</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="k">update</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \</span>
+<span class="err">  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm</span>
+<span class="err"># dnf update</span>
+</code></pre></div>
 
 
 <p>Para mi equipo, requiero el controlador <em>anterior</em> y binario NVIDIA...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">search</span> <span class="n">nvidia</span><span class="o">-</span><span class="mi">390</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">xorg</span><span class="o">-</span><span class="n">x11</span><span class="o">-</span><span class="n">drv</span><span class="o">-</span><span class="n">nvidia</span><span class="o">-</span><span class="mi">390</span><span class="n">xx</span> <span class="n">akmod</span><span class="o">-</span><span class="n">nvidia</span><span class="o">-</span><span class="mi">390</span><span class="n">xx</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">X11</span><span class="o">/</span><span class="n">xorg</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">00</span><span class="o">-</span><span class="n">monitor</span><span class="p">.</span><span class="n">conf</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">reboot</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf search nvidia-390</span>
+<span class="err"># dnf install xorg-x11-drv-nvidia-390xx akmod-nvidia-390xx</span>
+<span class="err"># nano /etc/X11/xorg.conf.d/00-monitor.conf</span>
+<span class="err"># systemctl reboot</span>
+</code></pre></div>
 
 
 <p>Instale más programas de RPM Fusion...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">fuse</span><span class="o">-</span><span class="n">exfat</span> <span class="n">exfat</span><span class="o">-</span><span class="n">utils</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">ffmpeg</span> <span class="n">ffmpegthumbs</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">mplayer</span> <span class="n">mencoder</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">audacity</span><span class="o">-</span><span class="n">freeworld</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">k3b</span><span class="o">-</span><span class="n">extras</span><span class="o">-</span><span class="n">freeworld</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">kdenlive</span> <span class="n">frei0r</span><span class="o">-</span><span class="n">plugins</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">moc</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">groupupdate</span> <span class="n">Multimedia</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install fuse-exfat exfat-utils</span>
+<span class="err"># dnf install ffmpeg ffmpegthumbs</span>
+<span class="err"># dnf install mplayer mencoder</span>
+<span class="err"># dnf install audacity-freeworld</span>
+<span class="err"># dnf install k3b-extras-freeworld</span>
+<span class="err"># dnf install kdenlive frei0r-plugins</span>
+<span class="err"># dnf install moc</span>
+<span class="err"># dnf groupupdate Multimedia</span>
+</code></pre></div>
 
 
 <p>Para usar contenedores, instale Docker, después <a href="https://movimientolibre.com/apuntes/fedora-docker-configuracion/">configure</a>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">docker</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install docker</span>
+<span class="err"># dnf install docker-compose</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="sublime-text.jpg" alt="Sublime Text"></p>
 <p>Instale Sublime Text a partir de su propio repositorio...</p>
-<div class="highlight"><pre><span></span><span class="c1"># rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg</span>
 <span class="c1"># dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo</span>
 <span class="c1"># dnf update</span>
 <span class="c1"># dnf install sublime-text</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Instale Libvirtd...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="k">group</span> <span class="n">install</span> <span class="s1">&#39;Virtualización&#39;</span> <span class="c1">--with-optional</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf group install &#39;Virtualización&#39; --with-optional</span>
+</code></pre></div>
 
 
 <p>Instale Steam, a partir de RPM Fusion...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="c1">--set-enabled rpmfusion-nonfree-steam</span>
-<span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">steam</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf config-manager --set-enabled rpmfusion-nonfree-steam</span>
+<span class="err"># dnf install steam</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="vlc.jpg" alt="VLC"></p>
 <p>Instale VLC, con complementos desde RPM Fusion...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">vlc</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install vlc</span>
+</code></pre></div>
                 </article>
             </div>
             <div class="col-sm-4">
@@ -295,9 +295,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

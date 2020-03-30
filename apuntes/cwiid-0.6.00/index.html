@@ -125,98 +125,98 @@
 <h3>1) Configure su kernel</h3>
 <p>Ya que el <em>wiimote</em> se comunica vía <em>bluetooth</em> es indispensable que su computadora tenga ese dispositivo y que opere correctamente.</p>
 <p>Para configurar el soporte de <em>bluetooth</em> en su kernel, active las siguientes opciones en la configuración del mismo. Consulte documentación sobre cómo compilar su kernel si es necesario.</p>
-<div class="highlight"><pre><span></span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Networking</span> <span class="n">support</span>  <span class="c1">---&gt;</span>
-    <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span> <span class="n">Bluetooth</span> <span class="n">subsystem</span> <span class="n">support</span>  <span class="c1">---&gt;</span>
-        <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span> <span class="n">L2CAP</span> <span class="n">protocol</span> <span class="n">support</span>
-        <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span>   <span class="n">SCO</span> <span class="n">links</span> <span class="n">support</span>
-        <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span>   <span class="n">RFCOMM</span> <span class="n">protocol</span> <span class="n">support</span>
-        <span class="p">[</span><span class="o">*</span><span class="p">]</span>     <span class="n">RFCOMM</span> <span class="n">TTY</span> <span class="n">support</span>
-        <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span>   <span class="n">BNEP</span> <span class="n">protocol</span> <span class="n">support</span>
-        <span class="p">[</span><span class="o">*</span><span class="p">]</span>     <span class="n">Multicast</span> <span class="n">filter</span> <span class="n">support</span>
-        <span class="p">[</span><span class="o">*</span><span class="p">]</span>     <span class="n">Protocol</span> <span class="n">filter</span> <span class="n">support</span>
-        <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span>   <span class="n">HIDP</span> <span class="n">protocol</span> <span class="n">support</span>
-              <span class="n">Bluetooth</span> <span class="n">device</span> <span class="n">drivers</span>  <span class="c1">---&gt;  # ESCOJA EL CONTROLADOR O MARQUE TODOS</span>
-              <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span> <span class="n">HCI</span> <span class="n">USB</span> <span class="n">driver</span>              <span class="o">#</span> <span class="n">ESTE</span> <span class="n">ES</span> <span class="n">EL</span> <span class="n">CONTROLADOR</span> <span class="n">DE</span> <span class="n">MI</span> <span class="n">EQUIPO</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">[*] Networking support  ---&gt;</span>
+<span class="err">    &lt;M&gt; Bluetooth subsystem support  ---&gt;</span>
+<span class="err">        &lt;M&gt; L2CAP protocol support</span>
+<span class="err">        &lt;M&gt;   SCO links support</span>
+<span class="err">        &lt;M&gt;   RFCOMM protocol support</span>
+<span class="err">        [*]     RFCOMM TTY support</span>
+<span class="err">        &lt;M&gt;   BNEP protocol support</span>
+<span class="err">        [*]     Multicast filter support</span>
+<span class="err">        [*]     Protocol filter support</span>
+<span class="err">        &lt;M&gt;   HIDP protocol support</span>
+<span class="err">              Bluetooth device drivers  ---&gt;  # ESCOJA EL CONTROLADOR O MARQUE TODOS</span>
+<span class="err">              &lt;M&gt; HCI USB driver              # ESTE ES EL CONTROLADOR DE MI EQUIPO</span>
+</code></pre></div>
 
 
 <p>Para usar el <em>wiimote</em> es necesario habilitar el módulo <strong>uinput</strong> en el kernel con:</p>
-<div class="highlight"><pre><span></span><span class="n">Device</span> <span class="n">Drivers</span>  <span class="c1">---&gt;</span>
-    <span class="k">Input</span> <span class="n">device</span> <span class="n">support</span>  <span class="c1">---&gt;</span>
-        <span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Miscellaneous</span> <span class="n">devices</span>  <span class="c1">---&gt;</span>
-          <span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span> <span class="k">User</span> <span class="k">level</span> <span class="n">driver</span> <span class="n">support</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">Device Drivers  ---&gt;</span>
+<span class="err">    Input device support  ---&gt;</span>
+<span class="err">        [*] Miscellaneous devices  ---&gt;</span>
+<span class="err">          &lt;M&gt; User level driver support</span>
+</code></pre></div>
 
 
 <p>Guarde los cambios, compile e instale el kernel y reinicie su equipo.</p>
 <h3>2) Revise que haya comunicación por <em>bluetooth</em></h3>
 <p>En el paso anterior compilamos como módulos (M) las opciones del kernel. Revise si su distribución los cargó al encender el equipo con:</p>
-<div class="highlight"><pre><span></span>$ lsmod
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ lsmod
+</code></pre></div>
 
 
 <p>Si no, cárguelos manualmente. Ejecute <strong>modprobe</strong> (como root) con el módulo que corresponda a su controlador <em>bluetooth</em>, en mi caso es:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">modprobe</span> <span class="o">-</span><span class="n">v</span> <span class="n">btusb</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># modprobe -v btusb</span>
+</code></pre></div>
 
 
 <p>Como primera prueba, ejecute el comando <strong>hciconfig</strong> (como root), deberá mostrarle información como la siguiente:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">hciconfig</span>
-<span class="n">hci0</span><span class="p">:</span>   <span class="k">Type</span><span class="p">:</span> <span class="n">USB</span>
-    <span class="n">BD</span> <span class="n">Address</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="n">ACL</span> <span class="n">MTU</span><span class="p">:</span> <span class="mi">310</span><span class="p">:</span><span class="mi">10</span> <span class="n">SCO</span> <span class="n">MTU</span><span class="p">:</span> <span class="mi">64</span><span class="p">:</span><span class="mi">8</span>
-    <span class="n">UP</span> <span class="n">RUNNING</span> <span class="n">PSCAN</span>
-    <span class="n">RX</span> <span class="n">bytes</span><span class="p">:</span><span class="mi">1152</span> <span class="n">acl</span><span class="p">:</span><span class="mi">0</span> <span class="n">sco</span><span class="p">:</span><span class="mi">0</span> <span class="n">events</span><span class="p">:</span><span class="mi">55</span> <span class="n">errors</span><span class="p">:</span><span class="mi">0</span>
-    <span class="n">TX</span> <span class="n">bytes</span><span class="p">:</span><span class="mi">2878</span> <span class="n">acl</span><span class="p">:</span><span class="mi">0</span> <span class="n">sco</span><span class="p">:</span><span class="mi">0</span> <span class="n">commands</span><span class="p">:</span><span class="mi">55</span> <span class="n">errors</span><span class="p">:</span><span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># hciconfig</span>
+<span class="c">hci0:   Type: USB</span>
+<span class="c">    BD Address: 00:00:00:00:00:00 ACL MTU: 310:10 SCO MTU: 64:8</span>
+<span class="c">    UP RUNNING PSCAN</span>
+<span class="c">    RX bytes:1152 acl:0 sco:0 events:55 errors:0</span>
+<span class="c">    TX bytes:2878 acl:0 sco:0 commands:55 errors:0</span>
+</code></pre></div>
 
 
 <p>Donde <strong>BD Address: 00:00:00:00:00:00</strong> es la <em>mac address</em> del <em>bluetooth</em> de su computadora.</p>
 <p>Luego, presione 1 y 2 al mismo tiempo en el <em>wiimote</em>. Los <em>leds</em> parpadeando son señal de que está en <em>modo de asociación</em>. Inmediatamente, en la terminal ejecute:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">hcitool</span> <span class="n">scan</span>
-<span class="n">Scanning</span> <span class="p">...</span>
-    <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="n">Nintendo</span> <span class="n">RVL</span><span class="o">-</span><span class="n">CNT</span><span class="o">-</span><span class="mi">01</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># hcitool scan</span>
+<span class="err">Scanning ...</span>
+<span class="err">    00:00:00:00:00:00       Nintendo RVL-CNT-01</span>
+</code></pre></div>
 
 
 <p>Donde <strong>00:00:00:00:00:00</strong> es la <em>mac address</em> del <em>bluetooth</em> del <em>wiimote</em>.</p>
 <h3>3) Configure que su cuenta de usuario pueda usar <em>uinput</em></h3>
 <p>Cargue el módulo <strong>uinput</strong> si no lo ha hecho.</p>
-<div class="highlight"><pre><span></span>$ sudo modprobe -v uinput
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ sudo modprobe -v uinput
+</code></pre></div>
 
 
 <p>Por defecto <em>/dev/input/uinput</em> tiene permisos de root:</p>
-<div class="highlight"><pre><span></span>$ ls -l /dev/input/uinput
+<div class="highlight"><pre><span></span><code>$ ls -l /dev/input/uinput
 crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span class="m">223</span> sep <span class="m">24</span> <span class="m">22</span>:47 /dev/input/uinput
-</pre></div>
+</code></pre></div>
 
 
 <p>Para que nuestra cuenta de usuario tenga permisos de lectura y escritura en <strong>uinput</strong> vamos a crear una nueva regla <strong>udev</strong>. Como <em>root</em> vamos a crear un nuevo archivo con el editor de textos más simple de GNU/Linux, el <strong>nano</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">udev</span><span class="o">/</span><span class="n">rules</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">50</span><span class="o">-</span><span class="n">wminput</span><span class="p">.</span><span class="n">rules</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/udev/rules.d/50-wminput.rules</span>
+</code></pre></div>
 
 
 <p>Escribimos el contenido siguiente donde señalamos que a la carga de <strong>uinput</strong> se den permisos al grupo <strong>uucp</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
-<span class="o">#</span> <span class="mi">50</span><span class="o">-</span><span class="n">wminput</span><span class="p">.</span><span class="n">rules</span>
-<span class="o">#</span>
-<span class="o">#</span> <span class="n">WiiMote</span> <span class="n">requiere</span> <span class="n">que</span> <span class="n">se</span> <span class="n">tenga</span> <span class="n">permisos</span> <span class="n">en</span> <span class="n">uinput</span>
-<span class="n">KERNEL</span><span class="o">==</span><span class="ss">&quot;uinput&quot;</span><span class="p">,</span> <span class="k">MODE</span><span class="o">=</span><span class="ss">&quot;0660&quot;</span><span class="p">,</span> <span class="k">GROUP</span><span class="o">=</span><span class="ss">&quot;uucp&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">#</span>
+<span class="err"># 50-wminput.rules</span>
+<span class="err">#</span>
+<span class="err"># WiiMote requiere que se tenga permisos en uinput</span>
+<span class="err">KERNEL==&quot;uinput&quot;, MODE=&quot;0660&quot;, GROUP=&quot;uucp&quot;</span>
+</code></pre></div>
 
 
 <p>Para usar esta configuración sin reiniciar el equipo, retiramos módulo <strong>uinput</strong>, recargamos <strong>udev</strong>, cargamos de nuevo <strong>uinput</strong> y revisamos:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">modprobe</span> <span class="o">-</span><span class="n">r</span> <span class="n">uinput</span>
-<span class="o">#</span> <span class="n">udevadm</span> <span class="n">control</span> <span class="c1">--reload-rules</span>
-<span class="o">#</span> <span class="n">modprobe</span> <span class="o">-</span><span class="n">v</span> <span class="n">uinput</span>
-<span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="k">input</span><span class="o">/</span><span class="n">uinput</span>
-<span class="n">crw</span><span class="o">-</span><span class="n">rw</span><span class="c1">---- 1 root uucp 10, 223 sep 24 22:55 /dev/input/uinput</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># modprobe -r uinput</span>
+<span class="err"># udevadm control --reload-rules</span>
+<span class="err"># modprobe -v uinput</span>
+<span class="err"># ls -l /dev/input/uinput</span>
+<span class="err">crw-rw---- 1 root uucp 10, 223 sep 24 22:55 /dev/input/uinput</span>
+</code></pre></div>
 
 
 <p>Por último agregue su usuario al grupo <strong>uucp</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">gpasswd</span> <span class="o">-</span><span class="n">a</span> <span class="o">&lt;</span><span class="n">USUARIO</span><span class="o">&gt;</span> <span class="n">uucp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># gpasswd -a &lt;USUARIO&gt; uucp</span>
+</code></pre></div>
 
 
 <p>Cierre su sesión como usuario y entre de nuevo para hacer efectivo este cambio.</p>
@@ -225,54 +225,54 @@ crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span c
 <p>En la página inicial donde está el tema "Download", busque "Download the most recent version of CWiid." y de clic al vínculo. Al escribir esta guía la versión <strong>0.6.00</strong> de <strong>CWiid</strong> es la versión estable y su URL es <a href="http://abstrakraft.org/cwiid/downloads/cwiid-0.6.00.tgz">http://abstrakraft.org/cwiid/downloads/cwiid-0.6.00.tgz</a></p>
 <h3>5) Desempaque el archivo comprimido</h3>
 <p>Ya sea por medio de su administrador de archivos, dando clic con el botón derecho y eligiendo desempacar en el menú contextual o en la terminal con el comando:</p>
-<div class="highlight"><pre><span></span>$ tar xvf cwiid-0.6.00.tgz
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ tar xvf cwiid-0.6.00.tgz
+</code></pre></div>
 
 
 <p>Luego, cámbiese al directorio resultante de haberlo desempacado.</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> cwiid-0.6.00
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> cwiid-0.6.00
+</code></pre></div>
 
 
 <p>No deje de leer el archivo <strong>README</strong>.</p>
 <h3>6) Modifique el archivo bluetooth.c</h3>
 <p><a href="http://www.gentoo.org/">Gentoo Linux</a> está usando <a href="http://packages.gentoo.org/package/net-wireless/bluez">net-wireless/bluez</a> que es la nueva versión de los programas y demonios para <em>bluetooth</em>.</p>
 <p><strong>CWiid</strong> en su versión 0.6.00 sigue necesitando a la versión anterior, lo cual lo hace incompatible con la nueva y marca error al compilar. Afortunadamente sólo hay que modificar una línea del código fuente para que funcione con <strong>bluez</strong>. Así que con <strong>vim</strong> o su editor favorito, edite el archivo:</p>
-<div class="highlight"><pre><span></span>$ vim libcwiid/bluetooth.c
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ vim libcwiid/bluetooth.c
+</code></pre></div>
 
 
 <p>Y en la línea 125, cambie "hci_remote_name" a "hci_read_remote_name" (sin comillas, por supuesto).</p>
-<div class="highlight"><pre><span></span>...
-<span class="cm">/* timeout (10000) in milliseconds */</span>
-<span class="k">if</span> <span class="ss">(</span><span class="nv">hci_read_remote_name</span><span class="ss">(</span><span class="nv">sock</span>, <span class="o">&amp;</span><span class="nv">dev_list</span>[<span class="nv">i</span>].<span class="nv">bdaddr</span>, <span class="nv">BT_NAME_LEN</span>,
-  <span class="ss">(</span><span class="o">*</span><span class="nv">bdinfo</span><span class="ss">)</span>[<span class="nv">bdinfo_count</span>].<span class="nv">name</span>, <span class="mi">10000</span><span class="ss">))</span> {
-    <span class="nv">cwiid_err</span><span class="ss">(</span><span class="nv">NULL</span>, <span class="s2">&quot;</span><span class="s">Bluetooth name read error</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;</span>
-    <span class="nv">err</span> <span class="o">=</span> <span class="mi">1</span><span class="c1">;</span>
-    <span class="k">goto</span> <span class="nl">CODA</span><span class="c1">;</span>
-}
-...
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"></span>
+<span class="cm">/* timeout (10000) in milliseconds */</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hci_read_remote_name</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dev_list</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="n">bdaddr</span><span class="p">,</span><span class="w"> </span><span class="n">BT_NAME_LEN</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="p">(</span><span class="o">*</span><span class="n">bdinfo</span><span class="p">)</span><span class="o">[</span><span class="n">bdinfo_count</span><span class="o">]</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="mi">10000</span><span class="p">))</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">cwiid_err</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Bluetooth name read error&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">goto</span><span class="w"> </span><span class="nl">CODA</span><span class="p">;</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+</code></pre></div>
 
 
 <h3>7) Configure y compile</h3>
 <p>De la forma tradicional:</p>
-<div class="highlight"><pre><span></span>$ ./configure
+<div class="highlight"><pre><span></span><code>$ ./configure
 $ make
-</pre></div>
+</code></pre></div>
 
 
 <p>Revise que no haya mensajes de error en estos pasos.</p>
 <h3>8) Instale</h3>
 <p>La instalación por defecto se hará en /usr/local así que como <em>root</em> ejecute:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">make</span> <span class="n">install</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># make install</span>
+</code></pre></div>
 
 
 <h3>9) Uso de wmgui</h3>
 <p>El programa <strong>wmgui</strong> sirve para probar todas las características del <em>wiimote</em>. Le recomiendo que estrene su <em>wiimote</em> en GNU/Linux ejecutando <strong>wmgui</strong>:</p>
-<div class="highlight"><pre><span></span>$ wmgui
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ wmgui
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="wmgui.png" alt="wmgui"></p>
@@ -284,28 +284,28 @@ $ make
 <h3>10) Uso de wminput</h3>
 <p>El programa <strong>wminput</strong> es capaz de detectar cuando se presionan los botones y los datos del apuntador del <em>wiimote</em> para interpretarlos en nuestro sistema operativo.</p>
 <p>No deje de leer el manual con <strong>man wminput</strong>. Por otro lado, ejecute <strong>wminput -h</strong> para mostrar un texto de ayuda. En síntesis tiene estas opciones:</p>
-<div class="highlight"><pre><span></span><span class="o">-</span><span class="n">h</span>             <span class="n">Mostrar</span> <span class="n">ayuda</span><span class="p">.</span>
-<span class="o">-</span><span class="k">c</span> <span class="o">&lt;</span><span class="n">ARCHIVO</span><span class="o">&gt;</span>   <span class="n">Cargar</span> <span class="n">un</span> <span class="n">archivo</span> <span class="n">específico</span> <span class="n">de</span> <span class="n">configuración</span><span class="p">.</span>
-<span class="o">-</span><span class="n">q</span>             <span class="n">Sólo</span> <span class="n">mostrar</span> <span class="n">errores</span> <span class="n">en</span> <span class="n">la</span> <span class="n">terminal</span><span class="p">.</span>
-<span class="o">-</span><span class="n">r</span> <span class="o">&lt;</span><span class="n">SEGUNDOS</span><span class="o">&gt;</span>  <span class="n">Automáticamente</span> <span class="n">reconectar</span> <span class="n">al</span> <span class="n">Wiimote</span> <span class="n">si</span> <span class="n">este</span> <span class="n">se</span> <span class="n">desconectara</span><span class="p">.</span>
-<span class="o">-</span><span class="n">w</span>             <span class="n">Esperar</span> <span class="n">infinitamente</span> <span class="n">a</span> <span class="n">que</span> <span class="n">se</span> <span class="n">conecte</span> <span class="n">un</span> <span class="n">Wiimote</span>
-<span class="o">-</span><span class="n">d</span>             <span class="n">Combina</span> <span class="o">-</span><span class="n">q</span><span class="p">,</span> <span class="o">-</span><span class="n">r</span> <span class="n">y</span> <span class="o">-</span><span class="n">w</span><span class="p">.</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">-h             Mostrar ayuda.</span>
+<span class="err">-c &lt;ARCHIVO&gt;   Cargar un archivo específico de configuración.</span>
+<span class="err">-q             Sólo mostrar errores en la terminal.</span>
+<span class="err">-r &lt;SEGUNDOS&gt;  Automáticamente reconectar al Wiimote si este se desconectara.</span>
+<span class="err">-w             Esperar infinitamente a que se conecte un Wiimote</span>
+<span class="err">-d             Combina -q, -r y -w.</span>
+</code></pre></div>
 
 
 <p>Encontrará archivos básicos de configuración en /usr/local/etc/cwiid/wminput/</p>
 <p>La documentación recomienda mantener la configuración personal en el directorio oculto <strong>.CWiid</strong> en su <strong>home</strong>; aunque estos archivos pueden estar en cualquier parte. Así que creamos ese directorio con:</p>
-<div class="highlight"><pre><span></span>$ mkdir ~/.CWiid/
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ mkdir ~/.CWiid/
+</code></pre></div>
 
 
 <p>El primer ejemplo de configuración es para controlar las presentaciones en <strong>PDF</strong> con <a href="http://okular.kde.org/">Okular</a>. ¿Porqué <em>Okular</em>? Bueno, porque la gran variedad de programas para <a href="http://www.kde.org/">KDE</a> te permiten personalizar los atajos de teclado fácilmente. Para empezar creamos el archivo:</p>
-<div class="highlight"><pre><span></span>$ nano ~/.CWiid/okular.conf
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ nano ~/.CWiid/okular.conf
+</code></pre></div>
 
 
 <p>Con este contenido:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span>
 <span class="o">#</span> <span class="o">~/</span><span class="p">.</span><span class="n">CWiid</span><span class="o">/</span><span class="n">okular</span><span class="p">.</span><span class="n">conf</span>
 <span class="o">#</span>
 <span class="o">#</span> <span class="n">Configuración</span> <span class="n">para</span> <span class="n">usarse</span> <span class="n">en</span> <span class="n">Okular</span>
@@ -324,25 +324,25 @@ $ make
 <span class="n">Wiimote</span><span class="p">.</span><span class="n">Home</span>    <span class="o">=</span> <span class="n">KEY_HOME</span>      <span class="o">#</span> <span class="n">Primer</span> <span class="n">diapositiva</span>
 <span class="n">Wiimote</span><span class="p">.</span><span class="n">Minus</span>   <span class="o">=</span> <span class="n">KEY_F4</span>        <span class="o">#</span> <span class="n">Reducir</span>
 <span class="n">Wiimote</span><span class="p">.</span><span class="n">Plus</span>    <span class="o">=</span> <span class="n">KEY_F2</span>        <span class="o">#</span> <span class="n">Ampliar</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Luego configure los atajos de teclado de <strong>Okular</strong>: ejecútelo, ingrese en <strong>Preferencias</strong> &gt; <strong>Configurar los accesos rápidos</strong> y haga los cambios que menciono en los comentarios del archivo anterior.</p>
 <p><img class="img-fluid" src="okular-accesos-rapidos.png" alt="Okular accesos rápidos"></p>
 <p><strong>IMPORTANTE:</strong> Si la instación de CWiid fue en /usr/local debemos exportar la variable de entorno PYTHONPATH antes de ejecutar wminput en nuestra terminal. De lo contrario aparecerá el error <strong>ImportError: No module named cwiid</strong>.</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/lib/python2.6/site-packages&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/lib/python2.6/site-packages&quot;</span>
+</code></pre></div>
 
 
 <p>Ahora ejecute:</p>
-<div class="highlight"><pre><span></span>$ wminput -w -c ~/.CWiid/okular.conf
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ wminput -w -c ~/.CWiid/okular.conf
+</code></pre></div>
 
 
 <p>Presione 1 y 2 en el <em>wiimote</em>, cámbiate a <strong>Okular</strong> y <em>¡a controlar tu presentación sin estar frente a la laptop!</em>.</p>
 <h3>11) Entorno de escritorio KDE 4</h3>
 <p>Qué mejor demostración del poder de GNU/Linux que con los efectos 3D de <strong>KDE 4</strong>. De esta forma puedo tener en un escritorio mi presentación y en otro mi explorador de archivos para ir abriendo videos, por ejemplo. Mi archivo de configuración de <strong>wminput</strong> para ese fin es el siguiente:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span>
 <span class="o">#</span> <span class="o">~/</span><span class="p">.</span><span class="n">CWiid</span><span class="o">/</span><span class="n">kde4</span><span class="p">.</span><span class="n">conf</span>
 <span class="o">#</span>
 <span class="o">#</span> <span class="n">Configuración</span> <span class="n">para</span> <span class="n">usar</span> <span class="n">KDE</span> <span class="mi">4</span>
@@ -362,7 +362,7 @@ $ make
 
 <span class="n">Wiimote</span><span class="p">.</span><span class="mi">1</span>      <span class="o">=</span> <span class="n">KEY_F</span>         <span class="o">#</span> <span class="n">KMPlayer</span><span class="p">,</span> <span class="n">video</span> <span class="n">a</span> <span class="n">pantalla</span> <span class="n">completa</span>
 <span class="n">Wiimote</span><span class="p">.</span><span class="mi">2</span>      <span class="o">=</span> <span class="n">KEY_END</span>       <span class="o">#</span> <span class="n">KMPlayer</span><span class="p">,</span> <span class="n">terminar</span> <span class="n">y</span> <span class="n">cerrar</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Aquí necesitamos adecuar los atajos de teclado del entorno gráfico. Para ello ejecutamos <strong>Preferencias del Sistema</strong>, buscamos <strong>Teclado y ratón</strong> y dentro hallarás <strong>Accesos rápidos de teclado globales</strong>.</p>
@@ -376,8 +376,8 @@ $ make
 <p><img class="img-fluid" src="kde4-accesos-rapidos-de-teclado-globales.png" alt="KDE4 accesos rápidos de teclado globales"></p>
 <p>También haga los cambios propios en <strong>Okular</strong> y <strong>KMPlayer</strong> (para ver videos).</p>
 <p>Mantenga en un escritorio el <strong>Dolphin</strong> abierto con sus videos preferidos, en otro escritorio su presentación en <strong>Okular</strong>. Ejecute:</p>
-<div class="highlight"><pre><span></span>$ wminput -w -c ~/.CWiid/kde4.conf
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ wminput -w -c ~/.CWiid/kde4.conf
+</code></pre></div>
 
 
 <p>Como observará, se convierte la <em>combinación de botones</em> en la <em>combinación de teclas</em> para rotar el cubo del escritorio: mantenga presionado <strong>B</strong> mientra oprime <strong>Derecha</strong> o <strong>Izquierda</strong> en el <em>wiimote</em>.</p>
@@ -389,23 +389,23 @@ $ make
 <p><img class="img-fluid" src="homemade-wii-sensor-bar-3.jpg" alt="Homemade Wii sensor bar 3"></p>
 <p>Su servidor <em>hackeó</em> cuatro controles remotos que no usaba para convertirlos en dos dispositivos de luz IR. Observe el video <a href="http://www.youtube.com/watch?v=Ryy7oPMZ2gU">How to Make a Wireless Wii Sensor Bar</a> para ver otro trabajo similar.</p>
 <p>Para probar el "apuntador" escriba la siguiente configuración en ~/.CWiid/apuntador.conf:</p>
-<div class="highlight"><pre><span></span>#
-# <span class="o">~/</span>.<span class="nv">CWiid</span><span class="o">/</span><span class="nv">apuntador</span>.<span class="nv">conf</span>
-#
-# <span class="nv">Usar</span> <span class="nv">la</span> <span class="nv">capacidad</span> <span class="nv">de</span> <span class="nv">saber</span> <span class="nv">a</span> <span class="nv">donde</span> <span class="nv">apunta</span> <span class="nv">el</span> <span class="nv">wiimote</span>
-# <span class="nv">para</span> <span class="nv">reemplazar</span> <span class="nv">al</span> <span class="nv">mouse</span>. <span class="nv">Necesita</span> <span class="nv">los</span> <span class="nv">leds</span> <span class="nv">IR</span>.
-#
+<div class="highlight"><pre><span></span><code><span class="o">#</span>
+<span class="o">#</span> <span class="o">~/</span><span class="p">.</span><span class="n">CWiid</span><span class="o">/</span><span class="n">apuntador</span><span class="p">.</span><span class="n">conf</span>
+<span class="o">#</span>
+<span class="o">#</span> <span class="n">Usar</span> <span class="n">la</span> <span class="n">capacidad</span> <span class="n">de</span> <span class="n">saber</span> <span class="n">a</span> <span class="n">donde</span> <span class="n">apunta</span> <span class="n">el</span> <span class="n">wiimote</span>
+<span class="o">#</span> <span class="n">para</span> <span class="n">reemplazar</span> <span class="n">al</span> <span class="n">mouse</span><span class="p">.</span> <span class="n">Necesita</span> <span class="n">los</span> <span class="n">leds</span> <span class="n">IR</span><span class="p">.</span>
+<span class="o">#</span>
 
-<span class="k">include</span> <span class="nv">buttons</span>          # <span class="nv">Cargamos</span> <span class="nv">la</span> <span class="nv">configuracion</span> <span class="nv">buttons</span>
+<span class="n">include</span> <span class="n">buttons</span>          <span class="o">#</span> <span class="n">Cargamos</span> <span class="n">la</span> <span class="n">configuracion</span> <span class="n">buttons</span>
 
-<span class="nv">Plugin</span>.<span class="nv">ir_ptr</span>.<span class="nv">X</span> <span class="o">=</span> <span class="nv">ABS_X</span>  # <span class="nv">Puntero</span> <span class="nv">eje</span> <span class="nv">X</span>
-<span class="nv">Plugin</span>.<span class="nv">ir_ptr</span>.<span class="nv">Y</span> <span class="o">=</span> <span class="nv">ABS_Y</span>  # <span class="nv">Puntero</span> <span class="nv">eje</span> <span class="nv">Y</span>
-</pre></div>
+<span class="n">Plugin</span><span class="p">.</span><span class="n">ir_ptr</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">ABS_X</span>  <span class="o">#</span> <span class="n">Puntero</span> <span class="n">eje</span> <span class="n">X</span>
+<span class="n">Plugin</span><span class="p">.</span><span class="n">ir_ptr</span><span class="p">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">ABS_Y</span>  <span class="o">#</span> <span class="n">Puntero</span> <span class="n">eje</span> <span class="n">Y</span>
+</code></pre></div>
 
 
 <p>El apuntador del <em>wiimote</em> se habilita con las líneas <strong>Plugin.ir_ptr</strong>.</p>
 <p>Regresando al <strong>Stellarium</strong>, necesitamos saber los atajos de teclado propios de ese programa. Los encontrará en la página <a href="http://stellarium.org/wiki/index.php/Keyboard_actions">Keyboard actions</a> del <em>wiki</em> de <strong>Stellarium</strong>. Con esa información, creamos un archivo de configuración para <strong>wminput</strong> como el siguiente:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span>
 <span class="o">#</span> <span class="o">~/</span><span class="p">.</span><span class="n">CWiid</span><span class="o">/</span><span class="n">stellarium</span><span class="p">.</span><span class="n">conf</span>
 <span class="o">#</span>
 <span class="o">#</span> <span class="n">Configuración</span> <span class="n">para</span> <span class="n">usar</span> <span class="n">Stellarium</span> <span class="n">con</span> <span class="n">apuntador</span> <span class="n">IR</span>
@@ -428,7 +428,7 @@ $ make
 
 <span class="n">Wiimote</span><span class="p">.</span><span class="mi">1</span>       <span class="o">=</span> <span class="n">KEY_L</span>         <span class="o">#</span> <span class="n">L</span><span class="p">,</span> <span class="n">Incrementar</span> <span class="n">el</span> <span class="n">salto</span> <span class="n">de</span> <span class="n">tiempo</span>
 <span class="n">Wiimote</span><span class="p">.</span><span class="mi">2</span>       <span class="o">=</span> <span class="n">KEY_J</span>         <span class="o">#</span> <span class="n">J</span><span class="p">,</span> <span class="n">Decrementar</span> <span class="n">el</span> <span class="n">salto</span> <span class="n">de</span> <span class="n">tiempo</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Los pasos a seguir son encender las fuentes de luz IR, cargar <em>wminput</em> con la configuración ~/.CWiid/stellarium.conf y ejecutar <strong>Stellarium</strong>.</p>
@@ -522,7 +522,7 @@ $ make
 86
 87
 88
-89</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+89</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Yo soy</span>
 <span class="nv">SOY</span><span class="o">=</span><span class="s2">&quot;[wiimote]&quot;</span>
@@ -611,12 +611,12 @@ wminput -w -c <span class="s2">&quot;</span><span class="nv">$CONF_ARCH</span><s
 <span class="c1"># Mensaje final</span>
 <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$SOY</span><span class="s2"> Script terminado.&quot;</span>
 <span class="nb">exit</span> <span class="nv">$EXITO</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Guárdelo con el nombre de <strong>wiimote.sh</strong> y ejecútelo con la configuración como parámetro, por ejemplo:</p>
-<div class="highlight"><pre><span></span>$ ./wiimote.sh stellarium
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ ./wiimote.sh stellarium
+</code></pre></div>
 
 
 <h3>14) Referencias</h3>
@@ -664,9 +664,11 @@ wminput -w -c <span class="s2">&quot;</span><span class="nv">$CONF_ARCH</span><s
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

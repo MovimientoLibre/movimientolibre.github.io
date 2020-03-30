@@ -101,66 +101,66 @@
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>24 junio 2018</p>
 <h3>Detalles de los dispositivos de red</h3>
 <p>Liste todos los dispositivos de red con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">lspci</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">ethernet</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># lspci | grep -i ethernet</span>
+</code></pre></div>
 
 
 <p>Averigue detalles, como la velocidad actual de la conexión con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ethtool</span> <span class="n">enp1s0</span>
-<span class="o">#</span> <span class="n">ethtool</span> <span class="n">enp4s0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ethtool enp1s0</span>
+<span class="err"># ethtool enp4s0</span>
+</code></pre></div>
 
 
 <p>También puede instalar <strong>lshw</strong>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">lshw</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install lshw</span>
+</code></pre></div>
 
 
 <p>Y ejecutar...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">lshw</span> <span class="o">-</span><span class="k">class</span> <span class="n">network</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># lshw -class network</span>
+</code></pre></div>
 
 
 <h3>OpenSSH para usar par de llaves</h3>
 <p>Copie la llave pública <strong>desde su equipo personal</strong> al servidor con el comando...</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="k">copy</span><span class="o">-</span><span class="kt">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">usuario</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">usuario</span><span class="mf">@192.168</span><span class="p">.</span><span class="n">n</span><span class="p">.</span><span class="n">m</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="k">copy</span><span class="o">-</span><span class="kt">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">usuario</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">usuario</span><span class="mf">@192.168</span><span class="p">.</span><span class="n">n</span><span class="p">.</span><span class="n">m</span>
+</code></pre></div>
 
 
 <p>Por supesto, cambie <code>usuario</code> por su nombre de usuario y <code>192.168.0.n.m</code> por la dirección IP del nuevo servidor.</p>
 <p>Luego edite de nuevo <code>/etc/ssh/sshd_config</code> y cambie...</p>
-<div class="highlight"><pre><span></span><span class="n">LoginGraceTime</span> <span class="mi">2</span><span class="n">m</span>
-<span class="n">PermitRootLogin</span> <span class="k">no</span>
-<span class="n">StrictModes</span> <span class="n">yes</span>
-<span class="n">MaxAuthTries</span> <span class="mi">8</span>
-<span class="n">MaxSessions</span> <span class="mi">4</span>
-<span class="n">PubkeyAuthentication</span> <span class="n">yes</span>
-<span class="n">PermitEmptyPasswords</span> <span class="k">no</span>
-<span class="n">PasswordAuthentication</span> <span class="k">no</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">LoginGraceTime 2m</span>
+<span class="err">PermitRootLogin no</span>
+<span class="err">StrictModes yes</span>
+<span class="err">MaxAuthTries 8</span>
+<span class="err">MaxSessions 4</span>
+<span class="err">PubkeyAuthentication yes</span>
+<span class="err">PermitEmptyPasswords no</span>
+<span class="err">PasswordAuthentication no</span>
+</code></pre></div>
 
 
 <p><strong>Advertencia:</strong> <code>PasswordAuthentication no</code> deshabilita el acceso con usuario y contraseña.</p>
 <p>Reinicie el <em>daemon</em> para aplicar estos cambios.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">restart</span> <span class="n">sshd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl restart sshd</span>
+</code></pre></div>
 
 
 <h3>Desactivar Network Manager</h3>
 <p>Por defecto, <strong>Network Manager</strong> está activo, por lo que los dispositivos de red son configurados por sus operaciones.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">list</span><span class="o">-</span><span class="n">units</span> <span class="c1">--type=service</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">NetworkManager</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl list-units --type=service</span>
+<span class="err"># systemctl status NetworkManager</span>
+</code></pre></div>
 
 
 <p>Y el servicio <code>systemd-networkd</code> está deshabilitado.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">systemd</span><span class="o">-</span><span class="n">networkd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl status systemd-networkd</span>
+</code></pre></div>
 
 
 <p>Tome nota de los dispositivos de red...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ip</span> <span class="n">addr</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ip addr</span>
+</code></pre></div>
 
 
 <p>E identifique cuál está conectado con la red local y cuál será para Internet. Por ejemplo:</p>
@@ -169,17 +169,17 @@
 <li>enp1s0 estará conectado a la LAN (red local) con la dirección IP 192.168.4.1/24</li>
 </ul>
 <p>Para configurar los dispositivos de red de forma manual cámbiese al directorio...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">network</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/systemd/network/</span>
+</code></pre></div>
 
 
 <p>Cree el archivo de configuración...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">enp4s0</span><span class="p">.</span><span class="n">network</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano enp4s0.network</span>
+</code></pre></div>
 
 
 <p>Con este contenido que define su dirección IP, <em>puerta de acceso</em>, servidores DNS e <em>ip forward</em>...</p>
-<div class="highlight"><pre><span></span><span class="k">[Match]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
 <span class="na">Name</span><span class="o">=</span><span class="s">enp4s0</span>
 
 <span class="k">[Network]</span>
@@ -188,55 +188,55 @@
 <span class="na">DNS</span><span class="o">=</span><span class="s">8.8.8.8</span>
 <span class="na">DNS</span><span class="o">=</span><span class="s">8.8.4.4</span>
 <span class="na">IPForward</span><span class="o">=</span><span class="s">yes</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><strong>Nota:</strong> Usé los <a href="https://developers.google.com/speed/public-dns/">DNS públicos de Google</a>. Elija los de su preferencia.</p>
 <p>Cree el archivo de configuración...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">enp1s0</span><span class="p">.</span><span class="n">network</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano enp1s0.network</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="k">[Match]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
 <span class="na">Name</span><span class="o">=</span><span class="s">enp1s0</span>
 
 <span class="k">[Network]</span>
 <span class="na">Address</span><span class="o">=</span><span class="s">192.168.4.1/24</span>
 <span class="na">IPForward</span><span class="o">=</span><span class="s">yes</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Ahora deshabilite <strong>Network Manager</strong> y habilite <strong>systemd-networkd</strong></p>
-<div class="highlight"><pre><span></span># <span class="nv">systemctl</span> <span class="nv">disable</span> <span class="nv">NetworkManager</span>
-# <span class="nv">systemctl</span> <span class="nv">disable</span> <span class="nv">ModemManager</span>
-# <span class="nv">systemctl</span> <span class="nv">mask</span> <span class="nv">NetworkManager</span>
-# <span class="nv">systemctl</span> <span class="nv">mask</span> <span class="nv">NetworkManager</span><span class="o">-</span><span class="k">wait</span><span class="o">-</span><span class="nv">online</span>
-# <span class="nv">systemctl</span> <span class="nv">enable</span> <span class="nv">systemd</span><span class="o">-</span><span class="nv">networkd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl disable NetworkManager</span>
+<span class="err"># systemctl disable ModemManager</span>
+<span class="err"># systemctl mask NetworkManager</span>
+<span class="err"># systemctl mask NetworkManager-wait-online</span>
+<span class="err"># systemctl enable systemd-networkd</span>
+</code></pre></div>
 
 
 <h3>Apague el servidor</h3>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">poweroff</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl poweroff</span>
+</code></pre></div>
 
 
 <p>Estando apagado los cables de red del modem a <code>enp4s0</code> y de <code>enp1s0</code> a su <em>switch</em> o <em>access point</em>.</p>
 <h3>Encienda el servidor</h3>
 <p>Revise con con el comando <code>networkctl</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">networkctl</span>
-<span class="n">IDX</span> <span class="n">LINK</span>             <span class="k">TYPE</span>               <span class="n">OPERATIONAL</span> <span class="n">SETUP</span>
-  <span class="mi">1</span> <span class="n">lo</span>               <span class="n">loopback</span>           <span class="n">carrier</span>     <span class="n">unmanaged</span>
-  <span class="mi">2</span> <span class="n">enp4s0</span>           <span class="n">ether</span>              <span class="n">routable</span>    <span class="n">configured</span>
-  <span class="mi">3</span> <span class="n">enp1s0</span>           <span class="n">ether</span>              <span class="n">routable</span>    <span class="n">configured</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># networkctl</span>
+<span class="err">IDX LINK             TYPE               OPERATIONAL SETUP</span>
+<span class="err">  1 lo               loopback           carrier     unmanaged</span>
+<span class="err">  2 enp4s0           ether              routable    configured</span>
+<span class="err">  3 enp1s0           ether              routable    configured</span>
+</code></pre></div>
 
 
 <p>También revise...</p>
-<div class="highlight"><pre><span></span># <span class="nv">ip</span> <span class="nv">addr</span> <span class="k">show</span> <span class="nv">enp1s0</span>
-# <span class="nv">ip</span> <span class="nv">addr</span> <span class="k">show</span> <span class="nv">enp4s0</span>
-# <span class="nv">route</span> <span class="o">-</span><span class="nv">n</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ip addr show enp1s0</span>
+<span class="err"># ip addr show enp4s0</span>
+<span class="err"># route -n</span>
+</code></pre></div>
 
 
 <h3>Continuación...</h3>
@@ -278,9 +278,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

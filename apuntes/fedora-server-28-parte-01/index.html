@@ -119,19 +119,19 @@
 <h3>Descarga y preparación</h3>
 <p>Para preprarar el medio de instalación vía USB <a href="https://getfedora.org/es/server/download/">descargue Fedora Server</a> como un archivo ISO e inserte una memoria USB de una capacidad mayor al tamaño de ese archivo. Al momento de escribir este apunte, el archivo ISO es <code>Fedora-Server-dvd-x86_64-27-1.6.iso</code></p>
 <p>Ejecute <code>fdisk</code> como root para saber cuál dispositivo es la memoria USB...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># fdisk -l</span>
+</code></pre></div>
 
 
 <p>En mi caso es <code>/dev/sdc</code></p>
 <p>Para copiar el contenido ISO a la memoria USB y hacerla <em>booteable</em> ejecute como root...</p>
-<div class="highlight"><pre><span></span># <span class="nv">dd</span> <span class="k">if</span><span class="o">=</span><span class="nv">Fedora</span><span class="o">-</span><span class="nv">Server</span><span class="o">-</span><span class="nv">dvd</span><span class="o">-</span><span class="nv">x86_64</span><span class="o">-</span><span class="mi">27</span><span class="o">-</span><span class="mi">1</span>.<span class="mi">6</span>.<span class="nv">iso</span> <span class="nv">of</span><span class="o">=/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">sdc</span> <span class="nv">status</span><span class="o">=</span><span class="nv">progress</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dd if=Fedora-Server-dvd-x86_64-27-1.6.iso of=/dev/sdc status=progress</span>
+</code></pre></div>
 
 
 <p>Sea paciente, toma buen tiempo. Al término asegure de no dejar partes sin copiar con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">sync</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># sync</span>
+</code></pre></div>
 
 
 <p>Extraiga la memoria USB e insértela en el nuevo servidor estando apagado.</p>
@@ -169,39 +169,39 @@
 <p>Reinicie el equipo y retire la memoria USB para que arranque por primera vez Fedora Server.</p>
 <h3>Ingrese remotamente vía OpenSSH</h3>
 <p>Edite <code>/etc/ssh/sshd_config</code> y active estas líneas para permitir que podamos accesar remotamente por <code>ssh</code>...</p>
-<div class="highlight"><pre><span></span><span class="n">ListenAddress</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">ListenAddress 0.0.0.0</span>
+</code></pre></div>
 
 
 <p>Reinice el daemon.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">restart</span> <span class="n">sshd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl restart sshd</span>
+</code></pre></div>
 
 
 <p>Tome nota de la dirección IP que tenga el servidor en la red local.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ip</span> <span class="n">addr</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ip addr</span>
+</code></pre></div>
 
 
 <p>E ingrese remotamente (cambie <code>192.168.n.m</code> por la dirección IP obtenida).</p>
-<div class="highlight"><pre><span></span>$ ssh <span class="m">192</span>.168.n.m
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ ssh <span class="m">192</span>.168.n.m
+</code></pre></div>
 
 
 <h3>Actualice</h3>
 <p>Si usa un proxy agregue esa configuración a <code>/etc/dnf/dnf.conf</code> (cambie <code>proxy.redlocal.lan</code> por el nombre o dirección IP de su proxy).</p>
-<div class="highlight"><pre><span></span><span class="n">proxy</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">proxy</span><span class="p">.</span><span class="n">redlocal</span><span class="p">.</span><span class="n">lan</span><span class="p">:</span><span class="mi">3128</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">proxy=http://proxy.redlocal.lan:3128</span>
+</code></pre></div>
 
 
 <p>Realice una actualización general, ejecute este comando como <em>root</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">upgrade</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf upgrade</span>
+</code></pre></div>
 
 
 <p>Después de la actualización podría tener una nueva versión del kernel linux, así que reinice para que ya la use.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">reboot</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
+</code></pre></div>
 
 
 <h3>Continuación...</h3>
@@ -243,9 +243,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

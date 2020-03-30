@@ -103,32 +103,32 @@
 <p>Para evitar que una determinada verisón de un paquete de software se instale en Gentoo Linux podemos <em>enmascararlo</em>.</p>
 <p>Por ejemplo, necesito quedareme con PostgreSQL versión 9.2, aunque la versión 9.3 ya está marcada como estable. La razón es que las extensiones PostGIS estables son para la versión 9.3 de PostgreSQL.</p>
 <p>Primero, verifico que tengo instalada la 9.3...</p>
-<div class="highlight"><pre><span></span># <span class="nv">equery</span> <span class="nv">list</span> <span class="s2">&quot;</span><span class="s">postgresql*</span><span class="s2">&quot;</span>
- <span class="o">*</span> <span class="nv">Searching</span> <span class="k">for</span> <span class="nv">postgresql</span><span class="o">*</span> ...
-[<span class="nv">IP</span><span class="o">-</span>] [  ] <span class="nv">dev</span><span class="o">-</span><span class="nv">db</span><span class="o">/</span><span class="nv">postgresql</span><span class="o">-</span><span class="nv">base</span><span class="o">-</span><span class="mi">9</span>.<span class="mi">3</span>.<span class="mi">3</span>:<span class="mi">9</span>.<span class="mi">3</span>
-[<span class="nv">IP</span><span class="o">-</span>] [  ] <span class="nv">dev</span><span class="o">-</span><span class="nv">db</span><span class="o">/</span><span class="nv">postgresql</span><span class="o">-</span><span class="nv">server</span><span class="o">-</span><span class="mi">9</span>.<span class="mi">3</span>.<span class="mi">3</span>:<span class="mi">9</span>.<span class="mi">3</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># equery list &quot;postgresql*&quot;</span>
+<span class="err"> * Searching for postgresql* ...</span>
+<span class="err">[IP-] [  ] dev-db/postgresql-base-9.3.3:9.3</span>
+<span class="err">[IP-] [  ] dev-db/postgresql-server-9.3.3:9.3</span>
+</code></pre></div>
 
 
 <p>Así que aprovecho las nuevas características del Portage para enmascarar. Creo un directorio llamado <strong>package.mask</strong> en <strong>/etc/portage</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="n">package</span><span class="p">.</span><span class="n">mask</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/portage/</span>
+<span class="err"># mkdir package.mask</span>
+</code></pre></div>
 
 
 <p>Y en dos archivos de texto, escribo la expresión <strong>&gt;=categoría/paquete-nn.nn</strong></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">echo</span> <span class="ss">&quot;&gt;=dev-db/postgresql-base-9.3&quot;</span> <span class="o">&gt;</span> <span class="n">package</span><span class="p">.</span><span class="n">mask</span><span class="o">/</span><span class="n">dev</span><span class="o">-</span><span class="n">db_postgresql</span><span class="o">-</span><span class="n">base</span>
-<span class="o">#</span> <span class="n">echo</span> <span class="ss">&quot;&gt;=dev-db/postgresql-server-9.3&quot;</span> <span class="o">&gt;</span> <span class="n">package</span><span class="p">.</span><span class="n">mask</span><span class="o">/</span><span class="n">dev</span><span class="o">-</span><span class="n">db_postgresql</span><span class="o">-</span><span class="n">server</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># echo &quot;&gt;=dev-db/postgresql-base-9.3&quot; &gt; package.mask/dev-db_postgresql-base</span>
+<span class="err"># echo &quot;&gt;=dev-db/postgresql-server-9.3&quot; &gt; package.mask/dev-db_postgresql-server</span>
+</code></pre></div>
 
 
 <p>Dichas expresiones equivalen a decir: <em>enmascara todas las versiones iguales o mayores a 9.3 del PostgreSQL</em>.</p>
 <p>Verifico...</p>
-<div class="highlight"><pre><span></span><span class="nv">minos</span> <span class="nv">portage</span> # <span class="nv">equery</span> <span class="nv">list</span> <span class="s2">&quot;</span><span class="s">postgresql*</span><span class="s2">&quot;</span>
- <span class="o">*</span> <span class="nv">Searching</span> <span class="k">for</span> <span class="nv">postgresql</span><span class="o">*</span> ...
-[<span class="nv">IP</span><span class="o">-</span>] [<span class="nv">M</span> ] <span class="nv">dev</span><span class="o">-</span><span class="nv">db</span><span class="o">/</span><span class="nv">postgresql</span><span class="o">-</span><span class="nv">base</span><span class="o">-</span><span class="mi">9</span>.<span class="mi">3</span>.<span class="mi">3</span>:<span class="mi">9</span>.<span class="mi">3</span>
-[<span class="nv">IP</span><span class="o">-</span>] [<span class="nv">M</span> ] <span class="nv">dev</span><span class="o">-</span><span class="nv">db</span><span class="o">/</span><span class="nv">postgresql</span><span class="o">-</span><span class="nv">server</span><span class="o">-</span><span class="mi">9</span>.<span class="mi">3</span>.<span class="mi">3</span>:<span class="mi">9</span>.<span class="mi">3</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">minos portage # equery list &quot;postgresql*&quot;</span>
+<span class="err"> * Searching for postgresql* ...</span>
+<span class="err">[IP-] [M ] dev-db/postgresql-base-9.3.3:9.3</span>
+<span class="err">[IP-] [M ] dev-db/postgresql-server-9.3.3:9.3</span>
+</code></pre></div>
 
 
 <p>Ahora sí, puedo desinstalar la versión 9.3 e instalar la 9.2 sin temor que me la cambie en un futuro.</p>
@@ -169,9 +169,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

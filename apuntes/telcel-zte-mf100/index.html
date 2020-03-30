@@ -108,109 +108,109 @@
 <p>Como es costumbre, los comandos con # son ejecutados por <em>root</em>, mientras que los comandos con $ son ejecutados con un usuario común.</p>
 <h3>Configuración del Kernel Linux</h3>
 <p>Es necesario tener habilitado el soporte <em>PPP</em> en el kernel; así como el controlador <em>GSM/CDMA</em>. Note que también es necesario marcar como módulo el <em>USB Mass Storage support</em> porque los actuales dispositivos USB para Internet 3G también tienen una ranura para una <em>MicroSD de memoria Flash</em>.</p>
-<div class="highlight"><pre><span></span> <span class="nv">Device</span> <span class="nv">Drivers</span>  <span class="o">---&gt;</span>
-   [<span class="o">*</span>]  <span class="nv">Network</span> <span class="nv">device</span> <span class="nv">support</span>  <span class="o">---&gt;</span>
-     <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">PPP</span> <span class="ss">(</span><span class="nv">point</span><span class="o">-</span><span class="nv">to</span><span class="o">-</span><span class="nv">point</span> <span class="nv">protocol</span><span class="ss">)</span> <span class="nv">support</span>
-       <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">PPP</span> <span class="nv">support</span> <span class="k">for</span> <span class="nv">async</span> <span class="nv">serial</span> <span class="nv">ports</span>
-       <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">PPP</span> <span class="nv">support</span> <span class="k">for</span> <span class="nv">sync</span> <span class="nv">tty</span> <span class="nv">ports</span>
-       <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">PPP</span> <span class="nv">Deflate</span> <span class="nv">compression</span>
-       <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">PPP</span> <span class="nv">BSD</span><span class="o">-</span><span class="nv">Compress</span> <span class="nv">compression</span>
-       <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">PPP</span> <span class="nv">MPPE</span> <span class="nv">compression</span> <span class="ss">(</span><span class="nv">encryption</span><span class="ss">)</span>
-       <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">PPP</span> <span class="nv">over</span> <span class="nv">Ethernet</span>
-   [<span class="o">*</span>]  <span class="nv">USB</span> <span class="nv">support</span>  <span class="o">---&gt;</span>
-     <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">USB</span> <span class="nv">Mass</span> <span class="nv">Storage</span> <span class="nv">support</span>
-     [<span class="o">*</span>]  <span class="nv">The</span> <span class="nv">shared</span> <span class="nv">table</span> <span class="nv">of</span> <span class="nv">common</span> <span class="ss">(</span><span class="nv">or</span> <span class="nv">usual</span><span class="ss">)</span> <span class="nv">storage</span> <span class="nv">devices</span>
-     <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">USB</span> <span class="nv">Serial</span> <span class="nv">Converter</span> <span class="nv">support</span>  <span class="o">---&gt;</span>
-       [<span class="o">*</span>]  <span class="nv">USB</span> <span class="nv">Generic</span> <span class="nv">Serial</span> <span class="nv">Driver</span>
-         <span class="o">&lt;</span><span class="nv">M</span><span class="o">&gt;</span>  <span class="nv">USB</span> <span class="nv">driver</span> <span class="k">for</span> <span class="nv">GSM</span> <span class="nv">and</span> <span class="nv">CDMA</span> <span class="nv">modems</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"> Device Drivers  ---&gt;</span>
+<span class="err">   [*]  Network device support  ---&gt;</span>
+<span class="err">     &lt;M&gt;  PPP (point-to-point protocol) support</span>
+<span class="err">       &lt;M&gt;  PPP support for async serial ports</span>
+<span class="err">       &lt;M&gt;  PPP support for sync tty ports</span>
+<span class="err">       &lt;M&gt;  PPP Deflate compression</span>
+<span class="err">       &lt;M&gt;  PPP BSD-Compress compression</span>
+<span class="err">       &lt;M&gt;  PPP MPPE compression (encryption)</span>
+<span class="err">       &lt;M&gt;  PPP over Ethernet</span>
+<span class="err">   [*]  USB support  ---&gt;</span>
+<span class="err">     &lt;M&gt;  USB Mass Storage support</span>
+<span class="err">     [*]  The shared table of common (or usual) storage devices</span>
+<span class="err">     &lt;M&gt;  USB Serial Converter support  ---&gt;</span>
+<span class="err">       [*]  USB Generic Serial Driver</span>
+<span class="err">         &lt;M&gt;  USB driver for GSM and CDMA modems</span>
+</code></pre></div>
 
 
 <p>Si no se usa <em>USB Mass Storage support</em> como módulo, podría aparecer el dispositivo sólo como una unidad de almacenamiento; y en consecuencia, no se vería el dispositivo de comunicación.</p>
 <h3>Instale USB Mode Switch</h3>
 <p>El software <a href="http://www.draisberghof.de/usb_modeswitch/">USB_ModeSwitch</a> es una herramienta que sirve para controlar esta <em>doble cara</em> que presenta el dispositivo; la de ser dispositivo de red y dispositivo de almacenamiento al mismo tiempo.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">usb_modeswitch</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge usb_modeswitch</span>
+</code></pre></div>
 
 
 <h3>Revise la configuración de Udev</h3>
 <p>Revise la versión de <a href="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html">Udev</a> con el comando <em>equery</em>:</p>
-<div class="highlight"><pre><span></span># <span class="nv">equery</span> <span class="nv">list</span> <span class="nv">udev</span>
-[ <span class="nv">Searching</span> <span class="k">for</span> <span class="nv">package</span> <span class="s1">&#39;</span><span class="s">udev</span><span class="s1">&#39;</span> <span class="nv">in</span> <span class="nv">all</span> <span class="nv">categories</span> <span class="nv">among</span>: ]
-<span class="o">*</span> <span class="nv">installed</span> <span class="nv">packages</span>
-[<span class="nv">I</span><span class="o">--</span>] [  ] <span class="nv">sys</span><span class="o">-</span><span class="nv">fs</span><span class="o">/</span><span class="nv">udev</span><span class="o">-</span><span class="mi">151</span><span class="o">-</span><span class="nv">r4</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># equery list udev</span>
+<span class="err">[ Searching for package &#39;udev&#39; in all categories among: ]</span>
+<span class="err">* installed packages</span>
+<span class="err">[I--] [  ] sys-fs/udev-151-r4</span>
+</code></pre></div>
 
 
 <p>Afortunadamente, la versión que ven de <em>Udev</em> tiene la configuración lista para manipular el dispositivo <em>ZTE</em> cuando se conecta. Vea el contenido de <em>40-usb_modeswitch.rules</em> sin peligro de alterarlo con:</p>
-<div class="highlight"><pre><span></span>$ less /lib/udev/rules.d/40-usb_modeswitch.rules
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ less /lib/udev/rules.d/40-usb_modeswitch.rules
+</code></pre></div>
 
 
 <p>Ahí encontrará las siguientes líneas:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ZTE</span> <span class="n">devices</span>
-<span class="n">ATTRS</span><span class="err">{</span><span class="n">idVendor</span><span class="err">}</span><span class="o">==</span><span class="ss">&quot;19d2&quot;</span><span class="p">,</span> <span class="n">ATTRS</span><span class="err">{</span><span class="n">idProduct</span><span class="err">}</span><span class="o">==</span><span class="ss">&quot;2000&quot;</span><span class="p">,</span> <span class="n">RUN</span><span class="o">+=</span><span class="err">&quot;</span><span class="n">usb_modeswitch</span> <span class="s1">&#39;%b/%k&#39;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ZTE devices</span>
+<span class="err">ATTRS{idVendor}==&quot;19d2&quot;, ATTRS{idProduct}==&quot;2000&quot;, RUN+=&quot;usb_modeswitch &#39;%b/%k&#39;</span>
+</code></pre></div>
 
 
 <p>Lo que hace es ejecutar <em>usb_modeswitch</em> cuando un dispositivo <em>ZTE</em> (vendedor <em>19d2</em> y producto <em>2000</em>) se conecta.</p>
 <h3>Revise que se cargue correctamente al conectarse</h3>
 <p>Conecte el dispositivo. Espere a que la luz led del mismo quede en color verde y estable. Luego revise los últimos mensajes del kernel con el comando <em>dmesg</em>:</p>
-<div class="highlight"><pre><span></span>$ dmesg
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dmesg
+</code></pre></div>
 
 
 <p>Por ejemplo, la carga exitosa muestra mensajes como los siguientes:</p>
-<div class="highlight"><pre><span></span>$ <span class="nv">dmesg</span> <span class="o">|</span> <span class="nv">grep</span> <span class="nv">modem</span>
-<span class="nv">USB</span> <span class="nv">Serial</span> <span class="nv">support</span> <span class="nv">registered</span> <span class="k">for</span> <span class="nv">GSM</span> <span class="nv">modem</span> <span class="ss">(</span><span class="mi">1</span><span class="o">-</span><span class="nv">port</span><span class="ss">)</span>
-<span class="nv">option</span> <span class="mi">1</span><span class="o">-</span><span class="mi">8</span>:<span class="mi">1</span>.<span class="mi">0</span>: <span class="nv">GSM</span> <span class="nv">modem</span> <span class="ss">(</span><span class="mi">1</span><span class="o">-</span><span class="nv">port</span><span class="ss">)</span> <span class="nv">converter</span> <span class="nv">detected</span>
-<span class="nv">usb</span> <span class="mi">1</span><span class="o">-</span><span class="mi">8</span>: <span class="nv">GSM</span> <span class="nv">modem</span> <span class="ss">(</span><span class="mi">1</span><span class="o">-</span><span class="nv">port</span><span class="ss">)</span> <span class="nv">converter</span> <span class="nv">now</span> <span class="nv">attached</span> <span class="nv">to</span> <span class="nv">ttyUSB0</span>
-<span class="nv">option</span> <span class="mi">1</span><span class="o">-</span><span class="mi">8</span>:<span class="mi">1</span>.<span class="mi">1</span>: <span class="nv">GSM</span> <span class="nv">modem</span> <span class="ss">(</span><span class="mi">1</span><span class="o">-</span><span class="nv">port</span><span class="ss">)</span> <span class="nv">converter</span> <span class="nv">detected</span>
-<span class="nv">usb</span> <span class="mi">1</span><span class="o">-</span><span class="mi">8</span>: <span class="nv">GSM</span> <span class="nv">modem</span> <span class="ss">(</span><span class="mi">1</span><span class="o">-</span><span class="nv">port</span><span class="ss">)</span> <span class="nv">converter</span> <span class="nv">now</span> <span class="nv">attached</span> <span class="nv">to</span> <span class="nv">ttyUSB1</span>
-<span class="nv">option</span> <span class="mi">1</span><span class="o">-</span><span class="mi">8</span>:<span class="mi">1</span>.<span class="mi">3</span>: <span class="nv">GSM</span> <span class="nv">modem</span> <span class="ss">(</span><span class="mi">1</span><span class="o">-</span><span class="nv">port</span><span class="ss">)</span> <span class="nv">converter</span> <span class="nv">detected</span>
-<span class="nv">usb</span> <span class="mi">1</span><span class="o">-</span><span class="mi">8</span>: <span class="nv">GSM</span> <span class="nv">modem</span> <span class="ss">(</span><span class="mi">1</span><span class="o">-</span><span class="nv">port</span><span class="ss">)</span> <span class="nv">converter</span> <span class="nv">now</span> <span class="nv">attached</span> <span class="nv">to</span> <span class="nv">ttyUSB2</span>
-<span class="nv">option</span>: <span class="nv">v0</span>.<span class="mi">7</span>.<span class="mi">2</span>:<span class="nv">USB</span> <span class="nv">Driver</span> <span class="k">for</span> <span class="nv">GSM</span> <span class="nv">modems</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dmesg <span class="p">|</span> grep modem
+USB Serial support registered <span class="k">for</span> GSM modem <span class="o">(</span><span class="m">1</span>-port<span class="o">)</span>
+option <span class="m">1</span>-8:1.0: GSM modem <span class="o">(</span><span class="m">1</span>-port<span class="o">)</span> converter detected
+usb <span class="m">1</span>-8: GSM modem <span class="o">(</span><span class="m">1</span>-port<span class="o">)</span> converter now attached to ttyUSB0
+option <span class="m">1</span>-8:1.1: GSM modem <span class="o">(</span><span class="m">1</span>-port<span class="o">)</span> converter detected
+usb <span class="m">1</span>-8: GSM modem <span class="o">(</span><span class="m">1</span>-port<span class="o">)</span> converter now attached to ttyUSB1
+option <span class="m">1</span>-8:1.3: GSM modem <span class="o">(</span><span class="m">1</span>-port<span class="o">)</span> converter detected
+usb <span class="m">1</span>-8: GSM modem <span class="o">(</span><span class="m">1</span>-port<span class="o">)</span> converter now attached to ttyUSB2
+option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
+</code></pre></div>
 
 
 <p>Vea que en la lista de módulos cargados aparezcan <em>usbserial</em> y <em>usb_wwan</em>:</p>
-<div class="highlight"><pre><span></span>$ lsmod
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ lsmod
+</code></pre></div>
 
 
 <p>Debe haber uno o varios dispositivos en el directorio <em>/dev</em> como <em>ttyUSB1</em>, <em>ttyUSB2</em> y/o <em>ttyUSB3</em>.</p>
-<div class="highlight"><pre><span></span>$ ls -l /dev/ttyUSB*
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ ls -l /dev/ttyUSB*
+</code></pre></div>
 
 
 <p>Continúe con este manual si son exitosas estas pruebas. Si no, revise de nuevo hasta conseguirlo.</p>
 <h3>Agregue su usuario al grupo uucp</h3>
 <p>Como habrá notado, los <em>ttyUSB</em> son propiedad de <em>root</em> y del grupo <em>uucp</em>. Agregue su usuario al grupo <em>uucp</em> con el siguiente comando, sustituyendo <em>NOMBREDEUSUARIO</em> por el suyo:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">gpasswd</span> <span class="o">-</span><span class="n">a</span> <span class="n">NOMBREDEUSUARIO</span> <span class="n">uucp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># gpasswd -a NOMBREDEUSUARIO uucp</span>
+</code></pre></div>
 
 
 <h3>Instale wvdial</h3>
 <p>Necesitamos instalar el software <a href="http://alumnit.ca/wiki/?WvDial">WvDial</a> para realizar la rutina de conexión.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">wvdial</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge wvdial</span>
+</code></pre></div>
 
 
 <p>Como dependecias, instalará también <em>net-dialup/ppp</em>, <em>virtual/c++-tr1-functional</em> y <em>net-libs/wvstreams</em>.</p>
 <h3>Configure wvdial</h3>
 <p>Ejecute el programa de configuración automática de WvDial con el comando:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">wvdialconf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># wvdialconf</span>
+</code></pre></div>
 
 
 <p>Éste creará un nuevo archivo <em>/etc/wvdial.conf</em> en base a lo que se detecte en el hardware. Pero es muy probable que <em>no sea suficiente</em> y deberá hacer modificaciones adicionales por el modelo del dispositivo, las capacidades de la red y los parámetros de su proveedor.</p>
 <p>Edite el archivo con el sencillo editor <em>nano</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">wvdial</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/wvdial.conf</span>
+</code></pre></div>
 
 
 <p>El contenido de este archivo es texto con la típica sintaxis de los archivos <em>ini</em>. Lo que sigue es la configuración que para el <em>Internet 3G de Telcel en México</em>:</p>
-<div class="highlight"><pre><span></span><span class="k">[Dialer Defaults]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[Dialer Defaults]</span>
 <span class="na">Init1</span> <span class="o">=</span> <span class="s">ATZ</span>
 <span class="na">Init2</span> <span class="o">=</span> <span class="s">ATQ0 V1 E1 S0=0 &amp;C1 &amp;D2 +FCLASS=0</span>
 <span class="na">Init3</span> <span class="o">=</span> <span class="s">AT+CGDCONT=1,&quot;IP&quot;,&quot;internet.itelcel.com&quot;</span>
@@ -222,7 +222,7 @@
 <span class="na">Phone</span> <span class="o">=</span> <span class="s">*99#</span>
 <span class="na">Username</span> <span class="o">=</span> <span class="s">webgprs</span>
 <span class="na">Password</span> <span class="o">=</span> <span class="s">webgprs2002</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Destaco de este archivo:</p>
@@ -235,13 +235,13 @@
 </ul>
 <h3>Conéctese</h3>
 <p>Para conectarse, abra una terminal y ejecute:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">sudo</span> <span class="n">wvdial</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># sudo wvdial</span>
+</code></pre></div>
 
 
 <p>Mantenga esa terminal abierta. Abra otra y observe el dispositivo <em>ppp0</em> que es creado al conectarse a la red con:</p>
-<div class="highlight"><pre><span></span>$ sudo ifconfig ppp0
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ sudo ifconfig ppp0
+</code></pre></div>
 
 
 <p>Éste comando también sirve para monitorear la cantidad de información recibida y enviada. De forma manual, puede tomar nota de lo que consume antes de desconectar el dispositivo y así cuidar de no exceder el límite del proveedor.</p>
@@ -283,9 +283,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

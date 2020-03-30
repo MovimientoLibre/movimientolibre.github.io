@@ -109,82 +109,82 @@
 <p>Por defecto, Fedora Linux usa LVM para admnistrar el disco duro; se tiene un volumen con espacio libre, más de 64 GB.</p>
 <h3>Partición dedicada</h3>
 <p>Es buena idea crear una partición dedicada. Montada en una ruta temporal...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">docker</span>
-<span class="o">#</span> <span class="n">ssm</span> <span class="k">create</span> <span class="o">-</span><span class="n">s</span> <span class="mi">64</span><span class="k">G</span> <span class="o">-</span><span class="n">p</span> <span class="n">integridad</span> <span class="o">-</span><span class="n">n</span> <span class="n">docker</span> <span class="c1">--fstype ext4 /mnt/docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/docker</span>
+<span class="err"># ssm create -s 64G -p integridad -n docker --fstype ext4 /mnt/docker</span>
+</code></pre></div>
 
 
 <p>Cambie la etiqueta de la unidad...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">e2label</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mapper</span><span class="o">/</span><span class="n">integridad</span><span class="o">-</span><span class="n">docker</span> <span class="n">Docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># e2label /dev/mapper/integridad-docker Docker</span>
+</code></pre></div>
 
 
 <p>Copie todo el contenido que se ha puesto en la instalación al directorio de montaje temporal...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="n">cvf</span> <span class="o">-</span> <span class="o">*</span> <span class="o">|</span> <span class="p">(</span><span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="p">;</span> <span class="n">tar</span> <span class="n">xf</span> <span class="o">-</span><span class="p">)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /var/lib/docker/</span>
+<span class="err"># tar cvf - * | (cd /mnt/docker/; tar xf -)</span>
+</code></pre></div>
 
 
 <p>Desmonte del directorio temporal...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># umount /mnt/docker</span>
+</code></pre></div>
 
 
 <p>Para que se monte al encender, edite...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/fstab</span>
+</code></pre></div>
 
 
 <p>Y agregue esta línea...</p>
-<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mapper</span><span class="o">/</span><span class="n">integridad</span><span class="o">-</span><span class="n">docker</span>  <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span>  <span class="n">ext4</span>  <span class="k">defaults</span>  <span class="mi">1</span> <span class="mi">2</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">/dev/mapper/integridad-docker  /var/lib/docker  ext4  defaults  1 2</span>
+</code></pre></div>
 
 
 <p>Monte en el directorio definitivo...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount /var/lib/docker</span>
+</code></pre></div>
 
 
 <p>Re-aplique los permisos SELinux...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">docker</span><span class="o">-</span><span class="k">storage</span><span class="o">-</span><span class="n">setup</span>
-<span class="o">#</span> <span class="n">restorecon</span> <span class="o">-</span><span class="n">vR</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># docker-storage-setup</span>
+<span class="err"># restorecon -vR /var/lib/docker/</span>
+</code></pre></div>
 
 
 <p>Reinicie el sistema...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">reboot</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
+</code></pre></div>
 
 
 <p>Verifique que se haya iniciado con éxito el daemon...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl status docker</span>
+</code></pre></div>
 
 
 <p>Ya no se necesita el directorio temporal...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">rmdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># rmdir /mnt/docker</span>
+</code></pre></div>
 
 
 <h3>Control por usuario</h3>
 <p>Revise si existe el grupo docker...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">grep</span> <span class="n">docker</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">group</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># grep docker /etc/group</span>
+</code></pre></div>
 
 
 <p>De NO existir, habrá que crearlo con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">groupadd</span> <span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># groupadd docker</span>
+</code></pre></div>
 
 
 <p>Agregue su usuario al grupo...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">gpasswd</span> <span class="o">-</span><span class="n">a</span> <span class="n">guillermovaldes</span> <span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># gpasswd -a guillermovaldes docker</span>
+</code></pre></div>
 
 
 <p>Reinicie el daemon...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">restart</span> <span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl restart docker</span>
+</code></pre></div>
 
 
 <p>Cierre la sesión y vuelva a entrar.</p>
@@ -225,9 +225,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

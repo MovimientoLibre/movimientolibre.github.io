@@ -101,17 +101,17 @@
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>24 junio 2018</p>
 <h3>DNSmasq</h3>
 <p>Instale DNSmasq...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">dnsmasq</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install dnsmasq</span>
+</code></pre></div>
 
 
 <p>Cree un archivo para los DNS externos...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">dnsmasq</span><span class="o">-</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/dnsmasq-resolv.conf</span>
+</code></pre></div>
 
 
 <p>Con los servidores DNS que elija (en este ejemplo están activos los de Google)...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Cloudflare</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Cloudflare</span>
 <span class="o">#</span><span class="n">nameserver</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
 <span class="o">#</span><span class="n">nameserver</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
 
@@ -122,153 +122,153 @@
 <span class="o">#</span> <span class="n">OpenDNS</span>
 <span class="o">#</span><span class="n">nameserver</span> <span class="mi">208</span><span class="p">.</span><span class="mi">67</span><span class="p">.</span><span class="mi">222</span><span class="p">.</span><span class="mi">222</span>
 <span class="o">#</span><span class="n">nameserver</span> <span class="mi">208</span><span class="p">.</span><span class="mi">67</span><span class="p">.</span><span class="mi">220</span><span class="p">.</span><span class="mi">220</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Edite la configuración de DNSmasq...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span>
-<span class="o">#</span> <span class="n">mv</span> <span class="n">dnsmasq</span><span class="p">.</span><span class="n">conf</span> <span class="n">dnsmasq</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">original</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">dnsmasq</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc</span>
+<span class="err"># mv dnsmasq.conf dnsmasq.conf.original</span>
+<span class="err"># nano dnsmasq.conf</span>
+</code></pre></div>
 
 
 <p>Ajuste el contenido de <code>/etc/dnsmasq.conf</code> de acuerdo a sus necesidades.
 Cambie el nombre de dominio <code>miredlocal.lan</code> y los nombres de los equipos.
 También las direcciones IP que son <code>192.168.4.n</code> desde 101 a 199.</p>
-<div class="highlight"><pre><span></span># <span class="nv">Set</span> <span class="nv">the</span> <span class="nv">DHCP</span> <span class="nv">server</span> <span class="nv">to</span> <span class="nv">authoritative</span> <span class="nv">mode</span>. <span class="nv">In</span> <span class="nv">this</span> <span class="nv">mode</span> <span class="nv">it</span> <span class="nv">will</span> <span class="nv">barge</span> <span class="nv">in</span>
-# <span class="nv">and</span> <span class="nv">take</span> <span class="nv">over</span> <span class="nv">the</span> <span class="nv">lease</span> <span class="k">for</span> <span class="nv">any</span> <span class="nv">client</span> <span class="nv">which</span> <span class="nv">broadcasts</span> <span class="nv">on</span> <span class="nv">the</span> <span class="nv">network</span>,
-# <span class="nv">whether</span> <span class="nv">it</span> <span class="nv">has</span> <span class="nv">a</span> <span class="nv">record</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">lease</span> <span class="nv">or</span> <span class="nv">not</span>.
-<span class="nv">dhcp</span><span class="o">-</span><span class="nv">authoritative</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="k">Set</span> <span class="n">the</span> <span class="n">DHCP</span> <span class="n">server</span> <span class="k">to</span> <span class="n">authoritative</span> <span class="k">mode</span><span class="p">.</span> <span class="k">In</span> <span class="n">this</span> <span class="k">mode</span> <span class="n">it</span> <span class="n">will</span> <span class="n">barge</span> <span class="k">in</span>
+<span class="o">#</span> <span class="k">and</span> <span class="n">take</span> <span class="n">over</span> <span class="n">the</span> <span class="n">lease</span> <span class="k">for</span> <span class="k">any</span> <span class="n">client</span> <span class="n">which</span> <span class="n">broadcasts</span> <span class="k">on</span> <span class="n">the</span> <span class="n">network</span><span class="p">,</span>
+<span class="o">#</span> <span class="n">whether</span> <span class="n">it</span> <span class="n">has</span> <span class="n">a</span> <span class="n">record</span> <span class="k">of</span> <span class="n">the</span> <span class="n">lease</span> <span class="k">or</span> <span class="k">not</span><span class="p">.</span>
+<span class="n">dhcp</span><span class="o">-</span><span class="n">authoritative</span>
 
-# <span class="nv">Never</span> <span class="nv">forward</span> <span class="nv">plain</span> <span class="nv">names</span> <span class="ss">(</span><span class="nv">without</span> <span class="nv">a</span> <span class="nv">dot</span> <span class="nv">or</span> <span class="nv">domain</span> <span class="nv">part</span><span class="ss">)</span>
-<span class="nv">domain</span><span class="o">-</span><span class="nv">needed</span>
+<span class="o">#</span> <span class="n">Never</span> <span class="k">forward</span> <span class="n">plain</span> <span class="k">names</span> <span class="p">(</span><span class="k">without</span> <span class="n">a</span> <span class="n">dot</span> <span class="k">or</span> <span class="k">domain</span> <span class="n">part</span><span class="p">)</span>
+<span class="k">domain</span><span class="o">-</span><span class="n">needed</span>
 
-# <span class="nv">Los</span> <span class="nv">nombres</span> <span class="nv">sencillos</span> <span class="nv">en</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">hosts</span> <span class="nv">seran</span> <span class="nv">extendidos</span> <span class="nv">con</span> <span class="nv">el</span> <span class="nv">nombre</span> <span class="nv">de</span> <span class="nv">dominio</span> <span class="nv">completo</span>
-<span class="nv">expand</span><span class="o">-</span><span class="nv">hosts</span>
+<span class="o">#</span> <span class="n">Los</span> <span class="n">nombres</span> <span class="n">sencillos</span> <span class="n">en</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span> <span class="n">seran</span> <span class="n">extendidos</span> <span class="n">con</span> <span class="n">el</span> <span class="n">nombre</span> <span class="n">de</span> <span class="n">dominio</span> <span class="n">completo</span>
+<span class="n">expand</span><span class="o">-</span><span class="n">hosts</span>
 
-# <span class="nv">Dispositivos</span> <span class="nv">de</span> <span class="nv">red</span> <span class="nv">que</span> <span class="nv">ademas</span> <span class="nv">de</span> <span class="nv">localhost</span> <span class="nv">estan</span> <span class="nv">en</span> <span class="nv">escucha</span>
-<span class="nv">interface</span><span class="o">=</span><span class="nv">enp1s0</span>
+<span class="o">#</span> <span class="n">Dispositivos</span> <span class="n">de</span> <span class="n">red</span> <span class="n">que</span> <span class="n">ademas</span> <span class="n">de</span> <span class="n">localhost</span> <span class="n">estan</span> <span class="n">en</span> <span class="n">escucha</span>
+<span class="n">interface</span><span class="o">=</span><span class="n">enp1s0</span>
 
-# <span class="nv">Dominio</span>
-<span class="nv">domain</span><span class="o">=</span><span class="nv">miredlocal</span>.<span class="nv">lan</span>
+<span class="o">#</span> <span class="n">Dominio</span>
+<span class="k">domain</span><span class="o">=</span><span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span>
 
-# <span class="nv">Rango</span> <span class="nv">de</span> <span class="nv">direcciones</span> <span class="nv">IP</span> <span class="nv">y</span> <span class="nv">duracion</span>
-<span class="nv">dhcp</span><span class="o">-</span><span class="nv">range</span><span class="o">=</span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">101</span>,<span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">199</span>,<span class="mi">1</span><span class="nv">h</span>
+<span class="o">#</span> <span class="n">Rango</span> <span class="n">de</span> <span class="n">direcciones</span> <span class="n">IP</span> <span class="n">y</span> <span class="n">duracion</span>
+<span class="n">dhcp</span><span class="o">-</span><span class="n">range</span><span class="o">=</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">101</span><span class="p">,</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">199</span><span class="p">,</span><span class="mi">1</span><span class="n">h</span>
 
-# <span class="nv">Usuario</span> <span class="nv">y</span> <span class="nv">grupo</span> <span class="nv">a</span> <span class="nv">usar</span> <span class="nv">por</span> <span class="nv">el</span> <span class="nv">daemon</span>
-<span class="nv">user</span><span class="o">=</span><span class="nv">dnsmasq</span>
-<span class="nv">group</span><span class="o">=</span><span class="nv">dnsmasq</span>
+<span class="o">#</span> <span class="n">Usuario</span> <span class="n">y</span> <span class="n">grupo</span> <span class="n">a</span> <span class="n">usar</span> <span class="n">por</span> <span class="n">el</span> <span class="n">daemon</span>
+<span class="k">user</span><span class="o">=</span><span class="n">dnsmasq</span>
+<span class="k">group</span><span class="o">=</span><span class="n">dnsmasq</span>
 
-# <span class="nv">Dispositivos</span> <span class="nv">con</span> <span class="nv">direcciones</span> <span class="nv">IP</span> <span class="nv">fijas</span>
-#<span class="nv">dhcp</span><span class="o">-</span><span class="nv">host</span><span class="o">=</span><span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>,<span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">11</span>  # <span class="nv">equipo1</span>
-#<span class="nv">dhcp</span><span class="o">-</span><span class="nv">host</span><span class="o">=</span><span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>,<span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">12</span>  # <span class="nv">equipo2</span>
-#<span class="nv">dhcp</span><span class="o">-</span><span class="nv">host</span><span class="o">=</span><span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>,<span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">13</span>  # <span class="nv">equipo3</span>
-#<span class="nv">dhcp</span><span class="o">-</span><span class="nv">host</span><span class="o">=</span><span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>:<span class="nv">hh</span>,<span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">14</span>  # <span class="nv">equipo4</span>
+<span class="o">#</span> <span class="n">Dispositivos</span> <span class="n">con</span> <span class="n">direcciones</span> <span class="n">IP</span> <span class="n">fijas</span>
+<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">host</span><span class="o">=</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">,</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">11</span>  <span class="o">#</span> <span class="n">equipo1</span>
+<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">host</span><span class="o">=</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">,</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">12</span>  <span class="o">#</span> <span class="n">equipo2</span>
+<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">host</span><span class="o">=</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">,</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">13</span>  <span class="o">#</span> <span class="n">equipo3</span>
+<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">host</span><span class="o">=</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">:</span><span class="n">hh</span><span class="p">,</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">14</span>  <span class="o">#</span> <span class="n">equipo4</span>
 
-# <span class="nv">Archivo</span> <span class="nv">donde</span> <span class="nv">se</span> <span class="nv">configuran</span> <span class="nv">los</span> <span class="nv">servidores</span> <span class="nv">DNS</span> <span class="nv">externos</span>
-<span class="nv">resolv</span><span class="o">-</span><span class="nv">file</span><span class="o">=/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">dnsmasq</span><span class="o">-</span><span class="nv">resolv</span>.<span class="nv">conf</span>
+<span class="o">#</span> <span class="n">Archivo</span> <span class="n">donde</span> <span class="n">se</span> <span class="n">configuran</span> <span class="n">los</span> <span class="n">servidores</span> <span class="n">DNS</span> <span class="n">externos</span>
+<span class="n">resolv</span><span class="o">-</span><span class="n">file</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">dnsmasq</span><span class="o">-</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span>
 
-# <span class="nv">Ofrecerce</span> <span class="nv">como</span> <span class="nv">servidor</span> <span class="nv">de</span> <span class="nv">tiempo</span>
-#<span class="nv">dhcp</span><span class="o">-</span><span class="nv">option</span><span class="o">=</span><span class="mi">42</span>,<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span>
+<span class="o">#</span> <span class="n">Ofrecerce</span> <span class="n">como</span> <span class="n">servidor</span> <span class="n">de</span> <span class="n">tiempo</span>
+<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">option</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
 
-# <span class="nv">URL</span> <span class="nv">del</span> <span class="nv">script</span> <span class="nv">de</span> <span class="nv">configuraci</span>ó<span class="nv">n</span> <span class="nv">autom</span>á<span class="nv">tica</span> <span class="nv">de</span> <span class="nv">proxy</span> <span class="nv">en</span> <span class="nv">el</span> <span class="nv">navegador</span>
-#<span class="nv">dhcp</span><span class="o">-</span><span class="nv">option</span><span class="o">=</span><span class="mi">252</span>,<span class="nv">http</span>:<span class="o">//</span><span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">1</span><span class="o">/</span><span class="nv">proxy</span>.<span class="nv">pac</span>
-# <span class="nv">En</span> <span class="nv">cambio</span>, <span class="nv">para</span> <span class="nv">Windows</span>, <span class="nv">cuando</span> <span class="nv">no</span> <span class="nv">se</span> <span class="nv">tiene</span>, <span class="nv">se</span> <span class="nv">env</span>í<span class="nv">a</span> <span class="nv">un</span> <span class="nv">avance</span> <span class="nv">de</span> <span class="nv">l</span>í<span class="nv">nea</span>
-#<span class="nv">dhcp</span><span class="o">-</span><span class="nv">option</span><span class="o">=</span><span class="mi">252</span>,<span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">#</span> <span class="n">URL</span> <span class="n">del</span> <span class="n">script</span> <span class="n">de</span> <span class="n">configuración</span> <span class="n">automática</span> <span class="n">de</span> <span class="n">proxy</span> <span class="n">en</span> <span class="n">el</span> <span class="n">navegador</span>
+<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">option</span><span class="o">=</span><span class="mi">252</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">1</span><span class="o">/</span><span class="n">proxy</span><span class="p">.</span><span class="n">pac</span>
+<span class="o">#</span> <span class="n">En</span> <span class="n">cambio</span><span class="p">,</span> <span class="n">para</span> <span class="n">Windows</span><span class="p">,</span> <span class="n">cuando</span> <span class="k">no</span> <span class="n">se</span> <span class="n">tiene</span><span class="p">,</span> <span class="n">se</span> <span class="n">envía</span> <span class="n">un</span> <span class="n">avance</span> <span class="n">de</span> <span class="n">línea</span>
+<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">option</span><span class="o">=</span><span class="mi">252</span><span class="p">,</span><span class="ss">&quot;\n&quot;</span>
 
-# <span class="nv">Enviar</span> <span class="nv">el</span> <span class="nv">log</span> <span class="nv">a</span> <span class="nv">un</span> <span class="nv">archivo</span>
-<span class="nv">log</span><span class="o">-</span><span class="nv">facility</span><span class="o">=/</span><span class="nv">var</span><span class="o">/</span><span class="nv">log</span><span class="o">/</span><span class="nv">dnsmasq</span>.<span class="nv">log</span>
+<span class="o">#</span> <span class="n">Enviar</span> <span class="n">el</span> <span class="n">log</span> <span class="n">a</span> <span class="n">un</span> <span class="n">archivo</span>
+<span class="n">log</span><span class="o">-</span><span class="n">facility</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">dnsmasq</span><span class="p">.</span><span class="n">log</span>
 
-# <span class="nv">Agregar</span> <span class="nv">a</span> <span class="nv">la</span> <span class="nv">bit</span>á<span class="nv">cora</span> <span class="nv">cada</span> <span class="nv">consulta</span>
-#<span class="nv">log</span><span class="o">-</span><span class="nv">queries</span>
+<span class="o">#</span> <span class="n">Agregar</span> <span class="n">a</span> <span class="n">la</span> <span class="n">bitácora</span> <span class="n">cada</span> <span class="n">consulta</span>
+<span class="o">#</span><span class="n">log</span><span class="o">-</span><span class="n">queries</span>
 
-# <span class="nv">Set</span> <span class="nv">the</span> <span class="nv">cachesize</span>
-<span class="nv">cache</span><span class="o">-</span><span class="nv">size</span><span class="o">=</span><span class="mi">256</span>
+<span class="o">#</span> <span class="k">Set</span> <span class="n">the</span> <span class="n">cachesize</span>
+<span class="k">cache</span><span class="o">-</span><span class="k">size</span><span class="o">=</span><span class="mi">256</span>
 
-# <span class="k">Include</span> <span class="nv">all</span> <span class="nv">files</span> <span class="nv">in</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">dnsmasq</span>.<span class="nv">d</span> <span class="nv">except</span> <span class="nv">RPM</span> <span class="nv">backup</span> <span class="nv">files</span>
-<span class="nv">conf</span><span class="o">-</span><span class="nv">dir</span><span class="o">=/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">dnsmasq</span>.<span class="nv">d</span>,.<span class="nv">rpmnew</span>,.<span class="nv">rpmsave</span>,.<span class="nv">rpmorig</span>
-</pre></div>
+<span class="o">#</span> <span class="n">Include</span> <span class="k">all</span> <span class="n">files</span> <span class="k">in</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">dnsmasq</span><span class="p">.</span><span class="n">d</span> <span class="k">except</span> <span class="n">RPM</span> <span class="n">backup</span> <span class="n">files</span>
+<span class="n">conf</span><span class="o">-</span><span class="n">dir</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">dnsmasq</span><span class="p">.</span><span class="n">d</span><span class="p">,.</span><span class="n">rpmnew</span><span class="p">,.</span><span class="n">rpmsave</span><span class="p">,.</span><span class="n">rpmorig</span>
+</code></pre></div>
 
 
 <p>Si va usar direcciones IP fijas por mac address, configure <code>/etc/hosts</code> como en este ejemplo...</p>
-<div class="highlight"><pre><span></span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">1</span>   <span class="n">proxy</span> <span class="n">wpad</span>
-<span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">11</span>  <span class="n">equipo1</span>
-<span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">12</span>  <span class="n">equipo2</span>
-<span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">13</span>  <span class="n">equipo3</span>
-<span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">14</span>  <span class="n">equipo4</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">192.168.4.1   proxy wpad</span>
+<span class="err">192.168.4.11  equipo1</span>
+<span class="err">192.168.4.12  equipo2</span>
+<span class="err">192.168.4.13  equipo3</span>
+<span class="err">192.168.4.14  equipo4</span>
+</code></pre></div>
 
 
 <p>Y cambie el contenido de <code>/etc/resolv.conf</code> a...</p>
-<div class="highlight"><pre><span></span><span class="k">search</span> <span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span>
-<span class="n">nameserver</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">search miredlocal.lan</span>
+<span class="err">nameserver 127.0.0.1</span>
+</code></pre></div>
 
 
 <p>Antes de arrancar el daemon, vamos otorgar al grupo <code>root</code> permisos de escritura en <code>/var/lib/dnsmasq</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chgrp</span> <span class="n">root</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dnsmasq</span>
-<span class="o">#</span> <span class="n">chmod</span> <span class="k">g</span><span class="o">+</span><span class="n">w</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">dnsmasq</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># chgrp root /var/lib/dnsmasq</span>
+<span class="err"># chmod g+w /var/lib/dnsmasq</span>
+</code></pre></div>
 
 
 <p>Arranque y habilite</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">dnsmasq</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">dnsmasq</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start dnsmasq</span>
+<span class="err"># systemctl enable dnsmasq</span>
+</code></pre></div>
 
 
 <p>También habilite Network Name Resolution</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">systemd</span><span class="o">-</span><span class="n">resolved</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">systemd</span><span class="o">-</span><span class="n">resolved</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start systemd-resolved</span>
+<span class="err"># systemctl enable systemd-resolved</span>
+</code></pre></div>
 
 
 <h3>Configuración temporal del muro de fuego</h3>
 <p>En este punto del proceso, el muro de fuego no permite conexiones a los servicios de DNS y DHCP...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--list-services</span>
-<span class="n">ssh</span> <span class="n">dhcpv6</span><span class="o">-</span><span class="n">client</span> <span class="n">cockpit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --list-services</span>
+<span class="err">ssh dhcpv6-client cockpit</span>
+</code></pre></div>
 
 
 <p>Para activar el servicio de Internet vamos a habilitar en <em>enmascarado de redes</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--add-masquerade</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --add-masquerade</span>
+</code></pre></div>
 
 
 <p>Y abrir la escucha de los puertos dedicados al DNS y DHCP...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--add-service=dns --add-service=dhcp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --add-service=dns --add-service=dhcp</span>
+</code></pre></div>
 
 
 <p>Verifique con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--list-services</span>
-<span class="n">ssh</span> <span class="n">dhcpv6</span><span class="o">-</span><span class="n">client</span> <span class="n">cockpit</span> <span class="n">dns</span> <span class="n">dhcp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --list-services</span>
+<span class="err">ssh dhcpv6-client cockpit dns dhcp</span>
+</code></pre></div>
 
 
 <p>Cabe tener en cuenta que los cambios en el muro de fuego se perderán al apagar o reiniciar el servidor. A menos que haga estos cambios permanentes con el comando...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--runtime-to-permanent</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --runtime-to-permanent</span>
+</code></pre></div>
 
 
 <h3>Logrotate</h3>
 <p>Para evitar que la bitácora de DNSmasq sea un archivo enorme cree esta regla de logrotate:</p>
-<div class="highlight"><pre><span></span># <span class="nv">nano</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="k">logrotate</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">dnsmasq</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/logrotate.d/dnsmasq</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">dnsmasq</span><span class="p">.</span><span class="n">log</span> <span class="err">{</span>
-    <span class="n">daily</span>
-    <span class="n">notifempty</span>
-    <span class="n">missingok</span>
-    <span class="n">sharedscripts</span>
-    <span class="n">postrotate</span>
-        <span class="p">[</span> <span class="o">!</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">dnsmasq</span><span class="p">.</span><span class="n">pid</span> <span class="p">]</span> <span class="o">||</span> <span class="n">kill</span> <span class="o">-</span><span class="n">USR2</span> <span class="o">`</span><span class="n">cat</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">dnsmasq</span><span class="p">.</span><span class="n">pid</span><span class="o">`</span>
-    <span class="n">endscript</span>
-    <span class="k">create</span> <span class="mi">0640</span> <span class="n">dnsmasq</span> <span class="n">root</span>
+<div class="highlight"><pre><span></span><code><span class="err">/var/log/dnsmasq.log {</span>
+<span class="err">    daily</span>
+<span class="err">    notifempty</span>
+<span class="err">    missingok</span>
+<span class="err">    sharedscripts</span>
+<span class="err">    postrotate</span>
+<span class="err">        [ ! -f /var/run/dnsmasq.pid ] || kill -USR2 `cat /var/run/dnsmasq.pid`</span>
+<span class="err">    endscript</span>
+<span class="err">    create 0640 dnsmasq root</span>
 <span class="err">}</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Continuación...</h3>
@@ -310,9 +310,11 @@ También las direcciones IP que son <code>192.168.4.n</code> desde 101 a 199.</p
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

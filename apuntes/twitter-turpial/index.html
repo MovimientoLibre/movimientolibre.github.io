@@ -102,34 +102,34 @@
 <p><a href="http://turpial.org.ve/">Turpial</a> es un proyecto que busca ser un cliente alternativo para Twitter. Está escrito en <em>Python</em>, tiene como meta ser una aplicación con bajo consumo de recursos y que se integre al escritorio del usuario pero sin renunciar a ninguna funcionalidad. Es software libre de origen venezolano, liberado bajo la licencia GPL 3.</p>
 <h3>1) Descargue</h3>
 <p>La última versión al escribir este artículo es la 1.3.4 y lo encontrará en:</p>
-<div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">code</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">p</span><span class="o">/</span><span class="n">turpial</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">http://code.google.com/p/turpial/</span>
+</code></pre></div>
 
 
 <h3>2) Desempaque</h3>
 <p>Como está hecho en Python no se requiere compilación o instalación (es opcional). Desempaque con:</p>
-<div class="highlight"><pre><span></span>$ tar xvf turpial-1.3.4.tar.gz
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ tar xvf turpial-1.3.4.tar.gz
+</code></pre></div>
 
 
 <h3>3) Instale las dependencias</h3>
 <p>Según el archivo <em>README.rst</em> se necesitan los siguientes paquetes:</p>
-<div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">5</span>
-<span class="n">python</span><span class="o">-</span><span class="n">simplejson</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">2</span>
-<span class="n">python</span><span class="o">-</span><span class="n">gtk2</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">12</span>
-<span class="n">python</span><span class="o">-</span><span class="k">notify</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">python</span><span class="o">-</span><span class="n">pygame</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">7</span>
-<span class="n">python</span><span class="o">-</span><span class="n">pybabel</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">1</span>
-<span class="n">python</span><span class="o">-</span><span class="n">gtkspell</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">25</span><span class="p">.</span><span class="mi">3</span>
-<span class="n">python</span><span class="o">-</span><span class="n">webkit</span>
-<span class="n">python</span><span class="o">-</span><span class="n">setuptools</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">python &gt;= 2.5</span>
+<span class="err">python-simplejson &gt;= 1.9.2</span>
+<span class="err">python-gtk2 &gt;= 2.12</span>
+<span class="err">python-notify &gt;= 0.1.1</span>
+<span class="err">python-pygame &gt;= 1.7</span>
+<span class="err">python-pybabel &gt;= 0.9.1</span>
+<span class="err">python-gtkspell &gt;= 2.25.3</span>
+<span class="err">python-webkit</span>
+<span class="err">python-setuptools</span>
+</code></pre></div>
 
 
 <p>Si usa Ubuntu o Debian lea el mismo archivo <em>README.rst</em> donde se detalla la instalación de los paquetes anteriores.</p>
 <p>Para Gentoo Linux podemos asegurar que Python está instalado por defecto. Así que, como root, revisamos cuáles paquetes nos faltan con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pv</span> <span class="n">simplejson</span> <span class="n">pygtk</span> <span class="k">notify</span><span class="o">-</span><span class="n">python</span> <span class="n">pygame</span> <span class="n">Babel</span> <span class="n">gtkspell</span><span class="o">-</span><span class="n">python</span> <span class="n">pywebkitgtk</span> <span class="n">setuptools</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -pv simplejson pygtk notify-python pygame Babel gtkspell-python pywebkitgtk setuptools</span>
+</code></pre></div>
 
 
 <p>Tras la revisión, en mi caso particular veo que:</p>
@@ -138,29 +138,29 @@
 <li>Como uso el entorno de escritorio KDE, desactivo el soporte <em>gstreamer</em> solicitado por <em>webkit-gtk</em> (otra dependencia más) agregando <em>-gstreamer</em> a la variable <em>USE</em> en <em>/etc/make.conf</em>. Si usted prefiere Gnome o usa GStreamer, no lo desactive.</li>
 </ul>
 <p>Reviso de nuevo...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pv</span> <span class="n">simplejson</span> <span class="k">notify</span><span class="o">-</span><span class="n">python</span> <span class="n">pygame</span> <span class="n">Babel</span> <span class="n">gtkspell</span><span class="o">-</span><span class="n">python</span> <span class="n">pywebkitgtk</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -pv simplejson notify-python pygame Babel gtkspell-python pywebkitgtk</span>
+</code></pre></div>
 
 
 <p>Ahora sí, a instalar los paquetes faltantes...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">simplejson</span> <span class="k">notify</span><span class="o">-</span><span class="n">python</span> <span class="n">pygame</span> <span class="n">Babel</span> <span class="n">gtkspell</span><span class="o">-</span><span class="n">python</span> <span class="n">pywebkitgtk</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge simplejson notify-python pygame Babel gtkspell-python pywebkitgtk</span>
+</code></pre></div>
 
 
 <h3>4) Ejecute Turpial</h3>
 <p>Cámbiese al directorio donde desempacó Turpial, en mi caso es /mnt/archivos/software/turpial/turpial-1.3.4</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /mnt/archivos/software/turpial/turpial-1.3.4
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> /mnt/archivos/software/turpial/turpial-1.3.4
+</code></pre></div>
 
 
 <p>Agregue el directorio actual (donde se encuentra turpial-1.3.4) a la variable de entorno <em>PYTHONPATH</em>. La variable de entorno <em>$PWD</em> lo tiene:</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>
+</code></pre></div>
 
 
 <p>Ejecute con el parámetro <em>-i gtk</em> para usar la interfaz GTK+</p>
-<div class="highlight"><pre><span></span>$ python turpial/main.py -i gtk
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ python turpial/main.py -i gtk
+</code></pre></div>
 
 
 <p>La primer ejecución involucra la autentificación con Twitter.</p>
@@ -170,17 +170,17 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="nb">cd</span> /mnt/archivos/software/turpial/turpial-1.3.4
 <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PWD</span>
 python turpial/main.py -i gtk
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3>5) Opcionalmente puede instalarlo de forma permanente</h3>
 <p>Para integrarlo en su GNU/Linux:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span> <span class="n">install</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># python setup.py install</span>
+</code></pre></div>
 
 
 <p>Un dato curioso de Turpial es que su nombre es el del ave nacional de venezuela. ¿Será por ello que el programa emite cantos de ave cuando llegan nuevos <em>twetts</em>?.</p>
@@ -221,9 +221,11 @@ python turpial/main.py -i gtk
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

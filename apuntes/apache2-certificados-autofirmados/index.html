@@ -108,47 +108,47 @@
 <p>En cambio, los certificados autofirmados convienen cuando no podemos desembolsar el costo de un certificado comercial, los usuarios son pocos y confían en nosotros. La desventaja es que la primera vez que ingresen al sitio, su navegador de internet pondrá una <strong>advertencia de seguridad</strong>; a la cual debemos de indicar que el sitio <strong>sí es de confianza</strong> y guardarla para que no nos pregunte en el futuro.</p>
 <h3>Procedimiento para crear certificados autofirmados</h3>
 <p>Primero, como un usuario común vamos a abrir una terminal en <strong>GNU/Linux</strong> y crear un directorio donde vamos a trabajar con los certificados.</p>
-<div class="highlight"><pre><span></span>$ mkdir apache-self-signed-cert
+<div class="highlight"><pre><span></span><code>$ mkdir apache-self-signed-cert
 $ <span class="nb">cd</span> apache-self-signed-cert
-</pre></div>
+</code></pre></div>
 
 
 <p>Ejecute el siguiente comando <strong>openssl</strong> reemplazando el texto <em>SERVIDORSISTEMA</em> por algo que identifique el servidor y/o nombre del sistema o sitio:</p>
-<div class="highlight"><pre><span></span>$ openssl req -x509 -nodes -days <span class="m">1460</span> -newkey rsa:2048 <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$ openssl req -x509 -nodes -days <span class="m">1460</span> -newkey rsa:2048 <span class="se">\</span>
   -keyout SERVIDORSISTEMA.key <span class="se">\</span>
   -out SERVIDORSISTEMA.crt
-</pre></div>
+</code></pre></div>
 
 
 <p>Este programa le preguntará datos importantes que ayudarán a identificar el certificado. En particular en <em>common name</em> use el nombre de domino completo del servidor.</p>
-<div class="highlight"><pre><span></span><span class="n">Country</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">AU</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="o">**</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">Country</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">AU</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="o">**</span><span class="w"></span>
 <span class="k">State</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">Province</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="k">full</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">Some-State</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="o">******</span><span class="w"></span>
 <span class="n">Locality</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="n">eg</span><span class="p">,</span><span class="w"> </span><span class="n">city</span><span class="p">)</span><span class="w"> </span><span class="err">[]:</span><span class="w"> </span><span class="o">******</span><span class="w"></span>
 <span class="n">Organization</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="n">eg</span><span class="p">,</span><span class="w"> </span><span class="n">company</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">Internet Widgits Pty Ltd</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="o">******</span><span class="w"></span>
 <span class="n">Organizational</span><span class="w"> </span><span class="n">Unit</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="n">eg</span><span class="p">,</span><span class="w"> </span><span class="k">section</span><span class="p">)</span><span class="w"> </span><span class="err">[]:</span><span class="w"> </span><span class="o">******</span><span class="w"></span>
 <span class="n">Common</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="n">FQDN</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">YOUR</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="err">[]:</span><span class="w"> </span><span class="n">sistema</span><span class="p">.</span><span class="n">servidor</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
 <span class="n">Email</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="err">[]:</span><span class="w"> </span><span class="n">webmaster</span><span class="nv">@servidor</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Copie los archivos creados al directorio donde <strong>Apache</strong> espere encontrarlos. Lea la documentación de su distribución de <strong>GNU/Linux</strong> porque puede ser distinta a la que muestro a continuación que es para <a href="http://gentoo.org/">Gentoo Linux</a>:</p>
-<div class="highlight"><pre><span></span>$ sudo cp * /etc/ssl/apache2/
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ sudo cp * /etc/ssl/apache2/
+</code></pre></div>
 
 
 <p>Cambie los permisos de estos archivos como lo indican estos comandos:</p>
-<div class="highlight"><pre><span></span>$ sudo chmod <span class="m">444</span> /etc/ssl/apache2/SERVIDORSISTEMA.crt
+<div class="highlight"><pre><span></span><code>$ sudo chmod <span class="m">444</span> /etc/ssl/apache2/SERVIDORSISTEMA.crt
 $ sudo chmod <span class="m">400</span> /etc/ssl/apache2/SERVIDORSISTEMA.key
-</pre></div>
+</code></pre></div>
 
 
 <p>Configure el sitio o sistema web en <strong>Apache</strong> para que haga uso del cifrado <strong>SSL</strong> creando un archivo <strong>conf</strong>. En <a href="http://gentoo.org/">Gentoo Linux</a> se usa el directorio <code>/etc/apache2/vhosts.d</code>. Consulte la documentación de su <em>distro</em> para hacerlo de la forma correcta.</p>
-<div class="highlight"><pre><span></span>$ sudo nano /etc/apache2/vhosts.d/0443_https.conf
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/apache2/vhosts.d/0443_https.conf
+</code></pre></div>
 
 
 <p>A continuación sigue una muestra del contenido de <code>0443_https.conf</code> que deberá de ajustar a sus necesidades:</p>
-<div class="highlight"><pre><span></span># Escuchar el puerto 443
+<div class="highlight"><pre><span></span><code># Escuchar el puerto 443
 Listen 443
 
 # Desde cualquier IP por el puerto 80
@@ -197,22 +197,22 @@ NameVirtualHost *:443
     <span class="nt">&lt;/IfModule&gt;</span>
 
 <span class="nt">&lt;/VirtualHost&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>La instalación de <strong>Apache</strong> en <a href="http://gentoo.org/">Gentoo Linux</a> deja por defecto el <strong>SSL</strong> deshabilitado. Así que hay que cambiar el archivo de configuración de arranque:</p>
-<div class="highlight"><pre><span></span>$ sudo nano /etc/conf.d/apache2
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ sudo nano /etc/conf.d/apache2
+</code></pre></div>
 
 
 <p>Ubique la línea que define el valor <code>APACHE2_OPTS</code> y agregue <code>-D SSL</code>. Por ejemplo, para declarar el uso de <strong>PHP 5</strong> y de <strong>SSL</strong> la línea debe ser:</p>
-<div class="highlight"><pre><span></span><span class="n">APACHE2_OPTS</span><span class="o">=</span><span class="ss">&quot;-D SSL -D PHP5&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">APACHE2_OPTS=&quot;-D SSL -D PHP5&quot;</span>
+</code></pre></div>
 
 
 <p>Guarde los cambios realizados en el archivo. Luego, arranque o reinicie el <em>daemon</em> de <strong>Apache</strong> para aplicarlos.</p>
-<div class="highlight"><pre><span></span>$ sudo /etc/init.d/apache2 restart
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ sudo /etc/init.d/apache2 restart
+</code></pre></div>
 
 
 <p>Verifique que el puerto 443 esté abierto y ejecute su navegador de internet consultando la URL <code>https://localhost</code> para comprobar que funcione. No deje de revisar su <strong>muro de fuego</strong> para tener abierto el puerto 443 si necesita acceder desde otros equipos por red.</p>
@@ -259,9 +259,11 @@ NameVirtualHost *:443
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

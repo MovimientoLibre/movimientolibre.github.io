@@ -105,53 +105,53 @@
 <p>En cambio, <a href="https://www.docker.com/products/docker-enterprise">Docker Enterprise</a> es el mismo software con soporte y asistencia técnica profesional, bajo el modelo de paga por suscripción.</p>
 <h3>Si tiene instalado la versión proporcionada por los repositorios de Fedora</h3>
 <p>Detener antes de desinstalar</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">stop</span> <span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl stop docker</span>
+</code></pre></div>
 
 
 <p>Desinstalar el Docker de Fedora</p>
-<div class="highlight"><pre><span></span># <span class="nv">dnf</span> <span class="nv">remove</span> <span class="nv">docker</span><span class="o">-</span><span class="nv">compose</span>
-# <span class="nv">dnf</span> <span class="nv">remove</span> <span class="nv">docker</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">client</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">client</span><span class="o">-</span><span class="nv">latest</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">common</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">latest</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">latest</span><span class="o">-</span><span class="k">logrotate</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="k">logrotate</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">selinux</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">engine</span><span class="o">-</span><span class="nv">selinux</span> \
-    <span class="nv">docker</span><span class="o">-</span><span class="nv">engine</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf remove docker-compose</span>
+<span class="err"># dnf remove docker \</span>
+<span class="err">    docker-client \</span>
+<span class="err">    docker-client-latest \</span>
+<span class="err">    docker-common \</span>
+<span class="err">    docker-latest \</span>
+<span class="err">    docker-latest-logrotate \</span>
+<span class="err">    docker-logrotate \</span>
+<span class="err">    docker-selinux \</span>
+<span class="err">    docker-engine-selinux \</span>
+<span class="err">    docker-engine</span>
+</code></pre></div>
 
 
 <h3>Para instalar Docker CE</h3>
 <p>Agregar el repositorio de Docker CE</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="err">\</span>
-    <span class="c1">--add-repo \</span>
-    <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="p">.</span><span class="n">docker</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="p">.</span><span class="n">repo</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf config-manager \</span>
+<span class="err">    --add-repo \</span>
+<span class="err">    https://download.docker.com/linux/fedora/docker-ce.repo</span>
+</code></pre></div>
 
 
 <p>Revisar que esté habilitado</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">repolist</span>
-<span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">-</span><span class="k">stable</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf repolist</span>
+<span class="err">docker-ce-stable</span>
+</code></pre></div>
 
 
 <p>Instalar</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span> <span class="n">docker</span><span class="o">-</span><span class="n">ce</span><span class="o">-</span><span class="n">cli</span> <span class="n">containerd</span><span class="p">.</span><span class="n">io</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install docker-ce docker-ce-cli containerd.io</span>
+</code></pre></div>
 
 
 <p>Arrancar</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">docker</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start docker</span>
+</code></pre></div>
 
 
 <p>Revise la versión</p>
-<div class="highlight"><pre><span></span>$ docker version
+<div class="highlight"><pre><span></span><code>$ docker version
 $ docker run hello-world
-</pre></div>
+</code></pre></div>
                 </article>
             </div>
             <div class="col-sm-4">
@@ -189,9 +189,11 @@ $ docker run hello-world
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

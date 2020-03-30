@@ -123,20 +123,20 @@
 <p><img class="img-fluid" src="kcmpartitions.png"></p>
 <h3>Mis particiones</h3>
 <p>En mi computadora portátil tengo un modesto disco duro de 60 GB. El archivo <em>/etc/fstab</em> (de mi nueva instalación) tiene este contenido:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
-<span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
-<span class="o">#</span>
-<span class="o">#</span> <span class="o">&lt;</span><span class="n">fs</span><span class="o">&gt;</span>       <span class="o">&lt;</span><span class="n">mountpoint</span><span class="o">&gt;</span>     <span class="o">&lt;</span><span class="k">type</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">opts</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">dump</span><span class="o">/</span><span class="n">pass</span><span class="o">&gt;</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda1</span>    <span class="o">/</span><span class="n">boot</span>            <span class="n">ext2</span>        <span class="n">noauto</span>      <span class="mi">1</span> <span class="mi">2</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda2</span>    <span class="o">/</span><span class="n">home</span>            <span class="n">ext3</span>        <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">0</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda3</span>    <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>     <span class="n">reiserfs</span>    <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">0</span>
-<span class="o">#</span> <span class="n">La</span> <span class="n">particion</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda4</span> <span class="n">es</span> <span class="n">EXTENDED</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda5</span>    <span class="k">none</span>             <span class="n">swap</span>        <span class="n">sw</span>          <span class="mi">0</span> <span class="mi">0</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda6</span>    <span class="o">/</span>                <span class="n">ext3</span>        <span class="n">noatime</span>     <span class="mi">0</span> <span class="mi">1</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda7</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">anterior</span>    <span class="n">ext3</span>        <span class="n">noauto</span>      <span class="mi">0</span> <span class="mi">0</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda8</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">backup</span>      <span class="n">ext3</span>        <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">0</span>
-<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda9</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">archivos</span>    <span class="n">ext3</span>        <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">#</span>
+<span class="err"># /etc/fstab</span>
+<span class="err">#</span>
+<span class="err"># &lt;fs&gt;       &lt;mountpoint&gt;     &lt;type&gt;      &lt;opts&gt;      &lt;dump/pass&gt;</span>
+<span class="err">/dev/sda1    /boot            ext2        noauto      1 2</span>
+<span class="err">/dev/sda2    /home            ext3        defaults    0 0</span>
+<span class="err">/dev/sda3    /usr/portage     reiserfs    defaults    0 0</span>
+<span class="err"># La particion /dev/sda4 es EXTENDED</span>
+<span class="err">/dev/sda5    none             swap        sw          0 0</span>
+<span class="err">/dev/sda6    /                ext3        noatime     0 1</span>
+<span class="err">/dev/sda7    /mnt/anterior    ext3        noauto      0 0</span>
+<span class="err">/dev/sda8    /mnt/backup      ext3        defaults    0 0</span>
+<span class="err">/dev/sda9    /mnt/archivos    ext3        defaults    0 0</span>
+</code></pre></div>
 
 
 <ul>
@@ -152,43 +152,43 @@
 <p><img class="img-fluid" src="hdd_unmount.png"></p>
 <h3>Formatear y montar la partición raiz de la nueva instalación</h3>
 <p>Comienzo por formatear la partición. Cambie <em>sdaX</em> por la partición que corresponda en su equipo (en mi caso es <em>/dev/sda6</em>).</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext3</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext3 /dev/sdaX</span>
+</code></pre></div>
 
 
 <p>Creo el directorio para montar la partición (si ya lo tiene, omita el paso). Y la montamos.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">ls</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="n">lost</span><span class="o">+</span><span class="k">found</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/gentoo</span>
+<span class="err"># mount /dev/sdaX /mnt/gentoo</span>
+<span class="err"># ls /mnt/gentoo</span>
+<span class="err">lost+found</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="tar.png"></p>
 <h3>Desempacamos el stage</h3>
 <p>Siempre tengo a la mano el último <em>stage</em>. Para el <em>Pentium-M</em> uso el preparado para <em>i686</em>. Puede obtenerlo en <a href="http://gentoo.osuosl.org/releases/x86/current/stages/">gentoo.osuosl.org</a>. Compruebo la integridad del archivo con <em>md5sum</em>.</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /home/guivaloz/software/gentoo/
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> /home/guivaloz/software/gentoo/
 $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 ./stage3-i686-2008.0.tar.bz2: La suma coincide
-</pre></div>
+</code></pre></div>
 
 
 <p>Luego lo desempaco en <em>/mnt/gentoo/</em></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="n">xvjpf</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guivaloz</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">stage3</span><span class="o">-</span><span class="n">i686</span><span class="o">-</span><span class="mi">2008</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/gentoo/</span>
+<span class="err"># tar xvjpf /home/guivaloz/software/gentoo/stage3-i686-2008.0.tar.bz2</span>
+</code></pre></div>
 
 
 <p>Antes de comenzar a instalar es muy recomendable actualizar el <em>portage</em> para que todo lo que instalemos sean versiones <em>nuevas</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="c1">--sync</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge --sync</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="txt.png"></p>
 <h3>Configuraciones</h3>
 <p>Edito los principales archivos de la configuración de Gentoo Linux.</p>
 <p><em>make.conf</em> contiene las opciones de compilación de acuerdo a las características del equipo. Yo prefiero conservar las compilaciones de los paquetes que instalo. Esto me perite <em>compartirlas</em> con otras instalaciones de Gentoo Linux en el mismo equipo y en otros equipos <em>idénticos</em>, siempre y cuando la configuración en <em>make.conf</em> sea igual.</p>
-<div class="highlight"><pre><span></span># nano -w /mnt/gentoo/etc/make.conf
+<div class="highlight"><pre><span></span><code># nano -w /mnt/gentoo/etc/make.conf
 
 #
 # /etc/make.conf
@@ -228,11 +228,11 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 #DISTDIR=<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles
 #SYNC=rsync://SERVIDOR/gentoo-portage
 #FETCHCOMMAND=&quot;rsync rsync://SERVIDOR/gentoo-packages/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p><em>locale.gen</em> establece los conjuntos de caracteres para la compilación de los paquetes.</p>
-<div class="highlight"><pre><span></span><span class="err">#</span><span class="w"> </span><span class="n">nano</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">nano</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span><span class="w"></span>
 
 <span class="err">#</span><span class="w"></span>
 <span class="err">#</span><span class="w"> </span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span><span class="w"></span>
@@ -247,11 +247,11 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <span class="err">#</span><span class="w"> </span><span class="n">Mexico</span><span class="w"></span>
 <span class="n">es_MX</span><span class="w"> </span><span class="n">ISO</span><span class="o">-</span><span class="mi">8859</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 <span class="n">es_MX</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"></span>
-</pre></div>
+</code></pre></div>
 
 
 <p><em>02locales</em> define variables de entorno con datos de nuestro lenguaje.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">env</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">02</span><span class="n">locales</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">env</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">02</span><span class="n">locales</span>
 
 <span class="o">#</span>
 <span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">env</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">02</span><span class="n">locales</span>
@@ -259,68 +259,68 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <span class="n">LANG</span><span class="o">=</span><span class="ss">&quot;es_MX.utf8&quot;</span>
 <span class="k">LANGUAGE</span><span class="o">=</span><span class="ss">&quot;es_MX.utf8&quot;</span>
 <span class="n">LC_ALL</span><span class="o">=</span><span class="ss">&quot;es_MX.utf8&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><em>clock</em> define la zona horaria.</p>
-<div class="highlight"><pre><span></span># <span class="nv">nano</span> <span class="o">-</span><span class="nv">w</span> <span class="o">/</span><span class="nv">mnt</span><span class="o">/</span><span class="nv">gentoo</span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">conf</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">clock</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">clock</span>
 
-#
-# <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">conf</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">clock</span>
-#
+<span class="o">#</span>
+<span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">clock</span>
+<span class="o">#</span>
 
-# <span class="nv">Set</span> <span class="nv">CLOCK</span> <span class="nv">to</span> <span class="s2">&quot;</span><span class="s">UTC</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="nv">your</span> <span class="nv">system</span> <span class="nv">clock</span> <span class="nv">is</span> <span class="nv">set</span> <span class="nv">to</span> <span class="nv">UTC</span> <span class="ss">(</span><span class="nv">also</span> <span class="nv">known</span> <span class="nv">as</span>
-# <span class="nv">Greenwich</span> <span class="nv">Mean</span> <span class="nv">Time</span><span class="ss">)</span>.  <span class="k">If</span> <span class="nv">your</span> <span class="nv">clock</span> <span class="nv">is</span> <span class="nv">set</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">local</span> <span class="nv">time</span>, <span class="k">then</span>
-# <span class="nv">set</span> <span class="nv">CLOCK</span> <span class="nv">to</span> <span class="s2">&quot;</span><span class="s">local</span><span class="s2">&quot;</span>.  <span class="nv">Note</span> <span class="nv">that</span> <span class="k">if</span> <span class="nv">you</span> <span class="nv">dual</span> <span class="nv">boot</span> <span class="nv">with</span> <span class="nv">Windows</span>, <span class="k">then</span>
-# <span class="nv">you</span> <span class="nv">should</span> <span class="nv">set</span> <span class="nv">it</span> <span class="nv">to</span> <span class="s2">&quot;</span><span class="s">local</span><span class="s2">&quot;</span>.
+<span class="o">#</span> <span class="k">Set</span> <span class="n">CLOCK</span> <span class="k">to</span> <span class="ss">&quot;UTC&quot;</span> <span class="k">if</span> <span class="n">your</span> <span class="k">system</span> <span class="n">clock</span> <span class="k">is</span> <span class="k">set</span> <span class="k">to</span> <span class="n">UTC</span> <span class="p">(</span><span class="n">also</span> <span class="n">known</span> <span class="k">as</span>
+<span class="o">#</span> <span class="n">Greenwich</span> <span class="n">Mean</span> <span class="k">Time</span><span class="p">).</span>  <span class="k">If</span> <span class="n">your</span> <span class="n">clock</span> <span class="k">is</span> <span class="k">set</span> <span class="k">to</span> <span class="n">the</span> <span class="k">local</span> <span class="k">time</span><span class="p">,</span> <span class="k">then</span>
+<span class="o">#</span> <span class="k">set</span> <span class="n">CLOCK</span> <span class="k">to</span> <span class="ss">&quot;local&quot;</span><span class="p">.</span>  <span class="n">Note</span> <span class="n">that</span> <span class="k">if</span> <span class="n">you</span> <span class="n">dual</span> <span class="n">boot</span> <span class="k">with</span> <span class="n">Windows</span><span class="p">,</span> <span class="k">then</span>
+<span class="o">#</span> <span class="n">you</span> <span class="n">should</span> <span class="k">set</span> <span class="n">it</span> <span class="k">to</span> <span class="ss">&quot;local&quot;</span><span class="p">.</span>
 
-<span class="nv">CLOCK</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">UTC</span><span class="s2">&quot;</span>
+<span class="n">CLOCK</span><span class="o">=</span><span class="ss">&quot;UTC&quot;</span>
 
-# <span class="nv">Select</span> <span class="nv">the</span> <span class="nv">proper</span> <span class="nv">timezone</span>.  <span class="k">For</span> <span class="nv">valid</span> <span class="nv">values</span>, <span class="nv">peek</span> <span class="nv">inside</span> <span class="nv">of</span> <span class="nv">the</span>
-# <span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">share</span><span class="o">/</span><span class="nv">zoneinfo</span><span class="o">/</span> <span class="nv">directory</span>.  <span class="k">For</span> <span class="nv">example</span>, <span class="nv">some</span> <span class="nv">common</span> <span class="nv">values</span> <span class="nv">are</span>
-# <span class="s2">&quot;</span><span class="s">America/New_York</span><span class="s2">&quot;</span> <span class="nv">or</span> <span class="s2">&quot;</span><span class="s">EST5EDT</span><span class="s2">&quot;</span> <span class="nv">or</span> <span class="s2">&quot;</span><span class="s">Europe/Berlin</span><span class="s2">&quot;</span>.  <span class="k">If</span> <span class="nv">you</span> <span class="nv">want</span> <span class="nv">to</span>
-# <span class="nv">manage</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">localtime</span> <span class="nv">yourself</span>, <span class="nv">set</span> <span class="nv">this</span> <span class="nv">to</span> <span class="s2">&quot;&quot;</span>.
+<span class="o">#</span> <span class="k">Select</span> <span class="n">the</span> <span class="n">proper</span> <span class="n">timezone</span><span class="p">.</span>  <span class="k">For</span> <span class="k">valid</span> <span class="k">values</span><span class="p">,</span> <span class="n">peek</span> <span class="n">inside</span> <span class="k">of</span> <span class="n">the</span>
+<span class="o">#</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">zoneinfo</span><span class="o">/</span> <span class="n">directory</span><span class="p">.</span>  <span class="k">For</span> <span class="n">example</span><span class="p">,</span> <span class="k">some</span> <span class="n">common</span> <span class="k">values</span> <span class="k">are</span>
+<span class="o">#</span> <span class="ss">&quot;America/New_York&quot;</span> <span class="k">or</span> <span class="ss">&quot;EST5EDT&quot;</span> <span class="k">or</span> <span class="ss">&quot;Europe/Berlin&quot;</span><span class="p">.</span>  <span class="k">If</span> <span class="n">you</span> <span class="n">want</span> <span class="k">to</span>
+<span class="o">#</span> <span class="n">manage</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">localtime</span> <span class="n">yourself</span><span class="p">,</span> <span class="k">set</span> <span class="n">this</span> <span class="k">to</span> <span class="ss">&quot;&quot;</span><span class="p">.</span>
 
-<span class="nv">TIMEZONE</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">Mexico/General</span><span class="s2">&quot;</span>
-</pre></div>
+<span class="n">TIMEZONE</span><span class="o">=</span><span class="ss">&quot;Mexico/General&quot;</span>
+</code></pre></div>
 
 
 <p><em>consolefont</em> define la fuente y conjunto de caracteres de nuestro idioma.</p>
-<div class="highlight"><pre><span></span># <span class="nv">nano</span> <span class="o">-</span><span class="nv">w</span> <span class="o">/</span><span class="nv">mnt</span><span class="o">/</span><span class="nv">gentoo</span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">conf</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">consolefont</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">consolefont</span>
 
-#
-# <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">conf</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">consolefont</span>
-#
+<span class="o">#</span>
+<span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">consolefont</span>
+<span class="o">#</span>
 
-# <span class="nv">CONSOLEFONT</span> <span class="nv">specifies</span> <span class="nv">the</span> <span class="nv">default</span> <span class="nv">font</span> <span class="nv">that</span> <span class="nv">you</span><span class="s1">&#39;</span><span class="s">d like Linux to use on the</span>
-# <span class="nv">console</span>.  <span class="nv">You</span> <span class="nv">can</span> <span class="nv">find</span> <span class="nv">a</span> <span class="nv">good</span> <span class="nv">selection</span> <span class="nv">of</span> <span class="nv">fonts</span> <span class="nv">in</span> <span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">share</span><span class="o">/</span><span class="nv">consolefonts</span><span class="c1">;</span>
-# <span class="nv">you</span> <span class="nv">shouldn</span><span class="s1">&#39;</span><span class="s">t specify the trailing &quot;.psf.gz&quot;, just the font name below.</span>
-# <span class="nv">To</span> <span class="nv">use</span> <span class="nv">the</span> <span class="nv">default</span> <span class="nv">console</span> <span class="nv">font</span>, <span class="nv">comment</span> <span class="nv">out</span> <span class="nv">the</span> <span class="nv">CONSOLEFONT</span> <span class="nv">setting</span> <span class="nv">below</span>.
-# <span class="nv">This</span> <span class="nv">setting</span> <span class="nv">is</span> <span class="nv">used</span> <span class="nv">by</span> <span class="nv">the</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">init</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">consolefont</span> <span class="nv">script</span> <span class="ss">(</span><span class="nv">NOTE</span>: <span class="k">if</span> <span class="nv">you</span> <span class="k">do</span>
-# <span class="nv">not</span> <span class="nv">want</span> <span class="nv">to</span> <span class="nv">use</span> <span class="nv">it</span>, <span class="nv">run</span> <span class="s2">&quot;</span><span class="s">rc-update del consolefont</span><span class="s2">&quot;</span> <span class="nv">as</span> <span class="nv">root</span><span class="ss">)</span>.
+<span class="o">#</span> <span class="n">CONSOLEFONT</span> <span class="n">specifies</span> <span class="n">the</span> <span class="k">default</span> <span class="n">font</span> <span class="n">that</span> <span class="n">you</span><span class="s1">&#39;d like Linux to use on the</span>
+<span class="s1"># console.  You can find a good selection of fonts in /usr/share/consolefonts;</span>
+<span class="s1"># you shouldn&#39;</span><span class="n">t</span> <span class="n">specify</span> <span class="n">the</span> <span class="k">trailing</span> <span class="ss">&quot;.psf.gz&quot;</span><span class="p">,</span> <span class="n">just</span> <span class="n">the</span> <span class="n">font</span> <span class="n">name</span> <span class="n">below</span><span class="p">.</span>
+<span class="o">#</span> <span class="k">To</span> <span class="n">use</span> <span class="n">the</span> <span class="k">default</span> <span class="n">console</span> <span class="n">font</span><span class="p">,</span> <span class="k">comment</span> <span class="k">out</span> <span class="n">the</span> <span class="n">CONSOLEFONT</span> <span class="n">setting</span> <span class="n">below</span><span class="p">.</span>
+<span class="o">#</span> <span class="n">This</span> <span class="n">setting</span> <span class="k">is</span> <span class="n">used</span> <span class="k">by</span> <span class="n">the</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">consolefont</span> <span class="n">script</span> <span class="p">(</span><span class="n">NOTE</span><span class="p">:</span> <span class="k">if</span> <span class="n">you</span> <span class="k">do</span>
+<span class="o">#</span> <span class="k">not</span> <span class="n">want</span> <span class="k">to</span> <span class="n">use</span> <span class="n">it</span><span class="p">,</span> <span class="n">run</span> <span class="ss">&quot;rc-update del consolefont&quot;</span> <span class="k">as</span> <span class="n">root</span><span class="p">).</span>
 
-<span class="nv">CONSOLEFONT</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">lat9v-16</span><span class="s2">&quot;</span>
+<span class="n">CONSOLEFONT</span><span class="o">=</span><span class="ss">&quot;lat9v-16&quot;</span>
 
-# <span class="nv">CONSOLETRANSLATION</span> <span class="nv">is</span> <span class="nv">the</span> <span class="nv">charset</span> <span class="nv">map</span> <span class="nv">file</span> <span class="nv">to</span> <span class="nv">use</span>.  <span class="nv">Leave</span> <span class="nv">commented</span> <span class="nv">to</span> <span class="nv">use</span>
-# <span class="nv">the</span> <span class="nv">default</span> <span class="nv">one</span>.  <span class="nv">Have</span> <span class="nv">a</span> <span class="nv">look</span> <span class="nv">in</span> <span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">share</span><span class="o">/</span><span class="nv">consoletrans</span> <span class="k">for</span> <span class="nv">a</span> <span class="nv">selection</span> <span class="nv">of</span>
-# <span class="nv">map</span> <span class="nv">files</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">use</span>.
+<span class="o">#</span> <span class="n">CONSOLETRANSLATION</span> <span class="k">is</span> <span class="n">the</span> <span class="n">charset</span> <span class="k">map</span> <span class="n">file</span> <span class="k">to</span> <span class="n">use</span><span class="p">.</span>  <span class="n">Leave</span> <span class="n">commented</span> <span class="k">to</span> <span class="n">use</span>
+<span class="o">#</span> <span class="n">the</span> <span class="k">default</span> <span class="n">one</span><span class="p">.</span>  <span class="n">Have</span> <span class="n">a</span> <span class="n">look</span> <span class="k">in</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">consoletrans</span> <span class="k">for</span> <span class="n">a</span> <span class="n">selection</span> <span class="k">of</span>
+<span class="o">#</span> <span class="k">map</span> <span class="n">files</span> <span class="n">you</span> <span class="n">can</span> <span class="n">use</span><span class="p">.</span>
 
-<span class="nv">CONSOLETRANSLATION</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">8859-1_to_uni</span><span class="s2">&quot;</span>
-</pre></div>
+<span class="n">CONSOLETRANSLATION</span><span class="o">=</span><span class="ss">&quot;8859-1_to_uni&quot;</span>
+</code></pre></div>
 
 
 <p><em>hostname</em> establece el nombre del equipo. En mi caso, le llamo "inspiron".</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">hostname</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">hostname</span>
 
 <span class="o">#</span>
 <span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">hostname</span>
 <span class="o">#</span>
 <span class="n">HOSTNAME</span><span class="o">=</span><span class="ss">&quot;inspiron&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><em>keymaps</em> tiene que ver con el teclado. El mío es latinoamericano, por lo que uso "la-latin1". Si el suyo es español, defina KEYMAP como "es".</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">keymaps</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">keymaps</span>
 
 <span class="o">#</span>
 <span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">keymaps</span>
@@ -335,11 +335,11 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <span class="o">#</span> <span class="n">say</span> <span class="ss">&quot;yes&quot;</span> <span class="n">here</span><span class="p">.</span>  <span class="n">Note</span> <span class="n">that</span> <span class="n">non</span><span class="o">-</span><span class="n">x86</span> <span class="n">users</span> <span class="n">should</span> <span class="n">leave</span> <span class="n">it</span> <span class="k">as</span> <span class="ss">&quot;no&quot;</span><span class="p">.</span>
 
 <span class="n">SET_WINDOWKEYS</span><span class="o">=</span><span class="ss">&quot;yes&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><em>fstab</em> define el montaje de las particiones del disco duro. Observe que mi root /dev/sda6 es la que estoy instalando.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
 
 <span class="o">#</span>
 <span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
@@ -354,69 +354,69 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda7</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">anterior</span>    <span class="n">ext3</span>        <span class="n">noauto</span>      <span class="mi">0</span> <span class="mi">0</span>
 <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda8</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">backup</span>      <span class="n">ext3</span>        <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">0</span>
 <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda9</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">archivos</span>    <span class="n">ext3</span>        <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">0</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><em>resolv.conf</em> es la información de la resolución de nombres. Hago una copia del sistema en uso al nuevo sistema.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">resolv</span><span class="p">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="kcmperformance.png"></p>
 <h3>Chroot</h3>
 <p>Monto las particiones que me apoyarán a la hora de hacer el <em>chroot</em>. Cambie cada /dev/sdaX por la partición correspondiente en su equipo.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">boot</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">home</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">proc</span> <span class="k">none</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">proc</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">-</span><span class="n">o</span> <span class="n">bind</span> <span class="o">/</span><span class="n">dev</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">dev</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/gentoo/usr/portage</span>
+<span class="err"># mount /dev/sdaX    /mnt/gentoo/boot</span>
+<span class="err"># mount /dev/sdaX    /mnt/gentoo/usr/portage</span>
+<span class="err"># mount /dev/sdaX    /mnt/gentoo/home</span>
+<span class="err"># mount -t proc none /mnt/gentoo/proc</span>
+<span class="err"># mount -o bind /dev /mnt/gentoo/dev</span>
+</code></pre></div>
 
 
 <p>Me <em>mudo</em> a la nueva instalación por medio del comando <em>chroot</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/gentoo /bin/bash</span>
+</code></pre></div>
 
 
 <p>Ya estoy dentro del nuevo GNU/Linux. Actualizo las variables del entorno.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">env</span><span class="o">-</span><span class="k">update</span>
-<span class="o">#</span> <span class="k">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
-<span class="o">#</span> <span class="n">export</span> <span class="n">PS1</span><span class="o">=</span><span class="ss">&quot;(chroot) $PS1&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># env-update</span>
+<span class="err"># source /etc/profile</span>
+<span class="err"># export PS1=&quot;(chroot) $PS1&quot;</span>
+</code></pre></div>
 
 
 <p>Copio el archivo del huso horario.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">zoneinfo</span><span class="o">/</span><span class="n">Mexico</span><span class="o">/</span><span class="k">General</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="k">localtime</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp /usr/share/zoneinfo/Mexico/General /etc/localtime</span>
+</code></pre></div>
 
 
 <p>Actualizo el <em>caché</em> del <em>portage</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="c1">--metadata</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge --metadata</span>
+</code></pre></div>
 
 
 <p>A raíz de los cambios hechos en /etc/locale.gen hay que ejecutar el comando <em>locale-gen</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">locale</span><span class="o">-</span><span class="n">gen</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># locale-gen</span>
+</code></pre></div>
 
 
 <p>Si existe una actualización del paquete <em>portage</em> conviene instalarla antes que nada.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">u</span> <span class="n">portage</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -u portage</span>
+</code></pre></div>
 
 
 <p>De forma extraordinaria, usando el stage <em>stage3-i686-2008.0.tar.bz2</em>, hay un conflicto al actualizar el paquete <em>e2fsprogs</em>. Es necesario remover los paquetes anteriores y luego instalar los nuevos. Seguramente estó será arreglado en las futuras versiones del <em>stage</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pu</span> <span class="n">sys</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">e2fsprogs</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pC</span> <span class="n">sys</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">ss</span> <span class="n">sys</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">com_err</span> <span class="n">sys</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">e2fsprogs</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="k">C</span> <span class="n">sys</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">ss</span> <span class="n">sys</span><span class="o">-</span><span class="n">libs</span><span class="o">/</span><span class="n">com_err</span> <span class="n">sys</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">e2fsprogs</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">sys</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="n">e2fsprogs</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -pu sys-fs/e2fsprogs</span>
+<span class="err"># emerge -pC sys-libs/ss sys-libs/com_err sys-fs/e2fsprogs</span>
+<span class="err"># emerge -C sys-libs/ss sys-libs/com_err sys-fs/e2fsprogs</span>
+<span class="err"># emerge sys-fs/e2fsprogs</span>
+</code></pre></div>
 
 
 <p>Si hay una nueva versión de los compiladores <em>gcc</em> y del <em>glibc</em> conviene actualizarlos de una vez.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">u</span> <span class="n">gcc</span> <span class="n">glibc</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -u gcc glibc</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="time.png"></p>
@@ -424,16 +424,16 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <p>El <em>stage</em> nos proporciona lo necesario para que el sistema funcione. Entre más antigüo sea, más paquetes deberían actualizarse. Recuerde que he tomado el <em>stage</em> <em>compatible con i686</em>, el cual es para toda la familia de procesadores Pentium 4 y más nuevos.</p>
 <p><strong>En este punto tiene que decidir entre sólo actualizar o recompilar todo.</strong></p>
 <p>Si sólo quiere que el sistema se <em>actualize</em>, revise (la opción "p") y luego actualize:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pvu</span> <span class="k">system</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">u</span> <span class="k">system</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -pvu system</span>
+<span class="err"># emerge -u system</span>
+</code></pre></div>
 
 
 <p>Este paso requiere <em>menos tiempo</em> que <em>recompilar</em> todo. Pero los paquetes que <em>no</em> sean actualizados continuarán como compatibles con el <em>i686</em>.</p>
 <p>Si quiere que <em>todo</em> lo instalado por el <em>stage</em> <em>se <em>recompile</em></em> con las opciones de <em>make.conf</em>, revise (la opción "p") y luego <em>recompile</em> todo el <em>system</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pve</span> <span class="k">system</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">e</span> <span class="k">system</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -pve system</span>
+<span class="err"># emerge -e system</span>
+</code></pre></div>
 
 
 <p>Así tendrá todos los paquetes optimizados a su equipo. Obviamente esto requiere <em>más tiempo</em> que sólo actualizar.</p>
@@ -441,48 +441,48 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <p><img class="img-fluid" src="services.png"></p>
 <h3>Gestor de arranque grub</h3>
 <p>Instalo el gestor de arranque <em>grub</em>. Consulte <a href="http://www.gentoo.org/doc/en/handbook/handbook-x86.xml?part=1&amp;chap=10#doc_chap2">Installing GRUB</a> para más información sobre estos pasos.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">grub</span>
-<span class="o">#</span> <span class="n">grub</span>
-<span class="n">grub</span><span class="o">&gt;</span> <span class="n">root</span> <span class="p">(</span><span class="n">hd0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">grub</span><span class="o">&gt;</span> <span class="n">setup</span> <span class="p">(</span><span class="n">hd0</span><span class="p">)</span>
-<span class="n">grub</span><span class="o">&gt;</span> <span class="n">quit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge grub</span>
+<span class="err"># grub</span>
+<span class="err">grub&gt; root (hd0,0)</span>
+<span class="err">grub&gt; setup (hd0)</span>
+<span class="err">grub&gt; quit</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="kdmconfig.png"></p>
 <h3>Kernel</h3>
 <p>Para instalar la más nueva versión estable de <em>gentoo-sources</em>, ejecuto:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">p</span> <span class="n">gentoo</span><span class="o">-</span><span class="n">sources</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">gentoo</span><span class="o">-</span><span class="n">sources</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -p gentoo-sources</span>
+<span class="err"># emerge gentoo-sources</span>
+</code></pre></div>
 
 
 <p>En cambio, si se necesita una versión específica y estable de <em>gentoo-sources</em> por ejemplo la <em>2.6.24-r8</em>, ejecuto:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">p</span> <span class="o">=</span><span class="n">gentoo</span><span class="o">-</span><span class="n">sources</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">24</span><span class="o">-</span><span class="n">r8</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="o">=</span><span class="n">gentoo</span><span class="o">-</span><span class="n">sources</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">24</span><span class="o">-</span><span class="n">r8</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -p =gentoo-sources-2.6.24-r8</span>
+<span class="err"># emerge =gentoo-sources-2.6.24-r8</span>
+</code></pre></div>
 
 
 <p>Copio el <a href="config-2.6.24-gentoo-r8.txt">archivo de configuracion</a> del <em>kernel</em> de la instalación anterior, así me ahorro la ardua tarea de configurarlo. Haga esto sólo si se trata de la misma versión.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">anterior</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="p">.</span><span class="n">config</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp /mnt/anterior/usr/src/linux/.config /usr/src/linux/</span>
+</code></pre></div>
 
 
 <p>Compilo e instalo el <em>kernel</em> y sus módulos.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">linux</span>
-<span class="o">#</span> <span class="n">make</span>
-<span class="o">#</span> <span class="n">make</span> <span class="n">modules_install</span>
-<span class="o">#</span> <span class="n">make</span> <span class="n">install</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /usr/src/linux</span>
+<span class="err"># make</span>
+<span class="err"># make modules_install</span>
+<span class="err"># make install</span>
+</code></pre></div>
 
 
 <p>Configuro el gestor de arranque editando el archivo <em>grub.conf</em></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /boot/grub/grub.conf</span>
+</code></pre></div>
 
 
 <p>Revise dos veces la configuración en <em>grub.conf</em> antes de reiniciar. En el mío tengo dos instalaciones de Gentoo Linux, una en <em>/dev/sda6</em> (nuevo) y la otra en <em>/dev/sda7</em> (anterior). Además le paso el parámetro <em>resume</em> con la participación <em>swap</em> <em>/dev/sda5</em>, esto es para la hibernación a disco duro.</p>
-<div class="highlight"><pre><span></span><span class="k">default</span> <span class="mi">0</span>
+<div class="highlight"><pre><span></span><code><span class="k">default</span> <span class="mi">0</span>
 <span class="n">timeout</span> <span class="mi">5</span>
 
 <span class="n">title</span> <span class="n">Gentoo</span> <span class="n">Linux</span> <span class="o">-</span> <span class="n">Anterior</span> <span class="o">-</span> <span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">24</span><span class="o">-</span><span class="n">r8</span>
@@ -492,74 +492,74 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <span class="n">title</span> <span class="n">Gentoo</span> <span class="n">Linux</span> <span class="o">-</span> <span class="n">NUEVO</span>    <span class="o">-</span> <span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">24</span><span class="o">-</span><span class="n">r8</span>
 <span class="n">root</span> <span class="p">(</span><span class="n">hd0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">kernel</span> <span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">24</span><span class="o">-</span><span class="n">gentoo</span><span class="o">-</span><span class="n">r8</span> <span class="n">root</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda6</span> <span class="n">resume</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda5</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="kcmcgi.png"></p>
 <h3>Paquetes necesarios antes del primer arranque</h3>
 <p>Instalo el demonio para administrar las bitácoras del sistema o <em>logger</em>. Mi elección es el <em>syslog-ng</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span> <span class="k">add</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge syslog-ng</span>
+<span class="err"># rc-update syslog-ng add default</span>
+</code></pre></div>
 
 
 <p>El calendarizador sirve para ejecutar programas a ciertas horas o días. Mi preferido es el <em>vixie-cron</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">vixie</span><span class="o">-</span><span class="n">cron</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="n">vixie</span><span class="o">-</span><span class="n">cron</span> <span class="k">add</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge vixie-cron</span>
+<span class="err"># rc-update vixie-cron add default</span>
+</code></pre></div>
 
 
 <p>El demonio <em>ACPI</em> tiene que ver con el control del equipo y la administración de la energía.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">acpid</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">acpid</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge acpid</span>
+<span class="err"># rc-update add acpid default</span>
+</code></pre></div>
 
 
 <p>Las siguientes utilerías me son prácticamente indispensables.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gentoolkit</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">reiserfsprogs</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">dhcpcd</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">dosfstools</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">pciutils</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">usbutils</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">sudo</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">screen</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoolkit</span>
+<span class="err"># emerge reiserfsprogs</span>
+<span class="err"># emerge dhcpcd</span>
+<span class="err"># emerge dosfstools</span>
+<span class="err"># emerge pciutils</span>
+<span class="err"># emerge usbutils</span>
+<span class="err"># emerge sudo</span>
+<span class="err"># emerge screen</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="personal.png"></p>
 <h3>Contraseñas y primer uso</h3>
 <p>Defino la contraseña del superusuario <em>root</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">passwd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
+</code></pre></div>
 
 
 <p>Es momento de dar de alta al usuario que uso normalmente por medio del comando <em>useradd</em>. El parámetro <em>-m</em> es para crear el directorio <em>/home/nombre_del_usuario</em>. Si ese directorio ya existe, debe omitir ese parámetro. Cambie <em>guivaloz</em> por su propio <em>nickname</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">useradd</span> <span class="o">-</span><span class="k">g</span> <span class="n">users</span> <span class="o">-</span><span class="k">G</span> <span class="n">tty</span><span class="p">,</span><span class="n">wheel</span><span class="p">,</span><span class="n">audio</span><span class="p">,</span><span class="n">cdrom</span><span class="p">,</span><span class="n">video</span><span class="p">,</span><span class="n">portage</span><span class="p">,</span><span class="n">cron</span><span class="p">,</span><span class="n">usb</span> <span class="o">-</span><span class="n">m</span> <span class="n">guivaloz</span>
-<span class="o">#</span> <span class="n">passwd</span> <span class="n">guivaloz</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># useradd -g users -G tty,wheel,audio,cdrom,video,portage,cron,usb -m guivaloz</span>
+<span class="err"># passwd guivaloz</span>
+</code></pre></div>
 
 
 <p>Abandono el <em>chroot</em>.</p>
-<div class="highlight"><pre><span></span># <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># exit</span>
+</code></pre></div>
 
 
 <p>Reinicio el equipo. Arranco con la nueva instalación y pruebo que funcione bien.</p>
 <p><img class="img-fluid" src="kcmpci.png"></p>
 <h3>Audio, red alámbrica y red inalámbrica</h3>
 <p>Instalo las utilerías de <em>ALSA</em> para usar mi tarjeta de audio.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">alsa</span><span class="o">-</span><span class="n">utils</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge alsa-utils</span>
+</code></pre></div>
 
 
 <p>Debo configurar <em>ALSA</em> para mi equipo editando el archivo <em>/etc/modules.d/alsa</em></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modules</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">alsa</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/modules.d/alsa</span>
+</code></pre></div>
 
 
 <p>El contenido de ese archivo es:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ALSA</span> <span class="n">portion</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">ALSA</span> <span class="n">portion</span>
 <span class="k">alias</span> <span class="nb">char</span><span class="o">-</span><span class="n">major</span><span class="o">-</span><span class="mi">116</span> <span class="n">snd</span>
 <span class="k">alias</span> <span class="n">snd</span><span class="o">-</span><span class="n">card</span><span class="o">-</span><span class="mi">0</span> <span class="n">snd</span><span class="o">-</span><span class="n">intel8x0</span>
 
@@ -581,41 +581,41 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 
 <span class="o">#</span> <span class="k">Set</span> <span class="n">this</span> <span class="k">to</span> <span class="n">the</span> <span class="n">correct</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">cards</span><span class="p">.</span>
 <span class="k">options</span> <span class="n">snd</span> <span class="n">cards_limit</span><span class="o">=</span><span class="mi">1</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Para terminar a lo que a <em>ALSA</em> se refiere; configuro que se cargue en el arranque con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">alsasound</span> <span class="n">boot</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># rc-update add alsasound boot</span>
+</code></pre></div>
 
 
 <p>Para una computadora portátil conviene que la red alámbrica se levante al conectar el cable ethernet, para ello instalo <em>netplug</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">netplug</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge netplug</span>
+</code></pre></div>
 
 
 <p>También tengo una tarjeta de red inalámbrica <em>Intel IPW2200</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">wireless</span><span class="o">-</span><span class="n">tools</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">ipw2200</span><span class="o">-</span><span class="n">firmware</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge wireless-tools</span>
+<span class="err"># emerge ipw2200-firmware</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="editcopy.png"></p>
 <h3>Respaldo o clono lo que llevo al momento</h3>
 <p>Antes de respaldar o clonar hay que a revisar si se necesitan más actualizaciones. El siguiente comando incluye <em>-N</em> que busca paquetes por recompilar si han cambiado los parámetros de la variable <em>USE</em> que le correspondan. Como es recomendable, primero revisamos y luego actualizamos.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">puvND</span> <span class="n">world</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">uND</span> <span class="n">world</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -puvND world</span>
+<span class="err"># emerge -uND world</span>
+</code></pre></div>
 
 
 <p>Después, ejecuto el comando <em>python-updater</em> por si algunas aplicaciones necesiten ser recompiladas por una posible actualización del <em>phyton</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">python</span><span class="o">-</span><span class="n">updater</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># python-updater</span>
+</code></pre></div>
 
 
 <p>Por último, para asegurarnos que las relaciones entre los paquetes instalados no estén rotas, ejecuto <em>revdep-rebuild</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">revdep</span><span class="o">-</span><span class="n">rebuild</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># revdep-rebuild</span>
+</code></pre></div>
 
 
 <p>En este punto, mi <em>instalación básica</em> está lista. El siguiente paso que sugiero es <em>respaldarla</em> o <em>clonarla</em>. <em>¿Para qué?</em> se preguntará... bueno, para ahorrarse el tener que repetir todo el proceso de instalación si se arrepiente de algún paso. O bien, a partir de aquí puede, por ejemplo, instalar Gnome o KDE; si tiempo más adelante ya no le gustó su instalación, puede <em>formatear</em> esa partición y restablecer a partir del respaldo de la <em>instalación básica</em>, lo actualiza e instala un nuevo Gnome o KDE; esto le llevará menos tiempo que hacer todo este procedimiento de nuevo.</p>
@@ -623,56 +623,56 @@ USE=&quot;-kerberos mmx sse sse2&quot;
 <p>En mi caso ya tengo una instalación anterior en mi portátil, así que reinicio el equipo y arranco con ésta.</p>
 <p><strong>ADVERTENCIA:</strong> Tenga mucho cuidado con las siguientes instrucciones, en un descuido podría hechar a perder su trabajo.</p>
 <p><strong>Para hacer un respaldo</strong> (ya en la instalación anterior) monto la partición con la nueva instalación y ejecuto los comandos siguientes para crear un archivo comprimido. Observe que omito el directorio <em>lost+found</em> propio del sistema bajo el que fue <em>formateado</em>, el <em>ext3</em>. Sustituya <em>/dev/sdaX</em> por la partición que corresponda.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="n">cvzf</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guivaloz</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">inspiron_basico_2008</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">10</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span> <span class="c1">--exclude=lost+found *</span>
-<span class="o">#</span> <span class="n">chown</span> <span class="n">guivaloz</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guivaloz</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">inspiron_basico_2008</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">10</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/gentoo</span>
+<span class="err"># mount /dev/sdaX /mnt/gentoo</span>
+<span class="err"># cd /mnt/gentoo</span>
+<span class="err"># tar cvzf /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz --exclude=lost+found *</span>
+<span class="err"># chown guivaloz:users /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz</span>
+</code></pre></div>
 
 
 <p>Opcionalmente puede conservar una copia del <em>portage</em> correspondiente a la misma instalación que haya respaldado.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="n">cvzf</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guivaloz</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">inspiron_basico_portage_2008</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">10</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span> <span class="c1">--exclude=distfiles --exclude=packages *</span>
-<span class="o">#</span> <span class="n">chown</span> <span class="n">guivaloz</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guivaloz</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">inspiron_basico_portage_2008</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">10</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /usr/portage/</span>
+<span class="err"># tar cvzf /home/guivaloz/software/inspiron_basico_portage_2008-11-10.tar.gz --exclude=distfiles --exclude=packages *</span>
+<span class="err"># chown guivaloz:users /home/guivaloz/software/inspiron_basico_portage_2008-11-10.tar.gz</span>
+</code></pre></div>
 
 
 <p><strong>Para reestablecer</strong> a partir de un respaldo, debe ejecutar:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext3</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="n">xvzf</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guivaloz</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">inspiron_basico_2008</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">10</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext3 /dev/sdaX</span>
+<span class="err"># mkdir /mnt/gentoo</span>
+<span class="err"># mount /dev/sdaX /mnt/gentoo</span>
+<span class="err"># cd /mnt/gentoo</span>
+<span class="err"># tar xvzf /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz</span>
+</code></pre></div>
 
 
 <p><strong>Para hacer un clon (una copia idéntica en otra partición)</strong> <em>formateo</em> la partición a donde irá el <em>clon</em> y monto esa y la original (la que tiene la nueva instalación). Sustituya <em>/dev/sdaX</em> (nueva instalación) y <em>/dev/sdaY</em> (clon) por lo que corresponda.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">original</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaX</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">original</span>
-<span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext3</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaY</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">clon</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdaY</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">clon</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/original</span>
+<span class="err"># mount /dev/sdaX /mnt/original</span>
+<span class="err"># mkfs.ext3 /dev/sdaY</span>
+<span class="err"># mkdir /mnt/clon</span>
+<span class="err"># mount /dev/sdaY /mnt/clon</span>
+</code></pre></div>
 
 
 <p>Uso el comando <em>tar</em> con una tubería, omitiendo el directorio <em>lost+found</em>. Esta técnica es bastante más rápida que el comando <em>cp</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">original</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="n">cv</span> <span class="c1">--exclude=lost+found * | tar x -C /mnt/clon/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/original</span>
+<span class="err"># tar cv --exclude=lost+found * | tar x -C /mnt/clon/</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="configure.png"></p>
 <h3>Cambios en el clon</h3>
 <p>Si desea arrancar con el <em>clon</em>, hay que modificar el archivo de configuración <em>fstab</em> del <em>clon</em>. Debemos cambiar la línea que defina la raiz del sistema (<em>/dev/sdaY</em>) y también la que apunta a la otra instalación (<em>/dev/sdaX</em>).</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">clon</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /mnt/clon/etc/fstab</span>
+</code></pre></div>
 
 
 <p>También debe modificar la configuración del gestor de arranque <em>grub</em> para que pueda usar ambas instalaciones. Un buen truco es usar el mismo kernel para ambas (ya que son <em>clones</em>).</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">boot</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount /boot</span>
+<span class="err"># nano -w /boot/grub/grub.conf</span>
+</code></pre></div>
 
 
 <p>Desmonte las particiones, reinicie y pruebe cada una de ellas.</p>
@@ -714,9 +714,11 @@ USE=&quot;-kerberos mmx sse sse2&quot;
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

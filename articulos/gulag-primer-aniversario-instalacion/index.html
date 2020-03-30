@@ -109,14 +109,14 @@
 <p>Estando listo el primer equipo, se procedió a clonar ese disco duro para todos los demás equipos. Mientras tanto, en paralelo, RIVE hacía instalaciones de una versión de Mandriva que ya traía el Inkscape en su DVD.</p>
 <p>La clonación la hicimos de forma manual, dando comandos en la terminal. En un equipo conectábamos el disco duro a clonar y el que iba a recibir la copia; arrancábamos desde el CD con un GNU/Linux ligero que llegaba a la terminal(4).</p>
 <p>Estos son los comandos para clonar una partición raíz de Gentoo Linux; a partir de que se tiene el origen en /dev/hdc3 y el destino en /dev/hda3:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">hdc3</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">origen</span>
-<span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext3</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">hda3</span>
-<span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">hda3</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">destino</span>
-<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">origen</span>
-<span class="o">#</span> <span class="n">tar</span> <span class="o">-</span><span class="n">cv</span> <span class="n">bin</span><span class="o">/</span> <span class="n">boot</span><span class="o">/</span> <span class="n">dev</span><span class="o">/</span> <span class="n">etc</span><span class="o">/</span> <span class="n">home</span><span class="o">/</span> <span class="n">lib</span><span class="o">/</span> <span class="n">media</span><span class="o">/</span> <span class="n">mnt</span><span class="o">/</span> <span class="n">opt</span><span class="o">/</span> <span class="n">proc</span><span class="o">/</span> <span class="n">root</span><span class="o">/</span> <span class="n">root</span><span class="o">/</span> <span class="n">sbin</span><span class="o">/</span> <span class="n">sys</span><span class="o">/</span> <span class="n">usr</span><span class="o">/</span> <span class="n">var</span><span class="o">/</span> <span class="o">|</span> <span class="n">tar</span> <span class="o">-</span><span class="k">C</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">destino</span> <span class="o">-</span><span class="n">x</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">origen</span>
-<span class="o">#</span> <span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">destino</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount /dev/hdc3 /mnt/origen</span>
+<span class="err"># mkfs.ext3 /dev/hda3</span>
+<span class="err"># mount /dev/hda3 /mnt/destino</span>
+<span class="err"># cd /mnt/origen</span>
+<span class="err"># tar -cv bin/ boot/ dev/ etc/ home/ lib/ media/ mnt/ opt/ proc/ root/ root/ sbin/ sys/ usr/ var/ | tar -C /mnt/destino -x</span>
+<span class="err"># umount /mnt/origen</span>
+<span class="err"># umount /mnt/destino</span>
+</code></pre></div>
 
 
 <p>Terminamos cerca de las 11 pm con 16 equipos intalados. Rive dijo como moraleja, <em>siempre revisa los equipos para talleres una semana antes del día del evento</em>.</p>
@@ -171,9 +171,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

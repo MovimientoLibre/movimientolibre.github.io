@@ -103,8 +103,8 @@
 <p>En una instalación nueva de <a href="http://www.xfce.org/">XFCE</a> noté que por defecto ejecutaba el agente <a href="https://gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html">GPG</a>. Al tratar de eliminar llaves SSH hubo dificultades con el programa <code>ssh-add</code> ya que su agente no estaba en ejecución.</p>
 <h3>Solución</h3>
 <p>Para que XFCE4 lanze el agente SSH en lugar del de GPG ejecute:</p>
-<div class="highlight"><pre><span></span>$ xfconf-query -c xfce4-session -p /startup/ssh-agent/type -n -t string -s ssh-agent
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ xfconf-query -c xfce4-session -p /startup/ssh-agent/type -n -t string -s ssh-agent
+</code></pre></div>
 
 
 <h3>Verifique</h3>
@@ -146,9 +146,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

@@ -101,140 +101,140 @@
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>24 junio 2018</p>
 <h3>Squid - archivos de configuración</h3>
 <p>Instale Squid...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">squid</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install squid</span>
+</code></pre></div>
 
 
 <p>En el directorio <code>/etc/squid</code> se deben de encontrar los archivos de configuración.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">squid</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /etc/squid</span>
+</code></pre></div>
 
 
 <p>Ahí debe estar el archivo <code>squid.conf</code>. Éste puede cargar otros archivos <em>conf</em>, <em>txt</em>, <em>css</em>, etc.</p>
 <p>Como puede ser muy extensa la configuración de Squid, vamos a dividir la configuración de <code>squid.conf</code> en archivos según su propósito. Comienze por el principal que cargará los demás...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano squid.conf</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span># <span class="nv">Correo</span> <span class="nv">electronico</span>
-<span class="nv">cache_mgr</span> <span class="nv">webmaster</span>@<span class="nv">miredlocal</span>.<span class="nv">lan</span>
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">Correo</span><span class="w"> </span><span class="n">electronico</span><span class="w"></span>
+<span class="n">cache_mgr</span><span class="w"> </span><span class="n">webmaster</span><span class="nv">@miredlocal</span><span class="p">.</span><span class="n">lan</span><span class="w"></span>
 
-# <span class="nv">Nombre</span> <span class="nv">de</span> <span class="nv">este</span> <span class="nv">servidor</span>
-<span class="nv">visible_hostname</span> <span class="nv">miproxy</span>
+<span class="err">#</span><span class="w"> </span><span class="n">Nombre</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">este</span><span class="w"> </span><span class="n">servidor</span><span class="w"></span>
+<span class="n">visible_hostname</span><span class="w"> </span><span class="n">miproxy</span><span class="w"></span>
 
-# <span class="nv">Archivos</span> <span class="nv">separados</span> <span class="nv">de</span> <span class="nv">configuracion</span>
-<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-01-declaraciones.conf</span><span class="s2">&quot;</span>
-<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-02-accesos.conf</span><span class="s2">&quot;</span>
-<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-03-opciones.conf</span><span class="s2">&quot;</span>
-<span class="k">include</span> <span class="s2">&quot;</span><span class="s">/etc/squid/squid-04-balanceo.conf</span><span class="s2">&quot;</span>
-</pre></div>
+<span class="err">#</span><span class="w"> </span><span class="n">Archivos</span><span class="w"> </span><span class="n">separados</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">configuracion</span><span class="w"></span>
+<span class="k">include</span><span class="w"> </span><span class="ss">&quot;/etc/squid/squid-01-declaraciones.conf&quot;</span><span class="w"></span>
+<span class="k">include</span><span class="w"> </span><span class="ss">&quot;/etc/squid/squid-02-accesos.conf&quot;</span><span class="w"></span>
+<span class="k">include</span><span class="w"> </span><span class="ss">&quot;/etc/squid/squid-03-opciones.conf&quot;</span><span class="w"></span>
+<span class="k">include</span><span class="w"> </span><span class="ss">&quot;/etc/squid/squid-04-balanceo.conf&quot;</span><span class="w"></span>
+</code></pre></div>
 
 
 <h3>Squid - declaraciones</h3>
 <p>Cree <code>squid-01-declaraciones.conf</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="n">declaraciones</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano squid-01-declaraciones.conf</span>
+</code></pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span># <span class="nv">Puerto</span> <span class="nv">para</span> <span class="nv">permitir</span> <span class="nv">https</span>
-<span class="nv">acl</span> <span class="nv">SSLPorts</span>  <span class="nv">port</span>  <span class="mi">443</span>        # <span class="nv">https</span>
-<span class="nv">acl</span> <span class="nv">SSLPorts</span>  <span class="nv">port</span> <span class="mi">5222</span>        # .<span class="nv">whatsapp</span>.<span class="nv">com</span>, .<span class="nv">whatsapp</span>.<span class="nv">net</span>
-<span class="nv">acl</span> <span class="nv">SSLPorts</span>  <span class="nv">port</span> <span class="mi">5228</span>        # <span class="nv">mtalk</span>.<span class="nv">google</span>.<span class="nv">com</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Puerto</span> <span class="n">para</span> <span class="n">permitir</span> <span class="n">https</span>
+<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span>  <span class="mi">443</span>        <span class="o">#</span> <span class="n">https</span>
+<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span> <span class="mi">5222</span>        <span class="o">#</span> <span class="p">.</span><span class="n">whatsapp</span><span class="p">.</span><span class="n">com</span><span class="p">,</span> <span class="p">.</span><span class="n">whatsapp</span><span class="p">.</span><span class="n">net</span>
+<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span> <span class="mi">5228</span>        <span class="o">#</span> <span class="n">mtalk</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
 
-# <span class="nv">Puertos</span> <span class="nv">que</span> <span class="nv">se</span> <span class="nv">pueden</span> <span class="nv">usar</span>
-<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>   <span class="mi">21</span>        # <span class="nv">ftp</span>
-<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>   <span class="mi">70</span>        # <span class="nv">gopher</span>
-<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>   <span class="mi">80</span>        # <span class="nv">http</span>
-<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span>  <span class="mi">443</span>        # <span class="nv">https</span>
-<span class="nv">acl</span> <span class="nv">SafePorts</span> <span class="nv">port</span> <span class="mi">1025</span><span class="o">-</span><span class="mi">65535</span>  # <span class="nv">unregistered</span> <span class="nv">ports</span>
+<span class="o">#</span> <span class="n">Puertos</span> <span class="n">que</span> <span class="n">se</span> <span class="n">pueden</span> <span class="n">usar</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mi">21</span>        <span class="o">#</span> <span class="n">ftp</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mi">70</span>        <span class="o">#</span> <span class="n">gopher</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mi">80</span>        <span class="o">#</span> <span class="n">http</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>  <span class="mi">443</span>        <span class="o">#</span> <span class="n">https</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span> <span class="mi">1025</span><span class="o">-</span><span class="mi">65535</span>  <span class="o">#</span> <span class="n">unregistered</span> <span class="n">ports</span>
 
-# <span class="nv">Declaraci</span>ó<span class="nv">n</span> <span class="k">connect</span>
-<span class="nv">acl</span> <span class="k">CONNECT</span> <span class="nv">method</span> <span class="k">CONNECT</span>
+<span class="o">#</span> <span class="n">Declaración</span> <span class="k">connect</span>
+<span class="n">acl</span> <span class="k">CONNECT</span> <span class="k">method</span> <span class="k">CONNECT</span>
 
-# <span class="nv">Desde</span> <span class="nv">y</span> <span class="nv">hacia</span> <span class="nv">Localhost</span>
-<span class="nv">acl</span> <span class="nv">DesdeLocalhost</span>    <span class="nv">src</span>        <span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
-<span class="nv">acl</span> <span class="nv">HaciaLocalhost</span>    <span class="nv">dst</span>        <span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
+<span class="o">#</span> <span class="n">Desde</span> <span class="n">y</span> <span class="n">hacia</span> <span class="n">Localhost</span>
+<span class="n">acl</span> <span class="n">DesdeLocalhost</span>    <span class="n">src</span>        <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
+<span class="n">acl</span> <span class="n">HaciaLocalhost</span>    <span class="n">dst</span>        <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
 
-# <span class="nv">Desde</span> <span class="nv">y</span> <span class="nv">hacia</span> <span class="nv">LAN</span>
-<span class="nv">acl</span> <span class="nv">DesdeLAN</span>          <span class="nv">src</span>        <span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
-<span class="nv">acl</span> <span class="nv">HaciaLAN</span>          <span class="nv">dst</span>        <span class="mi">192</span>.<span class="mi">168</span>.<span class="mi">4</span>.<span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
+<span class="o">#</span> <span class="n">Desde</span> <span class="n">y</span> <span class="n">hacia</span> <span class="n">LAN</span>
+<span class="n">acl</span> <span class="n">DesdeLAN</span>          <span class="n">src</span>        <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
+<span class="n">acl</span> <span class="n">HaciaLAN</span>          <span class="n">dst</span>        <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
 
-# <span class="nv">Definiciones</span> <span class="nv">de</span> <span class="nv">sitios</span>
-<span class="nv">acl</span> <span class="nv">SitiosPermitidos</span>  <span class="nv">dstdomain</span>  <span class="s2">&quot;</span><span class="s">/etc/squid/sitios-permitidos.txt</span><span class="s2">&quot;</span>
-<span class="nv">acl</span> <span class="nv">SitiosProhibidos</span>  <span class="nv">dstdomain</span>  <span class="s2">&quot;</span><span class="s">/etc/squid/sitios-prohibidos.txt</span><span class="s2">&quot;</span>
+<span class="o">#</span> <span class="n">Definiciones</span> <span class="n">de</span> <span class="n">sitios</span>
+<span class="n">acl</span> <span class="n">SitiosPermitidos</span>  <span class="n">dstdomain</span>  <span class="ss">&quot;/etc/squid/sitios-permitidos.txt&quot;</span>
+<span class="n">acl</span> <span class="n">SitiosProhibidos</span>  <span class="n">dstdomain</span>  <span class="ss">&quot;/etc/squid/sitios-prohibidos.txt&quot;</span>
 
-# <span class="nv">Definiciones</span> <span class="nv">de</span> <span class="nv">expresiones</span> <span class="nv">regulares</span> <span class="nv">sobre</span> <span class="nv">publicidad</span>
-<span class="nv">acl</span> <span class="nv">RegExpPublicidad</span>  <span class="nv">dstdom_regex</span> <span class="o">-</span><span class="nv">i</span> <span class="s2">&quot;</span><span class="s">/etc/squid/regexp-publicidad.txt</span><span class="s2">&quot;</span>
+<span class="o">#</span> <span class="n">Definiciones</span> <span class="n">de</span> <span class="n">expresiones</span> <span class="n">regulares</span> <span class="n">sobre</span> <span class="n">publicidad</span>
+<span class="n">acl</span> <span class="n">RegExpPublicidad</span>  <span class="n">dstdom_regex</span> <span class="o">-</span><span class="n">i</span> <span class="ss">&quot;/etc/squid/regexp-publicidad.txt&quot;</span>
 
-# <span class="nv">Audio</span> <span class="nv">MP3</span>
-<span class="nv">acl</span> <span class="nv">AudioMP3Mime</span>      <span class="nv">rep_mime_type</span>  <span class="nv">audio</span><span class="o">/</span><span class="nv">mpeg</span>
-<span class="nv">acl</span> <span class="nv">AudioMP3RegExp</span>    <span class="nv">urlpath_regex</span>  \.<span class="nv">mp3</span>$
+<span class="o">#</span> <span class="n">Audio</span> <span class="n">MP3</span>
+<span class="n">acl</span> <span class="n">AudioMP3Mime</span>      <span class="n">rep_mime_type</span>  <span class="n">audio</span><span class="o">/</span><span class="n">mpeg</span>
+<span class="n">acl</span> <span class="n">AudioMP3RegExp</span>    <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">mp3$</span>
 
-# <span class="nv">Video</span> <span class="nv">MPEG4</span> <span class="ss">(</span><span class="nv">MPG4</span><span class="ss">)</span>
-<span class="nv">acl</span> <span class="nv">VideoMP4Mime</span>      <span class="nv">rep_mime_type</span>  <span class="nv">video</span><span class="o">/</span><span class="nv">mp4</span> <span class="nv">video</span><span class="o">/</span><span class="nv">x</span><span class="o">-</span><span class="nv">mp4</span>
-<span class="nv">acl</span> <span class="nv">VideoMP4RegExp</span>    <span class="nv">urlpath_regex</span>  \.<span class="nv">mp4</span>$
+<span class="o">#</span> <span class="n">Video</span> <span class="n">MPEG4</span> <span class="p">(</span><span class="n">MPG4</span><span class="p">)</span>
+<span class="n">acl</span> <span class="n">VideoMP4Mime</span>      <span class="n">rep_mime_type</span>  <span class="n">video</span><span class="o">/</span><span class="n">mp4</span> <span class="n">video</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">mp4</span>
+<span class="n">acl</span> <span class="n">VideoMP4RegExp</span>    <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">mp4$</span>
 
-# <span class="nv">Flash</span> <span class="nv">Video</span> <span class="nv">Format</span> <span class="ss">(</span><span class="nv">FLV</span><span class="ss">)</span>
-<span class="nv">acl</span> <span class="nv">FlashVideoMime</span>    <span class="nv">rep_mime_type</span>  <span class="nv">video</span><span class="o">/</span><span class="nv">flv</span> <span class="nv">video</span><span class="o">/</span><span class="nv">x</span><span class="o">-</span><span class="nv">flv</span>
-<span class="nv">acl</span> <span class="nv">FlashVideoRegExp</span>  <span class="nv">urlpath_regex</span>  \.<span class="nv">flv</span>$
+<span class="o">#</span> <span class="n">Flash</span> <span class="n">Video</span> <span class="n">Format</span> <span class="p">(</span><span class="n">FLV</span><span class="p">)</span>
+<span class="n">acl</span> <span class="n">FlashVideoMime</span>    <span class="n">rep_mime_type</span>  <span class="n">video</span><span class="o">/</span><span class="n">flv</span> <span class="n">video</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">flv</span>
+<span class="n">acl</span> <span class="n">FlashVideoRegExp</span>  <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">flv$</span>
 
-# <span class="nv">Flash</span> <span class="nv">General</span> <span class="nv">Media</span> <span class="nv">Scripts</span> <span class="ss">(</span><span class="nv">SWF</span><span class="ss">)</span>
-<span class="nv">acl</span> <span class="nv">FlashMime</span>         <span class="nv">rep_mime_type</span>  <span class="nv">application</span><span class="o">/</span><span class="nv">x</span><span class="o">-</span><span class="nv">shockwave</span><span class="o">-</span><span class="nv">flash</span>
-<span class="nv">acl</span> <span class="nv">FlashRegExp</span>       <span class="nv">urlpath_regex</span>  \.<span class="nv">swf</span>$
-</pre></div>
+<span class="o">#</span> <span class="n">Flash</span> <span class="k">General</span> <span class="n">Media</span> <span class="n">Scripts</span> <span class="p">(</span><span class="n">SWF</span><span class="p">)</span>
+<span class="n">acl</span> <span class="n">FlashMime</span>         <span class="n">rep_mime_type</span>  <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">shockwave</span><span class="o">-</span><span class="n">flash</span>
+<span class="n">acl</span> <span class="n">FlashRegExp</span>       <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">swf$</span>
+</code></pre></div>
 
 
 <h3>Squid - accesos</h3>
 <p>Cree <code>squid-02-accesos.conf</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="n">accesos</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano squid-02-accesos.conf</span>
+</code></pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span># <span class="nv">El</span> <span class="nv">administrador</span> <span class="nv">del</span> <span class="nv">cache</span> <span class="s1">&#39;</span><span class="s">manager</span><span class="s1">&#39;</span> <span class="nv">solo</span> <span class="nv">lo</span> <span class="nv">har</span>á <span class="nv">localhost</span>
-<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">DesdeLocalhost</span> <span class="nv">manager</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>                  <span class="nv">manager</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">El</span> <span class="n">administrador</span> <span class="n">del</span> <span class="k">cache</span> <span class="s1">&#39;manager&#39;</span> <span class="n">solo</span> <span class="n">lo</span> <span class="n">hará</span> <span class="n">localhost</span>
+<span class="n">http_access</span>         <span class="n">allow</span>  <span class="n">DesdeLocalhost</span> <span class="n">manager</span>
+<span class="n">http_access</span>         <span class="n">deny</span>                  <span class="n">manager</span>
 
-# <span class="nv">NEGAR</span> <span class="nv">solicitudes</span> <span class="nv">por</span> <span class="nv">los</span> <span class="nv">puertos</span> <span class="nv">NO</span> <span class="nv">seguros</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="o">!</span><span class="nv">SafePorts</span>
+<span class="o">#</span> <span class="n">NEGAR</span> <span class="n">solicitudes</span> <span class="n">por</span> <span class="n">los</span> <span class="n">puertos</span> <span class="k">NO</span> <span class="n">seguros</span>
+<span class="n">http_access</span>         <span class="n">deny</span>   <span class="o">!</span><span class="n">SafePorts</span>
 
-# <span class="nv">NEGAR</span> <span class="k">CONNECT</span> <span class="nv">a</span> <span class="nv">otros</span> <span class="nv">puertos</span> <span class="nv">NO</span> <span class="nv">SSL</span> <span class="nv">seguros</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="k">CONNECT</span> <span class="o">!</span><span class="nv">SSLPorts</span>
+<span class="o">#</span> <span class="n">NEGAR</span> <span class="k">CONNECT</span> <span class="n">a</span> <span class="n">otros</span> <span class="n">puertos</span> <span class="k">NO</span> <span class="n">SSL</span> <span class="n">seguros</span>
+<span class="n">http_access</span>         <span class="n">deny</span>   <span class="k">CONNECT</span> <span class="o">!</span><span class="n">SSLPorts</span>
 
-# <span class="nv">Es</span> <span class="nv">recomendable</span> <span class="nv">negar</span> <span class="nv">conexiones</span> <span class="nv">a</span> <span class="mi">127</span>.<span class="mi">0</span>.<span class="mi">0</span>.<span class="mi">1</span>, é<span class="nv">stas</span> <span class="nv">deben</span> <span class="nv">hacerce</span> <span class="nv">fuera</span> <span class="nv">del</span> <span class="nv">proxy</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">HaciaLocalhost</span>
+<span class="o">#</span> <span class="n">Es</span> <span class="n">recomendable</span> <span class="n">negar</span> <span class="n">conexiones</span> <span class="n">a</span> <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="err">é</span><span class="n">stas</span> <span class="n">deben</span> <span class="n">hacerce</span> <span class="n">fuera</span> <span class="n">del</span> <span class="n">proxy</span>
+<span class="n">http_access</span>         <span class="n">deny</span>   <span class="n">HaciaLocalhost</span>
 
-# <span class="nv">NEGAR</span> <span class="nv">Adobe</span> <span class="nv">Flash</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">FlashRegExp</span>
+<span class="o">#</span> <span class="n">NEGAR</span> <span class="n">Adobe</span> <span class="n">Flash</span>
+<span class="n">http_access</span>         <span class="n">deny</span>   <span class="n">FlashRegExp</span>
 
-# <span class="nv">Permitir</span> <span class="nv">sitios</span> <span class="nv">permitidos</span>
-<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">SitiosPermitidos</span>
+<span class="o">#</span> <span class="n">Permitir</span> <span class="n">sitios</span> <span class="n">permitidos</span>
+<span class="n">http_access</span>         <span class="n">allow</span>  <span class="n">SitiosPermitidos</span>
 
-# <span class="nv">NEGAR</span> <span class="nv">prohibidos</span> <span class="nv">y</span> <span class="nv">publicidad</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">SitiosProhibidos</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">RegExpPublicidad</span>
+<span class="o">#</span> <span class="n">NEGAR</span> <span class="n">prohibidos</span> <span class="n">y</span> <span class="n">publicidad</span>
+<span class="n">http_access</span>         <span class="n">deny</span>   <span class="n">SitiosProhibidos</span>
+<span class="n">http_access</span>         <span class="n">deny</span>   <span class="n">RegExpPublicidad</span>
 
-# <span class="nv">Permitir</span> <span class="nv">todo</span> <span class="nv">lo</span> <span class="nv">dem</span>á<span class="nv">s</span> <span class="nv">a</span> <span class="nv">localhost</span>
-<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">DesdeLocalhost</span>
+<span class="o">#</span> <span class="n">Permitir</span> <span class="n">todo</span> <span class="n">lo</span> <span class="n">demás</span> <span class="n">a</span> <span class="n">localhost</span>
+<span class="n">http_access</span>         <span class="n">allow</span>  <span class="n">DesdeLocalhost</span>
 
-# <span class="nv">Permitir</span> <span class="nv">equipos</span> <span class="nv">LAN</span>
-<span class="nv">http_access</span>         <span class="nv">allow</span>  <span class="nv">DesdeLAN</span>
+<span class="o">#</span> <span class="n">Permitir</span> <span class="n">equipos</span> <span class="n">LAN</span>
+<span class="n">http_access</span>         <span class="n">allow</span>  <span class="n">DesdeLAN</span>
 
-# <span class="nv">NEGAR</span> <span class="nv">TODO</span> <span class="nv">a</span> <span class="nv">todos</span> <span class="nv">los</span> <span class="nv">dem</span>á<span class="nv">s</span>
-<span class="nv">http_access</span>         <span class="nv">deny</span>   <span class="nv">all</span>
-</pre></div>
+<span class="o">#</span> <span class="n">NEGAR</span> <span class="n">TODO</span> <span class="n">a</span> <span class="n">todos</span> <span class="n">los</span> <span class="n">demás</span>
+<span class="n">http_access</span>         <span class="n">deny</span>   <span class="k">all</span>
+</code></pre></div>
 
 
 <h3>Squid - opciones</h3>
 <p>Cree <code>squid-03-opciones.conf</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="n">opciones</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano squid-03-opciones.conf</span>
+</code></pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Puerto</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Puerto</span>
 <span class="n">http_port</span> <span class="mi">3128</span>
 
 <span class="o">#</span> <span class="n">Disk</span> <span class="k">cache</span> <span class="n">directory</span>
@@ -265,17 +265,17 @@
 <span class="o">#</span> <span class="n">Tiempo</span> <span class="n">de</span> <span class="n">espera</span> <span class="n">de</span> <span class="n">cierre</span> <span class="n">de</span> <span class="n">conexiones</span>
 <span class="o">#</span> <span class="n">al</span> <span class="n">disminuirlo</span> <span class="n">el</span> <span class="n">apagado</span> <span class="n">sera</span> <span class="n">mas</span> <span class="n">breve</span>
 <span class="n">shutdown_lifetime</span> <span class="mi">12</span> <span class="n">seconds</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Squid - balanceo</h3>
 <p>Cree <code>squid-04-balanceo.conf</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">squid</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="n">balanceo</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano squid-04-balanceo.conf</span>
+</code></pre></div>
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Se</span> <span class="n">usaran</span> <span class="n">esta</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">cubos</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Se</span> <span class="n">usaran</span> <span class="n">esta</span> <span class="n">cantidad</span> <span class="n">de</span> <span class="n">cubos</span>
 <span class="n">delay_pools</span> <span class="mi">2</span>
 
 <span class="o">#</span> <span class="n">Hay</span> <span class="n">tres</span> <span class="n">tipos</span> <span class="n">de</span> <span class="n">clases</span>
@@ -308,17 +308,17 @@
 
 <span class="o">#</span> <span class="n">El</span> <span class="n">segundo</span> <span class="n">cubo</span> <span class="n">es</span> <span class="n">para</span> <span class="n">la</span> <span class="n">LAN</span>
 <span class="n">delay_access</span> <span class="mi">2</span> <span class="n">allow</span> <span class="n">DesdeLAN</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Squid - stios permitidos y prohibidos</h3>
 <p>Baje las expresiones regulares para bloquear publicidad...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">wget</span> <span class="ss">&quot;http://pgl.yoyo.org/adservers/serverlist.php?hostformat=squid-dstdom-regex&amp;showintro=0&amp;mimetype=plaintext&quot;</span> <span class="o">-</span><span class="n">O</span> <span class="n">regexp</span><span class="o">-</span><span class="n">publicidad</span><span class="p">.</span><span class="n">txt</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># wget &quot;http://pgl.yoyo.org/adservers/serverlist.php?hostformat=squid-dstdom-regex&amp;showintro=0&amp;mimetype=plaintext&quot; -O regexp-publicidad.txt</span>
+</code></pre></div>
 
 
 <p>Cree su lista de sitios de entera confianza <code>sitios-permitidos.txt</code>...</p>
-<div class="highlight"><pre><span></span><span class="na">.wikipedia.org</span>
+<div class="highlight"><pre><span></span><code><span class="na">.wikipedia.org</span>
 <span class="na">.mediawiki.org</span>
 <span class="nf">wikimediafundation.org</span>
 <span class="na">.ubuntu.com</span>
@@ -327,160 +327,160 @@
 <span class="na">.github.com</span>
 <span class="na">.osuosl.org</span>
 <span class="na">.movimientolibre.com</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Y su lista negra con sitios prohibidos <code>sitios-prohibidos.txt</code>...</p>
-<div class="highlight"><pre><span></span><span class="na">.microsoft.com</span>
+<div class="highlight"><pre><span></span><code><span class="na">.microsoft.com</span>
 <span class="na">.windowsupdate.com</span>
 <span class="na">.msftncsi.com</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Políticas de SELinux</h3>
 <p>Prepare el directorio para el caché...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span>
-<span class="o">#</span> <span class="n">chown</span> <span class="n">squid</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span>
-<span class="o">#</span> <span class="n">squid</span> <span class="o">-</span><span class="n">z</span> <span class="o">-</span><span class="n">N</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">squid</span><span class="o">/</span><span class="n">squid</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /var/cache/squid</span>
+<span class="err"># chown squid /var/cache/squid</span>
+<span class="err"># squid -z -N -f /etc/squid/squid.conf</span>
+</code></pre></div>
 
 
 <p>Arranque el daemon...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start squid.service</span>
+<span class="err"># systemctl status squid.service</span>
+</code></pre></div>
 
 
 <p>En mi caso ha fallado porque las política de seguridad SELinux no permiten algunas acciones de Squid. Revise el estatus...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl status squid</span>
+</code></pre></div>
 
 
 <p>Me reporta este error...</p>
-<div class="highlight"><pre><span></span><span class="n">Ipc</span><span class="p">::</span><span class="n">Mem</span><span class="p">::</span><span class="n">Segment</span><span class="p">::</span><span class="k">create</span> <span class="n">failed</span> <span class="k">to</span> <span class="n">shm_open</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">Ipc::Mem::Segment::create failed to shm_open</span>
+</code></pre></div>
 
 
 <p>Al revisar los últimos registros en la bitácora...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">tail</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">audit</span><span class="p">.</span><span class="n">log</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># tail /var/log/audit/audit.log</span>
+</code></pre></div>
 
 
 <p>Aparece una negación...</p>
-<div class="highlight"><pre><span></span><span class="nv">type</span><span class="o">=</span><span class="nv">AVC</span> <span class="nv">msg</span><span class="o">=</span><span class="nv">audit</span><span class="ss">(</span><span class="mi">1529629815</span>.<span class="mi">011</span>:<span class="mi">337</span><span class="ss">)</span>: <span class="nv">avc</span>:  <span class="nv">denied</span>  { <span class="k">unlink</span> } <span class="k">for</span>  <span class="nv">pid</span><span class="o">=</span><span class="mi">2086</span> <span class="nv">comm</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">squid</span><span class="s2">&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">squid-cf__metadata.shm</span><span class="s2">&quot;</span> <span class="nv">dev</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">tmpfs</span><span class="s2">&quot;</span> <span class="nv">ino</span><span class="o">=</span><span class="mi">32961</span> <span class="nv">scontext</span><span class="o">=</span><span class="nv">system_u</span>:<span class="nv">system_r</span>:<span class="nv">squid_t</span>:<span class="nv">s0</span> <span class="nv">tcontext</span><span class="o">=</span><span class="nv">unconfined_u</span>:<span class="nv">object_r</span>:<span class="nv">user_tmp_t</span>:<span class="nv">s0</span> <span class="nv">tclass</span><span class="o">=</span><span class="nv">file</span> <span class="nv">permissive</span><span class="o">=</span><span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">type=AVC msg=audit(1529629815.011:337): avc:  denied  { unlink } for  pid=2086 comm=&quot;squid&quot; name=&quot;squid-cf__metadata.shm&quot; dev=&quot;tmpfs&quot; ino=32961 scontext=system_u:system_r:squid_t:s0 tcontext=unconfined_u:object_r:user_tmp_t:s0 tclass=file permissive=0</span>
+</code></pre></div>
 
 
 <p>Si gusta profundizar en <strong>SELinux</strong> lea <a href="https://docs-old.fedoraproject.org/en-US/Fedora/22/html/SELinux_Users_and_Administrators_Guide/index.html">Fedora 22 SELinux User's and Administrator's Guide</a>.</p>
 <p><strong>Opción 1:</strong>: Crear una nueva política a partir de la bitácora. Instale <code>policycoreutils-python-utils</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">policycoreutils</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">utils</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install policycoreutils-python-utils</span>
+</code></pre></div>
 
 
 <p>Como <em>root</em> nos vamos al directorio <code>/root</code> o donde podamos crear archivos...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">root</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /root</span>
+</code></pre></div>
 
 
 <p>1) Ejecute <code>audit2allow</code> alimentado por la bitácora <code>audit.log</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">audit2allow</span> <span class="o">-</span><span class="n">M</span> <span class="n">MYSQUIDPOLICY</span> <span class="o">&lt;</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">audit</span><span class="p">.</span><span class="n">log</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># audit2allow -M MYSQUIDPOLICY &lt; /var/log/audit/audit.log</span>
+</code></pre></div>
 
 
 <p>2) Lea el texto de la política creada</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cat</span> <span class="n">MYSQUIDPOLICY</span><span class="p">.</span><span class="n">te</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cat MYSQUIDPOLICY.te</span>
+</code></pre></div>
 
 
 <p>3) Cargue la política, <strong>note que se usa el archivo pp</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">semodule</span> <span class="o">-</span><span class="n">i</span> <span class="n">MYSQUIDPOLICY</span><span class="p">.</span><span class="n">pp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># semodule -i MYSQUIDPOLICY.pp</span>
+</code></pre></div>
 
 
 <p>4) Arranque el daemon...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start squid.service</span>
+<span class="err"># systemctl status squid.service</span>
+</code></pre></div>
 
 
 <p>5) Vuelva al paso uno si ha fallado el arranque de Squid.</p>
 <p>Tuve que <strong>repetir siete veces</strong> este proceso para dar con la política correcta, que mostrando <code>MYSQUIDPOLICY7.te</code> es...</p>
 <p><strong>Opción 2:</strong>: Cree la política a partir del archivo de texto.</p>
 <p>Instale <strong>policycoreutils-devel</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">policycoreutils</span><span class="o">-</span><span class="n">devel</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install policycoreutils-devel</span>
+</code></pre></div>
 
 
 <p>Cree <code>DnsmasqSquidPolicy.te</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">root</span>
-<span class="o">#</span> <span class="n">nano</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">te</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /root</span>
+<span class="err"># nano DnsmasqSquidPolicy.te</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="nv">module</span> <span class="nv">DnsmasqSquidPolicy</span> <span class="mi">1</span>.<span class="mi">0</span><span class="c1">;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">module</span> <span class="nt">DnsmasqSquidPolicy</span> <span class="nt">1</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span>
 
-<span class="nv">require</span> {
-        <span class="nv">type</span> <span class="nv">squid_t</span><span class="c1">;</span>
-        <span class="nv">type</span> <span class="nv">dnsmasq_t</span><span class="c1">;</span>
-        <span class="nv">type</span> <span class="nv">user_tmp_t</span><span class="c1">;</span>
-        <span class="nv">type</span> <span class="nv">var_t</span><span class="c1">;</span>
-        <span class="nv">class</span> <span class="nv">capability</span> <span class="nv">dac_override</span><span class="c1">;</span>
-        <span class="nv">class</span> <span class="nv">file</span> { <span class="nv">append</span> <span class="nv">create</span> <span class="nv">getattr</span> <span class="nv">open</span> <span class="nv">read</span> <span class="nv">rename</span> <span class="k">unlink</span> <span class="nv">write</span> }<span class="c1">;</span>
-}
+<span class="nt">require</span> <span class="p">{</span>
+        <span class="err">type</span> <span class="err">squid_t</span><span class="p">;</span>
+        <span class="err">type</span> <span class="err">dnsmasq_t</span><span class="p">;</span>
+        <span class="err">type</span> <span class="err">user_tmp_t</span><span class="p">;</span>
+        <span class="err">type</span> <span class="err">var_t</span><span class="p">;</span>
+        <span class="err">class</span> <span class="err">capability</span> <span class="err">dac_override</span><span class="p">;</span>
+        <span class="err">class</span> <span class="err">file</span> <span class="err">{</span> <span class="err">append</span> <span class="err">create</span> <span class="err">getattr</span> <span class="err">open</span> <span class="err">read</span> <span class="err">rename</span> <span class="err">unlink</span> <span class="err">write</span> <span class="p">}</span><span class="o">;</span>
+<span class="err">}</span>
 
-#<span class="o">=============</span> <span class="nv">dnsmasq_t</span> <span class="o">==============</span>
+<span class="err">#</span><span class="o">=============</span> <span class="nt">dnsmasq_t</span> <span class="o">==============</span>
 
-<span class="nv">allow</span> <span class="nv">dnsmasq_t</span> <span class="nv">self</span>:<span class="nv">capability</span> <span class="nv">dac_override</span><span class="c1">;</span>
+<span class="nt">allow</span> <span class="nt">dnsmasq_t</span> <span class="nt">self</span><span class="p">:</span><span class="nd">capability</span> <span class="nt">dac_override</span><span class="o">;</span>
 
-#<span class="o">=============</span> <span class="nv">squid_t</span> <span class="o">==============</span>
+<span class="err">#</span><span class="o">=============</span> <span class="nt">squid_t</span> <span class="o">==============</span>
 
-<span class="nv">allow</span> <span class="nv">squid_t</span> <span class="nv">user_tmp_t</span>:<span class="nv">file</span> <span class="k">unlink</span><span class="c1">;</span>
-<span class="nv">allow</span> <span class="nv">squid_t</span> <span class="nv">var_t</span>:<span class="nv">file</span> <span class="k">unlink</span><span class="c1">;</span>
-<span class="nv">allow</span> <span class="nv">squid_t</span> <span class="nv">var_t</span>:<span class="nv">file</span> { <span class="nv">append</span> <span class="nv">create</span> <span class="nv">getattr</span> <span class="nv">open</span> <span class="nv">read</span> <span class="nv">rename</span> <span class="nv">write</span> }<span class="c1">;</span>
-</pre></div>
+<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">user_tmp_t</span><span class="p">:</span><span class="nd">file</span> <span class="nt">unlink</span><span class="o">;</span>
+<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">var_t</span><span class="p">:</span><span class="nd">file</span> <span class="nt">unlink</span><span class="o">;</span>
+<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">var_t</span><span class="p">:</span><span class="nd">file</span> <span class="p">{</span> <span class="err">append</span> <span class="err">create</span> <span class="err">getattr</span> <span class="err">open</span> <span class="err">read</span> <span class="err">rename</span> <span class="err">write</span> <span class="p">}</span><span class="o">;</span>
+</code></pre></div>
 
 
 <p>Compile e instale...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">checkmodule</span> <span class="o">-</span><span class="n">M</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">o</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="k">mod</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">te</span>
-<span class="o">#</span> <span class="n">semodule_package</span> <span class="o">-</span><span class="n">o</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">pp</span> <span class="o">-</span><span class="n">m</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="k">mod</span>
-<span class="o">#</span> <span class="n">semodule</span> <span class="o">-</span><span class="n">i</span> <span class="n">DnsmasqSquidPolicy</span><span class="p">.</span><span class="n">pp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># checkmodule -M -m -o DnsmasqSquidPolicy.mod DnsmasqSquidPolicy.te</span>
+<span class="err"># semodule_package -o DnsmasqSquidPolicy.pp -m DnsmasqSquidPolicy.mod</span>
+<span class="err"># semodule -i DnsmasqSquidPolicy.pp</span>
+</code></pre></div>
 
 
 <p>Arranque el daemon...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
-<span class="o">#</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">squid</span><span class="p">.</span><span class="n">service</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start squid.service</span>
+<span class="err"># systemctl status squid.service</span>
+</code></pre></div>
 
 
 <h3>Arranque al encender y muro de fuego</h3>
 <p>Habilite que inicie el <em>daemon</em> al encender...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">squid</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl enable squid</span>
+</code></pre></div>
 
 
 <p>Verifique que el muro de fuego tenga abierto el servicio <strong>squid</strong> en la LAN...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --list-services</span>
-<span class="n">ssh</span> <span class="n">mdns</span> <span class="n">samba</span><span class="o">-</span><span class="n">client</span> <span class="n">dhcpv6</span><span class="o">-</span><span class="n">client</span> <span class="n">cockpit</span> <span class="n">dns</span> <span class="n">squid</span> <span class="n">dhcp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=internal --list-services</span>
+<span class="err">ssh mdns samba-client dhcpv6-client cockpit dns squid dhcp</span>
+</code></pre></div>
 
 
 <h3>Hacer que el servidor YA NO SEA un ruteador</h3>
 <p>Al estar habilitado el enmascaramiento, cualquier equipo puede acceder a Internet sin pasar por el proxy. Consulte con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --query-masquerade</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=external --query-masquerade</span>
+</code></pre></div>
 
 
 <p>Deshabilite el enmascaramiento con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --remove-masquerade</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=external --remove-masquerade</span>
+</code></pre></div>
 
 
 <p>Haga pruebas con su navegador de internet en un equipo en la red local. Si configura <em>sin proxy</em> no debería tener Internet. Luego configure el proxy y pruebe que funcione.</p>
 <p>Si tiene éxito, haga los cambios permanantes...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--runtime-to-permanent</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --runtime-to-permanent</span>
+</code></pre></div>
 
 
 <h3>Continuación...</h3>
@@ -522,9 +522,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

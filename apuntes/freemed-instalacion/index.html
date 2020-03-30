@@ -113,66 +113,66 @@
 <p>Vamos a partir de que tenga instalado Debian Etch en su equipo, a partir de un disco de instalación por red (CD de network install), ya que no es obligado tener interfaz gráfica en el servidor...</p>
 <h3>Instalaciones</h3>
 <p>Instale Apache 2, MySQL, PHP 4, TeTeX y Subversion:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">aptitude</span> <span class="k">update</span>
-<span class="o">#</span> <span class="n">aptitude</span> <span class="n">install</span> <span class="n">apache2</span> <span class="n">libapache2</span><span class="o">-</span><span class="k">mod</span><span class="o">-</span><span class="n">php4</span> <span class="n">php4</span><span class="o">-</span><span class="n">cgi</span> <span class="n">mysql</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="mi">4</span><span class="p">.</span><span class="mi">1</span> <span class="n">php4</span><span class="o">-</span><span class="n">mysql</span> <span class="n">imagemagick</span> <span class="n">tetex</span><span class="o">-</span><span class="n">bin</span> <span class="n">tetex</span><span class="o">-</span><span class="n">extra</span> <span class="n">subversion</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># aptitude update</span>
+<span class="err"># aptitude install apache2 libapache2-mod-php4 php4-cgi mysql-server-4.1 php4-mysql imagemagick tetex-bin tetex-extra subversion</span>
+</code></pre></div>
 
 
 <h3>Cree el usuario y la base de datos para el FreeMED en MySQL</h3>
 <p>Si necesita establecer la contraseña del usuario root en MySQL:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mysqladmin</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="n">password</span> <span class="n">ROOTPASSWD</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mysqladmin -u root password ROOTPASSWD</span>
+</code></pre></div>
 
 
 <p>Ingrese a MySQL como root:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
-<span class="n">Enter</span> <span class="n">password</span><span class="p">:</span><span class="o">******</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mysql -u root -p</span>
+<span class="err">Enter password:******</span>
+</code></pre></div>
 
 
 <p>Otorgue (y en consecencia se creará el usuario) a freemed los privilegios totales en esa base de datos:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="ow">ALL</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">freemed</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">freemed</span><span class="nv">@localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;FREEMEDPASSWD&#39;</span><span class="p">;</span><span class="w"></span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">&gt; GRANT ALL ON freemed.* TO freemed@localhost IDENTIFIED BY &#39;FREEMEDPASSWD&#39;;</span>
+</code></pre></div>
 
 
 <p>Salga de MySQL con:</p>
-<div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="k">EXIT</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">&gt; EXIT</span>
+</code></pre></div>
 
 
 <h3>Baje el FreeMED</h3>
 <p>Debe instalarse FreeMED en /usr/share/freemed. Tenga paciencia con el comando <em>svn</em>, ya que puede tardar varios minutos en mostrar actividad.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">freemed</span>
-<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span>
-<span class="o">#</span> <span class="n">svn</span> <span class="n">co</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">svn</span><span class="p">.</span><span class="n">freemedsoftware</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">freemed</span><span class="o">/</span><span class="n">branches</span><span class="o">/</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="n">x</span> <span class="n">freemed</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /usr/share/freemed</span>
+<span class="err"># cd /usr/share</span>
+<span class="err"># svn co http://svn.freemedsoftware.org/freemed/branches/0.8.x freemed</span>
+</code></pre></div>
 
 
 <p>Cambie los permisos de todos los archivos del FreeMED al usuario del Apache:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chown</span> <span class="o">-</span><span class="n">Rf</span> <span class="n">www</span><span class="o">-</span><span class="k">data</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="k">data</span> <span class="n">freemed</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># chown -Rf www-data:www-data freemed</span>
+</code></pre></div>
 
 
 <h3>Configure el Apache</h3>
 <p>Edite la directiva DirectoryIndex de Apache para que tome por defecto primero a index.php y luego a los demás:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">mods</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="n">dir</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/apache2/mods-available/dir.conf</span>
+</code></pre></div>
 
 
 <p>Contenido:</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;IfModule</span> <span class="err">mod_dir.c</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;IfModule</span> <span class="err">mod_dir.c</span><span class="nt">&gt;</span>
     DirectoryIndex index.php index.html index.cgi index.pl index.xhtml
 <span class="nt">&lt;/IfModule&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Necesitamos declararle al Apache dónde se encuentra el sistema FreeMED, así que modificaremos su configuración:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">sites</span><span class="o">-</span><span class="n">available</span><span class="o">/</span><span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/apache2/sites-available/default</span>
+</code></pre></div>
 
 
 <p>A continuación muestro parte del contenido en <em>default</em> para que usted haga las modificaciones necesarias, cuidando que no se afecten otros sitios o aplicaciones web que estén también en su servidor:</p>
-<div class="highlight"><pre><span></span>NameVirtualHost *
+<div class="highlight"><pre><span></span><code>NameVirtualHost *
 <span class="nt">&lt;VirtualHost</span> <span class="err">*</span><span class="nt">&gt;</span>
     # Puede hacer que cualquier petición a / sea redirigida a /freemed/
     <span class="nt">&lt;Directory</span> <span class="err">/var/www</span><span class="nt">/&gt;</span>
@@ -192,43 +192,43 @@
         Allow from all
     <span class="nt">&lt;/Directory&gt;</span>
 <span class="nt">&lt;/VirtualHost&gt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Reinicie el Apache para que se apliquen los cambios que hemos hecho</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">apache2</span> <span class="k">restart</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/apache2 restart</span>
+</code></pre></div>
 
 
 <h3>Configure FreeMed</h3>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">share</span><span class="o">/</span><span class="n">freemed</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">settings</span><span class="p">.</span><span class="n">php</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /usr/share/freemed/lib/settings.php</span>
+</code></pre></div>
 
 
 <p>Modifique los siguientes comandos:</p>
-<div class="highlight"><pre><span></span><span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_HOST</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">localhost</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;          // database (SQL) host location</span>
-<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_NAME</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">freemed</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;            // database name</span>
-<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_USER</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">freemed</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;            // SQL server username</span>
-<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">DB_PASSWORD</span><span class="s1">&#39;</span>, <span class="s2">&quot;</span><span class="s">FREEMEDPASSWD</span><span class="s2">&quot;</span><span class="ss">)</span><span class="c1">;  // SQL server password</span>
-<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">HOST</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">freemed</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;               // host name for this system</span>
-<span class="nv">define</span> <span class="ss">(</span><span class="s1">&#39;</span><span class="s">BASE_URL</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">/freemed</span><span class="s1">&#39;</span><span class="ss">)</span><span class="c1">;          // offset (i.e. http://here/package)</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">define (&#39;DB_HOST&#39;, &quot;localhost&quot;);          // database (SQL) host location</span>
+<span class="err">define (&#39;DB_NAME&#39;, &quot;freemed&quot;);            // database name</span>
+<span class="err">define (&#39;DB_USER&#39;, &quot;freemed&quot;);            // SQL server username</span>
+<span class="err">define (&#39;DB_PASSWORD&#39;, &quot;FREEMEDPASSWD&quot;);  // SQL server password</span>
+<span class="err">define (&#39;HOST&#39;, &#39;freemed&#39;);               // host name for this system</span>
+<span class="err">define (&#39;BASE_URL&#39;, &#39;/freemed&#39;);          // offset (i.e. http://here/package)</span>
+</code></pre></div>
 
 
 <p>Si el servidor no tiene instalada la interfaz gráfica, y por lo tanto, no tiene instalado un navegador de internet, necesitará autorizar que el script de instalación sea ejecutado desde otra estación de trabajo modificando la siguiente línea, use la IP del equipo donde entrará por primera vez a FreeMED:</p>
-<div class="highlight"><pre><span></span><span class="n">define</span> <span class="p">(</span><span class="s1">&#39;INIT_ADDR&#39;</span><span class="p">,</span><span class="ss">&quot;192.168.1.66&quot;</span><span class="p">);</span>  <span class="o">//</span> <span class="n">this</span> <span class="k">is</span> <span class="n">the</span> <span class="k">only</span> <span class="n">IP</span> <span class="n">address</span> <span class="n">that</span> <span class="n">can</span> <span class="n">run</span> <span class="n">the</span> <span class="n">init</span> <span class="n">wizard</span><span class="p">...</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">define (&#39;INIT_ADDR&#39;,&quot;192.168.1.66&quot;);  // this is the only IP address that can run the init wizard...</span>
+</code></pre></div>
 
 
 <h3>Hostname</h3>
 <p>Como uso un modem 2Wire de Infinitum que es un ruteador y un ligero DNS, necesito que se pueda accesar a la aplicación web escribiendo http://freemed desde cualquier estación de trabajo. Modifique el archivo de configuración del dhclient3:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">dhcp3</span><span class="o">/</span><span class="n">dhclient</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/dhcp3/dhclient.conf</span>
+</code></pre></div>
 
 
 <p>Y modifique esta línea:</p>
-<div class="highlight"><pre><span></span><span class="k">send</span> <span class="nv">host</span><span class="o">-</span><span class="nv">name</span> <span class="s2">&quot;</span><span class="s">freemed</span><span class="s2">&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">send host-name &quot;freemed&quot;</span>
+</code></pre></div>
 
 
 <p>Y reinicie el servidor. Entre a la página <em>home</em> del módem 2Wire para confirmar que el <em>hostname</em> del servidor sea freemed.</p>
@@ -279,9 +279,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

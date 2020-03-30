@@ -105,19 +105,19 @@
 <p><img class="img-fluid" src="dolphin-acciones.jpg" alt="Acciones en Dolphin"></p>
 <h3>Instale ImageMagick</h3>
 <p>Para hacer la conversión de las imágenes usaremos <strong>ImageMagick</strong>. En <strong>Fedora Linux</strong> se instala como <code>root</code> con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">ImageMagick</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install ImageMagick</span>
+</code></pre></div>
 
 
 <h3>Elabore los Bash Scripts</h3>
 <p>Como se trata de programas propios, no del sistema, conviene tenerlos en un <code>bin</code> personal...</p>
-<div class="highlight"><pre><span></span>$ mkdir ~/bin
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ mkdir ~/bin
+</code></pre></div>
 
 
 <p>Cree un script para convertir las imágenes a PNG...</p>
-<div class="highlight"><pre><span></span>$ kwrite ~/bin/imagen-png.sh
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ kwrite ~/bin/imagen-png.sh
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
@@ -129,7 +129,7 @@
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="k">for</span> ARCHIVO in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
 <span class="k">do</span>
@@ -138,12 +138,12 @@
     <span class="nv">SALIDA</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">NOMBRE</span><span class="si">}</span><span class="s2">.png&quot;</span>
     convert <span class="s2">&quot;</span><span class="nv">$ARCHIVO</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$SALIDA</span><span class="s2">&quot;</span>
 <span class="k">done</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Cree un script para convertir las imágenes a JPEG...</p>
-<div class="highlight"><pre><span></span>$ kwrite ~/bin/imagen-jpg.sh
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ kwrite ~/bin/imagen-jpg.sh
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
@@ -155,7 +155,7 @@
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="k">for</span> ARCHIVO in <span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
 <span class="k">do</span>
@@ -164,47 +164,47 @@
     <span class="nv">SALIDA</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">NOMBRE</span><span class="si">}</span><span class="s2">.jpg&quot;</span>
     convert -quality <span class="m">80</span> <span class="s2">&quot;</span><span class="nv">$ARCHIVO</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$SALIDA</span><span class="s2">&quot;</span>
 <span class="k">done</span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Hágalos ejecutables...</p>
-<div class="highlight"><pre><span></span>$ chmod +x ~/bin/imagen-png.sh
+<div class="highlight"><pre><span></span><code>$ chmod +x ~/bin/imagen-png.sh
 $ chmod +x ~/bin/imagen-jpg.sh
-</pre></div>
+</code></pre></div>
 
 
 <p>Pruebe desde una terminal que funcionen. Son capaces de recibir muchos archivos para convertir. Por ejemplo...</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/Descargas
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/Descargas
 $ ~/bin/imagen-jpg.sh logotipo.png
 $ ~/bin/imagen-jpg.sh pagina-1.png pagina-2.png pagina-3.png
 $ ~/bin/imagen-png.sh *.jpg
-</pre></div>
+</code></pre></div>
 
 
 <h3>Crear acciones para Dolphin en KDE 5</h3>
 <p>Averigüe dónde deben de estar los archivos de las acciones; para ello, en <strong>KDE 5,</strong> ejecute...</p>
-<div class="highlight"><pre><span></span>$ kf5-config --path services
+<div class="highlight"><pre><span></span><code>$ kf5-config --path services
 /home/USUARIO/.local/share/kservices5/:/usr/share/kservices5/
-</pre></div>
+</code></pre></div>
 
 
 <p>Por defecto no existe el directorio, hay que crearlo...</p>
-<div class="highlight"><pre><span></span>$ mkdir -p ~/.local/share/kservices5
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ mkdir -p ~/.local/share/kservices5
+</code></pre></div>
 
 
 <p>Nos cambiamos a ese directorio...</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/.local/share/kservices5
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/.local/share/kservices5
+</code></pre></div>
 
 
 <p>Cree un archivo <code>desktop</code>. En este ejemplo, vamos a definir acciones para convertir archivos...</p>
-<div class="highlight"><pre><span></span>$ kwrite ConvertImages.desktop
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ kwrite ConvertImages.desktop
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[Desktop Entry]</span>
 <span class="na">Type</span><span class="o">=</span><span class="s">Service</span>
 <span class="na">ServiceTypes</span><span class="o">=</span><span class="s">KonqPopupMenu/Plugin</span>
 <span class="na">X-KDE-ServiceTypes</span><span class="o">=</span><span class="s">KonqPopupMenu/Plugin</span>
@@ -223,7 +223,7 @@ $ ~/bin/imagen-png.sh *.jpg
 <span class="na">Name</span><span class="o">=</span><span class="s">Convert to JPG</span>
 <span class="na">Icon</span><span class="o">=</span><span class="s">image-jpeg</span>
 <span class="na">Exec</span><span class="o">=</span><span class="s">~/bin/imagen-jpg.sh %F</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Reinicie Dolphin y pruebe.</p>
@@ -282,9 +282,11 @@ $ ~/bin/imagen-png.sh *.jpg
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

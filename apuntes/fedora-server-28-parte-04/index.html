@@ -111,73 +111,73 @@
 <li>enp1s0 en internal</li>
 </ul>
 <p>Ejecutando estos comandos...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--set-default-zone=internal</span>
-<span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --add-interface=enp4s0</span>
-<span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --add-interface=enp1s0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --set-default-zone=internal</span>
+<span class="err"># firewall-cmd --zone=external --add-interface=enp4s0</span>
+<span class="err"># firewall-cmd --zone=internal --add-interface=enp1s0</span>
+</code></pre></div>
 
 
 <p>Verifique...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--get-active-zones</span>
-<span class="k">external</span>
-  <span class="n">interfaces</span><span class="p">:</span> <span class="n">enp4s0</span>
-<span class="n">internal</span>
-  <span class="n">interfaces</span><span class="p">:</span> <span class="n">enp1s0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --get-active-zones</span>
+<span class="err">external</span>
+<span class="err">  interfaces: enp4s0</span>
+<span class="err">internal</span>
+<span class="err">  interfaces: enp1s0</span>
+</code></pre></div>
 
 
 <p>Otra forma de verificar es obtener la zona por dispositivo...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--get-zone-of-interface=enp4s0</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--get-zone-of-interface=enp4s0</span>
 <span class="k">external</span>
 
 <span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--get-zone-of-interface=enp1s0</span>
 <span class="n">internal</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Por defecto, la zona <strong>internal</strong> tiene habilitados estos servicios...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --list-services</span>
-<span class="n">ssh</span> <span class="n">mdns</span> <span class="n">samba</span><span class="o">-</span><span class="n">client</span> <span class="n">dhcpv6</span><span class="o">-</span><span class="n">client</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=internal --list-services</span>
+<span class="err">ssh mdns samba-client dhcpv6-client</span>
+</code></pre></div>
 
 
 <p>Vamos a agregarle los servicios de DNS, DHCP y Squid...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --add-service=dns --add-service=dhcp --add-service=squid --add-service=cockpit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=internal --add-service=dns --add-service=dhcp --add-service=squid --add-service=cockpit</span>
+</code></pre></div>
 
 
 <p>Verifique...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --list-services</span>
-<span class="n">ssh</span> <span class="n">mdns</span> <span class="n">samba</span><span class="o">-</span><span class="n">client</span> <span class="n">dhcpv6</span><span class="o">-</span><span class="n">client</span> <span class="n">dns</span> <span class="n">dhcp</span> <span class="n">squid</span> <span class="n">cockpit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=internal --list-services</span>
+<span class="err">ssh mdns samba-client dhcpv6-client dns dhcp squid cockpit</span>
+</code></pre></div>
 
 
 <p>Luego, liste los servicos en <strong>external</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --list-services</span>
-<span class="n">ssh</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=external --list-services</span>
+<span class="err">ssh</span>
+</code></pre></div>
 
 
 <p>Retire el servicio OpenSSH de <strong>external</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --remove-service=ssh</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=external --remove-service=ssh</span>
+</code></pre></div>
 
 
 <p>El <em>enmascaramiento</em> debe estar en el dispositivo a la WAN...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --add-masquerade</span>
-<span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --remove-masquerade</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=external --add-masquerade</span>
+<span class="err"># firewall-cmd --zone=internal --remove-masquerade</span>
+</code></pre></div>
 
 
 <p>Revise toda la configuración con los comandos...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --list-all</span>
-<span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=external --list-all</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=internal --list-all</span>
+<span class="err"># firewall-cmd --zone=external --list-all</span>
+</code></pre></div>
 
 
 <p>Ahora sí. Haga estos cambios permanentes...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--runtime-to-permanent</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --runtime-to-permanent</span>
+</code></pre></div>
 
 
 <h3>Continuación...</h3>
@@ -219,9 +219,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

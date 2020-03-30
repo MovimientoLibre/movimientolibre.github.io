@@ -102,12 +102,12 @@
 <p><img alt="Pingüino armándose" src="imagen.jpg"></p>
 <h3>En el servidor local</h3>
 <p>Edite /etc/rsync.conf:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">rsync</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/rsync.conf</span>
+</code></pre></div>
 
 
 <p>Modifique el contenido de acuerdo a sus necesidades:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">This</span> <span class="n">line</span> <span class="k">is</span> <span class="n">required</span> <span class="k">by</span> <span class="n">the</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rsyncd</span> <span class="n">script</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">This</span> <span class="n">line</span> <span class="k">is</span> <span class="n">required</span> <span class="k">by</span> <span class="n">the</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rsyncd</span> <span class="n">script</span>
 <span class="n">pid</span> <span class="n">file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">rsyncd</span><span class="p">.</span><span class="n">pid</span>
 <span class="k">max</span> <span class="n">connections</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">use</span> <span class="n">chroot</span> <span class="o">=</span> <span class="n">yes</span>
@@ -129,46 +129,46 @@
 <span class="p">[</span><span class="n">gentoo</span><span class="o">-</span><span class="n">distfiles</span><span class="p">]</span>
 <span class="n">path</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">distfiles</span>
 <span class="k">comment</span> <span class="o">=</span> <span class="n">Gentoo</span> <span class="n">Portage</span> <span class="n">distfiles</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Arranque el <em>daemon</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rsyncd</span> <span class="k">start</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/rsyncd start</span>
+</code></pre></div>
 
 
 <p>Y configure que se inicie <strong>rsyncd</strong> al encender el equipo:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">rsyncd</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># rc-update add rsyncd default</span>
+</code></pre></div>
 
 
 <h3>En los clientes</h3>
 <p>En /etc/portage/make.conf</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">make</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/portage/make.conf</span>
+</code></pre></div>
 
 
 <p>Defina el servidor local como fuente de los paquetes. Cambie <em>portage.redlocal.lan</em> por el nombre o dirección IP del servidor con el portage:</p>
-<div class="highlight"><pre><span></span>PORTDIR=&quot;/usr/portage&quot;
+<div class="highlight"><pre><span></span><code>PORTDIR=&quot;/usr/portage&quot;
 DISTDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles&quot;
 PKGDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/packages&quot;
 FETCHCOMMAND=&quot;rsync rsync://portage.redlocal.lan/gentoo-distfiles/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> \<span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>Cree el directorio <strong>repos.conf</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">repos</span><span class="p">.</span><span class="n">conf</span>
-<span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">repos</span><span class="p">.</span><span class="n">conf</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /etc/portage/repos.conf</span>
+<span class="err"># cd /etc/portage/repos.conf/</span>
+</code></pre></div>
 
 
 <p>Y cree el archivo <strong>gentoo.conf</strong>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">gentoo</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano gentoo.conf</span>
+</code></pre></div>
 
 
 <p>Con este contenido, definiendo al servidor local de portage (no olvide cambiar <em>portage.redlocal.lan</em>):</p>
-<div class="highlight"><pre><span></span><span class="k">[DEFAULT]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[DEFAULT]</span>
 <span class="na">main-repo</span> <span class="o">=</span> <span class="s">gentoo</span>
 
 <span class="k">[gentoo]</span>
@@ -176,13 +176,13 @@ FETCHCOMMAND=&quot;rsync rsync://portage.redlocal.lan/gentoo-distfiles/\<span cl
 <span class="na">sync-type</span> <span class="o">=</span> <span class="s">rsync</span>
 <span class="na">sync-uri</span> <span class="o">=</span> <span class="s">rsync://portage.redlocal.lan/gentoo-portage</span>
 <span class="na">auto-sync</span> <span class="o">=</span> <span class="s">yes</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Verifique que su muro de fuego para que el <strong>puerto 873</strong> esté abierto, tanto en el servidor como en los clientes.</p>
 <p>Pruebe que funcione en un cliente con el comando:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="c1">--sync</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge --sync</span>
+</code></pre></div>
                 </article>
             </div>
             <div class="col-sm-4">
@@ -220,9 +220,11 @@ FETCHCOMMAND=&quot;rsync rsync://portage.redlocal.lan/gentoo-distfiles/\<span cl
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

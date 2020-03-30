@@ -108,19 +108,19 @@
 <li><strong>Identifique a la unidad principal, su disco de arranque con el sistema operativo y archivos,</strong> la puede ser <code>/dev/sda</code>. No vaya a dañar su instalación en uso.</li>
 </ul>
 <p>Verifique la <strong>ruta que identifica al dispositivo</strong> que tiene las particiones que desea eliminar. Cambie  <code>/dev/sdX</code> por <code>/dev/sdb</code>,  <code>/dev/sdc</code>, etc. hasta encontrarla.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdX</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># fdisk -l /dev/sdX</span>
+</code></pre></div>
 
 
 <p>Identifíquelo por su tamaño y particiones existentes. Revise de nuevo, un par de veces, no está demás ser doblemente cuidadosos.</p>
 <p>Para eliminar todas las particiones, ejecute el comando <code>dd</code> cambiando <code>/dev/sdX</code> por la <strong>ruta que identifica al dispositivo</strong> y con los parámetros siguientes...</p>
-<div class="highlight"><pre><span></span># <span class="nv">dd</span> <span class="k">if</span><span class="o">=/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">zero</span> <span class="nv">of</span><span class="o">=/</span><span class="nv">dev</span><span class="o">/</span><span class="nv">sdX</span> <span class="nv">bs</span><span class="o">=</span><span class="mi">512</span> <span class="nv">count</span><span class="o">=</span><span class="mi">1</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dd if=/dev/zero of=/dev/sdX bs=512 count=1</span>
+</code></pre></div>
 
 
 <p>Verifique que se hayan eliminado las particiones...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdX</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># fdisk -l /dev/sdX</span>
+</code></pre></div>
                 </article>
             </div>
             <div class="col-sm-4">
@@ -158,9 +158,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

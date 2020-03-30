@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/</loc>
-<lastmod>2020-01-12T20:14:40-00:00</lastmod>
+<lastmod>2020-03-30T16:09:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -63,6 +63,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <loc>https://movimientolibre.com/portafolio/soluciones/</loc>
 <lastmod>2019-04-18T14:32:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
+<loc>https://movimientolibre.com/apuntes/pelican-constructor-sitios-web/</loc>
+<lastmod>2020-03-30T16:08:00-06:00</lastmod>
+<changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
@@ -971,7 +978,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2019-08-25T16:22:00-06:37</lastmod>
+<lastmod>2020-03-30T16:08:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -986,6 +993,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://movimientolibre.com/category/presentaciones.html</loc>
 <lastmod>2019-04-23T14:48:00-06:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://movimientolibre.com/tag/pelican.html</loc>
+<lastmod>2020-03-30T16:08:00-06:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://movimientolibre.com/tag/python.html</loc>
+<lastmod>2020-03-30T16:08:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

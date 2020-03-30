@@ -101,24 +101,24 @@
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>24 junio 2018</p>
 <h3>Apache HTTPD</h3>
 <p>Instale Apache HTTPD si no lo ha hecho...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">httpd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install httpd</span>
+</code></pre></div>
 
 
 <p>Cree el archivo <code>/etc/httpd/conf.d/proxy-autoconfig.conf</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">proxy</span><span class="o">-</span><span class="n">autoconfig</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/httpd/conf.d/proxy-autoconfig.conf</span>
+</code></pre></div>
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><span class="n">AddType</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">ns</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">autoconfig</span> <span class="p">.</span><span class="n">pac</span>
-<span class="n">AddType</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">ns</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">autoconfig</span> <span class="p">.</span><span class="n">dat</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">AddType application/x-ns-proxy-autoconfig .pac</span>
+<span class="err">AddType application/x-ns-proxy-autoconfig .dat</span>
+</code></pre></div>
 
 
 <p>Vaya al directorio...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cd /var/www/html/</span>
+</code></pre></div>
 
 
 <p>Donde vamos a crear los archivos <code>proxy.pac</code> y <code>wpad.dat</code> que definen si usar o no el proxy...</p>
@@ -132,108 +132,108 @@
 <li>Todo lo demás al PROXY</li>
 </ul>
 <p>Cree <code>proxy.pac</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="n">proxy</span><span class="p">.</span><span class="n">pac</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano proxy.pac</span>
+</code></pre></div>
 
 
 <p>Con este contenido (cambie <code>miredlocal.lan</code> y <code>192.168.4.0</code> por su configuración)...</p>
-<div class="highlight"><pre><span></span><span class="nv">function</span> <span class="nv">FindProxyForURL</span><span class="ss">(</span><span class="nv">url</span>, <span class="nv">host</span><span class="ss">)</span> {
+<div class="highlight"><pre><span></span><code><span class="nt">function</span> <span class="nt">FindProxyForURL</span><span class="o">(</span><span class="nt">url</span><span class="o">,</span> <span class="nt">host</span><span class="o">)</span> <span class="p">{</span>
 
-    <span class="cm">/* Normalize the URL for pattern matching */</span>
-    <span class="nv">url</span> <span class="o">=</span> <span class="nv">url</span>.<span class="nv">toLowerCase</span><span class="ss">()</span><span class="c1">;</span>
-    <span class="nv">host</span> <span class="o">=</span> <span class="nv">host</span>.<span class="nv">toLowerCase</span><span class="ss">()</span><span class="c1">;</span>
+    <span class="c">/* Normalize the URL for pattern matching */</span>
+    <span class="err">url</span> <span class="err">=</span> <span class="err">url.toLowerCase()</span><span class="p">;</span>
+    <span class="err">host</span> <span class="err">=</span> <span class="err">host.toLowerCase()</span><span class="p">;</span>
 
-    <span class="cm">/* Don&#39;t proxy local hostnames */</span>
-    <span class="k">if</span> <span class="ss">(</span><span class="nv">isPlainHostName</span><span class="ss">(</span><span class="nv">host</span><span class="ss">))</span> {
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="s">DIRECT</span><span class="s2">&quot;</span><span class="c1">;</span>
-    }
+    <span class="c">/* Don&#39;t proxy local hostnames */</span>
+    <span class="err">if</span> <span class="err">(isPlainHostName(host))</span> <span class="err">{</span>
+        <span class="err">return</span> <span class="err">&quot;DIRECT&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="cm">/* Don&#39;t proxy local domains */</span>
-    <span class="k">if</span> <span class="ss">(</span><span class="nv">dnsDomainIs</span><span class="ss">(</span><span class="nv">host</span>, <span class="s2">&quot;</span><span class="s">*.miredlocal.lan</span><span class="s2">&quot;</span><span class="ss">))</span> {
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="s">DIRECT</span><span class="s2">&quot;</span><span class="c1">;</span>
-    }
-    <span class="k">if</span> <span class="ss">(</span><span class="nv">isInNet</span><span class="ss">(</span><span class="nv">host</span>, <span class="s2">&quot;</span><span class="s">192.168.4.0</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">255.255.255.0</span><span class="s2">&quot;</span><span class="ss">))</span> {
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="s">DIRECT</span><span class="s2">&quot;</span><span class="c1">;</span>
-    }
+    <span class="c">/* Don&#39;t proxy local domains */</span>
+    <span class="nt">if</span> <span class="o">(</span><span class="nt">dnsDomainIs</span><span class="o">(</span><span class="nt">host</span><span class="o">,</span> <span class="s2">&quot;*.miredlocal.lan&quot;</span><span class="o">))</span> <span class="p">{</span>
+        <span class="err">return</span> <span class="err">&quot;DIRECT&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">if</span> <span class="o">(</span><span class="nt">isInNet</span><span class="o">(</span><span class="nt">host</span><span class="o">,</span> <span class="s2">&quot;192.168.4.0&quot;</span><span class="o">,</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="o">))</span> <span class="p">{</span>
+        <span class="err">return</span> <span class="err">&quot;DIRECT&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
 
-    <span class="cm">/* Don&#39;t proxy non-routable addresses (RFC 3330) */</span>
-    <span class="k">if</span> <span class="ss">(</span><span class="nv">isResolvable</span><span class="ss">(</span><span class="nv">host</span><span class="ss">))</span> {
-        <span class="nv">var</span> <span class="nv">hostIP</span> <span class="o">=</span> <span class="nv">dnsResolve</span><span class="ss">(</span><span class="nv">host</span><span class="ss">)</span><span class="c1">;</span>
-        <span class="k">if</span> <span class="ss">(</span><span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">0.0.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.0.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">10.0.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.0.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">127.0.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.0.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">169.254.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.255.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">172.16.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.240.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">192.0.2.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.255.255.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">192.88.99.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.255.255.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">192.168.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.255.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">198.18.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">255.254.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">224.0.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">240.0.0.0</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="o">||</span>
-            <span class="nv">isInNet</span><span class="ss">(</span><span class="nv">hostIP</span>, <span class="s1">&#39;</span><span class="s">240.0.0.0</span><span class="s1">&#39;</span>, <span class="s1">&#39;</span><span class="s">240.0.0.0</span><span class="s1">&#39;</span><span class="ss">))</span> {
-            <span class="k">return</span> <span class="s1">&#39;</span><span class="s">DIRECT</span><span class="s1">&#39;</span><span class="c1">;</span>
-        }
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="s">PROXY proxy.miredlocal.lan:3128</span><span class="s2">&quot;</span><span class="c1">;</span>
-    }
+    <span class="c">/* Don&#39;t proxy non-routable addresses (RFC 3330) */</span>
+    <span class="nt">if</span> <span class="o">(</span><span class="nt">isResolvable</span><span class="o">(</span><span class="nt">host</span><span class="o">))</span> <span class="p">{</span>
+        <span class="err">var</span> <span class="err">hostIP</span> <span class="err">=</span> <span class="err">dnsResolve(host)</span><span class="p">;</span>
+        <span class="err">if</span> <span class="err">(isInNet(hostIP,</span> <span class="err">&#39;0.0.0.0&#39;,</span> <span class="err">&#39;255.0.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;10.0.0.0&#39;,</span> <span class="err">&#39;255.0.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;127.0.0.0&#39;,</span> <span class="err">&#39;255.0.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;169.254.0.0&#39;,</span> <span class="err">&#39;255.255.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;172.16.0.0&#39;,</span> <span class="err">&#39;255.240.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;192.0.2.0&#39;,</span> <span class="err">&#39;255.255.255.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;192.88.99.0&#39;,</span> <span class="err">&#39;255.255.255.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;192.168.0.0&#39;,</span> <span class="err">&#39;255.255.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;198.18.0.0&#39;,</span> <span class="err">&#39;255.254.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;224.0.0.0&#39;,</span> <span class="err">&#39;240.0.0.0&#39;)</span> <span class="err">||</span>
+            <span class="err">isInNet(hostIP,</span> <span class="err">&#39;240.0.0.0&#39;,</span> <span class="err">&#39;240.0.0.0&#39;))</span> <span class="err">{</span>
+            <span class="err">return</span> <span class="err">&#39;DIRECT&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nt">return</span> <span class="s2">&quot;PROXY proxy.miredlocal.lan:3128&quot;</span><span class="o">;</span>
+    <span class="err">}</span>
 
-    <span class="cm">/* Internet */</span>
-    <span class="k">if</span> <span class="ss">(</span><span class="nv">url</span>.<span class="nv">substring</span><span class="ss">(</span><span class="mi">0</span>,<span class="mi">5</span><span class="ss">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">http:</span><span class="s2">&quot;</span> <span class="o">||</span>
-        <span class="nv">url</span>.<span class="nv">substring</span><span class="ss">(</span><span class="mi">0</span>,<span class="mi">6</span><span class="ss">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">https:</span><span class="s2">&quot;</span> <span class="o">||</span>
-        <span class="nv">url</span>.<span class="nv">substring</span><span class="ss">(</span><span class="mi">0</span>,<span class="mi">4</span><span class="ss">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">ftp:</span><span class="s2">&quot;</span><span class="ss">)</span> {
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="s">PROXY proxy.miredlocal.lan:3128</span><span class="s2">&quot;</span><span class="c1">;</span>
-    }
+    <span class="c">/* Internet */</span>
+    <span class="nt">if</span> <span class="o">(</span><span class="nt">url</span><span class="p">.</span><span class="nc">substring</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="nt">5</span><span class="o">)</span> <span class="o">==</span> <span class="s2">&quot;http:&quot;</span> <span class="o">||</span>
+        <span class="nt">url</span><span class="p">.</span><span class="nc">substring</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="nt">6</span><span class="o">)</span> <span class="o">==</span> <span class="s2">&quot;https:&quot;</span> <span class="o">||</span>
+        <span class="nt">url</span><span class="p">.</span><span class="nc">substring</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="nt">4</span><span class="o">)</span> <span class="o">==</span> <span class="s2">&quot;ftp:&quot;</span><span class="o">)</span> <span class="p">{</span>
+        <span class="err">return</span> <span class="err">&quot;PROXY</span> <span class="err">proxy.miredlocal.</span><span class="n">lan</span><span class="p">:</span><span class="mi">3128</span><span class="s2">&quot;;</span>
+<span class="s2">    }</span>
 
-    <span class="cm">/* Default*/</span>
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="s">DIRECT</span><span class="s2">&quot;</span><span class="c1">;</span>
+<span class="s2">    /* Default*/</span>
+<span class="s2">    return &quot;</span><span class="n">DIRECT</span><span class="err">&quot;</span><span class="p">;</span>
 
-}
-</pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 
 <p>Cópielo a <code>wpad.dat</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="n">proxy</span><span class="p">.</span><span class="n">pac</span> <span class="n">wpad</span><span class="p">.</span><span class="n">dat</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp proxy.pac wpad.dat</span>
+</code></pre></div>
 
 
 <p>Como está escrito previamente, en <code>/etc/hosts</code> está declarado "wpad" con la dirección IP del servidor...</p>
-<div class="highlight"><pre><span></span><span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">1</span>  <span class="n">proxy</span> <span class="n">wpad</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">192.168.4.1  proxy wpad</span>
+</code></pre></div>
 
 
 <p>Debe activar la línea <code>dhcp-option=252,...</code> en <code>/etc/dnsmasq.conf</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">dnsmasq</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/dnsmasq.conf</span>
+</code></pre></div>
 
 
 <p>Con el URL al archivo <code>proxy.pac</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">URL</span> <span class="n">del</span> <span class="n">script</span> <span class="n">de</span> <span class="n">configuración</span> <span class="n">automática</span> <span class="n">de</span> <span class="n">proxy</span> <span class="n">en</span> <span class="n">el</span> <span class="n">navegador</span>
-<span class="n">dhcp</span><span class="o">-</span><span class="k">option</span><span class="o">=</span><span class="mi">252</span><span class="p">,</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">proxy</span><span class="p">.</span><span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span><span class="o">/</span><span class="n">proxy</span><span class="p">.</span><span class="n">pac</span>
-<span class="o">#</span> <span class="n">En</span> <span class="n">cambio</span><span class="p">,</span> <span class="n">para</span> <span class="n">Windows</span><span class="p">,</span> <span class="n">cuando</span> <span class="k">no</span> <span class="n">se</span> <span class="n">tiene</span><span class="p">,</span> <span class="n">se</span> <span class="n">envía</span> <span class="n">un</span> <span class="n">avance</span> <span class="n">de</span> <span class="n">línea</span>
-<span class="o">#</span><span class="n">dhcp</span><span class="o">-</span><span class="k">option</span><span class="o">=</span><span class="mi">252</span><span class="p">,</span><span class="ss">&quot;\n&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># URL del script de configuración automática de proxy en el navegador</span>
+<span class="err">dhcp-option=252,http://proxy.miredlocal.lan/proxy.pac</span>
+<span class="err"># En cambio, para Windows, cuando no se tiene, se envía un avance de línea</span>
+<span class="err">#dhcp-option=252,&quot;\n&quot;</span>
+</code></pre></div>
 
 
 <p>Reinicie DNSmasq...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">restart</span> <span class="n">dnsmasq</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl restart dnsmasq</span>
+</code></pre></div>
 
 
 <p>Arranque o recargue el <em>daemon</em> Apache HTTPD...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">httpd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start httpd</span>
+</code></pre></div>
 
 
 <p>Agregue el servicio HTTP (TCP 80) al muro de fuego en la zona <em>interna</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--zone=internal --add-service=http</span>
-<span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--runtime-to-permanent</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --zone=internal --add-service=http</span>
+<span class="err"># firewall-cmd --runtime-to-permanent</span>
+</code></pre></div>
 
 
 <p>Haga estas pruebas desde un equipo en su red local...</p>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">dig</span> <span class="mf">@192.168.4.1</span> <span class="n">wpad</span><span class="p">.</span><span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">dig</span> <span class="mf">@192.168.4.1</span> <span class="n">wpad</span><span class="p">.</span><span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span>
 <span class="err">$</span> <span class="n">dig</span> <span class="mf">@192.168.4.1</span> <span class="n">proxy</span><span class="p">.</span><span class="n">miredlocal</span><span class="p">.</span><span class="n">lan</span>
 <span class="err">$</span> <span class="n">wget</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//proxy.miredlocal.lan/proxy.pac</span>
 <span class="err">$</span> <span class="n">wget</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//wpad.miredlocal.lan/wpad.dat</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3>Continuación...</h3>
@@ -275,9 +275,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

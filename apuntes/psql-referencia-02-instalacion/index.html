@@ -101,64 +101,64 @@
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>12 junio 2007</p>
 <p>Los pasos descritos a contiuación son para instalar y configurar PostgreSQL en <a href="http://www.gentoo.org">Gentoo Linux</a>, si usa otra distribución consulte el procedimiento requerido para la misma.</p>
 <p>En el archivo <em>make.conf</em> la variable <em>USE</em> debe tener el parámetro <em>postgres</em>.  Como el usuario root puede editar el contenido de <em>make.conf</em> con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">make</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/make.conf</span>
+</code></pre></div>
 
 
 <p>Primero como usuario root revise las dependencias que le solicite:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">pv</span> <span class="n">postgresql</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -pv postgresql</span>
+</code></pre></div>
 
 
 <p>Para instalar:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">postgresql</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql</span>
+</code></pre></div>
 
 
 <p>Revise el archivo de configuración del arranque del demonio con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">postgresql</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/postgresql</span>
+</code></pre></div>
 
 
 <p>La configuración por defecto de este archivo es suficiente para el usuario común, aunque puede cambiar el directorio del <em>database cluster</em>, el usuario con el que correrá el demonio o los parámetros del mismo.</p>
 <p>Le recomiendo el siguiente preparativo en el usuario <em>postgres</em>.  Vamos a hacer que cada vez que ingrese el usuario postgres se carge la variable de entorno PGDATA con la ubicación del <em>database cluster</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">su</span> <span class="n">postgres</span>
-<span class="err">$</span> <span class="n">cd</span> <span class="o">~</span>
-<span class="err">$</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="p">.</span><span class="n">bashrc</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># su postgres</span>
+<span class="err">$ cd ~</span>
+<span class="err">$ nano -w .bashrc</span>
+</code></pre></div>
 
 
 <p>Escriba esta línea en el archivo <em>.bashrc</em>:</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PGDATA</span><span class="o">=</span>/var/lib/postgresql/data
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">PGDATA</span><span class="o">=</span>/var/lib/postgresql/data
+</code></pre></div>
 
 
 <p>Guarde los cambios y salga como usuario postgres, la próxima vez que ingrese, se cargará la variable <em>PGDATA</em>.</p>
 <p>A continuación vamos manualmente a crear el "database cluster".  El comando <em>initdb</em> tomará de <em>PGDATA</em> la ubicación:</p>
-<div class="highlight"><pre><span></span># <span class="nv">su</span> <span class="o">-</span> <span class="nv">postgres</span>
-$ <span class="nv">initdb</span>
-$ <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># su - postgres</span>
+<span class="err">$ initdb</span>
+<span class="err">$ exit</span>
+</code></pre></div>
 
 
 <p>Arranquemos por primera vez el demonio, como root:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">postgresql</span> <span class="k">start</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/postgresql start</span>
+</code></pre></div>
 
 
 <p>Opcionalmente, si necesita configurar las opciones de escucha (direcciones ip además de localhost) detenga el demonio, ingrese como postgres y modifique el archivo de configuración <em>pg_hba.conf</em>:</p>
-<div class="highlight"><pre><span></span># <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">init</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">postgresql</span> <span class="nv">stop</span>
-# <span class="nv">su</span> <span class="o">-</span> <span class="nv">postgres</span>
-$ <span class="nv">cd</span> <span class="o">~/</span><span class="nv">data</span>
-$ <span class="nv">nano</span> <span class="o">-</span><span class="nv">w</span> <span class="nv">pg_hba</span>.<span class="nv">conf</span>
-$ <span class="k">exit</span>
-# <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">init</span>.<span class="nv">d</span><span class="o">/</span><span class="nv">postgresql</span> <span class="nv">start</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/postgresql stop</span>
+<span class="err"># su - postgres</span>
+<span class="err">$ cd ~/data</span>
+<span class="err">$ nano -w pg_hba.conf</span>
+<span class="err">$ exit</span>
+<span class="err"># /etc/init.d/postgresql start</span>
+</code></pre></div>
 
 
 <p>Si quiere que el demonio del postgresql se inicie cada vez que enciende el equipo, ejecute el comando <em>rc-update</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">postgresql</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># rc-update add postgresql default</span>
+</code></pre></div>
                 </article>
             </div>
             <div class="col-sm-4">
@@ -196,9 +196,11 @@ $ <span class="k">exit</span>
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

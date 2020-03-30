@@ -108,17 +108,17 @@
 <p>Le invito a continuar leyendo esta <strong>segunda parte</strong> de la <strong>Guía de Instalación de Gentoo Linux para una netbook</strong>. No deje de leer la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-1.html">primera parte</a>.</p>
 <h3>Use el profile desktop</h3>
 <p>Cambie el <em>profile</em> a <em>desktop</em>:</p>
-<div class="highlight"><pre><span></span># <span class="nv">eselect</span> <span class="nv">profile</span> <span class="nv">list</span>
-# <span class="nv">eselect</span> <span class="nv">profile</span> <span class="nv">set</span> <span class="nv">default</span><span class="o">/</span><span class="nv">linux</span><span class="o">/</span><span class="nv">x86</span><span class="o">/</span><span class="mi">10</span>.<span class="mi">0</span><span class="o">/</span><span class="nv">desktop</span>
-# <span class="nv">eselect</span> <span class="nv">profile</span> <span class="k">show</span>
-# <span class="nv">env</span><span class="o">-</span><span class="nv">update</span>
-# <span class="nv">source</span> <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">profile</span>
-# <span class="nv">export</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">(prescott) $PS1</span><span class="s2">&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># eselect profile list</span>
+<span class="err"># eselect profile set default/linux/x86/10.0/desktop</span>
+<span class="err"># eselect profile show</span>
+<span class="err"># env-update</span>
+<span class="err"># source /etc/profile</span>
+<span class="err"># export PS1=&quot;(prescott) $PS1&quot;</span>
+</code></pre></div>
 
 
 <p>Modifique la variable <strong>USE</strong> en /etc/make.conf con los parámetros que definen las dependencias y uso del equipo. Estos son los que he elegido:</p>
-<div class="highlight"><pre><span></span># Redes
+<div class="highlight"><pre><span></span><code># Redes
 USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> bluetooth cups ppd samba wifi&quot;
 
 # Desarrollo. He desactivado java, más adelante lo activare
@@ -148,36 +148,36 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 # kpathsea es para LaTeX
 # nsplugin es para que vlc y java instalen plugins para firefox
 USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> gnutls joystick kqemu kpathsea nsplugin&quot;
-</pre></div>
+</code></pre></div>
 
 
 <p>También aproveche el editar el contenido de /etc/make.conf para agregar los parámetros de <em>X.org</em></p>
-<div class="highlight"><pre><span></span><span class="o">#</span>
-<span class="o">#</span> <span class="n">X</span><span class="p">.</span><span class="n">org</span>
-<span class="o">#</span>
-<span class="n">INPUT_DEVICES</span><span class="o">=</span><span class="ss">&quot;keyboard mouse synaptics joystick evdev&quot;</span>
-<span class="n">VIDEO_CARDS</span><span class="o">=</span><span class="ss">&quot;fbdev intel&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">#</span>
+<span class="err"># X.org</span>
+<span class="err">#</span>
+<span class="err">INPUT_DEVICES=&quot;keyboard mouse synaptics joystick evdev&quot;</span>
+<span class="err">VIDEO_CARDS=&quot;fbdev intel&quot;</span>
+</code></pre></div>
 
 
 <h3>Instale el software básico</h3>
 <p>Los siguientes programas son indispensables:</p>
-<div class="highlight"><pre><span></span># <span class="nv">emerge</span> <span class="nv">gentoolkit</span> <span class="nv">reiserfsprogs</span> <span class="nv">dhcpcd</span> <span class="nv">dosfstools</span> <span class="nv">screen</span> <span class="k">logrotate</span> <span class="nv">iptables</span> <span class="nv">pwgen</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools screen logrotate iptables pwgen</span>
+</code></pre></div>
 
 
 <p>Instale <a href="http://www.alsa-project.org/">ALSA</a></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">pciutils</span> <span class="n">alsa</span><span class="o">-</span><span class="n">utils</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge pciutils alsa-utils</span>
+</code></pre></div>
 
 
 <p>Y configúrelo:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">modprobe</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">alsa</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/modprobe.d/alsa.conf</span>
+</code></pre></div>
 
 
 <p>Este es el contenido de /etc/modprobe.d/alsa.conf para mi <em>netbook</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ALSA</span> <span class="n">portion</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">ALSA</span> <span class="n">portion</span>
 <span class="k">alias</span> <span class="nb">char</span><span class="o">-</span><span class="n">major</span><span class="o">-</span><span class="mi">116</span> <span class="n">snd</span>
 
 <span class="o">#</span> <span class="n">OSS</span><span class="o">/</span><span class="k">Free</span> <span class="n">portion</span>
@@ -204,77 +204,77 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 
 <span class="o">#</span> <span class="n">Autoload</span> <span class="n">model</span>
 <span class="k">options</span> <span class="n">snd</span><span class="o">-</span><span class="n">hda</span><span class="o">-</span><span class="n">intel</span> <span class="k">index</span><span class="o">=</span><span class="mi">0</span> <span class="n">model</span><span class="o">=</span><span class="n">auto</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Instale <a href="http://www.x.org/">X.org</a></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">xorg</span><span class="o">-</span><span class="n">x11</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">freefonts</span> <span class="n">terminus</span><span class="o">-</span><span class="n">font</span> <span class="n">ttf</span><span class="o">-</span><span class="n">bitstream</span><span class="o">-</span><span class="n">vera</span> <span class="n">corefonts</span> <span class="n">artwiz</span><span class="o">-</span><span class="n">latin1</span> <span class="n">dejavu</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge xorg-x11</span>
+<span class="err"># emerge freefonts terminus-font ttf-bitstream-vera corefonts artwiz-latin1 dejavu</span>
+</code></pre></div>
 
 
 <p>Instale el gestor de ventanas <a href="http://www.fluxbox.org/">Fluxbox</a>, el monitor de sistema <a href="http://conky.sourceforge.net/">Conky</a> y la terminal <em>XTerm</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">fluxbox</span> <span class="n">conky</span> <span class="n">xterm</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge fluxbox conky xterm</span>
+</code></pre></div>
 
 
 <p>Instale servicios para <em>log, cron, acpi</em> y <em>ntp</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span> <span class="n">vixie</span><span class="o">-</span><span class="n">cron</span> <span class="n">acpid</span> <span class="n">ntp</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge syslog-ng vixie-cron acpid ntp</span>
+</code></pre></div>
 
 
 <p>Estos servicios y otros más deben iniciarce al encender el equipo.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">alsasound</span> <span class="n">boot</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">consolekit</span> <span class="k">default</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">dbus</span> <span class="k">default</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">hald</span> <span class="k">default</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">syslog</span><span class="o">-</span><span class="n">ng</span> <span class="k">default</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">vixie</span><span class="o">-</span><span class="n">cron</span> <span class="k">default</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">acpid</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># rc-update add alsasound boot</span>
+<span class="err"># rc-update add consolekit default</span>
+<span class="err"># rc-update add dbus default</span>
+<span class="err"># rc-update add hald default</span>
+<span class="err"># rc-update add syslog-ng default</span>
+<span class="err"># rc-update add vixie-cron default</span>
+<span class="err"># rc-update add acpid default</span>
+</code></pre></div>
 
 
 <p>Instale bases de datos, el servidor web <a href="http://httpd.apache.org/">Apache</a> y <a href="http://php.net/">PHP</a>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">postgresql</span><span class="o">-</span><span class="n">server</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">mysql</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">apache</span> <span class="n">php</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql-server</span>
+<span class="err"># emerge mysql</span>
+<span class="err"># emerge apache php</span>
+</code></pre></div>
 
 
 <p>Instale <a href="http://www.samba.org/">SAMBA</a> y <a href="http://www.gtk.org/">GTK+</a>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">samba</span> <span class="n">cups</span> <span class="n">gtk</span><span class="o">+</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge samba cups gtk+</span>
+</code></pre></div>
 
 
 <p>Ya instalado el GTK+ podemos instalar más programas útiles que dependen de éste.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">sudo</span> <span class="n">fusesmb</span> <span class="n">geeqie</span> <span class="n">xscreensaver</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge sudo fusesmb geeqie xscreensaver</span>
+</code></pre></div>
 
 
 <p>Para hacer consultas en el portage, el <a href="http://eix.berlios.de/">eix</a> es más rápido que <em>emerge -s <texto></em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">eix</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">eix</span><span class="o">-</span><span class="k">update</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge eix</span>
+<span class="err"># emerge eix-update</span>
+</code></pre></div>
 
 
 <p>Si tiene un procesador <strong>Intel</strong> le conviene instalar <strong>powertop</strong>, un programa que identifica los procesos que más energía consumen. De forma similar, son útiles <strong>cpufrequtils</strong> y <strong>acpitool</strong>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">powertop</span> <span class="n">cpufrequtils</span> <span class="n">acpitool</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge powertop cpufrequtils acpitool</span>
+</code></pre></div>
 
 
 <p>Instale <a href="http://www.ruby-lang.org/">Ruby</a>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">ruby</span> <span class="n">eruby</span> <span class="n">rubygems</span> <span class="n">redcloth</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge ruby eruby rubygems redcloth</span>
+</code></pre></div>
 
 
 <h3>Revisión de dependencias y actualizaciones</h3>
 <p>En /etc/portage/package.use puede confugurar las opciones de la variable <em>USE</em> de forma directa para cada paquete.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">package</span><span class="p">.</span><span class="n">use</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/portage/package.use</span>
+</code></pre></div>
 
 
 <p>Yo tengo este contenido en /etc/portage/package.use:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Sin</span> <span class="n">GTK</span><span class="o">+</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Sin</span> <span class="n">GTK</span><span class="o">+</span>
 <span class="n">sys</span><span class="o">-</span><span class="n">devel</span><span class="o">/</span><span class="n">gcc</span> <span class="o">-</span><span class="n">gtk</span>
 
 <span class="o">#</span> <span class="n">Sin</span> <span class="n">gd</span>
@@ -294,27 +294,27 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 
 <span class="o">#</span> <span class="n">Compiz</span><span class="o">-</span><span class="n">Fusion</span>
 <span class="n">x11</span><span class="o">-</span><span class="n">wm</span><span class="o">/</span><span class="n">compiz</span><span class="o">-</span><span class="n">fusion</span> <span class="n">emerald</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Revisamos que no falten dependencias y que se actualizen los paquetes que tengan nuevas <em>USE</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">puND</span> <span class="n">world</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="o">-</span><span class="n">uND</span> <span class="n">world</span>
-<span class="o">#</span> <span class="n">python</span><span class="o">-</span><span class="n">updater</span>
-<span class="o">#</span> <span class="n">perl</span><span class="o">-</span><span class="n">cleaner</span> <span class="c1">--all</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge -puND world</span>
+<span class="err"># emerge -uND world</span>
+<span class="err"># python-updater</span>
+<span class="err"># perl-cleaner --all</span>
+</code></pre></div>
 
 
 <h3>Establecer cuentas y contraseñas</h3>
 <p>Establezca la contraseña de root</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">passwd</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
+</code></pre></div>
 
 
 <p>De de alta a un usuario. Sustituya USUARIO por su nombre de usuario.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">useradd</span> <span class="o">-</span><span class="k">g</span> <span class="n">users</span> <span class="o">-</span><span class="k">G</span> <span class="n">tty</span><span class="p">,</span><span class="n">wheel</span><span class="p">,</span><span class="n">audio</span><span class="p">,</span><span class="n">cdrom</span><span class="p">,</span><span class="n">video</span><span class="p">,</span><span class="n">portage</span><span class="p">,</span><span class="n">cron</span><span class="p">,</span><span class="n">usb</span><span class="p">,</span><span class="n">lp</span><span class="p">,</span><span class="n">plugdev</span> <span class="o">-</span><span class="n">m</span> <span class="o">&lt;</span><span class="n">USUARIO</span><span class="o">&gt;</span>
-<span class="o">#</span> <span class="n">passwd</span> <span class="n">USUARIO</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># useradd -g users -G tty,wheel,audio,cdrom,video,portage,cron,usb,lp,plugdev -m &lt;USUARIO&gt;</span>
+<span class="err"># passwd USUARIO</span>
+</code></pre></div>
 
 
 <h3>Fin de la segunda parte</h3>
@@ -356,9 +356,11 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

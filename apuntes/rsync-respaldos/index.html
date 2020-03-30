@@ -103,7 +103,7 @@
 <p>Existen muchas formas en las cuales podríamos perder nuestros archivos, que van desde el robo de nuestra <em>laptop</em> hasta el borrado accidental. <em>La verdad es que la gran mayoría de nosotros no piensa en respaldar sus documentos hasta que la fatal desgracia nos enseña que debimos haberlo hecho.</em> Y que cuando es por descompostura, pérdida o robo; nos dolerá más la pérdida de los archivos que el valor del equipo mismo.</p>
 <p>Como solución simple sugiero instalar un segundo disco duro en un equipo de escritorio, donde los los usuarios depositen el respaldo de sus <em>laptops</em> vía <em>wireless</em> desde sus equipos portátiles. <em>No confío que sea seguro compartir un disco duro externo entre varias personas, ya que se les puede caer o perder.</em></p>
 <p>Así pues instalé un segundo disco duro en el equipo de escritorio, el cual dedicaré enteramente a respaldos. Y como <em>tú y yo</em> usamos GNU/Linux, éste aparece como /dev/sdb.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span>
 
 <span class="n">Disk</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb</span><span class="p">:</span> <span class="mi">250</span><span class="p">.</span><span class="mi">1</span> <span class="n">GB</span><span class="p">,</span> <span class="mi">250059350016</span> <span class="n">bytes</span>
 <span class="mi">81</span> <span class="n">heads</span><span class="p">,</span> <span class="mi">63</span> <span class="n">sectors</span><span class="o">/</span><span class="n">track</span><span class="p">,</span> <span class="mi">95707</span> <span class="n">cylinders</span><span class="p">,</span> <span class="mi">488397168</span> <span class="n">sectores</span> <span class="n">en</span> <span class="n">total</span>
@@ -114,56 +114,56 @@
 
 <span class="n">Disposit</span><span class="p">.</span> <span class="n">Inicio</span>    <span class="n">Comienzo</span>      <span class="n">Fin</span>      <span class="n">Bloques</span>  <span class="n">Id</span>  <span class="n">Sistema</span>
 <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>            <span class="mi">2048</span>   <span class="mi">488397167</span>   <span class="mi">244197560</span>   <span class="mi">83</span>  <span class="n">Linux</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Su única partición la <em>formateé</em> bajo el confiable sistema de archivos Ext4.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkfs</span><span class="p">.</span><span class="n">ext4</span> <span class="o">-</span><span class="n">L</span> <span class="n">respaldos</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext4 -L respaldos /dev/sdb1</span>
+</code></pre></div>
 
 
 <p>Para luego montarlo manualmente en /mnt/respaldos</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mount /dev/sdb1 /mnt/respaldos</span>
+</code></pre></div>
 
 
 <p>Claro que me conviene que esta partición se monte cada vez que enciendo el equipo, así que agrego la siguiente línea a la configuración de /etc/fstab para ello.</p>
-<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>   <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span>    <span class="n">ext4</span>    <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">1</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">/dev/sdb1   /mnt/respaldos    ext4    defaults    0 1</span>
+</code></pre></div>
 
 
 <p>Ya <em>particionado</em> y <em>formateado</em> el disco, procedo a crear directorios para cada usuario que deba respaldar. Con anterioridad ya había creado los usuarios. Sustituya <em>usuario1</em>, <em>usuario2</em> y <em>usuario3</em> con los nombres de los usuarios que vayan a hacer respaldos.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario1</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario2</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario3</span>
-<span class="o">#</span> <span class="n">chown</span> <span class="n">usuario1</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario1</span>
-<span class="o">#</span> <span class="n">chown</span> <span class="n">usuario2</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario2</span>
-<span class="o">#</span> <span class="n">chown</span> <span class="n">usuario3</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">respaldos</span><span class="o">/</span><span class="n">usuario3</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/respaldos/usuario1</span>
+<span class="err"># mkdir /mnt/respaldos/usuario2</span>
+<span class="err"># mkdir /mnt/respaldos/usuario3</span>
+<span class="err"># chown usuario1:users /mnt/respaldos/usuario1</span>
+<span class="err"># chown usuario2:users /mnt/respaldos/usuario2</span>
+<span class="err"># chown usuario3:users /mnt/respaldos/usuario3</span>
+</code></pre></div>
 
 
 <p>El equipo mantiene en ejecución el <em>daemon</em> <em>SSH</em>. Por medio de éste se pueden transferir los archivos de forma cifrada protegiéndonos de que algún intruso pueda atraparlos fácilmente.</p>
 <p>En este punto, la computadora de escritorio está lista para recibir los respaldos. Punto aparte, tengo habilitado un servidor DNS que me resuelve el nombre <em>escritorio.casa.lan</em> por su respectiva dirección IP. Si no lo tiene, puede usar la dirección IP en los comandos que siguen.</p>
 <p>Para realizar un <em>respaldo manual</em> del directorio <em>Documentos</em> ejecuto este comando en la <em>laptop</em> bajo la sesión del usuario (si es necesario, sustituya <em>escritorio.casa.lan</em> por la dirección IP del equipo y <em>usuario1</em> por su nombre de usuario):</p>
-<div class="highlight"><pre><span></span>$ rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/
+</code></pre></div>
 
 
 <p>Como iniciativa propia, no deseo respaldar videos o música, prefiero darle prioridad a lo que tengo en <em>Documentos</em>, Usted seguramente me entenderá.</p>
 <p>En las siguientes ejecuciones, el comando <em>rsync</em> copiará sólo los archivos nuevos o los que hayan cambiado.</p>
 <p>Sólo un detalle más: como el anterior comando es largo, prefiero ejecutarlo fácilmente con un <em>atajo</em>. Para ello edito el archivo <em>.bashrc</em> que tengo en la raíz de mi <em>home</em>:</p>
-<div class="highlight"><pre><span></span>$ nano -w ~/.bashrc
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ nano -w ~/.bashrc
+</code></pre></div>
 
 
 <p>Y agrego esta línea que habilita el <em>atajo</em>:</p>
-<div class="highlight"><pre><span></span><span class="k">alias</span> <span class="n">respaldar</span><span class="o">=</span><span class="ss">&quot;rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">alias respaldar=&quot;rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/&quot;</span>
+</code></pre></div>
 
 
 <p>Cierre la terminal, abra una nueva, y ejecute el <em>atajo</em> (que equivale al comando largo).</p>
-<div class="highlight"><pre><span></span>$ respaldar
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ respaldar
+</code></pre></div>
 
 
 <p>Así pues, procuro ejecutar <em>respaldar</em> frecuentemente para mantener una copia de mis documentos en el otro equipo. Puede automatizar esta labor si agrega el comando al <em>cron</em> y establece una hora del día a la cual se ejecute sin intervención del usuario. Esto se lo dejo de tarea.</p>
@@ -204,9 +204,11 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

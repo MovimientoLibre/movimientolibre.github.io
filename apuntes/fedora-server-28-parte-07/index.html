@@ -102,13 +102,13 @@
 <p>Vamos a crear una partición dedicada a almacenar archivos llamada <em>biblioteca</em> y dentro de ella un directorio con <em>software</em> para todos los usuarios <strong>SAMBA</strong>.</p>
 <h3>System Storage Manager</h3>
 <p>Instale el programa <strong>System Storage Manager</strong> para la administración de discos.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="k">system</span><span class="o">-</span><span class="k">storage</span><span class="o">-</span><span class="n">manager</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install system-storage-manager</span>
+</code></pre></div>
 
 
 <p>Verifique sus unidades y particionamiento actual...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ssm</span> <span class="n">list</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ssm list</span>
+</code></pre></div>
 
 
 <h3>Crear particiones</h3>
@@ -120,35 +120,35 @@
 <li>Montar en el directorio <code>/mnt/biblioteca</code></li>
 </ul>
 <p>Cree el directorio y ejecute el comando <strong>ssm</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span>
-<span class="o">#</span> <span class="n">ssm</span> <span class="k">create</span> <span class="o">-</span><span class="n">s</span> <span class="mi">128</span><span class="k">G</span> <span class="o">-</span><span class="n">p</span> <span class="n">nogal</span> <span class="o">-</span><span class="n">n</span> <span class="n">biblioteca</span> <span class="c1">--fstype ext4 /mnt/biblioteca</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/biblioteca</span>
+<span class="err"># ssm create -s 128G -p nogal -n biblioteca --fstype ext4 /mnt/biblioteca</span>
+</code></pre></div>
 
 
 <p>Luego debe agregar una línea en <code>/etc/fstab</code> para que se monte la partición al encender el servidor...</p>
-<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mapper</span><span class="o">/</span><span class="n">nogal</span><span class="o">-</span><span class="n">biblioteca</span>  <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span>  <span class="n">ext4</span>  <span class="k">defaults</span>  <span class="mi">1</span> <span class="mi">2</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">/dev/mapper/nogal-biblioteca  /mnt/biblioteca  ext4  defaults  1 2</span>
+</code></pre></div>
 
 
 <p>Para poder copiar archivos cómodamente en <code>/mnt/biblioteca</code> otorgue permisos de escritura a su usuario <strong>miusuario</strong>. Por ejemplo...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">software</span>
-<span class="o">#</span> <span class="n">chown</span> <span class="n">miusuario</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">software</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/biblioteca/software</span>
+<span class="err"># chown miusuario:users /mnt/biblioteca/software</span>
+</code></pre></div>
 
 
 <h3>Instale y configure SAMBA en el servidor</h3>
 <p>Instale SAMBA...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">samba</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># dnf install samba</span>
+</code></pre></div>
 
 
 <p>Edite...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">smb</span><span class="p">.</span><span class="n">conf</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano /etc/samba/smb.conf</span>
+</code></pre></div>
 
 
 <p>Lo más sencillo es configurar un <em>servidor solitario</em> con <em>software</em> para todos los usuarios y de sólo lectura. No deje de definir el nombre del grupo <strong>MIGRUPO</strong> y el nombre del servidor <strong>MISERVIDOR</strong>...</p>
-<div class="highlight"><pre><span></span><span class="k">[global]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[global]</span>
 <span class="na">workgroup</span> <span class="o">=</span> <span class="s">MIGRUPO</span>
 <span class="na">netbios name</span> <span class="o">=</span> <span class="s">MISERVIDOR</span>
 <span class="na">security</span> <span class="o">=</span> <span class="s">user</span>
@@ -159,73 +159,73 @@
 <span class="na">browseable</span> <span class="o">=</span> <span class="s">yes</span>
 <span class="na">public</span> <span class="o">=</span> <span class="s">no</span>
 <span class="na">writable</span> <span class="o">=</span> <span class="s">no</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Agregue sus usuarios <strong>SAMBA</strong> y contraseñas cifradas con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">smbpasswd</span> <span class="o">-</span><span class="n">a</span> <span class="n">miusuario</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># smbpasswd -a miusuario</span>
+</code></pre></div>
 
 
 <p>Después de hacer cambios en <code>/etc/samba/smb.conf</code> haga una revisión con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">testparm</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># testparm</span>
+</code></pre></div>
 
 
 <p>Configure el muro de fuego para que sólo desde la red local se pueda accesar...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="c1">--permanent --zone=internal --add-service=samba</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --permanent --zone=internal --add-service=samba</span>
+</code></pre></div>
 
 
 <p>Arranque el <em>daemon</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">start</span> <span class="n">smb</span><span class="p">.</span><span class="n">service</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl start smb.service</span>
+</code></pre></div>
 
 
 <p>Recuerde que si cambia <code>/etc/samba/smb.conf</code> deberá reiniciar el <em>daemon</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="k">restart</span> <span class="n">smb</span><span class="p">.</span><span class="n">service</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl restart smb.service</span>
+</code></pre></div>
 
 
 <p>Y para habilitar que inicie al encender, ejecute...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">smb</span><span class="p">.</span><span class="n">service</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl enable smb.service</span>
+</code></pre></div>
 
 
 <h3>Quitar bloqueos de SELinux a SAMBA</h3>
 <p>Por defecto <strong>SELinux</strong> asegura el servidor limitando las comparticiones <strong>SAMBA</strong>. Para ver todos las <em>boleanos</em> que tienen que ver con samba ejecute...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">getsebool</span> <span class="o">-</span><span class="n">a</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">samba</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># getsebool -a | grep samba</span>
+</code></pre></div>
 
 
 <p>Encontrará...</p>
-<div class="highlight"><pre><span></span><span class="n">samba_export_all_ro</span> <span class="c1">--&gt; off</span>
-<span class="n">samba_export_all_rw</span> <span class="c1">--&gt; off</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">samba_export_all_ro --&gt; off</span>
+<span class="err">samba_export_all_rw --&gt; off</span>
+</code></pre></div>
 
 
 <p>Cambie <em>con las consideraciones que esto implica</em> las <em>bandera</em> <code>samba_export_all_ro</code> que habilita a <strong>SAMBA</strong> a leer...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">samba_export_all_ro</span> <span class="k">on</span>
-<span class="o">#</span> <span class="n">getsebool</span> <span class="o">-</span><span class="n">a</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">samba_export</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># setsebool -P samba_export_all_ro on</span>
+<span class="err"># getsebool -a | grep samba_export</span>
+</code></pre></div>
 
 
 <p>Los <em>meta-permisos</em> en <code>/mnt/biblioteca/software</code> no tienen a <code>samba_share_t</code>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">software</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># ls -Z -l /mnt/biblioteca/software</span>
+</code></pre></div>
 
 
 <p>Para que <strong>SELinux</strong> permita a <strong>SAMBA</strong> compartir <em>temporalmente</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chcon</span> <span class="o">-</span><span class="n">R</span> <span class="o">-</span><span class="n">t</span> <span class="n">samba_share_t</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">software</span>
-<span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">software</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># chcon -R -t samba_share_t /mnt/biblioteca/software</span>
+<span class="err"># ls -Z -l /mnt/biblioteca/software</span>
+</code></pre></div>
 
 
 <p>Haga permanentes los cambios en <strong>SELinux</strong> con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">samba_share_t</span> <span class="ss">&quot;/mnt/biblioteca/software(/.*)?&quot;</span>
-<span class="o">#</span> <span class="n">restorecon</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">software</span>
-<span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">software</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># semanage fcontext -a -t samba_share_t &quot;/mnt/biblioteca/software(/.*)?&quot;</span>
+<span class="err"># restorecon /mnt/biblioteca/software</span>
+<span class="err"># ls -Z -l /mnt/biblioteca/software</span>
+</code></pre></div>
 
 
 <p>Más documentación en:</p>
@@ -234,48 +234,48 @@
 </ul>
 <h3>Pruebas en los clientes</h3>
 <p>Puede exportar el usuario y contraseña a variables de entorno...</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">USER</span><span class="o">=</span>miusuario
+<div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">USER</span><span class="o">=</span>miusuario
 $ <span class="nb">export</span> <span class="nv">PASSWD</span><span class="o">=</span>micontraseña
-</pre></div>
+</code></pre></div>
 
 
 <p>Liste los recursos compartidos con...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">smbclient</span> <span class="o">-</span><span class="n">L</span> <span class="n">miservidor</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># smbclient -L miservidor</span>
+</code></pre></div>
 
 
 <p>Pruebe ingresar a un recurso compartido...</p>
-<div class="highlight"><pre><span></span>$ smbclient //profeta/software
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ smbclient //profeta/software
+</code></pre></div>
 
 
 <p>Si su administrador de archivos lo soporta, por ejemplo <strong>Dolphin</strong>, escriba esto en el campo de ubicación...</p>
-<div class="highlight"><pre><span></span><span class="n">smb</span><span class="p">:</span><span class="o">//</span><span class="n">miservidor</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">smb://miservidor/</span>
+</code></pre></div>
 
 
 <h3>Grupos de usuarios</h3>
 <p>Esto es para cuando necesita ofrecer un espacio en común para dos personas o más.</p>
 <p>Igual, <em>con las consideraciones que esto implica</em> las <em>bandera</em> <code>samba_export_all_rw</code> que habilita a <strong>SAMBA</strong> a leer y escribir...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">samba_export_all_rw</span> <span class="k">on</span>
-<span class="o">#</span> <span class="n">getsebool</span> <span class="o">-</span><span class="n">a</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">samba_export</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># setsebool -P samba_export_all_rw on</span>
+<span class="err"># getsebool -a | grep samba_export</span>
+</code></pre></div>
 
 
 <p>Cree un nuevo directorio para su nuevo grupo de trabajo, por ejemplo, el grupo <em>ventas</em> con los usuarios <em>vendedor1</em> y <em>vendedor2</em>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">groupadd</span> <span class="n">ventas</span>
-<span class="o">#</span> <span class="n">useradd</span> <span class="n">vendedor1</span>
-<span class="o">#</span> <span class="n">useradd</span> <span class="n">vendedor2</span>
-<span class="o">#</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="k">G</span> <span class="n">ventas</span> <span class="n">vendedor1</span>
-<span class="o">#</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="k">G</span> <span class="n">ventas</span> <span class="n">vendedor2</span>
-<span class="o">#</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">ventas</span>
-<span class="o">#</span> <span class="n">chmod</span> <span class="mi">0770</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">ventas</span>
-<span class="o">#</span> <span class="n">chgrp</span> <span class="n">ventas</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">ventas</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># groupadd ventas</span>
+<span class="err"># useradd vendedor1</span>
+<span class="err"># useradd vendedor2</span>
+<span class="err"># usermod -a -G ventas vendedor1</span>
+<span class="err"># usermod -a -G ventas vendedor2</span>
+<span class="err"># mkdir /mnt/biblioteca/ventas</span>
+<span class="err"># chmod 0770 /mnt/biblioteca/ventas</span>
+<span class="err"># chgrp ventas /mnt/biblioteca/ventas</span>
+</code></pre></div>
 
 
 <p>Agregue en <code>/etc/samba/smb.conf</code>...</p>
-<div class="highlight"><pre><span></span><span class="k">[ventas]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[ventas]</span>
 <span class="na">comment</span> <span class="o">=</span> <span class="s">Unidad de Sistemas de Infomacion</span>
 <span class="na">path</span> <span class="o">=</span> <span class="s">/mnt/biblioteca/ventas</span>
 <span class="na">valid users</span> <span class="o">=</span> <span class="s">@ventas</span>
@@ -286,14 +286,14 @@ $ <span class="nb">export</span> <span class="nv">PASSWD</span><span class="o">=
 <span class="na">create mask</span> <span class="o">=</span> <span class="s">0770</span>
 <span class="na">Force create mode</span> <span class="o">=</span> <span class="s">0770</span>
 <span class="na">force group</span> <span class="o">=</span> <span class="s">ventas</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Haga las autorizaciones de <strong>SELinux</strong>...</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">samba_share_t</span> <span class="ss">&quot;/mnt/biblioteca/ventas(/.*)?&quot;</span>
-<span class="o">#</span> <span class="n">restorecon</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">ventas</span>
-<span class="o">#</span> <span class="n">ls</span> <span class="o">-</span><span class="n">Z</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">biblioteca</span><span class="o">/</span><span class="n">ventas</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># semanage fcontext -a -t samba_share_t &quot;/mnt/biblioteca/ventas(/.*)?&quot;</span>
+<span class="err"># restorecon /mnt/biblioteca/ventas</span>
+<span class="err"># ls -Z -l /mnt/biblioteca/ventas</span>
+</code></pre></div>
 
 
 <h3>Más documentación</h3>
@@ -340,9 +340,11 @@ $ <span class="nb">export</span> <span class="nv">PASSWD</span><span class="o">=
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

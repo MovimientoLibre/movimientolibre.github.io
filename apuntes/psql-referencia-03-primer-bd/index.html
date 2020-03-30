@@ -102,52 +102,52 @@
 <p>La lista de usuarios para las bases de datos PostgreSQL es independiente de la de los usuarios de su GNU/Linux, por lo que puede dar de alta libremente los usuarios que vayan a usar PostgreSQL.</p>
 <p>Cada usuario de la base de datos puede tener o no dos privilegios adicionales: crear nuevas bases de datos y crear más usuarios.</p>
 <p>En una nueva instalación sólo hay un usuario, el usuario <em>postgres</em>.  Vamos a usar la cuenta de root, para luego hacernos pasar por el usuario <em>postgres</em> y dar de alta una cuenta con nuestro nombre de usuario, con capacidad de dar de alta más usuarios (-a) y crear bases de datos (-d):</p>
-<div class="highlight"><pre><span></span>$ <span class="nv">su</span> <span class="o">-</span>
-# <span class="nv">su</span> <span class="o">-</span> <span class="nv">postgres</span>
-$ <span class="nv">createuser</span> <span class="o">-</span><span class="nv">a</span> <span class="o">-</span><span class="nv">d</span> <span class="nv">sunombre</span>
-# <span class="k">exit</span>
-$ <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ su -
+<span class="c1"># su - postgres</span>
+$ createuser -a -d sunombre
+<span class="c1"># exit</span>
+$ <span class="nb">exit</span>
+</code></pre></div>
 
 
 <p>Con ello, con su cuenta personal, podrá listar las bases de datos con:</p>
-<div class="highlight"><pre><span></span>$ psql -l
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ psql -l
+</code></pre></div>
 
 
 <p>Y probar el ingreso a una base de datos, por ejemplo, <em>template1</em>, con:</p>
-<div class="highlight"><pre><span></span>$ psql template1
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ psql template1
+</code></pre></div>
 
 
 <p>Para salir de la base de datos escriba <code>\q</code> y <code>ENTER</code>.</p>
 <p>Después de las pruebas anteriores, puede crear su primer base de datos, con:</p>
-<div class="highlight"><pre><span></span>$ createdb prueba
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ createdb prueba
+</code></pre></div>
 
 
 <p>Revise que esté creada por medio de un listado de las bases de datos, con:</p>
-<div class="highlight"><pre><span></span>$ psql -l
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ psql -l
+</code></pre></div>
 
 
 <p>Para eliminar esa base de datos:</p>
-<div class="highlight"><pre><span></span>$ dropdb prueba
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ dropdb prueba
+</code></pre></div>
 
 
 <p><strong>Opcional:</strong> retirar al usuario postgres los privilegios para crear más usuarios y más bases de datos.</p>
 <p>Si quiere asegurarse de que nadie más que usted dé de alta más usuarios, ingrese a la base de datos <em>template1</em> y desde ahí modifique el usuario:</p>
-<div class="highlight"><pre><span></span>$ psql template1
+<div class="highlight"><pre><span></span><code>$ psql template1
 ALTER USER postgres NOCREATEDB NOCREATEUSER<span class="p">;</span>
 <span class="se">\q</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><strong>Opcional:</strong> crear bases de datos con juegos de caracteres distintos al por defecto.</p>
 <p>Para ello use la opción <code>-E</code>, por ejemplo:</p>
-<div class="highlight"><pre><span></span>$ createdb -E SQL_ASCII prueba
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ createdb -E SQL_ASCII prueba
+</code></pre></div>
                 </article>
             </div>
             <div class="col-sm-4">
@@ -185,9 +185,11 @@ ALTER USER postgres NOCREATEDB NOCREATEUSER<span class="p">;</span>
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>

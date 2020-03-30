@@ -121,7 +121,7 @@
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> Montando...
 mount /dev/sda6 /mnt/gentoo
 mount /dev/sda3 /mnt/gentoo/usr/portage
@@ -133,22 +133,22 @@ mount -o <span class="nb">bind</span> /dev /mnt/gentoo/dev
 cp /etc/resolv.conf /mnt/gentoo/etc/
 <span class="nb">echo</span> Listo.
 mount <span class="p">|</span> grep /mnt/gentoo
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <p>Despúes de ejecutarlo, hago el <em>chroot</em> y actualizo las variables del entorno.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">chroot</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span>
-<span class="o">#</span> <span class="n">env</span><span class="o">-</span><span class="k">update</span>
-<span class="o">#</span> <span class="k">source</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span>
-<span class="o">#</span> <span class="n">export</span> <span class="n">PS1</span><span class="o">=</span><span class="ss">&quot;(chroot) $PS1&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/gentoo /bin/bash</span>
+<span class="err"># env-update</span>
+<span class="err"># source /etc/profile</span>
+<span class="err"># export PS1=&quot;(chroot) $PS1&quot;</span>
+</code></pre></div>
 
 
 <p>Listo. Puede continuar la instalación.</p>
 <p>Le advierto que si dentro del <em>chroot</em> arranca un <em>demonio o servicio</em> éste pudiera tener conflictos con los <em>demonios</em> del sistema que esté usando. Por ejemplo, si dentro del <em>chroot</em> arranco el <em>PostgreSQL</em> y también lo tengo corriendo en el otro sistema, entonces ambos solicitarán los mismos puertos <em>TCP</em> para comunicarse y uno de los dos fallará. Así pues, le recomiendo que sólo instale y configure; cuando reinicie el equipo y entre en su nueva instalación podrá probar sus <em>demonios</em>.</p>
 <p>Si quiero abandonar el <em>chroot</em> ejecuto <em>exit</em>.</p>
-<div class="highlight"><pre><span></span># <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># exit</span>
+</code></pre></div>
 
 
 <p>Y ejecuto este otro <em>bash script</em> para <em>desmontar las particiones</em>.</p>
@@ -162,7 +162,7 @@ mount <span class="p">|</span> grep /mnt/gentoo
  8
  9
 10
-11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> Desmontando...
 umount /mnt/gentoo/dev
 umount /mnt/gentoo/proc
@@ -173,112 +173,112 @@ umount /mnt/gentoo/usr/portage
 umount /mnt/gentoo
 <span class="nb">echo</span> Listo.
 mount <span class="p">|</span> grep /mnt/gentoo
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h3>Cambio el <em>profile</em></h3>
 <p>Instalo <em>eselect</em>, que es un programa para revisar y cambiar ciertas configuraciones del sistema; entre ellas el <em>profile</em> establecido.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">eselect</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge eselect</span>
+</code></pre></div>
 
 
 <p>Por defecto, el stage <em>stage3-i686-2008.0.tar.bz2</em> usa un <em>profile</em> genérico. Para ver el profile en uso, ejecuto:</p>
-<div class="highlight"><pre><span></span># <span class="nv">eselect</span> <span class="nv">profile</span> <span class="k">show</span>
-<span class="nv">Current</span> <span class="nv">make</span>.<span class="nv">profile</span> <span class="nv">symlink</span>:
-  <span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">portage</span><span class="o">/</span><span class="nv">profiles</span><span class="o">/</span><span class="nv">default</span><span class="o">/</span><span class="nv">linux</span><span class="o">/</span><span class="nv">x86</span><span class="o">/</span><span class="mi">2008</span>.<span class="mi">0</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># eselect profile show</span>
+<span class="err">Current make.profile symlink:</span>
+<span class="err">  /usr/portage/profiles/default/linux/x86/2008.0</span>
+</code></pre></div>
 
 
 <p>Para listar todos los <em>profiles</em> disponibles, ejecuto:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">eselect</span> <span class="n">profile</span> <span class="n">list</span>
-<span class="n">Available</span> <span class="n">profile</span> <span class="n">symlink</span> <span class="n">targets</span><span class="p">:</span>
-  <span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="k">default</span><span class="o">-</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2006</span><span class="p">.</span><span class="mi">1</span>
-  <span class="p">[</span><span class="mi">2</span><span class="p">]</span>   <span class="k">default</span><span class="o">-</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2006</span><span class="p">.</span><span class="mi">1</span><span class="o">/</span><span class="n">desktop</span>
-  <span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="k">default</span><span class="o">-</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2007</span><span class="p">.</span><span class="mi">0</span>
-  <span class="p">[</span><span class="mi">4</span><span class="p">]</span>   <span class="k">default</span><span class="o">-</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2007</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">desktop</span>
-  <span class="p">[</span><span class="mi">5</span><span class="p">]</span>   <span class="n">hardened</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span>
-  <span class="p">[</span><span class="mi">6</span><span class="p">]</span>   <span class="n">selinux</span><span class="o">/</span><span class="mi">2007</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">x86</span>
-  <span class="p">[</span><span class="mi">7</span><span class="p">]</span>   <span class="n">selinux</span><span class="o">/</span><span class="mi">2007</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="n">hardened</span>
-  <span class="p">[</span><span class="mi">8</span><span class="p">]</span>   <span class="k">default</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2008</span><span class="p">.</span><span class="mi">0</span> <span class="o">*</span>
-  <span class="p">[</span><span class="mi">9</span><span class="p">]</span>   <span class="k">default</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2008</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">desktop</span>
-  <span class="p">[</span><span class="mi">10</span><span class="p">]</span>  <span class="k">default</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2008</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">developer</span>
-  <span class="p">[</span><span class="mi">11</span><span class="p">]</span>  <span class="k">default</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2008</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">server</span>
-  <span class="p">[</span><span class="mi">12</span><span class="p">]</span>  <span class="n">hardened</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># eselect profile list</span>
+<span class="err">Available profile symlink targets:</span>
+<span class="err">  [1]   default-linux/x86/2006.1</span>
+<span class="err">  [2]   default-linux/x86/2006.1/desktop</span>
+<span class="err">  [3]   default-linux/x86/2007.0</span>
+<span class="err">  [4]   default-linux/x86/2007.0/desktop</span>
+<span class="err">  [5]   hardened/x86/2.6</span>
+<span class="err">  [6]   selinux/2007.0/x86</span>
+<span class="err">  [7]   selinux/2007.0/x86/hardened</span>
+<span class="err">  [8]   default/linux/x86/2008.0 *</span>
+<span class="err">  [9]   default/linux/x86/2008.0/desktop</span>
+<span class="err">  [10]  default/linux/x86/2008.0/developer</span>
+<span class="err">  [11]  default/linux/x86/2008.0/server</span>
+<span class="err">  [12]  hardened/linux/x86</span>
+</code></pre></div>
 
 
 <p>Como nuestro fin es Gentoo Linux con entorno de escritorio completo, vamos a seleccionar el <em>profile</em> <em>desktop</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">eselect</span> <span class="n">profile</span> <span class="k">set</span> <span class="k">default</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">x86</span><span class="o">/</span><span class="mi">2008</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="n">desktop</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># eselect profile set default/linux/x86/2008.0/desktop</span>
+</code></pre></div>
 
 
 <p>Y reviso para asegurarme del cambio:</p>
-<div class="highlight"><pre><span></span># <span class="nv">eselect</span> <span class="nv">profile</span> <span class="k">show</span>
-<span class="nv">Current</span> <span class="nv">make</span>.<span class="nv">profile</span> <span class="nv">symlink</span>:
-  <span class="o">/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">portage</span><span class="o">/</span><span class="nv">profiles</span><span class="o">/</span><span class="nv">default</span><span class="o">/</span><span class="nv">linux</span><span class="o">/</span><span class="nv">x86</span><span class="o">/</span><span class="mi">2008</span>.<span class="mi">0</span><span class="o">/</span><span class="nv">desktop</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># eselect profile show</span>
+<span class="err">Current make.profile symlink:</span>
+<span class="err">  /usr/portage/profiles/default/linux/x86/2008.0/desktop</span>
+</code></pre></div>
 
 
 <h3>Configuraciones adicionales para el <em>portage</em></h3>
 <p>En <em>/etc/make.conf</em> se definen los parámetros de compilación de los paquetes que vayan a instalar. La variable <em>USE</em> está formada por una serie de banderas o <em>flags</em> que habilitan o deshabilitan opciones de la compilación de los paquetes.</p>
 <p>Las opciones que escriba en la variable <em>USE</em> dependerán de muchos factores, desde los componentes de hardware hasta el uso fina que le vaya a dar al equipo. Por ejemplo, yo prefiero <em>no usar <em>arts</em></em> el cual es el demonio de sonido del KDE. No funciona tan bien como desearía; aunque su desactivación me deja sin ningún sonido para los avisos del KDE; prefiero un entorno silencioso y configurar ALSA como la salida del sonido.</p>
 <p>Este es el contenido de mi archivo <em>/etc/make.conf</em></p>
-<div class="highlight"><pre><span></span>#
-# <span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">make</span>.<span class="nv">conf</span>
+<div class="highlight"><pre><span></span><code>#
+# /etc/make.conf
 #
-# <span class="nv">Dell</span> <span class="nv">Inspiron</span> <span class="mi">9300</span>
+# Dell Inspiron 9300
 #
 
-# <span class="nv">This</span> <span class="nv">should</span> <span class="nv">not</span> <span class="nv">be</span> <span class="nv">changed</span> <span class="nv">unless</span> <span class="nv">you</span> <span class="nv">know</span> <span class="nv">exactly</span> <span class="nv">what</span> <span class="nv">you</span> <span class="nv">are</span> <span class="nv">doing</span>.  <span class="nv">You</span>
-# <span class="nv">should</span> <span class="nv">probably</span> <span class="nv">be</span> <span class="nv">using</span> <span class="nv">a</span> <span class="nv">different</span> <span class="nv">stage</span>, <span class="nv">instead</span>.
-<span class="nv">CHOST</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">i686-pc-linux-gnu</span><span class="s2">&quot;</span>
+# This should not be changed unless you know exactly what you are doing.  You
+# should probably be using a different stage, instead.
+CHOST=&quot;i686-pc-linux-gnu&quot;
 
-# <span class="nv">Intel</span><span class="ss">(</span><span class="nv">R</span><span class="ss">)</span> <span class="nv">Pentium</span><span class="ss">(</span><span class="nv">R</span><span class="ss">)</span> <span class="nv">M</span> <span class="nv">processor</span> <span class="mi">1</span>.<span class="mi">73</span><span class="nv">GHz</span>
-#   <span class="nv">CPU</span> <span class="nv">Family</span> : <span class="mi">6</span>
-#   <span class="nv">Model</span>      : <span class="mi">13</span>
-<span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">-O2 -march=pentium-m -pipe -fomit-frame-pointer</span><span class="s2">&quot;</span>
-<span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">${CFLAGS}</span><span class="s2">&quot;</span>
+# Intel(R) Pentium(R) M processor 1.73GHz
+#   CPU Family : 6
+#   Model      : 13
+CFLAGS=&quot;-O2 -march=pentium-m -pipe -fomit-frame-pointer&quot;
+CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
 
-# <span class="nv">Dos</span> <span class="nv">compilaciones</span> <span class="nv">paralelas</span>
-<span class="nv">MAKEOPTS</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">-j2</span><span class="s2">&quot;</span>
+# Dos compilaciones paralelas
+MAKEOPTS=&quot;-j2&quot;
 
-# <span class="nv">Conservar</span> <span class="nv">compilaciones</span>
-<span class="nv">FEATURES</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">buildpkg fixpackages</span><span class="s2">&quot;</span>
-<span class="nv">PKGDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">portage</span><span class="o">/</span><span class="nv">packages</span>
+# Conservar compilaciones
+FEATURES=&quot;buildpkg fixpackages&quot;
+PKGDIR=/usr/portage/packages
 
-# <span class="nv">Idioma</span>
-<span class="nv">LINGUAS</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">es</span><span class="s2">&quot;</span>
+# Idioma
+LINGUAS=&quot;es&quot;
 
 #
-# <span class="nv">Variable</span> <span class="nv">USE</span>
+# Variable USE
 #
-<span class="nv">USE</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">-arts -gnome -kerberos a52 aac aalib amr amrnb amrwb apache2 bluetooth </span><span class="se">\\</span>
-<span class="nv">cups</span> <span class="nv">curl</span> <span class="nv">css</span> <span class="nv">dts</span> <span class="nv">dv</span> <span class="nv">dvb</span> <span class="nv">ffmpeg</span> <span class="nv">flac</span> <span class="nv">ftp</span> <span class="nv">gd</span> <span class="nv">gtk</span> <span class="nv">ieee1394</span> <span class="nv">imagemagick</span> <span class="nv">java</span> \\
-<span class="nv">joystick</span> <span class="nv">kde</span> <span class="nv">laptop</span> <span class="nv">lame</span> <span class="nv">matroska</span> <span class="nv">mmx</span> <span class="nv">mmxext</span> <span class="nv">mtp</span> <span class="nv">php</span> <span class="nv">ppd</span> <span class="nv">pcmcia</span> <span class="nv">postgres</span> \\
-<span class="nv">qt3</span> <span class="nv">qt4</span> <span class="nv">ruby</span> <span class="nv">samba</span> <span class="nv">sse</span> <span class="nv">sse2</span> <span class="nv">theora</span> <span class="nv">threads</span> <span class="nv">v4l</span> <span class="nv">v4l2</span> <span class="nv">vcd</span> <span class="nv">wifi</span> <span class="nv">x264</span> \\
-<span class="nv">xscreensaver</span> <span class="nv">xvid</span><span class="s2">&quot;</span>
+USE=&quot;-arts -gnome -kerberos a52 aac aalib amr amrnb amrwb apache2 bluetooth \\
+cups curl css dts dv dvb ffmpeg flac ftp gd gtk ieee1394 imagemagick java \\
+joystick kde laptop lame matroska mmx mmxext mtp php ppd pcmcia postgres \\
+qt3 qt4 ruby samba sse sse2 theora threads v4l v4l2 vcd wifi x264 \\
+xscreensaver xvid&quot;
 
-# <span class="nv">Xorg</span>
-<span class="nv">INPUT_DEVICES</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">keyboard mouse synaptics joystick evdev</span><span class="s2">&quot;</span>
-<span class="nv">VIDEO_CARDS</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">radeon vesa</span><span class="s2">&quot;</span>
+# Xorg
+INPUT_DEVICES=&quot;keyboard mouse synaptics joystick evdev&quot;
+VIDEO_CARDS=&quot;radeon vesa&quot;
 
-# <span class="nv">Apache</span> <span class="mi">2</span>
-<span class="nv">APACHE2_MODULES</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">actions alias auth_basic authn_anon authn_default </span><span class="se">\\</span>
-<span class="nv">authn_file</span> <span class="nv">authz_default</span> <span class="nv">authz_groupfile</span> <span class="nv">authz_host</span> <span class="nv">authz_owner</span> <span class="nv">authz_user</span> \\
-<span class="nv">autoindex</span> <span class="nv">cache</span> <span class="nv">deflate</span> <span class="nv">dir</span> <span class="nv">disk_cache</span> <span class="nv">env</span> <span class="nv">expires</span> <span class="nv">file_cache</span> <span class="nv">filter</span> \\
-<span class="k">include</span> <span class="nv">info</span> <span class="nv">log_config</span> <span class="nv">logio</span> <span class="nv">mem_cache</span> <span class="nv">mime</span> <span class="nv">mime_magic</span> <span class="nv">negotiation</span> \\
-<span class="nv">rewrite</span> <span class="nv">setenvif</span> <span class="nv">status</span> <span class="nv">unique_id</span> <span class="nv">vhost_alias</span><span class="s2">&quot;</span>
+# Apache 2
+APACHE2_MODULES=&quot;actions alias auth_basic authn_anon authn_default \\
+authn_file authz_default authz_groupfile authz_host authz_owner authz_user \\
+autoindex cache deflate dir disk_cache env expires file_cache filter \\
+include info log_config logio mem_cache mime mime_magic negotiation \\
+rewrite setenvif status unique_id vhost_alias&quot;
 
-# <span class="nv">Servidor</span> <span class="nv">de</span> <span class="nv">paquetes</span>
-#<span class="nv">PORTDIR</span><span class="o">=/</span><span class="nv">usr</span><span class="o">/</span><span class="nv">portage</span>
-#<span class="nv">DISTDIR</span><span class="o">=</span>${<span class="nv">PORTDIR</span>}<span class="o">/</span><span class="nv">distfiles</span>
-#<span class="nv">SYNC</span><span class="o">=</span><span class="nv">rsync</span>:<span class="o">//</span><span class="nv">SERVIDOR</span><span class="o">/</span><span class="nv">gentoo</span><span class="o">-</span><span class="nv">portage</span>
-#<span class="nv">FETCHCOMMAND</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">rsync rsync://SERVIDOR/gentoo-packages/\${FILE} ${DISTDIR}</span><span class="s2">&quot;</span>
-</pre></div>
+# Servidor de paquetes
+#PORTDIR=/usr/portage
+#DISTDIR=<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/distfiles
+#SYNC=rsync://SERVIDOR/gentoo-portage
+#FETCHCOMMAND=&quot;rsync rsync://SERVIDOR/gentoo-packages/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
+</code></pre></div>
 
 
 <p>En <em>/etc/portage/package.use</em> doy cambios en la variable USE a programas en particular.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">HAL</span> <span class="n">con</span> <span class="n">soporte</span> <span class="n">para</span> <span class="n">Dell</span> <span class="n">Inspiron</span> <span class="mi">9300</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">HAL</span> <span class="n">con</span> <span class="n">soporte</span> <span class="n">para</span> <span class="n">Dell</span> <span class="n">Inspiron</span> <span class="mi">9300</span>
 <span class="n">sys</span><span class="o">-</span><span class="n">apps</span><span class="o">/</span><span class="n">hal</span> <span class="n">dell</span>
 
 <span class="o">#</span> <span class="n">Sin</span> <span class="n">GTK</span><span class="o">+</span>
@@ -308,11 +308,11 @@ mount <span class="p">|</span> grep /mnt/gentoo
 
 <span class="o">#</span> <span class="n">i8kutils</span> <span class="n">requiere</span> <span class="n">tk</span> <span class="n">para</span> <span class="n">monitorear</span> <span class="n">la</span> <span class="n">temperatura</span>
 <span class="n">app</span><span class="o">-</span><span class="n">laptop</span><span class="o">/</span><span class="n">i8kutils</span> <span class="n">tk</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>En <em>/etc/portage/package.keywords</em> doy permiso a Gentoo Linux que instale las versiones inestables de ciertos paquetes.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">KPowerSave</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">KPowerSave</span>
 <span class="n">sys</span><span class="o">-</span><span class="n">power</span><span class="o">/</span><span class="n">kpowersave</span>
 
 <span class="o">#</span> <span class="n">Mozilla</span> <span class="n">Firefox</span> <span class="mi">3</span><span class="p">.</span><span class="mi">0</span>
@@ -323,169 +323,169 @@ mount <span class="p">|</span> grep /mnt/gentoo
 
 <span class="o">#</span> <span class="n">Para</span> <span class="n">usar</span> <span class="n">el</span> <span class="n">scanner</span> <span class="n">HP</span> <span class="n">Scanjet</span> <span class="mi">4070</span> <span class="n">necesito</span> <span class="n">el</span> <span class="n">driver</span> <span class="n">hp3900</span>
 <span class="n">media</span><span class="o">-</span><span class="n">gfx</span><span class="o">/</span><span class="n">sane</span><span class="o">-</span><span class="n">backends</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="xorg-logo.png"></p>
 <h3>Servidor gráfico: el Xorg</h3>
 <p>La primer instalación es el servidor <a href="http://www.x.org/">X.org</a> que constituye el motor gráfico, para la posterior instalación del (o los) entornos gráficos. Así como algunas tipografías libres.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">xorg</span><span class="o">-</span><span class="n">x11</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">dbus</span> <span class="k">default</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">freefonts</span> <span class="n">terminus</span><span class="o">-</span><span class="n">font</span> <span class="n">corefonts</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge xorg-x11</span>
+<span class="err"># rc-update add dbus default</span>
+<span class="err"># emerge freefonts terminus-font corefonts</span>
+</code></pre></div>
 
 
 <p>Debe de configurar <em>xorg.conf</em> de acuerdo a su equipo. Yo ya tengo listo mi archivo <a href="xorg.conf">xorg.conf</a> para mi Dell Inspiron 9300 con chip ATI M22. En esta instrucción hago una copia de la instalación anterior.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">cp</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">anterior</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">X11</span><span class="o">/</span><span class="n">xorg</span><span class="p">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">X11</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># cp /mnt/anterior/etc/X11/xorg.conf /etc/X11/</span>
+</code></pre></div>
 
 
 <p>Para probar que X.org funcione bien, instale y ejecute un gestor de ventanas ligero, le recomiendo <a href="http://fluxbox.sourceforge.net/">FluxBox</a>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">fluxbox</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge fluxbox</span>
+</code></pre></div>
 
 
 <p>Una forma para usar Fluxbox es crear un archivo llamado <em>.xinitrc</em> con el nombre del ejecutable. Este archivo debe de estar en el <em>home</em> del usuario. Estando listo, arranque las X's con FluxBox ejecutando <em>startx</em>.</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;fluxbox&quot;</span> &gt; ~/.xinitrc
+<div class="highlight"><pre><span></span><code>$ <span class="nb">echo</span> <span class="s2">&quot;fluxbox&quot;</span> &gt; ~/.xinitrc
 $ startx
-</pre></div>
+</code></pre></div>
 
 
 <p>Muy en particular para la Dell Inspiron 9300 instalo estas utilerías propias para el hardware que tengo:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">radeontool</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">i8kutils</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge radeontool</span>
+<span class="err"># emerge i8kutils</span>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="postgresql-logo.png"></p>
 <h3>Base de datos: PostgreSQL</h3>
 <p>Mi base de datos preferida es el <a href="http://www.postgresql.org/">PostgreSQL</a>, el cual instalo con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">postgresql</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="c1">--config =postgresql-8.0.15</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">postgresql</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql</span>
+<span class="err"># emerge --config =postgresql-8.0.15</span>
+<span class="err"># rc-update add postgresql default</span>
+</code></pre></div>
 
 
 <p>Puede arrancar el <em>demonio</em> para dar de alta a un usuario del PostgreSQL (si está cargado sólo el nuevo sistema, recuerde lo mencionado en "Para hacer una nueva instalación mientras sigue usando la anterior").</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">postgresql</span> <span class="k">start</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/postgresql start</span>
+</code></pre></div>
 
 
 <p>Como <em>root</em> cámbiese al usuario del sistema <em>postgres</em>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">su</span> <span class="o">-</span> <span class="n">postgres</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># su - postgres</span>
+</code></pre></div>
 
 
 <p>Para crear el usuario <em>guivaloz</em> con cualidades para crear nuevas bases de datos y nuevos usuarios en el PostgreSQL</p>
-<div class="highlight"><pre><span></span>$ <span class="nv">createuser</span> <span class="o">-</span><span class="nv">a</span> <span class="o">-</span><span class="nv">d</span> <span class="o">-</span><span class="nv">P</span> <span class="o">-</span><span class="nv">E</span> <span class="nv">guivaloz</span>
-$ <span class="k">exit</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code>$ createuser -a -d -P -E guivaloz
+$ <span class="nb">exit</span>
+</code></pre></div>
 
 
 <p>Si es paranoico, modifique la capacidad de ingresar como el usuario <em>postgres</em> para que <em>NO</em> ingrese.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nologin</span> <span class="n">postgres</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># usermod -s /sbin/nologin postgres</span>
+</code></pre></div>
 
 
 <p>Pruebe que tenga acceso a las bases de datos con la cuenta de usuario.</p>
-<div class="highlight"><pre><span></span>$ psql -l
+<div class="highlight"><pre><span></span><code>$ psql -l
       Listado de base de datos
   Nombre   <span class="p">|</span>  Dueño   <span class="p">|</span> Codificación
 -----------+----------+--------------
  template0 <span class="p">|</span> postgres <span class="p">|</span> UNICODE
  template1 <span class="p">|</span> postgres <span class="p">|</span> UNICODE
 <span class="o">(</span><span class="m">2</span> filas<span class="o">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p><img class="img-fluid" src="apache-php-logo.png"></p>
 <h3>Servicios para el desarrollo de aplicaciones web</h3>
 <p>Instalo el servidor de páginas web <a href="http://httpd.apache.org/">Apache</a> y luego el lenguaje de programación <a href="http://www.php.net/">PHP</a>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">apache</span>
-<span class="o">#</span> <span class="n">emerge</span> <span class="n">php</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge apache</span>
+<span class="err"># emerge php</span>
+</code></pre></div>
 
 
 <h3>Java</h3>
 <p>Instalo el <em>Java</em> en este punnto, de una vez, ya que es una dependencia que me solicitarán los navegadores de internet. También me interesa el desarrollo en este lenguaje de programación.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">virtual</span><span class="o">/</span><span class="n">jre</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge virtual/jre</span>
+</code></pre></div>
 
 
 <h3>Samba</h3>
 <p><em>Samba</em> es una implementación libre del protocolo de archivos compartidos de Microsoft Windows. Esta instalación jalará además los paquetes <em>CUPS</em> y <em>GTK+</em>.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">samba</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge samba</span>
+</code></pre></div>
 
 
 <h3>Más instalaciones previas a la instalación del KDE</h3>
 <p>Los <a href="http://www.dockapps.org/">Dock Applications</a> son pequeños programas que en su mayoría trabajan como monitores del equipo. Son herencia del gestor de ventanas <a href="http://es.wikipedia.org/wiki/Window_Maker">Window Maker</a> y consumen muy pocos recursos.</p>
 <p><img class="img-fluid" src="wmdocks.png"></p>
 <p>Mis preferidos son el monitor de la carga del procesador, de la memoria, y varios de redes. Los instalo con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">wmcpuload</span> <span class="n">wmmemmon</span> <span class="n">wmnd</span> <span class="n">wmifinfo</span> <span class="n">wmwifi</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge wmcpuload wmmemmon wmnd wmifinfo wmwifi</span>
+</code></pre></div>
 
 
 <p>Para controlar el muro de fuego, instalo el ejecutable que me permite controlarlo:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">iptables</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge iptables</span>
+</code></pre></div>
 
 
 <p>Instalo el lenguaje de programación <a href="http://www.ruby-lang.org/">Ruby</a> junto con la gema <a href="http://whytheluckystiff.net/ruby/redcloth/">RedCloth</a> que uso en el <a href="http://cms.movimientolibre.com/">CMS de Movimiento Libre</a>:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">ruby</span> <span class="n">eruby</span> <span class="n">rubygems</span> <span class="n">redcloth</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge ruby eruby rubygems redcloth</span>
+</code></pre></div>
 
 
 <p><a href="http://www.vim.org/">VIM</a> es un excelente editor de texto en consola:</p>
 <p><a href="vim.png"><img class="img-fluid" src="vim-small.png"></a></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">vim</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge vim</span>
+</code></pre></div>
 
 
 <p>Para ver fotografías, me gusta el <a href="http://gqview.sourceforge.net/">GQView</a> el cual es ligero y rápido.</p>
 <p><a href="gqview.jpg"><img class="img-fluid" src="gqview-small.jpg"></a></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">gqview</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge gqview</span>
+</code></pre></div>
 
 
 <p>Para guardar mis contraseñas uso el <a href="http://kedpm.sourceforge.net/">KED Password Manager</a></p>
 <p><a href="kedpm.png"><img class="img-fluid" src="kedpm-small.png"></a></p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">kedpm</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge kedpm</span>
+</code></pre></div>
 
 
 <p>En el siguiente <em>screenshot</em> verá al gestor de ventanas <em>FluxBox</em> con algunas aplicaciones que he instalado. Es más cómodo seguir instalando en este entorno, simplemente por que la terminal nos muestra más información.</p>
 <p><a href="fluxbox.png"><img class="img-fluid" src="fluxbox-small.png"></a></p>
 <h3>Base del KDE</h3>
 <p>Instalo el <a href="http://www.freedesktop.org/Software/hal">HAL</a> que de hecho lo requiere el KDE. HAL es una capa de abstracción de hardware software que permite a las aplicaciones de escritorio tengan acceso a información de hardware.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">hal</span>
-<span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">hald</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge hal</span>
+<span class="err"># rc-update add hald default</span>
+</code></pre></div>
 
 
 <p>Al instalar <em>HAL</em> se crea el grupo <em>plugdev</em> al cual deben de agregarse los usuarios para poder montar dispositivos de almacenamiento externo (como las memorias USB). Así que agrego mi cuenta habitual a ese grupo.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">gpasswd</span> <span class="o">-</span><span class="n">a</span> <span class="n">guivaloz</span> <span class="n">plugdev</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># gpasswd -a guivaloz plugdev</span>
+</code></pre></div>
 
 
 <p>Instalo la base del KDE y la capacidad multilingüe del mismo con:</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">emerge</span> <span class="n">kdebase</span><span class="o">-</span><span class="n">meta</span> <span class="n">kde</span><span class="o">-</span><span class="n">i18n</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># emerge kdebase-meta kde-i18n</span>
+</code></pre></div>
 
 
 <p>Luego edito el archivo /etc/conf.d/xdm</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">xdm</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/xdm</span>
+</code></pre></div>
 
 
 <p>Configuro que al encender el equipo, arranquen las X's y se cargue el gestor gráfico <em>KDM</em> cambiando la siguiente línea:</p>
-<div class="highlight"><pre><span></span><span class="n">DISPLAYMANAGER</span><span class="o">=</span><span class="ss">&quot;kdm&quot;</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">DISPLAYMANAGER=&quot;kdm&quot;</span>
+</code></pre></div>
 
 
 <p>Luego configuramos que se inicien las X's al encender el equipo.</p>
-<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">rc</span><span class="o">-</span><span class="k">update</span> <span class="k">add</span> <span class="n">xdm</span> <span class="k">default</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err"># rc-update add xdm default</span>
+</code></pre></div>
 
 
 <p>Reinicie el equipo y pruebe su <em>nueva instalación</em>. <em>Bienvenido a KDE</em>.</p>
@@ -528,9 +528,11 @@ $ <span class="k">exit</span>
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
+                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="/tag/python.html">python</a></li>
                                 <li><a href="/tag/ruby.html">ruby</a></li>
                                 <li><a href="/tag/servidores.html">servidores</a></li>
                                 <li><a href="/tag/software-libre.html">software libre</a></li>
