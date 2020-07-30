@@ -100,7 +100,7 @@
                     <h2 class="article-post-title">Webmin instalación en Fedora Server</h2>
                     <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>30 julio 2020</p>
 <p>Para este apunte se utilizó <a href="https://getfedora.org/es/server/">Fedora Server</a> versión 32.</p>
-<h2>Instalar</h2>
+<h2>Instalar Webmin</h2>
 <p>Crear un archivo para configurar el repositorio</p>
 <div class="highlight"><pre><span></span><code>$ sudo nano /etc/yum.repos.d/webmin.repo
 </code></pre></div>
@@ -129,7 +129,8 @@ $ sudo dnf install webmin
 </code></pre></div>
 
 
-<p>Sigue configurar el muro de fuego para que se abra el puerto 10000.</p>
+<h2>Configurar el muro de fuego</h2>
+<p>Sigue configurar el <em>firewall</em> para que se abra el puerto 10000.</p>
 <p>Por defecto la zona activa se llama FedoraServer</p>
 <div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --get-active-zones
 FedoraServer
@@ -193,8 +194,8 @@ $ sudo firewall-cmd --zone<span class="o">=</span>FedoraServer --list-ports
 </code></pre></div>
 
 
-<p>Ingresar con el navegador de internet a...</p>
-<div class="highlight"><pre><span></span><code><span class="c">https://flegetonte.divinacomedia.lan:10000/</span>
+<p>De nueva cuenta, ingresar con el navegador de internet a...</p>
+<div class="highlight"><pre><span></span><code><span class="c">https://SERVIDOR:10000/</span>
 </code></pre></div>
 
 
