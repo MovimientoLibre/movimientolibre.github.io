@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/</loc>
-<lastmod>2020-03-30T16:09:28-00:00</lastmod>
+<lastmod>2020-07-30T14:47:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -63,6 +63,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <loc>https://movimientolibre.com/portafolio/soluciones/</loc>
 <lastmod>2019-04-18T14:32:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
+<loc>https://movimientolibre.com/apuntes/webmin-instalacion-fedora-server/</loc>
+<lastmod>2020-07-30T14:30:00-05:00</lastmod>
+<changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
@@ -978,7 +985,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2020-03-30T16:08:00-06:37</lastmod>
+<lastmod>2020-07-30T14:30:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -993,6 +1000,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://movimientolibre.com/category/presentaciones.html</loc>
 <lastmod>2019-04-23T14:48:00-06:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://movimientolibre.com/tag/fedora.html</loc>
+<lastmod>2020-07-30T14:30:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1014,13 +1028,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://movimientolibre.com/tag/politica.html</loc>
 <lastmod>2019-08-30T22:20:00-06:37</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://movimientolibre.com/tag/fedora.html</loc>
-<lastmod>2019-08-13T19:32:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
