@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="generator" content="Pelican Static Site Generator, Powered by Python">
-    <meta name="description" content="Índice de publicaciones.">
-    <meta name="keywords" content="">
+    <meta name="description" content="Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.">
+    <meta name="keywords" content="contenedores, apuntes">
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@guivaloz">
-    <meta name="twitter:title" content="Índice - Movimiento Libre">
-    <meta name="twitter:description" content="Índice de publicaciones.">
-    <meta name="twitter:image:src" content="/theme/images/movimientolibre.png">
-    <meta property="og:title" content="Índice - Movimiento Libre">
-    <meta property="og:type" content="summary">
-    <meta property="og:url" content="/tag/pelican.html">
-    <meta property="og:image" content="/theme/images/movimientolibre.png">
-    <meta property="og:description" content="Índice de publicaciones.">
+    <meta name="twitter:title" content="Podman básico: Contenedor con documentación de Python">
+    <meta name="twitter:description" content="Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.">
+    <meta name="twitter:image:src" content="/apuntes/podman-01-documentacion-python/podman.png">
+    <meta property="og:title" content="Podman básico: Contenedor con documentación de Python">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/apuntes/podman-01-documentacion-python/">
+    <meta property="og:image" content="/apuntes/podman-01-documentacion-python/podman.png">
+    <meta property="og:description" content="Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.">
     <meta property="og:site_name" content="Movimiento Libre">
-    <title>Etiqueta pelican - Movimiento Libre</title>
+    <title>Podman básico: Contenedor con documentación de Python - Movimiento Libre</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
     <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
@@ -72,25 +72,94 @@
         </header>
         <div class="row">
             <div class="col-sm-8">
-                <main>
-                    <section>
-                        <h2 class="index-title">Etiqueta pelican</h2>
-                        <div class="media mb-4 index-article">
-                            <a href="/apuntes/pelican-constructor-sitios-web/"><img class="mr-3" src="/apuntes/pelican-constructor-sitios-web/python.png" alt="Imagen previa"></a>
-                            <div class="media-body">
-                                <h3 class="index-article-title"><a href="/apuntes/pelican-constructor-sitios-web/">Pelican: Constructor de sitios web</a></h3>
-<p>Pelican es un constructor de sitios web estáticos programado en Python que no necesita de una base de datos.</p>
-                            </div>
-                        </div>
-                    </section>
-                    <nav>
-                        <ul class="pagination justify-content-center movimientolibre-pagination">
-                            <li class="page-item">
-                                <a class="page-link movimientolibre-page-link" href="/tag/pelican.html">1</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </main>
+                <article class="article-post">
+                    <script type="application/ld+json">
+                        {
+                            "@context": "http://schema.org",
+                            "@type": "Article",
+                            "publisher": {
+                            "@type": "Organization",
+                            "name": "Movimiento Libre",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
+                            },
+                            "url": "https://movimientolibre.com"
+                        },
+                        "author": "Guillermo Valdés Lozano (guivaloz)",
+                        "name": "Podman básico: Contenedor con documentación de Python",
+                        "headline": "Podman básico: Contenedor con documentación de Python",
+                        "description": "Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.",
+                        "dateCreated": "2020-08-04 22:00:00-05:00",
+                        "datePublished": "2020-08-04 22:00:00-05:00",
+                        "dateModified": "2020-08-04 22:00:00-05:00",
+                        "image": "https://movimientolibre.com/apuntes/podman-01-documentacion-python/podman.png",
+                        "url": "https://movimientolibre.com/apuntes/podman-01-documentacion-python/"
+                        }
+                    </script>
+                    <h2 class="article-post-title">Podman básico: Contenedor con documentación de Python</h2>
+                    <p class="article-post-meta">Guillermo Valdés Lozano (guivaloz)<br>04 agosto 2020</p>
+<p>Crear un directorio para este ejercicio</p>
+<div class="highlight"><pre><span></span><code>$ mkdir podman-01-documentacion-python
+$ <span class="nb">cd</span> podman-01-documentacion-python
+</code></pre></div>
+
+
+<p>Visite <a href="https://docs.python.org/3/download.html">Download Python 3 Documentation</a> y descargue el archivo comprimido que tiene todos los archivos HTML empacados en .tar.bz2. Al momento de escribir esto se encuentra la versión 3.8.5</p>
+<div class="highlight"><pre><span></span><code>$ wget https://docs.python.org/3/archives/python-3.8.5-docs-html.tar.bz2
+</code></pre></div>
+
+
+<p>Crear el archivo <code>Dockerfile</code></p>
+<div class="highlight"><pre><span></span><code>$ nano Dockerfile
+</code></pre></div>
+
+
+<p>Con este contenido...</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="o">-</span><span class="n">alpine</span>
+
+<span class="o">#</span> <span class="n">Crear</span> <span class="n">directorio</span>
+<span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">app</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">app</span>
+
+<span class="o">#</span> <span class="n">Copiar</span> <span class="n">la</span> <span class="n">documentación</span>
+<span class="k">COPY</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span> <span class="p">.</span>
+
+<span class="o">#</span> <span class="n">Desempacar</span>
+<span class="n">RUN</span> <span class="n">tar</span> <span class="o">-</span><span class="n">xjf</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span> <span class="o">&amp;&amp;</span> <span class="err">\</span>
+  <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span> <span class="n">python3</span>
+
+<span class="o">#</span> <span class="n">Arrancar</span> <span class="n">el</span> <span class="n">servidor</span> <span class="n">web</span>
+<span class="n">CMD</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="p">.</span><span class="n">server</span> <span class="mi">8000</span>
+</code></pre></div>
+
+
+<p>Descargar la imagen <code>python:3.8-alpine</code></p>
+<div class="highlight"><pre><span></span><code>$ podman pull python:3.8-alpine
+$ podman images
+</code></pre></div>
+
+
+<p>Construir tu contenedor python_docs en su versión 3.8.5</p>
+<div class="highlight"><pre><span></span><code>$ podman build -t python_docs:3.8.5 .
+</code></pre></div>
+
+
+<p>Correr el contenedor, que se autodestruya, mandar al fondo, canalizar el puerto 8000 y con nombre python_docs_web</p>
+<div class="highlight"><pre><span></span><code>$ podman run --rm -d -p <span class="m">8000</span>:8000 --name python_docs_web python_docs:3.8.5
+</code></pre></div>
+
+
+<p>Probar el navegador de internet con esta URL</p>
+<div class="highlight"><pre><span></span><code><span class="c">http://127.0.0.1:8000/python3/</span>
+</code></pre></div>
+
+
+<p><img class="img-fluid" src="python-3-8-5-documentation.png" alt="Mozilla Firefox con Python 3.8.5 Documentation"></p>
+<p>Terminar la ejecución del contenedor con...</p>
+<div class="highlight"><pre><span></span><code>$ podman stop python_docs_web
+</code></pre></div>
+                </article>
             </div>
             <div class="col-sm-4">
                 <aside>
@@ -113,8 +182,8 @@
                                 <li><a href="/tag/astronomia.html">astronomía</a></li>
                                 <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
                                 <li><a href="/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="/tag/contenedores.html">contenedores</a></li>
                                 <li><a href="/tag/desarrollo.html">desarrollo</a></li>
-                                <li><a href="/tag/docker.html">docker</a></li>
                                 <li><a href="/tag/educacion.html">educación</a></li>
                                 <li><a href="/tag/fedora.html">fedora</a></li>
                                 <li><a href="/tag/flisol.html">flisol</a></li>
@@ -127,7 +196,6 @@
                                 <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
                                 <li><a href="/tag/latex.html">latex</a></li>
                                 <li><a href="/tag/markdown.html">markdown</a></li>
-                                <li><a href="/tag/pelican.html">pelican</a></li>
                                 <li><a href="/tag/php.html">php</a></li>
                                 <li><a href="/tag/politica.html">política</a></li>
                                 <li><a href="/tag/postgresql.html">postgresql</a></li>
