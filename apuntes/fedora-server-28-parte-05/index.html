@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de Fedora Server 28, parte 5, proxy Squid</h2>
-                    <p class="article-post-meta"><p>Vamos a configurar un proxy con Squid.</p><br>24 junio 2018</p>
+<p>Vamos a configurar un proxy con Squid.</p>
+                    <p class="article-post-meta">24 junio 2018</p>
 <h3>Squid - archivos de configuración</h3>
 <p>Instale Squid...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install squid</span>
@@ -234,36 +235,36 @@
 
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Puerto</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Puerto</span>
 <span class="n">http_port</span> <span class="mi">3128</span>
 
-<span class="o">#</span> <span class="n">Disk</span> <span class="k">cache</span> <span class="n">directory</span>
-<span class="o">#</span> <span class="o">-</span> <span class="n">ufs</span> <span class="n">es</span> <span class="n">el</span> <span class="n">sistema</span> <span class="n">de</span> <span class="n">almacenamiento</span> <span class="n">propio</span> <span class="n">de</span> <span class="n">Squid</span>
-<span class="o">#</span> <span class="o">-</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span> <span class="n">es</span> <span class="n">la</span> <span class="n">ruta</span>
-<span class="o">#</span> <span class="o">-</span> <span class="mi">8192</span> <span class="n">es</span> <span class="n">la</span> <span class="n">cantidad</span> <span class="n">en</span> <span class="n">MB</span><span class="p">,</span> <span class="n">debe</span> <span class="n">tener</span> <span class="n">como</span> <span class="n">maximo</span> <span class="mi">20</span><span class="o">%</span> <span class="n">menos</span> <span class="n">del</span> <span class="n">tamano</span> <span class="n">de</span> <span class="n">la</span> <span class="n">particion</span>
-<span class="o">#</span>        <span class="n">la</span> <span class="n">partición</span> <span class="o">/</span><span class="n">var</span> <span class="n">tiene</span> <span class="mi">16</span> <span class="n">GB</span><span class="p">,</span> <span class="n">así</span> <span class="n">que</span> <span class="mi">8</span> <span class="n">GB</span> <span class="n">es</span> <span class="n">la</span> <span class="n">mitad</span>
-<span class="o">#</span> <span class="o">-</span>   <span class="mi">64</span> <span class="n">es</span> <span class="n">L1</span><span class="p">,</span> <span class="n">el</span> <span class="n">numero</span> <span class="n">de</span> <span class="n">subdirectorios</span> <span class="n">de</span> <span class="n">primer</span> <span class="n">nivel</span>
-<span class="o">#</span> <span class="o">-</span>  <span class="mi">256</span> <span class="n">es</span> <span class="n">L2</span><span class="p">,</span> <span class="n">el</span> <span class="n">numero</span> <span class="n">de</span> <span class="n">subdirectorios</span> <span class="n">de</span> <span class="n">segundo</span> <span class="n">nivel</span>
-<span class="n">cache_dir</span> <span class="n">ufs</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span> <span class="mi">8192</span> <span class="mi">64</span> <span class="mi">256</span>
+<span class="c1"># Disk cache directory</span>
+<span class="c1"># - ufs es el sistema de almacenamiento propio de Squid</span>
+<span class="c1"># - /var/cache/squid es la ruta</span>
+<span class="c1"># - 8192 es la cantidad en MB, debe tener como maximo 20% menos del tamano de la particion</span>
+<span class="c1">#        la partición /var tiene 16 GB, así que 8 GB es la mitad</span>
+<span class="c1"># -   64 es L1, el numero de subdirectorios de primer nivel</span>
+<span class="c1"># -  256 es L2, el numero de subdirectorios de segundo nivel</span>
+<span class="n">cache_dir</span> <span class="n">ufs</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">squid</span> <span class="mi">8192</span> <span class="mi">64</span> <span class="mi">256</span>
 
-<span class="o">#</span> <span class="n">Tamano</span> <span class="n">maximo</span> <span class="n">por</span> <span class="n">objeto</span>
+<span class="c1"># Tamano maximo por objeto</span>
 <span class="n">maximum_object_size</span> <span class="mi">128</span> <span class="n">MB</span>
 
-<span class="o">#</span> <span class="n">Cantidad</span> <span class="n">de</span> <span class="n">Memoria</span> <span class="n">RAM</span> <span class="n">que</span> <span class="n">se</span> <span class="n">usara</span> <span class="n">antes</span> <span class="n">de</span> <span class="n">escribir</span> <span class="n">en</span> <span class="n">el</span> <span class="n">disco</span>
+<span class="c1"># Cantidad de Memoria RAM que se usara antes de escribir en el disco</span>
 <span class="n">cache_mem</span> <span class="mi">256</span> <span class="n">MB</span>
 <span class="n">cache_replacement_policy</span> <span class="n">heap</span> <span class="n">LFUDA</span>
 
-<span class="o">#</span> <span class="n">Patrones</span> <span class="n">de</span> <span class="n">archivos</span> <span class="n">y</span> <span class="n">sus</span> <span class="n">tiempos</span> <span class="n">de</span> <span class="n">permanencia</span> <span class="n">en</span> <span class="n">el</span> <span class="k">cache</span>
+<span class="c1"># Patrones de archivos y sus tiempos de permanencia en el cache</span>
 <span class="n">refresh_pattern</span> <span class="o">^</span><span class="n">ftp</span><span class="p">:</span>             <span class="mi">1440</span>  <span class="mi">20</span><span class="o">%</span>  <span class="mi">10080</span>
 <span class="n">refresh_pattern</span> <span class="o">^</span><span class="n">gopher</span><span class="p">:</span>          <span class="mi">1440</span>   <span class="mi">0</span><span class="o">%</span>   <span class="mi">1440</span>
-<span class="n">refresh_pattern</span> <span class="o">-</span><span class="n">i</span> <span class="p">(</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="n">bin</span><span class="o">/|</span><span class="err">\</span><span class="o">?</span><span class="p">)</span>    <span class="mi">0</span>   <span class="mi">0</span><span class="o">%</span>      <span class="mi">0</span>
-<span class="n">refresh_pattern</span> <span class="p">.</span>                    <span class="mi">0</span>  <span class="mi">20</span><span class="o">%</span>   <span class="mi">4320</span>
+<span class="n">refresh_pattern</span> <span class="o">-</span><span class="n">i</span> <span class="p">(</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="n">bin</span><span class="o">/|</span>\<span class="err">?</span><span class="p">)</span>    <span class="mi">0</span>   <span class="mi">0</span><span class="o">%</span>      <span class="mi">0</span>
+<span class="n">refresh_pattern</span> <span class="o">.</span>                    <span class="mi">0</span>  <span class="mi">20</span><span class="o">%</span>   <span class="mi">4320</span>
 
-<span class="o">#</span> <span class="n">Leave</span> <span class="n">coredumps</span> <span class="k">in</span> <span class="n">the</span> <span class="k">first</span> <span class="k">cache</span> <span class="n">dir</span>
-<span class="n">coredump_dir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="k">cache</span><span class="o">/</span><span class="n">squid</span>
+<span class="c1"># Leave coredumps in the first cache dir</span>
+<span class="n">coredump_dir</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">squid</span>
 
-<span class="o">#</span> <span class="n">Tiempo</span> <span class="n">de</span> <span class="n">espera</span> <span class="n">de</span> <span class="n">cierre</span> <span class="n">de</span> <span class="n">conexiones</span>
-<span class="o">#</span> <span class="n">al</span> <span class="n">disminuirlo</span> <span class="n">el</span> <span class="n">apagado</span> <span class="n">sera</span> <span class="n">mas</span> <span class="n">breve</span>
+<span class="c1"># Tiempo de espera de cierre de conexiones</span>
+<span class="c1"># al disminuirlo el apagado sera mas breve</span>
 <span class="n">shutdown_lifetime</span> <span class="mi">12</span> <span class="n">seconds</span>
 </code></pre></div>
 
@@ -339,9 +340,9 @@
 
 <h3>Políticas de SELinux</h3>
 <p>Prepare el directorio para el caché...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># mkdir /var/cache/squid</span>
-<span class="err"># chown squid /var/cache/squid</span>
-<span class="err"># squid -z -N -f /etc/squid/squid.conf</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># mkdir /var/cache/squid</span>
+<span class="c1"># chown squid /var/cache/squid</span>
+<span class="c1"># squid -z -N -f /etc/squid/squid.conf</span>
 </code></pre></div>
 
 
@@ -362,7 +363,7 @@
 
 
 <p>Al revisar los últimos registros en la bitácora...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># tail /var/log/audit/audit.log</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># tail /var/log/audit/audit.log</span>
 </code></pre></div>
 
 
@@ -383,7 +384,7 @@
 
 
 <p>1) Ejecute <code>audit2allow</code> alimentado por la bitácora <code>audit.log</code>...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># audit2allow -M MYSQUIDPOLICY &lt; /var/log/audit/audit.log</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># audit2allow -M MYSQUIDPOLICY &lt; /var/log/audit/audit.log</span>
 </code></pre></div>
 
 
@@ -418,26 +419,26 @@
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><code><span class="nt">module</span> <span class="nt">DnsmasqSquidPolicy</span> <span class="nt">1</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span>
+<div class="highlight"><pre><span></span><code><span class="n">module</span> <span class="n">DnsmasqSquidPolicy</span> <span class="mf">1.0</span><span class="p">;</span>
 
-<span class="nt">require</span> <span class="p">{</span>
-        <span class="err">type</span> <span class="err">squid_t</span><span class="p">;</span>
-        <span class="err">type</span> <span class="err">dnsmasq_t</span><span class="p">;</span>
-        <span class="err">type</span> <span class="err">user_tmp_t</span><span class="p">;</span>
-        <span class="err">type</span> <span class="err">var_t</span><span class="p">;</span>
-        <span class="err">class</span> <span class="err">capability</span> <span class="err">dac_override</span><span class="p">;</span>
-        <span class="err">class</span> <span class="err">file</span> <span class="err">{</span> <span class="err">append</span> <span class="err">create</span> <span class="err">getattr</span> <span class="err">open</span> <span class="err">read</span> <span class="err">rename</span> <span class="err">unlink</span> <span class="err">write</span> <span class="p">}</span><span class="o">;</span>
-<span class="err">}</span>
+<span class="n">require</span> <span class="p">{</span>
+        <span class="n">type</span> <span class="n">squid_t</span><span class="p">;</span>
+        <span class="n">type</span> <span class="n">dnsmasq_t</span><span class="p">;</span>
+        <span class="n">type</span> <span class="n">user_tmp_t</span><span class="p">;</span>
+        <span class="n">type</span> <span class="n">var_t</span><span class="p">;</span>
+        <span class="k">class</span> <span class="n">capability</span> <span class="n">dac_override</span><span class="p">;</span>
+        <span class="k">class</span> <span class="n">file</span> <span class="p">{</span> <span class="n">append</span> <span class="n">create</span> <span class="n">getattr</span> <span class="n">open</span> <span class="n">read</span> <span class="n">rename</span> <span class="n">unlink</span> <span class="n">write</span> <span class="p">};</span>
+<span class="p">}</span>
 
-<span class="err">#</span><span class="o">=============</span> <span class="nt">dnsmasq_t</span> <span class="o">==============</span>
+<span class="c1">#============= dnsmasq_t ==============</span>
 
-<span class="nt">allow</span> <span class="nt">dnsmasq_t</span> <span class="nt">self</span><span class="p">:</span><span class="nd">capability</span> <span class="nt">dac_override</span><span class="o">;</span>
+<span class="n">allow</span> <span class="n">dnsmasq_t</span> <span class="bp">self</span><span class="p">:</span><span class="n">capability</span> <span class="n">dac_override</span><span class="p">;</span>
 
-<span class="err">#</span><span class="o">=============</span> <span class="nt">squid_t</span> <span class="o">==============</span>
+<span class="c1">#============= squid_t ==============</span>
 
-<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">user_tmp_t</span><span class="p">:</span><span class="nd">file</span> <span class="nt">unlink</span><span class="o">;</span>
-<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">var_t</span><span class="p">:</span><span class="nd">file</span> <span class="nt">unlink</span><span class="o">;</span>
-<span class="nt">allow</span> <span class="nt">squid_t</span> <span class="nt">var_t</span><span class="p">:</span><span class="nd">file</span> <span class="p">{</span> <span class="err">append</span> <span class="err">create</span> <span class="err">getattr</span> <span class="err">open</span> <span class="err">read</span> <span class="err">rename</span> <span class="err">write</span> <span class="p">}</span><span class="o">;</span>
+<span class="n">allow</span> <span class="n">squid_t</span> <span class="n">user_tmp_t</span><span class="p">:</span><span class="n">file</span> <span class="n">unlink</span><span class="p">;</span>
+<span class="n">allow</span> <span class="n">squid_t</span> <span class="n">var_t</span><span class="p">:</span><span class="n">file</span> <span class="n">unlink</span><span class="p">;</span>
+<span class="n">allow</span> <span class="n">squid_t</span> <span class="n">var_t</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">append</span> <span class="n">create</span> <span class="n">getattr</span> <span class="n">open</span> <span class="n">read</span> <span class="n">rename</span> <span class="n">write</span> <span class="p">};</span>
 </code></pre></div>
 
 

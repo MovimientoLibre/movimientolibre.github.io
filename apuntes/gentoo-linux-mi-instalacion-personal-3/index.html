@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Mi instalación personal de Gentoo Linux, tercera parte (actualizado 2008-nov)</h2>
-                    <p class="article-post-meta"><p>La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</p><br>15 noviembre 2008</p>
+<p>La continuación de la instalación de KDE 3.5.9 (versión estable cuando fue escrito esta publicación) y de los paquetes preferidos por su servidor.</p>
+                    <p class="article-post-meta">15 noviembre 2008</p>
 <p>Imagen: <a href="http://commons.wikimedia.org/wiki/File:Gentoo-abducted-1024x768.png">Gentoo abducted</a> con <em>Larry The Cow</em>, la mascota de <a href="http://www.gentoo.org/">Gentoo Linux</a>, elaborado por Matteo 'Peach' Pescarin.</p>
 <p>Como introducción les escribo un breve <em>FAQ</em> (preguntas y respuestas frecuentes) sobre Gentoo Linux.</p>
 <p><strong>¿Qué es Gentoo?</strong> es un Sistema Operativo libre basado en Linux o FreeBSD que puede ser optimizado y personalizado para casi cualquier aplicación o necesidad. Configuración extrema, desempeño, usuarios y desarrolladores de primera categoría son las distinciones de Gentoo. Más en <a href="http://www.gentoo.org/main/en/about.xml">About Gentoo</a>.</p>
@@ -132,14 +133,14 @@
 
 
 <p>Instale los mejores programas de multimedia.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge lame mp3splt vorbis-tools faad2 ffmpeg mplayer moc gstreamer</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge lame mp3splt vorbis-tools faad2 ffmpeg mplayer moc gstreamer</span>
 </code></pre></div>
 
 
 <p>Instale herramentas para hacer auditoria de redes.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge whois traceroute geoip bind-tools</span>
-<span class="err"># emerge wireless-tools iw wpa_supplicant</span>
-<span class="err"># emerge nmap macchanger aircrack-ng kismet</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge whois traceroute geoip bind-tools</span>
+<span class="c1"># emerge wireless-tools iw wpa_supplicant</span>
+<span class="c1"># emerge nmap macchanger aircrack-ng kismet</span>
 </code></pre></div>
 
 
@@ -271,9 +272,9 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 
 
 <p>Borre los archivos temporales.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/archivos/instalaciones/prescott/</span>
-<span class="err"># rm -rf root/.ccache root/.gconf root/.gconfd</span>
-<span class="err"># rm -rf tmp/* var/tmp/*</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># cd /mnt/archivos/instalaciones/prescott/</span>
+<span class="c1"># rm -rf root/.ccache root/.gconf root/.gconfd</span>
+<span class="c1"># rm -rf tmp/* var/tmp/*</span>
 </code></pre></div>
 
 
@@ -326,11 +327,11 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 
 
 <p>Ingrese a su nueva instalación por <em>chroot</em></p>
-<div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</span>
-<span class="err"># chroot /mnt/gentoo /bin/bash</span>
-<span class="err"># env-update</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(nueva) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</span>
+<span class="c1"># chroot /mnt/gentoo /bin/bash</span>
+<span class="c1"># env-update</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(nueva) $PS1&quot;</span>
 </code></pre></div>
 
 

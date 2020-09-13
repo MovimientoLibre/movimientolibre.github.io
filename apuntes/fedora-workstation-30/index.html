@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de Fedora Workstation 30</h2>
-                    <p class="article-post-meta"><p>Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.</p><br>13 agosto 2019</p>
+<p>Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.</p>
+                    <p class="article-post-meta">13 agosto 2019</p>
 <p>En este apunte es una actualización de <a href="https://movimientolibre.com/apuntes/fedora-workstation-29-parte-02/">Fedora Workstation 29 con KDE parte 2</a>.</p>
 <p>Luego de instalar Fedora con KDE con una memoria USB y eligiendo el entorno gráfico KDE; hacemos una actualización...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf --refresh check-update</span>
@@ -188,9 +189,9 @@
 
 
 <p>Configure los repositorios RPM Fusion...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \</span>
-<span class="err">  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm</span>
-<span class="err"># dnf update</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \</span>
+  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download1</span><span class="o">.</span><span class="n">rpmfusion</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">nonfree</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">rpmfusion</span><span class="o">-</span><span class="n">nonfree</span><span class="o">-</span><span class="n">release</span><span class="o">-$</span><span class="p">(</span><span class="n">rpm</span> <span class="o">-</span><span class="n">E</span> <span class="o">%</span><span class="n">fedora</span><span class="p">)</span><span class="o">.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span>
+<span class="c1"># dnf update</span>
 </code></pre></div>
 
 

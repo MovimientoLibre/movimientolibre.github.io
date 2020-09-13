@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Configuración de Docker en Fedora</h2>
-                    <p class="article-post-meta"><p>Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.</p><br>24 enero 2019</p>
+<p>Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.</p>
+                    <p class="article-post-meta">24 enero 2019</p>
 <h3>Requisitos</h3>
 <p>Este apunte es para Fedora Linux. Su objetivo es usar una partición dedicada a Docker y que sea controlable a través de una cuenta de usuario.</p>
 <p>Ya debe tiene instalado...</p>
@@ -120,8 +121,8 @@
 
 
 <p>Copie todo el contenido que se ha puesto en la instalación al directorio de montaje temporal...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># cd /var/lib/docker/</span>
-<span class="err"># tar cvf - * | (cd /mnt/docker/; tar xf -)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># cd /var/lib/docker/</span>
+<span class="c1"># tar cvf - * | (cd /mnt/docker/; tar xf -)</span>
 </code></pre></div>
 
 
@@ -136,18 +137,18 @@
 
 
 <p>Y agregue esta línea...</p>
-<div class="highlight"><pre><span></span><code><span class="err">/dev/mapper/integridad-docker  /var/lib/docker  ext4  defaults  1 2</span>
+<div class="highlight"><pre><span></span><code><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mapper</span><span class="o">/</span><span class="n">integridad</span><span class="o">-</span><span class="n">docker</span>  <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span>  <span class="n">ext4</span>  <span class="n">defaults</span>  <span class="mi">1</span> <span class="mi">2</span>
 </code></pre></div>
 
 
 <p>Monte en el directorio definitivo...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># mount /var/lib/docker</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># mount /var/lib/docker</span>
 </code></pre></div>
 
 
 <p>Re-aplique los permisos SELinux...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># docker-storage-setup</span>
-<span class="err"># restorecon -vR /var/lib/docker/</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># docker-storage-setup</span>
+<span class="c1"># restorecon -vR /var/lib/docker/</span>
 </code></pre></div>
 
 

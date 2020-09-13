@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de CentOS para virtualizar</h2>
-                    <p class="article-post-meta"><p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o GUI. La administración será vía OpenSSH y por el Administrador de Virtualizaciones desde otro equipo.</p><br>30 enero 2014</p>
+<p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o GUI. La administración será vía OpenSSH y por el Administrador de Virtualizaciones desde otro equipo.</p>
+                    <p class="article-post-meta">30 enero 2014</p>
 <p><a href="https://www.centos.org/">CentOS</a> es una distribución GNU/Linux mantenida por la comunidad a partir del código libre de <a href="https://www.redhat.com/">Red Hat</a>. De una forma práctica, <strong>CentOS</strong> es lo mismo que <strong>Red Hat</strong> pero sin su marca comercial ni soporte técnico de paga. La estabilidad y confiabilidad de CentOS lo hacen la mejor opción para sistema operativo base de un servidor cuyo fin sea virtualizar. Recientemente se ha anunciado el apoyo directo de Red Hat a la comunidad de CentOS; de lo cual esperamos muchas ganancias para todos.</p>
 <h3>Objetivo</h3>
 <p>Instalar CentOS con lo mínimo necesario para virtualizar con KVM. Teniendo en mente que sólo va a llegar a Terminal, es decir, sin interfaz gráfica o <em>GUI</em>. La administración será vía <strong>OpenSSH</strong> y por el <strong>Administrador de Virtualizaciones</strong> desde otro equipo.</p>
@@ -355,13 +356,13 @@
 
 
 <p>Puede solicitar información detallada de una red con el comando <strong>virsh net-info</strong> seguido por el nombre de la red.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># virsh net-info bridge-br0</span>
-<span class="err">Nombre          bridge-br0</span>
-<span class="err">UUID            xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</span>
-<span class="c">Activar:        no</span>
-<span class="c">Persistente:    si</span>
-<span class="c">Autoinicio:     no</span>
-<span class="c">Puente:         br0</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># virsh net-info bridge-br0</span>
+<span class="n">Nombre</span>          <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
+<span class="n">UUID</span>            <span class="n">xxxxxxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxxxxxxxxxx</span>
+<span class="n">Activar</span><span class="p">:</span>        <span class="n">no</span>
+<span class="n">Persistente</span><span class="p">:</span>    <span class="n">si</span>
+<span class="n">Autoinicio</span><span class="p">:</span>     <span class="n">no</span>
+<span class="n">Puente</span><span class="p">:</span>         <span class="n">br0</span>
 </code></pre></div>
 
 
@@ -378,13 +379,13 @@
 
 
 <p>Verifique que Activar, Persistente y Autoinicio estén en <strong>si</strong>:</p>
-<div class="highlight"><pre><span></span><code><span class="err"># virsh net-info bridge-br0</span>
-<span class="err">Nombre          bridge-br0</span>
-<span class="err">UUID            xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</span>
-<span class="c">Activar:        si</span>
-<span class="c">Persistente:    si</span>
-<span class="c">Autoinicio:     si</span>
-<span class="c">Puente:         br0</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># virsh net-info bridge-br0</span>
+<span class="n">Nombre</span>          <span class="n">bridge</span><span class="o">-</span><span class="n">br0</span>
+<span class="n">UUID</span>            <span class="n">xxxxxxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxx</span><span class="o">-</span><span class="n">xxxxxxxxxxxx</span>
+<span class="n">Activar</span><span class="p">:</span>        <span class="n">si</span>
+<span class="n">Persistente</span><span class="p">:</span>    <span class="n">si</span>
+<span class="n">Autoinicio</span><span class="p">:</span>     <span class="n">si</span>
+<span class="n">Puente</span><span class="p">:</span>         <span class="n">br0</span>
 </code></pre></div>
 
 

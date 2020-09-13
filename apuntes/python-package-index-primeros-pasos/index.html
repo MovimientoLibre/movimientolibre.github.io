@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Python Package Index (PyPI): primeros pasos</h2>
-                    <p class="article-post-meta"><p>PyPI es el repositorio de paquetes de Python por excelencia. En este apunte están los pasos para preparar software que se instale con pip.</p><br>05 septiembre 2020</p>
+<p>PyPI es el repositorio de paquetes de Python por excelencia. En este apunte están los pasos para preparar software que se instale con pip.</p>
+                    <p class="article-post-meta">05 septiembre 2020</p>
 <p>En este apunte se usa <code>pypi_primeros_pasos</code> como el nombre del paquete; debe cambiarlo por el nombre que vaya a usar.</p>
 <h2>Crear un nuevo repositorio en GitHub</h2>
 <p>Un buen punto de partida y futuro <em>home</em> de su paquete es hacer un nuevo repositorio en <a href="https://github.com">GitHub</a> (o el servicio <em>git</em> que prefiera). Luego de crearlo baje una copia con las siguientes órdenes; sustituya <code>USUARIO</code> por su cuenta.</p>
@@ -233,7 +234,7 @@ $ . bin/activate
 
 
 <p>Suba el paquete ejecutando...</p>
-<div class="highlight"><pre><span></span><code><span class="err">(PyPIPrimerosPasos) $ python3 -m twine upload --repository testpypi dist/*</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">PyPIPrimerosPasos</span><span class="p">)</span> <span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">twine</span> <span class="n">upload</span> <span class="o">--</span><span class="n">repository</span> <span class="n">testpypi</span> <span class="n">dist</span><span class="o">/*</span>
 </code></pre></div>
 
 

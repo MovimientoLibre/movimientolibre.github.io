@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Gentoo Linux en una netbook (2010, parte 2)</h2>
-                    <p class="article-post-meta"><p>Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.</p><br>26 noviembre 2010</p>
+<p>Le invito a continuar leyendo esta segunda parte de la Guía de Instalación de Gentoo Linux para una netbook.</p>
+                    <p class="article-post-meta">26 noviembre 2010</p>
 <p><img class="img-fluid" src="wallpaper-gentoo-morpheus.jpg" alt="Gentoo Linux wallpaper Matrix Morpheus"></p>
 <p>En este fondo de pantalla aparece <em>Morpheus</em>, personaje de las películas <a href="http://www.imdb.com/title/tt0133093/">The Matrix</a> y muestra un <em>diálogo alterado</em> de cuando <em>Morpheus</em> le explica a <em>Neo</em> qué es la <em>Matrix</em>. Claro que el resultado es una divertida exageración. He aquí lo que dice en español:</p>
 <blockquote>
@@ -108,46 +109,46 @@
 <p>Le invito a continuar leyendo esta <strong>segunda parte</strong> de la <strong>Guía de Instalación de Gentoo Linux para una netbook</strong>. No deje de leer la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-1.html">primera parte</a>.</p>
 <h3>Use el profile desktop</h3>
 <p>Cambie el <em>profile</em> a <em>desktop</em>:</p>
-<div class="highlight"><pre><span></span><code><span class="err"># eselect profile list</span>
-<span class="err"># eselect profile set default/linux/x86/10.0/desktop</span>
-<span class="err"># eselect profile show</span>
-<span class="err"># env-update</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(prescott) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># eselect profile list</span>
+<span class="c1"># eselect profile set default/linux/x86/10.0/desktop</span>
+<span class="c1"># eselect profile show</span>
+<span class="c1"># env-update</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(prescott) $PS1&quot;</span>
 </code></pre></div>
 
 
 <p>Modifique la variable <strong>USE</strong> en /etc/make.conf con los parámetros que definen las dependencias y uso del equipo. Estos son los que he elegido:</p>
-<div class="highlight"><pre><span></span><code># Redes
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> bluetooth cups ppd samba wifi&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># Redes</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} bluetooth cups ppd samba wifi&quot;</span>
 
-# Desarrollo. He desactivado java, más adelante lo activare
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> apache2 -java mysql php postgres ruby vhosts&quot;
+<span class="c1"># Desarrollo. He desactivado java, más adelante lo activare</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} apache2 -java mysql php postgres ruby vhosts&quot;</span>
 
-# PHP
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> ctype imap json pdo refection spl xml xmlrpc xsl&quot;
+<span class="c1"># PHP</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} ctype imap json pdo refection spl xml xmlrpc xsl&quot;</span>
 
-# Graficos
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> fontconfig gd graphviz gs imagemagick&quot;
+<span class="c1"># Graficos</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} fontconfig gd graphviz gs imagemagick&quot;</span>
 
-# Entorno XFCE
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> -gnome -qt4&quot;
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> thunar xcomposite xscreensaver&quot;
-XFCE_PLUGINS=&quot;brightness menu trash&quot;
+<span class="c1"># Entorno XFCE</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} -gnome -qt4&quot;</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} thunar xcomposite xscreensaver&quot;</span>
+<span class="n">XFCE_PLUGINS</span><span class="o">=</span><span class="s2">&quot;brightness menu trash&quot;</span>
 
-# Sonido
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> amr amrnb amrwb cddb cdparanoia faac faad flac -gstreamer&quot;
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> lame mtp speex theora&quot;
+<span class="c1"># Sonido</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} amr amrnb amrwb cddb cdparanoia faac faad flac -gstreamer&quot;</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} lame mtp speex theora&quot;</span>
 
-# Video
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> a52 css dv dvb fbcon ffmpeg live matroska mplayer rtsp&quot;
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> shout v4l v4l2 vcd win32codecs x264 xvid xvmc&quot;
+<span class="c1"># Video</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} a52 css dv dvb fbcon ffmpeg live matroska mplayer rtsp&quot;</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} shout v4l v4l2 vcd win32codecs x264 xvid xvmc&quot;</span>
 
-# Otros
-# gnutls es para cups y lo pide firefox
-# kpathsea es para LaTeX
-# nsplugin es para que vlc y java instalen plugins para firefox
-USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> gnutls joystick kqemu kpathsea nsplugin&quot;
+<span class="c1"># Otros</span>
+<span class="c1"># gnutls es para cups y lo pide firefox</span>
+<span class="c1"># kpathsea es para LaTeX</span>
+<span class="c1"># nsplugin es para que vlc y java instalen plugins para firefox</span>
+<span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} gnutls joystick kqemu kpathsea nsplugin&quot;</span>
 </code></pre></div>
 
 
@@ -162,7 +163,7 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 
 <h3>Instale el software básico</h3>
 <p>Los siguientes programas son indispensables:</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools screen logrotate iptables pwgen</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools screen logrotate iptables pwgen</span>
 </code></pre></div>
 
 
@@ -177,33 +178,33 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 
 
 <p>Este es el contenido de /etc/modprobe.d/alsa.conf para mi <em>netbook</em>:</p>
-<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">ALSA</span> <span class="n">portion</span>
-<span class="k">alias</span> <span class="nb">char</span><span class="o">-</span><span class="n">major</span><span class="o">-</span><span class="mi">116</span> <span class="n">snd</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ALSA portion</span>
+<span class="n">alias</span> <span class="nb">char</span><span class="o">-</span><span class="n">major</span><span class="o">-</span><span class="mi">116</span> <span class="n">snd</span>
 
-<span class="o">#</span> <span class="n">OSS</span><span class="o">/</span><span class="k">Free</span> <span class="n">portion</span>
-<span class="k">alias</span> <span class="nb">char</span><span class="o">-</span><span class="n">major</span><span class="o">-</span><span class="mi">14</span> <span class="n">soundcore</span>
+<span class="c1"># OSS/Free portion</span>
+<span class="n">alias</span> <span class="nb">char</span><span class="o">-</span><span class="n">major</span><span class="o">-</span><span class="mi">14</span> <span class="n">soundcore</span>
 
-<span class="o">#</span> <span class="n">Intel</span> <span class="n">High</span> <span class="n">Definition</span> <span class="n">Audio</span>
-<span class="k">alias</span> <span class="n">snd</span><span class="o">-</span><span class="n">card</span><span class="o">-</span><span class="mi">0</span> <span class="n">snd</span><span class="o">-</span><span class="n">hda</span><span class="o">-</span><span class="n">intel</span>
-<span class="k">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">slot</span><span class="o">-</span><span class="mi">0</span> <span class="n">snd</span><span class="o">-</span><span class="n">card</span><span class="o">-</span><span class="mi">0</span>
+<span class="c1"># Intel High Definition Audio</span>
+<span class="n">alias</span> <span class="n">snd</span><span class="o">-</span><span class="n">card</span><span class="o">-</span><span class="mi">0</span> <span class="n">snd</span><span class="o">-</span><span class="n">hda</span><span class="o">-</span><span class="n">intel</span>
+<span class="n">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">slot</span><span class="o">-</span><span class="mi">0</span> <span class="n">snd</span><span class="o">-</span><span class="n">card</span><span class="o">-</span><span class="mi">0</span>
 
-<span class="o">#</span> <span class="n">OSS</span><span class="o">/</span><span class="k">Free</span> <span class="n">portion</span> <span class="o">-</span> <span class="n">card</span> <span class="o">#</span><span class="mi">1</span>
-<span class="k">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">0</span> <span class="n">snd</span><span class="o">-</span><span class="n">mixer</span><span class="o">-</span><span class="n">oss</span>
-<span class="k">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">1</span> <span class="n">snd</span><span class="o">-</span><span class="n">seq</span><span class="o">-</span><span class="n">oss</span>
-<span class="k">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">3</span> <span class="n">snd</span><span class="o">-</span><span class="n">pcm</span><span class="o">-</span><span class="n">oss</span>
-<span class="k">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">8</span> <span class="n">snd</span><span class="o">-</span><span class="n">seq</span><span class="o">-</span><span class="n">oss</span>
-<span class="k">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">12</span> <span class="n">snd</span><span class="o">-</span><span class="n">pcm</span><span class="o">-</span><span class="n">oss</span>
+<span class="c1"># OSS/Free portion - card #1</span>
+<span class="n">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">0</span> <span class="n">snd</span><span class="o">-</span><span class="n">mixer</span><span class="o">-</span><span class="n">oss</span>
+<span class="n">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">1</span> <span class="n">snd</span><span class="o">-</span><span class="n">seq</span><span class="o">-</span><span class="n">oss</span>
+<span class="n">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">3</span> <span class="n">snd</span><span class="o">-</span><span class="n">pcm</span><span class="o">-</span><span class="n">oss</span>
+<span class="n">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">8</span> <span class="n">snd</span><span class="o">-</span><span class="n">seq</span><span class="o">-</span><span class="n">oss</span>
+<span class="n">alias</span> <span class="n">sound</span><span class="o">-</span><span class="n">service</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">12</span> <span class="n">snd</span><span class="o">-</span><span class="n">pcm</span><span class="o">-</span><span class="n">oss</span>
 
-<span class="o">#</span> <span class="k">More</span> <span class="n">aliases</span>
-<span class="k">alias</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mixer</span> <span class="n">snd</span><span class="o">-</span><span class="n">mixer</span><span class="o">-</span><span class="n">oss</span>
-<span class="k">alias</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">dsp</span> <span class="n">snd</span><span class="o">-</span><span class="n">pcm</span><span class="o">-</span><span class="n">oss</span>
-<span class="k">alias</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">midi</span> <span class="n">snd</span><span class="o">-</span><span class="n">seq</span><span class="o">-</span><span class="n">oss</span>
+<span class="c1"># More aliases</span>
+<span class="n">alias</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mixer</span> <span class="n">snd</span><span class="o">-</span><span class="n">mixer</span><span class="o">-</span><span class="n">oss</span>
+<span class="n">alias</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">dsp</span> <span class="n">snd</span><span class="o">-</span><span class="n">pcm</span><span class="o">-</span><span class="n">oss</span>
+<span class="n">alias</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">midi</span> <span class="n">snd</span><span class="o">-</span><span class="n">seq</span><span class="o">-</span><span class="n">oss</span>
 
-<span class="o">#</span> <span class="k">Set</span> <span class="n">this</span> <span class="k">to</span> <span class="n">the</span> <span class="n">correct</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">cards</span><span class="p">.</span>
-<span class="k">options</span> <span class="n">snd</span> <span class="n">cards_limit</span><span class="o">=</span><span class="mi">1</span>
+<span class="c1"># Set this to the correct number of cards.</span>
+<span class="n">options</span> <span class="n">snd</span> <span class="n">cards_limit</span><span class="o">=</span><span class="mi">1</span>
 
-<span class="o">#</span> <span class="n">Autoload</span> <span class="n">model</span>
-<span class="k">options</span> <span class="n">snd</span><span class="o">-</span><span class="n">hda</span><span class="o">-</span><span class="n">intel</span> <span class="k">index</span><span class="o">=</span><span class="mi">0</span> <span class="n">model</span><span class="o">=</span><span class="n">auto</span>
+<span class="c1"># Autoload model</span>
+<span class="n">options</span> <span class="n">snd</span><span class="o">-</span><span class="n">hda</span><span class="o">-</span><span class="n">intel</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span> <span class="n">model</span><span class="o">=</span><span class="n">auto</span>
 </code></pre></div>
 
 
@@ -258,7 +259,7 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 
 
 <p>Si tiene un procesador <strong>Intel</strong> le conviene instalar <strong>powertop</strong>, un programa que identifica los procesos que más energía consumen. De forma similar, son útiles <strong>cpufrequtils</strong> y <strong>acpitool</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge powertop cpufrequtils acpitool</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge powertop cpufrequtils acpitool</span>
 </code></pre></div>
 
 

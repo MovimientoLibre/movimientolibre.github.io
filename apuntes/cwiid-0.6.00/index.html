@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de CWiid 0.6.00: Wiimote en GNU/Linux</h2>
-                    <p class="article-post-meta"><p>Pasos para instalar en Gentoo Linux el CWiid (versión 0.6.00) que es una colección de herramientas programadas en C para usar el wiimote.</p><br>26 octubre 2010</p>
+<p>Pasos para instalar en Gentoo Linux el CWiid (versión 0.6.00) que es una colección de herramientas programadas en C para usar el wiimote.</p>
+                    <p class="article-post-meta">26 octubre 2010</p>
 <p><em>Wii Remote</em> (Control Remoto <em>Wii</em> en Latinoamérica, Mando de <em>Wii</em> en España o <em>Wiimote</em> en el <em>mundo gamer</em>) es el control principal de la <em>Wii</em> de Nintendo. Este dispositivo tiene estas cualidades:</p>
 <ul>
 <li>Botones A, B, +, home, -, 1 y 2.</li>
@@ -172,9 +173,9 @@
 
 <p>Donde <strong>BD Address: 00:00:00:00:00:00</strong> es la <em>mac address</em> del <em>bluetooth</em> de su computadora.</p>
 <p>Luego, presione 1 y 2 al mismo tiempo en el <em>wiimote</em>. Los <em>leds</em> parpadeando son señal de que está en <em>modo de asociación</em>. Inmediatamente, en la terminal ejecute:</p>
-<div class="highlight"><pre><span></span><code><span class="err"># hcitool scan</span>
-<span class="err">Scanning ...</span>
-<span class="err">    00:00:00:00:00:00       Nintendo RVL-CNT-01</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># hcitool scan</span>
+<span class="n">Scanning</span> <span class="o">...</span>
+    <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="n">Nintendo</span> <span class="n">RVL</span><span class="o">-</span><span class="n">CNT</span><span class="o">-</span><span class="mi">01</span>
 </code></pre></div>
 
 
@@ -206,11 +207,11 @@ crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span c
 
 
 <p>Para usar esta configuración sin reiniciar el equipo, retiramos módulo <strong>uinput</strong>, recargamos <strong>udev</strong>, cargamos de nuevo <strong>uinput</strong> y revisamos:</p>
-<div class="highlight"><pre><span></span><code><span class="err"># modprobe -r uinput</span>
-<span class="err"># udevadm control --reload-rules</span>
-<span class="err"># modprobe -v uinput</span>
-<span class="err"># ls -l /dev/input/uinput</span>
-<span class="err">crw-rw---- 1 root uucp 10, 223 sep 24 22:55 /dev/input/uinput</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># modprobe -r uinput</span>
+<span class="c1"># udevadm control --reload-rules</span>
+<span class="c1"># modprobe -v uinput</span>
+<span class="c1"># ls -l /dev/input/uinput</span>
+<span class="n">crw</span><span class="o">-</span><span class="n">rw</span><span class="o">----</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">uucp</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">223</span> <span class="n">sep</span> <span class="mi">24</span> <span class="mi">22</span><span class="p">:</span><span class="mi">55</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">input</span><span class="o">/</span><span class="n">uinput</span>
 </code></pre></div>
 
 
@@ -405,29 +406,29 @@ $ make
 
 <p>El apuntador del <em>wiimote</em> se habilita con las líneas <strong>Plugin.ir_ptr</strong>.</p>
 <p>Regresando al <strong>Stellarium</strong>, necesitamos saber los atajos de teclado propios de ese programa. Los encontrará en la página <a href="http://stellarium.org/wiki/index.php/Keyboard_actions">Keyboard actions</a> del <em>wiki</em> de <strong>Stellarium</strong>. Con esa información, creamos un archivo de configuración para <strong>wminput</strong> como el siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="o">#</span>
-<span class="o">#</span> <span class="o">~/</span><span class="p">.</span><span class="n">CWiid</span><span class="o">/</span><span class="n">stellarium</span><span class="p">.</span><span class="n">conf</span>
-<span class="o">#</span>
-<span class="o">#</span> <span class="n">Configuración</span> <span class="n">para</span> <span class="n">usar</span> <span class="n">Stellarium</span> <span class="n">con</span> <span class="n">apuntador</span> <span class="n">IR</span>
-<span class="o">#</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#</span>
+<span class="c1"># ~/.CWiid/stellarium.conf</span>
+<span class="c1">#</span>
+<span class="c1"># Configuración para usar Stellarium con apuntador IR</span>
+<span class="c1">#</span>
 
-<span class="n">Wiimote</span><span class="p">.</span><span class="n">A</span>       <span class="o">=</span> <span class="n">BTN_LEFT</span>      <span class="o">#</span> <span class="n">Clic</span> <span class="n">con</span> <span class="n">el</span> <span class="n">boton</span> <span class="n">derecho</span>
-<span class="n">Wiimote</span><span class="p">.</span><span class="n">B</span>       <span class="o">=</span> <span class="n">KEY_SPACE</span>     <span class="o">#</span> <span class="n">Espacio</span><span class="p">,</span> <span class="n">centrar</span> <span class="n">en</span> <span class="n">el</span> <span class="n">objeto</span> <span class="n">seleccionado</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">A</span>       <span class="o">=</span> <span class="n">BTN_LEFT</span>      <span class="c1"># Clic con el boton derecho</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">B</span>       <span class="o">=</span> <span class="n">KEY_SPACE</span>     <span class="c1"># Espacio, centrar en el objeto seleccionado</span>
 
-<span class="n">Plugin</span><span class="p">.</span><span class="n">ir_ptr</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">ABS_X</span>         <span class="o">#</span> <span class="n">Apuntador</span> <span class="n">IR</span> <span class="n">eje</span> <span class="n">X</span>
-<span class="n">Plugin</span><span class="p">.</span><span class="n">ir_ptr</span><span class="p">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">ABS_Y</span>         <span class="o">#</span> <span class="n">Apuntador</span> <span class="n">IR</span> <span class="n">eje</span> <span class="n">Y</span>
+<span class="n">Plugin</span><span class="o">.</span><span class="n">ir_ptr</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">ABS_X</span>         <span class="c1"># Apuntador IR eje X</span>
+<span class="n">Plugin</span><span class="o">.</span><span class="n">ir_ptr</span><span class="o">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">ABS_Y</span>         <span class="c1"># Apuntador IR eje Y</span>
 
-<span class="n">Wiimote</span><span class="p">.</span><span class="n">Up</span>      <span class="o">=</span> <span class="n">KEY_R</span>         <span class="o">#</span> <span class="n">R</span><span class="p">,</span> <span class="n">Arte</span> <span class="n">de</span> <span class="n">las</span> <span class="n">constelaciones</span>
-<span class="n">Wiimote</span><span class="p">.</span><span class="n">Down</span>    <span class="o">=</span> <span class="n">KEY_C</span>         <span class="o">#</span> <span class="k">C</span><span class="p">,</span> <span class="n">Lineas</span> <span class="n">de</span> <span class="n">las</span> <span class="n">constelaciones</span>
-<span class="n">Wiimote</span><span class="p">.</span><span class="k">Left</span>    <span class="o">=</span> <span class="n">KEY_V</span>         <span class="o">#</span> <span class="n">V</span><span class="p">,</span> <span class="n">Nombres</span> <span class="n">de</span> <span class="n">las</span> <span class="n">constelaciones</span>
-<span class="n">Wiimote</span><span class="p">.</span><span class="k">Right</span>   <span class="o">=</span> <span class="n">KEY_E</span>         <span class="o">#</span> <span class="n">E</span><span class="p">,</span> <span class="n">Rejilla</span> <span class="n">ecuatorial</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">Up</span>      <span class="o">=</span> <span class="n">KEY_R</span>         <span class="c1"># R, Arte de las constelaciones</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">Down</span>    <span class="o">=</span> <span class="n">KEY_C</span>         <span class="c1"># C, Lineas de las constelaciones</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">Left</span>    <span class="o">=</span> <span class="n">KEY_V</span>         <span class="c1"># V, Nombres de las constelaciones</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">Right</span>   <span class="o">=</span> <span class="n">KEY_E</span>         <span class="c1"># E, Rejilla ecuatorial</span>
 
-<span class="n">Wiimote</span><span class="p">.</span><span class="n">Minus</span>   <span class="o">=</span> <span class="n">KEY_PAGEDOWN</span>  <span class="o">#</span> <span class="n">AvPag</span><span class="p">,</span> <span class="n">Alejarse</span>
-<span class="n">Wiimote</span><span class="p">.</span><span class="n">Home</span>    <span class="o">=</span> <span class="n">KEY_8</span>         <span class="o">#</span> <span class="mi">8</span><span class="p">,</span> <span class="n">Poner</span> <span class="n">tiempo</span> <span class="n">a</span> <span class="n">ahora</span>
-<span class="n">Wiimote</span><span class="p">.</span><span class="n">Plus</span>    <span class="o">=</span> <span class="n">KEY_PAGEUP</span>    <span class="o">#</span> <span class="n">RePag</span><span class="p">,</span> <span class="n">Acercarse</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">Minus</span>   <span class="o">=</span> <span class="n">KEY_PAGEDOWN</span>  <span class="c1"># AvPag, Alejarse</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">Home</span>    <span class="o">=</span> <span class="n">KEY_8</span>         <span class="c1"># 8, Poner tiempo a ahora</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="n">Plus</span>    <span class="o">=</span> <span class="n">KEY_PAGEUP</span>    <span class="c1"># RePag, Acercarse</span>
 
-<span class="n">Wiimote</span><span class="p">.</span><span class="mi">1</span>       <span class="o">=</span> <span class="n">KEY_L</span>         <span class="o">#</span> <span class="n">L</span><span class="p">,</span> <span class="n">Incrementar</span> <span class="n">el</span> <span class="n">salto</span> <span class="n">de</span> <span class="n">tiempo</span>
-<span class="n">Wiimote</span><span class="p">.</span><span class="mi">2</span>       <span class="o">=</span> <span class="n">KEY_J</span>         <span class="o">#</span> <span class="n">J</span><span class="p">,</span> <span class="n">Decrementar</span> <span class="n">el</span> <span class="n">salto</span> <span class="n">de</span> <span class="n">tiempo</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="mi">1</span>       <span class="o">=</span> <span class="n">KEY_L</span>         <span class="c1"># L, Incrementar el salto de tiempo</span>
+<span class="n">Wiimote</span><span class="o">.</span><span class="mi">2</span>       <span class="o">=</span> <span class="n">KEY_J</span>         <span class="c1"># J, Decrementar el salto de tiempo</span>
 </code></pre></div>
 
 

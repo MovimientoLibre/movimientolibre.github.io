@@ -92,13 +92,14 @@
                         "description": "Ahora probaremos crear un contenedor con el servidor web Apache y con PHP para ejecutar el explorador de archivos Tiny File Manager.",
                         "dateCreated": "2020-08-09 20:58:00-05:00",
                         "datePublished": "2020-08-09 20:58:00-05:00",
-                        "dateModified": "2020-08-09 20:58:00-05:00",
+                        "dateModified": "2020-09-13 11:30:00-05:00",
                         "image": "https://movimientolibre.com/apuntes/podman-02-tinyfilemanager-php/podman.png",
                         "url": "https://movimientolibre.com/apuntes/podman-02-tinyfilemanager-php/"
                         }
                     </script>
                     <h2 class="article-post-title">Podman básico: Contenedor con explorador de archivos web en PHP</h2>
-                    <p class="article-post-meta"><p>Ahora probaremos crear un contenedor con el servidor web Apache y con PHP para ejecutar el explorador de archivos Tiny File Manager.</p><br>09 agosto 2020</p>
+<p>Ahora probaremos crear un contenedor con el servidor web Apache y con PHP para ejecutar el explorador de archivos Tiny File Manager.</p>
+                    <p class="article-post-meta">09 agosto 2020</p>
 <p>En el anterior ejercicio se levantó un <a href="../podman-01-documentacion-python/">Contenedor con documentación de Python</a>. Ahora probaremos crear un contenedor con el servidor web Apache y con PHP para ejecutar el explorador de archivos en navegador web <a href="https://tinyfilemanager.github.io/">Tiny File Manager</a>.</p>
 <p>Descargar la imagen con Apache y PHP versión 7</p>
 <div class="highlight"><pre><span></span><code>$ podman pull php:7-apache
@@ -143,19 +144,19 @@ $ <span class="nb">cd</span> podman-02-tinyfilemanager-php
 
 
 <p>Con este contenido</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="n">php</span><span class="p">:</span><span class="mi">7</span><span class="o">-</span><span class="n">apache</span>
+<div class="highlight"><pre><span></span><code><span class="n">FROM</span> <span class="n">php</span><span class="p">:</span><span class="mi">7</span><span class="o">-</span><span class="n">apache</span>
 
-<span class="o">#</span> <span class="n">Ir</span> <span class="n">al</span> <span class="n">directorio</span> <span class="n">raiz</span> <span class="n">del</span> <span class="n">servidor</span> <span class="n">web</span>
-<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
+<span class="c1"># Ir al directorio raiz del servidor web</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span>
 
-<span class="o">#</span> <span class="n">Copiar</span> <span class="k">index</span><span class="p">.</span><span class="n">php</span> <span class="n">y</span> <span class="n">cambir</span> <span class="n">su</span> <span class="n">usuario</span> <span class="n">a</span> <span class="n">www</span><span class="o">-</span><span class="k">data</span>
-<span class="k">COPY</span> <span class="k">index</span><span class="p">.</span><span class="n">php</span> <span class="p">.</span>
-<span class="n">RUN</span> <span class="n">chown</span> <span class="n">www</span><span class="o">-</span><span class="k">data</span> <span class="k">index</span><span class="p">.</span><span class="n">php</span>
+<span class="c1"># Copiar index.php y cambir su usuario a www-data</span>
+<span class="n">COPY</span> <span class="n">index</span><span class="o">.</span><span class="n">php</span> <span class="o">.</span>
+<span class="n">RUN</span> <span class="n">chown</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">index</span><span class="o">.</span><span class="n">php</span>
 
-<span class="o">#</span> <span class="n">Copiar</span> <span class="n">Tiny</span> <span class="n">File</span> <span class="n">Manager</span>
-<span class="k">COPY</span> <span class="n">tinyfilemanager</span><span class="p">.</span><span class="n">php</span> <span class="p">.</span>
+<span class="c1"># Copiar Tiny File Manager</span>
+<span class="n">COPY</span> <span class="n">tinyfilemanager</span><span class="o">.</span><span class="n">php</span> <span class="o">.</span>
 
-<span class="o">#</span> <span class="n">Crear</span> <span class="n">directorio</span> <span class="n">donde</span> <span class="n">más</span> <span class="n">adelante</span> <span class="n">pondremos</span> <span class="n">imágenes</span>
+<span class="c1"># Crear directorio donde más adelante pondremos imágenes</span>
 <span class="n">RUN</span> <span class="n">mkdir</span> <span class="n">images</span>
 </code></pre></div>
 
@@ -205,10 +206,11 @@ $ <span class="nb">cd</span> podman-02-tinyfilemanager-php
 </code></pre></div>
 
 
-<h2>Navegue por la serie de ejercicios de Podman</h2>
+<h2>Navegue por la serie de apuntes de Podman</h2>
 <ol>
 <li><a href="../podman-01-documentacion-python/">Contenedor con documentación de Python</a></li>
 <li>Contenedor con explorador de archivos web en PHP</li>
+<li><a href="../podman-03-pods-mysql-phpmyadmin/">Pod con MySQL y PhpMyAdmin</a></li>
 </ol>
                 </article>
             </div>

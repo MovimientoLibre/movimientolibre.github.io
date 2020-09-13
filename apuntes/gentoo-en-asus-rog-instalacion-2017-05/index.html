@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Apuntes para la Instalación de Gentoo Linux en una laptop ASUS</h2>
-                    <p class="article-post-meta"><p>Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.</p><br>09 mayo 2017</p>
+<p>Pasos para la instalación de Gentoo Linux en la ASUS ROG a mayo de 2017.</p>
+                    <p class="article-post-meta">09 mayo 2017</p>
 <p>Esta guía parte de un equipo previamente particionado y con una instalación de Gentoo Linux. Aprovechamos que desde una terminal y con el usuario root se puede hacer una nueva instalación, mientras seguimos trabajando en la anterior.</p>
 <h3>Preparar la partición</h3>
 <p>Formatee la partición, cambie /dev/sdXX por la partición</p>
@@ -138,10 +139,10 @@
 
 <h3>Ingrese al nuevo Gentoo Linux</h3>
 <p>Haga el <em>chroot</em></p>
-<div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/gentoo /bin/bash</span>
-<span class="err"># env-update</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(new) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># chroot /mnt/gentoo /bin/bash</span>
+<span class="c1"># env-update</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(new) $PS1&quot;</span>
 </code></pre></div>
 
 
@@ -188,7 +189,7 @@
 
 
 <p>Instale...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen pwgen</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen pwgen</span>
 </code></pre></div>
 
 
@@ -223,7 +224,7 @@
 
 
 <p>Instale utilerías de red y sistemas de archivos</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge app-admin/sudo bind-tools traceroute bridge-utils sys-fs/fuse sys-fs/ntfs3g</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge app-admin/sudo bind-tools traceroute bridge-utils sys-fs/fuse sys-fs/ntfs3g</span>
 </code></pre></div>
 
 
@@ -317,12 +318,12 @@
 
 
 <p>Siga instalando...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge gparted</span>
-<span class="err"># emerge gimp inkscape</span>
-<span class="err"># emerge libvirt virt-manager</span>
-<span class="err"># emerge gvim vim</span>
-<span class="err"># emerge audacity</span>
-<span class="err"># emerge k3b vorbis-tools</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge gparted</span>
+<span class="c1"># emerge gimp inkscape</span>
+<span class="c1"># emerge libvirt virt-manager</span>
+<span class="c1"># emerge gvim vim</span>
+<span class="c1"># emerge audacity</span>
+<span class="c1"># emerge k3b vorbis-tools</span>
 </code></pre></div>
 
 
@@ -332,8 +333,8 @@
 
 
 <p>Instale componentes de XFCE</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge xfce4-volumed xfce4-mixer xfce4-terminal xfce4-taskmanager xfce4-screenshooter</span>
-<span class="err"># emerge xfce4-cpugraph-plugin xfce4-verve-plugin xfce4-mount-plugin xfce4-sensors-plugin xfce4-systemload-plugin</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge xfce4-volumed xfce4-mixer xfce4-terminal xfce4-taskmanager xfce4-screenshooter</span>
+<span class="c1"># emerge xfce4-cpugraph-plugin xfce4-verve-plugin xfce4-mount-plugin xfce4-sensors-plugin xfce4-systemload-plugin</span>
 </code></pre></div>
 
 

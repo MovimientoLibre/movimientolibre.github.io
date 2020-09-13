@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/</loc>
-<lastmod>2020-09-05T22:29:13-00:00</lastmod>
+<lastmod>2020-09-13T11:33:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -67,6 +67,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://movimientolibre.com/apuntes/podman-03-pods-mysql-phpmyadmin/</loc>
+<lastmod>2020-09-13T11:30:00-05:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
 <loc>https://movimientolibre.com/apuntes/python-package-index-primeros-pasos/</loc>
 <lastmod>2020-09-05T22:28:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
@@ -75,14 +82,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/apuntes/podman-02-tinyfilemanager-php/</loc>
-<lastmod>2020-08-09T20:58:00-05:00</lastmod>
+<lastmod>2020-09-13T11:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
 <url>
 <loc>https://movimientolibre.com/apuntes/podman-01-documentacion-python/</loc>
-<lastmod>2020-08-09T21:00:00-05:00</lastmod>
+<lastmod>2020-09-13T11:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
@@ -1006,7 +1013,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2020-09-05T22:28:00-06:37</lastmod>
+<lastmod>2020-09-13T11:30:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1026,15 +1033,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://movimientolibre.com/tag/python.html</loc>
-<lastmod>2020-09-05T22:28:00-06:37</lastmod>
+<loc>https://movimientolibre.com/tag/contenedores.html</loc>
+<lastmod>2020-09-13T11:30:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://movimientolibre.com/tag/contenedores.html</loc>
-<lastmod>2020-08-09T21:00:00-06:37</lastmod>
+<loc>https://movimientolibre.com/tag/python.html</loc>
+<lastmod>2020-09-05T22:28:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

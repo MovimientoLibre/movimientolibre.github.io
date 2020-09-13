@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Gentoo Linux en una netbook (2010, parte 1)</h2>
-                    <p class="article-post-meta"><p>Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.</p><br>20 noviembre 2010</p>
+<p>Documento paso a paso la instalación de Gentoo Linux en una netbook con procesador Intel Atom N280.</p>
+                    <p class="article-post-meta">20 noviembre 2010</p>
 <p><img alt="Cow Push" src="cow-push.jpg"></p>
 <p>Después de varios meses de tener una instalación completa de <a href="http://www.kde.org/">KDE</a> en mi <em>netbook</em> comenzé a pensar de que el poderoso y grande ambiente gráfico le restaba potencial a mi equipo. Era frecuente que el administrador de archivos Dolphin demorara algunos segundos en cargar. También la carga y velocidad de respuesta de la suite de información personal (PIM), en particular de <a href="http://pim.kde.org/">KMail</a>, era lenta.</p>
 <p>El concepto de una <em>netbook</em> involucra un procesador versátil y modesto. El <a href="http://es.wikipedia.org/wiki/Intel_Atom">Intel Atom</a> fue diseñado con ese fin, hereda mucha tecnología de la familia Pentium y consume poca energía para prolongar la duración de la carga en un equipo portátil. Pero <strong>no</strong> se trata de un procesador de alto rendimiento. Recordemos que fue <em>Windows XP</em> y no <em>Windows Vista</em> el que apareció preinstalado en las <em>netbooks</em> a la venta, por obvias razones.</p>
@@ -168,10 +169,10 @@ CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span clas
 
 
 <p>Ingrese a al <em>stage</em> con <em>chroot</em>.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/archivos/instalaciones/prescott /bin/bash</span>
-<span class="err"># env-update</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(prescott) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># chroot /mnt/archivos/instalaciones/prescott /bin/bash</span>
+<span class="c1"># env-update</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(prescott) $PS1&quot;</span>
 </code></pre></div>
 
 
@@ -314,9 +315,9 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 
 
 <p>Recargue (de nuevo) las variables del entorno para asegurarnos que se apliquen los cambios hechos hasta el momento.</p>
-<div class="highlight"><pre><span></span><code><span class="err"># env-update</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(prescott) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># env-update</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(prescott) $PS1&quot;</span>
 </code></pre></div>
 
 
@@ -329,9 +330,9 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 
 <h3>Kernel Linux</h3>
 <p>Instale <em>ccache</em>.</p>
-<div class="highlight"><pre><span></span><code># emerge ccache
-# ccache -M 2G
-# export PATH=&quot;/usr/lib/ccache/bin:<span class="cp">${</span><span class="n">PATH</span><span class="cp">}</span>&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge ccache</span>
+<span class="c1"># ccache -M 2G</span>
+<span class="c1"># export PATH=&quot;/usr/lib/ccache/bin:${PATH}&quot;</span>
 </code></pre></div>
 
 

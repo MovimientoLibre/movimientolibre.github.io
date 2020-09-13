@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Webmin instalación en Fedora Server</h2>
-                    <p class="article-post-meta"><p>Webmin es una herramienta de configuración de sistemas accesible vía web para sistemas Unix, como GNU/Linux y OpenSolaris. Con él se pueden configurar aspectos internos de muchos sistemas libres, como el servidor web Apache, PHP, MySQL, DNS, Samba, DHCP, entre otros.</p><br>30 julio 2020</p>
+<p>Webmin es una herramienta de configuración de sistemas accesible vía web para sistemas Unix, como GNU/Linux y OpenSolaris. Con él se pueden configurar aspectos internos de muchos sistemas libres, como el servidor web Apache, PHP, MySQL, DNS, Samba, DHCP, entre otros.</p>
+                    <p class="article-post-meta">30 julio 2020</p>
 <p>Para este apunte se utilizó <a href="https://getfedora.org/es/server/">Fedora Server</a> versión 32.</p>
 <h2>Instalar Webmin</h2>
 <p>Crear un archivo para configurar el repositorio</p>
@@ -150,9 +151,9 @@ cockpit dhcpv6-client ssh
 
 
 <p>Agregue el puerto 10000</p>
-<div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --zone<span class="o">=</span>FedoraServer --add-port<span class="o">=</span><span class="m">10000</span>/tcp --permanent
-$ sudo firewall-cmd --reload
-$ sudo firewall-cmd --zone<span class="o">=</span>FedoraServer --list-ports
+<div class="highlight"><pre><span></span><code><span class="o">$</span> <span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">zone</span><span class="o">=</span><span class="n">FedoraServer</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">port</span><span class="o">=</span><span class="mi">10000</span><span class="o">/</span><span class="n">tcp</span> <span class="o">--</span><span class="n">permanent</span>
+<span class="o">$</span> <span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
+<span class="o">$</span> <span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">zone</span><span class="o">=</span><span class="n">FedoraServer</span> <span class="o">--</span><span class="n">list</span><span class="o">-</span><span class="n">ports</span>
 </code></pre></div>
 
 

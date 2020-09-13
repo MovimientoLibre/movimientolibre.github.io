@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de Gentoo Linux para un servidor</h2>
-                    <p class="article-post-meta"><p>En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su desempeño y seguridad sean de lo mejor.</p><br>15 junio 2014</p>
+<p>En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su desempeño y seguridad sean de lo mejor.</p>
+                    <p class="article-post-meta">15 junio 2014</p>
 <p>Cuando hacemos una instalación de <a href="http://www.gentoo.org">Gentoo Linux</a> en una PC o laptop buscamos tener entorno gráfico y muchos programas; como reproductores multimedia, navegadores de internet, herramientas de desarrollo y hasta una suite de oficina. En cambio, <strong>para un servidor, nos enfocamos en instalar el sistema operativo base y los servicios que vaya otorgar a la red local o al internet.</strong></p>
 <p>En cantidad de programas y tiempo requerido, instalar un servidor requiere menos de los dos. Pero siempre, gracias a las ventajas de Gentoo Linux, cuidaremos que su <strong>desempeño</strong> y <strong>seguridad</strong> sean de lo mejor.</p>
 <p>En el siguiente apunte listo los pasos que tomé para instalar un <strong>servidor web con Apache/PHP/MySQL/PostgreSQL</strong>. No hago una explicación detallada de cada paso; simplemente enlisto los comandos para instalar.</p>
@@ -234,10 +235,10 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 
 
 <p>Haga el <em>chroot</em>:</p>
-<div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/gentoo /bin/bash</span>
-<span class="err"># env-update</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(nuevo) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># chroot /mnt/gentoo /bin/bash</span>
+<span class="c1"># env-update</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(nuevo) $PS1&quot;</span>
 </code></pre></div>
 
 
@@ -290,7 +291,7 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 
 
 <p>Instale unas herramientas básicas...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen pciutils</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen pciutils</span>
 </code></pre></div>
 
 
@@ -400,9 +401,9 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 
 
 <p>Luego, en la virtualización ejecuto estos comandos, en mi ejemplo <strong>/var</strong> será <strong>/dev/vda7</strong></p>
-<div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext4 -L Var /dev/vda7</span>
-<span class="err"># mkdir /var</span>
-<span class="err"># mount /dev/vda7 /var</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># mkfs.ext4 -L Var /dev/vda7</span>
+<span class="c1"># mkdir /var</span>
+<span class="c1"># mount /dev/vda7 /var</span>
 </code></pre></div>
 
 
@@ -442,10 +443,10 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 
 
 <p>Haga el <em>chroot</em>...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
-<span class="err"># chroot /mnt/gentoo /bin/bash</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(nuevo) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
+<span class="c1"># chroot /mnt/gentoo /bin/bash</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(nuevo) $PS1&quot;</span>
 </code></pre></div>
 
 
@@ -455,14 +456,14 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 
 
 <p>Esta es una sugerencia de su contenido, va de acuerdo a como haya particionado...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># &lt;fs&gt;       &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;            &lt;dump/pass&gt;</span>
-<span class="err">/dev/vda1    /boot           ext2      noauto,noatime    1 2</span>
-<span class="err">/dev/vda2    /home           ext4      defaults          0 1</span>
-<span class="err">/dev/vda3    /usr/portage    ext4      defaults          0 0</span>
-<span class="err">#####  EXTENDED  #####</span>
-<span class="err">/dev/vda5    none            swap      sw                0 0</span>
-<span class="err">/dev/vda6    /               ext4      defaults          0 1</span>
-<span class="err">/dev/vda7    /var            ext4      noatime           0 0</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># &lt;fs&gt;       &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;            &lt;dump/pass&gt;</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda1</span>    <span class="o">/</span><span class="n">boot</span>           <span class="n">ext2</span>      <span class="n">noauto</span><span class="p">,</span><span class="n">noatime</span>    <span class="mi">1</span> <span class="mi">2</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda2</span>    <span class="o">/</span><span class="n">home</span>           <span class="n">ext4</span>      <span class="n">defaults</span>          <span class="mi">0</span> <span class="mi">1</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda3</span>    <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>    <span class="n">ext4</span>      <span class="n">defaults</span>          <span class="mi">0</span> <span class="mi">0</span>
+<span class="c1">#####  EXTENDED  #####</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda5</span>    <span class="n">none</span>            <span class="n">swap</span>      <span class="n">sw</span>                <span class="mi">0</span> <span class="mi">0</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda6</span>    <span class="o">/</span>               <span class="n">ext4</span>      <span class="n">defaults</span>          <span class="mi">0</span> <span class="mi">1</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">vda7</span>    <span class="o">/</span><span class="k">var</span>            <span class="n">ext4</span>      <span class="n">noatime</span>           <span class="mi">0</span> <span class="mi">0</span>
 </code></pre></div>
 
 
@@ -531,13 +532,13 @@ menuentry <span class="s1">&#39;Gentoo Linux 2014-05-26 vda6 kernel 3.12.13&#39;
 
 
 <p>Desmonte las particiones...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># umount /mnt/gentoo/boot</span>
-<span class="err"># umount /mnt/gentoo/usr/portage</span>
-<span class="err"># umount /mnt/gentoo/var</span>
-<span class="err"># umount -l /mnt/gentoo/sys</span>
-<span class="err"># umount -l /mnt/gentoo/dev</span>
-<span class="err"># umount /mnt/gentoo/proc</span>
-<span class="err"># umount /mnt/gentoo</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># umount /mnt/gentoo/boot</span>
+<span class="c1"># umount /mnt/gentoo/usr/portage</span>
+<span class="c1"># umount /mnt/gentoo/var</span>
+<span class="c1"># umount -l /mnt/gentoo/sys</span>
+<span class="c1"># umount -l /mnt/gentoo/dev</span>
+<span class="c1"># umount /mnt/gentoo/proc</span>
+<span class="c1"># umount /mnt/gentoo</span>
 </code></pre></div>
 
 

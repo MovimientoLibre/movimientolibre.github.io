@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Apuntes de Instalación de Gentoo Linux en Laptop</h2>
-                    <p class="article-post-meta"><p>Durante mi última instalación no dejé de tomar notas de esta instalación de un sistema completo. Logro con ésto tener dos entornos gráficos: XFCE4 y KDE, servidor MySQL/PostgreSQL/Apache/PHP y mucho más.</p><br>16 mayo 2014</p>
+<p>Durante mi última instalación no dejé de tomar notas de esta instalación de un sistema completo. Logro con ésto tener dos entornos gráficos: XFCE4 y KDE, servidor MySQL/PostgreSQL/Apache/PHP y mucho más.</p>
+                    <p class="article-post-meta">16 mayo 2014</p>
 <p><a href="http://www.gentoo.org">Gentoo Linux</a> es una distribución de GNU/Linux que permite una configuración <em>al extremo</em>; demanda y nos enseña muchas de las cosas que suceden en el fondo, <em>en las entrañas</em> de un Sistema Operativo; pero también <strong>es muy cambiante</strong>: los apuntes que haya hecho hace meses habrán tenido cambios al día de hoy.</p>
 <p>Por esta razón, durante mi última instalación no dejé de tomar notas de esta instalación de un <strong>sistema completo</strong>. Logro con ésto tener dos entornos gráficos: XFCE4 y KDE, servidor MySQL/PostgreSQL/Apache/PHP y mucho más.</p>
 <p><strong>ADVERTENCIA</strong>: El contenido de esta publicación es sólo un respaldo que puede servirle como base. <strong>Algunos comandos pueden destruir la información de su disco duro</strong>; por lo que el autor NO tiene ninguna responsabilidad en lo que usted ejecute. Lea el manual oficial <a href="http://www.gentoo.org/doc/en/handbook/handbook-amd64.xml">Gentoo Handbook AMD64</a>.</p>
@@ -151,10 +152,10 @@ $ cat stage3-amd64-20140515.tar.bz2.DIGETS
 
 
 <p>Haga el chroot</p>
-<div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/gentoo /bin/bash</span>
-<span class="err"># env-update</span>
-<span class="err"># source /etc/profile</span>
-<span class="err"># export PS1=&quot;(nuevo) $PS1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># chroot /mnt/gentoo /bin/bash</span>
+<span class="c1"># env-update</span>
+<span class="c1"># source /etc/profile</span>
+<span class="c1"># export PS1=&quot;(nuevo) $PS1&quot;</span>
 </code></pre></div>
 
 
@@ -286,7 +287,7 @@ MAKEOPTS=&quot;-j8&quot;
 
 
 <p>Instale herramientas básicas</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen btrfs-progs</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen btrfs-progs</span>
 </code></pre></div>
 
 
@@ -399,7 +400,7 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 
 
 <p>Instale utilerías de redes...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge app-admin/sudo bind-tools traceroute bridge-utils</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge app-admin/sudo bind-tools traceroute bridge-utils</span>
 </code></pre></div>
 
 
@@ -547,9 +548,9 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 
 
 <p>Instale XFCE4</p>
-<div class="highlight"><pre><span></span><code><span class="err"># emerge xfce4-meta</span>
-<span class="err"># emerge xfce4-battery-plugin xfce4-cpugraph-plugin xfce4-mixer xfce4-power-manager xfce4-screenshooter xfce4-systemload-plugin xfce4-taskmanager</span>
-<span class="err"># emerge xfce4-terminal tumbler thunar-archive-plugin thunar-media-tags-plugin</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># emerge xfce4-meta</span>
+<span class="c1"># emerge xfce4-battery-plugin xfce4-cpugraph-plugin xfce4-mixer xfce4-power-manager xfce4-screenshooter xfce4-systemload-plugin xfce4-taskmanager</span>
+<span class="c1"># emerge xfce4-terminal tumbler thunar-archive-plugin thunar-media-tags-plugin</span>
 </code></pre></div>
 
 

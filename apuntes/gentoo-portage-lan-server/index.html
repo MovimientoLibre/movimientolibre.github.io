@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Gentoo Linux - Servidor local de portage</h2>
-                    <p class="article-post-meta"><p>Pasos para configurar un servidor del portage de Gentoo en la red local.</p><br>23 marzo 2017</p>
+<p>Pasos para configurar un servidor del portage de Gentoo en la red local.</p>
+                    <p class="article-post-meta">23 marzo 2017</p>
 <p><img alt="Pingüino armándose" src="imagen.jpg"></p>
 <h3>En el servidor local</h3>
 <p>Edite /etc/rsync.conf:</p>
@@ -107,28 +108,28 @@
 
 
 <p>Modifique el contenido de acuerdo a sus necesidades:</p>
-<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">This</span> <span class="n">line</span> <span class="k">is</span> <span class="n">required</span> <span class="k">by</span> <span class="n">the</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">rsyncd</span> <span class="n">script</span>
-<span class="n">pid</span> <span class="n">file</span> <span class="o">=</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">rsyncd</span><span class="p">.</span><span class="n">pid</span>
-<span class="k">max</span> <span class="n">connections</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># This line is required by the /etc/init.d/rsyncd script</span>
+<span class="n">pid</span> <span class="n">file</span> <span class="o">=</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">rsyncd</span><span class="o">.</span><span class="n">pid</span>
+<span class="nb">max</span> <span class="n">connections</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">use</span> <span class="n">chroot</span> <span class="o">=</span> <span class="n">yes</span>
-<span class="k">read</span> <span class="k">only</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">read</span> <span class="n">only</span> <span class="o">=</span> <span class="n">yes</span>
 <span class="n">uid</span> <span class="o">=</span> <span class="n">nobody</span>
 <span class="n">gid</span> <span class="o">=</span> <span class="n">nobody</span>
 
-<span class="o">#</span> <span class="n">Si</span> <span class="n">hay</span> <span class="n">pocos</span> <span class="n">equipos</span> <span class="n">con</span> <span class="n">Gentoo</span> <span class="n">Linux</span>
-<span class="o">#</span> <span class="n">puede</span> <span class="n">configurar</span> <span class="n">el</span> <span class="n">daemon</span> <span class="n">para</span>
-<span class="o">#</span> <span class="n">limitar</span> <span class="n">las</span> <span class="n">comunicaciones</span> <span class="n">con</span> <span class="n">direcciones</span> <span class="n">IP</span>
-<span class="o">#</span><span class="n">hosts</span> <span class="n">allow</span> <span class="o">=</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">11</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">12</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">13</span>
-<span class="o">#</span><span class="n">hosts</span> <span class="n">deny</span>  <span class="o">=</span> <span class="o">*</span>
+<span class="c1"># Si hay pocos equipos con Gentoo Linux</span>
+<span class="c1"># puede configurar el daemon para</span>
+<span class="c1"># limitar las comunicaciones con direcciones IP</span>
+<span class="c1">#hosts allow = 192.168.0.11 192.168.0.12 192.168.0.13</span>
+<span class="c1">#hosts deny  = *</span>
 
 <span class="p">[</span><span class="n">gentoo</span><span class="o">-</span><span class="n">portage</span><span class="p">]</span>
 <span class="n">path</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span>
-<span class="k">comment</span> <span class="o">=</span> <span class="n">Gentoo</span> <span class="n">Portage</span> <span class="n">tree</span>
+<span class="n">comment</span> <span class="o">=</span> <span class="n">Gentoo</span> <span class="n">Portage</span> <span class="n">tree</span>
 <span class="n">exclude</span> <span class="o">=</span> <span class="o">/</span><span class="n">distfiles</span> <span class="o">/</span><span class="n">packages</span>
 
 <span class="p">[</span><span class="n">gentoo</span><span class="o">-</span><span class="n">distfiles</span><span class="p">]</span>
 <span class="n">path</span> <span class="o">=</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">portage</span><span class="o">/</span><span class="n">distfiles</span>
-<span class="k">comment</span> <span class="o">=</span> <span class="n">Gentoo</span> <span class="n">Portage</span> <span class="n">distfiles</span>
+<span class="n">comment</span> <span class="o">=</span> <span class="n">Gentoo</span> <span class="n">Portage</span> <span class="n">distfiles</span>
 </code></pre></div>
 
 

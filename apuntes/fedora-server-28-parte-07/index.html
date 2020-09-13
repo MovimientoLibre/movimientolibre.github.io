@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de Fedora Server 28, parte 7, servidor de archivos SAMBA</h2>
-                    <p class="article-post-meta"><p>Crear una nueva partición lógica para compartir archivos por medio de SAMBA.</p><br>24 junio 2018</p>
+<p>Crear una nueva partición lógica para compartir archivos por medio de SAMBA.</p>
+                    <p class="article-post-meta">24 junio 2018</p>
 <p>Vamos a crear una partición dedicada a almacenar archivos llamada <em>biblioteca</em> y dentro de ella un directorio con <em>software</em> para todos los usuarios <strong>SAMBA</strong>.</p>
 <h3>System Storage Manager</h3>
 <p>Instale el programa <strong>System Storage Manager</strong> para la administración de discos.</p>
@@ -199,14 +200,14 @@
 
 
 <p>Encontrará...</p>
-<div class="highlight"><pre><span></span><code><span class="err">samba_export_all_ro --&gt; off</span>
-<span class="err">samba_export_all_rw --&gt; off</span>
+<div class="highlight"><pre><span></span><code><span class="n">samba_export_all_ro</span> <span class="o">--&gt;</span> <span class="n">off</span>
+<span class="n">samba_export_all_rw</span> <span class="o">--&gt;</span> <span class="n">off</span>
 </code></pre></div>
 
 
 <p>Cambie <em>con las consideraciones que esto implica</em> las <em>bandera</em> <code>samba_export_all_ro</code> que habilita a <strong>SAMBA</strong> a leer...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># setsebool -P samba_export_all_ro on</span>
-<span class="err"># getsebool -a | grep samba_export</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># setsebool -P samba_export_all_ro on</span>
+<span class="c1"># getsebool -a | grep samba_export</span>
 </code></pre></div>
 
 
@@ -257,8 +258,8 @@ $ <span class="nb">export</span> <span class="nv">PASSWD</span><span class="o">=
 <h3>Grupos de usuarios</h3>
 <p>Esto es para cuando necesita ofrecer un espacio en común para dos personas o más.</p>
 <p>Igual, <em>con las consideraciones que esto implica</em> las <em>bandera</em> <code>samba_export_all_rw</code> que habilita a <strong>SAMBA</strong> a leer y escribir...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># setsebool -P samba_export_all_rw on</span>
-<span class="err"># getsebool -a | grep samba_export</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># setsebool -P samba_export_all_rw on</span>
+<span class="c1"># getsebool -a | grep samba_export</span>
 </code></pre></div>
 
 

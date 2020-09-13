@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalación de Fedora Server 28, parte 2, configuración básica de red</h2>
-                    <p class="article-post-meta"><p>Proseguimos con la configuración de OpenSSH y de los dispositivos de red.</p><br>24 junio 2018</p>
+<p>Proseguimos con la configuración de OpenSSH y de los dispositivos de red.</p>
+                    <p class="article-post-meta">24 junio 2018</p>
 <h3>Detalles de los dispositivos de red</h3>
 <p>Liste todos los dispositivos de red con...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># lspci | grep -i ethernet</span>
@@ -106,8 +107,8 @@
 
 
 <p>Averigue detalles, como la velocidad actual de la conexión con...</p>
-<div class="highlight"><pre><span></span><code><span class="err"># ethtool enp1s0</span>
-<span class="err"># ethtool enp4s0</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># ethtool enp1s0</span>
+<span class="c1"># ethtool enp4s0</span>
 </code></pre></div>
 
 
@@ -123,7 +124,7 @@
 
 <h3>OpenSSH para usar par de llaves</h3>
 <p>Copie la llave pública <strong>desde su equipo personal</strong> al servidor con el comando...</p>
-<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">ssh</span><span class="o">-</span><span class="k">copy</span><span class="o">-</span><span class="kt">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">usuario</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">usuario</span><span class="mf">@192.168</span><span class="p">.</span><span class="n">n</span><span class="p">.</span><span class="n">m</span>
+<div class="highlight"><pre><span></span><code><span class="n">$</span> <span class="n">ssh</span><span class="o">-</span><span class="k">copy</span><span class="o">-</span><span class="kt">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">usuario</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">usuario</span><span class="mf">@192.168</span><span class="p">.</span><span class="n">n</span><span class="p">.</span><span class="n">m</span>
 </code></pre></div>
 
 

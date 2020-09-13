@@ -98,7 +98,8 @@
                         }
                     </script>
                     <h2 class="article-post-title">Instalando los equipos para el Aniversario del GULAG</h2>
-                    <p class="article-post-meta"><p>Un gran trabajo de equipo fue la instalación del GNU/Linux en las computadoras que se usaron en el taller que se impartió con motivo del primer aniversario del GULAG, tarea en la que nos enfrentamos a un gran número de retos.</p><br>20 agosto 2007</p>
+<p>Un gran trabajo de equipo fue la instalación del GNU/Linux en las computadoras que se usaron en el taller que se impartió con motivo del primer aniversario del GULAG, tarea en la que nos enfrentamos a un gran número de retos.</p>
+                    <p class="article-post-meta">20 agosto 2007</p>
 <p>Un gran trabajo de equipo fue la instalación del GNU/Linux en las computadoras que se usaron en el taller que se impartió con motivo del primer aniversario del <a href="http://www.gulag.org.mx">GULAG</a>, tarea en la que nos enfrentamos a un gran número de retos.</p>
 <p><img class="img-fluid" src="foto1.jpg" alt="Foto 1"></p>
 <p><img class="img-fluid" src="foto3.jpg" alt="Foto 3"></p>
@@ -109,13 +110,13 @@
 <p>Estando listo el primer equipo, se procedió a clonar ese disco duro para todos los demás equipos. Mientras tanto, en paralelo, RIVE hacía instalaciones de una versión de Mandriva que ya traía el Inkscape en su DVD.</p>
 <p>La clonación la hicimos de forma manual, dando comandos en la terminal. En un equipo conectábamos el disco duro a clonar y el que iba a recibir la copia; arrancábamos desde el CD con un GNU/Linux ligero que llegaba a la terminal(4).</p>
 <p>Estos son los comandos para clonar una partición raíz de Gentoo Linux; a partir de que se tiene el origen en /dev/hdc3 y el destino en /dev/hda3:</p>
-<div class="highlight"><pre><span></span><code><span class="err"># mount /dev/hdc3 /mnt/origen</span>
-<span class="err"># mkfs.ext3 /dev/hda3</span>
-<span class="err"># mount /dev/hda3 /mnt/destino</span>
-<span class="err"># cd /mnt/origen</span>
-<span class="err"># tar -cv bin/ boot/ dev/ etc/ home/ lib/ media/ mnt/ opt/ proc/ root/ root/ sbin/ sys/ usr/ var/ | tar -C /mnt/destino -x</span>
-<span class="err"># umount /mnt/origen</span>
-<span class="err"># umount /mnt/destino</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># mount /dev/hdc3 /mnt/origen</span>
+<span class="c1"># mkfs.ext3 /dev/hda3</span>
+<span class="c1"># mount /dev/hda3 /mnt/destino</span>
+<span class="c1"># cd /mnt/origen</span>
+<span class="c1"># tar -cv bin/ boot/ dev/ etc/ home/ lib/ media/ mnt/ opt/ proc/ root/ root/ sbin/ sys/ usr/ var/ | tar -C /mnt/destino -x</span>
+<span class="c1"># umount /mnt/origen</span>
+<span class="c1"># umount /mnt/destino</span>
 </code></pre></div>
 
 
