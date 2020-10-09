@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/</loc>
-<lastmod>2020-09-13T11:33:39-00:00</lastmod>
+<lastmod>2020-10-09T14:57:57-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -67,6 +67,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://movimientolibre.com/apuntes/podman-01-documentacion-python/</loc>
+<lastmod>2020-10-09T12:27:00-05:00</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
 <loc>https://movimientolibre.com/apuntes/podman-03-pods-mysql-phpmyadmin/</loc>
 <lastmod>2020-09-13T11:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
@@ -82,13 +89,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/apuntes/podman-02-tinyfilemanager-php/</loc>
-<lastmod>2020-09-13T11:30:00-05:00</lastmod>
-<changefreq>weekly</changefreq>
-<priority>1</priority>
-</url>
-
-<url>
-<loc>https://movimientolibre.com/apuntes/podman-01-documentacion-python/</loc>
 <lastmod>2020-09-13T11:30:00-05:00</lastmod>
 <changefreq>weekly</changefreq>
 <priority>1</priority>
@@ -1013,7 +1013,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2020-09-13T11:30:00-06:37</lastmod>
+<lastmod>2020-10-09T12:27:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1034,7 +1034,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/tag/contenedores.html</loc>
-<lastmod>2020-09-13T11:30:00-06:37</lastmod>
+<lastmod>2020-10-09T12:27:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

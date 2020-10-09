@@ -147,8 +147,8 @@ footer { padding-top: 2rem; }
 
     #mainNav { background-color: #161616; border-bottom: 1px solid gray; }
 
-    .card { background-color: #282828; }
-    .card-header { background-color: #333333; }
+    .card        { background-color: #282828; border: 1px solid rgba(80,80,80,0.75); }
+    .card-header { background-color: #333333; border-bottom: 1px solid rgba(80,80,80,0.75); }
 
     a         { color: #579bdf; }
     a:focus,

@@ -7,31 +7,27 @@
     <meta name="description" content="Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.">
     <meta name="keywords" content="contenedores, apuntes">
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@guivaloz">
     <meta name="twitter:title" content="Podman básico: Contenedor con documentación de Python">
     <meta name="twitter:description" content="Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.">
-    <meta name="twitter:image:src" content="https://movimientolibre.com/apuntes/podman-01-documentacion-python/podman.png">
+    <meta name="twitter:image" content="https://movimientolibre.com/apuntes/podman-01-documentacion-python/podman.png">
     <meta property="og:title" content="Podman básico: Contenedor con documentación de Python">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="/apuntes/podman-01-documentacion-python/">
+    <meta property="og:url" content="https://movimientolibre.com/apuntes/podman-01-documentacion-python/">
     <meta property="og:image" content="https://movimientolibre.com/apuntes/podman-01-documentacion-python/podman.png">
     <meta property="og:description" content="Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.">
     <meta property="og:site_name" content="Movimiento Libre">
     <title>Podman básico: Contenedor con documentación de Python - Movimiento Libre</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" href="/theme/images/icon-hires.png" sizes="192x192">
-    <link rel="icon" href="/theme/images/icon-normal.png" sizes="128x128">
-    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
-    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
-    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
-    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
-    <link rel="alternate" href="/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap">
-    <link rel="stylesheet" href="/theme/css/movimiento-libre.css">
+    <link rel="shortcut icon" type="image/x-icon" href="https://movimientolibre.com/favicon.ico">
+    <link rel="icon" href="https://movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
+    <link rel="icon" href="https://movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
+    <link rel="apple-touch-icon" href="https://movimientolibre.com/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="https://movimientolibre.com/theme/images/apple-touch-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="https://movimientolibre.com/theme/images/apple-touch-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="https://movimientolibre.com/theme/images/apple-touch-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="https://movimientolibre.com/theme/images/apple-touch-icon-180x180.png" sizes="180x180">
+    <link rel="alternate" href="https://movimientolibre.com/feeds/all.rss.xml" type="application/rss+xml" title="Movimiento Libre Full RSS Feed" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-74263253-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -39,20 +35,24 @@
         gtag('js', new Date());
         gtag('config', 'UA-74263253-1');
     </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap">
+    <link rel="stylesheet" href="https://movimientolibre.com/theme/css/movimiento-libre.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="/"><i class="fa fa-home"></i></a>
+            <a class="navbar-brand" href="https://movimientolibre.com/"><i class="fa fa-home"></i></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBootstrap4" aria-controls="navBootstrap4" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navBootstrap4">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="/category/apuntes.html">Apuntes</a></li>
-                    <li><a class="nav-link" href="/category/articulos.html">Artículos</a></li>
-                    <li><a class="nav-link" href="/category/presentaciones.html">Presentaciones</a></li>
-                    <li><a class="nav-link" href="/portafolio/contacto/index.html">Contacto</a></li>
+                    <li><a class="nav-link" href="https://movimientolibre.com/category/apuntes.html">Apuntes</a></li>
+                    <li><a class="nav-link" href="https://movimientolibre.com/category/articulos.html">Artículos</a></li>
+                    <li><a class="nav-link" href="https://movimientolibre.com/category/presentaciones.html">Presentaciones</a></li>
+                    <li><a class="nav-link" href="https://movimientolibre.com/portafolio/contacto/index.html">Contacto</a></li>
                 </ul>
                 <ul class="navbar-nav movimientolibre-navbar-icons">
                     <li><a class="movimientolibre-navbar-icon-link" href="https://twitter.com/guivaloz/" target="_blank"><i class="fab fa-twitter-square"></i></a></li>
@@ -71,35 +71,35 @@
             </div>
         </header>
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-md-8">
                 <article class="article-post">
                     <script type="application/ld+json">
                         {
                             "@context": "http://schema.org",
                             "@type": "Article",
                             "publisher": {
-                            "@type": "Organization",
-                            "name": "Movimiento Libre",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
+                                "@type": "Organization",
+                                "name": "Movimiento Libre",
+                                "logo": {
+                                    "@type": "ImageObject",
+                                    "url": "https://movimientolibre.com/theme/images/movimientolibre.png"
+                                },
+                                "url": "https://movimientolibre.com"
                             },
-                            "url": "https://movimientolibre.com"
-                        },
-                        "author": "Guillermo Valdés Lozano (guivaloz)",
-                        "name": "Podman básico: Contenedor con documentación de Python",
-                        "headline": "Podman básico: Contenedor con documentación de Python",
-                        "description": "Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.",
-                        "dateCreated": "2020-08-04 22:00:00-05:00",
-                        "datePublished": "2020-08-04 22:00:00-05:00",
-                        "dateModified": "2020-09-13 11:30:00-05:00",
-                        "image": "https://movimientolibre.com/apuntes/podman-01-documentacion-python/podman.png",
-                        "url": "https://movimientolibre.com/apuntes/podman-01-documentacion-python/"
+                            "author": "Guillermo Valdés Lozano (guivaloz)",
+                            "name": "Podman básico: Contenedor con documentación de Python",
+                            "headline": "Podman básico: Contenedor con documentación de Python",
+                            "description": "Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.",
+                            "dateCreated": "2020-10-09 12:27:00-05:00",
+                            "datePublished": "2020-10-09 12:27:00-05:00",
+                            "dateModified": "2020-10-09 12:27:00-05:00",
+                            "image": "https://movimientolibre.com/apuntes/podman-01-documentacion-python/podman.png",
+                            "url": "https://movimientolibre.com/apuntes/podman-01-documentacion-python/"
                         }
                     </script>
                     <h2 class="article-post-title">Podman básico: Contenedor con documentación de Python</h2>
 <p>Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.</p>
-                    <p class="article-post-meta">04 agosto 2020</p>
+                    <p class="article-post-meta">09 octubre 2020</p>
 <p>Bienvenido a la serie de apuntes sobre <a href="https://podman.io/">Podman</a> que espero sea de ayuda para aprender y utilizar el uso de contenedores impulsado por <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/building_running_and_managing_containers/index">RedHat</a>.</p>
 <p>Crear un directorio para este ejercicio</p>
 <div class="highlight"><pre><span></span><code>$ mkdir podman-01-documentacion-python
@@ -107,8 +107,8 @@ $ <span class="nb">cd</span> podman-01-documentacion-python
 </code></pre></div>
 
 
-<p>Visite <a href="https://docs.python.org/3/download.html">Download Python 3 Documentation</a> y descargue el archivo comprimido que tiene todos los archivos HTML empacados en .tar.bz2. Al momento de escribir esto se encuentra la versión 3.8.5</p>
-<div class="highlight"><pre><span></span><code>$ wget https://docs.python.org/3/archives/python-3.8.5-docs-html.tar.bz2
+<p>Visite <a href="https://docs.python.org/3/download.html">Download Python 3 Documentation</a> y descargue el archivo comprimido que tiene todos los archivos HTML empacados en .tar.bz2. Al momento de escribir esto se encuentra la versión 3.9.0</p>
+<div class="highlight"><pre><span></span><code>$ wget https://docs.python.org/3/archives/python-3.9.0-docs-html.tar.bz2
 </code></pre></div>
 
 
@@ -118,37 +118,37 @@ $ <span class="nb">cd</span> podman-01-documentacion-python
 
 
 <p>Con este contenido...</p>
-<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="o">-</span><span class="n">alpine</span>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mi">3</span><span class="p">.</span><span class="mi">9</span><span class="o">-</span><span class="n">alpine</span>
 
 <span class="o">#</span> <span class="n">Crear</span> <span class="n">directorio</span>
 <span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">app</span>
 <span class="n">WORKDIR</span> <span class="o">/</span><span class="n">app</span>
 
 <span class="o">#</span> <span class="n">Copiar</span> <span class="n">la</span> <span class="n">documentación</span>
-<span class="k">COPY</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span> <span class="p">.</span>
+<span class="k">COPY</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span> <span class="p">.</span>
 
 <span class="o">#</span> <span class="n">Desempacar</span>
-<span class="n">RUN</span> <span class="n">tar</span> <span class="o">-</span><span class="n">xjf</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span> <span class="o">&amp;&amp;</span> <span class="err">\</span>
-  <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span> <span class="n">python3</span>
+<span class="n">RUN</span> <span class="n">tar</span> <span class="o">-</span><span class="n">xjf</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">bz2</span> <span class="o">&amp;&amp;</span> <span class="err">\</span>
+  <span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="n">python</span><span class="o">-</span><span class="mi">3</span><span class="p">.</span><span class="mi">9</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="n">docs</span><span class="o">-</span><span class="n">html</span> <span class="n">python3</span>
 
 <span class="o">#</span> <span class="n">Arrancar</span> <span class="n">el</span> <span class="n">servidor</span> <span class="n">web</span>
 <span class="n">CMD</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="p">.</span><span class="n">server</span> <span class="mi">8000</span>
 </code></pre></div>
 
 
-<p>Descargar la imagen <code>python:3.8-alpine</code></p>
-<div class="highlight"><pre><span></span><code>$ podman pull python:3.8-alpine
+<p>Descargar la imagen <code>python:3.9-alpine</code></p>
+<div class="highlight"><pre><span></span><code>$ podman pull python:3.9-alpine
 $ podman images
 </code></pre></div>
 
 
-<p>Construir tu contenedor python_docs en su versión 3.8.5</p>
-<div class="highlight"><pre><span></span><code>$ podman build -t python_docs:3.8.5 .
+<p>Construir una imagen con nombre python_docs en su versión 3.9.0</p>
+<div class="highlight"><pre><span></span><code>$ podman build -t python_docs:3.9.0 .
 </code></pre></div>
 
 
 <p>Correr el contenedor, que se autodestruya, mandar al fondo, canalizar el puerto 8000 y con nombre python_docs_web</p>
-<div class="highlight"><pre><span></span><code>$ podman run --rm -d -p <span class="m">8000</span>:8000 --name python_docs_web python_docs:3.8.5
+<div class="highlight"><pre><span></span><code>$ podman run --rm -d -p <span class="m">8000</span>:8000 --name python_docs_web python_docs:3.9.0
 </code></pre></div>
 
 
@@ -157,7 +157,7 @@ $ podman images
 </code></pre></div>
 
 
-<p><img class="img-fluid" src="python-3-8-5-documentation.png" alt="Mozilla Firefox con Python 3.8.5 Documentation"></p>
+<p><img class="img-fluid" src="python-3-9-0-documentation.png" alt="Mozilla Firefox con Python 3.9.0 Documentation"></p>
 <p>Terminar la ejecución del contenedor con...</p>
 <div class="highlight"><pre><span></span><code>$ podman stop python_docs_web
 </code></pre></div>
@@ -171,7 +171,7 @@ $ podman images
 </ol>
                 </article>
             </div>
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 <aside>
                     <div class="card my-4 movimientolibre-card aside-about">
                         <h5 class="card-header movimientolibre-card-header">A cerca de</h5>
@@ -189,32 +189,32 @@ $ podman images
                         <h5 class="card-header movimientolibre-card-header">Etiquetas</h5>
                         <div class="card-body">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="/tag/astronomia.html">astronomía</a></li>
-                                <li><a href="/tag/ciencia-de-datos.html">ciencia de datos</a></li>
-                                <li><a href="/tag/conferencias.html">conferencias</a></li>
-                                <li><a href="/tag/contenedores.html">contenedores</a></li>
-                                <li><a href="/tag/desarrollo.html">desarrollo</a></li>
-                                <li><a href="/tag/educacion.html">educación</a></li>
-                                <li><a href="/tag/fedora.html">fedora</a></li>
-                                <li><a href="/tag/flisol.html">flisol</a></li>
-                                <li><a href="/tag/gentoo-linux.html">gentoo linux</a></li>
-                                <li><a href="/tag/git.html">git</a></li>
-                                <li><a href="/tag/gnu-linux.html">gnu linux</a></li>
-                                <li><a href="/tag/gulag.html">gulag</a></li>
-                                <li><a href="/tag/hardware.html">hardware</a></li>
-                                <li><a href="/tag/kde.html">kde</a></li>
-                                <li><a href="/tag/kernel-linux.html">kernel linux</a></li>
-                                <li><a href="/tag/latex.html">latex</a></li>
-                                <li><a href="/tag/markdown.html">markdown</a></li>
-                                <li><a href="/tag/php.html">php</a></li>
-                                <li><a href="/tag/politica.html">política</a></li>
-                                <li><a href="/tag/postgresql.html">postgresql</a></li>
-                                <li><a href="/tag/python.html">python</a></li>
-                                <li><a href="/tag/ruby.html">ruby</a></li>
-                                <li><a href="/tag/servidores.html">servidores</a></li>
-                                <li><a href="/tag/software-libre.html">software libre</a></li>
-                                <li><a href="/tag/vida-cotidiana.html">vida cotidiana</a></li>
-                                <li><a href="/tag/wallpapers.html">wallpapers</a></li>
+                                <li><a href="https://movimientolibre.com/tag/astronomia.html">astronomía</a></li>
+                                <li><a href="https://movimientolibre.com/tag/ciencia-de-datos.html">ciencia de datos</a></li>
+                                <li><a href="https://movimientolibre.com/tag/conferencias.html">conferencias</a></li>
+                                <li><a href="https://movimientolibre.com/tag/contenedores.html">contenedores</a></li>
+                                <li><a href="https://movimientolibre.com/tag/desarrollo.html">desarrollo</a></li>
+                                <li><a href="https://movimientolibre.com/tag/educacion.html">educación</a></li>
+                                <li><a href="https://movimientolibre.com/tag/fedora.html">fedora</a></li>
+                                <li><a href="https://movimientolibre.com/tag/flisol.html">flisol</a></li>
+                                <li><a href="https://movimientolibre.com/tag/gentoo-linux.html">gentoo linux</a></li>
+                                <li><a href="https://movimientolibre.com/tag/git.html">git</a></li>
+                                <li><a href="https://movimientolibre.com/tag/gnu-linux.html">gnu linux</a></li>
+                                <li><a href="https://movimientolibre.com/tag/gulag.html">gulag</a></li>
+                                <li><a href="https://movimientolibre.com/tag/hardware.html">hardware</a></li>
+                                <li><a href="https://movimientolibre.com/tag/kde.html">kde</a></li>
+                                <li><a href="https://movimientolibre.com/tag/kernel-linux.html">kernel linux</a></li>
+                                <li><a href="https://movimientolibre.com/tag/latex.html">latex</a></li>
+                                <li><a href="https://movimientolibre.com/tag/markdown.html">markdown</a></li>
+                                <li><a href="https://movimientolibre.com/tag/php.html">php</a></li>
+                                <li><a href="https://movimientolibre.com/tag/politica.html">política</a></li>
+                                <li><a href="https://movimientolibre.com/tag/postgresql.html">postgresql</a></li>
+                                <li><a href="https://movimientolibre.com/tag/python.html">python</a></li>
+                                <li><a href="https://movimientolibre.com/tag/ruby.html">ruby</a></li>
+                                <li><a href="https://movimientolibre.com/tag/servidores.html">servidores</a></li>
+                                <li><a href="https://movimientolibre.com/tag/software-libre.html">software libre</a></li>
+                                <li><a href="https://movimientolibre.com/tag/vida-cotidiana.html">vida cotidiana</a></li>
+                                <li><a href="https://movimientolibre.com/tag/wallpapers.html">wallpapers</a></li>
                             </ul>
                         </div>
                     </div>
@@ -244,15 +244,15 @@ $ podman images
             <hr>
             <p>
                 Copyright &copy; 2006-2020 Guillermo Valdés Lozano.
-                Protegidos por la licencia <a href="/licencias/gfdl-es/">GFDL</a>.
+                Protegidos por la licencia <a href="https://movimientolibre.com/licencias/gfdl-es/">GFDL</a>.
                 Se otorga permiso para copiar, distribuir y/o modificar estos documentos.
-                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="/licencias/gpl-2-es/">GPLv3</a>.
+                Sitio web elaborado con <a href="https://blog.getpelican.com/">Pelican</a> que es programado en <a href="https://python.org/">Python</a>; el código fuente está en <a href="https://github.com/MovimientoLibre/plataforma.web">GitHub</a> protegido por la licencia <a href="https://movimientolibre.com/licencias/gpl-2-es/">GPLv3</a>.
             </p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script src="/theme/js/movimiento-libre.js"></script>
+    <script src="https://movimientolibre.com/theme/js/movimiento-libre.js"></script>
 </body>
 </html>
