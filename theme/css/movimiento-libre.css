@@ -30,6 +30,7 @@ pre {
 }
 
 blockquote { padding: 0.7em; font-size: 1.2em; }
+
 hr { border-top: 1px solid #888; }
 
 /* Navigation */
@@ -40,40 +41,19 @@ hr { border-top: 1px solid #888; }
     border-bottom: 1px solid white;
 }
 
-/* Used by movimiento-libre.js to show the main navigation when scroll ups */
-@media only screen and (min-width: 992px) {
-    #mainNav {
-        border-bottom: 1px solid transparent;
-    }
-    #mainNav.is-fixed {
-        /* when the user scrolls down, we hide the header right above the viewport */
-        position: fixed;
-        top: -57px;
-        -webkit-transition: -webkit-transform 0.2s;
-        transition: -webkit-transform 0.2s;
-        transition: transform 0.2s;
-        transition: transform 0.2s, -webkit-transform 0.2s;
-        border-bottom: 1px solid #888;
-    }
-    #mainNav.is-visible {
-        /* if the user changes the scrolling direction, we show the header */
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-    }
-}
-
-.navbar-brand         { color: #212529; text-decoration: none; }
+.navbar-brand         { color: #003399; text-decoration: none; }
 .navbar-brand:focus,
-.navbar-brand:hover   { color: #003060; text-decoration: underline; }
+.navbar-brand:hover   { color: #9933FF; text-decoration: underline; }
 .navbar-brand:active,
-.navbar-brand:visited { color: #212529; text-decoration: none; }
+.navbar-brand:visited { color: #003399; text-decoration: none; }
 
-.navbar-light .navbar-nav a.nav-link         { color: #808080; text-decoration: none; }
-.navbar-light .navbar-nav a.nav-link:focus,
-.navbar-light .navbar-nav a.nav-link:hover   { color: #003060; text-decoration: underline; }
-.navbar-light .navbar-nav a.nav-link:active,
-.navbar-light .navbar-nav a.nav-link:visited { color: #808080; text-decoration: none; }
+.navbar-nav a.nav-link         { color: #003399; text-decoration: none; }
+.navbar-nav a.nav-link:focus,
+.navbar-nav a.nav-link:hover   { color: #9933FF; text-decoration: underline; }
+.navbar-nav a.nav-link:active,
+.navbar-nav a.nav-link:visited { color: #003399; text-decoration: none; }
 
+.movimientolibre-navbar-toggler   { border-color: #003399; }
 .movimientolibre-navbar-icons     { flex-flow: row; }
 .movimientolibre-navbar-icon-link { font-size: 24px; margin: 0 4px; }
 
@@ -139,6 +119,29 @@ a.page-link:visited { color: #003399; text-decoration: none; }
 
 footer { padding-top: 2rem; }
 
+/* Used by movimiento-libre.js to show the main navigation when scroll ups */
+
+@media only screen and (min-width: 992px) {
+    #mainNav {
+        border-bottom: 1px solid transparent;
+    }
+    #mainNav.is-fixed {
+        /* when the user scrolls down, we hide the header right above the viewport */
+        position: fixed;
+        top: -57px;
+        -webkit-transition: -webkit-transform 0.2s;
+        transition: -webkit-transform 0.2s;
+        transition: transform 0.2s;
+        transition: transform 0.2s, -webkit-transform 0.2s;
+        border-bottom: 1px solid #888;
+    }
+    #mainNav.is-visible {
+        /* if the user changes the scrolling direction, we show the header */
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
 /* Dark mode */
 
 @media (prefers-color-scheme: dark) {
@@ -156,17 +159,19 @@ footer { padding-top: 2rem; }
     a:active,
     a:visited { color: #579bdf; }
 
-    .navbar-light .navbar-brand         { color: #579bdf; }
-    .navbar-light .navbar-brand:focus,
-    .navbar-light .navbar-brand:hover   { color: #bed1e3; }
-    .navbar-light .navbar-brand:active,
-    .navbar-light .navbar-brand:visited { color: #579bdf; }
+    .navbar-brand         { color: #579bdf; }
+    .navbar-brand:focus,
+    .navbar-brand:hover   { color: #bed1e3; }
+    .navbar-brand:active,
+    .navbar-brand:visited { color: #579bdf; }
 
-    .navbar-light .navbar-nav a.nav-link         { color: #579bdf; }
-    .navbar-light .navbar-nav a.nav-link:focus,
-    .navbar-light .navbar-nav a.nav-link:hover   { color: #bed1e3; }
-    .navbar-light .navbar-nav a.nav-link:active,
-    .navbar-light .navbar-nav a.nav-link:visited { color: #579bdf; }
+    .navbar-nav a.nav-link         { color: #579bdf; }
+    .navbar-nav a.nav-link:focus,
+    .navbar-nav a.nav-link:hover   { color: #bed1e3; }
+    .navbar-nav a.nav-link:active,
+    .navbar-nav a.nav-link:visited { color: #579bdf; }
+
+    .movimientolibre-navbar-toggler   { border-color: #579bdf; }
 
     pre { background-color: #282828; color: #eeeeee;}
     code { color: #4fd2d2; }

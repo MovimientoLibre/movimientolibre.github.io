@@ -1,0 +1,1775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Movimiento Libre</title><link href="https://movimientolibre.com/" rel="alternate"></link><link href="https://movimientolibre.com/feeds/all.atom.xml" rel="self"></link><id>https://movimientolibre.com/</id><updated>2020-10-11T08:56:00-05:00</updated><entry><title>Podman básico: Contenedor con explorador de archivos web en PHP</title><link href="https://movimientolibre.com/apuntes/podman-02-tinyfilemanager-php/" rel="alternate"></link><published>2020-10-11T08:56:00-05:00</published><updated>2020-10-11T08:56:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-10-11:/apuntes/podman-02-tinyfilemanager-php/</id><summary type="html">&lt;p&gt;Ahora probaremos crear un contenedor con el servidor web Apache y con PHP para ejecutar el explorador de archivos Tiny File Manager.&lt;/p&gt;</summary><content type="html">&lt;p&gt;En el anterior ejercicio se levantó un &lt;a href="../podman-01-documentacion-python/"&gt;Contenedor con documentación de Python&lt;/a&gt;. Ahora probaremos crear un contenedor con el servidor web Apache y con PHP para ejecutar el explorador de archivos en navegador web &lt;a href="https://tinyfilemanager.github.io/"&gt;Tiny File Manager&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Descargar la imagen con Apache y PHP versión 7&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pull php:7-apache
+$ podman images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Crear un directorio para este proyecto&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir podman-02-tinyfilemanager-php
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; podman-02-tinyfilemanager-php
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Crear un archivo &lt;code&gt;index.php&lt;/code&gt; con el informe de PHP&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ nano index.php
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este contenido&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="nb"&gt;phpinfo&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Descargar &lt;a href="https://tinyfilemanager.github.io/"&gt;Tiny File Manager&lt;/a&gt; versión 2.4.3.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ wget -O tinyfilemanager-2.4.3.tar.gz https://github.com/prasathmani/tinyfilemanager/archive/2.4.3.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lo desempacamos&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ tar xf &lt;span class="m"&gt;2&lt;/span&gt;.4.3.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sólo necesitamos el archivo &lt;code&gt;tinyfilemanager.php&lt;/code&gt;; lo copiamos al directorio actual&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ cp tinyfilemanager-2.4.3/tinyfilemanager.php .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Crear el archivo &lt;code&gt;Dockerfile&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ nano Dockerfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este contenido&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;php&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;apache&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Ir al directorio raiz del servidor web&lt;/span&gt;
+&lt;span class="n"&gt;WORKDIR&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Copiar index.php y cambiar su dueño a www-data&lt;/span&gt;
+&lt;span class="n"&gt;COPY&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;RUN&lt;/span&gt; &lt;span class="n"&gt;chown&lt;/span&gt; &lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Copiar Tiny File Manager&lt;/span&gt;
+&lt;span class="n"&gt;COPY&lt;/span&gt; &lt;span class="n"&gt;tinyfilemanager&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;php&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Crear directorio donde más adelante pondremos imágenes&lt;/span&gt;
+&lt;span class="n"&gt;RUN&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;images&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Crear la imagen&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman build -t tinyfilemanager:2.4.3 .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Arrancar el contenedor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman run --rm -d -p &lt;span class="m"&gt;8080&lt;/span&gt;:80 --name tinyfilemanager tinyfilemanager:2.4.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ingresar en el navegador de internet para ver el reporte de PHP&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;http://127.0.0.1:8080/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="screenshot-01-phpinfo.png" alt="PHP Info"&gt;&lt;/p&gt;
+&lt;p&gt;Para probar Tiny File Manager use esta URL&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;http://127.0.0.1:8080/tinyfilemanager.php&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ingrese con usario &lt;strong&gt;admin&lt;/strong&gt; y contraseña &lt;strong&gt;admin@123&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="screenshot-02-tinyfilemanager.png" alt="Tiny File Manager"&gt;&lt;/p&gt;
+&lt;p&gt;Pruebe editar &lt;code&gt;index.php&lt;/code&gt; desde Tiny File Manager, por ejemplo cambie a&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hola Mundo!&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt; &lt;span class="nb"&gt;phpinfo&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt; &lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Parar el contenedor con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman container stop tinyfilemanager
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Montar el directorio &lt;code&gt;Público&lt;/code&gt; de nuestro &lt;em&gt;home&lt;/em&gt; (donde he copiado algunas imágenes) en &lt;code&gt;images&lt;/code&gt; del contenedor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman run --rm -d -p &lt;span class="m"&gt;8080&lt;/span&gt;:80 --name tinyfilemanager --volume &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/Público:/var/www/html/images:z tinyfilemanager:2.4.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Note que se agrega "z" para que ajuste los permisos locales y sea visible dentro del contenedor.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="screenshot-03-tinyfilemanager.jpg" alt="Tiny File Manager"&gt;&lt;/p&gt;
+&lt;p&gt;Parar con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman container stop tinyfilemanager
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Navegue por la serie de apuntes de Podman&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="../podman-01-documentacion-python/"&gt;Contenedor con documentación de Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Contenedor con explorador de archivos web en PHP&lt;/li&gt;
+&lt;li&gt;&lt;a href="../podman-03-pods-mysql-phpmyadmin/"&gt;Pod con MySQL y PhpMyAdmin&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="apuntes"></category><category term="contenedores"></category></entry><entry><title>Podman básico: Contenedor con documentación de Python</title><link href="https://movimientolibre.com/apuntes/podman-01-documentacion-python/" rel="alternate"></link><published>2020-10-09T12:27:00-05:00</published><updated>2020-10-09T12:27:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-10-09:/apuntes/podman-01-documentacion-python/</id><summary type="html">&lt;p&gt;Primer ejercicio para probar Podman donde se crea un contenedor, se copia y desempaca la documentación de Python y se levanta un servidor web para consultarla.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Bienvenido a la serie de apuntes sobre &lt;a href="https://podman.io/"&gt;Podman&lt;/a&gt; que espero sea de ayuda para aprender y utilizar el uso de contenedores impulsado por &lt;a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/building_running_and_managing_containers/index"&gt;RedHat&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Crear un directorio para este ejercicio&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir podman-01-documentacion-python
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; podman-01-documentacion-python
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Visite &lt;a href="https://docs.python.org/3/download.html"&gt;Download Python 3 Documentation&lt;/a&gt; y descargue el archivo comprimido que tiene todos los archivos HTML empacados en .tar.bz2. Al momento de escribir esto se encuentra la versión 3.9.0&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ wget https://docs.python.org/3/archives/python-3.9.0-docs-html.tar.bz2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Crear el archivo &lt;code&gt;Dockerfile&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ nano Dockerfile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este contenido...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;alpine&lt;/span&gt;
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Crear&lt;/span&gt; &lt;span class="n"&gt;directorio&lt;/span&gt;
+&lt;span class="n"&gt;RUN&lt;/span&gt; &lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;
+&lt;span class="n"&gt;WORKDIR&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Copiar&lt;/span&gt; &lt;span class="n"&gt;la&lt;/span&gt; &lt;span class="n"&gt;documentación&lt;/span&gt;
+&lt;span class="k"&gt;COPY&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;docs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bz2&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Desempacar&lt;/span&gt;
+&lt;span class="n"&gt;RUN&lt;/span&gt; &lt;span class="n"&gt;tar&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xjf&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;docs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tar&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bz2&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="err"&gt;\&lt;/span&gt;
+  &lt;span class="n"&gt;ln&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;docs&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt;
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Arrancar&lt;/span&gt; &lt;span class="n"&gt;el&lt;/span&gt; &lt;span class="n"&gt;servidor&lt;/span&gt; &lt;span class="n"&gt;web&lt;/span&gt;
+&lt;span class="n"&gt;CMD&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mi"&gt;8000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Descargar la imagen &lt;code&gt;python:3.9-alpine&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pull python:3.9-alpine
+$ podman images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Construir una imagen con nombre python_docs en su versión 3.9.0&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman build -t python_docs:3.9.0 .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Correr el contenedor, que se autodestruya, mandar al fondo, canalizar el puerto 8000 y con nombre python_docs_web&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman run --rm -d -p &lt;span class="m"&gt;8000&lt;/span&gt;:8000 --name python_docs_web python_docs:3.9.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Probar el navegador de internet con esta URL&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;http://127.0.0.1:8000/python3/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="python-3-9-0-documentation.png" alt="Mozilla Firefox con Python 3.9.0 Documentation"&gt;&lt;/p&gt;
+&lt;p&gt;Terminar la ejecución del contenedor con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman stop python_docs_web
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Navegue por la serie de apuntes de Podman&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Contenedor con documentación de Python&lt;/li&gt;
+&lt;li&gt;&lt;a href="../podman-02-tinyfilemanager-php/"&gt;Contenedor con explorador de archivos web en PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="../podman-03-pods-mysql-phpmyadmin/"&gt;Pod con MySQL y PhpMyAdmin&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="apuntes"></category><category term="contenedores"></category></entry><entry><title>Podman básico: pod con MySQL y PhpMyAdmin</title><link href="https://movimientolibre.com/apuntes/podman-03-pods-mysql-phpmyadmin/" rel="alternate"></link><published>2020-09-13T10:00:00-05:00</published><updated>2020-09-13T11:30:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-09-13:/apuntes/podman-03-pods-mysql-phpmyadmin/</id><summary type="html">&lt;p&gt;En este ejercicio se van a levantar dos contendores para que interactúen entre sí; uno con el motor de la base de datos y otro con un administrador web.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Toca turno de practicar cómo levantar dos contenedores sobre un &lt;em&gt;pod&lt;/em&gt; que actúa como "puente" que habilita la interacción entre los dos.&lt;/p&gt;
+&lt;p&gt;Para mostrar en pantalla la ayuda de este tema escriba:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod --help
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Crear un pod&lt;/h2&gt;
+&lt;p&gt;En este ejercio vamos a crar un &lt;em&gt;pod&lt;/em&gt; con el nombre "mi_inventario"&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod create --name mi_inventario
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para listar los &lt;em&gt;pods&lt;/em&gt; ejecute&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Agregar y arrancar un contenedor al pod&lt;/h2&gt;
+&lt;p&gt;Descargue la imagen de MySQL&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pull mysql:8
+$ podman images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Antes de hacer el contenedor con MySQL debemos crear un archivo de configuración&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ nano .env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Donde deben declararse las variables que definen la contraseña &lt;em&gt;root&lt;/em&gt; de MySQL, un primer usuario, su contraseña y nombre de la base de datos; cambie las contraseñas a su gusto:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;MYSQL_ROOT_PASSWORD=XXXXXXXXXXXXX&lt;/span&gt;
+&lt;span class="err"&gt;MYSQL_USER=inventarioadmin&lt;/span&gt;
+&lt;span class="err"&gt;MYSQL_PASSWORD=XXXXXXXXXXXX&lt;/span&gt;
+&lt;span class="err"&gt;MYSQL_DATABASE=inventario&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con esta orden estará arrancando el contenedor MySQL con el nombre "mi_inventario_db" y agregándolo al &lt;em&gt;pod&lt;/em&gt; "mi_inventario"&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman run -d --pod mi_inventario --env-file .env --name mi_inventario_db mysql:8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El parámetro &lt;code&gt;-d&lt;/code&gt; sirve para "mandarlo al fondo" y que nos devuelva el &lt;em&gt;prompt&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Liste los &lt;em&gt;pods&lt;/em&gt; y los contenedores con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman ps -a --pod
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pare y elimine lo hecho a este momento con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman stop mi_inventario_db
+$ podman container rm mi_inventario_db
+$ podman pod rm mi_inventario
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Agregar y arrancar dos contenedores al pod&lt;/h2&gt;
+&lt;p&gt;Ahora descargue la imagen de PhpMyAdmin&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pull phpmyadmin/phpmyadmin:latest
+$ podman images
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Llegamos al punto de usar la cualidad de Podman de "entubar" puertos de un &lt;em&gt;pod&lt;/em&gt;; en específico, necesitamos que el puerto 80 de PhpMyAdmin lo podamos acceder en el navegador de internet.&lt;/p&gt;
+&lt;p&gt;Vuelva a crear el &lt;em&gt;pod&lt;/em&gt; dirigiendo su puerto 80 al puerto 8085 &lt;em&gt;localhost&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod create --name mi_inventario -p &lt;span class="m"&gt;8085&lt;/span&gt;:80
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Revise listando los &lt;em&gt;pods&lt;/em&gt; y los contenedores&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman ps -a --pod
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agregue y arranque el contenedor "mi_inventario_db" con MySQL&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman run -d --pod mi_inventario --env-file .env --name mi_inventario_db mysql:8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agregue y arranque el contenedor "mi_inventario_phpmyadmin" con PhpMyAdmin&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman run -d --pod mi_inventario --env-file .env -e &lt;span class="nv"&gt;PMA_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;127&lt;/span&gt;.0.0.1 --name mi_inventario_phpmyadmin phpmyadmin:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Revise de nuevo&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman ps -a --pod
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En su navegador de internet acceda a PhpMyAdmin con &lt;em&gt;root&lt;/em&gt; y la contraseña que haya puesto en &lt;em&gt;.env&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;http://127.0.0.1:8085&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="phpmyadmin.jpg" alt="PhpMyAdmin"&gt;&lt;/p&gt;
+&lt;h2&gt;Órdenes adicionales&lt;/h2&gt;
+&lt;p&gt;Pausar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod pause mi_inventario
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reanudar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod unpause mi_inventario
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Parar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod stop mi_inventario
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Eliminar el pod "mi_inventario" y todos sus contenedores&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ podman pod rm mi_inventario
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Navegue por la serie de apuntes de Podman&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="../podman-01-documentacion-python/"&gt;Contenedor con documentación de Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="../podman-02-tinyfilemanager-php/"&gt;Contenedor con explorador de archivos web en PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Pod con MySQL y PhpMyAdmin&lt;/li&gt;
+&lt;/ol&gt;</content><category term="apuntes"></category><category term="contenedores"></category></entry><entry><title>Python Package Index (PyPI): primeros pasos</title><link href="https://movimientolibre.com/apuntes/python-package-index-primeros-pasos/" rel="alternate"></link><published>2020-09-05T22:28:00-05:00</published><updated>2020-09-05T22:28:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-09-05:/apuntes/python-package-index-primeros-pasos/</id><summary type="html">&lt;p&gt;PyPI es el repositorio de paquetes de Python por excelencia. En este apunte están los pasos para preparar software que se instale con pip.&lt;/p&gt;</summary><content type="html">&lt;p&gt;En este apunte se usa &lt;code&gt;pypi_primeros_pasos&lt;/code&gt; como el nombre del paquete; debe cambiarlo por el nombre que vaya a usar.&lt;/p&gt;
+&lt;h2&gt;Crear un nuevo repositorio en GitHub&lt;/h2&gt;
+&lt;p&gt;Un buen punto de partida y futuro &lt;em&gt;home&lt;/em&gt; de su paquete es hacer un nuevo repositorio en &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt; (o el servicio &lt;em&gt;git&lt;/em&gt; que prefiera). Luego de crearlo baje una copia con las siguientes órdenes; sustituya &lt;code&gt;USUARIO&lt;/code&gt; por su cuenta.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir -p ~/Documentos/GitHub/USUARIO
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/Documentos/GitHub/USUARIO
+$ git clone git@github.com:USUARIO/pypi_primeros_pasos.git
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; pypi_primeros_pasos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Crear la estructura para el paquete&lt;/h2&gt;
+&lt;p&gt;Prepare los directorios y archivos en la copia local de su repositorio así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;pypi_primeros_pasos&lt;/span&gt;
+&lt;span class="err"&gt; |- LICENSE&lt;/span&gt;
+&lt;span class="err"&gt; |- README.md&lt;/span&gt;
+&lt;span class="err"&gt; |- ejemplo&lt;/span&gt;
+&lt;span class="err"&gt; |   |- __init__.py&lt;/span&gt;
+&lt;span class="err"&gt; |- setup.py&lt;/span&gt;
+&lt;span class="err"&gt; |- tests&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Donde &lt;code&gt;LICENCE&lt;/code&gt; tiene el texto con la licencia de software y &lt;code&gt;README.md&lt;/code&gt; una breve semblanza de lo que hace el paquete.&lt;/p&gt;
+&lt;p&gt;Debe crear el directorio &lt;code&gt;tests&lt;/code&gt; para colocar pruebas; por el momento puede estar vacío.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir tests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Edite el &lt;code&gt;setup.py&lt;/code&gt; como en este ejemplo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt;
+
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;README.md&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;puntero&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;long_description&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;puntero&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;setuptools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pypi_primeros_pasos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;0.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Su nombre completo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;author_email&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;correo@ejemplo.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Una línea que lo describa.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;long_description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;long_description&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;long_description_content_type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;text/markdown&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;https://github.com/USUARIO/pypi_primeros_pasos&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;python_requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;gt;=3.6&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;classifiers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;Programming Language :: Python :: 3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;Operating System :: POSIX :: Linux&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;setuptools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_packages&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+    &lt;span class="n"&gt;include_package_data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;install_requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;paquete_dependencia_1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;paquete_dependencia_2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;paquete_dependencia_3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;],&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Los principales valores a declarar son...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name:&lt;/strong&gt; el nombre único del paquete&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;version:&lt;/strong&gt; número de versión&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;author:&lt;/strong&gt; su nombre completo&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;author_email:&lt;/strong&gt; dirección de correo electrónico&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;description:&lt;/strong&gt; explique en una oración de que se trata&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;long_description:&lt;/strong&gt; una descripción más larga que se cargará desde README.md&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;url:&lt;/strong&gt; el repositorio público (puede ser de GitHub) donde encontrarlo&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;classifiers:&lt;/strong&gt; metadatos que describen el lenguaje, la licencia y el sistema operativo&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;include_package_data:&lt;/strong&gt; ordena que se incluyan archivos que no son parte ejecutable&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;install_requires:&lt;/strong&gt; otros paquetes que se requieren instalar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Crear un entorno virtual Python 3&lt;/h2&gt;
+&lt;p&gt;Prepare un entorno vitual Python 3 donde colocaremos el código del paquete así como los directorios y archivos para que se haga la entrega a PyPI. Recomiendo tenerlo por separado de la copia del repositorio; para este ejemplo uso &lt;code&gt;PyPIPrimerosPasos&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ mkdir ~/VirtualEnv
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/VirtualEnv
+$ virtualenv -p python3 PyPIPrimerosPasos
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; PyPIPrimerosPasos/
+$ . bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Registro en Test PyPI&lt;/h2&gt;
+&lt;p&gt;Ya sea para aprender o para poner a prueba su paquete use el servicio Pruebas de PyPI: &lt;a href="https://test.pypi.org/"&gt;https://test.pypi.org/&lt;/a&gt;. &lt;strong&gt;CUIDADO:&lt;/strong&gt; Tenga en cuenta que Test es efímero, porque va eliminando las entregas más antiguas. Solicite su registro; le pedirá su nombre, correo electrónico, usuario y contraseña dos veces. Luego deberá confirmar su correo electrónico.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTA:&lt;/strong&gt; Más adelante regístrese en PyPI &lt;a href="https://pypi.org/"&gt;https://pypi.org/&lt;/a&gt;; allí debe de repetir todo proceso de registro; por lo que las contraseñas y las llaves API deberán ser diferentes.&lt;/p&gt;
+&lt;h2&gt;Genere una llave API de Test PyPI&lt;/h2&gt;
+&lt;p&gt;En &lt;em&gt;Account settings&lt;/em&gt; &amp;gt; &lt;em&gt;API tokens&lt;/em&gt; de clic en &lt;em&gt;Add API token&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Escriba un nombre para la llave, le recomiendo que sea relativo al equipo donde la vaya a usar. Para que interactúe con todos sus paquetes elija &lt;em&gt;Entire account (all projects)&lt;/em&gt;. Luego de click &lt;em&gt;Add token&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;El token estará visible solo en esta ocasión; de clic en &lt;em&gt;Copy token&lt;/em&gt; y &lt;strong&gt;NO&lt;/strong&gt; cierre esa pestaña del navegador de internet hasta haberla guardado.&lt;/p&gt;
+&lt;p&gt;Prepare el archivo &lt;code&gt;.pypirc&lt;/code&gt; para guardarlo; debe estar en su &lt;em&gt;HOME&lt;/em&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ nano -w ~/.pypirc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y péguelo como &lt;code&gt;password&lt;/code&gt; en un nuevo archivo como lo siguiente...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[testpypi]&lt;/span&gt;
+&lt;span class="na"&gt;username&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;__token__&lt;/span&gt;
+&lt;span class="na"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;pypi-xxxxxxxxxxxxxxxx...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ya guardado puede cerrar la pestaña del naveador de internet con el token.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTA:&lt;/strong&gt; Cuando tenga el registro en &lt;strong&gt;PyPI&lt;/strong&gt; podrá repetir el proceso para generar la llave API para esa cuenta y agregarla al mismo archivo &lt;code&gt;.pypirc&lt;/code&gt; de esta forma...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[pypi]&lt;/span&gt;
+&lt;span class="na"&gt;username&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;__token__&lt;/span&gt;
+&lt;span class="na"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;pypi-xxxxxxxxxxxxxxxx...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Generar los archivos para su distribución&lt;/h2&gt;
+&lt;p&gt;Cámbiese al directorio donde está la copia local del repositorio&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(PyPIPrimerosPasos) $ cd ~/Documentos/GitHub/USUARIO/pypi_primeros_pasos&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Verifique que tenga &lt;code&gt;setuptools&lt;/code&gt; y &lt;code&gt;wheel&lt;/code&gt; instalados&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(PyPIPrimerosPasos) $ pip list&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Genere los archivos para distribuir con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(PyPIPrimerosPasos) $ python3 setup.py sdist bdist_wheel&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Esa orden creará el directorio &lt;code&gt;dist&lt;/code&gt; que contiene un comprimido con los archivos del paquete.&lt;/p&gt;
+&lt;h2&gt;Subir el paquete&lt;/h2&gt;
+&lt;p&gt;Instale twine en este entorno...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(PyPIPrimerosPasos) $ pip install twine&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Suba el paquete ejecutando...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PyPIPrimerosPasos&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="n"&gt;twine&lt;/span&gt; &lt;span class="n"&gt;upload&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt; &lt;span class="n"&gt;testpypi&lt;/span&gt; &lt;span class="n"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;/*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NOTA:&lt;/strong&gt; En &lt;em&gt;repository&lt;/em&gt; use &lt;code&gt;testpypi&lt;/code&gt; para &lt;strong&gt;Test PyPI&lt;/strong&gt;. En cambio para &lt;strong&gt;PyPI&lt;/strong&gt; use &lt;code&gt;pypi&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Verifique que puede ver su nuevo paquete en el navegador de internet con la URL que aparece.&lt;/p&gt;
+&lt;p&gt;Abandone el entorno virtual con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(PyPIPrimerosPasos) $ decativate&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Probar la descarga&lt;/h2&gt;
+&lt;p&gt;Elabore un nuevo entorno virtual&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/VirtualEnv
+$ virtualenv -p python3 PruebaPyPIPrimerosPasos
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; PruebaPyPIPrimerosPasos/
+$ . bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale su nuevo paquete desde Test PyPI con&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(PruebaPyPIPrimerosPasos) $ pip install pypi_primeros_pasos&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Referencias&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://packaging.python.org/tutorials/packaging-projects/"&gt;Tutorial - Packaging Python Projects&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="apuntes"></category><category term="python"></category></entry><entry><title>Webmin instalación en Fedora Server</title><link href="https://movimientolibre.com/apuntes/webmin-instalacion-fedora-server/" rel="alternate"></link><published>2020-07-30T14:30:00-05:00</published><updated>2020-07-30T14:30:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-07-30:/apuntes/webmin-instalacion-fedora-server/</id><summary type="html">&lt;p&gt;Webmin es una herramienta de configuración de sistemas accesible vía web para sistemas Unix, como GNU/Linux y OpenSolaris. Con él se pueden configurar aspectos internos de muchos sistemas libres, como el servidor web Apache, PHP, MySQL, DNS, Samba, DHCP, entre otros.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Para este apunte se utilizó &lt;a href="https://getfedora.org/es/server/"&gt;Fedora Server&lt;/a&gt; versión 32.&lt;/p&gt;
+&lt;h2&gt;Instalar Webmin&lt;/h2&gt;
+&lt;p&gt;Crear un archivo para configurar el repositorio&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo nano /etc/yum.repos.d/webmin.repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Con este contenido&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;[Webmin]&lt;/span&gt;
+&lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Webmin Distribution Neutral&lt;/span&gt;
+&lt;span class="na"&gt;baseurl&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;http://download.webmin.com/download/yum&lt;/span&gt;
+&lt;span class="na"&gt;enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;1&lt;/span&gt;
+&lt;span class="na"&gt;gpgcheck&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;1&lt;/span&gt;
+&lt;span class="na"&gt;gpgkey&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;http://www.webmin.com/jcameron-key.asc&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ejecutar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf update
+$ sudo dnf install webmin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Al terminar da este mensaje&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;Webmin install complete.&lt;/span&gt;
+&lt;span class="err"&gt;You can now login to https://SERVIDOR:10000/&lt;/span&gt;
+&lt;span class="err"&gt;as root with your root password.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Configurar el muro de fuego&lt;/h2&gt;
+&lt;p&gt;Sigue configurar el &lt;em&gt;firewall&lt;/em&gt; para que se abra el puerto 10000.&lt;/p&gt;
+&lt;p&gt;Por defecto la zona activa se llama FedoraServer&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --get-active-zones
+FedoraServer
+    interfaces: enp1s0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Revise los los servicios, por defecto son...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --zone&lt;span class="o"&gt;=&lt;/span&gt;FedoraServer --list-services
+cockpit dhcpv6-client ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Por defecto no hay puertos&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo firewall-cmd --zone&lt;span class="o"&gt;=&lt;/span&gt;FedoraServer --list-ports
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agregue el puerto 10000&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;firewall&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;zone&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;FedoraServer&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10000&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tcp&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;permanent&lt;/span&gt;
+&lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;firewall&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;reload&lt;/span&gt;
+&lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;firewall&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;cmd&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;zone&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;FedoraServer&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ports&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ingresar con el navegador de internet a...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;https://SERVIDOR:10000/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Agregar un usuario de webmin por la terminal&lt;/h2&gt;
+&lt;p&gt;Como desde la instalación de Fedora Server bloqueo al usuario root es necesario crear manualmente un primer usuario de Webmin&lt;/p&gt;
+&lt;p&gt;Editar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo nano /etc/webmin/miniserv.users
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agregar una línea con su usuario, por ejemplo 'guivaloz'&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;guivaloz&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Editar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo nano /etc/webmin/webmin.acl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copie y pegue la línea de root, cambie solo el usuario&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;privileges&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;guivaloz&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt; &lt;span class="n"&gt;privileges&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cambiar la contraseña del usuario 'guivaloz' por 'PA555W0RD'&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo /usr/libexec/webmin/changepass.pl /etc/webmin guivaloz PA555W0RD
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No he encontrado una orden para recargar la configuración, así que reinicio el servidor&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo systemctl reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De nueva cuenta, ingresar con el navegador de internet a...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;https://SERVIDOR:10000/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pruebe su usuario y contraseña.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="webmin-dashboard.png" alt="Webmin Dashboard"&gt;&lt;/p&gt;
+&lt;h2&gt;Referencias&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://doxfer.webmin.com/Webmin/Main_Page"&gt;Webmin Documentation Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.webmin.com/faq.html"&gt;Webmin FAQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/36327209/creating-new-admin-webmin-user-in-shell"&gt;StackOverflow creating new admin webmin user in shell&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Apuntes"></category><category term="fedora"></category></entry><entry><title>Pelican: Constructor de sitios web</title><link href="https://movimientolibre.com/apuntes/pelican-constructor-sitios-web/" rel="alternate"></link><published>2020-03-30T16:08:00-06:00</published><updated>2020-03-30T16:08:00-06:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-03-30:/apuntes/pelican-constructor-sitios-web/</id><summary type="html">&lt;p&gt;Pelican es un constructor de sitios web estáticos programado en Python que no necesita de una base de datos.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Qué es Pelican&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; es un constructor de sitios web estáticos programado en &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; que no necesita de una base de datos.&lt;/p&gt;
+&lt;h3&gt;Cómo funciona&lt;/h3&gt;
+&lt;p&gt;Pelican puede recibir contenidos en archivos en &lt;a href="https://movimientolibre.com/apuntes/markdown/"&gt;Markdown&lt;/a&gt;, &lt;a href="http://docutils.sourceforge.net/rst.html"&gt;reStructuredText&lt;/a&gt; y/o HTML.&lt;/p&gt;
+&lt;p&gt;Cada archivo en &lt;em&gt;contents&lt;/em&gt; va crear un artículo o una página en el sitio web. La sintaxis indica que las primeras líneas deben ser para los &lt;a href="https://docs.getpelican.com/en/stable/content.html#file-metadata"&gt;metadados&lt;/a&gt;, por ejemplo, en el comienzo de un archivo &lt;strong&gt;md&lt;/strong&gt; se define el título, la categoría y la fecha así:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Hola&lt;/span&gt; &lt;span class="n"&gt;Mundo&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Comunicados&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2020&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cuando vaya a planear la estructura del sitio web, debe determinar qué va ser artículo y qué va ser página...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Artículos:&lt;/strong&gt; Aquellos contenidos que se deben de ordenar cronológicamente, que se listen del más reciente al más antiguo.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Página:&lt;/strong&gt; Aquellos contenidos atemporales que rara vez cambien, como los datos de contacto.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Como parte de su versatilidad, Pelican es capaz de manejar &lt;strong&gt;temas&lt;/strong&gt;. Hay &lt;a href="http://pelicanthemes.com/"&gt;muchos temas compartidos por los usuarios&lt;/a&gt; que puedes descargar y adecuar. O bien, porqué no, &lt;a href="https://docs.getpelican.com/en/stable/themes.html"&gt;puedes crear uno desde cero.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Además, también puedes agregar &lt;strong&gt;plug-ins&lt;/strong&gt; para &lt;a href="https://github.com/getpelican/pelican-plugins"&gt;obtener capacidades adicionales.&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Requisitos&lt;/h3&gt;
+&lt;p&gt;Previamente debe tener instalado Python, de preferencia la versión 3, verifique con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ python --version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;El gestor de paquetes &lt;a href="https://pypi.org/"&gt;Python Package Index&lt;/a&gt; alias &lt;em&gt;pip&lt;/em&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ which pip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y una herramienta para crear entornos virtuales de Python, como &lt;strong&gt;virtualenv&lt;/strong&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ which virtualenv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Pasos para su instalación&lt;/h3&gt;
+&lt;p&gt;Primero primero hay que crear un entorno virtual con Python 3 y con nombre Pelican...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~
+$ mkdir VirtualEnv
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; VirtualEnv
+$ virtualenv -p python3 Pelican
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cámbiese a ese directorio...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; Pelican
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Active el entorno virtual...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ . bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E instale los paquetes Pelican y Markdown...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ pip install pelican markdown&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Revise que dentro del entorno virtual se hayan instalado los paquetes y sus dependencias...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ pip list&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Crear un sitio web rápidamente con el asistente&lt;/h3&gt;
+&lt;p&gt;El asistente nos pregunta las variables necesarias para crear un sitio web, ejecute con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ pelican-quickstart&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Por ejemplo, vamos a crear un sitio web llamado &lt;em&gt;Demostracion&lt;/em&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;Where&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;create&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;.&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Demostracion&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;What&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Este&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;es&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mi&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;primer&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sitio&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="err"&gt;!!!&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Who&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Guillermo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Valdés&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;What&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;will&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;be&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;language&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;this&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;web&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;es&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;specify&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;URL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;prefix&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;.,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;example&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;enable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;article&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pagination&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;What&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;zone&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Europe/Paris&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;America&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Mexico_City&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;generate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tasks&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;automate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;generation&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;publishing&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;FTP&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;SSH&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Dropbox&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;S3&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Rackspace&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Cloud&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Files&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;upload&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;website&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;GitHub&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Pages&lt;/span&gt;&lt;span class="vm"&gt;?&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;Done&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Your&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;available&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;at&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;guivaloz&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Capacitacion&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Pelican&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Demostracion&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Al terminar nos crea un directorio &lt;code&gt;Demostracion&lt;/code&gt;. Veamos lo que el asistente creó...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ cd Demostracion&lt;/span&gt;
+&lt;span class="err"&gt;(Pelican) $ ls&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pelican necesita de estos directorios y archivos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;contents&lt;/code&gt; Directorio donde hay que poner los artículos y las páginas.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;output&lt;/code&gt; Directorio donde se va a depositar el sitio web resultante cuando se contruya o publique.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pelicanconf.py&lt;/code&gt; Programa en Python donde se definen las variables para su uso local.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;publishconf.py&lt;/code&gt; Programa en Python donde se carga &lt;code&gt;pelicanconf.py&lt;/code&gt; y se definen variables para publicar en internet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cuando en el asistente se contesta con Sí en generar &lt;strong&gt;tasks.py/Makefile&lt;/strong&gt; también se crean:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tasks.py&lt;/code&gt; Contiene las configuraciones para publicar en los proveedores de hospedaje.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Makefile&lt;/code&gt; Sirve al comando &lt;code&gt;make&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Agregue su primer contenido y contruya con make&lt;/h3&gt;
+&lt;p&gt;Cámbiese al directorio &lt;code&gt;contents&lt;/code&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ cd contents&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cree un archivo para un comunicado...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ nano -w primer-comunicado.md&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Por ejemplo, inicie con los &lt;a href="https://docs.getpelican.com/en/stable/content.html#file-metadata"&gt;metadados&lt;/a&gt; y el contenido en &lt;strong&gt;markdown&lt;/strong&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Primer&lt;/span&gt; &lt;span class="n"&gt;Comunicado&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;primer&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;comunicado&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Comunicados&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2020&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;21&lt;/span&gt; &lt;span class="mi"&gt;18&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;32&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Demostraciones&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Desarrollo&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+
+&lt;span class="n"&gt;Lorem&lt;/span&gt; &lt;span class="n"&gt;ipsum&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt; &lt;span class="n"&gt;sit&lt;/span&gt; &lt;span class="n"&gt;amet&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;consectetur&lt;/span&gt; &lt;span class="n"&gt;adipiscing&lt;/span&gt; &lt;span class="n"&gt;elit&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sed&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;eiusmod&lt;/span&gt; &lt;span class="n"&gt;tempor&lt;/span&gt; &lt;span class="n"&gt;incididunt&lt;/span&gt; &lt;span class="n"&gt;ut&lt;/span&gt; &lt;span class="n"&gt;labore&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt; &lt;span class="n"&gt;dolore&lt;/span&gt; &lt;span class="n"&gt;magna&lt;/span&gt; &lt;span class="n"&gt;aliqua&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Ut&lt;/span&gt; &lt;span class="n"&gt;enim&lt;/span&gt; &lt;span class="n"&gt;ad&lt;/span&gt; &lt;span class="n"&gt;minim&lt;/span&gt; &lt;span class="n"&gt;veniam&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;quis&lt;/span&gt; &lt;span class="n"&gt;nostrud&lt;/span&gt; &lt;span class="n"&gt;exercitation&lt;/span&gt; &lt;span class="n"&gt;ullamco&lt;/span&gt; &lt;span class="n"&gt;laboris&lt;/span&gt; &lt;span class="n"&gt;nisi&lt;/span&gt; &lt;span class="n"&gt;ut&lt;/span&gt; &lt;span class="n"&gt;aliquip&lt;/span&gt; &lt;span class="n"&gt;ex&lt;/span&gt; &lt;span class="n"&gt;ea&lt;/span&gt; &lt;span class="n"&gt;commodo&lt;/span&gt; &lt;span class="n"&gt;consequat&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Duis&lt;/span&gt; &lt;span class="n"&gt;aute&lt;/span&gt; &lt;span class="n"&gt;irure&lt;/span&gt; &lt;span class="n"&gt;dolor&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;reprehenderit&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;voluptate&lt;/span&gt; &lt;span class="n"&gt;velit&lt;/span&gt; &lt;span class="n"&gt;esse&lt;/span&gt; &lt;span class="n"&gt;cillum&lt;/span&gt; &lt;span class="n"&gt;dolore&lt;/span&gt; &lt;span class="n"&gt;eu&lt;/span&gt; &lt;span class="n"&gt;fugiat&lt;/span&gt; &lt;span class="n"&gt;nulla&lt;/span&gt; &lt;span class="n"&gt;pariatur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Excepteur&lt;/span&gt; &lt;span class="n"&gt;sint&lt;/span&gt; &lt;span class="n"&gt;occaecat&lt;/span&gt; &lt;span class="n"&gt;cupidatat&lt;/span&gt; &lt;span class="n"&gt;non&lt;/span&gt; &lt;span class="n"&gt;proident&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sunt&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;culpa&lt;/span&gt; &lt;span class="n"&gt;qui&lt;/span&gt; &lt;span class="n"&gt;officia&lt;/span&gt; &lt;span class="n"&gt;deserunt&lt;/span&gt; &lt;span class="n"&gt;mollit&lt;/span&gt; &lt;span class="n"&gt;anim&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt; &lt;span class="n"&gt;laborum&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Regrese al directorio &lt;code&gt;Demostracion&lt;/code&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ cd ..&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Construya el sitio...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ make html&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Arranque el servidor web, por defecto usará el puerto 8000...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ make serve&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Revise en su navegador el sitio web &lt;code&gt;Demostracion&lt;/code&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c"&gt;http://localhost:8000&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Mate el servidor presionando &lt;code&gt;CTRL-C&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Ahora, pruebe el comando para construir el sitio web cada vez que haya cambios y levantar el servicio web al mismo tiempo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ make devserver&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Deje la terminal en el fondo y siga agregando o modificando. En su navegador de internet presione &lt;code&gt;F5&lt;/code&gt; para refrescar. Mate presionando &lt;code&gt;CTRL-C&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Para generar el sitio web para subir a internet, leyendo las variables de &lt;code&gt;publishconf.py&lt;/code&gt;, debe ejecutar...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ make publish&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copie el contenido de &lt;code&gt;output&lt;/code&gt; a su servidor web o a su proveedor en la nube.&lt;/p&gt;
+&lt;h3&gt;Comandos con pelican&lt;/h3&gt;
+&lt;p&gt;Si contestó que NO en el asistente, donde pregunta &lt;em&gt;Do you want to generate a tasks.py/Makefile?&lt;/em&gt;, no tendrá el archivo &lt;code&gt;Makefile&lt;/code&gt; y no funciona &lt;code&gt;make&lt;/code&gt;. Aun así puede ejecutar Pelican para hacer lo mismo...&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Para&lt;/th&gt;
+&lt;th&gt;Ejecute&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;construir&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pelican content&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;reconstruir&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pelican --delete-output-directory content&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;servir&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pelican --listen content&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;desarrollar&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pelican --autoreload --listen content&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;publicar&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;pelican --settings publishconf.py content&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Agregue un tema&lt;/h3&gt;
+&lt;p&gt;Los temas deben estar contenidos en su propio directorio y dentro de &lt;code&gt;themes&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Cada tema tiene a su vez dos directorios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Un &lt;code&gt;static&lt;/code&gt; para CSS, imágenes, JavaScript, etc.&lt;/li&gt;
+&lt;li&gt;Un &lt;code&gt;templates&lt;/code&gt; con las plantillas hechas con &lt;a href="https://palletsprojects.com/p/jinja/"&gt;Jinja2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La estructura básica de un tema es así...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;├── static&lt;/span&gt;
+&lt;span class="err"&gt;│   ├── css&lt;/span&gt;
+&lt;span class="err"&gt;│   └── images&lt;/span&gt;
+&lt;span class="err"&gt;└── templates&lt;/span&gt;
+&lt;span class="err"&gt;    ├── archives.html   // índice de archivos&lt;/span&gt;
+&lt;span class="err"&gt;    ├── article.html    // estructura para cada artículo&lt;/span&gt;
+&lt;span class="err"&gt;    ├── author.html     // índice de contenidos de un autor&lt;/span&gt;
+&lt;span class="err"&gt;    ├── authors.html    // índice de autores&lt;/span&gt;
+&lt;span class="err"&gt;    ├── categories.html // índice de categorías&lt;/span&gt;
+&lt;span class="err"&gt;    ├── category.html   // índice de contenidos de una categoría&lt;/span&gt;
+&lt;span class="err"&gt;    ├── index.html      // índice o página inicial&lt;/span&gt;
+&lt;span class="err"&gt;    ├── page.html       // estructura para cada página&lt;/span&gt;
+&lt;span class="err"&gt;    ├── tag.html        // índice de contenidos de una etiqueta&lt;/span&gt;
+&lt;span class="err"&gt;    └── tags.html       // índice de etiquetas&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Luego, por ejemplo, si tiene listo el tema &lt;code&gt;blue-penguin&lt;/code&gt;, edite el archivo &lt;code&gt;pelicanconf.py&lt;/code&gt; y agregue...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;THEME = &amp;#39;themes/blue-penguin&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Así la próxima vez que construya o publique se usará ese tema.&lt;/p&gt;
+&lt;p&gt;Aprenda &lt;a href="https://palletsprojects.com/p/jinja/"&gt;Jinja2&lt;/a&gt; para dominar la creación y modificación de los temas.&lt;/p&gt;
+&lt;h3&gt;Salir del entorno virtual&lt;/h3&gt;
+&lt;p&gt;Si ya terminó, puede simplemente cerrar la terminal o pedir su desactivación...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;(Pelican) $ deactivate&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Aprenda más en&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.getpelican.com/"&gt;Pelican Develpment Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/"&gt;Pelican Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pelicanthemes.com/"&gt;Pelican Themes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/getpelican/pelican-plugins"&gt;Collection of plugins for the Pelican static site generator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://palletsprojects.com/p/jinja/"&gt;Jinja2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="apuntes"></category><category term="python"></category></entry><entry><title>Guía de los Datos Abiertos para México (respaldo)</title><link href="https://movimientolibre.com/articulos/guia-datos-abiertos-mexico/" rel="alternate"></link><published>2019-08-30T22:20:00-05:00</published><updated>2019-08-30T22:20:00-05:00</updated><author><name>Estrategia Digital Nacional México</name></author><id>tag:movimientolibre.com,2019-08-30:/articulos/guia-datos-abiertos-mexico/</id><summary type="html">&lt;p&gt;Como fruto del trabajo sobre Gobierno Abierto el equipo de la Estrategia Digital Nacional redactó la Guía de los Datos Abiertos para México que en el presente se encuentra fuera de línea. A partir de su repositorio en GitHub he copiado su contenido pues considero que es un valioso material de consulta y no debe ser eliminada.&lt;/p&gt;</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;Como fruto del trabajo sobre &lt;strong&gt;Gobierno Abierto&lt;/strong&gt; el equipo de la &lt;strong&gt;Estrategia Digital Nacional&lt;/strong&gt; redactó la &lt;a href="https://datos.gob.mx/guia/"&gt;Guía de los Datos Abiertos para México&lt;/a&gt; que &lt;strong&gt;en el presente se encuentra fuera de línea.&lt;/strong&gt; A partir de su &lt;a href="https://github.com/mxabierto/guia-dgm"&gt;repositorio en GitHub&lt;/a&gt; he copiado su contenido pues considero que es un valioso material de consulta y no debe ser &lt;em&gt;eliminada&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Esta Guía de Implementación de la Política de Datos Abiertos es una actualización a la versión publicada en el &lt;strong&gt;Diario Oficial de la Federación&lt;/strong&gt; el &lt;strong&gt;18 de junio de 2015,&lt;/strong&gt; y está dirigida a las instituciones responsables de cumplir con lo establecido en el Decreto por el que se establece la regulación en materia de &lt;strong&gt;Datos Abiertos&lt;/strong&gt; publicado en el &lt;strong&gt;Diario Oficial de la Federación&lt;/strong&gt; el &lt;strong&gt;20 de febrero de 2015.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Además, esta Guía permitirá cumplir con la normatividad vigente ligada a la Política de Datos Abiertos como:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El Índice de Datos Abiertos establecido por el Programa para un Gobierno Cercano y Moderno (PGCM) 2013-2018;&lt;/li&gt;
+&lt;li&gt;La Norma Técnica para el acceso y publicación de Datos Abiertos de la Información Estadística y Geográfica de Interés Nacional; y,&lt;/li&gt;
+&lt;li&gt;La Ley General de Transparencia y Acceso a la Información Pública.&lt;/li&gt;
+&lt;li&gt;Ley Federal de Transparencia y Acceso a la Información Pública.&lt;/li&gt;
+&lt;li&gt;Lineamientos para determinar los catálogos y publicación de información de interés público; para la emisión y evaluación de políticas de transparencia proactiva.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Esta Guía contiene 4 pasos básicos: 1) Planea, 2) Publica, 3) Perfecciona y 4) Promueve, que contienen acciones específicas para cumplir con las disposiciones establecidas en el Decreto de Datos Abiertos.&lt;/p&gt;
+&lt;p&gt;La implementación de esta Guía será apoyada con recursos digitales, lineamientos, materiales de capacitación y herramientas tecnológicas que podrán encontrarse en el sitio de internet datos.gob.mx.&lt;/p&gt;
+&lt;h2&gt;Paso 1 | Planea&lt;/h2&gt;
+&lt;h3&gt;1.1 Formar un grupo de trabajo y designar un Enlace y Administrador de Datos Abiertos&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;30 días naturales&lt;/td&gt;
+&lt;td&gt;Coordinación de Asesores del Titular de la dependencia, homólogas o equivalentes; Dirección General de Tecnologías de Información, homólogas o equivalentes; Unidad Administrativa o Área generadora y/o administradoras de datos; Unidades de Transparencia, homólogas o equivalentes; y, Órganos Internos de Control, homólogas o equivalentes.&lt;/td&gt;
+&lt;td&gt;Designar al Enlace Institucional y Administrador de Datos; y Sesionar el Grupo de Trabajo Institucional de Datos Abiertos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;El Titular de la Institución designará a dos servidores públicos responsables de dar cumplimiento al Decreto por el que se establece la regulación en materia de Datos Abiertos y esta Guía de Implementación:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El Enlace Institucional, que será el Coordinador de Asesores, el Jefe de la Oficina del Titular de la Institución, o un servidor público con cargo mínimo de Director General que dentro del Reglamento Interno de la Institución tenga como responsabilidad la generación y uso de Datos Abiertos y sea responsable de coordinar las acciones para cumplir con estas disposiciones de acuerdo con la normatividad en la materia.&lt;/li&gt;
+&lt;li&gt;El Administrador de Datos, que será el Director General de Tecnologías de la Información u homólogo, y será responsable de coordinar la creación del Plan de Apertura, implementar los procesos para que los datos se publiquen en el sitio institucional y se vean reflejados en datos.gob.mx, y establecer los mecanismos necesarios para asegurar la disponibilidad de los datos de la Institución publicados en el portal datos.gob.mx.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Las designaciones y sus respectivas actualizaciones, deberán ser comunicados de forma oficial a la UGD, con copia para la Coordinación, conforme a la plantilla que se encuentra en la sección correspondiente del portal de internet datos.gob.mx. En caso de contar ya con la designación de estos responsables, en virtud de las obligaciones plasmadas en la Guía de Implementación de la Política de Datos Abiertos, publicada en el Diario Oficial de la Federación el 18 de junio de 2015, esta actividad no deberá realizarse. Los oficios de designación deberán hacerse públicos en datos.gob.mx.&lt;/p&gt;
+&lt;p&gt;La UGD, en colaboración con la Coordinación, podrán hacer recomendaciones sobre las designaciones cuando las Instituciones cuenten con áreas administrativas estratégicas encargadas específicamente de la planeación y administración de datos.&lt;/p&gt;
+&lt;p&gt;Grupo de Trabajo Institucional de Datos Abiertos&lt;/p&gt;
+&lt;p&gt;El Enlace Institucional será encargado de crear y coordinar un Grupo de Trabajo Institucional de Datos Abiertos, que tendrá los objetivos de:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Asegurar el cumplimiento de la Política de Datos Abiertos y la normatividad aplicable en materia de Datos Abiertos al interior de la Institución;&lt;/li&gt;
+&lt;li&gt;Asegurar la publicación, actualización, perfeccionamiento y uso de los Datos Abiertos, así como los recursos requeridos en la Institución para este fin;&lt;/li&gt;
+&lt;li&gt;Atender en tiempo y forma las recomendaciones que puedan ser realizadas por la UGD en colaboración con la Coordinación; mismas que podrán realizarse a través de diversos medios; no siendo necesario hacerlas mediante un oficio;&lt;/li&gt;
+&lt;li&gt;Promover el uso de los estándares de apertura aplicables al proceso de generación y publicación de los Datos Abiertos dentro de la institución; e&lt;/li&gt;
+&lt;li&gt;Impulsar el uso de Datos Abiertos dentro y fuera de la institución para generar impacto en la población.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El Grupo de Trabajo Institucional de Datos Abiertos estará presidido por:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El Enlace Institucional, y&lt;/li&gt;
+&lt;li&gt;El Administrador de Datos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Además, el Grupo de Trabajo Institucional de Datos Abiertos estará conformado, cuando sea necesario, por:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El Titular del Órgano Interno de Control, responsable de dar seguimiento al cumplimiento de la normatividad vigente en materia de Datos Abiertos;&lt;/li&gt;
+&lt;li&gt;El Titular de la Unidad de Transparencia, responsable de velar la normatividad vigente en materia de transparencia, archivos, datos personales o confidenciales, de implementar procesos de anonimización y solicitar criterios para la protección de datos personales a la autoridad correspondiente cuando sea necesario;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Los Titulares de las Áreas Generadoras de datos pertinentes, responsables de asegurar la calidad, estandarización y actualización de los datos para ser publicados; y,&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El Enlace de Comunicación Digital (de conformidad con las Disposiciones Generales para la Implementación, Operación y Funcionamiento de la Ventanilla Única Nacional), responsable de integrar una estrategia de comunicación respecto a la publicación de datos prioritarios y de informar al Grupo de Trabajo Institucional de Datos Abiertos sobre el sentimiento ciudadano en redes sociales y otros medios.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El Grupo de Trabajo Institucional de Datos Abiertos deberá sesionar como mínimo una vez por semestre o de conformidad con sus planes de trabajo. Las minutas de las sesiones podrán tener un formato libre cuyo requisito mínimo es establecer las circunstancias de tiempo, modo y lugar. A dicha minuta se le deberá adjuntar la lista de asistencia de los servidores públicos que asistan a la misma. Los oficios de designación podrán hacerse públicos en datos.gob.mx&lt;/p&gt;
+&lt;h3&gt;1.2 Priorizar los datos de valor&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;70 días naturales y de manera anual&lt;/td&gt;
+&lt;td&gt;Enlace Institucional; Unidades o áreas generadoras o administradoras de datos; Unidad de Transparencia, homólogas o equivalentes; Grupo de Trabajo Institucional de Datos Abiertos.&lt;/td&gt;
+&lt;td&gt;Realizar un inventario de los Sistemas de Información Pública utilizados por la institución y publicarlos en datos.gob.mx. Realizar un inventario de los Registros públicos oficiales mantenidos por la institución publicarlo en datos.gob.mx. Priorizar los datos e incluirlos en el Plan de Apertura&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;La priorización de datos de valor es importante para que los esfuerzos de gobernanza, apertura y publicación estén enfocados en la provisión de datos que sean de utilidad, valor y tengan el potencial de crear impacto para la ciudadanía.&lt;/p&gt;
+&lt;p&gt;Por lo anterior, la priorización de los datos que serán incluidos en el Plan de Apertura, para su posterior publicación como Datos Abiertos deberá guiarse como mínimo por los criterios siguientes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Los datos solicitados anualmente mediante la Infraestructura de Datos Abiertos;&lt;/li&gt;
+&lt;li&gt;Los datos de los registros públicos oficiales generados por la Institución;&lt;/li&gt;
+&lt;li&gt;Los datos públicos generados o administrados por los Sistemas de Información de la Institución; y,&lt;/li&gt;
+&lt;li&gt;Los datos públicos utilizados por herramientas digitales, aplicativos web o móviles, desarrollados por la institución o a nombre de ella.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Cuando aplique, la priorización también deberá tomar en cuenta:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Los datos solicitados por la ciudadanía de manera recurrente mediante solicitudes de acceso a la información o que los que deriven de ellas;&lt;/li&gt;
+&lt;li&gt;Las opiniones de audiencias estratégicas, específicas o de la población en general;&lt;/li&gt;
+&lt;li&gt;La información que conforme al ámbito de sus atribuciones contribuya a un propósito de política pública específico o bien, las mejores prácticas a nivel nacional e internacional en la materia, y&lt;/li&gt;
+&lt;li&gt;Aquellos solicitados directamente por la Unidad en colaboración con la coordinación.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Los datos resultantes de este ejercicio de priorización, particularmente en lo referente a los numerales 1 a 4, deberán ser incluidos en el Plan de Apertura Institucional para ser publicados en datos.gob.mx durante 2017.&lt;/p&gt;
+&lt;h3&gt;1.3 Generar, publicar y actualizar el Plan de Apertura Institucional de Datos Abiertos&lt;/h3&gt;
+&lt;p&gt;Tiempo para el cumplimiento | Áreas Involucradas | Resumen de acciones a realizar
+90 días naturales naturales para la primera iteración, y de manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de dato | Enlace Institucional; Grupo de Trabajo Institucional de Datos Abiertos | Generar, publicar  y/o actualizar el Plan de Apertura Institucional&lt;/p&gt;
+&lt;p&gt;El Plan de Apertura Institucional es construido de manera permanente y gradual, y es conformado por los conjuntos y recursos de datos proporcionados por las Unidades Administrativas o Áreas responsables de generar y/o administrar datos en la Institución.&lt;/p&gt;
+&lt;p&gt;El Plan de Apertura tiene como objetivos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Conformar un listado público de los datos generados o administrados por la institución, y&lt;/li&gt;
+&lt;li&gt;Señalar al público las fechas propuestas para la publicación de aquellos datos de carácter público, como Datos Abiertos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El Plan de Apertura deberá ser generado o actualizado de manera constante de acuerdo a la priorización, peticiones, uso y demanda de Datos Abiertos.&lt;/p&gt;
+&lt;p&gt;Durante el paso 2.4, estas acciones se utilizarán para documentar y preparar los datos para su publicación en datos.gob.mx.&lt;/p&gt;
+&lt;h3&gt;Eliminación o cambios significativos de los Datos Abiertos&lt;/h3&gt;
+&lt;p&gt;Los Datos Abiertos son activos que tienen el objetivo de ser usados, reutilizados y redistribuidos por cualquier persona.&lt;/p&gt;
+&lt;p&gt;La eliminación de la publicación de algún recurso de datos deberá ser aprobado por el Grupo de Trabajo Institucional de Datos Abiertos. La modificación o eliminación de un conjunto o recurso de datos en el Plan de Apertura no significará su eliminación de www.datos.gob.mx, siguiendo el principio de ‘Permanencia’ establecido en el Artículo QUINTO, inciso VIII del Decreto por el que se establece la regulación en materia de Datos Abiertos.&lt;/p&gt;
+&lt;h2&gt;Paso 2 | Publica&lt;/h2&gt;
+&lt;h3&gt;2.1 Convertir los datos a formatos abiertos&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;De manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de datos.&lt;/td&gt;
+&lt;td&gt;Administrador de Datos Abiertos; Unidades Administrativas o áreas generadoras y/o administradoras de datos.&lt;/td&gt;
+&lt;td&gt;Exportar los datos a archivos en formatos abiertos. Identificar si se requiere estructurar algún formato adicional que facilite su lectura y uso de acuerdo al tipo de conjunto de dato. Asegurar la validez del formato y estructura del archivo.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Publicar datos en formatos abiertos - formatos de archivo para los cuales su especificación se encuentra disponible abiertamente y, por lo cual, no se requiere de licencias o software especializado para su interpretación - asegura que los datos estén disponibles y de modo que puedan ser utilizados por computadoras y personas.&lt;/p&gt;
+&lt;h3&gt;Formatos abiertos&lt;/h3&gt;
+&lt;p&gt;Existen diversos tipos de formatos para publicar Datos Abiertos (Anexo I). Por lo anterior, se recomienda seguir los siguientes formatos de publicación:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Datos tabulares, se recomienda el formato CSV, en los cuales los valores o cadenas de caracteres que conforman los datos, se acomodan en filas &lt;em&gt;separadas por saltos de línea&lt;/em&gt; y columnas &lt;em&gt;separadas por comas&lt;/em&gt; ;&lt;/li&gt;
+&lt;li&gt;Datos estructurados, se recomienda el uso de los formatos JSON o XML cuya especificación se encuentra disponible abiertamente;&lt;/li&gt;
+&lt;li&gt;Datos espaciales se recomienda el uso de los formatos SHP, GeoJSON, o KML;&lt;/li&gt;
+&lt;li&gt;Documentos de texto, se recomienda el uso del formato ODT. Dicho formato forma parte del estándar ODF (del inglés, Open Document File Format), y&lt;/li&gt;
+&lt;li&gt;Finalmente, se podrán publicar datos en formatos abiertos de base de datos contenidas en un solo archivo, como es el caso de los archivos de base de datos SQLite. Adicionalmente se podrán publicar datos que contengan en un solo archivo las sentencias necesarias en sintaxis del lenguaje SQL para que los mismos puedan ser importados en una base de datos que soporte el estándar de SQL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Además, se podrán publicar formatos adicionales para cada conjunto para asegurar la mayor inclusión y entendimiento posible, por ejemplo: en el caso de datos tabulares hacer disponible la versión XLS o XLSX del archivo junto con el CSV.&lt;/p&gt;
+&lt;h3&gt;2.2 Incrementar la interoperabilidad y usabilidad de los datos&lt;/h3&gt;
+&lt;p&gt;Tiempo para el cumplimiento | Áreas Involucradas | Resumen de acciones a realizar
+90 días naturales para la primera iteración, y de manera continua y según sea recomendado por la Unidad en conjunto con la Coordinación. | Administrador de Datos Abiertos; Unidades Administrativas o áreas generadoras y/o administradoras de datos. | Utilizar el Marco Geoestadístico Nacional para todos los nuevos Recursos de Datos publicados que contengan referencias geográficas. Utilizar el formato UTF-8 para la codificación de los textos en todos los nuevos Recursos de Datos publicados. Utilizar el estándar ISO 8601 para todos los nuevos Recursos de Datos publicados que contengan referencias temporales. Utilizar el estándar para la generación y publicación de boletines y notificaciones técnicas como Datos Abiertos. Cuando sea necesario, utilizar el estándar para fomentar el uso y visualización de datos en datos.gob.mx. Adecuar los procesos de generación o administración de datos para orientar la generación de Recursos de Datos de conformidad con estándares y convenciones generales.&lt;/p&gt;
+&lt;p&gt;A fin de que los datos sean más útiles, estos deben ser fáciles de encontrar y comparar dentro y entre sectores, a través de localizaciones geográficas y del tiempo, por lo anterior, se deben emprender acciones para mejorar:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La interoperabilidad de los datos publicados mediante su estandarización, y&lt;/li&gt;
+&lt;li&gt;La usabilidad de los datos, mejorando la legibilidad y lógica de publicación de los conjuntos y recursos de datos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Interoperabilidad de Datos Abiertos&lt;/h3&gt;
+&lt;p&gt;Para incrementar la interoperabilidad de los Datos Abiertos las áreas generadoras o administradoras de Datos deberán utilizar:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;El Catálogo Único de Claves de Áreas Geoestadísticas Estatales Municipales y Localidades para el registro de información de domicilios (Anexo 2);&lt;/li&gt;
+&lt;li&gt;El estándar ISO-8601 para el registro fechas, horas y periodos de tiempo;&lt;/li&gt;
+&lt;li&gt;Codificación de texto en formato UTF-8;&lt;/li&gt;
+&lt;li&gt;El estándar ASCII6;&lt;/li&gt;
+&lt;li&gt;Los estándares en materia de datos para contrataciones abiertas impulsados por el Gobierno de la República;&lt;/li&gt;
+&lt;li&gt;El estándar para la generación y publicación de boletines y notificaciones técnicas como Datos Abiertos (ver manuales en línea en datos.gob.mx/guia) impulsados por el Gobierno de la República; y,&lt;/li&gt;
+&lt;li&gt;Los lineamientos para fomentar el uso y visualización de datos en datos.gob.mx (ver recursos en línea) establecidos por la UGD, en colaboración con la  Coordinación.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Usabilidad&lt;/h3&gt;
+&lt;p&gt;Para incrementar la usabilidad de los Datos Abiertos, las instituciones deberán:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Promover la legibilidad por máquinas: Se deberá utilizar en la medida de lo posible, formatos de archivo como JSON y XML. Incrementar la legibilidad por máquinas se refiere a hacer disponible información en un formato digital, así como a que la información se encuentre en un formato de archivo cuya estructura sea adecuada para su procesamiento por computadora. Para lo anterior se recomienda:&lt;ul&gt;
+&lt;li&gt;Eliminar cálculos adicionales en formatos tabulares, p. ej. una celda "Total" con la suma de una de las columnas.&lt;/li&gt;
+&lt;li&gt;Remover imágenes, celdas unidas, y cualquier otra decoración de los archivos; para facilitar su procesamiento, estos deben ser planos.&lt;/li&gt;
+&lt;li&gt;Los campos numéricos, incluyendo los monetarios y magnitudes, deben permanecer en un formato numérico de tipo entero o flotante. Es decir, evitar agregar símbolos monetarios o de unidades de medición, p. ej. "200 m2" o "£20", haciendo explícitas las unidades en el nombre de la columna, o en una segunda columna. P. ej. "Monto en MXN", "Distancia en KM".&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Promover la legibilidad por humanos: Se podrá publicar los datos en diversos formatos que, además de permitir la legibilidad por máquina, permitan a un usuario comprender los Datos Abiertos. Para lo anterior se recomienda:&lt;ul&gt;
+&lt;li&gt;Acompañar formatos abiertos por archivos XLS, a manera de que usuarios de diferentes niveles de conocimiento técnico puedan usarlo.&lt;/li&gt;
+&lt;li&gt;Describir claramente los nombres de columnas, p. ej. "Fecha de solicitud" en lugar de "fech_sol". En caso de mantener dicha codificación, se deberá acompañar el conjunto de datos con un diccionario de datos (ver ACTIVIDAD C: Documentar los conjuntos de datos).&lt;/li&gt;
+&lt;li&gt;Evitar tener valores de diferentes tipos (como texto y número) para una columna en diferentes registros o filas.&lt;/li&gt;
+&lt;li&gt;Evitar información duplicada.&lt;/li&gt;
+&lt;li&gt;Eliminar redundancia en datos.&lt;/li&gt;
+&lt;li&gt;Asegurar la representación de variables (unificar datos).&lt;/li&gt;
+&lt;li&gt;Evitar el uso de rangos numéricos y optar por rangos definidos en el ISO 8601, p. ej. en lugar de 0-5, 6-10, usar quinquenios; y,&lt;/li&gt;
+&lt;li&gt;Evitar errores sintácticos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Establecer categorizaciones de datos: Utilizar categorías bien definidas facilita la consulta y el análisis de datos masivos. Las categorías permiten agrupar datos conforme a una cierta característica o propiedad en común. El establecimiento de categorías en los datos se podrá realizar utilizando atributos de los datos para los cuales es posible establecer valores predefinidos.&lt;/li&gt;
+&lt;li&gt;Cualquier recomendación de estándares realizada por la Unidad, en colaboración con la Coordinación.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2.3 Mejorar la disponibilidad y medios de distribución de los Datos Abiertos&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;90 días naturales para la primera iteración, y de manera continua.&lt;/td&gt;
+&lt;td&gt;Administrador de Datos Abiertos&lt;/td&gt;
+&lt;td&gt;Publicar los recursos de Datos Abiertos privilegiando el uso de servicios web, en los términos establecidos en el esquema de interoperabilidad y de datos abiertos (EIDA); y, Asegurar la disponibilidad de las URL para descarga de los Recursos de Datos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Los conjuntos de datos deben estar disponibles para descarga directa en un URL único, asegurando su disponibilidad continua y evitando cualquier barrera de acceso, como el uso de contraseñas o interfaces de usuario.&lt;/p&gt;
+&lt;p&gt;Es responsabilidad del Administrador de Datos mantenerlos accesibles de forma permanente e ininterrumpida. De acuerdo al Paso 3.1, la Unidad, en conjunto con la Coordinación podrán analizar la disponibilidad de las ligas, y hacer público el resultado en datos.gob.mx. Para lo anterior, las instituciones podrán utilizar los siguientes medios de distribución para los Datos Abiertos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Servicios Web: para el establecimiento de comunicaciones de máquina a máquina, a través del intercambio de formatos estructurados y legibles por máquinas como XML o JSON;&lt;/li&gt;
+&lt;li&gt;Archivos: para publicar datos o información estática. Se pueden emplear tanto los formatos de apertura (Anexo 2) así como en formatos alternos para distribuir datos desde almacenamiento en línea; y&lt;/li&gt;
+&lt;li&gt;Alimentadores de noticias (Web feed): para proporcionar contenido de frecuente actualización. Es particularmente útil para proporcionar notificaciones, noticias, boletines o comunicados que por su naturaleza se actualizan con frecuencia y no resulta conveniente exportarlos a archivos estáticos en formatos de apertura. Ejemplos de estas tecnologías son RSS y Atom.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2.4 Documentar de acuerdo al estándar DCAT y publicar el Catálogo institucional de Datos Abiertos&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;90 días naturales para la primera iteración, y de manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de datos.&lt;/td&gt;
+&lt;td&gt;Administrador de Datos Abiertos&lt;/td&gt;
+&lt;td&gt;Seguir la Guía para documentar metadatos en la Plataforma ADELA para administrar la publicación de Datos Abiertos; Acompañar los conjuntos de datos de los diccionarios de datos correspondientes; y, Publicar Datos Abiertos de acuerdo a la periodicidad establecida en el Plan de Apertura.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Asegurar que los conjuntos de Datos Abiertos incluyen metadatos consistentes y en formatos legibles para humanos y máquinas facilita el entendimiento del origen, tratamiento y significado de los conjuntos y recursos de datos.&lt;/p&gt;
+&lt;p&gt;Por lo anterior, los metadatos que se publican en el sitio de Internet de datos.gob.mx siguen una estructura basada en el estándar DCAT, un estándar de metadatos que tiene el objetivo de mejorar la interoperabilidad de catálogos de datos en la red, con adiciones para incrementar la utilidad de los datos para los usuarios.&lt;/p&gt;
+&lt;p&gt;A continuación, se muestran los metadatos solicitados, su descripción y en qué sección de la Plataforma ADELA pueden ser generados.&lt;/p&gt;
+&lt;h3&gt;Metadatos solicitados (los metadatos marcados con * son obligatorios)&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metadatos&lt;/th&gt;
+&lt;th&gt;Descripciones&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:identifier*&lt;/td&gt;
+&lt;td&gt;Identificador único del conjunto de datos, utilizado para agrupar recursos dentro de este, p. ej. “rezago-social”, “unidades_medicas”, “adquisiciones”. Utilizar caracteres ASCII (p. ej. sin acentos).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:title*&lt;/td&gt;
+&lt;td&gt;Título descriptivo del conjunto de datos, p.ej. “Programa de fomento a la agricultura”, “Vuelos comerciales”.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:description*&lt;/td&gt;
+&lt;td&gt;Una explicación de los datos, con suficiente detalle para que los usuarios puedan entender si es de su interés, p.ej. “Apoyos otorgados a través del programa Opciones Productivas, desglosado a nivel localidad”.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:keyword&lt;/td&gt;
+&lt;td&gt;Lista de términos clave separados por coma, que facilitarán al usuario la búsqueda del conjunto de datos. Es importante considerar el uso de términos no técnicos. p.ej. “salud, medicinas, compras, agricultura”.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:modified*&lt;/td&gt;
+&lt;td&gt;Fecha y hora de la última modificación del conjunto de datos; en formato ISO 8601, p.ej. “2014-05-27T01:42:05-05:00”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:contactPoint*&lt;/td&gt;
+&lt;td&gt;Nombre de la persona de contacto que atenderá dudas y comentarios sobre el conjunto de datos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:mbox*&lt;/td&gt;
+&lt;td&gt;Correo electrónico de contacto para atender dudas y comentarios sobre el conjunto de datos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:temporal&lt;/td&gt;
+&lt;td&gt;La fecha o fechas que cubren los datos, p.ej. “2013”, “2010/2012”, “2014-01/2014-04”. Si es un rango de fechas, deberán ordenarse ascendentemente.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:spatial&lt;/td&gt;
+&lt;td&gt;El espacio geográfico que cubre el conjunto de datos. Puede ser una región, el nombre de un lugar, una clave INEGI, un polígono o un cuadro delimitador de coordenadas geográficas (bounding box) en GML. P.ej. “Baja California”, 002, www.geonames.org/4017700/baja-california.html, “estatal”, o “32.71,-112.32 27.99, -118.45”.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:landingPage*&lt;/td&gt;
+&lt;td&gt;Dirección electrónica para obtener mayor documentación o información sobre el conjunto de datos, como lo puede ser un manual, un sitio web, o un diccionario de datos. Este documento sirve como guía adicional para que el usuario entienda con mayor detalle los datos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:accrualPeriodicity*&lt;/td&gt;
+&lt;td&gt;Frecuencia con la cual el conjunto de datos será publicado o actualizado, p. ej. “mensualmente”.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:quality&lt;/td&gt;
+&lt;td&gt;Información adicional sobre la calidad y procesos de control de calidad de los conjuntos de datos de los procesos de control de calidad del conjunto de datos&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Metadatos (descriptores) del recurso o descargable (dcat:Distribution)&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metadatos&lt;/th&gt;
+&lt;th&gt;Descripciones&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ds:identifier*&lt;/td&gt;
+&lt;td&gt;La clave que identifica al conjunto de datos al que pertenece (y bajo el que se agrupa) este recurso. Ver ds:identifier.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:title*&lt;/td&gt;
+&lt;td&gt;Título descriptivo del recurso o descargable, p.ej. “Otorgamientos del 2013”, “Otorgamientos del 2014”, “Apoyos por municipio”, “Apoyos por localidad”.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:description&lt;/td&gt;
+&lt;td&gt;Ver ds:description. Esta explicación es adicional a la que existe en el conjunto de datos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:downloadURL*&lt;/td&gt;
+&lt;td&gt;Dirección electrónica (enlace) para la descarga del recurso.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:mediaType*&lt;/td&gt;
+&lt;td&gt;Formato de archivo del recurso a descargar, p. ej. “text/csv”, “application/rss+xml”. Este campo permite al usuario buscar conjuntos de datos por formato en datos.gob.mx.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:byteSize&lt;/td&gt;
+&lt;td&gt;El tamaño en bytes del recurso o descargable, p. ej. 3145728&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:temporal&lt;/td&gt;
+&lt;td&gt;Ver ds:temporal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:spatial&lt;/td&gt;
+&lt;td&gt;Ver ds:spatial&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:codelists&lt;/td&gt;
+&lt;td&gt;Información y documentación sobre los códigos utilizados en el recurso de datos ej. Marco Geoestadístico Nacional o ISO 8601&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;re:codelistlink&lt;/td&gt;
+&lt;td&gt;Hipervínculos a las fuentes oficiales de los códigos y estándares utilizados&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:copyright&lt;/td&gt;
+&lt;td&gt;En caso de ser necesario, describir los derechos de copyright de los datos o información contenida dentro del recurso de datos ej. Fotografías de un acervo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;rs:tools&lt;/td&gt;
+&lt;td&gt;Especificar las herramientas recomendadas para el uso, visualización o análisis ligadas al recurso de datos. Ej. JsonView, Herramienta de Datos para Cambio Climático&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Además de los metadatos, es necesario que cada conjunto se acompañe de un Diccionario de datos con el objetivo de que los usuarios comprendan el origen, metodologías, significado y potencial de los datos (Anexo IV), de ser posible privilegiando su publicación en formato CSV.&lt;/p&gt;
+&lt;h3&gt;Publicación&lt;/h3&gt;
+&lt;p&gt;De manera general, la publicación de Datos Abiertos se llevará a cabo a través de la Plataforma ADELA, una aplicación web que permite documentar y publicar de manera manual los datos para su publicación en datos.gob.mx, y tiene dos funciones básicas; facilitar el proceso de apertura de datos y transparentar su seguimiento.&lt;/p&gt;
+&lt;p&gt;Dentro de esta plataforma las instituciones podrán:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Publicar los oficios de designación, minutas de trabajo y demás documentos&lt;/li&gt;
+&lt;li&gt;Desarrollar el Plan de Apertura Institucional&lt;/li&gt;
+&lt;li&gt;Documentar los conjuntos y recursos de Datos Abiertos&lt;/li&gt;
+&lt;li&gt;Dar seguimiento a las recomendaciones y acciones pendientes en su Plan de Apertura&lt;/li&gt;
+&lt;li&gt;Publicar los Datos Abiertos en datos.gob.mx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;El uso de ADELA está recomendado para la mayoría de las instituciones, excepto aquellas que cuenten con plataformas de datos propias.&lt;/p&gt;
+&lt;p&gt;Además, existen otros mecanismos para la carga masiva y automática de datos (Anexo V). Siempre y cuando haya previa validación desde portales de Datos Abiertos propios basados en CKAN o DKAN. Esto con previa validación de la UGD en colaboración con la Coordinación.&lt;/p&gt;
+&lt;p&gt;Al publicar los datos abiertos en www.datos.gob.mx, éstos serán asociados inmediatamente con los Términos de Libre Uso MX, con los cual se da la certidumbre de que cualquier persona puede usar los datos para cualquier fin legal que se proponga, con el único requisito de citar la fuente de origen.&lt;/p&gt;
+&lt;h2&gt;Paso 3 | Perfecciona&lt;/h2&gt;
+&lt;h3&gt;3.1 Asegurar la disponibilidad de las URLs utilizadas para publicar los Datos Abiertos&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;90 días naturales para la primera iteración, y de manera continua según lo marque el Plan de Apertura para cada conjunto y recurso de datos.&lt;/td&gt;
+&lt;td&gt;Administrador de Datos Abiertos&lt;/td&gt;
+&lt;td&gt;Proveer los procedimientos, recursos e infraestructura necesaria para mantener la publicación permanente de los Datos Abiertos de la Institución conforme a los lineamientos de esta Guía; Asegurar la disponibilidad de las URL utilizadas para publicar Datos Abiertos, e implementar acciones para monitorear su disponibilidad; y, De ser el caso, atender las recomendaciones sobre la disponibilidad de las URL.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;El Administrador de Datos deberá  asegurar la disponibilidad de los URLs publicados en www.datos.gob.mx&lt;/p&gt;
+&lt;p&gt;Particularmente, se recomienda contemplar los siguientes lineamientos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fuentes válidas: apuntar las URL a un medio de distribución válido, de acceso directo y legible por máquina, como se describe en el Paso 2.4 de esta Guía. Cualquier otro medio de distribución, particularmente para lectura humana, deberá tratarse como una herramienta de la Institución, conforme a lo establecido en el Paso 4.4;&lt;/li&gt;
+&lt;li&gt;Infraestructura adecuada: una infraestructura (ya sea propia o de terceros) suficiente y adecuadamente monitoreada para servir el volumen de transacciones estimadas de los Datos Abiertos; en caso de contar con infraestructura física propia, salvaguardar la integridad, disponibilidad y seguridad de los datos en todo momento, y servir los datos con un caché con tiempo de vida corto;&lt;/li&gt;
+&lt;li&gt;Definición de las URL: asegurar que las URL deriven de un nombre de dominio y no de una IP. Las URL deberán conformarse únicamente por caracteres dentro del rango ASCII;&lt;/li&gt;
+&lt;li&gt;Actualización de los datos: contar con métodos y procedimientos que mantengan la integridad de los directorios, nombres de los archivos y otros medios de distribución, particularmente al hacer una actualización de los datos, de manera que los vínculos se mantengan activos en el proceso. Es recomendable que los recursos de datos sean generados y actualizados de manera automática; y&lt;/li&gt;
+&lt;li&gt;Mantenimiento a la infraestructura: considerar y prever los casos de posible mantenimiento a la infraestructura (propia o de terceros) que pudiera afectar o interrumpir la disponibilidad de los datos de la Institución, así como contar con procedimientos y responsables para restablecimiento inmediato del servicio en caso de fallas imprevistas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;La UGD, en colaboración con la Coordinación, podrá monitorear y emitir recomendaciones específicas sobre la disponibilidad de las URL de los Datos Abiertos de la Institución y publicar los resultados en www.datos.gob.mx, con el fin de asegurar la adecuada implementación de estos lineamientos.&lt;/p&gt;
+&lt;h3&gt;3.2 Fomentar la calidad de los Datos Abiertos publicados&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;90 días naturales para la primera iteración, y posteriormente de manera continua y cuando sea recomendado por la Unidad en conjunto con la Coordinación.&lt;/td&gt;
+&lt;td&gt;Enlace Institucional; Administrador de Datos Abiertos; áreas generadoras o administradoras de datos; Unidad de Transparencia; Órganos Internos de Control.&lt;/td&gt;
+&lt;td&gt;Atender las recomendaciones generales y actividades pendientes informadas a las Instituciones.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;La UGD, en colaboración con la Coordinación, podrá hacer recomendaciones a las Instituciones sobre cómo incrementar el cumplimiento de la Política de Datos Abiertos, y la calidad y utilidad de los datos publicados.&lt;/p&gt;
+&lt;p&gt;Estas recomendaciones podrán realizarse por diversos medios en donde el público en general, el Enlace Institucional, Administrador de Datos y OICs podrán conocer lo siguiente:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Recomendaciones generales: por ejemplo, cumplimiento con la Política de Datos Abiertos, solicitudes ciudadanas, ligas rotas y calidad de metadatos, entre otros; y,&lt;/li&gt;
+&lt;li&gt;Actividades pendientes: por ejemplo, la publicación o actualización de datos según el Plan de Apertura.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Las Instituciones de la APF deberán atender todas las recomendaciones y actividades pendientes como sea pertinente.&lt;/p&gt;
+&lt;h3&gt;3.3 Responder a los reportes ciudadanos de Datos Abiertos realizados mediante datos.gob.mx&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;De manera continua.&lt;/td&gt;
+&lt;td&gt;Enlace Institucional; Administrador de Datos Abiertos; áreas generadoras o administradoras de datos; Órganos Internos de Control.&lt;/td&gt;
+&lt;td&gt;Dar respuesta a las solicitudes ciudadanas de Datos Abiertos obtenidas en un periodo no mayor a 30 treinta días naturales a partir de que sean informados a la institución.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;datos.gob.mx podrá incluir mecanismos para informes y reportes ciudadanos de Datos Abiertos, las cuales seguirán el siguiente proceso:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Los informes o reportes podrán ser remitidas al correo electrónico de los responsables de cada conjunto de datos y al Administrador de Datos Abiertos;&lt;/li&gt;
+&lt;li&gt;De ser el caso, el Administrador de Datos deberá consultar a las Áreas Generadoras sobre la disponibilidad de los Datos Solicitados y si el informe o reporte procede o no de acuerdo a la existencia de los datos;&lt;/li&gt;
+&lt;li&gt;De tener una respuesta afirmativa, el Administrador de Datos dará respuesta a la solicitud especificando la fecha estimada de publicación de los datos en datos.gob.mx, en el plan de apertura; y,&lt;/li&gt;
+&lt;li&gt;De tener respuesta negativa, el Administrador de Datos dará respuesta a la solicitud con el fundamento jurídico que corresponda.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Se deberá responder a los informes o reportes ciudadanos en un periodo de 30 treinta días hábiles a partir de que se informen al Administrador de Datos, después del cual el resultado y estatus de la petición podrá ser publicado en datos.gob.mx&lt;/p&gt;
+&lt;h3&gt;3.4 Asegurar el cumplimiento con la Política de Datos Abiertos&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Según los tiempos específicos marcados por esta Guía y posteriormente de manera semestral.&lt;/td&gt;
+&lt;td&gt;Órganos Internos de Control; Enlace de Datos Abiertos; Administrador de Datos Abiertos.&lt;/td&gt;
+&lt;td&gt;Verificar el cumplimiento de las acciones de esta Guía y su implementación.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Paso 4 | Promueve&lt;/h2&gt;
+&lt;h3&gt;4.1 Asegurar la generación, publicación y uso de Datos Abiertos en las herramientas y aplicativos digitales del gobierno&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;90 días naturales para la primera iteración, y de manera continua.&lt;/td&gt;
+&lt;td&gt;Administrador de Datos Abiertos; áreas generadoras o administradoras de datos.&lt;/td&gt;
+&lt;td&gt;Publicar los datos generados o utilizados por las herramientas y aplicativos desarrollados o mantenidos por la institución o a nombre de ella en datos.gob.mx; e Incluir una liga visible en todas las herramientas y aplicativos mantenidos por la institución para la descarga de datos en www.datos.gob.mx.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Las Instituciones que desarrollen o mantengan herramientas o aplicativos de acceso público deberán, obligatoriamente:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Publicar o referenciar todos los datos generados o utilizados por las mismas en datos.gob.mx, de acuerdo a lo establecido en esta Guía;&lt;/li&gt;
+&lt;li&gt;Publicar la herramienta o aplicativo correspondiente en la sección de ‘Herramientas’ de datos.gob.mx y en la sección de aplicaciones de gob.mx, e&lt;/li&gt;
+&lt;li&gt;Incluir una liga visible en la herramienta o aplicación para la descarga de los datos desde datos.gob.mx.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Se consideran como herramientas los siguientes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sitios técnicos (no incluidos en gob.mx) dentro del dominio de la Institución, que presenten datos estadísticos, gráficas, mapas, imágenes y/o textos;&lt;/li&gt;
+&lt;li&gt;Procesadores analíticos comúnmente relacionados con “Business Intelligence” (inteligencia de negocios), incluyendo tableros (“dashboards”), calculadoras y/o modelos numéricos;&lt;/li&gt;
+&lt;li&gt;Visores geográficos que utilicen mapas, imágenes geomórficas, satelitales, modelos atmosféricos, superficiales, submarinos o subterráneos, así como cualquier otro tipo de dato espacial o georeferencial;&lt;/li&gt;
+&lt;li&gt;Indexadores de datos sobre bancos de información, colecciones de documentos, archivos, digitalizaciones, audio, video o imágenes; y&lt;/li&gt;
+&lt;li&gt;Aplicaciones web o móviles que utilizan o procesan datos dinámicos y/o estáticos de referencia, estadísticos o geográficos.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Las Instituciones deberán observar los lineamientos anteriores para el desarrollo o migración de sus Herramientas, así como para su publicación en datos.gob.mx.&lt;/p&gt;
+&lt;p&gt;La UGD, en colaboración con la  Coordinación podrá emitir recomendaciones específicas sobre las Herramientas publicadas con el fin de asegurar la adecuada implementación de estos lineamientos.&lt;/p&gt;
+&lt;h3&gt;4.2 Impulsar el uso de Datos Abiertos en la ciudadanía&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;De manera continua.&lt;/td&gt;
+&lt;td&gt;Enlace Institucional; Enlaces de Participación ciudadana en cada institución.&lt;/td&gt;
+&lt;td&gt;Cuando aplique, asegurarse que se llevarán a cabo consultas ciudadanas sobre la priorización, plan de apertura, catálogo de datos abiertos u otras iniciativas de publicación y uso de datos abiertos institucionales en www.gob.mx/participa&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Las Instituciones deberán tener contacto constante con todos los sectores de la sociedad para conocer la opinión directa de los usuarios sobre la prioridad, estructura, calidad y uso de los Datos publicados en datos.gob.mx.&lt;/p&gt;
+&lt;p&gt;Para lo anterior, las instituciones de la APF tienen a su disposición la sección “Participa” en gob.mx/participa, mediante la cual se podrá promover estrategias de consulta y encuestas para promover la creación de impacto mediante la publicación y uso de datos Abiertos en colaboración con la ciudadanía.&lt;/p&gt;
+&lt;p&gt;Además, las Instituciones podrán llevar a cabo datatones y/o hackatones para fomentar mayor participación de la ciudadanía para el desarrollo de aplicaciones, plataformas del sector público, visualizaciones u otras soluciones tecnológicas demandadas por el gobierno.&lt;/p&gt;
+&lt;p&gt;Las Instituciones que decidan emprender estas acciones deberán asegurarse que la provisión de datos para uso de los ciudadanos en el evento se haga a través de Datos Abiertos en datos.gob.mx.&lt;/p&gt;
+&lt;h3&gt;4.3 Establecer estrategias de comunicación digital&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tiempo para el cumplimiento&lt;/th&gt;
+&lt;th&gt;Áreas Involucradas&lt;/th&gt;
+&lt;th&gt;Resumen de acciones a realizar&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;De manera bimestral.&lt;/td&gt;
+&lt;td&gt;Enlace Institucional; Enlaces de comunicación digital en cada institución&lt;/td&gt;
+&lt;td&gt;Informar a los Enlaces de Comunicación Digital sobre la publicación de Datos Abiertos de alto valor; Usar los mecanismos de comunicación disponibles en la institución para comunicar datatones se y/o uso de Datos Abiertos.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Contar con una estrategia de comunicación digital es importante para que la población conozca la disponibilidad de nuevos recursos de Datos Abiertos, en especial cuando estos son de alto valor. De igual manera, la comunicación a través de redes sociales permite conocer las necesidades y reacción de la población hacia la publicación de Datos Abiertos.&lt;/p&gt;
+&lt;p&gt;Por lo anterior, las instituciones deberán comunicar a los ciudadanos las acciones para el uso y publicación de Datos Abiertos mediante sus redes sociales y otros mecanismos de comunicación disponibles. Para esto, se podrán utilizar los siguientes canales, entre otros:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sitios institucionales de internet;&lt;/li&gt;
+&lt;li&gt;Redes sociales de la institución;&lt;/li&gt;
+&lt;li&gt;Publicación de historias en datos.gob.mx; y,&lt;/li&gt;
+&lt;li&gt;Otros que la institución considere pertinentes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Las instituciones deberán realizar estas acciones de comunicación como mínimo bimestralmente, y en cualquier momento cuando sea solicitado por la Unidad, o la Coordinación, así como asegurarse de hacer mención específica a la URL directa de los Datos Abiertos en cuestión.&lt;/p&gt;</content><category term="articulos"></category><category term="política"></category></entry><entry><title>Instalación de Fedora Workstation 30</title><link href="https://movimientolibre.com/apuntes/fedora-workstation-30/" rel="alternate"></link><published>2019-08-13T19:32:00-05:00</published><updated>2019-08-13T19:32:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2019-08-13:/apuntes/fedora-workstation-30/</id><summary type="html">&lt;p&gt;Comandos de instalación del software (preferido por el autor) en Fedora Workstation 30 con KDE.&lt;/p&gt;</summary><content type="html">&lt;p&gt;En este apunte es una actualización de &lt;a href="https://movimientolibre.com/apuntes/fedora-workstation-29-parte-02/"&gt;Fedora Workstation 29 con KDE parte 2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Luego de instalar Fedora con KDE con una memoria USB y eligiendo el entorno gráfico KDE; hacemos una actualización...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf --refresh check-update&lt;/span&gt;
+&lt;span class="err"&gt;# dnf update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y reiniciamos...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# systemctl reboot&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale LibreOffice...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf group install --with-optional LibreOffice&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install libreoffice-help-es libreoffice-langpack-es&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale LaTeX...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install texlive-scheme-tetex&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-collection-latexextra&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-collection-pstricks&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-babel-spanish texlive-babel-spanish-doc texlive-hyphen-spanish&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-babel-english texlive-babel-english-doc texlive-hyphen-english&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Python...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf group install --with-optional &amp;quot;Python Classroom&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;# dnf group install --with-optional &amp;quot;Python Science&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale utilerías diversas...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install system-storage-manager&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install pwgen youtube-dl hwinfo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale software de KDE...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install kate filelight umbrello krename okular texstudio&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale soporte para impresoras HP...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install hplip&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale GIMP...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install gimp&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Inkscape...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install inkscape&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Calibre...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install calibre&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale tipografías...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install liberation-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install terminus-fonts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Prepare los repositorios adicionales...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install fedora-workstation-repositories&lt;/span&gt;
+&lt;span class="err"&gt;# dnf update&lt;/span&gt;
+&lt;span class="err"&gt;# dnf repolist --all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Google Chrome y sus tipografías...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf config-manager --set-enabled google-chrome&lt;/span&gt;
+&lt;span class="err"&gt;# dnf update&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-chrome-stable&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-droid-sans-fonts google-droid-sans-mono-fonts google-droid-serif-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-noto-sans-fonts google-noto-sans-mono-fonts google-noto-serif-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-roboto-fonts google-roboto-condensed-fonts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Configure los repositorios RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \&lt;/span&gt;
+  &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;download1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpmfusion&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nonfree&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fedora&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rpmfusion&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nonfree&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;release&lt;/span&gt;&lt;span class="o"&gt;-$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;fedora&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;noarch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale más programas de RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install fuse-exfat exfat-utils&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install ffmpeg ffmpegthumbs&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install mplayer mencoder&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install audacity-freeworld&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install kdenlive frei0r-plugins&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install moc&lt;/span&gt;
+&lt;span class="err"&gt;# dnf groupupdate Multimedia&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Sublime Text a partir de su propio repositorio...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf update&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf install sublime-text&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Libvirtd...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf group install &amp;#39;Virtualización&amp;#39; --with-optional&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale los reproductores de multimedia VLC y MPV&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install vlc&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install mpv&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="apuntes"></category><category term="fedora"></category><category term="gnu linux"></category></entry><entry><title>Revolución Tecnológica: De Homo sapiens a tecno-dioses</title><link href="https://movimientolibre.com/presentaciones/revolucion-tecnologica/" rel="alternate"></link><published>2019-04-01T18:52:00-06:00</published><updated>2019-04-23T14:48:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2019-04-01:/presentaciones/revolucion-tecnologica/</id><summary type="html">&lt;p&gt;En esta ponencia explico los avances tecnológicos más trascendentes de la humanidad y enumero los grandes retos que tenemos que resolver con tecnología, ciencia e ingeniería.&lt;/p&gt;</summary><content type="html">&lt;div class="row" style="margin: 2em 0;"&gt;
+&lt;div class="col-sm-4"&gt;&lt;img class="img-fluid" src="revolucion-tecnologica-07.jpg" alt="Revolución Tecnológica 07"&gt;&lt;/div&gt;
+&lt;div class="col-sm-4"&gt;&lt;img class="img-fluid" src="revolucion-tecnologica-14.jpg" alt="Revolución Tecnológica 14"&gt;&lt;/div&gt;
+&lt;div class="col-sm-4"&gt;&lt;img class="img-fluid" src="revolucion-tecnologica-25.jpg" alt="Revolución Tecnológica 25"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;El pasado 1 de abril de 2019, durante la &lt;strong&gt;Semana Académica&lt;/strong&gt; de la &lt;strong&gt;Escuela de Sistemas&lt;/strong&gt; de la &lt;strong&gt;Universidad Autónoma de Coahuila, Campos Torreón&lt;/strong&gt;, tuve el honor de impartir la conferencia &lt;strong&gt;"Revolución Tecnológica: De Homo sapiens a tecno-dioses".&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;En esta ponencia explico los avances tecnológicos más trascendentes de la humanidad y enumero los grandes retos que tenemos que resolver con tecnología, ciencia e ingeniería.&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-fluid" src="semana-academica-2019-04-01.jpg" alt="Semana Académica, UA de C, Torreón, 1 abril 2019"&gt;&lt;/p&gt;
+&lt;h3&gt;Visualizar en línea&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.google.com/presentation/d/1npdD3nujxjbYaKmVoY3LPlIb-Emz9DxXppk-GhjuZco/edit?usp=sharing"&gt;Por medio de Google Drive&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Descargar&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="revolucion-tecnologica-de-homo-sapiens-a-tecno-dioses.pdf"&gt;Archivo PDF 3.5 MB&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="presentaciones"></category><category term="conferencias"></category><category term="educación"></category></entry><entry><title>Instalación de Docker CE en Fedora</title><link href="https://movimientolibre.com/apuntes/fedora-docker-ce/" rel="alternate"></link><published>2019-02-22T11:45:00-06:00</published><updated>2019-02-22T11:45:00-06:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2019-02-22:/apuntes/fedora-docker-ce/</id><summary type="html">&lt;p&gt;Docker Community Edition es la que tiene soporte libre por la comunidad y que nos brinda una versión más reciente que la de los repositorios de Fedora.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img class="img-fluid" src="fedora-docker-ce-banner.jpg" alt="Fedora Docker CE"&gt;&lt;/p&gt;
+&lt;h3&gt;¿Qué es Docker CE?&lt;/h3&gt;
+&lt;p&gt;CE es por &lt;em&gt;Community Edition&lt;/em&gt;. Es la versión &lt;em&gt;SIN PAGA&lt;/em&gt; de Docker con soporte de la &lt;a href="https://www.docker.com/docker-community"&gt;comunidad&lt;/a&gt;. El número de verisón de Docker CE es más nuevo que la dada por los repositorios de Fedora.&lt;/p&gt;
+&lt;p&gt;En cambio, &lt;a href="https://www.docker.com/products/docker-enterprise"&gt;Docker Enterprise&lt;/a&gt; es el mismo software con soporte y asistencia técnica profesional, bajo el modelo de paga por suscripción.&lt;/p&gt;
+&lt;h3&gt;Si tiene instalado la versión proporcionada por los repositorios de Fedora&lt;/h3&gt;
+&lt;p&gt;Detener antes de desinstalar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# systemctl stop docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Desinstalar el Docker de Fedora&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf remove docker-compose&lt;/span&gt;
+&lt;span class="err"&gt;# dnf remove docker \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-client \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-client-latest \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-common \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-latest \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-latest-logrotate \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-logrotate \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-selinux \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-engine-selinux \&lt;/span&gt;
+&lt;span class="err"&gt;    docker-engine&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Para instalar Docker CE&lt;/h3&gt;
+&lt;p&gt;Agregar el repositorio de Docker CE&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf config-manager \&lt;/span&gt;
+    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt; \
+    &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;linux&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fedora&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ce&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Revisar que esté habilitado&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf repolist&lt;/span&gt;
+&lt;span class="err"&gt;docker-ce-stable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instalar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install docker-ce docker-ce-cli containerd.io&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Arrancar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# systemctl start docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Revise la versión&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ docker version
+$ docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="apuntes"></category><category term="fedora"></category><category term="contenedores"></category></entry><entry><title>Configuración de Docker en Fedora</title><link href="https://movimientolibre.com/apuntes/fedora-docker-configuracion/" rel="alternate"></link><published>2019-01-24T10:10:00-06:00</published><updated>2019-01-24T10:30:00-06:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2019-01-24:/apuntes/fedora-docker-configuracion/</id><summary type="html">&lt;p&gt;Listo los comandos para configurar Docker en Fedora con su partición dedicada y control por el usuario.&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Requisitos&lt;/h3&gt;
+&lt;p&gt;Este apunte es para Fedora Linux. Su objetivo es usar una partición dedicada a Docker y que sea controlable a través de una cuenta de usuario.&lt;/p&gt;
+&lt;p&gt;Ya debe tiene instalado...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LibVirt&lt;/li&gt;
+&lt;li&gt;System Storage Manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Por defecto, Fedora Linux usa LVM para admnistrar el disco duro; se tiene un volumen con espacio libre, más de 64 GB.&lt;/p&gt;
+&lt;h3&gt;Partición dedicada&lt;/h3&gt;
+&lt;p&gt;Es buena idea crear una partición dedicada. Montada en una ruta temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# mkdir /mnt/docker&lt;/span&gt;
+&lt;span class="err"&gt;# ssm create -s 64G -p integridad -n docker --fstype ext4 /mnt/docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cambie la etiqueta de la unidad...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# e2label /dev/mapper/integridad-docker Docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copie todo el contenido que se ha puesto en la instalación al directorio de montaje temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# cd /var/lib/docker/&lt;/span&gt;
+&lt;span class="c1"&gt;# tar cvf - * | (cd /mnt/docker/; tar xf -)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Desmonte del directorio temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# umount /mnt/docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para que se monte al encender, edite...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# nano /etc/fstab&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y agregue esta línea...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;mapper&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;integridad&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;  &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;docker&lt;/span&gt;  &lt;span class="n"&gt;ext4&lt;/span&gt;  &lt;span class="n"&gt;defaults&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Monte en el directorio definitivo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# mount /var/lib/docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Re-aplique los permisos SELinux...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# docker-storage-setup&lt;/span&gt;
+&lt;span class="c1"&gt;# restorecon -vR /var/lib/docker/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reinicie el sistema...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# systemctl reboot&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Verifique que se haya iniciado con éxito el daemon...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# systemctl status docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ya no se necesita el directorio temporal...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# rmdir /mnt/docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Control por usuario&lt;/h3&gt;
+&lt;p&gt;Revise si existe el grupo docker...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# grep docker /etc/group&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De NO existir, habrá que crearlo con...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# groupadd docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agregue su usuario al grupo...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# gpasswd -a guillermovaldes docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reinicie el daemon...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# systemctl restart docker&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cierre la sesión y vuelva a entrar.&lt;/p&gt;</content><category term="apuntes"></category><category term="fedora"></category><category term="contenedores"></category></entry><entry><title>Instalación de Fedora Workstation 29, parte 2</title><link href="https://movimientolibre.com/apuntes/fedora-workstation-29-parte-02/" rel="alternate"></link><published>2019-01-05T17:40:00-06:00</published><updated>2019-02-07T22:04:00-06:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2019-01-05:/apuntes/fedora-workstation-29-parte-02/</id><summary type="html">&lt;p&gt;Listo los comandos de instalación del software (preferido por el autor) en Fedora Linux 29 con KDE.&lt;/p&gt;</summary><content type="html">&lt;p&gt;En este apunte sencillamente listo los comandos que irán instalando el software de mi elección personal. Luego de instalar &lt;a href="https://movimientolibre.com/apuntes/fedora-workstation-29-parte-01/"&gt;Fedora Workstation con KDE&lt;/a&gt;. Primero hacemos una actualización...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf upgrade&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Y reiniciamos...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# systemctl reboot&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="libreoffice.jpg" alt="LibreOffice"&gt;&lt;/p&gt;
+&lt;p&gt;Instale LibreOffice y los programas cliente para PostgreSQL...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf group install --with-optional LibreOffice&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install libreoffice-help-es libreoffice-langpack-es&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install libreoffice-postgresql&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install postgresql&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale LaTeX...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf search texlive-scheme&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-scheme-tetex&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-collection-latexextra&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-collection-pstricks&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-babel-spanish texlive-babel-spanish-doc texlive-hyphen-spanish&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install texlive-babel-english texlive-babel-english-doc texlive-hyphen-english&lt;/span&gt;
+&lt;span class="err"&gt;# fmtutil --all -sys&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Python...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf group install --with-optional &amp;quot;Python Classroom&amp;quot;&lt;/span&gt;
+&lt;span class="err"&gt;# dnf group install --with-optional &amp;quot;Python Science&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale utilerías diversas...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install system-storage-manager&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install pwgen&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install youtube-dl&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install hwinfo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale software de KDE...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install kate&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install filelight&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install umbrello&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install krename&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale soporte para impresoras HP...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install hplip&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="gimp.jpg" alt="GIMP"&gt;&lt;/p&gt;
+&lt;p&gt;Instale GIMP...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install gimp&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Inkscape...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install inkscape&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale temas de decoración de ventanas de GTK...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install clearlooks-phenix-gtk2-theme clearlooks-phenix-gtk3-theme&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale tipografías...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install liberation-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install bitstream-vera-sans-fonts bitstream-vera-serif-fonts bitstream-vera-sans-mono-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install terminus-fonts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale el lector y convertidor de libros electrónicos Calibre...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install calibre&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Prepare los repositorios adicionales...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install fedora-workstation-repositories&lt;/span&gt;
+&lt;span class="err"&gt;# dnf repolist --all&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="google-chrome.jpg" alt="Google Chrome"&gt;&lt;/p&gt;
+&lt;p&gt;Instale Google Chrome y sus tipografías...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf config-manager --set-enabled google-chrome&lt;/span&gt;
+&lt;span class="err"&gt;# dnf update&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-chrome-stable&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-noto-sans-fonts google-noto-serif-fonts google-noto-mono-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-droid-sans-fonts google-droid-serif-fonts google-droid-sans-mono-fonts&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install google-roboto-fonts google-roboto-mono-fonts google-roboto-condensed-fonts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Configure los repositorios RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \&lt;/span&gt;
+  &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;download1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpmfusion&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nonfree&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fedora&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;rpmfusion&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;nonfree&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;release&lt;/span&gt;&lt;span class="o"&gt;-$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;fedora&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;noarch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf update&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para mi equipo, requiero el controlador &lt;em&gt;anterior&lt;/em&gt; y binario NVIDIA...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf search nvidia-390&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install xorg-x11-drv-nvidia-390xx akmod-nvidia-390xx&lt;/span&gt;
+&lt;span class="err"&gt;# nano /etc/X11/xorg.conf.d/00-monitor.conf&lt;/span&gt;
+&lt;span class="err"&gt;# systemctl reboot&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale más programas de RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install fuse-exfat exfat-utils&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install ffmpeg ffmpegthumbs&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install mplayer mencoder&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install audacity-freeworld&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install k3b-extras-freeworld&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install kdenlive frei0r-plugins&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install moc&lt;/span&gt;
+&lt;span class="err"&gt;# dnf groupupdate Multimedia&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Para usar contenedores, instale Docker, después &lt;a href="https://movimientolibre.com/apuntes/fedora-docker-configuracion/"&gt;configure&lt;/a&gt;...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install docker&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install docker-compose&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="sublime-text.jpg" alt="Sublime Text"&gt;&lt;/p&gt;
+&lt;p&gt;Instale Sublime Text a partir de su propio repositorio...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf update&lt;/span&gt;
+&lt;span class="c1"&gt;# dnf install sublime-text&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Libvirtd...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf group install &amp;#39;Virtualización&amp;#39; --with-optional&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instale Steam, a partir de RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf config-manager --set-enabled rpmfusion-nonfree-steam&lt;/span&gt;
+&lt;span class="err"&gt;# dnf install steam&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img class="img-fluid" src="vlc.jpg" alt="VLC"&gt;&lt;/p&gt;
+&lt;p&gt;Instale VLC, con complementos desde RPM Fusion...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;# dnf install vlc&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="apuntes"></category><category term="fedora"></category><category term="gnu linux"></category></entry></feed>
