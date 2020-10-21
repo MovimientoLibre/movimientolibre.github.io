@@ -106,7 +106,6 @@
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/rsync.conf</span>
 </code></pre></div>
 
-
 <p>Modifique el contenido de acuerdo a sus necesidades:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># This line is required by the /etc/init.d/rsyncd script</span>
 <span class="n">pid</span> <span class="n">file</span> <span class="o">=</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">rsyncd</span><span class="o">.</span><span class="n">pid</span>
@@ -132,22 +131,18 @@
 <span class="n">comment</span> <span class="o">=</span> <span class="n">Gentoo</span> <span class="n">Portage</span> <span class="n">distfiles</span>
 </code></pre></div>
 
-
 <p>Arranque el <em>daemon</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/rsyncd start</span>
 </code></pre></div>
-
 
 <p>Y configure que se inicie <strong>rsyncd</strong> al encender el equipo:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># rc-update add rsyncd default</span>
 </code></pre></div>
 
-
 <h3>En los clientes</h3>
 <p>En /etc/portage/make.conf</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/portage/make.conf</span>
 </code></pre></div>
-
 
 <p>Defina el servidor local como fuente de los paquetes. Cambie <em>portage.redlocal.lan</em> por el nombre o dirección IP del servidor con el portage:</p>
 <div class="highlight"><pre><span></span><code>PORTDIR=&quot;/usr/portage&quot;
@@ -156,17 +151,14 @@ PKGDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class
 FETCHCOMMAND=&quot;rsync rsync://portage.redlocal.lan/gentoo-distfiles/\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> \<span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
 </code></pre></div>
 
-
 <p>Cree el directorio <strong>repos.conf</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkdir /etc/portage/repos.conf</span>
 <span class="err"># cd /etc/portage/repos.conf/</span>
 </code></pre></div>
 
-
 <p>Y cree el archivo <strong>gentoo.conf</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano gentoo.conf</span>
 </code></pre></div>
-
 
 <p>Con este contenido, definiendo al servidor local de portage (no olvide cambiar <em>portage.redlocal.lan</em>):</p>
 <div class="highlight"><pre><span></span><code><span class="k">[DEFAULT]</span>
@@ -178,7 +170,6 @@ FETCHCOMMAND=&quot;rsync rsync://portage.redlocal.lan/gentoo-distfiles/\<span cl
 <span class="na">sync-uri</span> <span class="o">=</span> <span class="s">rsync://portage.redlocal.lan/gentoo-portage</span>
 <span class="na">auto-sync</span> <span class="o">=</span> <span class="s">yes</span>
 </code></pre></div>
-
 
 <p>Verifique que su muro de fuego para que el <strong>puerto 873</strong> esté abierto, tanto en el servidor como en los clientes.</p>
 <p>Pruebe que funcione en un cliente con el comando:</p>

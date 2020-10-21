@@ -114,79 +114,64 @@
 <span class="err"># ssm create -s 64G -p integridad -n docker --fstype ext4 /mnt/docker</span>
 </code></pre></div>
 
-
 <p>Cambie la etiqueta de la unidad...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># e2label /dev/mapper/integridad-docker Docker</span>
 </code></pre></div>
-
 
 <p>Copie todo el contenido que se ha puesto en la instalación al directorio de montaje temporal...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cd /var/lib/docker/</span>
 <span class="c1"># tar cvf - * | (cd /mnt/docker/; tar xf -)</span>
 </code></pre></div>
 
-
 <p>Desmonte del directorio temporal...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># umount /mnt/docker</span>
 </code></pre></div>
-
 
 <p>Para que se monte al encender, edite...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/fstab</span>
 </code></pre></div>
 
-
 <p>Y agregue esta línea...</p>
 <div class="highlight"><pre><span></span><code><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mapper</span><span class="o">/</span><span class="n">integridad</span><span class="o">-</span><span class="n">docker</span>  <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span>  <span class="n">ext4</span>  <span class="n">defaults</span>  <span class="mi">1</span> <span class="mi">2</span>
 </code></pre></div>
 
-
 <p>Monte en el directorio definitivo...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># mount /var/lib/docker</span>
 </code></pre></div>
-
 
 <p>Re-aplique los permisos SELinux...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># docker-storage-setup</span>
 <span class="c1"># restorecon -vR /var/lib/docker/</span>
 </code></pre></div>
 
-
 <p>Reinicie el sistema...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
 </code></pre></div>
-
 
 <p>Verifique que se haya iniciado con éxito el daemon...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl status docker</span>
 </code></pre></div>
 
-
 <p>Ya no se necesita el directorio temporal...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># rmdir /mnt/docker</span>
 </code></pre></div>
-
 
 <h3>Control por usuario</h3>
 <p>Revise si existe el grupo docker...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># grep docker /etc/group</span>
 </code></pre></div>
 
-
 <p>De NO existir, habrá que crearlo con...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># groupadd docker</span>
 </code></pre></div>
-
 
 <p>Agregue su usuario al grupo...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># gpasswd -a guillermovaldes docker</span>
 </code></pre></div>
 
-
 <p>Reinicie el daemon...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl restart docker</span>
 </code></pre></div>
-
 
 <p>Cierre la sesión y vuelva a entrar.</p>
                 </article>

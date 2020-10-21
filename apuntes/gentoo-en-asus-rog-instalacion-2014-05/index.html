@@ -109,23 +109,19 @@
 <span class="err"># mount /dev/sda4 /mnt/gentoo</span>
 </code></pre></div>
 
-
 <p>Sincronize el <em>portage</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge --sync</span>
 </code></pre></div>
-
 
 <p>Descarge el <em>stage</em> de <strong>64 bits</strong> más reciente. Compruebe la integridad del archivo...</p>
 <div class="highlight"><pre><span></span><code>$ sha512sum stage3-amd64-20140515.tar.bz2
 $ cat stage3-amd64-20140515.tar.bz2.DIGETS
 </code></pre></div>
 
-
 <p>Desempaque el <em>stage</em>...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/servidor</span>
 <span class="err"># tar xvjpf /mnt/blackbox/Compartidos/Software/Gentoo/amd64/stage3-amd64-20140515.tar.bz2</span>
 </code></pre></div>
-
 
 <p>Monte las particiones...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount -t proc none /mnt/gentoo/proc</span>
@@ -134,7 +130,6 @@ $ cat stage3-amd64-20140515.tar.bz2.DIGETS
 <span class="err"># mkdir /mnt/gentoo/usr/portage</span>
 <span class="err"># mount /dev/sda6 /mnt/gentoo/usr/portage</span>
 </code></pre></div>
-
 
 <p>Verifique lo montado...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount | grep /mnt/gentoo</span>
@@ -145,11 +140,9 @@ $ cat stage3-amd64-20140515.tar.bz2.DIGETS
 <span class="err">/dev/sda6 on /mnt/gentoo/usr/portage type ext4 (rw)</span>
 </code></pre></div>
 
-
 <p>Copie resolv.conf</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
 </code></pre></div>
-
 
 <p>Haga el chroot</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># chroot /mnt/gentoo /bin/bash</span>
@@ -158,11 +151,9 @@ $ cat stage3-amd64-20140515.tar.bz2.DIGETS
 <span class="c1"># export PS1=&quot;(nuevo) $PS1&quot;</span>
 </code></pre></div>
 
-
 <p>Configure 02locales</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/env.d/02locales</span>
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="err">#</span>
@@ -173,11 +164,9 @@ $ cat stage3-amd64-20140515.tar.bz2.DIGETS
 <span class="err">LC_ALL=&quot;es_MX.UTF-8&quot;</span>
 </code></pre></div>
 
-
 <p>Configure locale.gen</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/locale.gen</span>
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="err">en_US ISO-8859-1</span>
@@ -189,16 +178,13 @@ $ cat stage3-amd64-20140515.tar.bz2.DIGETS
 <span class="err">es_MX.UTF-8 UTF-8</span>
 </code></pre></div>
 
-
 <p>Ejecute...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># locale-gen</span>
 </code></pre></div>
 
-
 <p>Edite make.conf</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/portage/make.conf</span>
 </code></pre></div>
-
 
 <p>Si su procesador es genérico de 64 bits</p>
 <div class="highlight"><pre><span></span><code>#
@@ -241,7 +227,6 @@ DISTDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span clas
 PKGDIR=&quot;<span class="cp">${</span><span class="n">PORTDIR</span><span class="cp">}</span>/packages&quot;
 </code></pre></div>
 
-
 <p>En cambio, para un <strong>Intel i7 Ivy Bridge</strong> de 4 núcleos ajuste estas líneas...</p>
 <div class="highlight"><pre><span></span><code>#
 # 64 bits Intel Core i3/i5/i7 Ivy Bridge - GCC 4.7 o mayor
@@ -254,7 +239,6 @@ CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span clas
 MAKEOPTS=&quot;-j8&quot;
 </code></pre></div>
 
-
 <p>Revise si necesita actualizaciones...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pu portage</span>
 <span class="err"># emerge -u portage</span>
@@ -262,12 +246,10 @@ MAKEOPTS=&quot;-j8&quot;
 <span class="err"># emerge -u world</span>
 </code></pre></div>
 
-
 <p>Desempaque el kernel...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pv gentoo-sources</span>
 <span class="err"># emerge gentoo-sources</span>
 </code></pre></div>
-
 
 <p>Configure y compile el kernel...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /usr/src/linux</span>
@@ -277,7 +259,6 @@ MAKEOPTS=&quot;-j8&quot;
 <span class="err"># make modules_install</span>
 </code></pre></div>
 
-
 <p>Otras configuraciones</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/conf.d/keymaps</span>
 <span class="err"># nano /etc/conf.d/hostname</span>
@@ -285,11 +266,9 @@ MAKEOPTS=&quot;-j8&quot;
 <span class="err"># cp /usr/share/zoneinfo/Mexico/General /etc/localtime</span>
 </code></pre></div>
 
-
 <p>Instale herramientas básicas</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen iptables pwgen btrfs-progs</span>
 </code></pre></div>
-
 
 <p>Instale estos servicios básicos</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge acpid ntp syslog-ng vixie-cron</span>
@@ -298,17 +277,14 @@ MAKEOPTS=&quot;-j8&quot;
 <span class="err"># rc-update add vixie-cron default</span>
 </code></pre></div>
 
-
 <p>Instale PCI utils y ALSA</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge pciutils alsa-utils</span>
 <span class="err"># rc-update add alsasound boot</span>
 </code></pre></div>
 
-
 <p>Cambie la contraseña de root</p>
 <div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
 </code></pre></div>
-
 
 <p>Cambie el profile</p>
 <div class="highlight"><pre><span></span><code><span class="err"># eselect profile list</span>
@@ -316,11 +292,9 @@ MAKEOPTS=&quot;-j8&quot;
 <span class="err"># eselect profile show</span>
 </code></pre></div>
 
-
 <p>En este punto hay que mejorar make.conf</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/portage/make.conf</span>
 </code></pre></div>
-
 
 <p>Y agregue más USE flags y lo referente a X.org</p>
 <div class="highlight"><pre><span></span><code>#
@@ -364,7 +338,6 @@ INPUT_DEVICES=&quot;keyboard mouse joystick evdev synaptics wacom&quot;
 VIDEO_CARDS=&quot;nouveau vesa&quot;
 </code></pre></div>
 
-
 <p>Cambie a Python 2.7, porque muchos programas piden que por defecto esté esta versión.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># eselect python show</span>
 <span class="err">python3.3</span>
@@ -375,21 +348,17 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="err"># eselect python set python2.7</span>
 </code></pre></div>
 
-
 <p>Instale la base de datos: PostgreSQL</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql-server</span>
 </code></pre></div>
-
 
 <p>Instale Ruby y mis gemas preferidas</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge ruby kramdown redcloth</span>
 </code></pre></div>
 
-
 <p>Instale X.org, Samba, CUPS, GTK+ y MySQL</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge xorg-x11 samba cups gtk+ mysql</span>
 </code></pre></div>
-
 
 <p>Configure X.org</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkdir /etc/X11/xorg.conf.d</span>
@@ -398,31 +367,25 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="err"># rc-update add dbus default</span>
 </code></pre></div>
 
-
 <p>Instale utilerías de redes...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge app-admin/sudo bind-tools traceroute bridge-utils</span>
 </code></pre></div>
-
 
 <p>Instale FFMpeg</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge ffmpeg</span>
 </code></pre></div>
 
-
 <p>Instale Apache2</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge apache</span>
 </code></pre></div>
-
 
 <p>Instale PHP</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge php</span>
 </code></pre></div>
 
-
 <p>Instale</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge graphviz imagemagick app-crypt/gnupg</span>
 </code></pre></div>
-
 
 <p>Instale KDE-Base</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge kdebase-meta</span>
@@ -430,16 +393,13 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="err"># rc-update add xdm default</span>
 </code></pre></div>
 
-
 <p>Instale tipografías</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge corefonts droid freefonts libertine-ttf terminus-font ttf-bitstream-vera</span>
 </code></pre></div>
 
-
 <p>Instale herremientas para redes</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge wpa_supplicant ppp rfkill</span>
 </code></pre></div>
-
 
 <p>Instale complementos de KDE</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge kdeplasma-addons kdemultimedia-meta kdegraphics-meta kdeadmin-meta kdeutils-meta kdeartwork-meta kdenetwork-meta kdewebdev-meta</span>
@@ -447,18 +407,15 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="err"># emerge kate</span>
 </code></pre></div>
 
-
 <p>Instale geany y GIT</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge geany geany-plugins geany-themes</span>
 <span class="err"># emerge dev-vcs/git</span>
 </code></pre></div>
 
-
 <p>Actualización general</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -puND world</span>
 <span class="err"># emerge -uND world</span>
 </code></pre></div>
-
 
 <p>Instale multimedia</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge mplayer</span>
@@ -466,46 +423,38 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="err"># emerge clementine</span>
 </code></pre></div>
 
-
 <p>Instale extras de GTK+ para KDE</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge gtk-engines-qtpixmap gtk-engines-qtcurve gtk-chtheme</span>
 <span class="err"># emerge gnome-themes</span>
 <span class="err"># emerge gnome-icon-theme tango-icon-theme faenza-icon-theme oxygen-gtk</span>
 </code></pre></div>
 
-
 <p>Instale firmware</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge linux-firmware</span>
 </code></pre></div>
-
 
 <p>Instale LaTeX y R</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge R</span>
 <span class="err"># emerge texlive</span>
 </code></pre></div>
 
-
 <p>Instale herramientas para analizar redes</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge nmap kismet wireshark</span>
 </code></pre></div>
-
 
 <p>Instale software de virtualización</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge libvirt virt-manager</span>
 </code></pre></div>
 
-
 <p>Me gusta tener mi Proxy personal con Squid</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge squid</span>
 </code></pre></div>
-
 
 <p>Instale la suite educativa y juegos</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge kdeedu-meta</span>
 <span class="err"># emerge kdegames-meta</span>
 <span class="err"># emerge krusader</span>
 </code></pre></div>
-
 
 <p>Instale programas de internet</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge firefox</span>
@@ -516,24 +465,20 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="err"># emerge vidalia</span>
 </code></pre></div>
 
-
 <p>Instale el reproductor multimedia vlc</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge vlc</span>
 <span class="err"># emerge audacity</span>
 <span class="err"># emerge avidemux</span>
 </code></pre></div>
 
-
 <p>Instale software gráfico</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge gimp inkscape</span>
 <span class="err"># emerge digikam k3b</span>
 </code></pre></div>
 
-
 <p>Instale software que usa LaTeX</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge lyx kile</span>
 </code></pre></div>
-
 
 <p>Habilite java (en los USE flags) e instale LibreOffice</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge libreoffice</span>
@@ -541,11 +486,9 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="err"># emerge -uND world</span>
 </code></pre></div>
 
-
 <p>Instale Google Chrome</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge google-chrome</span>
 </code></pre></div>
-
 
 <p>Instale XFCE4</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge xfce4-meta</span>
@@ -553,34 +496,28 @@ VIDEO_CARDS=&quot;nouveau vesa&quot;
 <span class="c1"># emerge xfce4-terminal tumbler thunar-archive-plugin thunar-media-tags-plugin</span>
 </code></pre></div>
 
-
 <p>Instale VirtualBox</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge virtualbox</span>
 </code></pre></div>
 
-
 <p>Instale el agente OpenSSH</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge ksshaskpass</span>
 </code></pre></div>
-
 
 <p>Y configure editando los archivos...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/kde/startup/agent-startup.sh</span>
 <span class="err"># nano /etc/kde/shutdown/agent-shutdown.sh</span>
 </code></pre></div>
 
-
 <p>Agregue su usuario</p>
 <div class="highlight"><pre><span></span><code><span class="err"># useradd -g users -G tty,wheel,lp,video,audio,cdrom,cdrw,usb,uucp,cron -m usuario</span>
 <span class="err"># passwd usuario</span>
 </code></pre></div>
 
-
 <p>¿Quiere copiar TODO el S.O. a otra partición? Por ejemplo, a una ya montada en /mnt/ssdgentoo</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/gentoo</span>
 <span class="err"># tar cf - --exclude=lost+found * | ( cd /mnt/ssdgentoo/; tar xfp -)</span>
 </code></pre></div>
-
 
 <p>Reinicie y pruebe.</p>
                 </article>

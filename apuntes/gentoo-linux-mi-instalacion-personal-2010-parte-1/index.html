@@ -122,19 +122,16 @@ CFLAGS=&quot;-march=prescott -O2 -fomit-frame-pointer -pipe&quot;
 CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
 </code></pre></div>
 
-
 <p>También es posible hacer compilación asistida si el procesador del equipo <em>poderoso</em> tiene la misma arquitectura y/o es más <em>nuevo</em> que el de los equipos de destino. Cuestión de probarlo. Por ejemplo, las compilaciones hechas con parámetros para el <strong>VIA C7</strong> en el <em>Intel DualCore</em> me han funcionado:</p>
 <div class="highlight"><pre><span></span><code>CHOST=&quot;i686-pc-linux-gnu&quot;
 CFLAGS=&quot;-march=i686 -mmmx -msse -msse2 -msse3 -O2 -pipe -fomit-frame-pointer&quot;
 CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span class="cp">}</span>&quot;
 </code></pre></div>
 
-
 <p>Para hacer una instalación asistida elija una ubicación en el disco duro del equipo <em>poderoso</em> con suficiente espacio; lo necesario para contener el sistema completo y los archivos que descargue. Para dar una cifra, sugiero unos 8 GB libres. En mi equipo <em>poderoso</em> uso /mnt/archivos/instalaciones para ese fin. Voy a crear ahí un directorio con el nombre <em>prescott</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/archivos/instalaciones</span>
 <span class="err"># mkdir prescott</span>
 </code></pre></div>
-
 
 <h3>Use el stage más reciente</h3>
 <p>Mi sitio predilecto para descargar el <em>stage</em> es en el <a href="http://osuosl.org/">Oregon State University - Open Source Lab</a> en éste URL: <a href="http://gentoo.osuosl.org/releases/">http://gentoo.osuosl.org/releases/</a>. Note que parece un nuevo <em>stage</em> frecuentemente. <strong>Le recomiendo que siempre use el stage más nuevo</strong>. Cuando escribí esta guía, bajé el <em>stage</em> <strong>x86</strong> del 9 de noviembre de 2010:</p>
@@ -145,28 +142,23 @@ CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span clas
 <span class="err"># wget http://gentoo.osuosl.org/releases/x86/current-stage3/stage3-i686-20101109.tar.bz2.DIGESTS.asc</span>
 </code></pre></div>
 
-
 <p>Compruebe la integridad de los archivos descargados con...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># md5sum -c stage3-i686-20101109.tar.bz2.DIGESTS</span>
 </code></pre></div>
-
 
 <p>Desempaque.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/archivos/instalaciones/prescott</span>
 <span class="err"># tar xvf /mnt/archivos/software/gentoo/stage3-i686-20101109.tar.bz2</span>
 </code></pre></div>
 
-
 <p>Monte <em>dev</em> y <em>proc</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount -t proc none /mnt/archivos/instalaciones/prescott/proc</span>
 <span class="err"># mount -o bind /dev /mnt/archivos/instalaciones/prescott/dev</span>
 </code></pre></div>
 
-
 <p>Copie la configuración de resolución de nombres. Esto es necesario para cuando el Gentoo esté <em>enjaulado</em> por <em>chroot</em>, así sabrá cual es el <em>DNS</em> de su red.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/archivos/instalaciones/prescott/etc/</span>
 </code></pre></div>
-
 
 <p>Ingrese a al <em>stage</em> con <em>chroot</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># chroot /mnt/archivos/instalaciones/prescott /bin/bash</span>
@@ -175,12 +167,10 @@ CXXFLAGS=&quot;<span class="cp">${</span><span class="n">CFLAGS</span><span clas
 <span class="c1"># export PS1=&quot;(prescott) $PS1&quot;</span>
 </code></pre></div>
 
-
 <h3>Configure</h3>
 <p>Edite /etc/make.conf</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/make.conf</span>
 </code></pre></div>
-
 
 <p>Para el cual sugiero el siguiente contenido...</p>
 <div class="highlight"><pre><span></span><code>#
@@ -225,12 +215,10 @@ SYNC=rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><s
 FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVIDOR_PORTAGE</span><span class="cp">}</span>/gentoo-distfiles/\\<span class="cp">${</span><span class="n">FILE</span><span class="cp">}</span> <span class="cp">${</span><span class="n">DISTDIR</span><span class="cp">}</span>&quot;
 </code></pre></div>
 
-
 <p>Observe el final de /etc/make.conf donde configuro que las descargas se hagan desde <em>otroequipo.tured.lan</em>. Sustituya éste por el nombre de un equipo o por la dirección IP del equipo que comparta su <em>portage</em> con el <em>daemon rsyncd</em>. En cambio, si no usa un equipo para compartir el <em>portage</em> entonces omita las cinco últimas líneas para que las descargas se hagan desde internet.</p>
 <p>Configure /etc/locale.gen</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/locale.gen</span>
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">EEUU</span><span class="w"></span>
@@ -247,22 +235,18 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 <span class="n">es_MX</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>Luego ejecute...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># locale-gen</span>
 </code></pre></div>
-
 
 <p>Descargue el <em>portage</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkdir /usr/portage</span>
 <span class="err"># emerge --sync</span>
 </code></pre></div>
 
-
 <p>Vamos a crear un nuevo archivo llamado <em>02locales</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/env.d/02locales</span>
 </code></pre></div>
-
 
 <p>El archivo /etc/env.d/02locales contiene los parámetros de nuestro idioma y región:</p>
 <div class="highlight"><pre><span></span><code><span class="err">#</span>
@@ -273,46 +257,37 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 <span class="err">LC_ALL=&quot;es_MX.UTF-8&quot;</span>
 </code></pre></div>
 
-
 <p>Configure la zona horaria con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/clock</span>
 </code></pre></div>
-
 
 <p>Esta configuración hace que se ajuste la hora al iniciar o terminar el <a href="http://es.wikipedia.org/wiki/Horario_de_verano">Horario de verano</a> conocido en el idioma inglés como <em>Daylight Saving Time</em> (DST).</p>
 <div class="highlight"><pre><span></span><code><span class="err">TIMEZONE=&quot;Mexico/General&quot;</span>
 </code></pre></div>
 
-
 <p>Configure el mapa de caracteres de la terminal con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/consolefont</span>
 </code></pre></div>
-
 
 <p>Para tener un mayor soporte de caracteres uso:</p>
 <div class="highlight"><pre><span></span><code><span class="err">CONSOLEFONT=&quot;lat9v-16&quot;</span>
 </code></pre></div>
 
-
 <p>Configure el mapa del teclado con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/keymaps</span>
 </code></pre></div>
-
 
 <p>La gran mayoría de los teclados de computadoras de México funcionan con:</p>
 <div class="highlight"><pre><span></span><code><span class="err">KEYMAP=&quot;la-latin1&quot;</span>
 </code></pre></div>
 
-
 <p>Pero hay también un gran número de teclados españoles, se distinguen por tener la tecla "Ç", para esos hay que usar:</p>
 <div class="highlight"><pre><span></span><code><span class="err">KEYMAP=&quot;es&quot;</span>
 </code></pre></div>
 
-
 <p>Configure el nombre del equipo con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/hostname</span>
 </code></pre></div>
-
 
 <p>Recargue (de nuevo) las variables del entorno para asegurarnos que se apliquen los cambios hechos hasta el momento.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># env-update</span>
@@ -320,13 +295,11 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 <span class="c1"># export PS1=&quot;(prescott) $PS1&quot;</span>
 </code></pre></div>
 
-
 <h3>¿Quiere recompilar todo?</h3>
 <p>Es su decisión tener todos los paquetes del <em>stage</em> compilados a sus parámetros en <em>make.conf</em>. Si así lo desea; ejecute <em>emerge -e world</em>. Pero le advierto que toma bastante tiempo. Si no quiere hacerlo, no hay problema, simplemente cada paquete nuevo que instale o actualice será compilado con los parámetros de <em>make.conf</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pe world</span>
 <span class="err"># emerge -e world</span>
 </code></pre></div>
-
 
 <h3>Kernel Linux</h3>
 <p>Instale <em>ccache</em>.</p>
@@ -335,12 +308,10 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 <span class="c1"># export PATH=&quot;/usr/lib/ccache/bin:${PATH}&quot;</span>
 </code></pre></div>
 
-
 <p>Descargue el <em>kernel</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge gentoo-sources</span>
 <span class="err"># cd /usr/src/linux</span>
 </code></pre></div>
-
 
 <p>Si ya he compilado la misma versión con anterioridad, copie el archivo <em>.config</em> al directorio /usr/src/linux</p>
 <div class="highlight"><pre><span></span><code><span class="err"># make menuconfig</span>
@@ -348,13 +319,11 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 <span class="err"># make modules_install</span>
 </code></pre></div>
 
-
 <p>Como se trata de una compilación asistida, no voy a decirle que ejecute <em>make install</em> para instalar el kernel; eso lo haré cuando haya copiado la instalación al equipo final. Lo verá en la siguiente parte de esta guía.</p>
 <h3>Configure la tabla de particiones</h3>
 <p>Edite /etc/fstab</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/fstab</span>
 </code></pre></div>
-
 
 <p>Este es un ejemplo de /etc/fstab</p>
 <div class="highlight"><pre><span></span><code><span class="err"># &lt;fs&gt;      &lt;mountpoint&gt;    &lt;type&gt;    &lt;opts&gt;          &lt;dump/pass&gt;</span>
@@ -369,7 +338,6 @@ FETCHCOMMAND=&quot;rsync rsync://<span class="cp">${</span><span class="n">SERVI
 <span class="err">/dev/sda10  /tmp            reiserfs  noatime         0 1</span>
 <span class="err">/dev/sda11  /mnt/archivos   ext4      defaults        0 1</span>
 </code></pre></div>
-
 
 <h3>Fin de la primera parte</h3>
 <p>Termina aquí la primera parte con una instalación de Gentoo Linux configurada y con un <em>kernel</em> preparado. En la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-2.html">segunda parte</a>, cambiaremos el <em>profile</em> a <em>desktop</em> e iremos instalando las aplicaciones favoritas de su servidor.</p>

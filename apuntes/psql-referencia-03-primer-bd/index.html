@@ -110,32 +110,26 @@ $ createuser -a -d sunombre
 $ <span class="nb">exit</span>
 </code></pre></div>
 
-
 <p>Con ello, con su cuenta personal, podrá listar las bases de datos con:</p>
 <div class="highlight"><pre><span></span><code>$ psql -l
 </code></pre></div>
 
-
 <p>Y probar el ingreso a una base de datos, por ejemplo, <em>template1</em>, con:</p>
 <div class="highlight"><pre><span></span><code>$ psql template1
 </code></pre></div>
-
 
 <p>Para salir de la base de datos escriba <code>\q</code> y <code>ENTER</code>.</p>
 <p>Después de las pruebas anteriores, puede crear su primer base de datos, con:</p>
 <div class="highlight"><pre><span></span><code>$ createdb prueba
 </code></pre></div>
 
-
 <p>Revise que esté creada por medio de un listado de las bases de datos, con:</p>
 <div class="highlight"><pre><span></span><code>$ psql -l
 </code></pre></div>
 
-
 <p>Para eliminar esa base de datos:</p>
 <div class="highlight"><pre><span></span><code>$ dropdb prueba
 </code></pre></div>
-
 
 <p><strong>Opcional:</strong> retirar al usuario postgres los privilegios para crear más usuarios y más bases de datos.</p>
 <p>Si quiere asegurarse de que nadie más que usted dé de alta más usuarios, ingrese a la base de datos <em>template1</em> y desde ahí modifique el usuario:</p>
@@ -143,7 +137,6 @@ $ <span class="nb">exit</span>
 ALTER USER postgres NOCREATEDB NOCREATEUSER<span class="p">;</span>
 <span class="se">\q</span>
 </code></pre></div>
-
 
 <p><strong>Opcional:</strong> crear bases de datos con juegos de caracteres distintos al por defecto.</p>
 <p>Para ello use la opción <code>-E</code>, por ejemplo:</p>

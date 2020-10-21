@@ -107,13 +107,11 @@
 <span class="err"># mount /mnt/gentoo</span>
 </code></pre></div>
 
-
 <h3>Descarge el stage</h3>
 <p>Y descomprima</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/gentoo</span>
 <span class="err"># tar xvjpf /mnt/blackbox/Compartidos/Software/Gentoo/stage3-amd64-20170105.tar.bz2</span>
 </code></pre></div>
-
 
 <p>Monte</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount -t proc none /mnt/gentoo/proc</span>
@@ -123,7 +121,6 @@
 <span class="err"># mount --rbind /usr/portage /mnt/gentoo/usr/portage</span>
 </code></pre></div>
 
-
 <p>De una vez copie make.conf</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /etc/locale.gen /mnt/gentoo/etc/locale.gen</span>
 <span class="err"># cp /etc/portage/make.conf /mnt/gentoo/etc/portage/make.conf</span>
@@ -131,11 +128,9 @@
 <span class="err"># nano /mnt/gentoo/etc/portage/make.conf</span>
 </code></pre></div>
 
-
 <p>Copie los datos de los DNS</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
 </code></pre></div>
-
 
 <h3>Ingrese al nuevo Gentoo Linux</h3>
 <p>Haga el <em>chroot</em></p>
@@ -145,16 +140,13 @@
 <span class="c1"># export PS1=&quot;(new) $PS1&quot;</span>
 </code></pre></div>
 
-
 <p>Configure locale-gen</p>
 <div class="highlight"><pre><span></span><code><span class="err"># locale-gen</span>
 </code></pre></div>
 
-
 <p>Verifique y actualice portage</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pu portage gcc</span>
 </code></pre></div>
-
 
 <p>Instale el kernel</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge gentoo-sources</span>
@@ -164,12 +156,10 @@
 <span class="err"># make install</span>
 </code></pre></div>
 
-
 <p>Establezca la zona horaria.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /etc</span>
 <span class="err"># cp /usr/share/zoneinfo/Mexico/General localtime</span>
 </code></pre></div>
-
 
 <p>Otras configuraciones</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/conf.d/keymaps</span>
@@ -177,7 +167,6 @@
 <span class="err"># nano /etc/hosts</span>
 <span class="err"># nano /etc/fstab</span>
 </code></pre></div>
-
 
 <h3>Con KDE Plasma como interfaz gráfica</h3>
 <p>Cambie el profile a Plasma</p>
@@ -187,11 +176,9 @@
 <span class="err"># eselect profile show</span>
 </code></pre></div>
 
-
 <p>Instale...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools app-misc/screen pwgen</span>
 </code></pre></div>
-
 
 <p>Instale daemons</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge ntp syslog-ng vixie-cron</span>
@@ -200,38 +187,31 @@
 <span class="err"># rc-update add ntpd default</span>
 </code></pre></div>
 
-
 <p>Instale utilerías del sistema y de sonido</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge pciutils alsa-utils</span>
 <span class="err"># rc-update add alsasound boot</span>
 </code></pre></div>
-
 
 <h3>A instalar software</h3>
 <p>Instale PostgreSQL</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql</span>
 </code></pre></div>
 
-
 <p>Instale Apache</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge apache</span>
 </code></pre></div>
-
 
 <p>Instale Ruby</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge ruby nokogiri redcloth dev-ruby/mechanize</span>
 </code></pre></div>
 
-
 <p>Instale utilerías de red y sistemas de archivos</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge app-admin/sudo bind-tools traceroute bridge-utils sys-fs/fuse sys-fs/ntfs3g</span>
 </code></pre></div>
 
-
 <p>Instale KDE plasma-desktop, éste pone el entorno básico (es decir, NO instala "todo el combo") para luego ir instalando las aplicaciones a nuestro criterio. Revise dependencias y USE flags..</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge --ask plasma-desktop samba cups xorg-x11</span>
 </code></pre></div>
-
 
 <p>Instale LibreOffice</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">emerge</span> <span class="n">virtual</span><span class="o">/</span><span class="n">jdk</span>
@@ -243,44 +223,36 @@
 <span class="o">#</span> <span class="n">emerge</span> <span class="n">audacity</span>
 </code></pre></div>
 
-
 <p>Instale PHP</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">emerge</span> <span class="n">php</span>
 
 <span class="o">#</span> <span class="n">emerge</span> <span class="n">networkmanager</span>
 </code></pre></div>
 
-
 <p>Luego KDE Core</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge kdecore-meta</span>
 </code></pre></div>
 
-
 <p>Actualice todo lo demás</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -uND world</span>
 </code></pre></div>
-
 
 <p>Instale Geany</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge geany geany-themes geany-plugins</span>
 <span class="err"># emerge droid freefonts libertine terminus-font ttf-bitstream-vera corefonts</span>
 </code></pre></div>
 
-
 <p>Y de consola...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge xterm media-sound/moc nmap whois macchanger aircrack-ng</span>
 </code></pre></div>
-
 
 <p>En lugar de kdegraphics-meta</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge spectacle kde-apps/kate okular gwenview</span>
 </code></pre></div>
 
-
 <p>En lugar de kdemultimedia-meta</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge kdenlive kmix mplayer</span>
 </code></pre></div>
-
 
 <p>Instale el GDM ssdm</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge sddm grub gparted</span>
@@ -289,19 +261,16 @@
 <span class="err"># rc-update add xdm default</span>
 </code></pre></div>
 
-
 <p>Configure /etc/conf.d/xdm con DISPLAYMANAGER="sddm"</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/conf.d/modules</span>
 <span class="err"># nano /etc/conf.d/xdm</span>
 <span class="err"># nano /etc/ntp.conf</span>
 </code></pre></div>
 
-
 <p>Configure...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/plasma/startup/10-agent-startup.sh</span>
 <span class="err"># nano /etc/plasma/shutdown/10-agent-shutdown.sh</span>
 </code></pre></div>
-
 
 <p>Utilerías de KDE</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge kcalc umbrello</span>
@@ -311,11 +280,9 @@
 <span class="err"># emerge unarj arj lha lzop rar unrar kde-apps/ark</span>
 </code></pre></div>
 
-
 <p>KDE para una laptop con bluetooth, powerdevil más systemsettings y otras del sistema</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pv plasma-meta</span>
 </code></pre></div>
-
 
 <p>Siga instalando...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge gparted</span>
@@ -326,28 +293,23 @@
 <span class="c1"># emerge k3b vorbis-tools</span>
 </code></pre></div>
 
-
 <p>XFCE4</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge xfce4-meta xfce4-notifyd gtk-engines</span>
 </code></pre></div>
-
 
 <p>Instale componentes de XFCE</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge xfce4-volumed xfce4-mixer xfce4-terminal xfce4-taskmanager xfce4-screenshooter</span>
 <span class="c1"># emerge xfce4-cpugraph-plugin xfce4-verve-plugin xfce4-mount-plugin xfce4-sensors-plugin xfce4-systemload-plugin</span>
 </code></pre></div>
 
-
 <p>Soporte multimedia y de archivos empacados para Thunar</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge tumbler</span>
 <span class="err"># emerge thunar-volman thunar-archive-plugin thunar-media-tags-plugin</span>
 </code></pre></div>
 
-
 <p>Instale iconos</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge gtk-chtheme tango-icon-theme faenza-icon-theme tangerine-icon-theme</span>
 </code></pre></div>
-
 
 <p>Configure arranque de servicios...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># rc-update add dbus default</span>
@@ -356,22 +318,18 @@
 <span class="err"># rc-update add cupsd default</span>
 </code></pre></div>
 
-
 <p>Zona horaria</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /usr/share/zoneinfo/Mexico/General /etc/localtime</span>
 </code></pre></div>
-
 
 <p>Contraseña</p>
 <div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
 </code></pre></div>
 
-
 <p>Más utilerías</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge tilda mousepad xfwm4-themes xfce4-whiskermenu-plugin alacarte xfce4-clipman-plugin</span>
 <span class="err"># emerge pcmanfm gftp</span>
 </code></pre></div>
-
 
 <p>Instale más software</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge tor privoxy arm</span>
@@ -379,27 +337,22 @@
 <span class="err"># emerge dia</span>
 </code></pre></div>
 
-
 <p>Kramdawn es inestable, libere dependencias</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge kramdown</span>
 </code></pre></div>
 
-
 <p>Librerías que uso en Python</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge tabulate psycopg</span>
 </code></pre></div>
-
 
 <p>Software necesario para compilar QGIS desde fuentes</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge sci-geosciences/gpsbabel x11-libs/qwtpolar x11-libs/qscintilla dev-db/spatialite dev-python/PyQt4 sci-libs/libspatialindex dev-python/sip dev-python/jinja dev-python/httplib2 dev-python/pytz dev-python/qscintilla-python dev-libs/qjson sci-geosciences/gpsbabel dev-python/python-dateutil</span>
 <span class="err"># emerge -uN sci-libs/gdal</span>
 </code></pre></div>
 
-
 <p>Instale R 3.2.2 y R studio</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge rstudio R</span>
 </code></pre></div>
-
 
 <p>Y...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge ccache</span>
@@ -408,12 +361,10 @@
 <span class="err"># emerge app-admin/testdisk</span>
 </code></pre></div>
 
-
 <h3>Configurar el gestor de arranque GRUB 2</h3>
 <p>Edite...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/default/grub</span>
 </code></pre></div>
-
 
 <p>Edite estas líneas, cambie la identificación de la partición swap...</p>
 <div class="highlight"><pre><span></span><code><span class="err">GRUB_TIMEOUT=30</span>
@@ -422,32 +373,26 @@
 <span class="err">GRUB_GFXPAYLOAD_LINUX=keep</span>
 </code></pre></div>
 
-
 <p>No deje de tener opciones manuales en...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/grub.d/40_custom</span>
 </code></pre></div>
-
 
 <p>Formatee la partición de 64 MB code EF00 /dev/sdb1</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkfs.vfat -n EFIBOOT /dev/sdb1</span>
 </code></pre></div>
 
-
 <p>Copie la clave UUID de /dev/sdb1</p>
 <div class="highlight"><pre><span></span><code><span class="err"># blkid</span>
 </code></pre></div>
-
 
 <p>Y cambie la clave UUID en...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/fstab</span>
 <span class="err"># nano -w /etc/grub.d/40_custom</span>
 </code></pre></div>
 
-
 <p>Con ésto, puede montarla...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount /boot/efi</span>
 </code></pre></div>
-
 
 <p>Así montada, instale GRUB2...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># grub-install --efi-directory=/boot/efi</span>
@@ -455,14 +400,12 @@
 <span class="err">Instalación terminada. No se notificó ningún error.</span>
 </code></pre></div>
 
-
 <p>Y habilite la configuración...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># grub-mkconfig -o /boot/grub/grub.cfg</span>
 <span class="err">Generando un fichero de configuración de grub...</span>
 <span class="err">Encontrada imagen de linux: /boot/vmlinuz-4.4.39-gentoo</span>
 <span class="err">hecho</span>
 </code></pre></div>
-
 
 <p>Fin.</p>
                 </article>

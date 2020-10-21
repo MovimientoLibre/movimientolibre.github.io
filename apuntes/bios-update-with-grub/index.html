@@ -128,7 +128,6 @@
 <span class="err"># ls /mnt/iso</span>
 </code></pre></div>
 
-
 <p>El parámetro <strong>loop</strong> en indispensable para <strong>mount</strong> al montar una imagen de disco. Por otro lado, hago que se monte como sólo lectura con el parámetro <strong>ro</strong> para evitar causarle algún cambio.</p>
 <p><img class="img-fluid" src="iso-montado.jpg" alt="ISO montado"></p>
 <p>Busque en el contenido del <strong>ISO</strong> algún un archivo <strong>IMG</strong> o <strong>IMA</strong>. Éste puede ser un sistema operativo compacto que al arrancar ejecutará la actualización del BIOS.</p>
@@ -136,32 +135,26 @@
 <div class="highlight"><pre><span></span><code><span class="err"># emerge syslinux</span>
 </code></pre></div>
 
-
 <p>La ubicación del archivo <strong>memdisk</strong> puede variar según su distribución. En Gentoo podemos averiguar los archivos que nos instala un paquete ejecutando...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># equery files syslinux</span>
 </code></pre></div>
-
 
 <p>Con el anterior comando obtengo que la ubicación es /usr/share/syslinux/memdisk</p>
 <p>Si tiene /boot en su propia partición debemos montarla, puesto que ahí copiaremos el archivo IMG/IMA y memdisk...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount /boot</span>
 </code></pre></div>
 
-
 <p>Copie memdisk a su directorio /boot</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /usr/share/syslinux/memdisk /boot/</span>
 </code></pre></div>
-
 
 <p>Luego copie el archivo que suponemos es el actualizador del BIOS a /boot</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp 2533d210.ima /boot/</span>
 </code></pre></div>
 
-
 <p>Edite el archivo de configuración de GRUB. Si usa una versión anterior a GRUB 2 (en mi caso es la 0.97) basta con editar el archivo...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /boot/grub/grub.conf</span>
 </code></pre></div>
-
 
 <p>Y agregar al final es siguiente contenido. Sustituya 2533d210.ima por el nombre de su archivo IMA o IMG.</p>
 <div class="highlight"><pre><span></span><code><span class="err">title BIOS Update</span>
@@ -170,7 +163,6 @@
 <span class="err">initrd /2533d210.ima</span>
 </code></pre></div>
 
-
 <p>Si está usando GRUB 2 deberá agregar la opción con la nueva sintaxis. Según <a href="http://www.thinkwiki.org/wiki/BIOS_Upgrade">Think Wiki - BIOS Update</a> debe agregar al archivo /boot/grub/grub.cfg lo siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="err">menuentry &quot;BIOS Update&quot; {</span>
 <span class="err">    set root=(hd0,0) #Revise que coincida con las otras opciones en grub.cfg</span>
@@ -178,7 +170,6 @@
 <span class="err">    initrd16 /boot/2533d210.ima</span>
 <span class="err">}</span>
 </code></pre></div>
-
 
 <p>Conecte el cargador de su <em>netboot</em> o <em>laptop</em> y reinicie su computadora. Cuando aparezca el menú del gestor de arranque GRUB elija la opción <strong>BIOS update</strong>.</p>
 <p><img class="img-fluid" src="grub-menu.jpg" alt="GRUB menu"></p>

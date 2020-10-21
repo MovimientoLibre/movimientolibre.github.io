@@ -127,7 +127,6 @@
 <span class="err"># vi ifcfg-eth0</span>
 </code></pre></div>
 
-
 <p>Si quiere usar una <strong>dirección IP fija</strong>, por ejemplo 192.168.0.250 con ruteador 192.168.0.254 (conserve el <strong>HWADDR</strong>):</p>
 <div class="highlight"><pre><span></span><code><span class="err">DEVICE=eth0</span>
 <span class="err">HWADDR=xx:xx:xx:xx:xx:xx</span>
@@ -139,11 +138,9 @@
 <span class="err">GATEWAY=192.168.0.254</span>
 </code></pre></div>
 
-
 <p>Luego debe configurar cuáles serán sus servidores DNS:</p>
 <div class="highlight"><pre><span></span><code><span class="err">vi /etc/resolv.conf</span>
 </code></pre></div>
-
 
 <p>Escriba el dominio si lo usa, luego cada servidor DNS como una línea <em>nameserver</em>. En el siguiente ejemplo se usa un dominio <em>oficina.lan</em> y las direcciones IP de los <a href="https://developers.google.com/speed/public-dns/?hl=es-">DNS de Google</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="err">domain oficina.lan</span>
@@ -151,7 +148,6 @@
 <span class="err">nameserver 8.8.8.8</span>
 <span class="err">nameserver 8.8.4.4</span>
 </code></pre></div>
-
 
 <p>En cambio, para solicitar una <strong>dirección IP dinámica</strong> al servidor DHCP se usa <strong>BOOTPROTO</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err">DEVICE=eth0</span>
@@ -162,32 +158,26 @@
 <span class="err">BOOTPROTO=dhcp</span>
 </code></pre></div>
 
-
 <p>Después de cambiar estos archivos de configuración, reinicie el servicio de red para hacerlos efectivos.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># service network restart</span>
 </code></pre></div>
-
 
 <p>Revise la dirección IP obtenida con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ifconfig eth0</span>
 </code></pre></div>
 
-
 <p>Revise la tabla de ruteo también:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># route -n</span>
 </code></pre></div>
-
 
 <h3>Configure proxy de ser necesario</h3>
 <p>En caso de tener internet a través de un <em>proxy</em> debe de editar el archivo de configuración de <strong>Yum</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># vi /etc/yum.conf</span>
 </code></pre></div>
 
-
 <p>Agregue una línea como la siguiente para definir el servidor <em>proxy</em>. Cambie <em>proxy.oficina.lan</em> por el nombre o dirección IP del <em>proxy</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">proxy=http://proxy.oficina.lan:3128</span>
 </code></pre></div>
-
 
 <h3>Actualize e instale el software para virtualizar</h3>
 <p>Ejecute estos dos comandos para actualizar las listas de los repositorios de CentOS:</p>
@@ -195,16 +185,13 @@
 <span class="err"># yum update</span>
 </code></pre></div>
 
-
 <p>Por ser programas indispensables, instale <strong>nano</strong>, <strong>sudo</strong> y <strong>man</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># yum install nano sudo man</span>
 </code></pre></div>
 
-
 <p>Yum ofrece la instalación por <strong>grupos</strong>, éstos son conjuntos de paquetes de software. Para listar los <strong>grupos</strong> ejecute este comando:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># yum grouplist</span>
 </code></pre></div>
-
 
 <p>Instale los <strong>grupos</strong> de paquetes que tienen que ver con virtualización en servidor:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># yum groupinstall &quot;Virtualización&quot;</span>
@@ -212,19 +199,16 @@
 <span class="err"># yum install tunctl</span>
 </code></pre></div>
 
-
 <p>Esta descarga es grande y puede demorar algo de tiempo, dependiendo de su velocidad de internet. Al terminar de instalar reinicie el servidor para asegurar que las actualizaciones y el nuevo software estén trabajando. Reinicie con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># shutdown -r 1 &amp;</span>
 <span class="err"># exit</span>
 </code></pre></div>
-
 
 <h3>Configuración del bridge</h3>
 <p>Cree el archivo <strong>ifcfg-br0</strong> con la configuración para el <em>bridge</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /etc/sysconfig/network-scripts/</span>
 <span class="err"># nano ifcfg-br0</span>
 </code></pre></div>
-
 
 <p>Si <strong>br0</strong> va a tener una dirección IP estática, use lo siguiente como contenido del archivo <strong>ifcfg-br0</strong> ajustando la dirección IP, la máscara y el <em>gateway</em> a sus necesidades:</p>
 <div class="highlight"><pre><span></span><code><span class="err">DEVICE=br0</span>
@@ -237,11 +221,9 @@
 <span class="err">GATEWAY=192.168.0.254</span>
 </code></pre></div>
 
-
 <p>Luego, hay que editar el archivo <strong>ifcfg-eth0</strong> para indicar que ese dispositivo de red se va conectar al <em>bridge</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano ifcfg-eth0</span>
 </code></pre></div>
-
 
 <p>Con este contenido:</p>
 <div class="highlight"><pre><span></span><code><span class="err">DEVICE=&quot;eth0&quot;</span>
@@ -251,13 +233,11 @@
 <span class="err">BRIDGE=&quot;br0&quot;</span>
 </code></pre></div>
 
-
 <h3>Configure el muro de fuego</h3>
 <p>Para que se permitan todas las comunicaciones que fluyan a través del <em>bridge</em> <strong>br0</strong> es necesario indicarlo. Edite la configuración del muro de fuego:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /etc/sysconfig/</span>
 <span class="err"># nano iptables</span>
 </code></pre></div>
-
 
 <p>Agregue la línea <strong>-A FORWARD -i br0 -j ACCEPT</strong> como la primer línea con <em>FORWARD</em>, por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="err">*filter</span>
@@ -274,22 +254,18 @@
 <span class="err">COMMIT</span>
 </code></pre></div>
 
-
 <p>Reinicie el muro de fuego</p>
 <div class="highlight"><pre><span></span><code><span class="err"># service iptables restart</span>
 </code></pre></div>
-
 
 <p>Verifique...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># iptables -L -v -n</span>
 </code></pre></div>
 
-
 <h3>Destruir el puente virbr0</h3>
 <p>Como se va a levantar el <em>bridge</em> <strong>br0</strong> desde el sistema operativo, sale sobrando el puente que por defecto habilita <strong>libvirt</strong>. Para observar que esta presente <strong>virtbr0</strong> ejecute:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ifconfig</span>
 </code></pre></div>
-
 
 <p>Notará que hay un dispositivo <strong>virbr0</strong> con una dirección IP indpenediente (p.e. 192.168.122.1). El comando <strong>virsh net-list</strong> mostrará las redes para las virtualizaciones:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-list</span>
@@ -298,18 +274,15 @@
 <span class="err">default              activo     si            si</span>
 </code></pre></div>
 
-
 <p>Para destruir la red <strong>default</strong> ejecute:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-destroy default</span>
 <span class="err"># virsh net-undefine default</span>
 </code></pre></div>
 
-
 <p>Revise:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-list</span>
 <span class="err"># ifconfig</span>
 </code></pre></div>
-
 
 <h3>Reinicie el servidor</h3>
 <p>Para asegurar que las actualizaciones y configuraciones inicien al encender, reinicie el servidor.</p>
@@ -317,20 +290,17 @@
 <span class="err"># exit</span>
 </code></pre></div>
 
-
 <p>Y revise que los dispositivos de red y los servicios estén trabajando como debe.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ifconfig br0</span>
 <span class="err"># ifconfig eth0</span>
 <span class="err"># brctl show</span>
 </code></pre></div>
 
-
 <h3>Configurar libvirt para que use br0</h3>
 <p>Para que las virtualizaciones usen el <em>bridge</em> del sistema operativo, cree un archivo de configuración <strong>xml</strong>. Use el nombre de archivo que guste:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /root</span>
 <span class="err"># nano bridge-br0.xml</span>
 </code></pre></div>
-
 
 <p>Escriba el siguiente contenido, cambiando <strong>bridge-br0</strong> por el nombre que usted prefiera:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;network&gt;</span>
@@ -340,12 +310,10 @@
 <span class="nt">&lt;/network&gt;</span>
 </code></pre></div>
 
-
 <p>Para cargar ese archivo <strong>xml</strong> en <strong>libvirt</strong> ejecute...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-define bridge-br0.xml</span>
 <span class="err">La red bridge-br0 se encuentra definida desde bridge-br0.xml</span>
 </code></pre></div>
-
 
 <p><strong>Atención:</strong> En este momento, el comando <strong># virsh net-list</strong> NO mostrará esta red. En cambio, con el parámetro <strong>--all</strong> sí lo verá:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-list --all</span>
@@ -353,7 +321,6 @@
 <span class="err">-----------------------------------------</span>
 <span class="err">bridge-br0           activo     no</span>
 </code></pre></div>
-
 
 <p>Puede solicitar información detallada de una red con el comando <strong>virsh net-info</strong> seguido por el nombre de la red.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># virsh net-info bridge-br0</span>
@@ -365,18 +332,15 @@
 <span class="n">Puente</span><span class="p">:</span>         <span class="n">br0</span>
 </code></pre></div>
 
-
 <p>Observe que Activar y Autoinicio están en <strong>no</strong>. Configure que esta red se habilite al inicio, con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-autostart bridge-br0</span>
 <span class="err">La red bridge-br0-dgspm ha sido marcada para iniciarse automáticamente</span>
 </code></pre></div>
 
-
 <p>Luego, arranque esta red con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-start bridge-br0</span>
 <span class="err">La red bridge-br0 se ha iniciado</span>
 </code></pre></div>
-
 
 <p>Verifique que Activar, Persistente y Autoinicio estén en <strong>si</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># virsh net-info bridge-br0</span>
@@ -388,14 +352,12 @@
 <span class="n">Puente</span><span class="p">:</span>         <span class="n">br0</span>
 </code></pre></div>
 
-
 <p>También con el comando <strong>virsh net-list</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># virsh net-list</span>
 <span class="err">Nombre               Estado     Inicio automático Persistente</span>
 <span class="err">--------------------------------------------------</span>
 <span class="err">bridge-br0           activo     si            si</span>
 </code></pre></div>
-
 
 <p>En dado caso de que necesite recuperar la información de la red en formato <strong>xml</strong>, use el comando <strong>virsh net-dumpxml</strong>:</p>
 <div class="highlight"><pre><span></span><code># virsh net-dumpxml bridge-br0
@@ -407,17 +369,14 @@
 <span class="nt">&lt;/network&gt;</span>
 </code></pre></div>
 
-
 <h3>Agregue un usuario común</h3>
 <p>Como en todo equipo de escritorio o servidor, es ampliamente recomendable dar de alta un usuario común y no usar root para todo. Para dar de alta un usuario ejecute el comando <strong>useradd</strong> con los grupos a los que necesite pertenecer y cambie <em>minombre</em> por su nombre para ingresar.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># useradd -g users -G tty,lp,wheel,uucp,games,video,audio,cdrom,kvm,qemu -m minombre</span>
 </code></pre></div>
 
-
 <p>Establezca la contraseña:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># passwd minombre</span>
 </code></pre></div>
-
 
 <h3>Administrador de virtualizaciones</h3>
 <p>Desde un equipo con interfaz gráfica y el <strong>VirtManager</strong> instalado administramos las virtaliuzaciones.</p>

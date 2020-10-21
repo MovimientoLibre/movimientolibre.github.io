@@ -110,7 +110,6 @@
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">21</span> <span class="mi">18</span><span class="o">:</span><span class="mi">32</span>
 </code></pre></div>
 
-
 <p>Cuando vaya a planear la estructura del sitio web, debe determinar qué va ser artículo y qué va ser página...</p>
 <ul>
 <li><strong>Artículos:</strong> Aquellos contenidos que se deben de ordenar cronológicamente, que se listen del más reciente al más antiguo.</li>
@@ -123,16 +122,13 @@
 <div class="highlight"><pre><span></span><code>$ python --version
 </code></pre></div>
 
-
 <p>El gestor de paquetes <a href="https://pypi.org/">Python Package Index</a> alias <em>pip</em>...</p>
 <div class="highlight"><pre><span></span><code>$ which pip
 </code></pre></div>
 
-
 <p>Y una herramienta para crear entornos virtuales de Python, como <strong>virtualenv</strong>...</p>
 <div class="highlight"><pre><span></span><code>$ which virtualenv
 </code></pre></div>
-
 
 <h3>Pasos para su instalación</h3>
 <p>Primero primero hay que crear un entorno virtual con Python 3 y con nombre Pelican...</p>
@@ -142,32 +138,26 @@ $ <span class="nb">cd</span> VirtualEnv
 $ virtualenv -p python3 Pelican
 </code></pre></div>
 
-
 <p>Cámbiese a ese directorio...</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> Pelican
 </code></pre></div>
-
 
 <p>Active el entorno virtual...</p>
 <div class="highlight"><pre><span></span><code>$ . bin/activate
 </code></pre></div>
 
-
 <p>E instale los paquetes Pelican y Markdown...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ pip install pelican markdown</span>
 </code></pre></div>
-
 
 <p>Revise que dentro del entorno virtual se hayan instalado los paquetes y sus dependencias...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ pip list</span>
 </code></pre></div>
 
-
 <h3>Crear un sitio web rápidamente con el asistente</h3>
 <p>El asistente nos pregunta las variables necesarias para crear un sitio web, ejecute con...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ pelican-quickstart</span>
 </code></pre></div>
-
 
 <p>Por ejemplo, vamos a crear un sitio web llamado <em>Demostracion</em>...</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="k">Where</span><span class="w"> </span><span class="n">do</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">web</span><span class="w"> </span><span class="n">site</span><span class="vm">?</span><span class="w"> </span><span class="o">[</span><span class="n">.</span><span class="o">]</span><span class="w"> </span><span class="n">Demostracion</span><span class="w"></span>
@@ -187,12 +177,10 @@ $ virtualenv -p python3 Pelican
 <span class="n">Done</span><span class="p">.</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">project</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">guivaloz</span><span class="o">/</span><span class="n">Capacitacion</span><span class="o">/</span><span class="n">Pelican</span><span class="o">/</span><span class="n">Demostracion</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>Al terminar nos crea un directorio <code>Demostracion</code>. Veamos lo que el asistente creó...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ cd Demostracion</span>
 <span class="err">(Pelican) $ ls</span>
 </code></pre></div>
-
 
 <p>Pelican necesita de estos directorios y archivos:</p>
 <ul>
@@ -211,11 +199,9 @@ $ virtualenv -p python3 Pelican
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ cd contents</span>
 </code></pre></div>
 
-
 <p>Cree un archivo para un comunicado...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ nano -w primer-comunicado.md</span>
 </code></pre></div>
-
 
 <p>Por ejemplo, inicie con los <a href="https://docs.getpelican.com/en/stable/content.html#file-metadata">metadados</a> y el contenido en <strong>markdown</strong>...</p>
 <div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span> <span class="n">Primer</span> <span class="n">Comunicado</span>
@@ -227,38 +213,31 @@ $ virtualenv -p python3 Pelican
 <span class="n">Lorem</span> <span class="n">ipsum</span> <span class="n">dolor</span> <span class="n">sit</span> <span class="n">amet</span><span class="o">,</span> <span class="n">consectetur</span> <span class="n">adipiscing</span> <span class="n">elit</span><span class="o">,</span> <span class="n">sed</span> <span class="k">do</span> <span class="n">eiusmod</span> <span class="n">tempor</span> <span class="n">incididunt</span> <span class="n">ut</span> <span class="n">labore</span> <span class="n">et</span> <span class="n">dolore</span> <span class="n">magna</span> <span class="n">aliqua</span><span class="o">.</span> <span class="n">Ut</span> <span class="n">enim</span> <span class="n">ad</span> <span class="n">minim</span> <span class="n">veniam</span><span class="o">,</span> <span class="n">quis</span> <span class="n">nostrud</span> <span class="n">exercitation</span> <span class="n">ullamco</span> <span class="n">laboris</span> <span class="n">nisi</span> <span class="n">ut</span> <span class="n">aliquip</span> <span class="n">ex</span> <span class="n">ea</span> <span class="n">commodo</span> <span class="n">consequat</span><span class="o">.</span> <span class="n">Duis</span> <span class="n">aute</span> <span class="n">irure</span> <span class="n">dolor</span> <span class="k">in</span> <span class="n">reprehenderit</span> <span class="k">in</span> <span class="n">voluptate</span> <span class="n">velit</span> <span class="n">esse</span> <span class="n">cillum</span> <span class="n">dolore</span> <span class="n">eu</span> <span class="n">fugiat</span> <span class="n">nulla</span> <span class="n">pariatur</span><span class="o">.</span> <span class="n">Excepteur</span> <span class="n">sint</span> <span class="n">occaecat</span> <span class="n">cupidatat</span> <span class="n">non</span> <span class="n">proident</span><span class="o">,</span> <span class="n">sunt</span> <span class="k">in</span> <span class="n">culpa</span> <span class="n">qui</span> <span class="n">officia</span> <span class="n">deserunt</span> <span class="n">mollit</span> <span class="n">anim</span> <span class="n">id</span> <span class="n">est</span> <span class="n">laborum</span><span class="o">.</span>
 </code></pre></div>
 
-
 <p>Regrese al directorio <code>Demostracion</code>...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ cd ..</span>
 </code></pre></div>
-
 
 <p>Construya el sitio...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ make html</span>
 </code></pre></div>
 
-
 <p>Arranque el servidor web, por defecto usará el puerto 8000...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ make serve</span>
 </code></pre></div>
 
-
 <p>Revise en su navegador el sitio web <code>Demostracion</code>...</p>
 <div class="highlight"><pre><span></span><code><span class="c">http://localhost:8000</span>
 </code></pre></div>
-
 
 <p>Mate el servidor presionando <code>CTRL-C</code>.</p>
 <p>Ahora, pruebe el comando para construir el sitio web cada vez que haya cambios y levantar el servicio web al mismo tiempo...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ make devserver</span>
 </code></pre></div>
 
-
 <p>Deje la terminal en el fondo y siga agregando o modificando. En su navegador de internet presione <code>F5</code> para refrescar. Mate presionando <code>CTRL-C</code>.</p>
 <p>Para generar el sitio web para subir a internet, leyendo las variables de <code>publishconf.py</code>, debe ejecutar...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ make publish</span>
 </code></pre></div>
-
 
 <p>Copie el contenido de <code>output</code> a su servidor web o a su proveedor en la nube.</p>
 <h3>Comandos con pelican</h3>
@@ -317,11 +296,9 @@ $ virtualenv -p python3 Pelican
 <span class="err">    └── tags.html       // índice de etiquetas</span>
 </code></pre></div>
 
-
 <p>Luego, por ejemplo, si tiene listo el tema <code>blue-penguin</code>, edite el archivo <code>pelicanconf.py</code> y agregue...</p>
 <div class="highlight"><pre><span></span><code><span class="err">THEME = &#39;themes/blue-penguin&#39;</span>
 </code></pre></div>
-
 
 <p>Así la próxima vez que construya o publique se usará ese tema.</p>
 <p>Aprenda <a href="https://palletsprojects.com/p/jinja/">Jinja2</a> para dominar la creación y modificación de los temas.</p>
@@ -329,7 +306,6 @@ $ virtualenv -p python3 Pelican
 <p>Si ya terminó, puede simplemente cerrar la terminal o pedir su desactivación...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(Pelican) $ deactivate</span>
 </code></pre></div>
-
 
 <h3>Aprenda más en</h3>
 <ul>

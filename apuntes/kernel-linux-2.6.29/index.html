@@ -109,16 +109,13 @@
 <div class="highlight"><pre><span></span><code><span class="err"># emerge --sync</span>
 </code></pre></div>
 
-
 <p>Ejecutamos <em>emerge</em> con el parámetro "p" que nos dirá la versión que pretendería instalar de <em>gentoo-sources</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pu gentoo-sources</span>
 </code></pre></div>
 
-
 <p>Si estamos de acuerdo, instalamos el código fuente del kernel.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -u gentoo-sources</span>
 </code></pre></div>
-
 
 <p>Encontraremos el código fuente en el directorio /usr/src</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ls -l /usr/src/</span>
@@ -126,12 +123,10 @@
 <span class="err">drwxr-xr-x 22 root root 4096 jun 11 20:19 linux-2.6.29-gentoo-r5</span>
 </code></pre></div>
 
-
 <p>Haga el enlace "linux" al "linux-2.6.29-gentoo-r5" manualmente si no lo tiene.</p>
 <p>Nos cambiamos al directorio de las nuevas fuentes del kernel.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /usr/src/linux</span>
 </code></pre></div>
-
 
 <p>Esta es una representación gráfica del tamaño de los archivos contenidos en <em>/usr/src/linux-2.6.29-gentoo-r5</em></p>
 <p><img class="img-fluid" src="usr-src-linux.png"></p>
@@ -144,11 +139,9 @@
 <div class="highlight"><pre><span></span><code><span class="err"># vim drivers/net/wireless/ipw2x00/ipw2200.c</span>
 </code></pre></div>
 
-
 <p>Busque el texto <em>EEPROM_COUNTRY_CODE</em>. Para ello teclee "/", la cadena a buscar <em>EEPROM_COUNTRY_CODE</em> y presione <em>ENTER</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">/EEPROM_COUNTRY_CODE</span>
 </code></pre></div>
-
 
 <p>Lo anterior nos llevará a la línea del código del controlador que toma el valor de la locación geográfica fijada en la fábrica.</p>
 <p>Observe el siguiente fragmento donde la línea con "-" es la original y la línea con "+" es la cambiada. Presione "i" para editar el texto y efectúe el cambio a "ZZR".</p>
@@ -159,7 +152,6 @@
 <span class="w">     </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
 <span class="w"> </span><span class="err">}</span><span class="w"></span>
 </code></pre></div>
-
 
 <p>Para terminar de editar, presione <em>ESC</em> para salir del modo de edición. Luego, para guardar y salir teclee dos puntos, "w", "q" y <em>ENTER</em>.</p>
 <p>La región "ZZR" nos permite los 14 canales en redes 802.11bg. En el archivo <em>README</em> del controlador se encuentra la siguiente tabla sobre las regiones y canales que utilizan:</p>
@@ -182,12 +174,10 @@
 <span class="n">ZZL</span>     <span class="n">Europe</span>                          <span class="mi">11</span>              <span class="mi">13</span>
 </code></pre></div>
 
-
 <h3>Configurar el kernel</h3>
 <p>Para configurar el kernel Linux usando la interfaz <em>ncurses</em> y estando en el directorio del kernel mismo ejecute el siguiente comando.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># make menuconfig</span>
 </code></pre></div>
-
 
 <p>A partir de aquí estamos trabajando en la configuración, habilitando y deshabilitando opciones.</p>
 <p>La portátil <em>Dell Inspiron 9300</em> tiene un procesador <em>Intel Pentium-M</em>, así que deshabilito el soporte multi-procesador y selecciono "Pentium M" como la <em>familia</em> del procesador. Note también que he habilitado como módulo a "Dell laptop support" que me permite monitorear la temperatura y controlar la velocidad de los ventiladores.</p>
@@ -196,7 +186,6 @@
     <span class="k">Proc</span><span class="nb">es</span><span class="nv">sor</span> <span class="nv">family</span> <span class="p">(</span><span class="nv">Pentium</span> <span class="nv">M</span><span class="p">)</span>
 <span class="err">&lt;</span><span class="nf">M</span><span class="o">&gt;</span> <span class="nv">Dell</span> <span class="nv">laptop</span> <span class="nv">support</span>
 </code></pre></div>
-
 
 <p>Habilito las características de ahorro de energía y de variación de la frecuencia del procesador.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Power management and ACPI options</span>
@@ -215,7 +204,6 @@
 <span class="err">&lt;*&gt;   ACPI Processor P-States driver</span>
 </code></pre></div>
 
-
 <p>Esta portátil tiene una ranura <em>PCMCIA</em> con la cual conecto una segunda tarjeta inalámbrica con chip <em>Atheros</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Bus options (PCI etc.)</span>
 <span class="err">&lt;M&gt; PCCard (PCMCIA/CardBus) support</span>
@@ -226,7 +214,6 @@
 <span class="err">*** PC-card bridges ***</span>
 <span class="err">&lt;M&gt;   CardBus yenta-compatible bridge support</span>
 </code></pre></div>
-
 
 <p>Deshabilito el soporte para <em>IPv6</em> ya que en la práctica no he tenido necesidad de usarlo. Habilito las opciones para <em>IP Tables</em> que me permiten configurar un <em>muro de fuego</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Networking support ---&gt;</span>
@@ -263,7 +250,6 @@
 <span class="err">&lt;*&gt;   Packet mangling</span>
 </code></pre></div>
 
-
 <p>Tengo una llave <em>bluetooth</em> que conecto por USB.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Networking support ---&gt;</span>
 <span class="err">--- Bluetooth subsystem support</span>
@@ -279,7 +265,6 @@
 <span class="err">      &lt;M&gt; HCI USB driver</span>
 </code></pre></div>
 
-
 <p>Tanto el disco duro como el lector de DVD funcionan bajo <em>SATA</em>. Opciones que habilito.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
 <span class="err">&lt;*&gt; Serial ATA (prod) and Parallel ATA (experimental) drivers  ---&gt;</span>
@@ -289,7 +274,6 @@
 <span class="err">[*]   ATA SFF support</span>
 <span class="err">&lt;*&gt;     Intel ESB, ICH, PIIX3, PIIX4 PATA/SATA support</span>
 </code></pre></div>
-
 
 <p>Habilito mis dispositivos de red: la alámbrica (Broadcom 440x/47xx), la inalámbrica (Intel PRO/Wireless 2200BG) y la inalámbrica PCMCIA (Atheros 5xxx).</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
@@ -305,7 +289,6 @@
 <span class="err">[*]       Enable creation of a RF radiotap promiscuous interface</span>
 <span class="err">[*]     Enable QoS support</span>
 </code></pre></div>
-
 
 <p>Dentro de "Input device support" se encuentra "User level driver support" un módulo que me permite usar el <a href="http://es.wikipedia.org/wiki/Wiimote con la computadora">Wiimote</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
@@ -325,7 +308,6 @@
 <span class="err">      &lt;M&gt;   User level driver support</span>
 </code></pre></div>
 
-
 <p>Habilito el soporte <em>I2C</em> para el chip <em>Intel 82801</em> presente en la Dell Inspiron 9300.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
 <span class="err">-*- I2C support  ---&gt;</span>
@@ -334,7 +316,6 @@
 <span class="err">      I2C Hardware Bus support  ---&gt;</span>
 <span class="err">      &lt;*&gt; Intel 82801 (ICH)</span>
 </code></pre></div>
-
 
 <p>Mi portátil tiene una tarjeta de video <em>ATI Radeon Mobility X300 (M22)</em> la cual <em>no</em> es de alto desempeño gráfico. Me ha satisfecho el controlador libre, mismo que se configura en el kernel.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
@@ -347,7 +328,6 @@
 <span class="err">&lt;*&gt;   Lowlevel Backlight controls</span>
 <span class="err">&lt;*&gt;     Generic (aka Sharp Corgi) Backlight Driver</span>
 </code></pre></div>
-
 
 <p>El dispositivo de sonido de esta portátil es <em>Intel AC97</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
@@ -369,7 +349,6 @@
 <span class="err">      &lt;M&gt;   Intel/SiS/nVidia/AMD/ALi AC97 Controller</span>
 </code></pre></div>
 
-
 <p>Es indispensable el soporte <em>USB</em>. Una opción que recomiendo activar es "USB selective suspend/resume and wakeup" que permite al equipo portátil ahorrar energía en lo que a dispositivos USB se refiere.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
 <span class="err">[*] USB support  ---&gt;</span>
@@ -388,7 +367,6 @@
 <span class="err">[*]   The shared table of common (or usual) storage devices</span>
 </code></pre></div>
 
-
 <p>Habilito el controlador del lector de tarjetas <em>SD</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers ---&gt;</span>
 <span class="err">&lt;M&gt; MMC/SD/SDIO card support  ---&gt;</span>
@@ -398,7 +376,6 @@
 <span class="err">&lt;M&gt;     SDHCI support on PCI bus</span>
 <span class="err">&lt;M&gt;       Ricoh MMC Controller Disabler  (EXPERIMENTAL)</span>
 </code></pre></div>
-
 
 <p>Luego de haber habilitado los dispositivos de red, regreso a habilitar las opciones de "Wireless" en "Networking support".</p>
 <div class="highlight"><pre><span></span><code><span class="err">[*] Networking support  ---&gt;</span>
@@ -416,7 +393,6 @@
 <span class="err">-*-     Enable LED triggers</span>
 <span class="err">[ ]     Export mac80211 internals in DebugFS</span>
 </code></pre></div>
-
 
 <p>La sección "File systems" es sumamente importante. Sencillamente, si se intenta cargar un GNU/Linux desde una partición con un sistema de archivos no soportado, nos ocasionaría un <em>kernel panic</em>. Note que aquí aparece el nuevo sistema de archivos <em>Btrfs</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">File systems  ---&gt;</span>
@@ -457,7 +433,6 @@
 <span class="err">    &lt;*&gt;   NLS UTF-8</span>
 </code></pre></div>
 
-
 <p>Es necesario habilitar las siguientes opciones para usar redes <em>WiFi</em> cifradas como <em>WEP</em> y <em>WPA</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err">-*- Cryptographic API  ---&gt;</span>
 <span class="err">      *** Crypto core or helper ***</span>
@@ -480,7 +455,6 @@
 <span class="err">[ ]   Hardware crypto devices  ---&gt;</span>
 </code></pre></div>
 
-
 <p>Para terminar, vaya a la pantalla inicial de la configuración y elija <em>Exit</em>.</p>
 <p>Le preguntará <em>Do you wish to save your new kernel configuration?</em> a lo que debemos responder <em>YES</em> de lo contrario perderemos todos los cambios hechos.</p>
 <h3>Compilar</h3>
@@ -488,13 +462,11 @@
 <div class="highlight"><pre><span></span><code><span class="err"># make</span>
 </code></pre></div>
 
-
 <h3>Instalar</h3>
 <p>El siguiente paso en instalar los <em>módulos</em>. Si hubiera una instalación de esta misma verisón del kernel hay que eliminar los módulos anteriores antes de instalar los nuevos.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># rm -rf /lib/modules/2.6.29-gentoo-r5</span>
 <span class="err"># make modules_install</span>
 </code></pre></div>
-
 
 <p>Como tengo una partición para el arranque, la monto y elimino los archivos de alguna instalación anterior de esta misma versión del kernel.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount /boot</span>
@@ -506,16 +478,13 @@
 <span class="err"># rm /boot/vmlinuz-2.6.29-gentoo-r5</span>
 </code></pre></div>
 
-
 <p>Ejecuto <em>make install</em> para que me copie <em>vmlinuz</em>, <em>System.map</em> y <em>config</em> a /boot</p>
 <div class="highlight"><pre><span></span><code><span class="err"># make install</span>
 </code></pre></div>
 
-
 <p>Edito la configuración del gestor de arranque <em>Grub</em> para tener la opción de este nuevo kernel.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /boot/grub/grub.conf</span>
 </code></pre></div>
-
 
 <p>Mi archivo <em>grub.conf</em> es así...</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span>
@@ -531,11 +500,9 @@
 <span class="n">kernel</span> <span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">29</span><span class="o">-</span><span class="n">gentoo</span><span class="o">-</span><span class="n">r5</span> <span class="n">root</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda7</span> <span class="n">resume</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda5</span>
 </code></pre></div>
 
-
 <p>Puede necesitar cargar algunos módulos cada vez que arranque el equipo. Eso se configura en el archivo /etc/modules.autoload.d/kernel-2.6</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># nano /etc/modules.autoload.d/kernel-2.6</span>
 </code></pre></div>
-
 
 <p>En /etc/modules.autoload.d/kernel-2.6 tengo:</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Dell</span> <span class="n">Inspiron</span><span class="p">,</span> <span class="n">monitor</span> <span class="n">temperatura</span> <span class="n">y</span> <span class="n">ventiladores</span>
@@ -555,11 +522,9 @@
 <span class="n">uinput</span>
 </code></pre></div>
 
-
 <p>La configuración de la tarjeta de sonido reside en el archivo /etc/modprobe.d/alsa</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/modprobe.d/alsa</span>
 </code></pre></div>
-
 
 <p>Y lo tengo con este contenido apropiado para la <em>Intel AC97</em>...</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span>
@@ -594,18 +559,15 @@
 <span class="k">options</span> <span class="n">snd</span> <span class="n">cards_limit</span><span class="o">=</span><span class="mi">1</span>
 </code></pre></div>
 
-
 <p>Después de modificar estos archivos refresque los módulos a cargar con <em>update-modules</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># update-modules</span>
 </code></pre></div>
-
 
 <p>Reinicie el equipo y pruebe su kernel 2.6.29.</p>
 <h3>Revisión del controlador ipw2200 <em>hackeado</em></h3>
 <p>Para revisar la carga del controlador de la tarjeta inalámbrica ipw2200 ejecute...</p>
 <div class="highlight"><pre><span></span><code>$ dmesg <span class="p">|</span> grep ipw
 </code></pre></div>
-
 
 <p>Si aparece "Detected geography ZZR (14 802.11bg channels, 0 802.11a channels)" tendrá su controlador <em>hackeado</em>.</p>
 <div class="highlight"><pre><span></span><code>$ dmesg <span class="p">|</span> grep ipw
@@ -617,7 +579,6 @@
 <span class="o">[</span>    <span class="m">4</span>.663697<span class="o">]</span> ipw2200 <span class="m">0000</span>:03:03.0: firmware: requesting ipw2200-bss.fw
 <span class="o">[</span>    <span class="m">5</span>.121085<span class="o">]</span> ipw2200: Detected geography ZZR <span class="o">(</span><span class="m">14</span> <span class="m">802</span>.11bg channels, <span class="m">0</span> <span class="m">802</span>.11a channels<span class="o">)</span>
 </code></pre></div>
-
 
 <p>Otra forma de comprobar esto es ejecutando <em>iwlist <em>dispositivo</em> channel</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># iwlist eth1 channel</span>
@@ -638,7 +599,6 @@
 <span class="err">    Channel 14 : 2.484 GHz</span>
 <span class="err">    Current Frequency=2.412 GHz (Channel 1)</span>
 </code></pre></div>
-
 
 <p>Le deseo un desempeño exitoso en su nuevo kernel.</p>
                 </article>

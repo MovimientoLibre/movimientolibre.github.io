@@ -140,7 +140,6 @@
 <span class="err">              &lt;M&gt; HCI USB driver              # ESTE ES EL CONTROLADOR DE MI EQUIPO</span>
 </code></pre></div>
 
-
 <p>Para usar el <em>wiimote</em> es necesario habilitar el módulo <strong>uinput</strong> en el kernel con:</p>
 <div class="highlight"><pre><span></span><code><span class="err">Device Drivers  ---&gt;</span>
 <span class="err">    Input device support  ---&gt;</span>
@@ -148,18 +147,15 @@
 <span class="err">          &lt;M&gt; User level driver support</span>
 </code></pre></div>
 
-
 <p>Guarde los cambios, compile e instale el kernel y reinicie su equipo.</p>
 <h3>2) Revise que haya comunicación por <em>bluetooth</em></h3>
 <p>En el paso anterior compilamos como módulos (M) las opciones del kernel. Revise si su distribución los cargó al encender el equipo con:</p>
 <div class="highlight"><pre><span></span><code>$ lsmod
 </code></pre></div>
 
-
 <p>Si no, cárguelos manualmente. Ejecute <strong>modprobe</strong> (como root) con el módulo que corresponda a su controlador <em>bluetooth</em>, en mi caso es:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># modprobe -v btusb</span>
 </code></pre></div>
-
 
 <p>Como primera prueba, ejecute el comando <strong>hciconfig</strong> (como root), deberá mostrarle información como la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># hciconfig</span>
@@ -170,7 +166,6 @@
 <span class="c">    TX bytes:2878 acl:0 sco:0 commands:55 errors:0</span>
 </code></pre></div>
 
-
 <p>Donde <strong>BD Address: 00:00:00:00:00:00</strong> es la <em>mac address</em> del <em>bluetooth</em> de su computadora.</p>
 <p>Luego, presione 1 y 2 al mismo tiempo en el <em>wiimote</em>. Los <em>leds</em> parpadeando son señal de que está en <em>modo de asociación</em>. Inmediatamente, en la terminal ejecute:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># hcitool scan</span>
@@ -178,24 +173,20 @@
     <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>       <span class="n">Nintendo</span> <span class="n">RVL</span><span class="o">-</span><span class="n">CNT</span><span class="o">-</span><span class="mi">01</span>
 </code></pre></div>
 
-
 <p>Donde <strong>00:00:00:00:00:00</strong> es la <em>mac address</em> del <em>bluetooth</em> del <em>wiimote</em>.</p>
 <h3>3) Configure que su cuenta de usuario pueda usar <em>uinput</em></h3>
 <p>Cargue el módulo <strong>uinput</strong> si no lo ha hecho.</p>
 <div class="highlight"><pre><span></span><code>$ sudo modprobe -v uinput
 </code></pre></div>
 
-
 <p>Por defecto <em>/dev/input/uinput</em> tiene permisos de root:</p>
 <div class="highlight"><pre><span></span><code>$ ls -l /dev/input/uinput
 crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span class="m">223</span> sep <span class="m">24</span> <span class="m">22</span>:47 /dev/input/uinput
 </code></pre></div>
 
-
 <p>Para que nuestra cuenta de usuario tenga permisos de lectura y escritura en <strong>uinput</strong> vamos a crear una nueva regla <strong>udev</strong>. Como <em>root</em> vamos a crear un nuevo archivo con el editor de textos más simple de GNU/Linux, el <strong>nano</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/udev/rules.d/50-wminput.rules</span>
 </code></pre></div>
-
 
 <p>Escribimos el contenido siguiente donde señalamos que a la carga de <strong>uinput</strong> se den permisos al grupo <strong>uucp</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err">#</span>
@@ -205,7 +196,6 @@ crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span c
 <span class="err">KERNEL==&quot;uinput&quot;, MODE=&quot;0660&quot;, GROUP=&quot;uucp&quot;</span>
 </code></pre></div>
 
-
 <p>Para usar esta configuración sin reiniciar el equipo, retiramos módulo <strong>uinput</strong>, recargamos <strong>udev</strong>, cargamos de nuevo <strong>uinput</strong> y revisamos:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># modprobe -r uinput</span>
 <span class="c1"># udevadm control --reload-rules</span>
@@ -214,11 +204,9 @@ crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span c
 <span class="n">crw</span><span class="o">-</span><span class="n">rw</span><span class="o">----</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">uucp</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">223</span> <span class="n">sep</span> <span class="mi">24</span> <span class="mi">22</span><span class="p">:</span><span class="mi">55</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">input</span><span class="o">/</span><span class="n">uinput</span>
 </code></pre></div>
 
-
 <p>Por último agregue su usuario al grupo <strong>uucp</strong></p>
 <div class="highlight"><pre><span></span><code><span class="err"># gpasswd -a &lt;USUARIO&gt; uucp</span>
 </code></pre></div>
-
 
 <p>Cierre su sesión como usuario y entre de nuevo para hacer efectivo este cambio.</p>
 <h3>4) Descargue el código fuente de CWiid</h3>
@@ -229,11 +217,9 @@ crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span c
 <div class="highlight"><pre><span></span><code>$ tar xvf cwiid-0.6.00.tgz
 </code></pre></div>
 
-
 <p>Luego, cámbiese al directorio resultante de haberlo desempacado.</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> cwiid-0.6.00
 </code></pre></div>
-
 
 <p>No deje de leer el archivo <strong>README</strong>.</p>
 <h3>6) Modifique el archivo bluetooth.c</h3>
@@ -241,7 +227,6 @@ crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span c
 <p><strong>CWiid</strong> en su versión 0.6.00 sigue necesitando a la versión anterior, lo cual lo hace incompatible con la nueva y marca error al compilar. Afortunadamente sólo hay que modificar una línea del código fuente para que funcione con <strong>bluez</strong>. Así que con <strong>vim</strong> o su editor favorito, edite el archivo:</p>
 <div class="highlight"><pre><span></span><code>$ vim libcwiid/bluetooth.c
 </code></pre></div>
-
 
 <p>Y en la línea 125, cambie "hci_remote_name" a "hci_read_remote_name" (sin comillas, por supuesto).</p>
 <div class="highlight"><pre><span></span><code><span class="p">...</span><span class="w"></span>
@@ -255,13 +240,11 @@ crw-r----- <span class="m">1</span> root root <span class="m">10</span>, <span c
 <span class="p">...</span><span class="w"></span>
 </code></pre></div>
 
-
 <h3>7) Configure y compile</h3>
 <p>De la forma tradicional:</p>
 <div class="highlight"><pre><span></span><code>$ ./configure
 $ make
 </code></pre></div>
-
 
 <p>Revise que no haya mensajes de error en estos pasos.</p>
 <h3>8) Instale</h3>
@@ -269,12 +252,10 @@ $ make
 <div class="highlight"><pre><span></span><code><span class="err"># make install</span>
 </code></pre></div>
 
-
 <h3>9) Uso de wmgui</h3>
 <p>El programa <strong>wmgui</strong> sirve para probar todas las características del <em>wiimote</em>. Le recomiendo que estrene su <em>wiimote</em> en GNU/Linux ejecutando <strong>wmgui</strong>:</p>
 <div class="highlight"><pre><span></span><code>$ wmgui
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="wmgui.png" alt="wmgui"></p>
 <ul>
@@ -293,17 +274,14 @@ $ make
 <span class="err">-d             Combina -q, -r y -w.</span>
 </code></pre></div>
 
-
 <p>Encontrará archivos básicos de configuración en /usr/local/etc/cwiid/wminput/</p>
 <p>La documentación recomienda mantener la configuración personal en el directorio oculto <strong>.CWiid</strong> en su <strong>home</strong>; aunque estos archivos pueden estar en cualquier parte. Así que creamos ese directorio con:</p>
 <div class="highlight"><pre><span></span><code>$ mkdir ~/.CWiid/
 </code></pre></div>
 
-
 <p>El primer ejemplo de configuración es para controlar las presentaciones en <strong>PDF</strong> con <a href="http://okular.kde.org/">Okular</a>. ¿Porqué <em>Okular</em>? Bueno, porque la gran variedad de programas para <a href="http://www.kde.org/">KDE</a> te permiten personalizar los atajos de teclado fácilmente. Para empezar creamos el archivo:</p>
 <div class="highlight"><pre><span></span><code>$ nano ~/.CWiid/okular.conf
 </code></pre></div>
-
 
 <p>Con este contenido:</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span>
@@ -327,18 +305,15 @@ $ make
 <span class="n">Wiimote</span><span class="p">.</span><span class="n">Plus</span>    <span class="o">=</span> <span class="n">KEY_F2</span>        <span class="o">#</span> <span class="n">Ampliar</span>
 </code></pre></div>
 
-
 <p>Luego configure los atajos de teclado de <strong>Okular</strong>: ejecútelo, ingrese en <strong>Preferencias</strong> &gt; <strong>Configurar los accesos rápidos</strong> y haga los cambios que menciono en los comentarios del archivo anterior.</p>
 <p><img class="img-fluid" src="okular-accesos-rapidos.png" alt="Okular accesos rápidos"></p>
 <p><strong>IMPORTANTE:</strong> Si la instación de CWiid fue en /usr/local debemos exportar la variable de entorno PYTHONPATH antes de ejecutar wminput en nuestra terminal. De lo contrario aparecerá el error <strong>ImportError: No module named cwiid</strong>.</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/lib/python2.6/site-packages&quot;</span>
 </code></pre></div>
 
-
 <p>Ahora ejecute:</p>
 <div class="highlight"><pre><span></span><code>$ wminput -w -c ~/.CWiid/okular.conf
 </code></pre></div>
-
 
 <p>Presione 1 y 2 en el <em>wiimote</em>, cámbiate a <strong>Okular</strong> y <em>¡a controlar tu presentación sin estar frente a la laptop!</em>.</p>
 <h3>11) Entorno de escritorio KDE 4</h3>
@@ -365,7 +340,6 @@ $ make
 <span class="n">Wiimote</span><span class="p">.</span><span class="mi">2</span>      <span class="o">=</span> <span class="n">KEY_END</span>       <span class="o">#</span> <span class="n">KMPlayer</span><span class="p">,</span> <span class="n">terminar</span> <span class="n">y</span> <span class="n">cerrar</span>
 </code></pre></div>
 
-
 <p>Aquí necesitamos adecuar los atajos de teclado del entorno gráfico. Para ello ejecutamos <strong>Preferencias del Sistema</strong>, buscamos <strong>Teclado y ratón</strong> y dentro hallarás <strong>Accesos rápidos de teclado globales</strong>.</p>
 <p>Luego en <strong>Componente de KDE</strong> elija <strong>KWin</strong> y cambie:</p>
 <ul>
@@ -379,7 +353,6 @@ $ make
 <p>Mantenga en un escritorio el <strong>Dolphin</strong> abierto con sus videos preferidos, en otro escritorio su presentación en <strong>Okular</strong>. Ejecute:</p>
 <div class="highlight"><pre><span></span><code>$ wminput -w -c ~/.CWiid/kde4.conf
 </code></pre></div>
-
 
 <p>Como observará, se convierte la <em>combinación de botones</em> en la <em>combinación de teclas</em> para rotar el cubo del escritorio: mantenga presionado <strong>B</strong> mientra oprime <strong>Derecha</strong> o <strong>Izquierda</strong> en el <em>wiimote</em>.</p>
 <h3>12) Stellarium</h3>
@@ -402,7 +375,6 @@ $ make
 <span class="n">Plugin</span><span class="p">.</span><span class="n">ir_ptr</span><span class="p">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">ABS_X</span>  <span class="o">#</span> <span class="n">Puntero</span> <span class="n">eje</span> <span class="n">X</span>
 <span class="n">Plugin</span><span class="p">.</span><span class="n">ir_ptr</span><span class="p">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">ABS_Y</span>  <span class="o">#</span> <span class="n">Puntero</span> <span class="n">eje</span> <span class="n">Y</span>
 </code></pre></div>
-
 
 <p>El apuntador del <em>wiimote</em> se habilita con las líneas <strong>Plugin.ir_ptr</strong>.</p>
 <p>Regresando al <strong>Stellarium</strong>, necesitamos saber los atajos de teclado propios de ese programa. Los encontrará en la página <a href="http://stellarium.org/wiki/index.php/Keyboard_actions">Keyboard actions</a> del <em>wiki</em> de <strong>Stellarium</strong>. Con esa información, creamos un archivo de configuración para <strong>wminput</strong> como el siguiente:</p>
@@ -430,7 +402,6 @@ $ make
 <span class="n">Wiimote</span><span class="o">.</span><span class="mi">1</span>       <span class="o">=</span> <span class="n">KEY_L</span>         <span class="c1"># L, Incrementar el salto de tiempo</span>
 <span class="n">Wiimote</span><span class="o">.</span><span class="mi">2</span>       <span class="o">=</span> <span class="n">KEY_J</span>         <span class="c1"># J, Decrementar el salto de tiempo</span>
 </code></pre></div>
-
 
 <p>Los pasos a seguir son encender las fuentes de luz IR, cargar <em>wminput</em> con la configuración ~/.CWiid/stellarium.conf y ejecutar <strong>Stellarium</strong>.</p>
 <h3>13) Un bash script que nos facilite todo</h3>
@@ -614,11 +585,9 @@ wminput -w -c <span class="s2">&quot;</span><span class="nv">$CONF_ARCH</span><s
 <span class="nb">exit</span> <span class="nv">$EXITO</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Guárdelo con el nombre de <strong>wiimote.sh</strong> y ejecútelo con la configuración como parámetro, por ejemplo:</p>
 <div class="highlight"><pre><span></span><code>$ ./wiimote.sh stellarium
 </code></pre></div>
-
 
 <h3>14) Referencias</h3>
 <ul>

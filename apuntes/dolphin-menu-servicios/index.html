@@ -109,17 +109,14 @@
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install ImageMagick</span>
 </code></pre></div>
 
-
 <h3>Elabore los Bash Scripts</h3>
 <p>Como se trata de programas propios, no del sistema, conviene tenerlos en un <code>bin</code> personal...</p>
 <div class="highlight"><pre><span></span><code>$ mkdir ~/bin
 </code></pre></div>
 
-
 <p>Cree un script para convertir las imágenes a PNG...</p>
 <div class="highlight"><pre><span></span><code>$ kwrite ~/bin/imagen-png.sh
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -141,11 +138,9 @@
 <span class="k">done</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Cree un script para convertir las imágenes a JPEG...</p>
 <div class="highlight"><pre><span></span><code>$ kwrite ~/bin/imagen-jpg.sh
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -167,12 +162,10 @@
 <span class="k">done</span>
 </code></pre></div>
 </td></tr></table>
-
 <p>Hágalos ejecutables...</p>
 <div class="highlight"><pre><span></span><code>$ chmod +x ~/bin/imagen-png.sh
 $ chmod +x ~/bin/imagen-jpg.sh
 </code></pre></div>
-
 
 <p>Pruebe desde una terminal que funcionen. Son capaces de recibir muchos archivos para convertir. Por ejemplo...</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/Descargas
@@ -181,28 +174,23 @@ $ ~/bin/imagen-jpg.sh pagina-1.png pagina-2.png pagina-3.png
 $ ~/bin/imagen-png.sh *.jpg
 </code></pre></div>
 
-
 <h3>Crear acciones para Dolphin en KDE 5</h3>
 <p>Averigüe dónde deben de estar los archivos de las acciones; para ello, en <strong>KDE 5,</strong> ejecute...</p>
 <div class="highlight"><pre><span></span><code>$ kf5-config --path services
 /home/USUARIO/.local/share/kservices5/:/usr/share/kservices5/
 </code></pre></div>
 
-
 <p>Por defecto no existe el directorio, hay que crearlo...</p>
 <div class="highlight"><pre><span></span><code>$ mkdir -p ~/.local/share/kservices5
 </code></pre></div>
-
 
 <p>Nos cambiamos a ese directorio...</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/.local/share/kservices5
 </code></pre></div>
 
-
 <p>Cree un archivo <code>desktop</code>. En este ejemplo, vamos a definir acciones para convertir archivos...</p>
 <div class="highlight"><pre><span></span><code>$ kwrite ConvertImages.desktop
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Desktop Entry]</span>
@@ -225,7 +213,6 @@ $ ~/bin/imagen-png.sh *.jpg
 <span class="na">Icon</span><span class="o">=</span><span class="s">image-jpeg</span>
 <span class="na">Exec</span><span class="o">=</span><span class="s">~/bin/imagen-jpg.sh %F</span>
 </code></pre></div>
-
 
 <p>Reinicie Dolphin y pruebe.</p>
 <p>Algunas de las opciones que tiene ese archivo son:</p>

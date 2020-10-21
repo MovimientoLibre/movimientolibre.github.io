@@ -117,7 +117,6 @@
 <span class="c1"># export PS1=&quot;(prescott) $PS1&quot;</span>
 </code></pre></div>
 
-
 <p>Modifique la variable <strong>USE</strong> en /etc/make.conf con los parámetros que definen las dependencias y uso del equipo. Estos son los que he elegido:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Redes</span>
 <span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} bluetooth cups ppd samba wifi&quot;</span>
@@ -151,7 +150,6 @@
 <span class="n">USE</span><span class="o">=</span><span class="s2">&quot;${USE} gnutls joystick kqemu kpathsea nsplugin&quot;</span>
 </code></pre></div>
 
-
 <p>También aproveche el editar el contenido de /etc/make.conf para agregar los parámetros de <em>X.org</em></p>
 <div class="highlight"><pre><span></span><code><span class="err">#</span>
 <span class="err"># X.org</span>
@@ -160,22 +158,18 @@
 <span class="err">VIDEO_CARDS=&quot;fbdev intel&quot;</span>
 </code></pre></div>
 
-
 <h3>Instale el software básico</h3>
 <p>Los siguientes programas son indispensables:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit reiserfsprogs dhcpcd dosfstools screen logrotate iptables pwgen</span>
 </code></pre></div>
 
-
 <p>Instale <a href="http://www.alsa-project.org/">ALSA</a></p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge pciutils alsa-utils</span>
 </code></pre></div>
 
-
 <p>Y configúrelo:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/modprobe.d/alsa.conf</span>
 </code></pre></div>
-
 
 <p>Este es el contenido de /etc/modprobe.d/alsa.conf para mi <em>netbook</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ALSA portion</span>
@@ -207,22 +201,18 @@
 <span class="n">options</span> <span class="n">snd</span><span class="o">-</span><span class="n">hda</span><span class="o">-</span><span class="n">intel</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span> <span class="n">model</span><span class="o">=</span><span class="n">auto</span>
 </code></pre></div>
 
-
 <p>Instale <a href="http://www.x.org/">X.org</a></p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge xorg-x11</span>
 <span class="err"># emerge freefonts terminus-font ttf-bitstream-vera corefonts artwiz-latin1 dejavu</span>
 </code></pre></div>
 
-
 <p>Instale el gestor de ventanas <a href="http://www.fluxbox.org/">Fluxbox</a>, el monitor de sistema <a href="http://conky.sourceforge.net/">Conky</a> y la terminal <em>XTerm</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge fluxbox conky xterm</span>
 </code></pre></div>
 
-
 <p>Instale servicios para <em>log, cron, acpi</em> y <em>ntp</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge syslog-ng vixie-cron acpid ntp</span>
 </code></pre></div>
-
 
 <p>Estos servicios y otros más deben iniciarce al encender el equipo.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># rc-update add alsasound boot</span>
@@ -234,45 +224,37 @@
 <span class="err"># rc-update add acpid default</span>
 </code></pre></div>
 
-
 <p>Instale bases de datos, el servidor web <a href="http://httpd.apache.org/">Apache</a> y <a href="http://php.net/">PHP</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql-server</span>
 <span class="err"># emerge mysql</span>
 <span class="err"># emerge apache php</span>
 </code></pre></div>
 
-
 <p>Instale <a href="http://www.samba.org/">SAMBA</a> y <a href="http://www.gtk.org/">GTK+</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge samba cups gtk+</span>
 </code></pre></div>
 
-
 <p>Ya instalado el GTK+ podemos instalar más programas útiles que dependen de éste.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge sudo fusesmb geeqie xscreensaver</span>
 </code></pre></div>
-
 
 <p>Para hacer consultas en el portage, el <a href="http://eix.berlios.de/">eix</a> es más rápido que <em>emerge -s <texto></em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge eix</span>
 <span class="err"># emerge eix-update</span>
 </code></pre></div>
 
-
 <p>Si tiene un procesador <strong>Intel</strong> le conviene instalar <strong>powertop</strong>, un programa que identifica los procesos que más energía consumen. De forma similar, son útiles <strong>cpufrequtils</strong> y <strong>acpitool</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge powertop cpufrequtils acpitool</span>
 </code></pre></div>
-
 
 <p>Instale <a href="http://www.ruby-lang.org/">Ruby</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge ruby eruby rubygems redcloth</span>
 </code></pre></div>
 
-
 <h3>Revisión de dependencias y actualizaciones</h3>
 <p>En /etc/portage/package.use puede confugurar las opciones de la variable <em>USE</em> de forma directa para cada paquete.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/portage/package.use</span>
 </code></pre></div>
-
 
 <p>Yo tengo este contenido en /etc/portage/package.use:</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Sin</span> <span class="n">GTK</span><span class="o">+</span>
@@ -297,7 +279,6 @@
 <span class="n">x11</span><span class="o">-</span><span class="n">wm</span><span class="o">/</span><span class="n">compiz</span><span class="o">-</span><span class="n">fusion</span> <span class="n">emerald</span>
 </code></pre></div>
 
-
 <p>Revisamos que no falten dependencias y que se actualizen los paquetes que tengan nuevas <em>USE</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -puND world</span>
 <span class="err"># emerge -uND world</span>
@@ -305,18 +286,15 @@
 <span class="err"># perl-cleaner --all</span>
 </code></pre></div>
 
-
 <h3>Establecer cuentas y contraseñas</h3>
 <p>Establezca la contraseña de root</p>
 <div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
 </code></pre></div>
 
-
 <p>De de alta a un usuario. Sustituya USUARIO por su nombre de usuario.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># useradd -g users -G tty,wheel,audio,cdrom,video,portage,cron,usb,lp,plugdev -m &lt;USUARIO&gt;</span>
 <span class="err"># passwd USUARIO</span>
 </code></pre></div>
-
 
 <h3>Fin de la segunda parte</h3>
 <p>En la <a href="gentoo-linux-mi-instalacion-personal-2010-parte-3.html">tercera y última entrega</a> instalaremos el entorno gráfico y detallaremos el proceso de <em>empacamiento</em> e instalación.</p>

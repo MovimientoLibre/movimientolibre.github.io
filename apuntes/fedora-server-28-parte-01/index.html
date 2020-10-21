@@ -123,17 +123,14 @@
 <div class="highlight"><pre><span></span><code><span class="err"># fdisk -l</span>
 </code></pre></div>
 
-
 <p>En mi caso es <code>/dev/sdc</code></p>
 <p>Para copiar el contenido ISO a la memoria USB y hacerla <em>booteable</em> ejecute como root...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dd if=Fedora-Server-dvd-x86_64-27-1.6.iso of=/dev/sdc status=progress</span>
 </code></pre></div>
 
-
 <p>Sea paciente, toma buen tiempo. Al término asegure de no dejar partes sin copiar con...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># sync</span>
 </code></pre></div>
-
 
 <p>Extraiga la memoria USB e insértela en el nuevo servidor estando apagado.</p>
 <h3>Instale remotamente</h3>
@@ -173,37 +170,30 @@
 <div class="highlight"><pre><span></span><code><span class="err">ListenAddress 0.0.0.0</span>
 </code></pre></div>
 
-
 <p>Reinice el daemon.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl restart sshd</span>
 </code></pre></div>
-
 
 <p>Tome nota de la dirección IP que tenga el servidor en la red local.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ip addr</span>
 </code></pre></div>
 
-
 <p>E ingrese remotamente (cambie <code>192.168.n.m</code> por la dirección IP obtenida).</p>
 <div class="highlight"><pre><span></span><code>$ ssh <span class="m">192</span>.168.n.m
 </code></pre></div>
-
 
 <h3>Actualice</h3>
 <p>Si usa un proxy agregue esa configuración a <code>/etc/dnf/dnf.conf</code> (cambie <code>proxy.redlocal.lan</code> por el nombre o dirección IP de su proxy).</p>
 <div class="highlight"><pre><span></span><code><span class="err">proxy=http://proxy.redlocal.lan:3128</span>
 </code></pre></div>
 
-
 <p>Realice una actualización general, ejecute este comando como <em>root</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf upgrade</span>
 </code></pre></div>
 
-
 <p>Después de la actualización podría tener una nueva versión del kernel linux, así que reinice para que ya la use.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
 </code></pre></div>
-
 
 <h3>Continuación...</h3>
 <p><a href="https://movimientolibre.com/apuntes/fedora-server-28-parte-02/">Vaya a la parte 2, configuración básica de red</a>.</p>

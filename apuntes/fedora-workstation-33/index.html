@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="generator" content="Pelican Static Site Generator, Powered by Python">
-    <meta name="description" content="Cómo deshabilitar el agente GPG y en su lugar habilitar el agente SSH.">
-    <meta name="keywords" content="software libre, apuntes">
+    <meta name="description" content="Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.">
+    <meta name="keywords" content="fedora, gnu linux, apuntes">
     <meta name="author" content="Guillermo Valdés Lozano (guivaloz)">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@guivaloz">
-    <meta name="twitter:title" content="XFCE4 deshabilitar agente GPG y habilitar agente SSH">
-    <meta name="twitter:description" content="Cómo deshabilitar el agente GPG y en su lugar habilitar el agente SSH.">
-    <meta name="twitter:image" content="https://movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/preview.jpg">
-    <meta property="og:title" content="XFCE4 deshabilitar agente GPG y habilitar agente SSH">
+    <meta name="twitter:title" content="Instalación de Fedora Workstation 33">
+    <meta name="twitter:description" content="Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.">
+    <meta name="twitter:image" content="https://movimientolibre.com/apuntes/fedora-workstation-33/fedora-33-kde.jpg">
+    <meta property="og:title" content="Instalación de Fedora Workstation 33">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/">
-    <meta property="og:image" content="https://movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/preview.jpg">
-    <meta property="og:description" content="Cómo deshabilitar el agente GPG y en su lugar habilitar el agente SSH.">
+    <meta property="og:url" content="https://movimientolibre.com/apuntes/fedora-workstation-33/">
+    <meta property="og:image" content="https://movimientolibre.com/apuntes/fedora-workstation-33/fedora-33-kde.jpg">
+    <meta property="og:description" content="Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.">
     <meta property="og:site_name" content="Movimiento Libre">
-    <title>XFCE4 deshabilitar agente GPG y habilitar agente SSH - Movimiento Libre</title>
+    <title>Instalación de Fedora Workstation 33 - Movimiento Libre</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://movimientolibre.com/favicon.ico">
     <link rel="icon" href="https://movimientolibre.com/theme/images/icon-hires.png" sizes="192x192">
     <link rel="icon" href="https://movimientolibre.com/theme/images/icon-normal.png" sizes="128x128">
@@ -87,28 +87,146 @@
                                 "url": "https://movimientolibre.com"
                             },
                             "author": "Guillermo Valdés Lozano (guivaloz)",
-                            "name": "XFCE4 deshabilitar agente GPG y habilitar agente SSH",
-                            "headline": "XFCE4 deshabilitar agente GPG y habilitar agente SSH",
-                            "description": "Cómo deshabilitar el agente GPG y en su lugar habilitar el agente SSH.",
-                            "dateCreated": "2014-08-07 09:15:00-05:00",
-                            "datePublished": "2014-08-07 09:15:00-05:00",
-                            "dateModified": "2014-08-07 09:15:00-05:00",
-                            "image": "https://movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/preview.jpg",
-                            "url": "https://movimientolibre.com/apuntes/xfce4-deshabilitar-agente-gpg-habilitar-agente-ssh/"
+                            "name": "Instalación de Fedora Workstation 33",
+                            "headline": "Instalación de Fedora Workstation 33",
+                            "description": "Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.",
+                            "dateCreated": "2020-10-21 05:20:00-05:00",
+                            "datePublished": "2020-10-21 05:20:00-05:00",
+                            "dateModified": "2020-10-21 05:20:00-05:00",
+                            "image": "https://movimientolibre.com/apuntes/fedora-workstation-33/fedora-33-kde.jpg",
+                            "url": "https://movimientolibre.com/apuntes/fedora-workstation-33/"
                         }
                     </script>
-                    <h2 class="article-post-title">XFCE4 deshabilitar agente GPG y habilitar agente SSH</h2>
-<p>Cómo deshabilitar el agente GPG y en su lugar habilitar el agente SSH.</p>
-                    <p class="article-post-meta">07 agosto 2014</p>
-<h3>Problema</h3>
-<p>En una instalación nueva de <a href="http://www.xfce.org/">XFCE</a> noté que por defecto ejecutaba el agente <a href="https://gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html">GPG</a>. Al tratar de eliminar llaves SSH hubo dificultades con el programa <code>ssh-add</code> ya que su agente no estaba en ejecución.</p>
-<h3>Solución</h3>
-<p>Para que XFCE4 lanze el agente SSH en lugar del de GPG ejecute:</p>
-<div class="highlight"><pre><span></span><code>$ xfconf-query -c xfce4-session -p /startup/ssh-agent/type -n -t string -s ssh-agent
+                    <h2 class="article-post-title">Instalación de Fedora Workstation 33</h2>
+<p>Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.</p>
+                    <p class="article-post-meta">21 octubre 2020</p>
+<p><img class="img-fluid" src="fedora-33-kde.jpg" alt="Fedora 33 KDE Plasma"></p>
+<p>Al momento de escribir este apunte aun no ha sido liberado <a href="https://getfedora.org/">Fedora</a> 33; pero como mi paciencia se acaba, he decidido probar la <a href="https://fedoramagazine.org/announcing-the-release-of-fedora-33-beta/">versión Beta</a> del mismo.</p>
+<p>Hago pública una afición: cada vez que Fedora libera una nueva versión, hago una instalación nueva desde <em>formatear</em> hasta restaurar (y revisar) mi <em>home</em>. Es mi gusto muy personal. Si dan un vistazo a este <em>blog</em> verán que hay apuntes con los pasos de las versiones anteriores; al compararlos podremos observar ligeras diferencias.</p>
+<h2>Instalación de Fedora 33</h2>
+<p>Luego de instalar <a href="https://spins.fedoraproject.org/es/kde/">Fedora 33 Spin con KDE Plasma</a> con una memoria USB hacemos una actualización...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf --refresh check-update
+$ sudo dnf update
 </code></pre></div>
 
-<h3>Verifique</h3>
-<p><img class="img-fluid" src="xfce-editor-de-configuracion-ssh-agent.png" alt="XFCE4 Deshabilitar agente GPG habilitar agente SSH"></p>
+<p>Y reiniciamos...</p>
+<div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
+</code></pre></div>
+
+<h2>El Spin de Fedora KDE Plasma viene muy completo</h2>
+<p>Sólo necesito pocas utilerías del sistema...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install system-storage-manager
+$ sudo dnf install pwgen youtube-dl hwinfo htop
+</code></pre></div>
+
+<p>Y otras cercanas a KDE...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install kate filelight krename
+</code></pre></div>
+
+<p>De parte de las herramientas para gráficas instalamos <a href="https://www.gimp.org/">GIMP</a> e <a href="https://inkscape.org/">Inkscape</a>...</p>
+<div class="highlight"><pre><span></span><code>$ dnf install gimp
+$ dnf install inkscape
+</code></pre></div>
+
+<p>Si tiene colección de libros electrónicos use <a href="https://calibre-ebook.com/">Calibre</a>...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install calibre
+</code></pre></div>
+
+<p>Si necesita virtualizar recomiendo <a href="https://libvirt.org/">Libvirt</a>...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf group install <span class="s1">&#39;Virtualización&#39;</span> --with-optional
+</code></pre></div>
+
+<h2>Instalar software para contenedores</h2>
+<p>Fedora dejó atrás a Docker e impulsa los contenedores con <a href="https://podman.io/">Podman</a>...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf group install <span class="s1">&#39;Administración de contenedores&#39;</span>
+</code></pre></div>
+
+<h2>Instalar Google Chrome</h2>
+<p>Hay que instalar repositorios extras...</p>
+<div class="highlight"><pre><span></span><code>$ dnf install fedora-workstation-repositories
+$ sudo dnf install fedora-workstation-repositories
+$ sudo dnf update
+$ sudo dnf repolist --all
+</code></pre></div>
+
+<p>Luego activar el repositorio...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf config-manager --set-enabled google-chrome
+$ sudo dnf update
+</code></pre></div>
+
+<p>E instalar <a href="https://www.google.com/intl/es/chrome/">Google Chrome</a>...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install google-chrome-stable
+</code></pre></div>
+
+<p>Aproveche para agregar tipografías...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install google-roboto-condensed-fonts google-roboto-fonts google-roboto-mono-fonts
+$ sudo dnf install google-droid-fonts-all
+</code></pre></div>
+
+<h2>Instalar Visual Studio Code</h2>
+<p>Microsoft a dado al mundo del Software Libre a <a href="https://code.visualstudio.com/">Visual Studio Code</a> que es un entorno de desarrollo muy completo.</p>
+<p>Según la documentación oficial se debe configurar el repositorio así...</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">sudo</span> <span class="n">rpm</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">https</span><span class="p">:</span><span class="o">//</span><span class="n">packages</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">keys</span><span class="o">/</span><span class="n">microsoft</span><span class="o">.</span><span class="n">asc</span>
+<span class="err">$</span> <span class="n">ls</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="o">.</span><span class="n">repos</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;echo -e &quot;[code]</span><span class="se">\n</span><span class="s1">name=Visual Studio Code</span><span class="se">\n</span><span class="s1">baseurl=https://packages.microsoft.com/yumrepos/vscode</span><span class="se">\n</span><span class="s1">enabled=1</span><span class="se">\n</span><span class="s1">gpgcheck=1</span><span class="se">\n</span><span class="s1">gpgkey=https://packages.microsoft.com/keys/microsoft.asc&quot; &gt; /etc/yum.repos.d/vscode.repo&#39;</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">yum</span><span class="o">.</span><span class="n">repos</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">vscode</span><span class="o">.</span><span class="n">repo</span>
+</code></pre></div>
+
+<p>E instalar con...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf check-update
+$ sudo dnf install code
+</code></pre></div>
+
+<p>Noto que me hace falta GIT y herramientas de Python...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install git
+$ sudo dnf install pipenv
+</code></pre></div>
+
+<p>En este momento, no he instalado el grupo "Python Classroom" porque me baja la versión de GCC; esperaré a que lo resuelvan en el futuro cercano...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf groupinstall <span class="s2">&quot;Python Classroom&quot;</span>
+</code></pre></div>
+
+<h2>Instalar Sublime Text</h2>
+<p><a href="https://www.sublimetext.com/">Sublime Text</a> es un editor de código de pago, minimalista y poderoso...</p>
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">sudo</span> <span class="n">rpm</span> <span class="o">-</span><span class="n">v</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">sublimetext</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sublimehq</span><span class="o">-</span><span class="n">rpm</span><span class="o">-</span><span class="n">pub</span><span class="o">.</span><span class="n">gpg</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">repo</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">sublimetext</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rpm</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">sublime</span><span class="o">-</span><span class="n">text</span><span class="o">.</span><span class="n">repo</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">dnf</span> <span class="n">update</span>
+<span class="err">$</span> <span class="n">sudo</span> <span class="n">dnf</span> <span class="n">install</span> <span class="n">sublime</span><span class="o">-</span><span class="n">text</span>
+</code></pre></div>
+
+<h2>Instalar LibreOffice</h2>
+<p>Indispensable tener la suite de ofimática...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf group install --with-optional LibreOffice
+$ sudo dnf install libreoffice-help-es libreoffice-langpack-es
+</code></pre></div>
+
+<h2>Instalar LaTeX</h2>
+<p>Así como las herramientas profesionales de <a href="https://en.wikibooks.org/wiki/LaTeX">LaTeX</a> para crear documentos y <a href="https://www.texstudio.org/">TexStudio</a> como editor...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install texlive-scheme-tetex
+$ sudo dnf install texlive-collection-latexextra
+$ sudo dnf install texlive-collection-pstricks
+$ sudo dnf install texlive-babel-spanish texlive-babel-spanish-doc texlive-hyphen-spanish
+$ sudo dnf install texlive-babel-english texlive-babel-english-doc texlive-hyphen-english
+$ sudo dnf install texstudio
+</code></pre></div>
+
+<h2>RPM Fusion</h2>
+<p>Software de terceros que no se encuentra en los repositorios de Fedora, se descarga desde RPM Fusion. En particular instalo reproductores y editores de video...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-<span class="k">$(</span>rpm -E %fedora<span class="k">)</span>.noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-<span class="k">$(</span>rpm -E %fedora<span class="k">)</span>.noarch.rpm
+$ sudo dnf update
+$ sudo dnf install ffmpeg ffmpegthumbs
+$ sudo dnf install mpv
+$ sudo dnf install kdenlive frei0r-plugins
+</code></pre></div>
+
+<h2>Clientes para la nube</h2>
+<p>Nuevos aliados en esta instalación es el cliente de escritorio para <a href="https://nextcloud.com/">Nextcloud</a>...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install nextcloud-client
+</code></pre></div>
+
+<p>Y el comando <a href="https://rclone.org/">RClone</a> para sincronizar con múltiples servicios de la nube...</p>
+<div class="highlight"><pre><span></span><code>$ sudo dnf install rclone
+</code></pre></div>
                 </article>
             </div>
             <div class="col-md-4">

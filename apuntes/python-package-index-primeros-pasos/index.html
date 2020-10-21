@@ -109,7 +109,6 @@ $ git clone git@github.com:USUARIO/pypi_primeros_pasos.git
 $ <span class="nb">cd</span> pypi_primeros_pasos
 </code></pre></div>
 
-
 <h2>Crear la estructura para el paquete</h2>
 <p>Prepare los directorios y archivos en la copia local de su repositorio así:</p>
 <div class="highlight"><pre><span></span><code><span class="err">pypi_primeros_pasos</span>
@@ -121,12 +120,10 @@ $ <span class="nb">cd</span> pypi_primeros_pasos
 <span class="err"> |- tests</span>
 </code></pre></div>
 
-
 <p>Donde <code>LICENCE</code> tiene el texto con la licencia de software y <code>README.md</code> una breve semblanza de lo que hace el paquete.</p>
 <p>Debe crear el directorio <code>tests</code> para colocar pruebas; por el momento puede estar vacío.</p>
 <div class="highlight"><pre><span></span><code>$ mkdir tests
 </code></pre></div>
-
 
 <p>Edite el <code>setup.py</code> como en este ejemplo...</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">setuptools</span>
@@ -159,7 +156,6 @@ $ <span class="nb">cd</span> pypi_primeros_pasos
 <span class="p">)</span>
 </code></pre></div>
 
-
 <p>Los principales valores a declarar son...</p>
 <ul>
 <li><strong>name:</strong> el nombre único del paquete</li>
@@ -182,7 +178,6 @@ $ <span class="nb">cd</span> PyPIPrimerosPasos/
 $ . bin/activate
 </code></pre></div>
 
-
 <h2>Registro en Test PyPI</h2>
 <p>Ya sea para aprender o para poner a prueba su paquete use el servicio Pruebas de PyPI: <a href="https://test.pypi.org/">https://test.pypi.org/</a>. <strong>CUIDADO:</strong> Tenga en cuenta que Test es efímero, porque va eliminando las entregas más antiguas. Solicite su registro; le pedirá su nombre, correo electrónico, usuario y contraseña dos veces. Luego deberá confirmar su correo electrónico.</p>
 <p><strong>NOTA:</strong> Más adelante regístrese en PyPI <a href="https://pypi.org/">https://pypi.org/</a>; allí debe de repetir todo proceso de registro; por lo que las contraseñas y las llaves API deberán ser diferentes.</p>
@@ -194,13 +189,11 @@ $ . bin/activate
 <div class="highlight"><pre><span></span><code>$ nano -w ~/.pypirc
 </code></pre></div>
 
-
 <p>Y péguelo como <code>password</code> en un nuevo archivo como lo siguiente...</p>
 <div class="highlight"><pre><span></span><code><span class="k">[testpypi]</span>
 <span class="na">username</span> <span class="o">=</span> <span class="s">__token__</span>
 <span class="na">password</span> <span class="o">=</span> <span class="s">pypi-xxxxxxxxxxxxxxxx...</span>
 </code></pre></div>
-
 
 <p>Ya guardado puede cerrar la pestaña del naveador de internet con el token.</p>
 <p><strong>NOTA:</strong> Cuando tenga el registro en <strong>PyPI</strong> podrá repetir el proceso para generar la llave API para esa cuenta y agregarla al mismo archivo <code>.pypirc</code> de esta forma...</p>
@@ -209,22 +202,18 @@ $ . bin/activate
 <span class="na">password</span> <span class="o">=</span> <span class="s">pypi-xxxxxxxxxxxxxxxx...</span>
 </code></pre></div>
 
-
 <h2>Generar los archivos para su distribución</h2>
 <p>Cámbiese al directorio donde está la copia local del repositorio</p>
 <div class="highlight"><pre><span></span><code><span class="err">(PyPIPrimerosPasos) $ cd ~/Documentos/GitHub/USUARIO/pypi_primeros_pasos</span>
 </code></pre></div>
 
-
 <p>Verifique que tenga <code>setuptools</code> y <code>wheel</code> instalados</p>
 <div class="highlight"><pre><span></span><code><span class="err">(PyPIPrimerosPasos) $ pip list</span>
 </code></pre></div>
 
-
 <p>Genere los archivos para distribuir con...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(PyPIPrimerosPasos) $ python3 setup.py sdist bdist_wheel</span>
 </code></pre></div>
-
 
 <p>Esa orden creará el directorio <code>dist</code> que contiene un comprimido con los archivos del paquete.</p>
 <h2>Subir el paquete</h2>
@@ -232,18 +221,15 @@ $ . bin/activate
 <div class="highlight"><pre><span></span><code><span class="err">(PyPIPrimerosPasos) $ pip install twine</span>
 </code></pre></div>
 
-
 <p>Suba el paquete ejecutando...</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="n">PyPIPrimerosPasos</span><span class="p">)</span> <span class="o">$</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">twine</span> <span class="n">upload</span> <span class="o">--</span><span class="n">repository</span> <span class="n">testpypi</span> <span class="n">dist</span><span class="o">/*</span>
 </code></pre></div>
-
 
 <p><strong>NOTA:</strong> En <em>repository</em> use <code>testpypi</code> para <strong>Test PyPI</strong>. En cambio para <strong>PyPI</strong> use <code>pypi</code>.</p>
 <p>Verifique que puede ver su nuevo paquete en el navegador de internet con la URL que aparece.</p>
 <p>Abandone el entorno virtual con...</p>
 <div class="highlight"><pre><span></span><code><span class="err">(PyPIPrimerosPasos) $ decativate</span>
 </code></pre></div>
-
 
 <h2>Probar la descarga</h2>
 <p>Elabore un nuevo entorno virtual</p>
@@ -253,11 +239,9 @@ $ <span class="nb">cd</span> PruebaPyPIPrimerosPasos/
 $ . bin/activate
 </code></pre></div>
 
-
 <p>Instale su nuevo paquete desde Test PyPI con</p>
 <div class="highlight"><pre><span></span><code><span class="err">(PruebaPyPIPrimerosPasos) $ pip install pypi_primeros_pasos</span>
 </code></pre></div>
-
 
 <h2>Referencias</h2>
 <ul>

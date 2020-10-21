@@ -106,17 +106,14 @@
 <span class="err"># dnf update</span>
 </code></pre></div>
 
-
 <p>Y reiniciamos...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
 </code></pre></div>
-
 
 <p>Instale LibreOffice...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf group install --with-optional LibreOffice</span>
 <span class="err"># dnf install libreoffice-help-es libreoffice-langpack-es</span>
 </code></pre></div>
-
 
 <p>Instale LaTeX...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install texlive-scheme-tetex</span>
@@ -126,43 +123,35 @@
 <span class="err"># dnf install texlive-babel-english texlive-babel-english-doc texlive-hyphen-english</span>
 </code></pre></div>
 
-
 <p>Instale Python...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf group install --with-optional &quot;Python Classroom&quot;</span>
 <span class="err"># dnf group install --with-optional &quot;Python Science&quot;</span>
 </code></pre></div>
-
 
 <p>Instale utilerías diversas...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install system-storage-manager</span>
 <span class="err"># dnf install pwgen youtube-dl hwinfo</span>
 </code></pre></div>
 
-
 <p>Instale software de KDE...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install kate filelight umbrello krename okular texstudio</span>
 </code></pre></div>
-
 
 <p>Instale soporte para impresoras HP...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install hplip</span>
 </code></pre></div>
 
-
 <p>Instale GIMP...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install gimp</span>
 </code></pre></div>
-
 
 <p>Instale Inkscape...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install inkscape</span>
 </code></pre></div>
 
-
 <p>Instale Calibre...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install calibre</span>
 </code></pre></div>
-
 
 <p>Instale tipografías...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install liberation-fonts</span>
@@ -170,13 +159,11 @@
 <span class="err"># dnf install terminus-fonts</span>
 </code></pre></div>
 
-
 <p>Prepare los repositorios adicionales...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install fedora-workstation-repositories</span>
 <span class="err"># dnf update</span>
 <span class="err"># dnf repolist --all</span>
 </code></pre></div>
-
 
 <p>Instale Google Chrome y sus tipografías...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf config-manager --set-enabled google-chrome</span>
@@ -187,13 +174,11 @@
 <span class="err"># dnf install google-roboto-fonts google-roboto-condensed-fonts</span>
 </code></pre></div>
 
-
 <p>Configure los repositorios RPM Fusion...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \</span>
   <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download1</span><span class="o">.</span><span class="n">rpmfusion</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">nonfree</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">rpmfusion</span><span class="o">-</span><span class="n">nonfree</span><span class="o">-</span><span class="n">release</span><span class="o">-$</span><span class="p">(</span><span class="n">rpm</span> <span class="o">-</span><span class="n">E</span> <span class="o">%</span><span class="n">fedora</span><span class="p">)</span><span class="o">.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span>
 <span class="c1"># dnf update</span>
 </code></pre></div>
-
 
 <p>Instale más programas de RPM Fusion...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install fuse-exfat exfat-utils</span>
@@ -205,7 +190,6 @@
 <span class="err"># dnf groupupdate Multimedia</span>
 </code></pre></div>
 
-
 <p>Instale Sublime Text a partir de su propio repositorio...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># rpm -v --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg</span>
 <span class="c1"># dnf config-manager --add-repo https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo</span>
@@ -213,11 +197,9 @@
 <span class="c1"># dnf install sublime-text</span>
 </code></pre></div>
 
-
 <p>Instale Libvirtd...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf group install &#39;Virtualización&#39; --with-optional</span>
 </code></pre></div>
-
 
 <p>Instale los reproductores de multimedia VLC y MPV</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install vlc</span>

@@ -105,11 +105,9 @@
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install dnsmasq</span>
 </code></pre></div>
 
-
 <p>Cree un archivo para los DNS externos...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/dnsmasq-resolv.conf</span>
 </code></pre></div>
-
 
 <p>Con los servidores DNS que elija (en este ejemplo están activos los de Google)...</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Cloudflare</span>
@@ -125,13 +123,11 @@
 <span class="o">#</span><span class="n">nameserver</span> <span class="mi">208</span><span class="p">.</span><span class="mi">67</span><span class="p">.</span><span class="mi">220</span><span class="p">.</span><span class="mi">220</span>
 </code></pre></div>
 
-
 <p>Edite la configuración de DNSmasq...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /etc</span>
 <span class="err"># mv dnsmasq.conf dnsmasq.conf.original</span>
 <span class="err"># nano dnsmasq.conf</span>
 </code></pre></div>
-
 
 <p>Ajuste el contenido de <code>/etc/dnsmasq.conf</code> de acuerdo a sus necesidades.
 Cambie el nombre de dominio <code>miredlocal.lan</code> y los nombres de los equipos.
@@ -190,7 +186,6 @@ También las direcciones IP que son <code>192.168.4.n</code> desde 101 a 199.</p
 <span class="n">conf</span><span class="o">-</span><span class="n">dir</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">dnsmasq</span><span class="o">.</span><span class="n">d</span><span class="p">,</span><span class="o">.</span><span class="n">rpmnew</span><span class="p">,</span><span class="o">.</span><span class="n">rpmsave</span><span class="p">,</span><span class="o">.</span><span class="n">rpmorig</span>
 </code></pre></div>
 
-
 <p>Si va usar direcciones IP fijas por mac address, configure <code>/etc/hosts</code> como en este ejemplo...</p>
 <div class="highlight"><pre><span></span><code><span class="err">192.168.4.1   proxy wpad</span>
 <span class="err">192.168.4.11  equipo1</span>
@@ -199,30 +194,25 @@ También las direcciones IP que son <code>192.168.4.n</code> desde 101 a 199.</p
 <span class="err">192.168.4.14  equipo4</span>
 </code></pre></div>
 
-
 <p>Y cambie el contenido de <code>/etc/resolv.conf</code> a...</p>
 <div class="highlight"><pre><span></span><code><span class="err">search miredlocal.lan</span>
 <span class="err">nameserver 127.0.0.1</span>
 </code></pre></div>
-
 
 <p>Antes de arrancar el daemon, vamos otorgar al grupo <code>root</code> permisos de escritura en <code>/var/lib/dnsmasq</code>...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># chgrp root /var/lib/dnsmasq</span>
 <span class="c1"># chmod g+w /var/lib/dnsmasq</span>
 </code></pre></div>
 
-
 <p>Arranque y habilite</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl start dnsmasq</span>
 <span class="err"># systemctl enable dnsmasq</span>
 </code></pre></div>
 
-
 <p>También habilite Network Name Resolution</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl start systemd-resolved</span>
 <span class="err"># systemctl enable systemd-resolved</span>
 </code></pre></div>
-
 
 <h3>Configuración temporal del muro de fuego</h3>
 <p>En este punto del proceso, el muro de fuego no permite conexiones a los servicios de DNS y DHCP...</p>
@@ -230,33 +220,27 @@ También las direcciones IP que son <code>192.168.4.n</code> desde 101 a 199.</p
 <span class="err">ssh dhcpv6-client cockpit</span>
 </code></pre></div>
 
-
 <p>Para activar el servicio de Internet vamos a habilitar en <em>enmascarado de redes</em>...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --add-masquerade</span>
 </code></pre></div>
 
-
 <p>Y abrir la escucha de los puertos dedicados al DNS y DHCP...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --add-service=dns --add-service=dhcp</span>
 </code></pre></div>
-
 
 <p>Verifique con...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --list-services</span>
 <span class="err">ssh dhcpv6-client cockpit dns dhcp</span>
 </code></pre></div>
 
-
 <p>Cabe tener en cuenta que los cambios en el muro de fuego se perderán al apagar o reiniciar el servidor. A menos que haga estos cambios permanentes con el comando...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># firewall-cmd --runtime-to-permanent</span>
 </code></pre></div>
-
 
 <h3>Logrotate</h3>
 <p>Para evitar que la bitácora de DNSmasq sea un archivo enorme cree esta regla de logrotate:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/logrotate.d/dnsmasq</span>
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">dnsmasq</span><span class="o">.</span><span class="n">log</span> <span class="p">{</span>
@@ -270,7 +254,6 @@ También las direcciones IP que son <code>192.168.4.n</code> desde 101 a 199.</p
     <span class="n">create</span> <span class="mi">0640</span> <span class="n">dnsmasq</span> <span class="n">root</span>
 <span class="p">}</span>
 </code></pre></div>
-
 
 <h3>Continuación...</h3>
 <p><a href="https://movimientolibre.com/apuntes/fedora-server-28-parte-04/">Vaya a la parte 4, muro de fuego para ruteador</a>.</p>

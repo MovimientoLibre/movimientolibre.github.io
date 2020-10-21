@@ -126,13 +126,11 @@
 <span class="err">         &lt;M&gt;  USB driver for GSM and CDMA modems</span>
 </code></pre></div>
 
-
 <p>Si no se usa <em>USB Mass Storage support</em> como módulo, podría aparecer el dispositivo sólo como una unidad de almacenamiento; y en consecuencia, no se vería el dispositivo de comunicación.</p>
 <h3>Instale USB Mode Switch</h3>
 <p>El software <a href="http://www.draisberghof.de/usb_modeswitch/">USB_ModeSwitch</a> es una herramienta que sirve para controlar esta <em>doble cara</em> que presenta el dispositivo; la de ser dispositivo de red y dispositivo de almacenamiento al mismo tiempo.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge usb_modeswitch</span>
 </code></pre></div>
-
 
 <h3>Revise la configuración de Udev</h3>
 <p>Revise la versión de <a href="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html">Udev</a> con el comando <em>equery</em>:</p>
@@ -142,24 +140,20 @@
 <span class="err">[I--] [  ] sys-fs/udev-151-r4</span>
 </code></pre></div>
 
-
 <p>Afortunadamente, la versión que ven de <em>Udev</em> tiene la configuración lista para manipular el dispositivo <em>ZTE</em> cuando se conecta. Vea el contenido de <em>40-usb_modeswitch.rules</em> sin peligro de alterarlo con:</p>
 <div class="highlight"><pre><span></span><code>$ less /lib/udev/rules.d/40-usb_modeswitch.rules
 </code></pre></div>
-
 
 <p>Ahí encontrará las siguientes líneas:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ZTE devices</span>
 <span class="err">ATTRS{idVendor}==&quot;19d2&quot;, ATTRS{idProduct}==&quot;2000&quot;, RUN+=&quot;usb_modeswitch &#39;%b/%k&#39;</span>
 </code></pre></div>
 
-
 <p>Lo que hace es ejecutar <em>usb_modeswitch</em> cuando un dispositivo <em>ZTE</em> (vendedor <em>19d2</em> y producto <em>2000</em>) se conecta.</p>
 <h3>Revise que se cargue correctamente al conectarse</h3>
 <p>Conecte el dispositivo. Espere a que la luz led del mismo quede en color verde y estable. Luego revise los últimos mensajes del kernel con el comando <em>dmesg</em>:</p>
 <div class="highlight"><pre><span></span><code>$ dmesg
 </code></pre></div>
-
 
 <p>Por ejemplo, la carga exitosa muestra mensajes como los siguientes:</p>
 <div class="highlight"><pre><span></span><code>$ dmesg <span class="p">|</span> grep modem
@@ -173,16 +167,13 @@ usb <span class="m">1</span>-8: GSM modem <span class="o">(</span><span class="m
 option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
 </code></pre></div>
 
-
 <p>Vea que en la lista de módulos cargados aparezcan <em>usbserial</em> y <em>usb_wwan</em>:</p>
 <div class="highlight"><pre><span></span><code>$ lsmod
 </code></pre></div>
 
-
 <p>Debe haber uno o varios dispositivos en el directorio <em>/dev</em> como <em>ttyUSB1</em>, <em>ttyUSB2</em> y/o <em>ttyUSB3</em>.</p>
 <div class="highlight"><pre><span></span><code>$ ls -l /dev/ttyUSB*
 </code></pre></div>
-
 
 <p>Continúe con este manual si son exitosas estas pruebas. Si no, revise de nuevo hasta conseguirlo.</p>
 <h3>Agregue su usuario al grupo uucp</h3>
@@ -190,12 +181,10 @@ option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
 <div class="highlight"><pre><span></span><code><span class="err"># gpasswd -a NOMBREDEUSUARIO uucp</span>
 </code></pre></div>
 
-
 <h3>Instale wvdial</h3>
 <p>Necesitamos instalar el software <a href="http://alumnit.ca/wiki/?WvDial">WvDial</a> para realizar la rutina de conexión.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge wvdial</span>
 </code></pre></div>
-
 
 <p>Como dependecias, instalará también <em>net-dialup/ppp</em>, <em>virtual/c++-tr1-functional</em> y <em>net-libs/wvstreams</em>.</p>
 <h3>Configure wvdial</h3>
@@ -203,12 +192,10 @@ option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
 <div class="highlight"><pre><span></span><code><span class="err"># wvdialconf</span>
 </code></pre></div>
 
-
 <p>Éste creará un nuevo archivo <em>/etc/wvdial.conf</em> en base a lo que se detecte en el hardware. Pero es muy probable que <em>no sea suficiente</em> y deberá hacer modificaciones adicionales por el modelo del dispositivo, las capacidades de la red y los parámetros de su proveedor.</p>
 <p>Edite el archivo con el sencillo editor <em>nano</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/wvdial.conf</span>
 </code></pre></div>
-
 
 <p>El contenido de este archivo es texto con la típica sintaxis de los archivos <em>ini</em>. Lo que sigue es la configuración que para el <em>Internet 3G de Telcel en México</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Dialer Defaults]</span>
@@ -225,7 +212,6 @@ option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
 <span class="na">Password</span> <span class="o">=</span> <span class="s">webgprs2002</span>
 </code></pre></div>
 
-
 <p>Destaco de este archivo:</p>
 <ul>
 <li>Que he agregado la línea <em>Init3</em> con parámetros propios para Telcel.</li>
@@ -239,11 +225,9 @@ option: v0.7.2:USB Driver <span class="k">for</span> GSM modems
 <div class="highlight"><pre><span></span><code><span class="err"># sudo wvdial</span>
 </code></pre></div>
 
-
 <p>Mantenga esa terminal abierta. Abra otra y observe el dispositivo <em>ppp0</em> que es creado al conectarse a la red con:</p>
 <div class="highlight"><pre><span></span><code>$ sudo ifconfig ppp0
 </code></pre></div>
-
 
 <p>Éste comando también sirve para monitorear la cantidad de información recibida y enviada. De forma manual, puede tomar nota de lo que consume antes de desconectar el dispositivo y así cuidar de no exceder el límite del proveedor.</p>
 <p>Para terminar la conexión, vaya a la terminal donde ejecutó <em>wvdial</em>, presione CTRL-C, espere a que termine y desconecte el dispositivo.</p>

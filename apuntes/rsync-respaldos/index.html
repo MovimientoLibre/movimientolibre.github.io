@@ -117,21 +117,17 @@
 <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sdb1</span>            <span class="mi">2048</span>   <span class="mi">488397167</span>   <span class="mi">244197560</span>   <span class="mi">83</span>  <span class="n">Linux</span>
 </code></pre></div>
 
-
 <p>Su única partición la <em>formateé</em> bajo el confiable sistema de archivos Ext4.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext4 -L respaldos /dev/sdb1</span>
 </code></pre></div>
-
 
 <p>Para luego montarlo manualmente en /mnt/respaldos</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount /dev/sdb1 /mnt/respaldos</span>
 </code></pre></div>
 
-
 <p>Claro que me conviene que esta partición se monte cada vez que enciendo el equipo, así que agrego la siguiente línea a la configuración de /etc/fstab para ello.</p>
 <div class="highlight"><pre><span></span><code><span class="err">/dev/sdb1   /mnt/respaldos    ext4    defaults    0 1</span>
 </code></pre></div>
-
 
 <p>Ya <em>particionado</em> y <em>formateado</em> el disco, procedo a crear directorios para cada usuario que deba respaldar. Con anterioridad ya había creado los usuarios. Sustituya <em>usuario1</em>, <em>usuario2</em> y <em>usuario3</em> con los nombres de los usuarios que vayan a hacer respaldos.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/respaldos/usuario1</span>
@@ -142,13 +138,11 @@
 <span class="err"># chown usuario3:users /mnt/respaldos/usuario3</span>
 </code></pre></div>
 
-
 <p>El equipo mantiene en ejecución el <em>daemon</em> <em>SSH</em>. Por medio de éste se pueden transferir los archivos de forma cifrada protegiéndonos de que algún intruso pueda atraparlos fácilmente.</p>
 <p>En este punto, la computadora de escritorio está lista para recibir los respaldos. Punto aparte, tengo habilitado un servidor DNS que me resuelve el nombre <em>escritorio.casa.lan</em> por su respectiva dirección IP. Si no lo tiene, puede usar la dirección IP en los comandos que siguen.</p>
 <p>Para realizar un <em>respaldo manual</em> del directorio <em>Documentos</em> ejecuto este comando en la <em>laptop</em> bajo la sesión del usuario (si es necesario, sustituya <em>escritorio.casa.lan</em> por la dirección IP del equipo y <em>usuario1</em> por su nombre de usuario):</p>
 <div class="highlight"><pre><span></span><code>$ rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/
 </code></pre></div>
-
 
 <p>Como iniciativa propia, no deseo respaldar videos o música, prefiero darle prioridad a lo que tengo en <em>Documentos</em>, Usted seguramente me entenderá.</p>
 <p>En las siguientes ejecuciones, el comando <em>rsync</em> copiará sólo los archivos nuevos o los que hayan cambiado.</p>
@@ -156,16 +150,13 @@
 <div class="highlight"><pre><span></span><code>$ nano -w ~/.bashrc
 </code></pre></div>
 
-
 <p>Y agrego esta línea que habilita el <em>atajo</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err">alias respaldar=&quot;rsync -av -e ssh ~/Documentos escritorio.casa.lan:/mnt/respaldos/usuario1/&quot;</span>
 </code></pre></div>
 
-
 <p>Cierre la terminal, abra una nueva, y ejecute el <em>atajo</em> (que equivale al comando largo).</p>
 <div class="highlight"><pre><span></span><code>$ respaldar
 </code></pre></div>
-
 
 <p>Así pues, procuro ejecutar <em>respaldar</em> frecuentemente para mantener una copia de mis documentos en el otro equipo. Puede automatizar esta labor si agrega el comando al <em>cron</em> y establece una hora del día a la cual se ejecute sin intervención del usuario. Esto se lo dejo de tarea.</p>
                 </article>

@@ -129,16 +129,13 @@
 <div class="highlight"><pre><span></span><code><span class="err"># emerge imagemagick graphviz gd</span>
 </code></pre></div>
 
-
 <p>Para usar mi <em>netbook</em> como ruteador, instalo los servidores de <em>DHCP</em> y <em>DNS</em>, así como los programas para <em>bridge</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge dhcp bind bridge-utils</span>
 </code></pre></div>
 
-
 <p>Instale los mejores programas de multimedia.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge lame mp3splt vorbis-tools faad2 ffmpeg mplayer moc gstreamer</span>
 </code></pre></div>
-
 
 <p>Instale herramentas para hacer auditoria de redes.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge whois traceroute geoip bind-tools</span>
@@ -146,26 +143,21 @@
 <span class="c1"># emerge nmap macchanger aircrack-ng kismet</span>
 </code></pre></div>
 
-
 <p>Instale el editor de texto <a href="http://www.vim.org/">VIM</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge vim</span>
 </code></pre></div>
-
 
 <p>Instale el entorno de desarrollo <a href="http://www.geany.org/">Geany</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge geany</span>
 </code></pre></div>
 
-
 <p>Instale <a href="http://pear.php.net/">PEAR</a> y el <a href="http://pear.php.net/package/PhpDocumentor/">Documentador de PHP</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge PEAR-PhpDocumentor</span>
 </code></pre></div>
 
-
 <p>Instale el cliente FTP llamado <em>gFTP</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge gftp</span>
 </code></pre></div>
-
 
 <h3>Entorno gráfico XFCE4</h3>
 <p>Instale <a href="http://www.xfce.org/">XFCE4</a>.</p>
@@ -175,49 +167,40 @@
 <span class="err"># emerge xfce4-power-manager xfce4-screenshooter xfce4-taskmanager xfce4-mixer</span>
 </code></pre></div>
 
-
 <h3>Ahora las aplicaciones grandes</h3>
 <p>Antes de instalar el navegador de internet, active <em>java</em> en la variable <em>USE</em> dentro de /etc/make.conf.</p>
 <div class="highlight"><pre><span></span><code># Desarrollo
 USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}</span> apache2 java mysql php postgres ruby vhosts&quot;
 </code></pre></div>
 
-
 <p>Luego instale <a href="http://www.mozilla.com/">Mozilla Firefox</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge firefox</span>
 </code></pre></div>
-
 
 <p>Actualize los paquetes que dependan de <em>java</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emereg -uND world</span>
 </code></pre></div>
 
-
 <p>Instale <a href="http://www.mozillamessaging.com/">Mozilla Thunderbird</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge thunderbird</span>
 </code></pre></div>
-
 
 <p>Instale <a href="http://www.gimp.org/">GIMP</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge gimp</span>
 </code></pre></div>
 
-
 <p>Instale las dependencias de <a href="http://movimientolibre/articulos/twitter-turpial.html">Turpial</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge simplejson notify-python pygame Babel gtkspell-python pywebkitgtk</span>
 </code></pre></div>
-
 
 <p>Instale <a href="http://www.latex-project.org/">LaTeX</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge texlive</span>
 </code></pre></div>
 
-
 <h3>Compiz-Fusion</h3>
 <p>Al momento de escribir esta guía, <a href="http://www.compiz.org/">Compiz-Fusion</a> no había sido marcado como estable. Así que para permitir su instalación creo el archivo /etc/portage/package.keywords</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano /etc/portage/package.keywords</span>
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span>
@@ -242,11 +225,9 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <span class="n">x11</span><span class="o">-</span><span class="n">themes</span><span class="o">/</span><span class="n">emerald</span><span class="o">-</span><span class="n">themes</span>
 </code></pre></div>
 
-
 <p>Luego, instale <a href="http://www.compiz.org/">Compiz-Fusion</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge compiz-fusion fusion-icon</span>
 </code></pre></div>
-
 
 <h3>OpenOffice.org</h3>
 <p>Si gusta puede instalar la versión precompilada de OpenOffice.org llamada <em>openoffice-bin</em>.</p>
@@ -254,24 +235,20 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <div class="highlight"><pre><span></span><code>$ emerge openoffice
 </code></pre></div>
 
-
 <h3>Empaque su Gentoo Linux</h3>
 <p>Llega el momento de pasar al número dos del diagrama de la instalación asistida. No se preocupe, los pasos siguientes no requieren de tantos comandos como la instalación misma.</p>
 <p>Primero salga del <em>chroot</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># exit</span>
 </code></pre></div>
 
-
 <p>Luego asegúrese de desmontar <em>dev</em> y <em>proc</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># umount /mnt/archivos/instalaciones/prescott/dev</span>
 <span class="err"># umount /mnt/archivos/instalaciones/prescott/proc</span>
 </code></pre></div>
 
-
 <p>Revise que no haya dispositivos montados en el directorio de su instalación con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount | grep /mnt/archivos/instalaciones</span>
 </code></pre></div>
-
 
 <p>Borre los archivos temporales.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cd /mnt/archivos/instalaciones/prescott/</span>
@@ -279,18 +256,15 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <span class="c1"># rm -rf tmp/* var/tmp/*</span>
 </code></pre></div>
 
-
 <p>Empaque el <em>portage</em>. Este archivo tendrá todo el código fuente descargado; la gran mayoría de estos archivos ya están comprimidos; por lo que recomiendo que simplemente se haga un archivo <em>.tar</em>. No deje de agregar la fecha de su creación en el nombre del archivo empacado.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd usr</span>
 <span class="err"># tar cvf /mnt/archivos/instalaciones/prescott-portage-2010-11-09.tar portage/</span>
 </code></pre></div>
 
-
 <p>Después, empaque la raíz de su nueva instalación, pero sin el <em>portage</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/archivos/instalaciones/prescott/</span>
 <span class="err"># tar czvf /mnt/archivos/instalaciones/prescott-root-2010-11-09.tar.gz --exclude=usr/portage *</span>
 </code></pre></div>
-
 
 <p>Respalde estos dos archivos a un DVD-R, a una memoria USB o compártalos en su red local.</p>
 <h3>Para instalar un Gentoo Linux previamente empaquetado</h3>
@@ -299,19 +273,16 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext4 -L gentoo /dev/PARTICION</span>
 </code></pre></div>
 
-
 <p>Monte la partición que será la raíz de su nuevo sistema Gentoo Linux. El directorio de montaje que uso es el típico /mnt/gentoo que puede variar si así le conviene.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/gentoo</span>
 <span class="err"># mount /dev/PARTICION /mnt/gentoo</span>
 </code></pre></div>
-
 
 <p>A partir de aquí supongo el uso una memoria USB con los archivos de la instalación asistida y que la ruta de montaje es /media/MEMORIA-USB. Por supuesto, esto puede variar. Por ejemplo, si los copia por la red local, podría depositarlos en /tmp. Cambie /media/MEMORIA-USB por la ubicación de estos archivos.</p>
 <p>Desempaque primero la raíz de la instalación, el que tiene por nombre <em>prescott-root-yyyy-mm-dd.tar</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/gentoo</span>
 <span class="err"># tar xvf /media/MEMORIA-USB/prescott-root-2010-11-09.tar.gz</span>
 </code></pre></div>
-
 
 <p>En este punto podría ejecutar un <em>emerge --sync</em> y descargar de internet el <em>portage</em> más nuevo para luego actualizar.</p>
 <p>O bien, desempacar el <em>prescott-portage-yyyy-mm-dd.tar</em> y tener todo el código fuente del momento en que se creó.</p>
@@ -320,13 +291,11 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <span class="err"># tar xvf /media/MEMORIA-USB/prescott-portage-2010-11-09.tar</span>
 </code></pre></div>
 
-
 <p>Monte la partición <em>boot</em> y también <em>dev</em> y <em>proc</em> en su nuevo sistema.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount /dev/PARTICIONBOOT /mnt/gentoo/boot</span>
 <span class="err"># mount -t proc none /mnt/gentoo/proc</span>
 <span class="err"># mount -o bind /dev /mnt/gentoo/dev</span>
 </code></pre></div>
-
 
 <p>Ingrese a su nueva instalación por <em>chroot</em></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cp /etc/resolv.conf /mnt/gentoo/etc/resolv.conf</span>
@@ -336,7 +305,6 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <span class="c1"># export PS1=&quot;(nueva) $PS1&quot;</span>
 </code></pre></div>
 
-
 <p>Ajuste la compilación del kernel al nuevo equipo. Puede que necesite activar controladores particulares de éste; por ejemplo, tarjetas de red.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /usr/src/linux</span>
 <span class="err"># make menuconfig</span>
@@ -344,12 +312,10 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <span class="err"># make modules_install</span>
 </code></pre></div>
 
-
 <p>Instale el kernel y configure el gestor de arranque <em>GRUB</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># make install</span>
 <span class="err"># nano -w /boot/grub/grub.conf</span>
 </code></pre></div>
-
 
 <p>Este es un ejemplo de la configuración en <em>/boot/grub/grub.conf</em></p>
 <div class="highlight"><pre><span></span><code><span class="k">default</span> <span class="mi">0</span>
@@ -364,7 +330,6 @@ USE=&quot;<span class="cp">${</span><span class="n">USE</span><span class="cp">}
 <span class="n">root</span> <span class="p">(</span><span class="n">hd0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">kernel</span> <span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">34</span><span class="o">-</span><span class="n">gentoo</span><span class="o">-</span><span class="n">r12</span> <span class="n">root</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda2</span> <span class="n">resume</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda5</span> <span class="n">clocksource</span><span class="o">=</span><span class="n">hpet</span>
 </code></pre></div>
-
 
 <p>Respecto al último parámetro <em>processor.max_cstate=1</em> comento que éste lo agrego para desactivar los "C-States" que tiene el procesador Intel Atom. Los C-States son estados del procesador donde se desactivan funciones para ahorrar energía.</p>
 <p>Con <em>processor.max_cstate=1</em> gozo de toda la capacidad de procesamiento; pero con mayor consumo de energía y menos duración de la batería.</p>

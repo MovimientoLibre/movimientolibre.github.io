@@ -105,21 +105,17 @@
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/make.conf</span>
 </code></pre></div>
 
-
 <p>Primero como usuario root revise las dependencias que le solicite:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pv postgresql</span>
 </code></pre></div>
-
 
 <p>Para instalar:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge postgresql</span>
 </code></pre></div>
 
-
 <p>Revise el archivo de configuración del arranque del demonio con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/conf.d/postgresql</span>
 </code></pre></div>
-
 
 <p>La configuración por defecto de este archivo es suficiente para el usuario común, aunque puede cambiar el directorio del <em>database cluster</em>, el usuario con el que correrá el demonio o los parámetros del mismo.</p>
 <p>Le recomiendo el siguiente preparativo en el usuario <em>postgres</em>.  Vamos a hacer que cada vez que ingrese el usuario postgres se carge la variable de entorno PGDATA con la ubicación del <em>database cluster</em>:</p>
@@ -128,11 +124,9 @@
 <span class="err">$ nano -w .bashrc</span>
 </code></pre></div>
 
-
 <p>Escriba esta línea en el archivo <em>.bashrc</em>:</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">export</span> <span class="nv">PGDATA</span><span class="o">=</span>/var/lib/postgresql/data
 </code></pre></div>
-
 
 <p>Guarde los cambios y salga como usuario postgres, la próxima vez que ingrese, se cargará la variable <em>PGDATA</em>.</p>
 <p>A continuación vamos manualmente a crear el "database cluster".  El comando <em>initdb</em> tomará de <em>PGDATA</em> la ubicación:</p>
@@ -141,11 +135,9 @@
 <span class="err">$ exit</span>
 </code></pre></div>
 
-
 <p>Arranquemos por primera vez el demonio, como root:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/postgresql start</span>
 </code></pre></div>
-
 
 <p>Opcionalmente, si necesita configurar las opciones de escucha (direcciones ip además de localhost) detenga el demonio, ingrese como postgres y modifique el archivo de configuración <em>pg_hba.conf</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/postgresql stop</span>
@@ -155,7 +147,6 @@
 <span class="err">$ exit</span>
 <span class="err"># /etc/init.d/postgresql start</span>
 </code></pre></div>
-
 
 <p>Si quiere que el demonio del postgresql se inicie cada vez que enciende el equipo, ejecute el comando <em>rc-update</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># rc-update add postgresql default</span>

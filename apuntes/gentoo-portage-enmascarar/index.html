@@ -110,18 +110,15 @@
 <span class="err">[IP-] [  ] dev-db/postgresql-server-9.3.3:9.3</span>
 </code></pre></div>
 
-
 <p>Así que aprovecho las nuevas características del Portage para enmascarar. Creo un directorio llamado <strong>package.mask</strong> en <strong>/etc/portage</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /etc/portage/</span>
 <span class="err"># mkdir package.mask</span>
 </code></pre></div>
 
-
 <p>Y en dos archivos de texto, escribo la expresión <strong>&gt;=categoría/paquete-nn.nn</strong></p>
 <div class="highlight"><pre><span></span><code><span class="err"># echo &quot;&gt;=dev-db/postgresql-base-9.3&quot; &gt; package.mask/dev-db_postgresql-base</span>
 <span class="err"># echo &quot;&gt;=dev-db/postgresql-server-9.3&quot; &gt; package.mask/dev-db_postgresql-server</span>
 </code></pre></div>
-
 
 <p>Dichas expresiones equivalen a decir: <em>enmascara todas las versiones iguales o mayores a 9.3 del PostgreSQL</em>.</p>
 <p>Verifico...</p>
@@ -130,7 +127,6 @@
 <span class="err">[IP-] [M ] dev-db/postgresql-base-9.3.3:9.3</span>
 <span class="err">[IP-] [M ] dev-db/postgresql-server-9.3.3:9.3</span>
 </code></pre></div>
-
 
 <p>Ahora sí, puedo desinstalar la versión 9.3 e instalar la 9.2 sin temor que me la cambie en un futuro.</p>
                 </article>

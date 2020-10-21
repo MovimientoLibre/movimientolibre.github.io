@@ -105,28 +105,23 @@
 <div class="highlight"><pre><span></span><code><span class="err"># lspci | grep -i ethernet</span>
 </code></pre></div>
 
-
 <p>Averigue detalles, como la velocidad actual de la conexión con...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ethtool enp1s0</span>
 <span class="c1"># ethtool enp4s0</span>
 </code></pre></div>
 
-
 <p>También puede instalar <strong>lshw</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install lshw</span>
 </code></pre></div>
-
 
 <p>Y ejecutar...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># lshw -class network</span>
 </code></pre></div>
 
-
 <h3>OpenSSH para usar par de llaves</h3>
 <p>Copie la llave pública <strong>desde su equipo personal</strong> al servidor con el comando...</p>
 <div class="highlight"><pre><span></span><code><span class="n">$</span> <span class="n">ssh</span><span class="o">-</span><span class="k">copy</span><span class="o">-</span><span class="kt">id</span> <span class="o">-</span><span class="n">i</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">usuario</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">usuario</span><span class="mf">@192.168</span><span class="p">.</span><span class="n">n</span><span class="p">.</span><span class="n">m</span>
 </code></pre></div>
-
 
 <p>Por supesto, cambie <code>usuario</code> por su nombre de usuario y <code>192.168.0.n.m</code> por la dirección IP del nuevo servidor.</p>
 <p>Luego edite de nuevo <code>/etc/ssh/sshd_config</code> y cambie...</p>
@@ -140,12 +135,10 @@
 <span class="err">PasswordAuthentication no</span>
 </code></pre></div>
 
-
 <p><strong>Advertencia:</strong> <code>PasswordAuthentication no</code> deshabilita el acceso con usuario y contraseña.</p>
 <p>Reinicie el <em>daemon</em> para aplicar estos cambios.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl restart sshd</span>
 </code></pre></div>
-
 
 <h3>Desactivar Network Manager</h3>
 <p>Por defecto, <strong>Network Manager</strong> está activo, por lo que los dispositivos de red son configurados por sus operaciones.</p>
@@ -153,16 +146,13 @@
 <span class="err"># systemctl status NetworkManager</span>
 </code></pre></div>
 
-
 <p>Y el servicio <code>systemd-networkd</code> está deshabilitado.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl status systemd-networkd</span>
 </code></pre></div>
 
-
 <p>Tome nota de los dispositivos de red...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ip addr</span>
 </code></pre></div>
-
 
 <p>E identifique cuál está conectado con la red local y cuál será para Internet. Por ejemplo:</p>
 <ul>
@@ -173,11 +163,9 @@
 <div class="highlight"><pre><span></span><code><span class="err"># cd /etc/systemd/network/</span>
 </code></pre></div>
 
-
 <p>Cree el archivo de configuración...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano enp4s0.network</span>
 </code></pre></div>
-
 
 <p>Con este contenido que define su dirección IP, <em>puerta de acceso</em>, servidores DNS e <em>ip forward</em>...</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
@@ -191,12 +179,10 @@
 <span class="na">IPForward</span><span class="o">=</span><span class="s">yes</span>
 </code></pre></div>
 
-
 <p><strong>Nota:</strong> Usé los <a href="https://developers.google.com/speed/public-dns/">DNS públicos de Google</a>. Elija los de su preferencia.</p>
 <p>Cree el archivo de configuración...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano enp1s0.network</span>
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Match]</span>
@@ -207,7 +193,6 @@
 <span class="na">IPForward</span><span class="o">=</span><span class="s">yes</span>
 </code></pre></div>
 
-
 <p>Ahora deshabilite <strong>Network Manager</strong> y habilite <strong>systemd-networkd</strong></p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl disable NetworkManager</span>
 <span class="err"># systemctl disable ModemManager</span>
@@ -216,11 +201,9 @@
 <span class="err"># systemctl enable systemd-networkd</span>
 </code></pre></div>
 
-
 <h3>Apague el servidor</h3>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl poweroff</span>
 </code></pre></div>
-
 
 <p>Estando apagado los cables de red del modem a <code>enp4s0</code> y de <code>enp1s0</code> a su <em>switch</em> o <em>access point</em>.</p>
 <h3>Encienda el servidor</h3>
@@ -232,13 +215,11 @@
 <span class="err">  3 enp1s0           ether              routable    configured</span>
 </code></pre></div>
 
-
 <p>También revise...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># ip addr show enp1s0</span>
 <span class="err"># ip addr show enp4s0</span>
 <span class="err"># route -n</span>
 </code></pre></div>
-
 
 <h3>Continuación...</h3>
 <p><a href="https://movimientolibre.com/apuntes/fedora-server-28-parte-03/">Vaya a la parte 3, servicios DHCP y DNS</a>.</p>

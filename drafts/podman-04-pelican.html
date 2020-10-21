@@ -123,17 +123,14 @@
 <span class="n">CMD</span> <span class="n">pelican</span> <span class="o">--</span><span class="n">autoreload</span> <span class="o">--</span><span class="n">listen</span> <span class="o">--</span><span class="n">bind</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span>
 </code></pre></div>
 
-
 <h2>Arrancar contenedor</h2>
 <p>Construir la imagen de nombre "pelican_sitio_web"</p>
 <div class="highlight"><pre><span></span><code>$ podman build -t pelican_sitio_web:latest .
 </code></pre></div>
 
-
 <p>Arrancar un contenedor</p>
 <div class="highlight"><pre><span></span><code>$ podman run --rm -d -p <span class="m">8085</span>:8000 --name mi_pelican_sitio_web pelican_sitio_web:latest
 </code></pre></div>
-
 
 <p>Donde...</p>
 <ul>
@@ -145,16 +142,13 @@
 <div class="highlight"><pre><span></span><code><span class="c">http://127.0.0.1:8085</span>
 </code></pre></div>
 
-
 <p>Ver mapeo de puertos</p>
 <div class="highlight"><pre><span></span><code>$ podman port -l
 </code></pre></div>
 
-
 <p>Parar y eliminar el contenedor con</p>
 <div class="highlight"><pre><span></span><code>$ podman stop mi_pelican_sitio_web
 </code></pre></div>
-
 
 <h2>Arrancar el contenedor montando una ruta del equipo</h2>
 <p>Es posible montar de forma "viva" una ruta de nuestro equipo local en el contenedor. Los expertos en contenedores no recomiendan esta capacidad para el ámbito de producción ya que el contenedor pierde su "independencia".</p>

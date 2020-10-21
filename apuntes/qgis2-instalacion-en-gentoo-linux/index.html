@@ -106,26 +106,21 @@
 <div class="highlight"><pre><span></span><code><span class="err"># emerge layman</span>
 </code></pre></div>
 
-
 <p>Para listar los <em>laymans</em> que se pueden descargar.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># layman -L</span>
 </code></pre></div>
-
 
 <p>Agregue el <strong>Layman Sabayon</strong>, que es el que contiene el <strong>QGIS 2.0</strong>. Esta instrucción baja el repositorio de Sabayón vía <strong>git</strong> que contiene 56 MB aproximadamente.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># layman -a sabayon</span>
 </code></pre></div>
 
-
 <p>Si es el primer <em>layman</em> que agrega, entonces agregue esta línea a <code>/etc/portage/make.conf</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">source</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">layman</span><span class="o">/</span><span class="n">make</span><span class="o">.</span><span class="n">conf</span>
 </code></pre></div>
 
-
 <p>Si tiene instalado <strong>eix</strong>, actualize la base de datos de este consultor de software. Observe que toma información del <em>layman sabayon</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># eix-update</span>
 </code></pre></div>
-
 
 <h3>Use Python 2.7</h3>
 <p>Debe tener Python 2.7 como versión por defecto.</p>
@@ -133,17 +128,14 @@
 <span class="err">python2.7</span>
 </code></pre></div>
 
-
 <p>Si tiene habilitada la versión 3, cámbiela con este comando</p>
 <div class="highlight"><pre><span></span><code><span class="err"># eselect python set python2.7</span>
 </code></pre></div>
-
 
 <h3>Configuraciones previas a la instalación</h3>
 <p>Edite <code>/etc/portage/package.use</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/portage/package.use</span>
 </code></pre></div>
-
 
 <p>Configure los <em>USE flags</em> para las dependencias. En mi caso ha tenido que deshabilitar el soporte de algunos lenguajes para tener éxito en la compilación.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># Desactivo estos flags para instalar PostGIS</span>
@@ -151,11 +143,9 @@
 <span class="err">sci-libs/gdal -pdf -ruby -java geos</span>
 </code></pre></div>
 
-
 <p>Luego edite <code>/etc/portage/package.keywords</code></p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/portage/package.keywords</span>
 </code></pre></div>
-
 
 <p>Y agregue estas líneas que le permitirán instalar la última versión de QGIS.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># QGIS</span>
@@ -163,12 +153,10 @@
 <span class="err">sci-libs/gdal</span>
 </code></pre></div>
 
-
 <h3>Instale</h3>
 <p>Verifique la versión y que los <em>USE flags</em> sean los correctos.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pv qgis</span>
 </code></pre></div>
-
 
 <p>Instale.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge qgis</span>

@@ -105,17 +105,14 @@
 <div class="highlight"><pre><span></span><code>$ podman pod --help
 </code></pre></div>
 
-
 <h2>Crear un pod</h2>
 <p>En este ejercio vamos a crar un <em>pod</em> con el nombre "mi_inventario"</p>
 <div class="highlight"><pre><span></span><code>$ podman pod create --name mi_inventario
 </code></pre></div>
 
-
 <p>Para listar los <em>pods</em> ejecute</p>
 <div class="highlight"><pre><span></span><code>$ podman pod list
 </code></pre></div>
-
 
 <h2>Agregar y arrancar un contenedor al pod</h2>
 <p>Descargue la imagen de MySQL</p>
@@ -123,11 +120,9 @@
 $ podman images
 </code></pre></div>
 
-
 <p>Antes de hacer el contenedor con MySQL debemos crear un archivo de configuración</p>
 <div class="highlight"><pre><span></span><code>$ nano .env
 </code></pre></div>
-
 
 <p>Donde deben declararse las variables que definen la contraseña <em>root</em> de MySQL, un primer usuario, su contraseña y nombre de la base de datos; cambie las contraseñas a su gusto:</p>
 <div class="highlight"><pre><span></span><code><span class="err">MYSQL_ROOT_PASSWORD=XXXXXXXXXXXXX</span>
@@ -136,17 +131,14 @@ $ podman images
 <span class="err">MYSQL_DATABASE=inventario</span>
 </code></pre></div>
 
-
 <p>Con esta orden estará arrancando el contenedor MySQL con el nombre "mi_inventario_db" y agregándolo al <em>pod</em> "mi_inventario"</p>
 <div class="highlight"><pre><span></span><code>$ podman run -d --pod mi_inventario --env-file .env --name mi_inventario_db mysql:8
 </code></pre></div>
-
 
 <p>El parámetro <code>-d</code> sirve para "mandarlo al fondo" y que nos devuelva el <em>prompt</em></p>
 <p>Liste los <em>pods</em> y los contenedores con</p>
 <div class="highlight"><pre><span></span><code>$ podman ps -a --pod
 </code></pre></div>
-
 
 <p>Pare y elimine lo hecho a este momento con</p>
 <div class="highlight"><pre><span></span><code>$ podman stop mi_inventario_db
@@ -154,44 +146,36 @@ $ podman container rm mi_inventario_db
 $ podman pod rm mi_inventario
 </code></pre></div>
 
-
 <h2>Agregar y arrancar dos contenedores al pod</h2>
 <p>Ahora descargue la imagen de PhpMyAdmin</p>
 <div class="highlight"><pre><span></span><code>$ podman pull phpmyadmin/phpmyadmin:latest
 $ podman images
 </code></pre></div>
 
-
 <p>Llegamos al punto de usar la cualidad de Podman de "entubar" puertos de un <em>pod</em>; en específico, necesitamos que el puerto 80 de PhpMyAdmin lo podamos acceder en el navegador de internet.</p>
 <p>Vuelva a crear el <em>pod</em> dirigiendo su puerto 80 al puerto 8085 <em>localhost</em></p>
 <div class="highlight"><pre><span></span><code>$ podman pod create --name mi_inventario -p <span class="m">8085</span>:80
 </code></pre></div>
 
-
 <p>Revise listando los <em>pods</em> y los contenedores</p>
 <div class="highlight"><pre><span></span><code>$ podman ps -a --pod
 </code></pre></div>
-
 
 <p>Agregue y arranque el contenedor "mi_inventario_db" con MySQL</p>
 <div class="highlight"><pre><span></span><code>$ podman run -d --pod mi_inventario --env-file .env --name mi_inventario_db mysql:8
 </code></pre></div>
 
-
 <p>Agregue y arranque el contenedor "mi_inventario_phpmyadmin" con PhpMyAdmin</p>
 <div class="highlight"><pre><span></span><code>$ podman run -d --pod mi_inventario --env-file .env -e <span class="nv">PMA_HOST</span><span class="o">=</span><span class="m">127</span>.0.0.1 --name mi_inventario_phpmyadmin phpmyadmin:latest
 </code></pre></div>
-
 
 <p>Revise de nuevo</p>
 <div class="highlight"><pre><span></span><code>$ podman ps -a --pod
 </code></pre></div>
 
-
 <p>En su navegador de internet acceda a PhpMyAdmin con <em>root</em> y la contraseña que haya puesto en <em>.env</em></p>
 <div class="highlight"><pre><span></span><code><span class="c">http://127.0.0.1:8085</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="phpmyadmin.jpg" alt="PhpMyAdmin"></p>
 <h2>Órdenes adicionales</h2>
@@ -199,21 +183,17 @@ $ podman images
 <div class="highlight"><pre><span></span><code>$ podman pod pause mi_inventario
 </code></pre></div>
 
-
 <p>Reanudar</p>
 <div class="highlight"><pre><span></span><code>$ podman pod unpause mi_inventario
 </code></pre></div>
-
 
 <p>Parar</p>
 <div class="highlight"><pre><span></span><code>$ podman pod stop mi_inventario
 </code></pre></div>
 
-
 <p>Eliminar el pod "mi_inventario" y todos sus contenedores</p>
 <div class="highlight"><pre><span></span><code>$ podman pod rm mi_inventario
 </code></pre></div>
-
 
 <h2>Navegue por la serie de apuntes de Podman</h2>
 <ol>

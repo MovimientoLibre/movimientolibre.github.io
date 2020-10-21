@@ -115,13 +115,11 @@
 <span class="err">EndSection</span>
 </code></pre></div>
 
-
 <p>Las X's correctamente configuradas <em>deberán entregar un código</em> cuando sea presionado un botón multimedia.</p>
 <h3>Descubriendo los <em>scancodes</em></h3>
 <p>Vamos a ejecutar el programa <em>xev</em>, que es una utilería de las X's. Inicie su sesión como un usuario normal en KDE, abra una terminal y ejecute el comando:</p>
 <div class="highlight"><pre><span></span><code>$ xev
 </code></pre></div>
-
 
 <p>Este programa muestra una pequeña ventana blanca y en la terminal se pueden ver los textos de salida. Mientras corra, estará atento a cualquier tecla o movimiento del ratón, mandando información del evento a la terminal.</p>
 <p>Coloque el puntero sobre la ventana blanca del <em>xev</em>, vaya presionando uno por uno los botones multimedia y tomando nota de los <em>keycodes</em>.</p>
@@ -141,7 +139,6 @@
     <span class="n">XFilterEvent</span> <span class="k">returns</span><span class="p">:</span> <span class="k">False</span>
 </code></pre></div>
 
-
 <p>Observe el tercer renglón de cada bloque, el botón de <em>Play/Pausa</em> tiene el <em>keycode 162</em>, pero no hay un <em>caracter</em> asociado al mismo por que muestra <em>NoSymbol</em>.</p>
 <p>Cuando el botón nos da su <em>keycode</em> pero no tiene un <em>caracter</em> asociado, debemos configurar el <em>keycode</em> al <em>caracter</em> que creamos conveniente. Esto es justo lo que haremos en la siguiente sección.</p>
 <h3>Estableciendo los caracteres para los <em>keycode</em> no definidos.</h3>
@@ -155,12 +152,10 @@
 <span class="err">keycode 164 = XF86AudioStop</span>
 </code></pre></div>
 
-
 <p>Procedemos a probar si esta configuración es correcta. Para cargar esta configuración y revisarla con <em>xev</em> ejecute en una terminal:</p>
 <div class="highlight"><pre><span></span><code>$ xmodmap ~/.xmodmaprc
 $ xev
 </code></pre></div>
-
 
 <p>Al presionar de nuevo el botón de <em>Play/Pausa</em> vemos que el <em>caracter</em> está correctamente asignado:</p>
 <div class="highlight"><pre><span></span><code><span class="n">KeyPress</span> <span class="n">event</span><span class="p">,</span> <span class="nb">serial</span> <span class="mi">31</span><span class="p">,</span> <span class="n">synthetic</span> <span class="k">NO</span><span class="p">,</span> <span class="n">window</span> <span class="mi">0</span><span class="n">x2400001</span><span class="p">,</span>
@@ -177,7 +172,6 @@ $ xev
     <span class="n">XFilterEvent</span> <span class="k">returns</span><span class="p">:</span> <span class="k">False</span>
 </code></pre></div>
 
-
 <h3>Haciendo que la configuración se cargue al iniciar la sesión.</h3>
 <p>En este punto tenemos las asiganciones <em>keycode</em> a <em>caracter</em>, pero debemos cargarlas manualmente cada vez que encendemos el equipo.</p>
 <p>Para no ser invasivos al sistema operativo, vamos a crear un <em>Bash script</em> que ejecute el comando <em>xmodmap</em> y cargue la configuración cada vez que iniciamos la sesión de usuario. KDE tiene un directorio <em>Autostart</em> para cada usuario.</p>
@@ -186,19 +180,16 @@ $ xev
 $ nano -w botones-multimedia.sh
 </code></pre></div>
 
-
 <p>El script <em>botones-multimedia.sh</em> simplemente va ejecutar el programa <em>xmodmap</em> con un parámetro, el archivo de configuración que hemos creado:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 xmodmap ~/.xmodmaprc
 </code></pre></div>
 </td></tr></table>
-
 <p>Guarde los cambios y salga del editor. Haga este script ejecutable con el comando <em>chmod</em>:</p>
 <div class="highlight"><pre><span></span><code>$ chmod a+x botones-multimedia.sh
 $ <span class="nb">exit</span>
 </code></pre></div>
-
 
 <p>Cierre su sesión del KDE y vuelva a entrar. Abra una nueva terminal y ejecute <em>xev</em> de nuevo para presionar cada botón multimedia y revisar que todos ellos tengan su caracter correcto.</p>
 <h3>Descubriendo los comandos DCOP para Amarok</h3>
@@ -207,7 +198,6 @@ $ <span class="nb">exit</span>
 <div class="highlight"><pre><span></span><code>$ dcop amarok player
 </code></pre></div>
 
-
 <p>Nos entregará una larga lista de operadores. Tome nota de los que quiera controlar con los botones multimedia. En mi equipo he elegido los siguientes:</p>
 <div class="highlight"><pre><span></span><code><span class="err">void next()</span>
 <span class="err">void playPause()</span>
@@ -215,14 +205,12 @@ $ <span class="nb">exit</span>
 <span class="err">void stop()</span>
 </code></pre></div>
 
-
 <p>Ejecute Amarok y pruebe cada comando DCOP (observe que van sin paréntesis):</p>
 <div class="highlight"><pre><span></span><code>$ dcop amarok player next
 $ dcop amarok player playPause
 $ dcop amarok player prev
 $ dcop amarok player stop
 </code></pre></div>
-
 
 <p>Tome nota de los comandos DCOP para Amarok que quiera configurar para sus botones multimedia.</p>
 <h3>Descubriendo los comandos DCOP para kMix</h3>
@@ -233,29 +221,24 @@ $ dcop amarok player stop
 <div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0
 </code></pre></div>
 
-
 <p>De entre todos elijo los tres siguientes. Como verán, son los que me incrementarán, decrementarán y silenciarán los volúmenes.</p>
 <div class="highlight"><pre><span></span><code><span class="err">void increaseVolume(int deviceidx)</span>
 <span class="err">void decreaseVolume(int deviceidx)</span>
 <span class="err">void toggleMute(int deviceidx)</span>
 </code></pre></div>
 
-
 <p>Cada uno necesita como parámetro un número entero que se refiere al <em>control</em> a alterar. En mi caso, las bocinas principales son 0 y las de los bajos son 1.</p>
 <p>Entonces, para incrementar el volumen ejecuto:</p>
 <div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0 increaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 increaseVolume <span class="m">1</span>
 </code></pre></div>
 
-
 <p>Para decrementar el volumen:</p>
 <div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0 decreaseVolume <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 decreaseVolume <span class="m">1</span>
 </code></pre></div>
 
-
 <p>Y para silenciar/des-silenciar:</p>
 <div class="highlight"><pre><span></span><code>$ dcop kmix Mixer0 toggleMute <span class="m">0</span><span class="p">;</span> dcop kmix Mixer0 toggleMute <span class="m">1</span>
 </code></pre></div>
-
 
 <h3>Creando las acciones para Amarok.</h3>
 <p>Ejecute <em>Centro de control</em>, vaya al apartado <em>Regional y Accesibilidad</em>, luego a <em>Introducir acciones</em>.</p>

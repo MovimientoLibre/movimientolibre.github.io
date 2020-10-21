@@ -106,7 +106,6 @@
 <div class="highlight"><pre><span></span><code>$ sudo nano /etc/yum.repos.d/webmin.repo
 </code></pre></div>
 
-
 <p>Con este contenido</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Webmin]</span>
 <span class="na">name</span><span class="o">=</span><span class="s">Webmin Distribution Neutral</span>
@@ -116,19 +115,16 @@
 <span class="na">gpgkey</span><span class="o">=</span><span class="s">http://www.webmin.com/jcameron-key.asc</span>
 </code></pre></div>
 
-
 <p>Ejecutar</p>
 <div class="highlight"><pre><span></span><code>$ sudo dnf update
 $ sudo dnf install webmin
 </code></pre></div>
-
 
 <p>Al terminar da este mensaje</p>
 <div class="highlight"><pre><span></span><code><span class="err">Webmin install complete.</span>
 <span class="err">You can now login to https://SERVIDOR:10000/</span>
 <span class="err">as root with your root password.</span>
 </code></pre></div>
-
 
 <h2>Configurar el muro de fuego</h2>
 <p>Sigue configurar el <em>firewall</em> para que se abra el puerto 10000.</p>
@@ -138,17 +134,14 @@ FedoraServer
     interfaces: enp1s0
 </code></pre></div>
 
-
 <p>Revise los los servicios, por defecto son...</p>
 <div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --zone<span class="o">=</span>FedoraServer --list-services
 cockpit dhcpv6-client ssh
 </code></pre></div>
 
-
 <p>Por defecto no hay puertos</p>
 <div class="highlight"><pre><span></span><code>$ sudo firewall-cmd --zone<span class="o">=</span>FedoraServer --list-ports
 </code></pre></div>
-
 
 <p>Agregue el puerto 10000</p>
 <div class="highlight"><pre><span></span><code><span class="o">$</span> <span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">zone</span><span class="o">=</span><span class="n">FedoraServer</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">port</span><span class="o">=</span><span class="mi">10000</span><span class="o">/</span><span class="n">tcp</span> <span class="o">--</span><span class="n">permanent</span>
@@ -156,11 +149,9 @@ cockpit dhcpv6-client ssh
 <span class="o">$</span> <span class="n">sudo</span> <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">zone</span><span class="o">=</span><span class="n">FedoraServer</span> <span class="o">--</span><span class="n">list</span><span class="o">-</span><span class="n">ports</span>
 </code></pre></div>
 
-
 <p>Ingresar con el navegador de internet a...</p>
 <div class="highlight"><pre><span></span><code><span class="c">https://SERVIDOR:10000/</span>
 </code></pre></div>
-
 
 <h2>Agregar un usuario de webmin por la terminal</h2>
 <p>Como desde la instalación de Fedora Server bloqueo al usuario root es necesario crear manualmente un primer usuario de Webmin</p>
@@ -168,37 +159,30 @@ cockpit dhcpv6-client ssh
 <div class="highlight"><pre><span></span><code>$ sudo nano /etc/webmin/miniserv.users
 </code></pre></div>
 
-
 <p>Agregar una línea con su usuario, por ejemplo 'guivaloz'</p>
 <div class="highlight"><pre><span></span><code><span class="n">guivaloz</span><span class="o">:</span><span class="n">x</span><span class="o">:</span><span class="mi">0</span>
 </code></pre></div>
 
-
 <p>Editar</p>
 <div class="highlight"><pre><span></span><code>$ sudo nano /etc/webmin/webmin.acl
 </code></pre></div>
-
 
 <p>Copie y pegue la línea de root, cambie solo el usuario</p>
 <div class="highlight"><pre><span></span><code><span class="n">root</span><span class="o">:</span><span class="n">access</span> <span class="n">privileges</span><span class="o">...</span>
 <span class="n">guivaloz</span><span class="o">:</span><span class="n">access</span> <span class="n">privileges</span><span class="o">...</span>
 </code></pre></div>
 
-
 <p>Cambiar la contraseña del usuario 'guivaloz' por 'PA555W0RD'</p>
 <div class="highlight"><pre><span></span><code>$ sudo /usr/libexec/webmin/changepass.pl /etc/webmin guivaloz PA555W0RD
 </code></pre></div>
-
 
 <p>No he encontrado una orden para recargar la configuración, así que reinicio el servidor</p>
 <div class="highlight"><pre><span></span><code>$ sudo systemctl reboot
 </code></pre></div>
 
-
 <p>De nueva cuenta, ingresar con el navegador de internet a...</p>
 <div class="highlight"><pre><span></span><code><span class="c">https://SERVIDOR:10000/</span>
 </code></pre></div>
-
 
 <p>Pruebe su usuario y contraseña.</p>
 <p><img class="img-fluid" src="webmin-dashboard.png" alt="Webmin Dashboard"></p>

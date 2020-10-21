@@ -104,11 +104,9 @@
 <div class="highlight"><pre><span></span><code><span class="err"># dnf upgrade</span>
 </code></pre></div>
 
-
 <p>Y reiniciamos...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># systemctl reboot</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="libreoffice.jpg" alt="LibreOffice"></p>
 <p>Instale LibreOffice y los programas cliente para PostgreSQL...</p>
@@ -117,7 +115,6 @@
 <span class="err"># dnf install libreoffice-postgresql</span>
 <span class="err"># dnf install postgresql</span>
 </code></pre></div>
-
 
 <p>Instale LaTeX...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf search texlive-scheme</span>
@@ -129,12 +126,10 @@
 <span class="err"># fmtutil --all -sys</span>
 </code></pre></div>
 
-
 <p>Instale Python...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf group install --with-optional &quot;Python Classroom&quot;</span>
 <span class="err"># dnf group install --with-optional &quot;Python Science&quot;</span>
 </code></pre></div>
-
 
 <p>Instale utilerías diversas...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install system-storage-manager</span>
@@ -143,7 +138,6 @@
 <span class="err"># dnf install hwinfo</span>
 </code></pre></div>
 
-
 <p>Instale software de KDE...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install kate</span>
 <span class="err"># dnf install filelight</span>
@@ -151,27 +145,22 @@
 <span class="err"># dnf install krename</span>
 </code></pre></div>
 
-
 <p>Instale soporte para impresoras HP...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install hplip</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="gimp.jpg" alt="GIMP"></p>
 <p>Instale GIMP...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install gimp</span>
 </code></pre></div>
 
-
 <p>Instale Inkscape...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install inkscape</span>
 </code></pre></div>
 
-
 <p>Instale temas de decoración de ventanas de GTK...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install clearlooks-phenix-gtk2-theme clearlooks-phenix-gtk3-theme</span>
 </code></pre></div>
-
 
 <p>Instale tipografías...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install liberation-fonts</span>
@@ -179,17 +168,14 @@
 <span class="err"># dnf install terminus-fonts</span>
 </code></pre></div>
 
-
 <p>Instale el lector y convertidor de libros electrónicos Calibre...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install calibre</span>
 </code></pre></div>
-
 
 <p>Prepare los repositorios adicionales...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install fedora-workstation-repositories</span>
 <span class="err"># dnf repolist --all</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="google-chrome.jpg" alt="Google Chrome"></p>
 <p>Instale Google Chrome y sus tipografías...</p>
@@ -201,13 +187,11 @@
 <span class="err"># dnf install google-roboto-fonts google-roboto-mono-fonts google-roboto-condensed-fonts</span>
 </code></pre></div>
 
-
 <p>Configure los repositorios RPM Fusion...</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \</span>
   <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download1</span><span class="o">.</span><span class="n">rpmfusion</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">nonfree</span><span class="o">/</span><span class="n">fedora</span><span class="o">/</span><span class="n">rpmfusion</span><span class="o">-</span><span class="n">nonfree</span><span class="o">-</span><span class="n">release</span><span class="o">-$</span><span class="p">(</span><span class="n">rpm</span> <span class="o">-</span><span class="n">E</span> <span class="o">%</span><span class="n">fedora</span><span class="p">)</span><span class="o">.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span>
 <span class="c1"># dnf update</span>
 </code></pre></div>
-
 
 <p>Para mi equipo, requiero el controlador <em>anterior</em> y binario NVIDIA...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf search nvidia-390</span>
@@ -215,7 +199,6 @@
 <span class="err"># nano /etc/X11/xorg.conf.d/00-monitor.conf</span>
 <span class="err"># systemctl reboot</span>
 </code></pre></div>
-
 
 <p>Instale más programas de RPM Fusion...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install fuse-exfat exfat-utils</span>
@@ -228,12 +211,10 @@
 <span class="err"># dnf groupupdate Multimedia</span>
 </code></pre></div>
 
-
 <p>Para usar contenedores, instale Docker, después <a href="https://movimientolibre.com/apuntes/fedora-docker-configuracion/">configure</a>...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf install docker</span>
 <span class="err"># dnf install docker-compose</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="sublime-text.jpg" alt="Sublime Text"></p>
 <p>Instale Sublime Text a partir de su propio repositorio...</p>
@@ -243,17 +224,14 @@
 <span class="c1"># dnf install sublime-text</span>
 </code></pre></div>
 
-
 <p>Instale Libvirtd...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf group install &#39;Virtualización&#39; --with-optional</span>
 </code></pre></div>
-
 
 <p>Instale Steam, a partir de RPM Fusion...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dnf config-manager --set-enabled rpmfusion-nonfree-steam</span>
 <span class="err"># dnf install steam</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="vlc.jpg" alt="VLC"></p>
 <p>Instale VLC, con complementos desde RPM Fusion...</p>

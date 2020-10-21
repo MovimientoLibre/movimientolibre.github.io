@@ -118,28 +118,23 @@
 <span class="err"># aptitude install apache2 libapache2-mod-php4 php4-cgi mysql-server-4.1 php4-mysql imagemagick tetex-bin tetex-extra subversion</span>
 </code></pre></div>
 
-
 <h3>Cree el usuario y la base de datos para el FreeMED en MySQL</h3>
 <p>Si necesita establecer la contraseña del usuario root en MySQL:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mysqladmin -u root password ROOTPASSWD</span>
 </code></pre></div>
-
 
 <p>Ingrese a MySQL como root:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mysql -u root -p</span>
 <span class="err">Enter password:******</span>
 </code></pre></div>
 
-
 <p>Otorgue (y en consecencia se creará el usuario) a freemed los privilegios totales en esa base de datos:</p>
 <div class="highlight"><pre><span></span><code><span class="err">&gt; GRANT ALL ON freemed.* TO freemed@localhost IDENTIFIED BY &#39;FREEMEDPASSWD&#39;;</span>
 </code></pre></div>
 
-
 <p>Salga de MySQL con:</p>
 <div class="highlight"><pre><span></span><code><span class="err">&gt; EXIT</span>
 </code></pre></div>
-
 
 <h3>Baje el FreeMED</h3>
 <p>Debe instalarse FreeMED en /usr/share/freemed. Tenga paciencia con el comando <em>svn</em>, ya que puede tardar varios minutos en mostrar actividad.</p>
@@ -148,17 +143,14 @@
 <span class="err"># svn co http://svn.freemedsoftware.org/freemed/branches/0.8.x freemed</span>
 </code></pre></div>
 
-
 <p>Cambie los permisos de todos los archivos del FreeMED al usuario del Apache:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># chown -Rf www-data:www-data freemed</span>
 </code></pre></div>
-
 
 <h3>Configure el Apache</h3>
 <p>Edite la directiva DirectoryIndex de Apache para que tome por defecto primero a index.php y luego a los demás:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/apache2/mods-available/dir.conf</span>
 </code></pre></div>
-
 
 <p>Contenido:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;IfModule</span> <span class="err">mod_dir.c</span><span class="nt">&gt;</span>
@@ -166,11 +158,9 @@
 <span class="nt">&lt;/IfModule&gt;</span>
 </code></pre></div>
 
-
 <p>Necesitamos declararle al Apache dónde se encuentra el sistema FreeMED, así que modificaremos su configuración:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/apache2/sites-available/default</span>
 </code></pre></div>
-
 
 <p>A continuación muestro parte del contenido en <em>default</em> para que usted haga las modificaciones necesarias, cuidando que no se afecten otros sitios o aplicaciones web que estén también en su servidor:</p>
 <div class="highlight"><pre><span></span><code>NameVirtualHost *
@@ -195,16 +185,13 @@
 <span class="nt">&lt;/VirtualHost&gt;</span>
 </code></pre></div>
 
-
 <p>Reinicie el Apache para que se apliquen los cambios que hemos hecho</p>
 <div class="highlight"><pre><span></span><code><span class="err"># /etc/init.d/apache2 restart</span>
 </code></pre></div>
 
-
 <h3>Configure FreeMed</h3>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /usr/share/freemed/lib/settings.php</span>
 </code></pre></div>
-
 
 <p>Modifique los siguientes comandos:</p>
 <div class="highlight"><pre><span></span><code><span class="err">define (&#39;DB_HOST&#39;, &quot;localhost&quot;);          // database (SQL) host location</span>
@@ -215,22 +202,18 @@
 <span class="err">define (&#39;BASE_URL&#39;, &#39;/freemed&#39;);          // offset (i.e. http://here/package)</span>
 </code></pre></div>
 
-
 <p>Si el servidor no tiene instalada la interfaz gráfica, y por lo tanto, no tiene instalado un navegador de internet, necesitará autorizar que el script de instalación sea ejecutado desde otra estación de trabajo modificando la siguiente línea, use la IP del equipo donde entrará por primera vez a FreeMED:</p>
 <div class="highlight"><pre><span></span><code><span class="err">define (&#39;INIT_ADDR&#39;,&quot;192.168.1.66&quot;);  // this is the only IP address that can run the init wizard...</span>
 </code></pre></div>
-
 
 <h3>Hostname</h3>
 <p>Como uso un modem 2Wire de Infinitum que es un ruteador y un ligero DNS, necesito que se pueda accesar a la aplicación web escribiendo http://freemed desde cualquier estación de trabajo. Modifique el archivo de configuración del dhclient3:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/dhcp3/dhclient.conf</span>
 </code></pre></div>
 
-
 <p>Y modifique esta línea:</p>
 <div class="highlight"><pre><span></span><code><span class="err">send host-name &quot;freemed&quot;</span>
 </code></pre></div>
-
 
 <p>Y reinicie el servidor. Entre a la página <em>home</em> del módem 2Wire para confirmar que el <em>hostname</em> del servidor sea freemed.</p>
 <h3>Script de instalación</h3>

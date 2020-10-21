@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/</loc>
-<lastmod>2020-10-11T22:06:19-00:00</lastmod>
+<lastmod>2020-10-21T05:23:50-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -63,6 +63,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <loc>https://movimientolibre.com/portafolio/soluciones/</loc>
 <lastmod>2019-04-18T14:32:00-05:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>1</priority>
+</url>
+
+<url>
+<loc>https://movimientolibre.com/apuntes/fedora-workstation-33/</loc>
+<lastmod>2020-10-21T05:20:00-05:00</lastmod>
+<changefreq>weekly</changefreq>
 <priority>1</priority>
 </url>
 
@@ -1013,7 +1020,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://movimientolibre.com/category/apuntes.html</loc>
-<lastmod>2020-10-11T08:56:00-06:37</lastmod>
+<lastmod>2020-10-21T05:20:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1033,6 +1040,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://movimientolibre.com/tag/fedora.html</loc>
+<lastmod>2020-10-21T05:20:00-06:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://movimientolibre.com/tag/gnu-linux.html</loc>
+<lastmod>2020-10-21T05:20:00-06:37</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://movimientolibre.com/tag/contenedores.html</loc>
 <lastmod>2020-10-11T08:56:00-06:37</lastmod>
 <changefreq>daily</changefreq>
@@ -1047,22 +1068,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://movimientolibre.com/tag/fedora.html</loc>
-<lastmod>2020-07-30T14:30:00-06:37</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>https://movimientolibre.com/tag/politica.html</loc>
 <lastmod>2019-08-30T22:20:00-06:37</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://movimientolibre.com/tag/gnu-linux.html</loc>
-<lastmod>2019-08-25T16:22:00-06:37</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

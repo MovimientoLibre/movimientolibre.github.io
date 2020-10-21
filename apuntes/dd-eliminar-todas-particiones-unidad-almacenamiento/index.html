@@ -112,12 +112,10 @@
 <div class="highlight"><pre><span></span><code><span class="err"># fdisk -l /dev/sdX</span>
 </code></pre></div>
 
-
 <p>Identifíquelo por su tamaño y particiones existentes. Revise de nuevo, un par de veces, no está demás ser doblemente cuidadosos.</p>
 <p>Para eliminar todas las particiones, ejecute el comando <code>dd</code> cambiando <code>/dev/sdX</code> por la <strong>ruta que identifica al dispositivo</strong> y con los parámetros siguientes...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># dd if=/dev/zero of=/dev/sdX bs=512 count=1</span>
 </code></pre></div>
-
 
 <p>Verifique que se hayan eliminado las particiones...</p>
 <div class="highlight"><pre><span></span><code><span class="err"># fdisk -l /dev/sdX</span>

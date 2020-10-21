@@ -113,13 +113,11 @@
 $ <span class="nb">cd</span> apache-self-signed-cert
 </code></pre></div>
 
-
 <p>Ejecute el siguiente comando <strong>openssl</strong> reemplazando el texto <em>SERVIDORSISTEMA</em> por algo que identifique el servidor y/o nombre del sistema o sitio:</p>
 <div class="highlight"><pre><span></span><code>$ openssl req -x509 -nodes -days <span class="m">1460</span> -newkey rsa:2048 <span class="se">\</span>
   -keyout SERVIDORSISTEMA.key <span class="se">\</span>
   -out SERVIDORSISTEMA.crt
 </code></pre></div>
-
 
 <p>Este programa le preguntará datos importantes que ayudarán a identificar el certificado. En particular en <em>common name</em> use el nombre de domino completo del servidor.</p>
 <div class="highlight"><pre><span></span><code><span class="n">Country</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="n">letter</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="o">[</span><span class="n">AU</span><span class="o">]</span><span class="err">:</span><span class="w"> </span><span class="o">**</span><span class="w"></span>
@@ -131,22 +129,18 @@ $ <span class="nb">cd</span> apache-self-signed-cert
 <span class="n">Email</span><span class="w"> </span><span class="n">Address</span><span class="w"> </span><span class="err">[]:</span><span class="w"> </span><span class="n">webmaster</span><span class="nv">@servidor</span><span class="p">.</span><span class="n">com</span><span class="w"></span>
 </code></pre></div>
 
-
 <p>Copie los archivos creados al directorio donde <strong>Apache</strong> espere encontrarlos. Lea la documentación de su distribución de <strong>GNU/Linux</strong> porque puede ser distinta a la que muestro a continuación que es para <a href="http://gentoo.org/">Gentoo Linux</a>:</p>
 <div class="highlight"><pre><span></span><code>$ sudo cp * /etc/ssl/apache2/
 </code></pre></div>
-
 
 <p>Cambie los permisos de estos archivos como lo indican estos comandos:</p>
 <div class="highlight"><pre><span></span><code>$ sudo chmod <span class="m">444</span> /etc/ssl/apache2/SERVIDORSISTEMA.crt
 $ sudo chmod <span class="m">400</span> /etc/ssl/apache2/SERVIDORSISTEMA.key
 </code></pre></div>
 
-
 <p>Configure el sitio o sistema web en <strong>Apache</strong> para que haga uso del cifrado <strong>SSL</strong> creando un archivo <strong>conf</strong>. En <a href="http://gentoo.org/">Gentoo Linux</a> se usa el directorio <code>/etc/apache2/vhosts.d</code>. Consulte la documentación de su <em>distro</em> para hacerlo de la forma correcta.</p>
 <div class="highlight"><pre><span></span><code>$ sudo nano /etc/apache2/vhosts.d/0443_https.conf
 </code></pre></div>
-
 
 <p>A continuación sigue una muestra del contenido de <code>0443_https.conf</code> que deberá de ajustar a sus necesidades:</p>
 <div class="highlight"><pre><span></span><code># Escuchar el puerto 443
@@ -200,21 +194,17 @@ NameVirtualHost *:443
 <span class="nt">&lt;/VirtualHost&gt;</span>
 </code></pre></div>
 
-
 <p>La instalación de <strong>Apache</strong> en <a href="http://gentoo.org/">Gentoo Linux</a> deja por defecto el <strong>SSL</strong> deshabilitado. Así que hay que cambiar el archivo de configuración de arranque:</p>
 <div class="highlight"><pre><span></span><code>$ sudo nano /etc/conf.d/apache2
 </code></pre></div>
-
 
 <p>Ubique la línea que define el valor <code>APACHE2_OPTS</code> y agregue <code>-D SSL</code>. Por ejemplo, para declarar el uso de <strong>PHP 5</strong> y de <strong>SSL</strong> la línea debe ser:</p>
 <div class="highlight"><pre><span></span><code><span class="err">APACHE2_OPTS=&quot;-D SSL -D PHP5&quot;</span>
 </code></pre></div>
 
-
 <p>Guarde los cambios realizados en el archivo. Luego, arranque o reinicie el <em>daemon</em> de <strong>Apache</strong> para aplicarlos.</p>
 <div class="highlight"><pre><span></span><code>$ sudo /etc/init.d/apache2 restart
 </code></pre></div>
-
 
 <p>Verifique que el puerto 443 esté abierto y ejecute su navegador de internet consultando la URL <code>https://localhost</code> para comprobar que funcione. No deje de revisar su <strong>muro de fuego</strong> para tener abierto el puerto 443 si necesita acceder desde otros equipos por red.</p>
 <h3>Referencias</h3>

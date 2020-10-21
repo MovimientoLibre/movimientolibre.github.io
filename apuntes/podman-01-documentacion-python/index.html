@@ -106,16 +106,13 @@
 $ <span class="nb">cd</span> podman-01-documentacion-python
 </code></pre></div>
 
-
 <p>Visite <a href="https://docs.python.org/3/download.html">Download Python 3 Documentation</a> y descargue el archivo comprimido que tiene todos los archivos HTML empacados en .tar.bz2. Al momento de escribir esto se encuentra la versión 3.9.0</p>
 <div class="highlight"><pre><span></span><code>$ wget https://docs.python.org/3/archives/python-3.9.0-docs-html.tar.bz2
 </code></pre></div>
 
-
 <p>Crear el archivo <code>Dockerfile</code></p>
 <div class="highlight"><pre><span></span><code>$ nano Dockerfile
 </code></pre></div>
-
 
 <p>Con este contenido...</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mi">3</span><span class="p">.</span><span class="mi">9</span><span class="o">-</span><span class="n">alpine</span>
@@ -135,33 +132,27 @@ $ <span class="nb">cd</span> podman-01-documentacion-python
 <span class="n">CMD</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">http</span><span class="p">.</span><span class="n">server</span> <span class="mi">8000</span>
 </code></pre></div>
 
-
 <p>Descargar la imagen <code>python:3.9-alpine</code></p>
 <div class="highlight"><pre><span></span><code>$ podman pull python:3.9-alpine
 $ podman images
 </code></pre></div>
 
-
 <p>Construir una imagen con nombre python_docs en su versión 3.9.0</p>
 <div class="highlight"><pre><span></span><code>$ podman build -t python_docs:3.9.0 .
 </code></pre></div>
-
 
 <p>Correr el contenedor, que se autodestruya, mandar al fondo, canalizar el puerto 8000 y con nombre python_docs_web</p>
 <div class="highlight"><pre><span></span><code>$ podman run --rm -d -p <span class="m">8000</span>:8000 --name python_docs_web python_docs:3.9.0
 </code></pre></div>
 
-
 <p>Probar el navegador de internet con esta URL</p>
 <div class="highlight"><pre><span></span><code><span class="c">http://127.0.0.1:8000/python3/</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="python-3-9-0-documentation.png" alt="Mozilla Firefox con Python 3.9.0 Documentation"></p>
 <p>Terminar la ejecución del contenedor con...</p>
 <div class="highlight"><pre><span></span><code>$ podman stop python_docs_web
 </code></pre></div>
-
 
 <h2>Navegue por la serie de apuntes de Podman</h2>
 <ol>

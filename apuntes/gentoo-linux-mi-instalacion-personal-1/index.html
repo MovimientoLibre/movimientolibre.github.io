@@ -139,7 +139,6 @@
 <span class="err">/dev/sda9    /mnt/archivos    ext3        defaults    0 0</span>
 </code></pre></div>
 
-
 <ul>
 <li><em>/boot</em> - 35 MB - Es la partición de arranque que contiene los kernels.</li>
 <li><em>/home</em> - 8 GB - Mis archivos (y directorios ocultos con configuraciones personales).</li>
@@ -156,14 +155,12 @@
 <div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext3 /dev/sdaX</span>
 </code></pre></div>
 
-
 <p>Creo el directorio para montar la partición (si ya lo tiene, omita el paso). Y la montamos.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/gentoo</span>
 <span class="err"># mount /dev/sdaX /mnt/gentoo</span>
 <span class="err"># ls /mnt/gentoo</span>
 <span class="err">lost+found</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="tar.png"></p>
 <h3>Desempacamos el stage</h3>
@@ -173,17 +170,14 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 ./stage3-i686-2008.0.tar.bz2: La suma coincide
 </code></pre></div>
 
-
 <p>Luego lo desempaco en <em>/mnt/gentoo/</em></p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/gentoo/</span>
 <span class="err"># tar xvjpf /home/guivaloz/software/gentoo/stage3-i686-2008.0.tar.bz2</span>
 </code></pre></div>
 
-
 <p>Antes de comenzar a instalar es muy recomendable actualizar el <em>portage</em> para que todo lo que instalemos sean versiones <em>nuevas</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge --sync</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="txt.png"></p>
 <h3>Configuraciones</h3>
@@ -231,7 +225,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="c1">#FETCHCOMMAND=&quot;rsync rsync://SERVIDOR/gentoo-packages/\${FILE} ${DISTDIR}&quot;</span>
 </code></pre></div>
 
-
 <p><em>locale.gen</em> establece los conjuntos de caracteres para la compilación de los paquetes.</p>
 <div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">nano</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="p">.</span><span class="n">gen</span><span class="w"></span>
 
@@ -250,7 +243,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="n">es_MX</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"> </span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="w"></span>
 </code></pre></div>
 
-
 <p><em>02locales</em> define variables de entorno con datos de nuestro lenguaje.</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">env</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">02</span><span class="n">locales</span>
 
@@ -261,7 +253,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="k">LANGUAGE</span><span class="o">=</span><span class="ss">&quot;es_MX.utf8&quot;</span>
 <span class="n">LC_ALL</span><span class="o">=</span><span class="ss">&quot;es_MX.utf8&quot;</span>
 </code></pre></div>
-
 
 <p><em>clock</em> define la zona horaria.</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">clock</span>
@@ -284,7 +275,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 
 <span class="n">TIMEZONE</span><span class="o">=</span><span class="ss">&quot;Mexico/General&quot;</span>
 </code></pre></div>
-
 
 <p><em>consolefont</em> define la fuente y conjunto de caracteres de nuestro idioma.</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">consolefont</span>
@@ -309,7 +299,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="n">CONSOLETRANSLATION</span><span class="o">=</span><span class="ss">&quot;8859-1_to_uni&quot;</span>
 </code></pre></div>
 
-
 <p><em>hostname</em> establece el nombre del equipo. En mi caso, le llamo "inspiron".</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">hostname</span>
 
@@ -318,7 +307,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="o">#</span>
 <span class="n">HOSTNAME</span><span class="o">=</span><span class="ss">&quot;inspiron&quot;</span>
 </code></pre></div>
-
 
 <p><em>keymaps</em> tiene que ver con el teclado. El mío es latinoamericano, por lo que uso "la-latin1". Si el suyo es español, defina KEYMAP como "es".</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># nano -w /mnt/gentoo/etc/conf.d/keymaps</span>
@@ -338,7 +326,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="n">SET_WINDOWKEYS</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
 </code></pre></div>
 
-
 <p><em>fstab</em> define el montaje de las particiones del disco duro. Observe que mi root /dev/sda6 es la que estoy instalando.</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">nano</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">gentoo</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>
 
@@ -357,11 +344,9 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda9</span>    <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">archivos</span>    <span class="n">ext3</span>        <span class="k">defaults</span>    <span class="mi">0</span> <span class="mi">0</span>
 </code></pre></div>
 
-
 <p><em>resolv.conf</em> es la información de la resolución de nombres. Hago una copia del sistema en uso al nuevo sistema.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /etc/resolv.conf /mnt/gentoo/etc/</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="kcmperformance.png"></p>
 <h3>Chroot</h3>
@@ -374,11 +359,9 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># mount -o bind /dev /mnt/gentoo/dev</span>
 </code></pre></div>
 
-
 <p>Me <em>mudo</em> a la nueva instalación por medio del comando <em>chroot</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># chroot /mnt/gentoo /bin/bash</span>
 </code></pre></div>
-
 
 <p>Ya estoy dentro del nuevo GNU/Linux. Actualizo las variables del entorno.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># env-update</span>
@@ -386,26 +369,21 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="c1"># export PS1=&quot;(chroot) $PS1&quot;</span>
 </code></pre></div>
 
-
 <p>Copio el archivo del huso horario.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /usr/share/zoneinfo/Mexico/General /etc/localtime</span>
 </code></pre></div>
-
 
 <p>Actualizo el <em>caché</em> del <em>portage</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge --metadata</span>
 </code></pre></div>
 
-
 <p>A raíz de los cambios hechos en /etc/locale.gen hay que ejecutar el comando <em>locale-gen</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># locale-gen</span>
 </code></pre></div>
 
-
 <p>Si existe una actualización del paquete <em>portage</em> conviene instalarla antes que nada.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -u portage</span>
 </code></pre></div>
-
 
 <p>De forma extraordinaria, usando el stage <em>stage3-i686-2008.0.tar.bz2</em>, hay un conflicto al actualizar el paquete <em>e2fsprogs</em>. Es necesario remover los paquetes anteriores y luego instalar los nuevos. Seguramente estó será arreglado en las futuras versiones del <em>stage</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pu sys-fs/e2fsprogs</span>
@@ -414,11 +392,9 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># emerge sys-fs/e2fsprogs</span>
 </code></pre></div>
 
-
 <p>Si hay una nueva versión de los compiladores <em>gcc</em> y del <em>glibc</em> conviene actualizarlos de una vez.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -u gcc glibc</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="time.png"></p>
 <h3>¿Convendrá <em>recompilar</em> todo?</h3>
@@ -429,13 +405,11 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># emerge -u system</span>
 </code></pre></div>
 
-
 <p>Este paso requiere <em>menos tiempo</em> que <em>recompilar</em> todo. Pero los paquetes que <em>no</em> sean actualizados continuarán como compatibles con el <em>i686</em>.</p>
 <p>Si quiere que <em>todo</em> lo instalado por el <em>stage</em> <em>se <em>recompile</em></em> con las opciones de <em>make.conf</em>, revise (la opción "p") y luego <em>recompile</em> todo el <em>system</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -pve system</span>
 <span class="err"># emerge -e system</span>
 </code></pre></div>
-
 
 <p>Así tendrá todos los paquetes optimizados a su equipo. Obviamente esto requiere <em>más tiempo</em> que sólo actualizar.</p>
 <p>Mi recomendación es que si no tiene prisa por terminar la instalación entonces <em><em>recompile</em> todo</em>.</p>
@@ -449,7 +423,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err">grub&gt; quit</span>
 </code></pre></div>
 
-
 <p><img class="img-fluid" src="kdmconfig.png"></p>
 <h3>Kernel</h3>
 <p>Para instalar la más nueva versión estable de <em>gentoo-sources</em>, ejecuto:</p>
@@ -457,17 +430,14 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># emerge gentoo-sources</span>
 </code></pre></div>
 
-
 <p>En cambio, si se necesita una versión específica y estable de <em>gentoo-sources</em> por ejemplo la <em>2.6.24-r8</em>, ejecuto:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge -p =gentoo-sources-2.6.24-r8</span>
 <span class="err"># emerge =gentoo-sources-2.6.24-r8</span>
 </code></pre></div>
 
-
 <p>Copio el <a href="config-2.6.24-gentoo-r8.txt">archivo de configuracion</a> del <em>kernel</em> de la instalación anterior, así me ahorro la ardua tarea de configurarlo. Haga esto sólo si se trata de la misma versión.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cp /mnt/anterior/usr/src/linux/.config /usr/src/linux/</span>
 </code></pre></div>
-
 
 <p>Compilo e instalo el <em>kernel</em> y sus módulos.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /usr/src/linux</span>
@@ -476,11 +446,9 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># make install</span>
 </code></pre></div>
 
-
 <p>Configuro el gestor de arranque editando el archivo <em>grub.conf</em></p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /boot/grub/grub.conf</span>
 </code></pre></div>
-
 
 <p>Revise dos veces la configuración en <em>grub.conf</em> antes de reiniciar. En el mío tengo dos instalaciones de Gentoo Linux, una en <em>/dev/sda6</em> (nuevo) y la otra en <em>/dev/sda7</em> (anterior). Además le paso el parámetro <em>resume</em> con la participación <em>swap</em> <em>/dev/sda5</em>, esto es para la hibernación a disco duro.</p>
 <div class="highlight"><pre><span></span><code><span class="k">default</span> <span class="mi">0</span>
@@ -495,7 +463,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="n">kernel</span> <span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">24</span><span class="o">-</span><span class="n">gentoo</span><span class="o">-</span><span class="n">r8</span> <span class="n">root</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda6</span> <span class="n">resume</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda5</span>
 </code></pre></div>
 
-
 <p><img class="img-fluid" src="kcmcgi.png"></p>
 <h3>Paquetes necesarios antes del primer arranque</h3>
 <p>Instalo el demonio para administrar las bitácoras del sistema o <em>logger</em>. Mi elección es el <em>syslog-ng</em>.</p>
@@ -503,18 +470,15 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># rc-update syslog-ng add default</span>
 </code></pre></div>
 
-
 <p>El calendarizador sirve para ejecutar programas a ciertas horas o días. Mi preferido es el <em>vixie-cron</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge vixie-cron</span>
 <span class="err"># rc-update vixie-cron add default</span>
 </code></pre></div>
 
-
 <p>El demonio <em>ACPI</em> tiene que ver con el control del equipo y la administración de la energía.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge acpid</span>
 <span class="err"># rc-update add acpid default</span>
 </code></pre></div>
-
 
 <p>Las siguientes utilerías me son prácticamente indispensables.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge gentoolkit</span>
@@ -527,24 +491,20 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="c1"># emerge screen</span>
 </code></pre></div>
 
-
 <p><img class="img-fluid" src="personal.png"></p>
 <h3>Contraseñas y primer uso</h3>
 <p>Defino la contraseña del superusuario <em>root</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># passwd</span>
 </code></pre></div>
 
-
 <p>Es momento de dar de alta al usuario que uso normalmente por medio del comando <em>useradd</em>. El parámetro <em>-m</em> es para crear el directorio <em>/home/nombre_del_usuario</em>. Si ese directorio ya existe, debe omitir ese parámetro. Cambie <em>guivaloz</em> por su propio <em>nickname</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># useradd -g users -G tty,wheel,audio,cdrom,video,portage,cron,usb -m guivaloz</span>
 <span class="err"># passwd guivaloz</span>
 </code></pre></div>
 
-
 <p>Abandono el <em>chroot</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># exit</span>
 </code></pre></div>
-
 
 <p>Reinicio el equipo. Arranco con la nueva instalación y pruebo que funcione bien.</p>
 <p><img class="img-fluid" src="kcmpci.png"></p>
@@ -553,11 +513,9 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <div class="highlight"><pre><span></span><code><span class="err"># emerge alsa-utils</span>
 </code></pre></div>
 
-
 <p>Debo configurar <em>ALSA</em> para mi equipo editando el archivo <em>/etc/modules.d/alsa</em></p>
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /etc/modules.d/alsa</span>
 </code></pre></div>
-
 
 <p>El contenido de ese archivo es:</p>
 <div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">ALSA</span> <span class="n">portion</span>
@@ -584,22 +542,18 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="k">options</span> <span class="n">snd</span> <span class="n">cards_limit</span><span class="o">=</span><span class="mi">1</span>
 </code></pre></div>
 
-
 <p>Para terminar a lo que a <em>ALSA</em> se refiere; configuro que se cargue en el arranque con:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># rc-update add alsasound boot</span>
 </code></pre></div>
-
 
 <p>Para una computadora portátil conviene que la red alámbrica se levante al conectar el cable ethernet, para ello instalo <em>netplug</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># emerge netplug</span>
 </code></pre></div>
 
-
 <p>También tengo una tarjeta de red inalámbrica <em>Intel IPW2200</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># emerge wireless-tools</span>
 <span class="c1"># emerge ipw2200-firmware</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="editcopy.png"></p>
 <h3>Respaldo o clono lo que llevo al momento</h3>
@@ -608,16 +562,13 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># emerge -uND world</span>
 </code></pre></div>
 
-
 <p>Después, ejecuto el comando <em>python-updater</em> por si algunas aplicaciones necesiten ser recompiladas por una posible actualización del <em>phyton</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># python-updater</span>
 </code></pre></div>
 
-
 <p>Por último, para asegurarnos que las relaciones entre los paquetes instalados no estén rotas, ejecuto <em>revdep-rebuild</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># revdep-rebuild</span>
 </code></pre></div>
-
 
 <p>En este punto, mi <em>instalación básica</em> está lista. El siguiente paso que sugiero es <em>respaldarla</em> o <em>clonarla</em>. <em>¿Para qué?</em> se preguntará... bueno, para ahorrarse el tener que repetir todo el proceso de instalación si se arrepiente de algún paso. O bien, a partir de aquí puede, por ejemplo, instalar Gnome o KDE; si tiempo más adelante ya no le gustó su instalación, puede <em>formatear</em> esa partición y restablecer a partir del respaldo de la <em>instalación básica</em>, lo actualiza e instala un nuevo Gnome o KDE; esto le llevará menos tiempo que hacer todo este procedimiento de nuevo.</p>
 <p><strong>MUY IMPORTANTE: Para respaldar o clonar un sistema operativo Gentoo Linux debe de arrancar con un Live CD o con otra instalación GNU/Linux que tenga en su equipo.</strong> Si copia o clona una instalación que esté usando, podría fallar o quedar corrupta.</p>
@@ -631,13 +582,11 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># chown guivaloz:users /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz</span>
 </code></pre></div>
 
-
 <p>Opcionalmente puede conservar una copia del <em>portage</em> correspondiente a la misma instalación que haya respaldado.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /usr/portage/</span>
 <span class="err"># tar cvzf /home/guivaloz/software/inspiron_basico_portage_2008-11-10.tar.gz --exclude=distfiles --exclude=packages *</span>
 <span class="err"># chown guivaloz:users /home/guivaloz/software/inspiron_basico_portage_2008-11-10.tar.gz</span>
 </code></pre></div>
-
 
 <p><strong>Para reestablecer</strong> a partir de un respaldo, debe ejecutar:</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkfs.ext3 /dev/sdaX</span>
@@ -647,7 +596,6 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># tar xvzf /home/guivaloz/software/inspiron_basico_2008-11-10.tar.gz</span>
 </code></pre></div>
 
-
 <p><strong>Para hacer un clon (una copia idéntica en otra partición)</strong> <em>formateo</em> la partición a donde irá el <em>clon</em> y monto esa y la original (la que tiene la nueva instalación). Sustituya <em>/dev/sdaX</em> (nueva instalación) y <em>/dev/sdaY</em> (clon) por lo que corresponda.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mkdir /mnt/original</span>
 <span class="err"># mount /dev/sdaX /mnt/original</span>
@@ -656,12 +604,10 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <span class="err"># mount /dev/sdaY /mnt/clon</span>
 </code></pre></div>
 
-
 <p>Uso el comando <em>tar</em> con una tubería, omitiendo el directorio <em>lost+found</em>. Esta técnica es bastante más rápida que el comando <em>cp</em>.</p>
 <div class="highlight"><pre><span></span><code><span class="err"># cd /mnt/original</span>
 <span class="err"># tar cv --exclude=lost+found * | tar x -C /mnt/clon/</span>
 </code></pre></div>
-
 
 <p><img class="img-fluid" src="configure.png"></p>
 <h3>Cambios en el clon</h3>
@@ -669,12 +615,10 @@ $ md5sum -c stage3-i686-2008.0.tar.bz2.DIGESTS
 <div class="highlight"><pre><span></span><code><span class="err"># nano -w /mnt/clon/etc/fstab</span>
 </code></pre></div>
 
-
 <p>También debe modificar la configuración del gestor de arranque <em>grub</em> para que pueda usar ambas instalaciones. Un buen truco es usar el mismo kernel para ambas (ya que son <em>clones</em>).</p>
 <div class="highlight"><pre><span></span><code><span class="err"># mount /boot</span>
 <span class="err"># nano -w /boot/grub/grub.conf</span>
 </code></pre></div>
-
 
 <p>Desmonte las particiones, reinicie y pruebe cada una de ellas.</p>
 <p>Vea la <a href="gentoo-linux-mi-instalacion-personal-2.html">segunda parte de este manual</a> para continuar con la instalación.</p>
