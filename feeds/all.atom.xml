@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Movimiento Libre</title><link href="https://movimientolibre.com/" rel="alternate"></link><link href="https://movimientolibre.com/feeds/all.atom.xml" rel="self"></link><id>https://movimientolibre.com/</id><updated>2020-10-21T05:20:00-05:00</updated><entry><title>Instalación de Fedora Workstation 33</title><link href="https://movimientolibre.com/apuntes/fedora-workstation-33/" rel="alternate"></link><published>2020-10-21T05:20:00-05:00</published><updated>2020-10-21T05:20:00-05:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-10-21:/apuntes/fedora-workstation-33/</id><summary type="html">&lt;p&gt;Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img class="img-fluid" src="fedora-33-kde.jpg" alt="Fedora 33 KDE Plasma"&gt;&lt;/p&gt;
-&lt;p&gt;Al momento de escribir este apunte aun no ha sido liberado &lt;a href="https://getfedora.org/"&gt;Fedora&lt;/a&gt; 33; pero como mi paciencia se acaba, he decidido probar la &lt;a href="https://fedoramagazine.org/announcing-the-release-of-fedora-33-beta/"&gt;versión Beta&lt;/a&gt; del mismo.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Movimiento Libre</title><link href="https://movimientolibre.com/" rel="alternate"></link><link href="https://movimientolibre.com/feeds/all.atom.xml" rel="self"></link><id>https://movimientolibre.com/</id><updated>2020-10-28T18:46:00-06:00</updated><entry><title>Instalación de Fedora Workstation 33</title><link href="https://movimientolibre.com/apuntes/fedora-workstation-33/" rel="alternate"></link><published>2020-10-21T05:20:00-05:00</published><updated>2020-10-28T18:46:00-06:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-10-21:/apuntes/fedora-workstation-33/</id><summary type="html">&lt;p&gt;Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img class="img-fluid" src="fedora-33-kde.jpg" alt="Fedora 33 KDE Plasma"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ACTUALIZADO:&lt;/strong&gt; Ya está disponible &lt;a href="https://getfedora.org/"&gt;Fedora&lt;/a&gt; en su versión 33; que entre sus novedades usa &lt;a href="https://es.wikipedia.org/wiki/Btrfs"&gt;BTRFS&lt;/a&gt; por defecto como sistema de archivos.&lt;/p&gt;
 &lt;p&gt;Hago pública una afición: cada vez que Fedora libera una nueva versión, hago una instalación nueva desde &lt;em&gt;formatear&lt;/em&gt; hasta restaurar (y revisar) mi &lt;em&gt;home&lt;/em&gt;. Es mi gusto muy personal. Si dan un vistazo a este &lt;em&gt;blog&lt;/em&gt; verán que hay apuntes con los pasos de las versiones anteriores; al compararlos podremos observar ligeras diferencias.&lt;/p&gt;
 &lt;h2&gt;Instalación de Fedora 33&lt;/h2&gt;
 &lt;p&gt;Luego de instalar &lt;a href="https://spins.fedoraproject.org/es/kde/"&gt;Fedora 33 Spin con KDE Plasma&lt;/a&gt; con una memoria USB hacemos una actualización...&lt;/p&gt;
@@ -76,12 +76,7 @@ $ sudo dnf install google-droid-fonts-all
 $ sudo dnf install code
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Noto que me hace falta GIT y herramientas de Python...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install git
-$ sudo dnf install pipenv
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;En este momento, no he instalado el grupo "Python Classroom" porque me baja la versión de GCC; esperaré a que lo resuelvan en el futuro cercano...&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ACTUALIZADO:&lt;/strong&gt; Para desarrollar software con Python installo &lt;strong&gt;Python Classroom&lt;/strong&gt; para tener varias versiones y herramientas adicionales...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf groupinstall &lt;span class="s2"&gt;&amp;quot;Python Classroom&amp;quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 

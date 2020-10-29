@@ -378,20 +378,20 @@
 </code></pre></div>
 
 <p>Luego de haber habilitado los dispositivos de red, regreso a habilitar las opciones de "Wireless" en "Networking support".</p>
-<div class="highlight"><pre><span></span><code><span class="err">[*] Networking support  ---&gt;</span>
-<span class="err">[*]   Wireless  ---&gt;</span>
-<span class="err">{M}   Improved wireless configuration API</span>
-<span class="err">[ ]     cfg80211 regulatory debugging</span>
-<span class="err">[*]     nl80211 new netlink interface support</span>
-<span class="err">[*]   Old wireless static regulatory definitions</span>
-<span class="err">-*-   Wireless extensions</span>
-<span class="err">[*]     Wireless extensions sysfs files</span>
-<span class="err">{M}   Common routines for IEEE802.11 drivers</span>
-<span class="err">[ ]   lib80211 debugging messages</span>
-<span class="err">&lt;M&gt;   Generic IEEE 802.11 Networking Stack (mac80211)</span>
-<span class="err">[*]     Enable mac80211 mesh networking (pre-802.11s) support</span>
-<span class="err">-*-     Enable LED triggers</span>
-<span class="err">[ ]     Export mac80211 internals in DebugFS</span>
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Networking</span> <span class="n">support</span>  <span class="o">---&gt;</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span>   <span class="n">Wireless</span>  <span class="o">---&gt;</span>
+<span class="p">{</span><span class="n">M</span><span class="p">}</span>   <span class="n">Improved</span> <span class="n">wireless</span> <span class="n">configuration</span> <span class="n">API</span>
+<span class="p">[</span> <span class="p">]</span>     <span class="n">cfg80211</span> <span class="n">regulatory</span> <span class="n">debugging</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span>     <span class="n">nl80211</span> <span class="n">new</span> <span class="n">netlink</span> <span class="n">interface</span> <span class="n">support</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span>   <span class="n">Old</span> <span class="n">wireless</span> <span class="n">static</span> <span class="n">regulatory</span> <span class="n">definitions</span>
+<span class="o">-*-</span>   <span class="n">Wireless</span> <span class="n">extensions</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span>     <span class="n">Wireless</span> <span class="n">extensions</span> <span class="n">sysfs</span> <span class="n">files</span>
+<span class="p">{</span><span class="n">M</span><span class="p">}</span>   <span class="n">Common</span> <span class="n">routines</span> <span class="k">for</span> <span class="n">IEEE802</span><span class="mf">.11</span> <span class="n">drivers</span>
+<span class="p">[</span> <span class="p">]</span>   <span class="n">lib80211</span> <span class="n">debugging</span> <span class="n">messages</span>
+<span class="o">&lt;</span><span class="n">M</span><span class="o">&gt;</span>   <span class="n">Generic</span> <span class="n">IEEE</span> <span class="mf">802.11</span> <span class="n">Networking</span> <span class="n">Stack</span> <span class="p">(</span><span class="n">mac80211</span><span class="p">)</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span>     <span class="n">Enable</span> <span class="n">mac80211</span> <span class="n">mesh</span> <span class="n">networking</span> <span class="p">(</span><span class="n">pre</span><span class="o">-</span><span class="mf">802.11</span><span class="n">s</span><span class="p">)</span> <span class="n">support</span>
+<span class="o">-*-</span>     <span class="n">Enable</span> <span class="n">LED</span> <span class="n">triggers</span>
+<span class="p">[</span> <span class="p">]</span>     <span class="n">Export</span> <span class="n">mac80211</span> <span class="n">internals</span> <span class="n">in</span> <span class="n">DebugFS</span>
 </code></pre></div>
 
 <p>La sección "File systems" es sumamente importante. Sencillamente, si se intenta cargar un GNU/Linux desde una partición con un sistema de archivos no soportado, nos ocasionaría un <em>kernel panic</em>. Note que aquí aparece el nuevo sistema de archivos <em>Btrfs</em>.</p>

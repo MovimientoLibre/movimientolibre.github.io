@@ -134,51 +134,51 @@
 </code></pre></div>
 
 <p>Ajuste el contenido de acuerdo a sus necesidades...</p>
-<div class="highlight"><pre><span></span><code><span class="o">#</span> <span class="n">Puerto</span> <span class="n">para</span> <span class="n">permitir</span> <span class="n">https</span>
-<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span>  <span class="mi">443</span>        <span class="o">#</span> <span class="n">https</span>
-<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span> <span class="mi">5222</span>        <span class="o">#</span> <span class="p">.</span><span class="n">whatsapp</span><span class="p">.</span><span class="n">com</span><span class="p">,</span> <span class="p">.</span><span class="n">whatsapp</span><span class="p">.</span><span class="n">net</span>
-<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span> <span class="mi">5228</span>        <span class="o">#</span> <span class="n">mtalk</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
+<div class="highlight"><pre><span></span><code><span class="p">#</span> <span class="n">Puerto</span> <span class="n">para</span> <span class="n">permitir</span> <span class="n">https</span>
+<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span>  <span class="mh">443</span>        <span class="p">#</span> <span class="n">https</span>
+<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span> <span class="mh">5222</span>        <span class="p">#</span> <span class="p">.</span><span class="n">whatsapp</span><span class="p">.</span><span class="n">com</span><span class="p">,</span> <span class="p">.</span><span class="n">whatsapp</span><span class="p">.</span><span class="n">net</span>
+<span class="n">acl</span> <span class="n">SSLPorts</span>  <span class="n">port</span> <span class="mh">5228</span>        <span class="p">#</span> <span class="n">mtalk</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>
 
-<span class="o">#</span> <span class="n">Puertos</span> <span class="n">que</span> <span class="n">se</span> <span class="n">pueden</span> <span class="n">usar</span>
-<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mi">21</span>        <span class="o">#</span> <span class="n">ftp</span>
-<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mi">70</span>        <span class="o">#</span> <span class="n">gopher</span>
-<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mi">80</span>        <span class="o">#</span> <span class="n">http</span>
-<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>  <span class="mi">443</span>        <span class="o">#</span> <span class="n">https</span>
-<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span> <span class="mi">1025</span><span class="o">-</span><span class="mi">65535</span>  <span class="o">#</span> <span class="n">unregistered</span> <span class="n">ports</span>
+<span class="p">#</span> <span class="n">Puertos</span> <span class="n">que</span> <span class="n">se</span> <span class="n">pueden</span> <span class="n">usar</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mh">21</span>        <span class="p">#</span> <span class="n">ftp</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mh">70</span>        <span class="p">#</span> <span class="n">gopher</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>   <span class="mh">80</span>        <span class="p">#</span> <span class="n">http</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span>  <span class="mh">443</span>        <span class="p">#</span> <span class="n">https</span>
+<span class="n">acl</span> <span class="n">SafePorts</span> <span class="n">port</span> <span class="mh">1025</span><span class="o">-</span><span class="mh">65535</span>  <span class="p">#</span> <span class="n">unregistered</span> <span class="n">ports</span>
 
-<span class="o">#</span> <span class="n">Declaración</span> <span class="k">connect</span>
-<span class="n">acl</span> <span class="k">CONNECT</span> <span class="k">method</span> <span class="k">CONNECT</span>
+<span class="p">#</span> <span class="n">Declaración</span> <span class="n">connect</span>
+<span class="n">acl</span> <span class="n">CONNECT</span> <span class="n">method</span> <span class="n">CONNECT</span>
 
-<span class="o">#</span> <span class="n">Desde</span> <span class="n">y</span> <span class="n">hacia</span> <span class="n">Localhost</span>
-<span class="n">acl</span> <span class="n">DesdeLocalhost</span>    <span class="n">src</span>        <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
-<span class="n">acl</span> <span class="n">HaciaLocalhost</span>    <span class="n">dst</span>        <span class="mi">127</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">8</span>
+<span class="p">#</span> <span class="n">Desde</span> <span class="n">y</span> <span class="n">hacia</span> <span class="n">Localhost</span>
+<span class="n">acl</span> <span class="n">DesdeLocalhost</span>    <span class="n">src</span>        <span class="mf">127.0.0.0</span><span class="o">/</span><span class="mh">8</span>
+<span class="n">acl</span> <span class="n">HaciaLocalhost</span>    <span class="n">dst</span>        <span class="mf">127.0.0.0</span><span class="o">/</span><span class="mh">8</span>
 
-<span class="o">#</span> <span class="n">Desde</span> <span class="n">y</span> <span class="n">hacia</span> <span class="n">LAN</span>
-<span class="n">acl</span> <span class="n">DesdeLAN</span>          <span class="n">src</span>        <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
-<span class="n">acl</span> <span class="n">HaciaLAN</span>          <span class="n">dst</span>        <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">4</span><span class="p">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
+<span class="p">#</span> <span class="n">Desde</span> <span class="n">y</span> <span class="n">hacia</span> <span class="n">LAN</span>
+<span class="n">acl</span> <span class="n">DesdeLAN</span>          <span class="n">src</span>        <span class="mf">192.168.4.0</span><span class="o">/</span><span class="mh">24</span>
+<span class="n">acl</span> <span class="n">HaciaLAN</span>          <span class="n">dst</span>        <span class="mf">192.168.4.0</span><span class="o">/</span><span class="mh">24</span>
 
-<span class="o">#</span> <span class="n">Definiciones</span> <span class="n">de</span> <span class="n">sitios</span>
-<span class="n">acl</span> <span class="n">SitiosPermitidos</span>  <span class="n">dstdomain</span>  <span class="ss">&quot;/etc/squid/sitios-permitidos.txt&quot;</span>
-<span class="n">acl</span> <span class="n">SitiosProhibidos</span>  <span class="n">dstdomain</span>  <span class="ss">&quot;/etc/squid/sitios-prohibidos.txt&quot;</span>
+<span class="p">#</span> <span class="n">Definiciones</span> <span class="n">de</span> <span class="n">sitios</span>
+<span class="n">acl</span> <span class="n">SitiosPermitidos</span>  <span class="n">dstdomain</span>  <span class="s">&quot;/etc/squid/sitios-permitidos.txt&quot;</span>
+<span class="n">acl</span> <span class="n">SitiosProhibidos</span>  <span class="n">dstdomain</span>  <span class="s">&quot;/etc/squid/sitios-prohibidos.txt&quot;</span>
 
-<span class="o">#</span> <span class="n">Definiciones</span> <span class="n">de</span> <span class="n">expresiones</span> <span class="n">regulares</span> <span class="n">sobre</span> <span class="n">publicidad</span>
-<span class="n">acl</span> <span class="n">RegExpPublicidad</span>  <span class="n">dstdom_regex</span> <span class="o">-</span><span class="n">i</span> <span class="ss">&quot;/etc/squid/regexp-publicidad.txt&quot;</span>
+<span class="p">#</span> <span class="n">Definiciones</span> <span class="n">de</span> <span class="n">expresiones</span> <span class="n">regulares</span> <span class="n">sobre</span> <span class="n">publicidad</span>
+<span class="n">acl</span> <span class="n">RegExpPublicidad</span>  <span class="n">dstdom_regex</span> <span class="o">-</span><span class="n">i</span> <span class="s">&quot;/etc/squid/regexp-publicidad.txt&quot;</span>
 
-<span class="o">#</span> <span class="n">Audio</span> <span class="n">MP3</span>
+<span class="p">#</span> <span class="n">Audio</span> <span class="n">MP3</span>
 <span class="n">acl</span> <span class="n">AudioMP3Mime</span>      <span class="n">rep_mime_type</span>  <span class="n">audio</span><span class="o">/</span><span class="n">mpeg</span>
-<span class="n">acl</span> <span class="n">AudioMP3RegExp</span>    <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">mp3$</span>
+<span class="n">acl</span> <span class="n">AudioMP3RegExp</span>    <span class="n">urlpath_regex</span>  <span class="n">\.mp3$</span>
 
-<span class="o">#</span> <span class="n">Video</span> <span class="n">MPEG4</span> <span class="p">(</span><span class="n">MPG4</span><span class="p">)</span>
+<span class="p">#</span> <span class="n">Video</span> <span class="n">MPEG4</span> <span class="p">(</span><span class="n">MPG4</span><span class="p">)</span>
 <span class="n">acl</span> <span class="n">VideoMP4Mime</span>      <span class="n">rep_mime_type</span>  <span class="n">video</span><span class="o">/</span><span class="n">mp4</span> <span class="n">video</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">mp4</span>
-<span class="n">acl</span> <span class="n">VideoMP4RegExp</span>    <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">mp4$</span>
+<span class="n">acl</span> <span class="n">VideoMP4RegExp</span>    <span class="n">urlpath_regex</span>  <span class="n">\.mp4$</span>
 
-<span class="o">#</span> <span class="n">Flash</span> <span class="n">Video</span> <span class="n">Format</span> <span class="p">(</span><span class="n">FLV</span><span class="p">)</span>
+<span class="p">#</span> <span class="n">Flash</span> <span class="n">Video</span> <span class="n">Format</span> <span class="p">(</span><span class="n">FLV</span><span class="p">)</span>
 <span class="n">acl</span> <span class="n">FlashVideoMime</span>    <span class="n">rep_mime_type</span>  <span class="n">video</span><span class="o">/</span><span class="n">flv</span> <span class="n">video</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">flv</span>
-<span class="n">acl</span> <span class="n">FlashVideoRegExp</span>  <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">flv$</span>
+<span class="n">acl</span> <span class="n">FlashVideoRegExp</span>  <span class="n">urlpath_regex</span>  <span class="n">\.flv$</span>
 
-<span class="o">#</span> <span class="n">Flash</span> <span class="k">General</span> <span class="n">Media</span> <span class="n">Scripts</span> <span class="p">(</span><span class="n">SWF</span><span class="p">)</span>
+<span class="p">#</span> <span class="n">Flash</span> <span class="n">General</span> <span class="n">Media</span> <span class="n">Scripts</span> <span class="p">(</span><span class="n">SWF</span><span class="p">)</span>
 <span class="n">acl</span> <span class="n">FlashMime</span>         <span class="n">rep_mime_type</span>  <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">shockwave</span><span class="o">-</span><span class="n">flash</span>
-<span class="n">acl</span> <span class="n">FlashRegExp</span>       <span class="n">urlpath_regex</span>  <span class="err">\</span><span class="p">.</span><span class="n">swf$</span>
+<span class="n">acl</span> <span class="n">FlashRegExp</span>       <span class="n">urlpath_regex</span>  <span class="n">\.swf$</span>
 </code></pre></div>
 
 <h3>Squid - accesos</h3>

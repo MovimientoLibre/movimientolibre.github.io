@@ -92,7 +92,7 @@
                             "description": "Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.",
                             "dateCreated": "2020-10-21 05:20:00-05:00",
                             "datePublished": "2020-10-21 05:20:00-05:00",
-                            "dateModified": "2020-10-21 05:20:00-05:00",
+                            "dateModified": "2020-10-28 18:46:00-06:00",
                             "image": "https://movimientolibre.com/apuntes/fedora-workstation-33/fedora-33-kde.jpg",
                             "url": "https://movimientolibre.com/apuntes/fedora-workstation-33/"
                         }
@@ -101,7 +101,7 @@
 <p>Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.</p>
                     <p class="article-post-meta">21 octubre 2020</p>
 <p><img class="img-fluid" src="fedora-33-kde.jpg" alt="Fedora 33 KDE Plasma"></p>
-<p>Al momento de escribir este apunte aun no ha sido liberado <a href="https://getfedora.org/">Fedora</a> 33; pero como mi paciencia se acaba, he decidido probar la <a href="https://fedoramagazine.org/announcing-the-release-of-fedora-33-beta/">versión Beta</a> del mismo.</p>
+<p><strong>ACTUALIZADO:</strong> Ya está disponible <a href="https://getfedora.org/">Fedora</a> en su versión 33; que entre sus novedades usa <a href="https://es.wikipedia.org/wiki/Btrfs">BTRFS</a> por defecto como sistema de archivos.</p>
 <p>Hago pública una afición: cada vez que Fedora libera una nueva versión, hago una instalación nueva desde <em>formatear</em> hasta restaurar (y revisar) mi <em>home</em>. Es mi gusto muy personal. Si dan un vistazo a este <em>blog</em> verán que hay apuntes con los pasos de las versiones anteriores; al compararlos podremos observar ligeras diferencias.</p>
 <h2>Instalación de Fedora 33</h2>
 <p>Luego de instalar <a href="https://spins.fedoraproject.org/es/kde/">Fedora 33 Spin con KDE Plasma</a> con una memoria USB hacemos una actualización...</p>
@@ -177,12 +177,7 @@ $ sudo dnf install google-droid-fonts-all
 $ sudo dnf install code
 </code></pre></div>
 
-<p>Noto que me hace falta GIT y herramientas de Python...</p>
-<div class="highlight"><pre><span></span><code>$ sudo dnf install git
-$ sudo dnf install pipenv
-</code></pre></div>
-
-<p>En este momento, no he instalado el grupo "Python Classroom" porque me baja la versión de GCC; esperaré a que lo resuelvan en el futuro cercano...</p>
+<p><strong>ACTUALIZADO:</strong> Para desarrollar software con Python installo <strong>Python Classroom</strong> para tener varias versiones y herramientas adicionales...</p>
 <div class="highlight"><pre><span></span><code>$ sudo dnf groupinstall <span class="s2">&quot;Python Classroom&quot;</span>
 </code></pre></div>
 
