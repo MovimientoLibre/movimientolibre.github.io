@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Movimiento Libre</title><link href="https://movimientolibre.com/" rel="alternate"></link><link href="https://movimientolibre.com/feeds/all.atom.xml" rel="self"></link><id>https://movimientolibre.com/</id><updated>2020-10-28T18:46:00-06:00</updated><entry><title>Instalación de Fedora Workstation 33</title><link href="https://movimientolibre.com/apuntes/fedora-workstation-33/" rel="alternate"></link><published>2020-10-21T05:20:00-05:00</published><updated>2020-10-28T18:46:00-06:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-10-21:/apuntes/fedora-workstation-33/</id><summary type="html">&lt;p&gt;Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img class="img-fluid" src="fedora-33-kde.jpg" alt="Fedora 33 KDE Plasma"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Movimiento Libre</title><link href="https://movimientolibre.com/" rel="alternate"></link><link href="https://movimientolibre.com/feeds/all.atom.xml" rel="self"></link><id>https://movimientolibre.com/</id><updated>2020-11-01T16:20:00-06:00</updated><entry><title>Instalación de Fedora Workstation 33</title><link href="https://movimientolibre.com/apuntes/fedora-workstation-33/" rel="alternate"></link><published>2020-10-21T05:20:00-05:00</published><updated>2020-11-01T16:20:00-06:00</updated><author><name>Guillermo Valdés Lozano (guivaloz)</name></author><id>tag:movimientolibre.com,2020-10-21:/apuntes/fedora-workstation-33/</id><summary type="html">&lt;p&gt;Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img class="img-fluid" src="fedora-33-kde.jpg" alt="Fedora 33 KDE Plasma"&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;ACTUALIZADO:&lt;/strong&gt; Ya está disponible &lt;a href="https://getfedora.org/"&gt;Fedora&lt;/a&gt; en su versión 33; que entre sus novedades usa &lt;a href="https://es.wikipedia.org/wiki/Btrfs"&gt;BTRFS&lt;/a&gt; por defecto como sistema de archivos.&lt;/p&gt;
 &lt;p&gt;Hago pública una afición: cada vez que Fedora libera una nueva versión, hago una instalación nueva desde &lt;em&gt;formatear&lt;/em&gt; hasta restaurar (y revisar) mi &lt;em&gt;home&lt;/em&gt;. Es mi gusto muy personal. Si dan un vistazo a este &lt;em&gt;blog&lt;/em&gt; verán que hay apuntes con los pasos de las versiones anteriores; al compararlos podremos observar ligeras diferencias.&lt;/p&gt;
 &lt;h2&gt;Instalación de Fedora 33&lt;/h2&gt;
@@ -23,8 +23,8 @@ $ sudo dnf install pwgen youtube-dl hwinfo htop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;De parte de las herramientas para gráficas instalamos &lt;a href="https://www.gimp.org/"&gt;GIMP&lt;/a&gt; e &lt;a href="https://inkscape.org/"&gt;Inkscape&lt;/a&gt;...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ dnf install gimp
-$ dnf install inkscape
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install gimp
+$ sudo dnf install inkscape
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Si tiene colección de libros electrónicos use &lt;a href="https://calibre-ebook.com/"&gt;Calibre&lt;/a&gt;...&lt;/p&gt;
@@ -42,8 +42,7 @@ $ dnf install inkscape
 
 &lt;h2&gt;Instalar Google Chrome&lt;/h2&gt;
 &lt;p&gt;Hay que instalar repositorios extras...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ dnf install fedora-workstation-repositories
-$ sudo dnf install fedora-workstation-repositories
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo dnf install fedora-workstation-repositories
 $ sudo dnf update
 $ sudo dnf repolist --all
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;

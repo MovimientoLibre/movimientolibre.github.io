@@ -92,7 +92,7 @@
                             "description": "Comandos de instalación del software (preferido por el autor) en Fedora Workstation 33 con KDE.",
                             "dateCreated": "2020-10-21 05:20:00-05:00",
                             "datePublished": "2020-10-21 05:20:00-05:00",
-                            "dateModified": "2020-10-28 18:46:00-06:00",
+                            "dateModified": "2020-11-01 16:20:00-06:00",
                             "image": "https://movimientolibre.com/apuntes/fedora-workstation-33/fedora-33-kde.jpg",
                             "url": "https://movimientolibre.com/apuntes/fedora-workstation-33/"
                         }
@@ -124,8 +124,8 @@ $ sudo dnf install pwgen youtube-dl hwinfo htop
 </code></pre></div>
 
 <p>De parte de las herramientas para gráficas instalamos <a href="https://www.gimp.org/">GIMP</a> e <a href="https://inkscape.org/">Inkscape</a>...</p>
-<div class="highlight"><pre><span></span><code>$ dnf install gimp
-$ dnf install inkscape
+<div class="highlight"><pre><span></span><code>$ sudo dnf install gimp
+$ sudo dnf install inkscape
 </code></pre></div>
 
 <p>Si tiene colección de libros electrónicos use <a href="https://calibre-ebook.com/">Calibre</a>...</p>
@@ -143,8 +143,7 @@ $ dnf install inkscape
 
 <h2>Instalar Google Chrome</h2>
 <p>Hay que instalar repositorios extras...</p>
-<div class="highlight"><pre><span></span><code>$ dnf install fedora-workstation-repositories
-$ sudo dnf install fedora-workstation-repositories
+<div class="highlight"><pre><span></span><code>$ sudo dnf install fedora-workstation-repositories
 $ sudo dnf update
 $ sudo dnf repolist --all
 </code></pre></div>
